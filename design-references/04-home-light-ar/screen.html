@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>عبدالغني الشبامي | مهندس برمجيات أول ومعماري نُظم</title>
+<!-- Google Fonts: Noto Serif, Noto Sans, Playfair Display -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&amp;family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;family=Playfair+Display:ital,wght@0,600;0,700;1,600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-surface": "#1a1c1d",
+            "inverse-primary": "#bec6e0",
+            "tertiary": "#755b00",
+            "on-tertiary-fixed": "#241a00",
+            "secondary-fixed-dim": "#eec14f",
+            "on-tertiary-fixed-variant": "#584400",
+            "surface-tint": "#565e74",
+            "surface-dim": "#d9dadc",
+            "on-primary-fixed": "#131b2e",
+            "on-primary-container": "#7c839b",
+            "surface-bright": "#f9f9fb",
+            "surface-container": "#edeef0",
+            "on-error": "#ffffff",
+            "secondary-fixed": "#ffdf99",
+            "on-primary-fixed-variant": "#3f465c",
+            "on-secondary-fixed": "#251a00",
+            "on-primary": "#ffffff",
+            "secondary-container": "#fdce5b",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary-fixed-variant": "#5a4300",
+            "inverse-surface": "#2f3132",
+            "surface-container-low": "#f3f3f5",
+            "surface-variant": "#e2e2e4",
+            "inverse-on-surface": "#f0f0f2",
+            "tertiary-fixed-dim": "#e8c35a",
+            "surface-container-high": "#e8e8ea",
+            "on-tertiary": "#ffffff",
+            "on-error-container": "#93000a",
+            "on-secondary-container": "#745700",
+            "on-background": "#1a1c1d",
+            "tertiary-container": "#cba842",
+            "outline": "#76777d",
+            "on-surface-variant": "#45464d",
+            "primary": "#000000",
+            "primary-fixed-dim": "#bec6e0",
+            "secondary": "#775a00",
+            "tertiary-fixed": "#ffe08e",
+            "primary-fixed": "#dae2fd",
+            "background": "#f9f9fb",
+            "on-tertiary-container": "#503d00",
+            "surface-container-highest": "#e2e2e4",
+            "surface": "#f9f9fb",
+            "on-secondary": "#ffffff",
+            "error-container": "#ffdad6",
+            "outline-variant": "#c6c6cd",
+            "primary-container": "#131b2e",
+            "error": "#ba1a1a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-sm": "0.75rem",
+            "space-xs": "0.375rem",
+            "gutter": "1.5rem",
+            "space-lg": "2rem",
+            "margin-mobile": "1.25rem",
+            "space-md": "1.25rem",
+            "space-xl": "3.5rem",
+            "gutter-mobile": "1rem",
+            "margin": "3.5rem"
+          },
+          "fontFamily": {
+            "code-metric": ["Noto Sans"],
+            "headline-md": ["Noto Serif"],
+            "body-xl": ["Noto Sans"],
+            "display-hero": ["Noto Serif"],
+            "headline-lg": ["Noto Serif"],
+            "body-sm": ["Noto Sans"],
+            "body-md": ["Noto Sans"],
+            "label-refined": ["Playfair Display"],
+            "display-hero-mobile": ["Noto Serif"],
+            "headline-lg-mobile": ["Noto Serif"],
+            "headline-xl": ["Noto Serif"],
+            "headline-xl-mobile": ["Noto Serif"]
+          },
+          "fontSize": {
+            "code-metric": ["13px", { "lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "body-xl": ["18px", { "lineHeight": "32px", "fontWeight": "400" }],
+            "display-hero": ["56px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "38px", "fontWeight": "600" }],
+            "body-sm": ["13px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "body-md": ["15px", { "lineHeight": "26px", "fontWeight": "400" }],
+            "label-refined": ["12px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "600" }],
+            "display-hero-mobile": ["36px", { "lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["22px", { "lineHeight": "32px", "fontWeight": "600" }],
+            "headline-xl": ["40px", { "lineHeight": "52px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "headline-xl-mobile": ["28px", { "lineHeight": "38px", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .gold-accent-line {
+      background: linear-gradient(90deg, #755b00 0%, transparent 100%);
+    }
+    .gold-glow {
+      box-shadow: 0 12px 32px -4px rgba(180, 140, 28, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.03);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md text-body-md antialiased selection:bg-tertiary-fixed selection:text-on-tertiary-fixed">
+<!-- ==================== TOP NAVIGATION BAR ==================== -->
+<header class="w-full sticky top-0 z-50 px-margin flex items-center justify-between h-20 bg-surface-container-lowest/90 backdrop-blur-md dark:bg-surface-container-lowest/90 border-b border-outline-variant/40 dark:border-outline-variant/20 transition-all duration-150">
+<!-- Brand / Right side (RTL Start) -->
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 border border-tertiary/40 bg-surface-container-lowest flex items-center justify-center font-headline-md font-bold text-primary tracking-tighter">
+        AS
+      </div>
+<div>
+<a class="text-headline-md font-headline-md font-semibold text-primary dark:text-inverse-primary tracking-tight hover:text-tertiary dark:hover:text-tertiary-fixed transition-colors duration-150 block leading-tight" href="#home">
+          عبدالغني الشبامي
+        </a>
+<span class="text-code-metric font-code-metric text-on-surface-variant font-normal block leading-none mt-1">
+          مهندس برمجيات أول ومعماري نظم
+        </span>
+</div>
+</div>
+<!-- Center Navigation Links -->
+<nav class="hidden md:flex items-center gap-space-lg text-body-md font-body-md">
+<a class="text-primary font-semibold border-b-2 border-tertiary pb-1 transition-all duration-150" href="#home">الرئيسية</a>
+<a class="text-on-surface-variant font-medium pb-1 hover:text-tertiary dark:hover:text-tertiary-fixed transition-colors duration-150" href="#about">عني</a>
+<a class="text-on-surface-variant font-medium pb-1 hover:text-tertiary dark:hover:text-tertiary-fixed transition-colors duration-150" href="#skills">المهارات</a>
+<a class="text-on-surface-variant font-medium pb-1 hover:text-tertiary dark:hover:text-tertiary-fixed transition-colors duration-150" href="#projects">المشاريع</a>
+<a class="text-on-surface-variant font-medium pb-1 hover:text-tertiary dark:hover:text-tertiary-fixed transition-colors duration-150" href="#experience">الخبرات</a>
+<a class="text-on-surface-variant font-medium pb-1 hover:text-tertiary dark:hover:text-tertiary-fixed transition-colors duration-150" href="#contact">تواصل معي</a>
+</nav>
+<!-- Trailing Actions / Left side (RTL End) -->
+<div class="flex items-center gap-space-sm">
+<!-- Dark/Light Mode Icon -->
+<button class="w-9 h-9 flex items-center justify-center text-on-surface-variant hover:text-tertiary transition-colors duration-150 border border-outline-variant/50 hover:border-tertiary" title="تبديل الوضع">
+<span class="material-symbols-outlined text-[20px]">dark_mode</span>
+</button>
+<!-- Language Switcher -->
+<span class="text-label-refined font-label-refined text-on-surface-variant px-space-xs py-1 cursor-pointer hover:text-tertiary transition-colors duration-150 border border-outline-variant/50">
+        AR | EN
+      </span>
+<!-- Resume Primary Action -->
+<a class="hidden sm:inline-flex items-center gap-space-xs bg-primary text-on-primary hover:bg-on-surface-variant px-space-md py-2 border border-tertiary transition-all duration-150 text-code-metric font-code-metric font-semibold active:scale-[0.99]" href="#resume">
+<span>السيرة الذاتية</span>
+<span class="material-symbols-outlined text-[16px]">file_download</span>
+</a>
+</div>
+</header>
+<!-- ==================== HERO SECTION ==================== -->
+<section class="relative px-margin pt-space-xl pb-24 overflow-hidden border-b border-outline-variant/30" id="home">
+<div class="absolute top-0 right-1/4 w-96 h-96 bg-secondary-fixed/15 rounded-full blur-3xl pointer-events-none -z-10"></div>
+<div class="absolute bottom-10 left-10 w-72 h-72 bg-tertiary-fixed/20 rounded-full blur-3xl pointer-events-none -z-10"></div>
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
+<!-- Right Column: Executive Headline & Value Proposition -->
+<div class="lg:col-span-7 flex flex-col items-start gap-space-md">
+<!-- Status Pill Badge -->
+<div class="inline-flex items-center gap-2 px-space-md py-1.5 bg-surface-container-lowest border border-outline-variant/60 shadow-sm">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-secondary"></span>
+</span>
+<span class="text-code-metric font-code-metric text-tertiary font-medium">
+            متاح للاستشارات المعمارية والحلول المؤسسية المتقدمة
+          </span>
+</div>
+<!-- Main Display Headline -->
+<h1 class="text-display-hero font-display-hero text-primary tracking-tight leading-[1.2]">
+          مهندس برمجيات أول <br/>
+<span class="text-tertiary italic font-headline-md font-semibold decoration-tertiary/40 underline underline-offset-8">ومعماري نُظم معقدة</span>
+</h1>
+<!-- Supporting Technical Subtitle -->
+<p class="text-body-xl font-body-xl text-on-surface-variant max-w-2xl text-justify">
+          تصميم وبناء الأنظمة الموزعة عالية الأداء، والخدمات السحابية السيادية فائقة الاعتمادية. صياغة بنى تحتية مصممة للنمو اللانهائي بدقة هندسية وصرامة رياضية لا تقبل المساومة.
+        </p>
+<!-- CTA Row -->
+<div class="flex flex-wrap items-center gap-space-md pt-space-sm w-full">
+<a class="inline-flex items-center justify-center gap-space-xs bg-primary text-on-primary px-space-lg py-3.5 border border-tertiary font-code-metric text-code-metric font-semibold hover:bg-on-surface-variant hover:border-tertiary transition-all duration-150 active:scale-[0.99] shadow-sm" href="#projects">
+<span>استكشف المشاريع</span>
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+</a>
+<a class="inline-flex items-center justify-center gap-space-xs bg-surface-container-lowest text-on-surface px-space-lg py-3.5 border border-outline-variant hover:border-tertiary hover:bg-surface-container-low transition-all duration-150 font-code-metric text-code-metric font-semibold active:scale-[0.99]" href="#contact">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+<span>تواصل معي</span>
+</a>
+</div>
+<!-- Quick Architecture & Dispatch Links -->
+<div class="pt-space-md border-t border-outline-variant/40 w-full flex flex-wrap items-center gap-space-lg text-code-metric font-code-metric text-on-surface-variant">
+<span class="text-on-surface font-semibold">قنوات الاتصال والاعتماد:</span>
+<a class="hover:text-tertiary flex items-center gap-1 transition-colors duration-150" href="https://linkedin.com" target="_blank">
+<span>لينكد إن</span>
+<span class="text-outline-variant font-mono">/in/abdulghani</span>
+</a>
+<span class="text-outline-variant">•</span>
+<a class="hover:text-tertiary flex items-center gap-1 transition-colors duration-150" href="https://github.com" target="_blank">
+<span>جيت هاب</span>
+<span class="text-outline-variant font-mono">/architect-as</span>
+</a>
+<span class="text-outline-variant">•</span>
+<a class="hover:text-tertiary flex items-center gap-1 transition-colors duration-150 text-tertiary font-semibold" href="#contact">
+<span class="material-symbols-outlined text-[15px]">send</span>
+<span>اتصال مباشر</span>
+</a>
+</div>
+</div>
+<!-- Left Column: Architectural Coordinate Frame & High-Craft Seal -->
+<div class="lg:col-span-5 flex justify-center lg:justify-end">
+<div class="relative w-80 h-80 sm:w-96 sm:h-96 p-4 border border-outline-variant/60 bg-surface-container-lowest gold-glow flex items-center justify-center">
+<!-- Coordinate Crosshairs & Precision Notations -->
+<div class="absolute top-2 right-2 text-[10px] font-mono text-outline uppercase tracking-widest">LAT 24°42'48"N</div>
+<div class="absolute bottom-2 left-2 text-[10px] font-mono text-outline uppercase tracking-widest">LON 46°40'31"E</div>
+<div class="absolute top-2 left-2 text-[10px] font-mono text-tertiary tracking-widest font-bold">SEC-LVL // 01</div>
+<div class="absolute bottom-2 right-2 text-[10px] font-mono text-outline tracking-widest">REV: 2025.4.12</div>
+<!-- Concentric Ring Geometry -->
+<div class="w-full h-full border border-tertiary/30 rounded-full flex items-center justify-center p-6 relative animate-[spin_60s_linear_infinite]">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 bg-tertiary rounded-full"></div>
+<div class="w-full h-full border border-dashed border-outline-variant rounded-full"></div>
+</div>
+<!-- Central Architectural Monogram Seal -->
+<div class="absolute inset-12 bg-surface border border-outline-variant/80 flex flex-col items-center justify-center text-center p-6 shadow-inner">
+<div class="w-16 h-16 mb-2 border-2 border-tertiary bg-surface-container-lowest flex items-center justify-center font-display-hero text-2xl font-bold text-primary">
+              AS
+            </div>
+<h3 class="text-headline-md font-headline-md text-primary font-bold">عبدالغني الشبامي</h3>
+<p class="text-body-sm font-body-sm text-tertiary font-medium mt-1">كبير مهندسي النظم التحتية</p>
+<div class="mt-3 pt-2 border-t border-outline-variant/40 text-[11px] font-mono text-on-surface-variant tracking-wider">
+              ISO/IEC 25010 ARCHITECT<br/>
+              HIGH CONCURRENCY &amp; FAULT-TOLERANCE
+            </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== KEY METRICS STRIP ==================== -->
+<section class="px-margin -mt-8 relative z-20">
+<div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 bg-surface-container-lowest border border-outline-variant/50 p-6 gold-glow">
+<!-- Metric 1 -->
+<div class="p-space-sm border-r-2 border-tertiary/60 pr-4">
+<div class="flex items-baseline gap-1 text-display-hero-mobile font-display-hero-mobile font-bold text-primary leading-none">
+<span>+5</span>
+<span class="text-headline-md font-headline-md text-tertiary">سنوات</span>
+</div>
+<div class="text-headline-md font-headline-md text-on-surface mt-2 font-semibold">خبرة متقدمة</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">
+          قيادة واستشارات هندسية للأنظمة الإنتاجية الحساسة والبنى الموزعة.
+        </p>
+</div>
+<!-- Metric 2 -->
+<div class="p-space-sm border-r-2 border-tertiary/60 pr-4">
+<div class="flex items-baseline gap-1 text-display-hero-mobile font-display-hero-mobile font-bold text-primary leading-none">
+<span>+20</span>
+<span class="text-headline-md font-headline-md text-tertiary">منظومة</span>
+</div>
+<div class="text-headline-md font-headline-md text-on-surface mt-2 font-semibold">نظاماً برمجياً ضخماً</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">
+          حلول معمارية مؤسسية موزعة وعالية الكثافة تعمل بنجاح واستقرار مستمر.
+        </p>
+</div>
+<!-- Metric 3 -->
+<div class="p-space-sm border-r-2 border-tertiary/60 pr-4">
+<div class="flex items-baseline gap-1 text-display-hero-mobile font-display-hero-mobile font-bold text-primary leading-none">
+<span>100%</span>
+</div>
+<div class="text-headline-md font-headline-md text-on-surface mt-2 font-semibold">موثوقية تشغيلية</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">
+          مطابقة صارمة لمعايير اتفاقيات مستوى الخدمة (SLA) والأمن المؤسسي.
+        </p>
+</div>
+<!-- Metric 4 -->
+<div class="p-space-sm border-r-2 border-tertiary/60 pr-4">
+<div class="flex items-baseline gap-1 text-display-hero-mobile font-display-hero-mobile font-bold text-primary leading-none">
+<span>99.99%</span>
+</div>
+<div class="text-headline-md font-headline-md text-on-surface mt-2 font-semibold">توافر مستمر</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">
+          بنية تحتية سحابية متباينة متعددة المراكز مصممة لتحمل أسوأ سيناريوهات الانهيار.
+        </p>
+</div>
+</div>
+</section>
+<!-- ==================== FEATURED ARCHITECTURAL PROJECTS ==================== -->
+<section class="px-margin py-space-xl border-b border-outline-variant/30" id="projects">
+<div class="max-w-7xl mx-auto">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-space-xl gap-space-md">
+<div>
+<div class="text-label-refined font-label-refined text-tertiary tracking-widest uppercase mb-1">
+            // أرشيف النظم الحية والحلول المعمارية
+          </div>
+<h2 class="text-headline-xl font-headline-xl text-primary font-bold">
+            نُظم ومعمارية هندسية مختارة
+          </h2>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-md">
+          دراسات معمارية ونماذج نظمية عالية الاعتمادية مطبقة في بيئات مصرفية وحكومية ومؤسسية حرجة.
+        </p>
+</div>
+<!-- Project Cards Bento-Style Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-lg">
+<!-- Project 1 -->
+<article class="bg-surface-container-lowest border border-outline-variant/60 flex flex-col justify-between p-space-lg relative group hover:border-tertiary transition-all duration-200 gold-glow">
+<div class="absolute top-0 right-0 left-0 h-1 gold-accent-line"></div>
+<div>
+<div class="flex items-center justify-between gap-2 mb-space-sm">
+<span class="text-code-metric font-code-metric text-tertiary font-semibold px-2 py-0.5 bg-tertiary-fixed/30 border border-tertiary/20">
+                DISTRIBUTED CONSENSUS
+              </span>
+<span class="text-code-metric font-mono text-outline">v4.2.0</span>
+</div>
+<h3 class="text-headline-lg font-headline-lg text-primary group-hover:text-tertiary transition-colors duration-150 mb-space-xs">
+              محرك المعاملات الموزعة والتوافق الزمني (AuraLedger)
+            </h3>
+<p class="text-body-md font-body-md text-on-surface-variant mb-space-md text-justify">
+              محرك معالجة مالي فائق السرعة ومقاوم للتجزئة الشبكية. يعتمد خوارزمية إجماع مهجنة (Raft / Paxos) مع هيكلية Zero-Copy لضمان عدم ضياع أي معاملة وتخفيض زمن الاستجابة إلى مستويات متدنية غير مسبوقة.
+            </p>
+<!-- Technical Attributes Badges -->
+<div class="flex flex-wrap gap-2 mb-space-lg">
+<span class="text-code-metric font-code-metric bg-surface-container-low px-2 py-1 text-on-surface border border-outline-variant/40">50K+ TPS</span>
+<span class="text-code-metric font-code-metric bg-surface-container-low px-2 py-1 text-on-surface border border-outline-variant/40">Rust / C++20</span>
+<span class="text-code-metric font-code-metric bg-surface-container-low px-2 py-1 text-on-surface border border-outline-variant/40">Zero-Copy IO</span>
+<span class="text-code-metric font-code-metric bg-surface-container-low px-2 py-1 text-on-surface border border-outline-variant/40">Strict Serially</span>
+</div>
+</div>
+<a class="inline-flex items-center gap-2 text-primary font-semibold text-code-metric font-code-metric hover:text-tertiary transition-colors duration-150 pt-space-sm border-t border-outline-variant/40" href="#blueprint-1">
+<span>عرض وثيقة المعمارية</span>
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+</a>
+</article>
+<!-- Project 2 -->
+<article class="bg-surface-container-lowest border border-outline-variant/60 flex flex-col justify-between p-space-lg relative group hover:border-tertiary transition-all duration-200 gold-glow">
+<div class="absolute top-0 right-0 left-0 h-1 gold-accent-line"></div>
+<div>
+<div class="flex items-center justify-between gap-2 mb-space-sm">
+<span class="text-code-metric font-code-metric text-tertiary font-semibold px-2 py-0.5 bg-tertiary-fixed/30 border border-tertiary/20">
+                REAL-TIME STREAMING
+              </span>
+<span class="text-code-metric font-mono text-outline">v2.11.0</span>
+</div>
+<h3 class="text-headline-lg font-headline-lg text-primary group-hover:text-tertiary transition-colors duration-150 mb-space-xs">
+              منصة التدفق الفوري للبيانات الضخمة (HyperScale Pipeline)
+            </h3>
+<p class="text-body-md font-body-md text-on-surface-variant mb-space-md text-justify">
+              خط معالجة تحليلي فوري لمليارات الأحداث الرقمية يومياً. تكامل ديناميكي بين Kafka وGo ومستودع ClickHouse التحليلي الموزع، يوفر رؤى استخباراتية في أجزاء من الثانية مع استيعاب ذروات حركة المرور غير المتوقعة.
+            </p>
+<!-- Technical Attributes Badges -->
+<div class="flex flex-wrap gap-2 mb-space-lg">
+<span class="text-code-metric font-code-metric bg-surface-container-low px-2 py-1 text-on-surface border border-outline-variant/40">2.4 TB/Day</span>
+<span class="text-code-metric font-code-metric bg-surface-container-low px-2 py-1 text-on-surface border border-outline-variant/40">&lt; 4ms P99</span>
+<span class="text-code-metric font-code-metric bg-surface-container-low px-2 py-1 text-on-surface border border-outline-variant/40">Apache Kafka</span>
+<span class="text-code-metric font-code-metric bg-surface-container-low px-2 py-1 text-on-surface border border-outline-variant/40">ClickHouse</span>
+</div>
+</div>
+<a class="inline-flex items-center gap-2 text-primary font-semibold text-code-metric font-code-metric hover:text-tertiary transition-colors duration-150 pt-space-sm border-t border-outline-variant/40" href="#blueprint-2">
+<span>عرض وثيقة المعمارية</span>
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+</a>
+</article>
+<!-- Project 3 -->
+<article class="bg-surface-container-lowest border border-outline-variant/60 flex flex-col justify-between p-space-lg relative group hover:border-tertiary transition-all duration-200 gold-glow">
+<div class="absolute top-0 right-0 left-0 h-1 gold-accent-line"></div>
+<div>
+<div class="flex items-center justify-between gap-2 mb-space-sm">
+<span class="text-code-metric font-code-metric text-tertiary font-semibold px-2 py-0.5 bg-tertiary-fixed/30 border border-tertiary/20">
+                CLOUD-NATIVE ZERO TRUST
+              </span>
+<span class="text-code-metric font-mono text-outline">v1.8.4</span>
+</div>
+<h3 class="text-headline-lg font-headline-lg text-primary group-hover:text-tertiary transition-colors duration-150 mb-space-xs">
+              الشبكة السحابية السيادية الآمنة (Sovereign Cloud Mesh)
+            </h3>
+<p class="text-body-md font-body-md text-on-surface-variant mb-space-md text-justify">
+              شبكة خدماتية مشفرة متعددة السحابات ترتكز على مبادئ انعدام الثقة (Zero-Trust) والتحقق المشفر المستمر mTLS عبر هويات SPIFFE/SPIRE. بنية تضمن الامتثال الكامل لسيادة البيانات وحماية الحدود التنظيمية.
+            </p>
+<!-- Technical Attributes Badges -->
+<div class="flex flex-wrap gap-2 mb-space-lg">
+<span class="text-code-metric font-code-metric bg-surface-container-low px-2 py-1 text-on-surface border border-outline-variant/40">SPIFFE / SPIRE</span>
+<span class="text-code-metric font-code-metric bg-surface-container-low px-2 py-1 text-on-surface border border-outline-variant/40">Envoy Mesh</span>
+<span class="text-code-metric font-code-metric bg-surface-container-low px-2 py-1 text-on-surface border border-outline-variant/40">Terraform IaC</span>
+<span class="text-code-metric font-code-metric bg-surface-container-low px-2 py-1 text-on-surface border border-outline-variant/40">FedRAMP Ready</span>
+</div>
+</div>
+<a class="inline-flex items-center gap-2 text-primary font-semibold text-code-metric font-code-metric hover:text-tertiary transition-colors duration-150 pt-space-sm border-t border-outline-variant/40" href="#blueprint-3">
+<span>عرض وثيقة المعمارية</span>
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+</a>
+</article>
+</div>
+</div>
+</section>
+<!-- ==================== TECHNICAL MASTERY & ARCHITECTURAL CAPABILITIES ==================== -->
+<section class="px-margin py-space-xl border-b border-outline-variant/30 bg-surface-container-low/40" id="skills">
+<div class="max-w-7xl mx-auto">
+<!-- Section Header -->
+<div class="text-center max-w-2xl mx-auto mb-space-xl">
+<div class="text-label-refined font-label-refined text-tertiary tracking-widest uppercase mb-1">
+          // الكفاءات والقدرات الجوهرية
+        </div>
+<h2 class="text-headline-xl font-headline-xl text-primary font-bold">
+          قدرات المعمارية وهندسة النظم العميقة
+        </h2>
+<p class="text-body-md font-body-md text-on-surface-variant mt-2">
+          إتقان تقني راسخ يجمع بين الفهم العميق لعتاد المعالجات وسلوكيات الشبكات وبين صياغة البنى المؤسسية الواسعة.
+        </p>
+</div>
+<!-- 4 Pillars Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Capability 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant/60 p-space-lg hover:border-tertiary transition-all duration-150">
+<div class="w-12 h-12 bg-surface-container border border-tertiary/40 flex items-center justify-center text-tertiary mb-space-md">
+<span class="material-symbols-outlined text-[26px]">memory</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-primary font-semibold mb-2">
+            النظم الأساسية والبرمجة المتدنية
+          </h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant leading-relaxed mb-4">
+            بناء محركات معالجة سريعة خالية من الأقفال (Lock-Free) والتحكم المباشر في الذاكرة لتقليل زمن التوقف واستغلال معالجات النواة المتعددة.
+          </p>
+<div class="border-t border-outline-variant/30 pt-3 text-code-metric font-code-metric text-tertiary font-medium">
+            Go • Rust • C++20 • SIMD • eBPF
+          </div>
+</div>
+<!-- Capability 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant/60 p-space-lg hover:border-tertiary transition-all duration-150">
+<div class="w-12 h-12 bg-surface-container border border-tertiary/40 flex items-center justify-center text-tertiary mb-space-md">
+<span class="material-symbols-outlined text-[26px]">cloud_sync</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-primary font-semibold mb-2">
+            الحوسبة السحابية وهندسة الاعتمادية
+          </h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant leading-relaxed mb-4">
+            تصميم مجمعات سحابية غير مركزية قادرة على التعافي الذاتي، مع أتمتة شاملة للبنى التحتية واختبارات حقن الفوضى والانهيارات.
+          </p>
+<div class="border-t border-outline-variant/30 pt-3 text-code-metric font-code-metric text-tertiary font-medium">
+            Kubernetes CKS • Terraform • Envoy • Chaos Eng.
+          </div>
+</div>
+<!-- Capability 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant/60 p-space-lg hover:border-tertiary transition-all duration-150">
+<div class="w-12 h-12 bg-surface-container border border-tertiary/40 flex items-center justify-center text-tertiary mb-space-md">
+<span class="material-symbols-outlined text-[26px]">dataset</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-primary font-semibold mb-2">
+            معالجة البيانات والتدفق اللحظي
+          </h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant leading-relaxed mb-4">
+            معمارية تدفق الأحداث الحية، وأنظمة التجزئة لقواعد البيانات الكبيرة لضمان ديمومة كتابة وقراءة ملايين الإشارات بدون اختناق.
+          </p>
+<div class="border-t border-outline-variant/30 pt-3 text-code-metric font-code-metric text-tertiary font-medium">
+            Kafka • ClickHouse • Citus Postgres • Redis
+          </div>
+</div>
+<!-- Capability 4 -->
+<div class="bg-surface-container-lowest border border-outline-variant/60 p-space-lg hover:border-tertiary transition-all duration-150">
+<div class="w-12 h-12 bg-surface-container border border-tertiary/40 flex items-center justify-center text-tertiary mb-space-md">
+<span class="material-symbols-outlined text-[26px]">account_tree</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-primary font-semibold mb-2">
+            المعمارية المؤسسية والتصميم النطاقي
+          </h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant leading-relaxed mb-4">
+            فصل حدود الأعمال المعقدة وتحويل الأنظمة المترابطة المغلقة إلى خدمات مستقلة عبر استراتيجيات Event Sourcing وCQRS ونمذجة DDD.
+          </p>
+<div class="border-t border-outline-variant/30 pt-3 text-code-metric font-code-metric text-tertiary font-medium">
+            DDD • Hexagonal Arch • Event Sourcing • CQRS
+          </div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== EXECUTIVE CALL TO ACTION ==================== -->
+<section class="px-margin py-space-xl" id="contact">
+<div class="max-w-5xl mx-auto bg-surface-container-lowest border-2 border-outline-variant/80 p-space-lg md:p-space-xl relative overflow-hidden gold-glow">
+<div class="absolute -right-16 -top-16 w-64 h-64 bg-tertiary-fixed/30 rounded-full blur-3xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-space-lg text-right">
+<div class="max-w-xl">
+<span class="text-label-refined font-label-refined text-tertiary uppercase tracking-widest block mb-2">
+            // استشارات القيادة المعمارية
+          </span>
+<h2 class="text-headline-xl font-headline-xl text-primary font-bold leading-tight mb-space-xs">
+            جاهز لقيادة التحول المعماري لنظم مؤسستك؟
+          </h2>
+<p class="text-body-md font-body-md text-on-surface-variant">
+            سواء كنت تعيد بناء منصة أساسية حساسة، أو تواجه تحديات التوسع اللامحدود، أنا متاح لتقديم استشارات معمارية استراتيجية وقيادة فرق الهندسة الحرجة.
+          </p>
+</div>
+<div class="flex flex-col sm:flex-row md:flex-col gap-3 w-full md:w-auto shrink-0">
+<a class="inline-flex items-center justify-center gap-2 bg-primary text-on-primary px-space-lg py-3.5 border border-tertiary font-code-metric text-code-metric font-semibold hover:bg-on-surface-variant transition-all duration-150 active:scale-[0.99] text-center" href="mailto:contact@alshibami.dev">
+<span class="material-symbols-outlined text-[18px]">send</span>
+<span>إرسال برقية مباشرة</span>
+</a>
+<a class="inline-flex items-center justify-center gap-2 bg-surface text-on-surface px-space-lg py-3.5 border border-outline-variant hover:border-tertiary font-code-metric text-code-metric font-semibold transition-all duration-150 active:scale-[0.99] text-center" href="#projects">
+<span class="material-symbols-outlined text-[18px]">menu_book</span>
+<span>استعراض الملف التقني الكامل</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== FOOTER ==================== -->
+<footer class="w-full px-margin py-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant/40 dark:border-outline-variant/20">
+<!-- Copyright Statement -->
+<div class="text-body-sm font-body-sm text-on-surface-variant text-center md:text-right">
+      جميع الحقوق محفوظة © ٢٠٢٥ عبدالغني الشبامي. هندسة وتطوير النظم المعمارية المتقدمة.
+    </div>
+<!-- Navigation / External Links -->
+<div class="flex flex-wrap items-center justify-center gap-space-lg text-body-sm font-body-sm text-on-surface-variant">
+<a class="hover:text-tertiary dark:hover:text-tertiary-fixed transition-colors duration-150" href="https://linkedin.com" target="_blank">لينكد إن</a>
+<a class="hover:text-tertiary dark:hover:text-tertiary-fixed transition-colors duration-150" href="https://github.com" target="_blank">جيت هاب</a>
+<a class="hover:text-tertiary dark:hover:text-tertiary-fixed transition-colors duration-150" href="#blueprints">مستندات الهندسة المعمارية</a>
+<a class="hover:text-tertiary dark:hover:text-tertiary-fixed transition-colors duration-150" href="#privacy">سياسة الخصوصية</a>
+</div>
+</footer>
+</body></html>

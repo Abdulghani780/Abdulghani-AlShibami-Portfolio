@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Abdulghani Al-Shibami — Engineering Project Catalog &amp; Systems Architecture</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Playfair Display, JetBrains Mono, Geist -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-container": "#b4b2b6",
+            "on-error": "#690005",
+            "on-error-container": "#ffdad6",
+            "inverse-primary": "#735c00",
+            "surface-container-high": "#2a2a2b",
+            "error": "#ffb4ab",
+            "on-tertiary-fixed": "#1b1b1e",
+            "on-surface-variant": "#d0c5af",
+            "tertiary": "#d0cdd1",
+            "secondary-fixed": "#e0e3e5",
+            "on-primary-fixed": "#241a00",
+            "surface-container": "#201f20",
+            "on-secondary": "#2d3133",
+            "inverse-surface": "#e5e2e3",
+            "on-primary-container": "#554300",
+            "surface-container-highest": "#353436",
+            "surface-bright": "#3a393a",
+            "background": "#131314",
+            "on-tertiary-container": "#454548",
+            "surface-variant": "#353436",
+            "on-background": "#e5e2e3",
+            "secondary-fixed-dim": "#c4c7c9",
+            "surface-tint": "#e9c349",
+            "on-secondary-fixed-variant": "#444749",
+            "on-primary": "#3c2f00",
+            "surface": "#131314",
+            "primary-fixed-dim": "#e9c349",
+            "surface-dim": "#131314",
+            "surface-container-lowest": "#0e0e0f",
+            "primary-fixed": "#ffe088",
+            "on-tertiary-fixed-variant": "#47464a",
+            "on-primary-fixed-variant": "#574500",
+            "on-secondary-fixed": "#191c1e",
+            "surface-container-low": "#1c1b1c",
+            "secondary-container": "#464a4b",
+            "on-surface": "#e5e2e3",
+            "secondary": "#c4c7c9",
+            "tertiary-fixed": "#e4e1e5",
+            "on-secondary-container": "#b6b9bb",
+            "primary": "#f2ca50",
+            "on-tertiary": "#303033",
+            "error-container": "#93000a",
+            "primary-container": "#d4af37",
+            "outline-variant": "#4d4635",
+            "outline": "#99907c",
+            "tertiary-fixed-dim": "#c8c6c9",
+            "inverse-on-surface": "#313031"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin-mobile": "1.5rem",
+            "gutter": "2rem",
+            "space-xl": "2.5rem",
+            "gutter-mobile": "1rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "margin": "4rem",
+            "space-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "label-sm": ["JetBrains Mono"],
+            "label-md": ["JetBrains Mono"],
+            "display-xl": ["Playfair Display"],
+            "body-lg": ["Geist"],
+            "headline-sm": ["Playfair Display"],
+            "headline-lg": ["Playfair Display"],
+            "display-xl-mobile": ["Playfair Display"],
+            "label-lg": ["JetBrains Mono"],
+            "body-md": ["Geist"],
+            "headline-md": ["Playfair Display"],
+            "body-sm": ["Geist"],
+            "headline-lg-mobile": ["Playfair Display"]
+          },
+          "fontSize": {
+            "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.16em", "fontWeight": "400" }],
+            "label-md": ["11px", { "lineHeight": "16px", "letterSpacing": "0.12em", "fontWeight": "500" }],
+            "display-xl": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "body-lg": ["18px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+            "headline-sm": ["22px", { "lineHeight": "30px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "headline-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.015em", "fontWeight": "500" }],
+            "display-xl-mobile": ["38px", { "lineHeight": "46px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-lg": ["13px", { "lineHeight": "18px", "letterSpacing": "0.08em", "fontWeight": "500" }],
+            "body-md": ["15px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-md": ["28px", { "lineHeight": "36px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "body-sm": ["13px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "500" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+    }
+    .gold-specular-glow:hover {
+      box-shadow: 0 0 0 1px #d4af37, 0 16px 40px -12px rgba(212, 175, 55, 0.16);
+    }
+    .flagship-gold-border {
+      box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.35), inset 0 0 0 1px rgba(212, 175, 55, 0.15);
+    }
+    .gold-glow-beacon {
+      box-shadow: 0 0 8px #d4af37, 0 0 16px rgba(212, 175, 55, 0.6);
+    }
+    /* Subtle custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0e0e0f;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2a2a2b;
+      border-radius: 2px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #d4af37;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-fixed">
+<!-- ========================================================================= -->
+<!-- TOP APP BAR (Shared Component Execution: TopNavBar)                       -->
+<!-- ========================================================================= -->
+<header class="bg-surface/85 dark:bg-surface/85 backdrop-blur-md border-b border-outline-variant/30 dark:border-outline-variant/30 docked full-width top-0 fixed z-50">
+<div class="flex justify-between items-center w-full px-space-xl max-w-[1440px] mx-auto h-20">
+<!-- Brand Anchor -->
+<a class="flex flex-col group" href="#">
+<span class="font-headline-sm text-headline-sm text-on-surface dark:text-on-surface tracking-tight uppercase group-hover:text-primary transition-colors duration-200">
+          Abdulghani Al-Shibami
+        </span>
+<span class="font-label-sm text-label-sm text-outline tracking-wider uppercase mt-0.5">
+          Senior Software Engineer &amp; Systems Architect
+        </span>
+</a>
+<!-- Desktop Navigation Links from JSON -->
+<nav aria-label="Main Navigation" class="hidden md:flex items-center space-x-8">
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md uppercase tracking-wider hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#home">
+          Home
+        </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md uppercase tracking-wider hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#about">
+          About
+        </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md uppercase tracking-wider hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#skills">
+          Skills
+        </a>
+<!-- ACTIVE TAB: Projects -->
+<a class="text-primary dark:text-primary border-b border-primary dark:border-primary pb-1 font-label-md text-label-md uppercase tracking-wider transition-colors duration-200" href="#projects">
+          Projects
+        </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md uppercase tracking-wider hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#experience">
+          Experience
+        </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md uppercase tracking-wider hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#contact">
+          Contact
+        </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md uppercase tracking-wider hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#resume">
+          Resume
+        </a>
+</nav>
+<!-- Trailing Secondary Actions -->
+<div class="flex items-center space-x-6">
+<span class="text-on-surface-variant font-label-md text-label-md tracking-widest cursor-pointer hover:text-primary transition-colors duration-200">
+          EN | AR
+        </span>
+<button aria-label="Toggle Theme" class="text-on-surface-variant hover:text-primary transition-colors duration-200 flex items-center justify-center p-2 rounded focus:outline-none" type="button">
+<span class="material-symbols-outlined" data-icon="dark_mode">dark_mode</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Content Canvas Spacer for Fixed Navbar -->
+<div class="h-20 w-full"></div>
+<!-- ========================================================================= -->
+<!-- MAIN EDITORIAL CATALOG CONTENT                                            -->
+<!-- ========================================================================= -->
+<main class="flex-grow max-w-[1440px] mx-auto w-full px-4 sm:px-8 md:px-12 lg:px-space-xl py-12 md:py-20 flex flex-col space-y-24">
+<!-- HERO SECTION: Catalog Title & Architectural Index -->
+<section class="flex flex-col space-y-8 pt-4 border-b border-outline-variant/30 pb-16">
+<!-- Monospace Architecture Stamp -->
+<div class="flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center space-x-3">
+<span class="w-2 h-2 rounded-full bg-primary gold-glow-beacon animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest border border-outline-variant/50 px-3 py-1 bg-surface-container-lowest">
+            // PRODUCTION ARTIFACTS &amp; REPOSITORY INDEX
+          </span>
+</div>
+<div class="font-label-sm text-label-sm text-outline tracking-wider flex items-center space-x-4">
+<span>LATITUDE: 24.7136° N</span>
+<span>•</span>
+<span>HIGH-CONCURRENCY CATALOG V4.8</span>
+</div>
+</div>
+<!-- Main Headline & Subheading -->
+<div class="max-w-4xl space-y-6">
+<h1 class="font-headline-lg text-headline-lg md:text-[52px] md:leading-[60px] text-on-surface font-headline-lg tracking-tight">
+          Engineered Systems &amp; <span class="text-primary italic font-normal">Software Architectures</span>
+</h1>
+<p class="font-body-lg text-body-lg text-secondary max-w-2xl">
+          Production systems, distributed backends, desktop simulations, and AI agents. Hand-crafted with mathematical rigor, zero-loss consensus algorithms, and resilient operational design.
+        </p>
+</div>
+<!-- INTERACTIVE CONTROL BAR -->
+<div class="pt-6 flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4">
+<!-- Terminal Search Bar -->
+<div class="relative flex-1 max-w-md">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-outline">
+<span class="font-label-sm text-label-sm text-primary select-none">$</span>
+</div>
+<input class="w-full bg-surface-container-low border border-outline-variant/60 focus:border-primary pl-9 pr-16 py-2.5 font-label-md text-label-md text-on-surface placeholder:text-outline/70 focus:outline-none focus:ring-1 focus:ring-primary transition-all duration-200 rounded" id="catalog-search" placeholder="grep / query systems..." type="text"/>
+<div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+<kbd class="font-label-sm text-label-sm bg-surface-container-highest text-secondary px-2 py-0.5 rounded border border-outline-variant/40">⌘K</kbd>
+</div>
+</div>
+<!-- Filter Tags List -->
+<div class="flex items-center overflow-x-auto py-1 no-scrollbar space-x-2 text-nowrap">
+<button class="bg-primary/10 border border-primary text-primary px-3.5 py-1.5 font-label-sm text-label-sm rounded transition-all duration-150 shadow-[0_0_12px_rgba(212,175,55,0.2)]">
+            All (7)
+          </button>
+<button class="bg-surface-container-low border border-outline-variant/40 text-secondary hover:text-on-surface hover:border-outline px-3.5 py-1.5 font-label-sm text-label-sm rounded transition-all duration-150">
+            Web Applications (2)
+          </button>
+<button class="bg-surface-container-low border border-outline-variant/40 text-secondary hover:text-on-surface hover:border-outline px-3.5 py-1.5 font-label-sm text-label-sm rounded transition-all duration-150">
+            Desktop / C# (2)
+          </button>
+<button class="bg-surface-container-low border border-outline-variant/40 text-secondary hover:text-on-surface hover:border-outline px-3.5 py-1.5 font-label-sm text-label-sm rounded transition-all duration-150">
+            Python Systems (1)
+          </button>
+<button class="bg-surface-container-low border border-outline-variant/40 text-secondary hover:text-on-surface hover:border-outline px-3.5 py-1.5 font-label-sm text-label-sm rounded transition-all duration-150">
+            AI / Machine Learning (1)
+          </button>
+<button class="bg-surface-container-low border border-outline-variant/40 text-secondary hover:text-on-surface hover:border-outline px-3.5 py-1.5 font-label-sm text-label-sm rounded transition-all duration-150">
+            Database Architectures (1)
+          </button>
+</div>
+<!-- View and Sort Controls -->
+<div class="flex items-center justify-end space-x-3 border-t lg:border-t-0 pt-3 lg:pt-0 border-outline-variant/20">
+<div class="flex items-center bg-surface-container-low border border-outline-variant/40 px-3 py-1.5 rounded font-label-sm text-label-sm text-secondary">
+<span class="text-outline mr-2">Sort:</span>
+<span class="text-on-surface">Criticality / Recent</span>
+</div>
+<button class="p-1.5 border border-primary text-primary bg-primary/10 rounded" title="Grid View Active">
+<span class="material-symbols-outlined text-[18px]" data-icon="grid_view">grid_view</span>
+</button>
+<button class="p-1.5 border border-outline-variant/40 text-secondary hover:text-on-surface hover:border-outline rounded transition-colors" title="Spec Sheet View">
+<span class="material-symbols-outlined text-[18px]" data-icon="view_agenda">view_agenda</span>
+</button>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- FEATURED FLAGSHIP ARCHITECTURE PROJECT                                   -->
+<!-- ========================================================================= -->
+<section class="relative bg-surface-container-lowest flagship-gold-border rounded-lg p-6 md:p-12 overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,175,55,0.12)]">
+<!-- Ambient Radial Shimmer Behind Flagship -->
+<div class="absolute -top-32 -right-32 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 relative z-10">
+<!-- Left: Flagship System Information -->
+<div class="lg:col-span-7 flex flex-col justify-between space-y-8">
+<div class="space-y-4">
+<!-- Metadata Row -->
+<div class="flex flex-wrap items-center gap-3">
+<span class="inline-flex items-center space-x-1.5 bg-surface-container border border-primary/40 px-2.5 py-0.5 rounded font-label-sm text-label-sm text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span>
+<span>Production Flagship</span>
+</span>
+<span class="font-label-sm text-label-sm text-outline border border-outline-variant/30 px-2.5 py-0.5 rounded">
+                YEAR: 2024
+              </span>
+<span class="font-label-sm text-label-sm text-outline border border-outline-variant/30 px-2.5 py-0.5 rounded">
+                Multi-Region Distributed Raft Consensus
+              </span>
+</div>
+<!-- Flagship Project Title -->
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-headline-lg leading-tight tracking-tight pt-2">
+              AuraLedger: Distributed Fault-Tolerant Transaction Engine
+            </h2>
+<!-- Problem & Architectural Solution -->
+<p class="font-body-md text-body-md text-secondary leading-relaxed pt-2">
+              Engineered a deterministic consensus engine with asynchronous peer replication, memory-mapped ring buffers, and sub-millisecond atomic settlement across partitioned cloud networks without single-point failure or data loss.
+            </p>
+</div>
+<!-- Stack Badges -->
+<div class="space-y-2">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-widest block">System Substrates:</span>
+<div class="flex flex-wrap gap-2 pt-1">
+<span class="border border-outline-variant/40 bg-surface-container px-3 py-1 font-label-sm text-label-sm text-on-surface rounded">C# / .NET 8</span>
+<span class="border border-outline-variant/40 bg-surface-container px-3 py-1 font-label-sm text-label-sm text-on-surface rounded">Raft Consensus Protocol</span>
+<span class="border border-outline-variant/40 bg-surface-container px-3 py-1 font-label-sm text-label-sm text-on-surface rounded">PostgreSQL Citus</span>
+<span class="border border-outline-variant/40 bg-surface-container px-3 py-1 font-label-sm text-label-sm text-on-surface rounded">Docker Swarm</span>
+<span class="border border-outline-variant/40 bg-surface-container px-3 py-1 font-label-sm text-label-sm text-on-surface rounded">Zero-Copy Memory IO</span>
+</div>
+</div>
+<!-- Flagship Action CTAs -->
+<div class="flex flex-wrap items-center gap-4 pt-4">
+<a class="bg-primary text-on-primary-fixed font-label-md text-label-md uppercase tracking-wider px-6 py-3 rounded flex items-center space-x-2 font-medium hover:bg-primary-fixed-dim transition-all duration-200 shadow-md" href="#interactive-demo">
+<span>Interactive Demo</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="north_east">north_east</span>
+</a>
+<a class="border border-primary/60 text-primary hover:border-primary hover:bg-primary/5 font-label-md text-label-md uppercase tracking-wider px-6 py-3 rounded flex items-center space-x-2 transition-all duration-200" href="#case-study">
+<span>Case Study Spec</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="description">description</span>
+</a>
+<a class="border border-outline-variant/40 bg-surface-container text-secondary hover:text-on-surface hover:border-outline font-label-md text-label-md uppercase tracking-wider px-5 py-3 rounded flex items-center space-x-2 transition-all duration-200" href="https://github.com" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]" data-icon="code">code</span>
+<span>GitHub</span>
+</a>
+</div>
+</div>
+<!-- Right: Real-time Telemetry & Benchmark Spec Panel -->
+<div class="lg:col-span-5 bg-surface-container-low/70 border border-outline-variant/40 rounded-lg p-6 flex flex-col justify-between space-y-6">
+<div class="flex items-center justify-between border-b border-outline-variant/30 pb-3">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider flex items-center space-x-2">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="query_stats">query_stats</span>
+<span>BENCHMARK TELEMETRY SPECS</span>
+</span>
+<span class="font-label-sm text-label-sm text-primary tracking-widest">RUN #4092</span>
+</div>
+<!-- Metrics Matrix -->
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-lowest/90 border border-outline-variant/30 p-4 rounded">
+<span class="font-label-sm text-label-sm text-outline block mb-1">THROUGHPUT</span>
+<div class="font-headline-md text-headline-md text-on-surface font-headline-md font-semibold">50k+</div>
+<span class="font-label-sm text-label-sm text-primary">TPS Deterministic</span>
+</div>
+<div class="bg-surface-container-lowest/90 border border-outline-variant/30 p-4 rounded">
+<span class="font-label-sm text-label-sm text-outline block mb-1">P99 LATENCY</span>
+<div class="font-headline-md text-headline-md text-on-surface font-headline-md font-semibold">&lt; 4ms</div>
+<span class="font-label-sm text-label-sm text-secondary">Cross-Zone Sync</span>
+</div>
+<div class="bg-surface-container-lowest/90 border border-outline-variant/30 p-4 rounded">
+<span class="font-label-sm text-label-sm text-outline block mb-1">RESILIENCE SLA</span>
+<div class="font-headline-md text-headline-md text-on-surface font-headline-md font-semibold">99.999%</div>
+<span class="font-label-sm text-label-sm text-primary">Partition Tolerant</span>
+</div>
+<div class="bg-surface-container-lowest/90 border border-outline-variant/30 p-4 rounded">
+<span class="font-label-sm text-label-sm text-outline block mb-1">RECOVERY POINT</span>
+<div class="font-headline-md text-headline-md text-on-surface font-headline-md font-semibold">RPO = 0</div>
+<span class="font-label-sm text-label-sm text-secondary">Zero Data Loss</span>
+</div>
+</div>
+<!-- Architectural Node Topology Trace -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 p-4 rounded font-label-sm text-label-sm text-outline space-y-1.5">
+<div class="text-secondary flex justify-between">
+<span>Topology Cluster:</span>
+<span class="text-on-surface">5 Raft Nodes (Quorum 3)</span>
+</div>
+<div class="text-secondary flex justify-between">
+<span>Storage Protocol:</span>
+<span class="text-primary">Direct SSD Ring Log (mmap)</span>
+</div>
+<div class="text-secondary flex justify-between">
+<span>Network Protocol:</span>
+<span class="text-on-surface">Zero-Copy gRPC / HTTP3</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- PROJECT CATALOG GRID: 6 DETAILED ARCHITECTURAL ARTIFACTS                  -->
+<!-- ========================================================================= -->
+<section class="space-y-10">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between border-b border-outline-variant/30 pb-6 gap-4">
+<div>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest block mb-2">
+            // INDEXED CODEBASES &amp; DISTRIBUTED RUNTIMES
+          </span>
+<h2 class="font-headline-md text-headline-md text-on-surface font-headline-md">
+            Engineered Portfolio Deployments
+          </h2>
+</div>
+<p class="font-label-sm text-label-sm text-outline max-w-sm text-right hidden md:block">
+          TOTAL REPOSITORIES ACTIVE: 07<br/>VERIFIED COMPILATIONS: 100%
+        </p>
+</div>
+<!-- 6-Card High-End Bento Architecture Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- ================= CARD 01 ================= -->
+<article class="bg-surface-container-lowest border border-outline-variant/40 rounded-lg p-7 flex flex-col justify-between space-y-6 transition-all duration-200 gold-specular-glow group">
+<div class="space-y-4">
+<!-- Header Index & Status -->
+<div class="flex items-center justify-between border-b border-outline-variant/20 pb-3">
+<span class="font-label-sm text-label-sm text-outline group-hover:text-primary transition-colors">
+                // 01. STREAMING ENGINE
+              </span>
+<div class="flex items-center space-x-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="font-label-sm text-label-sm text-primary uppercase">Production</span>
+</div>
+</div>
+<!-- Card Category & Year -->
+<div class="font-label-sm text-label-sm text-outline">
+              Python Systems / Data Engine • 2024
+            </div>
+<!-- Project Title -->
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-headline-sm group-hover:text-primary transition-colors leading-snug">
+              HyperScale Event Streaming Fabric
+            </h3>
+<!-- Narrative Description -->
+<p class="font-body-sm text-body-sm text-secondary leading-relaxed">
+              High-throughput ingestion gateway dispatching millions of events per second with adaptive backpressure, dynamic payload validation, and custom partition balancing.
+            </p>
+</div>
+<div class="space-y-5 pt-2">
+<!-- Substrate Tags -->
+<div class="flex flex-wrap gap-1.5">
+<span class="border border-outline-variant/30 bg-surface-container-low px-2 py-0.5 font-label-sm text-label-sm text-on-surface-variant rounded">Python</span>
+<span class="border border-outline-variant/30 bg-surface-container-low px-2 py-0.5 font-label-sm text-label-sm text-on-surface-variant rounded">Kafka</span>
+<span class="border border-outline-variant/30 bg-surface-container-low px-2 py-0.5 font-label-sm text-label-sm text-on-surface-variant rounded">ClickHouse</span>
+<span class="border border-outline-variant/30 bg-surface-container-low px-2 py-0.5 font-label-sm text-label-sm text-on-surface-variant rounded">Redis</span>
+<span class="border border-outline-variant/30 bg-surface-container-low px-2 py-0.5 font-label-sm text-label-sm text-on-surface-variant rounded">FastStream</span>
+</div>
+<!-- Card Action Footer -->
+<div class="border-t border-outline-variant/20 pt-4 flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<a class="font-label-sm text-label-sm text-primary hover:underline uppercase tracking-wider flex items-center" href="#demo-1">
+                  Live Demo
+                  <span class="material-symbols-outlined text-[14px] ml-1" data-icon="north_east">north_east</span>
+</a>
+<a class="font-label-sm text-label-sm text-outline hover:text-on-surface uppercase tracking-wider" href="#spec-1">
+                  Spec Sheet
+                </a>
+</div>
+<a class="text-outline hover:text-on-surface" href="https://github.com" rel="noopener noreferrer" target="_blank" title="View Source Code">
+<span class="material-symbols-outlined text-[18px]" data-icon="terminal">terminal</span>
+</a>
+</div>
+</div>
+</article>
+<!-- ================= CARD 02 ================= -->
+<article class="bg-surface-container-lowest border border-outline-variant/40 rounded-lg p-7 flex flex-col justify-between space-y-6 transition-all duration-200 gold-specular-glow group">
+<div class="space-y-4">
+<!-- Header Index & Status -->
+<div class="flex items-center justify-between border-b border-outline-variant/20 pb-3">
+<span class="font-label-sm text-label-sm text-outline group-hover:text-primary transition-colors">
+                // 02. INFRASTRUCTURE MESH
+              </span>
+<div class="flex items-center space-x-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="font-label-sm text-label-sm text-primary uppercase">Deploys Live</span>
+</div>
+</div>
+<!-- Card Category & Year -->
+<div class="font-label-sm text-label-sm text-outline">
+              Web Applications / Infrastructure • 2023
+            </div>
+<!-- Project Title -->
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-headline-sm group-hover:text-primary transition-colors leading-snug">
+              Sovereign Cloud Mesh &amp; Zero-Trust Controller
+            </h3>
+<!-- Narrative Description -->
+<p class="font-body-sm text-body-sm text-secondary leading-relaxed">
+              Zero-trust multi-cloud mesh with mTLS cryptographic provenance, hardware-backed identity attestations, and automated topology failovers across private data clusters.
+            </p>
+</div>
+<div class="space-y-5 pt-2">
+<!-- Substrate Tags -->
+<div class="flex flex-wrap gap-1.5">
+<span class="border border-outline-variant/30 bg-surface-container-low px-2 py-0.5 font-label-sm text-label-sm text-on-surface-variant rounded">Go (Golang)</span>
+<span class="border border-outline-variant/30 bg-surface-container-low px-2 py-0.5 font-label-sm text-label-sm text-on-surface-variant rounded">Kubernetes</span>
+<span class="border border-outline-variant/30 bg-surface-container-low px-2 py-0.5 font-label-sm text-label-sm text-on-surface-variant rounded">Istio</span>
+<span class="border border-outline-variant/30 bg-surface-container-low px-2 py-0.5 font-label-sm text-label-sm text-on-surface-variant rounded">Terraform</span>
+<span class="border border-outline-variant/30 bg-surface-container-low px-2 py-0.5 font-label-sm text-label-sm text-on-surface-variant rounded">Next.js UI</span>
+</div>
+<!-- Card Action Footer -->
+<div class="border-t border-outline-variant/20 pt-4 flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<a class="font-label-sm text-label-sm text-primary hover:underline uppercase tracking-wider flex items-center" href="#demo-2">
+                  Live Demo
+                  <span class="material-symbols-outlined text-[14px] ml-1" data-icon="north_east">north_east</span>
+</a>
+<a class="font-label-sm text-label-sm text-outline hover:text-on-surface uppercase tracking-wider" href="#demo-interactive-2">
+                  Interactive Demo
+                </a>
+</div>
+<a class="text-outline hover:text-on-surface" href="https://github.com" rel="noopener noreferrer" target="_blank" title="View Source Code">
+<span class="material-symbols-outlined text-[18px]" data-icon="terminal">terminal</span>
+</a>
+</div>
+</div>
+</article>
+<!-- ================= CARD 03 ================= -->
+<article class="bg-surface-container-lowest border border-outline-variant/40 rounded-lg p-7 flex flex-col justify-between space-y-6 transition-all duration-200 gold-specular-glow group">
+<div class="space-y-4">
+<!-- Header Index & Status -->
+<div class="flex items-center justify-between border-b border-outline-variant/20 pb-3">
+<span class="font-label-sm text-label-sm text-outline group-hover:text-primary transition-colors">
+                // 03. LOW-LATENCY DESKTOP
+              </span>
+<div class="flex items-center space-x-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="font-label-sm text-label-sm text-primary uppercase">Enterprise</span>
+</div>
+</div>
+<!-- Card Category & Year -->
+<div class="font-label-sm text-label-sm text-outline">
+              Desktop / C# • 2024
+            </div>
+<!-- Project Title -->
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-headline-sm group-hover:text-primary transition-colors leading-snug">
+              OmniTrader C# Low-Latency Execution Desktop
+            </h3>
+<!-- Narrative Description -->
+<p class="font-body-sm text-body-sm text-secondary leading-relaxed">
+              High-frequency trading terminal and desktop simulation engine built for real-time L2 order book rendering and millisecond telemetry dispatch with zero garbage collection spikes.
+            </p>
+</div>
+<div class="space-y-5 pt-2">
+<!-- Substrate Tags -->
+<div class="flex flex-wrap gap-1.5">
+<span class="border border-outline-variant/30 bg-surface-container-low px-2 py-0.5 font-label-sm text-label-sm text-on-surface-variant rounded">C#</span>
+<span class="border border-outline-variant/30 bg-surface-container-low px-2 py-0.5 font-label-sm text-label-sm text-on-surface-variant rounded">WPF / .NET 8</span>
+<span class="border border-outline-variant/30 bg-surface-container-low px-2 py-0.5 font-label-sm text-label-sm text-on-surface-variant rounded">gRPC</span>
+<span class="border border-outline-variant/30 bg-surface-container-low px-2 py-0.5 font-label-sm text-label-sm text-on-surface-variant rounded">Rx.NET</span>
+<span class="border border-outline-variant/30 bg-surface-container-low px-2 py-0.5 font-label-sm text-label-sm text-on-surface-variant rounded">DirectWrite</span>
+</div>
+<!-- Card Action Footer -->
+<div class="border-t border-outline-variant/20 pt-4 flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<a class="font-label-sm text-label-sm text-primary hover:underline uppercase tracking-wider flex items-center" href="#interactive-3">
+                  Interactive Demo ↗
+                </a>
+</div>
+<a class="text-outline hover:text-on-surface" href="https://github.com" rel="noopener noreferrer" target="_blank" title="View Source Code">
+<span class="material-symbols-outlined text-[18px]" data-icon="terminal">terminal</span>
+</a>
+</div>
+</div>
+</article>
+<!-- ================= CARD 04 ================= -->
+<article class="bg-surface-container-lowest border border-outline-variant/40 rounded-lg p-7 flex flex-col justify-between space-y-6 transition-all duration-200 gold-specular-glow group">
+<div class="space-y-4">
+<!-- Header Index & Status -->
+<div class="flex items-center justify-between border-b border-outline-variant/20 pb-3">
+<span class="font-label-sm text-label-sm text-outline group-hover:text-primary transition-colors">
+                // 04. AGENTIC AI
+              </span>
+<div class="flex items-center space-x-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="font-label-sm text-label-sm text-primary uppercase">Research &amp; Prod</span>
+</div>
+</div>
+<!-- Card Category & Year -->
+<div class="font-label-sm text-label-sm text-outline">
+              AI / Machine Learning • 2024
+            </div>
+<!-- Project Title -->
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-headline-sm group-hover:text-primary transition-colors leading-snug">
+              CognitiveMesh Autonomous Multi-Agent Swarm
+            </h3>
+<!-- Narrative Description -->
+<p class="font-body-sm text-body-sm text-secondary leading-relaxed">
+              Distributed LLM agent orchestration platform executing recursive tool use, semantic memory indexing, and self-correcting code generation pipelines without human intervention.
+            </p>
+</div>
+<div class="space-y-5 pt-2">
+<!-- Substrate Tags -->
+<div class="flex flex-wrap gap-1.5">
+<span class="border border-outline-variant/30 bg-surface-container-low px-2 py-0.5 font-label-sm text-label-sm text-on-surface-variant rounded">Python</span>
+<span class="border border-outline-variant/30 bg-surface-container-low px-2 py-0.5 font-label-sm text-label-sm text-on-surface-variant rounded">PyTorch</span>
+<span class="border border-outline-variant/30 bg-surface-container-low px-2 py-0.5 font-label-sm text-label-sm text-on-surface-variant rounded">LangChain</span>
+<span class="border border-outline-variant/30 bg-surface-container-low px-2 py-0.5 font-label-sm text-label-sm text-on-surface-variant rounded">Supabase pgvector</span>
+<span class="border border-outline-variant/30 bg-surface-container-low px-2 py-0.5 font-label-sm text-label-sm text-on-surface-variant rounded">FastAPI</span>
+</div>
+<!-- Card Action Footer -->
+<div class="border-t border-outline-variant/20 pt-4 flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<a class="font-label-sm text-label-sm text-primary hover:underline uppercase tracking-wider flex items-center" href="#demo-4">
+                  Live Demo
+                  <span class="material-symbols-outlined text-[14px] ml-1" data-icon="north_east">north_east</span>
+</a>
+<a class="font-label-sm text-label-sm text-outline hover:text-on-surface uppercase tracking-wider" href="#interactive-4">
+                  Interactive Demo
+                </a>
+</div>
+<a class="text-outline hover:text-on-surface" href="https://github.com" rel="noopener noreferrer" target="_blank" title="View Source Code">
+<span class="material-symbols-outlined text-[18px]" data-icon="terminal">terminal</span>
+</a>
+</div>
+</div>
+</article>
+<!-- ================= CARD 05 ================= -->
+<article class="bg-surface-container-lowest border border-outline-variant/40 rounded-lg p-7 flex flex-col justify-between space-y-6 transition-all duration-200 gold-specular-glow group">
+<div class="space-y-4">
+<!-- Header Index & Status -->
+<div class="flex items-center justify-between border-b border-outline-variant/20 pb-3">
+<span class="font-label-sm text-label-sm text-outline group-hover:text-primary transition-colors">
+                // 05. DATA ISOLATION ENGINE
+              </span>
+<div class="flex items-center space-x-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="font-label-sm text-label-sm text-primary uppercase">Production</span>
+</div>
+</div>
+<!-- Card Category & Year -->
+<div class="font-label-sm text-label-sm text-outline">
+              Database Architectures • 2023
+            </div>
+<!-- Project Title -->
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-headline-sm group-hover:text-primary transition-colors leading-snug">
+              AegisVault Distributed Multi-Tenant Store
+            </h3>
+<!-- Narrative Description -->
+<p class="font-body-sm text-body-sm text-secondary leading-relaxed">
+              Cryptographically isolated multi-tenant database partitioning layer with automated row-level security orchestration and zero-knowledge audit trails for regulated finance.
+            </p>
+</div>
+<div class="space-y-5 pt-2">
+<!-- Substrate Tags -->
+<div class="flex flex-wrap gap-1.5">
+<span class="border border-outline-variant/30 bg-surface-container-low px-2 py-0.5 font-label-sm text-label-sm text-on-surface-variant rounded">Next.js</span>
+<span class="border border-outline-variant/30 bg-surface-container-low px-2 py-0.5 font-label-sm text-label-sm text-on-surface-variant rounded">Supabase</span>
+<span class="border border-outline-variant/30 bg-surface-container-low px-2 py-0.5 font-label-sm text-label-sm text-on-surface-variant rounded">PostgreSQL</span>
+<span class="border border-outline-variant/30 bg-surface-container-low px-2 py-0.5 font-label-sm text-label-sm text-on-surface-variant rounded">TypeScript</span>
+<span class="border border-outline-variant/30 bg-surface-container-low px-2 py-0.5 font-label-sm text-label-sm text-on-surface-variant rounded">Citus Sharding</span>
+</div>
+<!-- Card Action Footer -->
+<div class="border-t border-outline-variant/20 pt-4 flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<a class="font-label-sm text-label-sm text-primary hover:underline uppercase tracking-wider flex items-center" href="#demo-5">
+                  Live Demo
+                  <span class="material-symbols-outlined text-[14px] ml-1" data-icon="north_east">north_east</span>
+</a>
+</div>
+<a class="text-outline hover:text-on-surface" href="https://github.com" rel="noopener noreferrer" target="_blank" title="View Source Code">
+<span class="material-symbols-outlined text-[18px]" data-icon="terminal">terminal</span>
+</a>
+</div>
+</div>
+</article>
+<!-- ================= CARD 06 ================= -->
+<article class="bg-surface-container-lowest border border-outline-variant/40 rounded-lg p-7 flex flex-col justify-between space-y-6 transition-all duration-200 gold-specular-glow group">
+<div class="space-y-4">
+<!-- Header Index & Status -->
+<div class="flex items-center justify-between border-b border-outline-variant/20 pb-3">
+<span class="font-label-sm text-label-sm text-outline group-hover:text-primary transition-colors">
+                // 06. GPU SIMULATION
+              </span>
+<div class="flex items-center space-x-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="font-label-sm text-label-sm text-primary uppercase">Verified</span>
+</div>
+</div>
+<!-- Card Category & Year -->
+<div class="font-label-sm text-label-sm text-outline">
+              Desktop / C# • 2024
+            </div>
+<!-- Project Title -->
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-headline-sm group-hover:text-primary transition-colors leading-snug">
+              NeuroForge Real-Time Neural Simulation Studio
+            </h3>
+<!-- Narrative Description -->
+<p class="font-body-sm text-body-sm text-secondary leading-relaxed">
+              Hardware-accelerated desktop workstation suite for visualizing continuous physics and neural weights across parallel GPU compute clusters in high-fidelity 60 FPS real-time.
+            </p>
+</div>
+<div class="space-y-5 pt-2">
+<!-- Substrate Tags -->
+<div class="flex flex-wrap gap-1.5">
+<span class="border border-outline-variant/30 bg-surface-container-low px-2 py-0.5 font-label-sm text-label-sm text-on-surface-variant rounded">C#</span>
+<span class="border border-outline-variant/30 bg-surface-container-low px-2 py-0.5 font-label-sm text-label-sm text-on-surface-variant rounded">.NET 8</span>
+<span class="border border-outline-variant/30 bg-surface-container-low px-2 py-0.5 font-label-sm text-label-sm text-on-surface-variant rounded">Compute Shaders</span>
+<span class="border border-outline-variant/30 bg-surface-container-low px-2 py-0.5 font-label-sm text-label-sm text-on-surface-variant rounded">Vulkan Interop</span>
+<span class="border border-outline-variant/30 bg-surface-container-low px-2 py-0.5 font-label-sm text-label-sm text-on-surface-variant rounded">SQLite</span>
+</div>
+<!-- Card Action Footer -->
+<div class="border-t border-outline-variant/20 pt-4 flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<a class="font-label-sm text-label-sm text-primary hover:underline uppercase tracking-wider flex items-center" href="#demo-6">
+                  Live Demo
+                  <span class="material-symbols-outlined text-[14px] ml-1" data-icon="north_east">north_east</span>
+</a>
+<a class="font-label-sm text-label-sm text-outline hover:text-on-surface uppercase tracking-wider" href="#interactive-6">
+                  Interactive Demo
+                </a>
+</div>
+<a class="text-outline hover:text-on-surface" href="https://github.com" rel="noopener noreferrer" target="_blank" title="View Source Code">
+<span class="material-symbols-outlined text-[18px]" data-icon="terminal">terminal</span>
+</a>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- ARCHITECTURAL CONSULTATION / ADVISORY CTA BLOCK                           -->
+<!-- ========================================================================= -->
+<section class="border border-primary/30 bg-surface-container-low/50 rounded-lg p-8 md:p-14 relative overflow-hidden">
+<div class="absolute -bottom-20 -left-20 w-80 h-80 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+<div class="max-w-2xl space-y-4">
+<div class="flex items-center space-x-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest">
+              // EXECUTIVE COLLABORATION
+            </span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-headline-lg">
+            Initiate an Architectural Dialogue
+          </h2>
+<p class="font-body-md text-body-md text-secondary">
+            Seeking principal-level software architecture, fault-tolerant distributed system consultations, or strategic engineering advisory for mission-critical platforms?
+          </p>
+</div>
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full lg:w-auto">
+<a class="bg-primary text-on-primary-fixed font-label-md text-label-md uppercase tracking-wider px-8 py-3.5 rounded font-medium hover:bg-primary-fixed-dim transition-all text-center" href="#contact">
+            Discuss Systems
+          </a>
+<a class="border border-outline-variant/60 text-on-surface hover:border-primary font-label-md text-label-md uppercase tracking-wider px-8 py-3.5 rounded text-center transition-all bg-surface-container-lowest" href="#resume">
+            Download Executive CV
+          </a>
+</div>
+</div>
+</section>
+</main>
+<!-- ========================================================================= -->
+<!-- FOOTER (Shared Component Execution: Footer)                               -->
+<!-- ========================================================================= -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant/20 dark:border-outline-variant/20 docked full-width bottom mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-space-xl py-12 max-w-[1440px] mx-auto gap-6">
+<!-- Brand & Copyright from JSON -->
+<div class="flex flex-col items-center md:items-start space-y-1">
+<span class="font-headline-sm text-headline-sm text-on-surface dark:text-on-surface uppercase tracking-widest">
+          Abdulghani Al-Shibami
+        </span>
+<p class="font-body-sm text-body-sm text-on-surface-variant dark:text-on-surface-variant">
+          © 2025 Abdulghani Al-Shibami. All rights reserved. Precision Systems &amp; Architecture.
+        </p>
+</div>
+<!-- Links from JSON -->
+<nav aria-label="Footer Links" class="flex flex-wrap items-center justify-center gap-6">
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider hover:text-primary dark:hover:text-primary transition-colors duration-200" href="https://linkedin.com" rel="noopener noreferrer" target="_blank">
+          LinkedIn
+        </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider hover:text-primary dark:hover:text-primary transition-colors duration-200" href="https://github.com" rel="noopener noreferrer" target="_blank">
+          GitHub
+        </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#architecture-notes">
+          Architecture Notes
+        </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#colophon">
+          Colophon
+        </a>
+</nav>
+</div>
+</footer>
+<!-- Inline Script for Filtering & Subtle Micro-interactions -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Keyboard shortcut ⌘K or Ctrl+K focus
+      const searchInput = document.getElementById('catalog-search');
+      window.addEventListener('keydown', (e) => {
+        if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+          e.preventDefault();
+          if (searchInput) {
+            searchInput.focus();
+          }
+        }
+      });
+
+      // Filter button toggle state demo
+      const filterButtons = document.querySelectorAll('button[class*="font-label-sm"]');
+      filterButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+          // Subtle active feedback without page reflow
+          filterButtons.forEach(b => {
+            if (b.innerText.includes('All') || b.innerText.includes('(')) {
+              b.classList.remove('bg-primary/10', 'border-primary', 'text-primary');
+              b.classList.add('bg-surface-container-low', 'border-outline-variant/40', 'text-secondary');
+            }
+          });
+          this.classList.remove('bg-surface-container-low', 'border-outline-variant/40', 'text-secondary');
+          this.classList.add('bg-primary/10', 'border-primary', 'text-primary');
+        });
+      });
+    });
+  </script>
+</body></html>

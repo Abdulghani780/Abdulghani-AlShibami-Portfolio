@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Abdulghani Al-Shibami — Senior Software Engineer &amp; Systems Architect</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface": "#f9f9fb",
+            "error": "#ba1a1a",
+            "surface-container-highest": "#e2e2e4",
+            "secondary-fixed-dim": "#e8c35a",
+            "on-secondary": "#ffffff",
+            "primary-container": "#131b2e",
+            "primary": "#000000",
+            "tertiary-fixed": "#ffe088",
+            "tertiary-container": "#cba72f",
+            "error-container": "#ffdad6",
+            "outline-variant": "#c6c6cd",
+            "on-error-container": "#93000a",
+            "on-secondary-container": "#755c00",
+            "surface-container-lowest": "#ffffff",
+            "background": "#f9f9fb",
+            "on-secondary-fixed-variant": "#584400",
+            "on-tertiary-fixed-variant": "#574500",
+            "surface-container": "#edeef0",
+            "tertiary-fixed-dim": "#e9c349",
+            "primary-fixed-dim": "#bec6e0",
+            "outline": "#76777d",
+            "surface-container-low": "#f3f3f5",
+            "surface-dim": "#d9dadc",
+            "on-primary-fixed-variant": "#3f465c",
+            "on-error": "#ffffff",
+            "secondary": "#755b00",
+            "on-tertiary-container": "#4e3d00",
+            "primary-fixed": "#dae2fd",
+            "on-tertiary-fixed": "#241a00",
+            "on-primary-container": "#7c839b",
+            "on-secondary-fixed": "#241a00",
+            "on-background": "#1a1c1d",
+            "on-surface-variant": "#45464d",
+            "inverse-surface": "#2f3132",
+            "on-primary-fixed": "#131b2e",
+            "secondary-fixed": "#ffe08e",
+            "inverse-on-surface": "#f0f0f2",
+            "on-surface": "#1a1c1d",
+            "tertiary": "#735c00",
+            "on-tertiary": "#ffffff",
+            "secondary-container": "#fdd66b",
+            "surface-container-high": "#e8e8ea",
+            "on-primary": "#ffffff",
+            "surface-variant": "#e2e2e4",
+            "surface-tint": "#565e74",
+            "inverse-primary": "#bec6e0",
+            "surface-bright": "#f9f9fb"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "margin-mobile": "1.25rem",
+            "gutter-mobile": "1rem",
+            "margin": "4rem",
+            "space-xs": "0.25rem",
+            "space-xl": "2.5rem",
+            "space-2xl": "4rem",
+            "gutter": "2rem",
+            "space-lg": "1.5rem",
+            "space-md": "1rem",
+            "space-sm": "0.5rem",
+            "space-3xl": "6rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Geist"],
+            "headline-lg": ["Playfair Display"],
+            "code-sm": ["Geist"],
+            "body-sm": ["Geist"],
+            "display-mobile": ["Playfair Display"],
+            "headline-md": ["Playfair Display"],
+            "headline-sm": ["Playfair Display"],
+            "title-md": ["Geist"],
+            "display": ["Playfair Display"],
+            "body-md": ["Geist"],
+            "label-md": ["Geist"],
+            "headline-lg-mobile": ["Playfair Display"],
+            "title-lg": ["Geist"],
+            "label-sm": ["Geist"]
+          },
+          "fontSize": {
+            "body-lg": ["1.125rem", { "lineHeight": "1.85rem", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-lg": ["3rem", { "lineHeight": "3.5rem", "letterSpacing": "-0.02em", "fontWeight": "500" }],
+            "code-sm": ["0.8125rem", { "lineHeight": "1.25rem", "letterSpacing": "0em", "fontWeight": "400" }],
+            "body-sm": ["0.875rem", { "lineHeight": "1.4rem", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "display-mobile": ["2.75rem", { "lineHeight": "3.25rem", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "headline-md": ["2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+            "headline-sm": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "0em", "fontWeight": "600" }],
+            "title-md": ["1.125rem", { "lineHeight": "1.6rem", "letterSpacing": "0em", "fontWeight": "500" }],
+            "display": ["4.5rem", { "lineHeight": "5rem", "letterSpacing": "-0.03em", "fontWeight": "600" }],
+            "body-md": ["1rem", { "lineHeight": "1.65rem", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label-md": ["0.8125rem", { "lineHeight": "1.125rem", "letterSpacing": "0.08em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+            "title-lg": ["1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-sm": ["0.6875rem", { "lineHeight": "1rem", "letterSpacing": "0.12em", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .hairline-rule {
+      background-image: linear-gradient(to right, rgba(226, 217, 200, 0), rgba(226, 217, 200, 0.8) 20%, rgba(226, 217, 200, 0.8) 80%, rgba(226, 217, 200, 0));
+    }
+    .technical-grid-bg {
+      background-size: 32px 32px;
+      background-image: 
+        linear-gradient(to right, rgba(15, 23, 42, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15, 23, 42, 0.02) 1px, transparent 1px);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased selection:bg-secondary selection:text-on-secondary min-h-screen flex flex-col">
+<!-- TOP NAVIGATION BAR (Predicted Component: TopNavBar) -->
+<header class="bg-surface dark:bg-inverse-surface border-b border-outline-variant dark:border-outline shadow-sm dark:shadow-none docked full-width top-0 sticky z-50 transition-all duration-200 ease-out backdrop-blur-md bg-opacity-95">
+<div class="max-w-7xl mx-auto flex items-center justify-between px-margin py-space-md w-full">
+<!-- Brand Wordmark -->
+<a class="flex items-center gap-space-sm group" href="#home">
+<span class="w-2 h-2 bg-secondary rounded-full inline-block group-hover:scale-125 transition-transform duration-200"></span>
+<span class="font-headline-sm text-headline-sm text-on-surface dark:text-inverse-on-surface tracking-tight font-semibold">
+          Abdulghani Al-Shibami
+        </span>
+</a>
+<!-- Desktop Navigation Cluster (Shared Component exact labels) -->
+<nav class="hidden lg:flex items-center gap-space-lg">
+<a class="text-secondary dark:text-secondary-fixed font-title-md text-title-md border-b-2 border-secondary pb-1 transition-all duration-200 ease-out" href="#home">Home</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-body-md text-body-md hover:text-on-surface hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200" href="#about">About</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-body-md text-body-md hover:text-on-surface hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200" href="#skills">Skills</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-body-md text-body-md hover:text-on-surface hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200" href="#projects">Projects</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-body-md text-body-md hover:text-on-surface hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200" href="#experience">Experience</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-body-md text-body-md hover:text-on-surface hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200" href="#contact">Contact</a>
+</nav>
+<!-- Trailing Controls -->
+<div class="flex items-center gap-space-md">
+<!-- Secondary Action: Language Switcher -->
+<button class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors px-space-xs py-1 border border-outline-variant rounded" title="Switch Language">
+          EN | AR
+        </button>
+<!-- Trailing Icon Action: Mode -->
+<button aria-label="Toggle Theme" class="p-1 text-on-surface-variant hover:text-secondary transition-colors rounded">
+<span class="material-symbols-outlined text-title-md" data-icon="light_mode">light_mode</span>
+</button>
+<!-- Trailing Primary Action: Resume -->
+<a class="hidden sm:inline-flex items-center gap-1 font-label-md text-label-md bg-on-surface text-surface-container-lowest px-4 py-2 rounded shadow-sm hover:bg-on-surface-variant hover:text-secondary-fixed transition-all duration-200" href="#resume">
+<span>Resume</span>
+<span class="material-symbols-outlined text-body-sm" data-icon="north_east">north_east</span>
+</a>
+</div>
+</div>
+</header>
+<!-- MAIN CANVAS -->
+<main class="flex-grow technical-grid-bg" id="home">
+<!-- HERO SECTION -->
+<section class="max-w-7xl mx-auto px-margin pt-space-3xl pb-space-2xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<!-- Left Editorial Narrative (7 Cols) -->
+<div class="lg:col-span-8 flex flex-col items-start">
+<!-- Status Pill Badge -->
+<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container border border-outline-variant/60 shadow-xs mb-space-lg">
+<span class="inline-block w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-secondary tracking-widest uppercase">
+              Available for Enterprise Architecture &amp; Consulting
+            </span>
+</div>
+<!-- Executive Title -->
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight mb-space-md leading-tight">
+            Senior Software Engineer <br class="hidden sm:block"/>
+<span class="font-normal italic text-secondary font-headline-lg">&amp; Systems Architect</span>
+</h1>
+<!-- Monograph Copy -->
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-space-xl leading-relaxed">
+            Crafting resilient distributed systems, mission-critical cloud backends, and high-performance engineering solutions with uncompromising precision, sovereign reliability, and mathematical rigor.
+          </p>
+<!-- Executive CTA Group & Connect Links -->
+<div class="flex flex-wrap items-center gap-space-md w-full">
+<a class="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-secondary text-on-secondary font-label-md text-label-md rounded shadow-sm hover:bg-secondary-container hover:text-on-secondary-container transition-all duration-200 transform hover:-translate-y-0.5" href="#projects">
+<span>Explore Projects</span>
+<span class="material-symbols-outlined text-body-md" data-icon="arrow_downward">arrow_downward</span>
+</a>
+<a class="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-surface-container-lowest text-on-surface font-label-md text-label-md rounded border border-outline-variant hover:border-secondary hover:text-secondary transition-all duration-200" href="#contact">
+<span>Get in Touch</span>
+<span class="material-symbols-outlined text-body-md" data-icon="mail">mail</span>
+</a>
+<!-- Social Micro Hub -->
+<div class="flex items-center gap-space-sm sm:ml-space-md pt-2 sm:pt-0 border-t sm:border-t-0 sm:border-l border-outline-variant/60 sm:pl-space-md w-full sm:w-auto">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary inline-flex items-center gap-1 transition-colors" href="https://github.com" rel="noopener" target="_blank">
+<span class="material-symbols-outlined text-body-md" data-icon="code">code</span>
+                GitHub
+              </a>
+<span class="text-outline-variant">•</span>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary inline-flex items-center gap-1 transition-colors" href="https://linkedin.com" rel="noopener" target="_blank">
+<span class="material-symbols-outlined text-body-md" data-icon="share">share</span>
+                LinkedIn
+              </a>
+<span class="text-outline-variant">•</span>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary inline-flex items-center gap-1 transition-colors" href="#contact">
+<span class="material-symbols-outlined text-body-md" data-icon="send">send</span>
+                Direct Dispatch
+              </a>
+</div>
+</div>
+</div>
+<!-- Right Architectural Reticle Emblem (4 Cols) -->
+<div class="lg:col-span-4 flex justify-center lg:justify-end mt-space-xl lg:mt-0">
+<div class="relative w-72 h-72 sm:w-80 sm:h-80 bg-surface-container-lowest border border-outline-variant/70 rounded-full p-4 flex items-center justify-center shadow-md">
+<!-- Outer Radar Calibration Rings -->
+<div class="absolute inset-2 border border-dashed border-outline-variant/50 rounded-full"></div>
+<div class="absolute inset-8 border border-outline-variant/40 rounded-full"></div>
+<!-- Technical Coordinates Annotations -->
+<div class="absolute top-2 font-label-sm text-label-sm text-secondary tracking-widest scale-90">SEC: SYS-01 // LAT-00</div>
+<div class="absolute bottom-2 font-label-sm text-label-sm text-on-surface-variant/70 tracking-widest scale-90">NODE: RELIABILITY.999</div>
+<div class="absolute left-1 top-1/2 -translate-y-1/2 font-label-sm text-label-sm text-on-surface-variant/50 -rotate-90 origin-center">RETICLE-X</div>
+<div class="absolute right-1 top-1/2 -translate-y-1/2 font-label-sm text-label-sm text-on-surface-variant/50 rotate-90 origin-center">CAL-2025</div>
+<!-- Central Monogrammed Core -->
+<div class="w-48 h-48 rounded-full bg-surface-container-low border-2 border-secondary/30 flex flex-col items-center justify-center text-center p-4 relative overflow-hidden shadow-inner">
+<div class="w-12 h-12 rounded-full border border-secondary/40 flex items-center justify-center mb-2 bg-surface-container-lowest">
+<span class="font-headline-sm text-headline-sm text-secondary font-bold">AS</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface tracking-tight leading-none mb-1">
+                Al-Shibami
+              </span>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">
+                Senior Architect
+              </span>
+<span class="font-code-sm text-code-sm text-on-surface-variant text-[11px] mt-1">
+                &amp; Lead Engineer
+              </span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- METRICS COUNTER STRIP -->
+<section class="max-w-7xl mx-auto px-margin py-space-xl">
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-space-lg shadow-sm">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter divide-y md:divide-y-0 md:divide-x divide-outline-variant">
+<!-- Metric 1 -->
+<div class="flex flex-col items-start pt-space-sm md:pt-0 md:pl-space-md first:pl-0">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-1">// INDUSTRY TENURE</span>
+<div class="font-display text-headline-lg text-on-surface font-semibold tracking-tight">5+ Years</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Industry &amp; Architecture Experience
+            </p>
+</div>
+<!-- Metric 2 -->
+<div class="flex flex-col items-start pt-space-sm md:pt-0 md:pl-space-md">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-1">// DEPLOYED CORE</span>
+<div class="font-display text-headline-lg text-on-surface font-semibold tracking-tight">20+ Systems</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Enterprise Distributed Solutions
+            </p>
+</div>
+<!-- Metric 3 -->
+<div class="flex flex-col items-start pt-space-sm md:pt-0 md:pl-space-md">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-1">// VERIFIED CONTRACT</span>
+<div class="font-display text-headline-lg text-on-surface font-semibold tracking-tight">100%</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Production-Grade Reliability &amp; SLA
+            </p>
+</div>
+<!-- Metric 4 -->
+<div class="flex flex-col items-start pt-space-sm md:pt-0 md:pl-space-md">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-1">// TOLERANCE</span>
+<div class="font-display text-headline-lg text-on-surface font-semibold tracking-tight">99.99%</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              High Availability Infrastructure
+            </p>
+</div>
+</div>
+</div>
+</section>
+<!-- FEATURED PROJECTS PREVIEW -->
+<section class="max-w-7xl mx-auto px-margin py-space-3xl border-t border-outline-variant/60" id="projects">
+<!-- Section Editorial Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-space-2xl gap-space-md">
+<div>
+<div class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-2">
+            // SELECTED CASE STUDIES &amp; SYSTEMS
+          </div>
+<h2 class="font-headline-md text-headline-md text-on-surface">
+            Curated Systems Architecture
+          </h2>
+</div>
+<div class="font-code-sm text-code-sm text-on-surface-variant text-right">
+          INDEX // PRODUCTION ARTIFACTS
+        </div>
+</div>
+<!-- Projects 3-Column Architecture Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Project Card 1 -->
+<article class="bg-surface-container-lowest border border-outline-variant p-space-lg rounded flex flex-col justify-between hover:border-secondary transition-all duration-200 hover:shadow-md group">
+<div>
+<div class="flex items-center justify-between mb-space-md pb-space-xs border-b border-outline-variant/40">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">PROJECT 01</span>
+<span class="px-2 py-0.5 rounded bg-surface-container border border-outline-variant text-[11px] font-label-sm text-on-surface font-semibold">
+                50K+ TPS
+              </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-secondary transition-colors mb-space-sm">
+              AuraLedger: Distributed Fault-Tolerant Engine
+            </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-lg leading-relaxed">
+              Engineered a deterministic consensus engine with asynchronous peer replication, memory-mapped ring buffers, and sub-millisecond atomic settlement across partition networks.
+            </p>
+<div class="flex flex-wrap gap-1.5 mb-space-lg">
+<span class="px-2 py-1 rounded bg-surface-container-low border border-outline-variant text-on-surface-variant font-code-sm text-code-sm text-[11px]">Rust</span>
+<span class="px-2 py-1 rounded bg-surface-container-low border border-outline-variant text-on-surface-variant font-code-sm text-code-sm text-[11px]">C++20</span>
+<span class="px-2 py-1 rounded bg-surface-container-low border border-outline-variant text-on-surface-variant font-code-sm text-code-sm text-[11px]">Raft Consensus</span>
+<span class="px-2 py-1 rounded bg-surface-container-low border border-outline-variant text-on-surface-variant font-code-sm text-code-sm text-[11px]">Distributed Storage</span>
+</div>
+</div>
+<div class="pt-space-md border-t border-outline-variant/40 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary font-semibold group-hover:underline">View Architecture →</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">SYS_ID: #AL-09</span>
+</div>
+</article>
+<!-- Project Card 2 -->
+<article class="bg-surface-container-lowest border border-outline-variant p-space-lg rounded flex flex-col justify-between hover:border-secondary transition-all duration-200 hover:shadow-md group">
+<div>
+<div class="flex items-center justify-between mb-space-md pb-space-xs border-b border-outline-variant/40">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">PROJECT 02</span>
+<span class="px-2 py-0.5 rounded bg-surface-container border border-outline-variant text-[11px] font-label-sm text-on-surface font-semibold">
+                &lt; 4ms LATENCY
+              </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-secondary transition-colors mb-space-sm">
+              HyperScale Event Streaming Fabric
+            </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-lg leading-relaxed">
+              Constructed high-throughput ingestion gateways dispatching millions of events per second with adaptive backpressure, dynamic payload validation, and custom partition balancing.
+            </p>
+<div class="flex flex-wrap gap-1.5 mb-space-lg">
+<span class="px-2 py-1 rounded bg-surface-container-low border border-outline-variant text-on-surface-variant font-code-sm text-code-sm text-[11px]">Go (Golang)</span>
+<span class="px-2 py-1 rounded bg-surface-container-low border border-outline-variant text-on-surface-variant font-code-sm text-code-sm text-[11px]">Apache Kafka</span>
+<span class="px-2 py-1 rounded bg-surface-container-low border border-outline-variant text-on-surface-variant font-code-sm text-code-sm text-[11px]">Kubernetes</span>
+<span class="px-2 py-1 rounded bg-surface-container-low border border-outline-variant text-on-surface-variant font-code-sm text-code-sm text-[11px]">gRPC</span>
+</div>
+</div>
+<div class="pt-space-md border-t border-outline-variant/40 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary font-semibold group-hover:underline">View Architecture →</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">SYS_ID: #HE-41</span>
+</div>
+</article>
+<!-- Project Card 3 -->
+<article class="bg-surface-container-lowest border border-outline-variant p-space-lg rounded flex flex-col justify-between hover:border-secondary transition-all duration-200 hover:shadow-md group">
+<div>
+<div class="flex items-center justify-between mb-space-md pb-space-xs border-b border-outline-variant/40">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">PROJECT 03</span>
+<span class="px-2 py-0.5 rounded bg-surface-container border border-outline-variant text-[11px] font-label-sm text-on-surface font-semibold">
+                MULTI-REGION
+              </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-secondary transition-colors mb-space-sm">
+              Sovereign Cloud Mesh &amp; Security Layer
+            </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-lg leading-relaxed">
+              Architected a zero-trust multi-cloud mesh featuring hardware-backed cryptographic certificates, transparent mTLS authorization, automated geo-failover, and unified telemetry.
+            </p>
+<div class="flex flex-wrap gap-1.5 mb-space-lg">
+<span class="px-2 py-1 rounded bg-surface-container-low border border-outline-variant text-on-surface-variant font-code-sm text-code-sm text-[11px]">Zero-Trust</span>
+<span class="px-2 py-1 rounded bg-surface-container-low border border-outline-variant text-on-surface-variant font-code-sm text-code-sm text-[11px]">Terraform</span>
+<span class="px-2 py-1 rounded bg-surface-container-low border border-outline-variant text-on-surface-variant font-code-sm text-code-sm text-[11px]">Istio / Envoy</span>
+<span class="px-2 py-1 rounded bg-surface-container-low border border-outline-variant text-on-surface-variant font-code-sm text-code-sm text-[11px]">AWS GovCloud</span>
+</div>
+</div>
+<div class="pt-space-md border-t border-outline-variant/40 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary font-semibold group-hover:underline">View Architecture →</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">SYS_ID: #SM-88</span>
+</div>
+</article>
+</div>
+</section>
+<!-- TECHNICAL MASTERY & ARCHITECTURAL TOOLKIT -->
+<section class="max-w-7xl mx-auto px-margin py-space-3xl border-t border-outline-variant/60" id="skills">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-space-2xl gap-space-md">
+<div>
+<div class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-2">
+            // CAPABILITY MATRIX
+          </div>
+<h2 class="font-headline-md text-headline-md text-on-surface">
+            Technical Mastery &amp; Architectural Toolkit
+          </h2>
+</div>
+<div class="font-code-sm text-code-sm text-on-surface-variant">
+          DISCIPLINE // ZERO OVERHEAD
+        </div>
+</div>
+<!-- 4-Column Structured Matrix Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Core Systems -->
+<div class="bg-surface-container-lowest border border-outline-variant p-space-lg rounded shadow-xs">
+<div class="flex items-center gap-2 mb-space-md text-secondary">
+<span class="material-symbols-outlined text-headline-sm" data-icon="memory">memory</span>
+<h3 class="font-title-lg text-title-lg text-on-surface">Core Systems</h3>
+</div>
+<ul class="space-y-space-sm font-body-sm text-body-sm text-on-surface-variant">
+<li class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>
+<span>Go (High-Concurrency)</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>
+<span>Rust (Memory &amp; Systems)</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>
+<span>C++ (Low-Latency Runtimes)</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>
+<span>Kernel &amp; eBPF Telemetry</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>
+<span>Lock-Free Data Structures</span>
+</li>
+</ul>
+</div>
+<!-- Cloud & Infrastructure -->
+<div class="bg-surface-container-lowest border border-outline-variant p-space-lg rounded shadow-xs">
+<div class="flex items-center gap-2 mb-space-md text-secondary">
+<span class="material-symbols-outlined text-headline-sm" data-icon="cloud">cloud</span>
+<h3 class="font-title-lg text-title-lg text-on-surface">Cloud &amp; DevOps</h3>
+</div>
+<ul class="space-y-space-sm font-body-sm text-body-sm text-on-surface-variant">
+<li class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>
+<span>Kubernetes / K8s Operators</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>
+<span>Terraform &amp; Sovereign IaC</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>
+<span>Docker &amp; OCI Containers</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>
+<span>Istio &amp; Envoy Service Mesh</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>
+<span>AWS / Multi-Cloud Enterprise</span>
+</li>
+</ul>
+</div>
+<!-- Data & Streaming -->
+<div class="bg-surface-container-lowest border border-outline-variant p-space-lg rounded shadow-xs">
+<div class="flex items-center gap-2 mb-space-md text-secondary">
+<span class="material-symbols-outlined text-headline-sm" data-icon="database">database</span>
+<h3 class="font-title-lg text-title-lg text-on-surface">Data &amp; Streaming</h3>
+</div>
+<ul class="space-y-space-sm font-body-sm text-body-sm text-on-surface-variant">
+<li class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>
+<span>Apache Kafka Distributed Logs</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>
+<span>PostgreSQL / Redis Sharding</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>
+<span>ClickHouse &amp; TimescaleDB</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>
+<span>Apache Flink Stream Processing</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>
+<span>Vector Stores &amp; Search Indexes</span>
+</li>
+</ul>
+</div>
+<!-- Architecture & Patterns -->
+<div class="bg-surface-container-lowest border border-outline-variant p-space-lg rounded shadow-xs">
+<div class="flex items-center gap-2 mb-space-md text-secondary">
+<span class="material-symbols-outlined text-headline-sm" data-icon="account_tree">account_tree</span>
+<h3 class="font-title-lg text-title-lg text-on-surface">Architecture</h3>
+</div>
+<ul class="space-y-space-sm font-body-sm text-body-sm text-on-surface-variant">
+<li class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>
+<span>Event-Driven Architecture (EDA)</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>
+<span>CQRS &amp; Event Sourcing</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>
+<span>Domain-Driven Design (DDD)</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>
+<span>Zero-Trust Security &amp; mTLS</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>
+<span>High-Reliability Fallback Design</span>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- DIRECT DISPATCH / ADVISORY CONSULTATION BANNER -->
+<section class="max-w-7xl mx-auto px-margin py-space-3xl" id="contact">
+<div class="relative bg-surface-container-lowest border border-outline-variant rounded p-space-xl md:p-space-2xl overflow-hidden shadow-sm">
+<!-- Ambient Decorative Line Grid -->
+<div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-secondary to-transparent opacity-80"></div>
+<div class="max-w-3xl">
+<div class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-space-sm">
+            // ENGAGEMENT &amp; ADVISORY
+          </div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-space-md leading-tight">
+            Initiate an Architectural Dialogue
+          </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-space-xl leading-relaxed">
+            Accepting advisory mandates, board-level technical consultations, and principal systems architecture initiatives. Reach out to discuss distributed systems challenges, high-scale bottlenecks, or critical infrastructure engagements.
+          </p>
+<div class="flex flex-wrap items-center gap-space-md">
+<a class="inline-flex items-center gap-2 px-6 py-3.5 bg-secondary text-on-secondary font-label-md text-label-md rounded shadow-sm hover:bg-secondary-container hover:text-on-secondary-container transition-all duration-200" href="mailto:abdulghani.alshibami@example.com">
+<span>Direct Dispatch</span>
+<span class="material-symbols-outlined text-body-md" data-icon="outgoing_mail">outgoing_mail</span>
+</a>
+<a class="inline-flex items-center gap-2 px-6 py-3.5 bg-surface-container-lowest text-on-surface font-label-md text-label-md rounded border border-outline-variant hover:border-secondary hover:text-secondary transition-all duration-200" href="#resume">
+<span>Review Full Dossier</span>
+<span class="material-symbols-outlined text-body-md" data-icon="description">description</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- FOOTER (Predicted Component: Footer) -->
+<footer class="bg-surface-container-low dark:bg-inverse-surface border-t border-outline-variant dark:border-outline flat no shadows docked full-width bottom">
+<div class="max-w-7xl mx-auto px-margin py-space-2xl flex flex-col md:flex-row justify-between items-center w-full gap-space-lg">
+<!-- Brand & Copyright -->
+<div class="flex flex-col md:flex-row items-center gap-space-md text-center md:text-left">
+<span class="font-headline-sm text-headline-sm text-on-surface dark:text-inverse-on-surface font-semibold tracking-tight">
+          Abdulghani Al-Shibami
+        </span>
+<span class="hidden md:inline text-outline-variant">|</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant dark:text-surface-variant">
+          © 2025 Abdulghani Al-Shibami. Precision Engineering &amp; Sovereign Architecture. All rights reserved.
+        </span>
+</div>
+<!-- Footer Navigation Links (Exact Match from JSON) -->
+<nav class="flex items-center flex-wrap justify-center gap-space-md">
+<a class="text-on-surface-variant dark:text-surface-variant font-label-sm text-label-sm uppercase tracking-wider hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-150 hover:underline" href="https://linkedin.com" rel="noopener" target="_blank">
+          LinkedIn
+        </a>
+<a class="text-on-surface-variant dark:text-surface-variant font-label-sm text-label-sm uppercase tracking-wider hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-150 hover:underline" href="https://github.com" rel="noopener" target="_blank">
+          GitHub
+        </a>
+<a class="text-on-surface-variant dark:text-surface-variant font-label-sm text-label-sm uppercase tracking-wider hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-150 hover:underline" href="#notes">
+          Architecture Notes
+        </a>
+<a class="text-on-surface-variant dark:text-surface-variant font-label-sm text-label-sm uppercase tracking-wider hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-150 hover:underline" href="#colophon">
+          Colophon
+        </a>
+</nav>
+</div>
+</footer>
+</body></html>

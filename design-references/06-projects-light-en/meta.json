@@ -1,0 +1,30 @@
+{
+  "referenceNumber": "06",
+  "referenceName": "Projects — Desktop — Light — English",
+  "stitchScreenId": "fc69e78410764249a879581b35af926b",
+  "stitchProjectId": "1524242436626085687",
+  "designSystem": "assets/aeacd8808ba444a48c73a9930c0ac71a",
+  "viewport": "DESKTOP (1440px / 2560px)",
+  "theme": "LIGHT",
+  "language": "English (en)",
+  "direction": "LTR",
+  "screenshotFile": "screenshot.png",
+  "htmlFile": "screen.html",
+  "sections": [
+    "Sticky Top Navigation Bar with gold active indicator on 'Projects' tab, Resume trigger, and language/theme controls",
+    "Projects Catalog Header: 'Engineered Systems & Software Architectures' with command search bar ($ ⌘K), interactive category tabs, view switcher, and sort selector",
+    "Flagship Project Showcase (AuraLedger) with crisp white panel, double royal gold hairline border, system telemetry pane (50k+ TPS, < 4ms P99, RPO=0), and direct triggers (Interactive Demo ↗, Case Study Spec, GitHub)",
+    "6 Responsive Multi-Discipline Project Cards (Streaming Engine, Cloud Mesh, Low-Latency Desktop C#, Agentic AI, Database Partitioning, GPU Physics Simulation)",
+    "Executive Collaboration Callout & Luxury Colophon Footer"
+  ],
+  "designTokens": {
+    "background": "#FBFBFD",
+    "surface": "#FFFFFF",
+    "surfaceLow": "#F3F3F5",
+    "accent": "#997A15",
+    "accentGold": "#D4AF37",
+    "textPrimary": "#0F172A",
+    "textSecondary": "#475569",
+    "border": "#E2D9C8"
+  }
+}

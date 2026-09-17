@@ -1,0 +1,32 @@
+{
+  "referenceNumber": "03",
+  "referenceName": "Home — Desktop — Dark — Arabic RTL",
+  "stitchScreenId": "c019545ba72443f4bd5dc8f39d3159c7",
+  "stitchProjectId": "1524242436626085687",
+  "designSystem": "assets/f0f0edb0118f4f4e91610a6ae1b3dd93",
+  "viewport": "DESKTOP (1440px / 2560px)",
+  "theme": "DARK",
+  "language": "Arabic (ar)",
+  "direction": "RTL (Right-to-Left)",
+  "screenshotFile": "screenshot.png",
+  "htmlFile": "screen.html",
+  "sections": [
+    "RTL Navigation Bar: Logo on right 'عبدالغني الشبامي', Arabic nav links (الرئيسية، عني، المهارات، المشاريع، الخبرات، تواصل معي، السيرة الذاتية), Language 'AR | EN' and theme toggler on left",
+    "Hero Section: Right-aligned Arabic headline 'مهندس برمجيات أول ومعماري نُظم معقدة', subheadline, primary gold CTA 'استكشف المشاريع ←', secondary outline CTA 'تواصل معي ✉', and left-aligned profile frame placeholder with double gold rings and '[صورة شخصية / PROFILE_IMAGE]'",
+    "Key Metrics & Impact Strip: 4-column RTL grid (+5 سنوات خبرة، +20 نظاماً برمجياً، 100% موثوقية تشغيلية، 99.99% جاهزية وتوافر)",
+    "Curated Systems Architecture (المشاريع الهندسية المختارة) with right-aligned badges and RTL links 'عرض المعمارية ←'",
+    "Technical Mastery & Architectural Toolkit (مصفوفة الكفاءة الهندسية) across 4 core domains",
+    "Direct Advisory Consultation Callout (بدء استشارة معمارية وتقنية) with gold CTAs",
+    "Minimal Luxury RTL Footer with Arabic copyright and navigation"
+  ],
+  "designTokens": {
+    "background": "#0B0B0C",
+    "surface": "#141416",
+    "surfaceMuted": "#1E1E22",
+    "accent": "#D4AF37",
+    "accentWarm": "#F3E5AB",
+    "textPrimary": "#FFFFFF",
+    "textMuted": "#9CA3AF",
+    "border": "rgba(212, 175, 55, 0.25)"
+  }
+}

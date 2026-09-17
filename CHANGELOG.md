@@ -10,6 +10,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.2.0] - 2026-09-17
+
+### Added
+- **Visual Design Reference System:** Completed urgent design gate by generating exactly 12 primary visual references via StitchMCP project `1524242436626085687`.
+- Stored all 12 reference screenshots, HTML code blueprints, and metadata in `design-references/01` through `12`.
+- Created `docs/VISUAL_DESIGN_REFERENCE.md` with complete technical documentation for all 12 references.
+- Extracted and codified design tokens into `docs/07_DESIGN_SYSTEM.md`.
+- Updated `docs/06_UI_UX_SPECIFICATION.md` and `docs/09_PAGE_SPECIFICATIONS.md`.
+- Standardized `[PROFILE_IMAGE]` placeholder and simulation disclosure standards.
+
+---
+
 ## [0.1.0] - 2026-09-17
 
 ### Added

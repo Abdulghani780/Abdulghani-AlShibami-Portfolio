@@ -1,0 +1,28 @@
+{
+  "referenceNumber": "05",
+  "referenceName": "Projects — Desktop — Dark — English",
+  "stitchScreenId": "9f3d34af5da14376b0822cb8e074ea48",
+  "stitchProjectId": "1524242436626085687",
+  "designSystem": "assets/973a5e94f39948ad81611fe5c438902a",
+  "viewport": "DESKTOP (1440px / 2560px)",
+  "theme": "DARK",
+  "language": "English (en)",
+  "direction": "LTR",
+  "screenshotFile": "screenshot.png",
+  "htmlFile": "screen.html",
+  "sections": [
+    "Global TopNavBar with active 'Projects' tab highlighted in gold",
+    "Catalog Header: 'Engineered Systems & Software Architectures' with terminal-style search input (⌘K) and category tabs (All, Web Applications, Desktop / C#, Python Systems, AI / Machine Learning, Database Architectures)",
+    "Featured Flagship Project Banner: AuraLedger Distributed Transaction Engine (C#/.NET 8, Raft, 50k+ TPS, < 4ms P99, Interactive Demo ↗, Case Study, GitHub)",
+    "6 Responsive Architectural Project Cards: HyperScale Event Streaming (Python/Kafka), Sovereign Cloud Mesh (Go/Kubernetes), OmniTrader Execution Desktop (C#/WPF), CognitiveMesh Swarm (AI/ML), AegisVault (Database/PostgreSQL), NeuroForge Studio (C#/.NET 8 Desktop)",
+    "Executive Advisory CTA & Minimal Footer"
+  ],
+  "designTokens": {
+    "background": "#0B0B0C",
+    "surface": "#131314",
+    "accent": "#D4AF37",
+    "textPrimary": "#FFFFFF",
+    "textSecondary": "#94A3B8",
+    "border": "rgba(212, 175, 55, 0.25)"
+  }
+}

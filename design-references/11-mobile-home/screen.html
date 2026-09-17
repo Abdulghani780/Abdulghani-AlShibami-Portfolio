@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Abdulghani Al-Shibami // Principal Systems Architect</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Script -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration Verbatim -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary-fixed": "#0d1c2d",
+            "on-secondary": "#233143",
+            "gold-muted": "rgba(212, 175, 55, 0.35)",
+            "border-hairline": "#27272A",
+            "on-surface": "#e5e2e3",
+            "tertiary-fixed-dim": "#eac249",
+            "inverse-on-surface": "#313031",
+            "gold-antique": "#997A15",
+            "error": "#ffb4ab",
+            "gold-light": "#F2CA50",
+            "surface-overlay": "#18181B",
+            "surface-container": "#201f20",
+            "surface-bright": "#3a393a",
+            "surface-container-lowest": "#0e0e0f",
+            "surface-variant": "#353436",
+            "text-muted": "#94A3B8",
+            "on-primary-fixed-variant": "#574500",
+            "on-tertiary-container": "#564300",
+            "surface-interactive": "#202023",
+            "secondary-container": "#39485a",
+            "secondary-fixed": "#d4e4fa",
+            "primary-fixed-dim": "#e9c349",
+            "gold-whisper": "rgba(212, 175, 55, 0.08)",
+            "tertiary-container": "#d5af37",
+            "on-error-container": "#ffdad6",
+            "secondary": "#b9c8de",
+            "surface-tint": "#e9c349",
+            "tertiary-fixed": "#ffe08b",
+            "on-primary-container": "#554300",
+            "inverse-primary": "#735c00",
+            "text-secondary": "#F8FAFC",
+            "on-secondary-container": "#a7b6cc",
+            "surface": "#131314",
+            "surface-dim": "#131314",
+            "surface-container-low": "#1c1b1c",
+            "error-container": "#93000a",
+            "outline-variant": "#4d4635",
+            "on-secondary-fixed-variant": "#39485a",
+            "primary-fixed": "#ffe088",
+            "on-background": "#e5e2e3",
+            "on-primary-fixed": "#241a00",
+            "on-tertiary-fixed-variant": "#584400",
+            "canvas-obsidian": "#0B0B0C",
+            "on-tertiary": "#3d2f00",
+            "outline": "#99907c",
+            "on-primary": "#3c2f00",
+            "primary": "#f2ca50",
+            "on-tertiary-fixed": "#241a00",
+            "background": "#131314",
+            "text-primary": "#FFFFFF",
+            "secondary-fixed-dim": "#b9c8de",
+            "surface-container-highest": "#353436",
+            "primary-container": "#d4af37",
+            "inverse-surface": "#e5e2e3",
+            "text-dim": "#71717A",
+            "on-error": "#690005",
+            "on-surface-variant": "#d0c5af",
+            "surface-elevated": "#121214",
+            "tertiary": "#f3ca50",
+            "surface-container-high": "#2a2a2b"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "2rem",
+            "space-md": "1rem",
+            "space-xl": "2.5rem",
+            "space-sm": "0.5rem",
+            "gutter-mobile": "1rem",
+            "space-xs": "0.25rem",
+            "margin-mobile": "1.25rem",
+            "space-lg": "1.5rem",
+            "margin": "4rem"
+          },
+          "fontFamily": {
+            "display-xl": ["Playfair Display"],
+            "label-lg": ["JetBrains Mono"],
+            "body-lg": ["Geist"],
+            "headline-sm": ["Playfair Display"],
+            "display-xl-mobile": ["Playfair Display"],
+            "body-md": ["Geist"],
+            "label-md": ["JetBrains Mono"],
+            "headline-lg": ["Playfair Display"],
+            "body-sm": ["Geist"],
+            "headline-lg-mobile": ["Playfair Display"],
+            "label-sm": ["JetBrains Mono"],
+            "headline-md": ["Playfair Display"]
+          },
+          "fontSize": {
+            "display-xl": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "label-lg": ["13px", { "lineHeight": "18px", "letterSpacing": "0.08em", "fontWeight": "500" }],
+            "body-lg": ["18px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+            "headline-sm": ["22px", { "lineHeight": "30px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "display-xl-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-md": ["15px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label-md": ["11px", { "lineHeight": "16px", "letterSpacing": "0.12em", "fontWeight": "500" }],
+            "headline-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.015em", "fontWeight": "500" }],
+            "body-sm": ["13px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+            "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.16em", "fontWeight": "400" }],
+            "headline-md": ["28px", { "lineHeight": "36px", "letterSpacing": "0em", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    /* Custom Reticle and Precision Grids */
+    .precision-grid {
+      background-image: radial-gradient(rgba(212, 175, 55, 0.15) 1px, transparent 0);
+      background-size: 20px 20px;
+    }
+    .gold-specular-glow {
+      box-shadow: 0 0 0 1px #D4AF37, 0 12px 32px -8px rgba(212, 175, 55, 0.15);
+    }
+    /* Touch optimization */
+    body {
+      -webkit-tap-highlight-color: transparent;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-canvas-obsidian text-text-primary font-body-md antialiased min-h-screen selection:bg-primary-container selection:text-canvas-obsidian flex justify-center">
+<!-- Mobile Viewport Constrained Container (393px width reference) -->
+<div class="w-full max-w-[430px] min-h-screen bg-canvas-obsidian relative flex flex-col border-x border-border-hairline shadow-2xl">
+<!-- 1. TOP APP BAR (Shared Component Anchor translated exactly) -->
+<header class="sticky top-0 z-40 w-full px-margin-mobile py-space-sm bg-canvas-obsidian/90 backdrop-blur-md border-b border-border-hairline flex justify-between items-center">
+<!-- Brand Anchor -->
+<a class="text-headline-sm font-headline-sm tracking-tight text-text-primary flex items-center gap-space-xs" href="#hero">
+<span class="text-primary font-bold">A.</span> AL-SHIBAMI
+      </a>
+<!-- Quick Action Utilities & Hamburger Trigger -->
+<div class="flex items-center gap-space-xs">
+<!-- Language Switcher Pill -->
+<button aria-label="Switch Language" class="h-7 px-2 border border-border-hairline bg-surface-elevated font-label-sm text-label-sm text-text-dim hover:text-primary hover:border-gold-muted transition-colors flex items-center gap-1" type="button">
+<span class="text-primary font-semibold">EN</span>
+<span class="text-border-hairline">|</span>
+<span>AR</span>
+</button>
+<!-- Quick Theme Toggle -->
+<button aria-label="Toggle Palette Preview" class="w-7 h-7 flex items-center justify-center border border-border-hairline bg-surface-elevated text-text-dim hover:text-primary hover:border-gold-muted transition-all duration-150" id="themeToggleBtn" type="button">
+<span class="material-symbols-outlined text-[16px]">dark_mode</span>
+</button>
+<!-- Mobile Drawer Trigger -->
+<button aria-label="Open Navigation Drawer" class="w-8 h-8 flex flex-col justify-center items-center gap-1.5 border border-gold-muted bg-surface-elevated active:opacity-80 transition-opacity" id="drawerToggleBtn" type="button">
+<span class="w-4 h-[1.5px] bg-primary"></span>
+<span class="w-3 self-end mr-1.5 h-[1.5px] bg-primary"></span>
+<span class="w-4 h-[1.5px] bg-primary"></span>
+</button>
+</div>
+</header>
+<!-- MOBILE NAVIGATION DRAWER / SLIDING OVERLAY (Shared Component Specification) -->
+<div class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300" id="drawerOverlay">
+<div class="fixed left-0 top-0 h-full w-[85%] max-w-xs bg-canvas-obsidian/95 backdrop-blur-xl border-r border-gold-muted p-space-lg flex flex-col justify-between -translate-x-full transition-transform duration-300 ease-out shadow-2xl" id="drawerPanel">
+<!-- Drawer Header / Profile Meta -->
+<div>
+<div class="flex items-center justify-between pb-space-md border-b border-border-hairline">
+<div class="flex flex-col">
+<span class="text-label-sm font-label-sm text-primary tracking-widest">// ARCH_SYSTEM_NODE</span>
+<span class="text-headline-sm font-headline-sm text-text-primary mt-space-xs">A. AL-SHIBAMI</span>
+<span class="text-label-md font-label-md text-text-dim">Principal Systems Architect</span>
+</div>
+<button class="p-1 border border-border-hairline text-text-dim hover:text-primary" id="drawerCloseBtn" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Drawer Navigation Links with literal JSON tokens -->
+<nav class="mt-space-lg flex flex-col space-y-2">
+<!-- Active Node (01 Architecture) -->
+<a class="border-l-2 border-primary bg-gold-whisper text-primary font-label-md text-label-md px-space-md py-space-sm flex items-center justify-between group" href="#hero">
+<span class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[16px]">terminal</span>
+<span>// 01 ARCHITECTURE</span>
+</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+<!-- Inactive Nodes -->
+<a class="border-l-2 border-transparent text-text-muted hover:text-text-primary hover:border-primary/50 hover:bg-gold-whisper/50 transition-all duration-150 font-label-md text-label-md px-space-md py-space-sm flex items-center justify-between" href="#flagship">
+<span class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[16px]">account_balance</span>
+<span>// 02 AURALEDGER</span>
+</span>
+</a>
+<a class="border-l-2 border-transparent text-text-muted hover:text-text-primary hover:border-primary/50 hover:bg-gold-whisper/50 transition-all duration-150 font-label-md text-label-md px-space-md py-space-sm flex items-center justify-between" href="#telemetry">
+<span class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[16px]">speed</span>
+<span>// 03 TELEMETRY</span>
+</span>
+</a>
+<a class="border-l-2 border-transparent text-text-muted hover:text-text-primary hover:border-primary/50 hover:bg-gold-whisper/50 transition-all duration-150 font-label-md text-label-md px-space-md py-space-sm flex items-center justify-between" href="#dual-theme">
+<span class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[16px]">bar_chart</span>
+<span>// 04 BENCHMARKS</span>
+</span>
+</a>
+<a class="border-l-2 border-transparent text-text-muted hover:text-text-primary hover:border-primary/50 hover:bg-gold-whisper/50 transition-all duration-150 font-label-md text-label-md px-space-md py-space-sm flex items-center justify-between" href="#colophon">
+<span class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[16px]">vertical_align_top</span>
+<span>// 05 COLOPHON</span>
+</span>
+</a>
+</nav>
+</div>
+<!-- Drawer Footer Meta -->
+<div class="pt-space-md border-t border-border-hairline font-label-sm text-label-sm text-text-dim flex flex-col gap-1">
+<span class="text-primary tracking-widest">SYS_LOC: 24.7136° N, 46.6753° E</span>
+<span class="text-border-hairline">PRECISION SPEC_VERSION 4.8.2</span>
+</div>
+</div>
+</div>
+<!-- MAIN SCROLLABLE CONTENT CANVAS -->
+<main class="flex-1 flex flex-col gap-space-xl px-margin-mobile pt-space-lg pb-space-xl overflow-x-hidden">
+<!-- 2. HERO SECTION -->
+<section class="flex flex-col gap-space-lg" id="hero">
+<!-- Architectural Geometric Placeholder Card for Owner Portrait (NO fabricated human photos) -->
+<div class="relative w-full aspect-[4/3] bg-surface-elevated border border-gold-muted precision-grid p-4 flex flex-col justify-between overflow-hidden">
+<!-- Monolithic Reticle Corners -->
+<div class="absolute top-1.5 left-1.5 w-3 h-3 border-t-2 border-l-2 border-primary pointer-events-none"></div>
+<div class="absolute top-1.5 right-1.5 w-3 h-3 border-t-2 border-r-2 border-primary pointer-events-none"></div>
+<div class="absolute bottom-1.5 left-1.5 w-3 h-3 border-b-2 border-l-2 border-primary pointer-events-none"></div>
+<div class="absolute bottom-1.5 right-1.5 w-3 h-3 border-b-2 border-r-2 border-primary pointer-events-none"></div>
+<!-- Top Meta Row -->
+<div class="flex justify-between items-center relative z-10">
+<span class="font-label-sm text-label-sm text-primary tracking-widest bg-canvas-obsidian/90 px-2 py-0.5 border border-border-hairline">
+              [PROFILE_IMAGE]
+            </span>
+<div class="flex items-center gap-1.5 bg-canvas-obsidian/90 px-2 py-0.5 border border-border-hairline">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-text-muted">LAT: 24.7136° N, 46.6753° E</span>
+</div>
+</div>
+<!-- Center Geometric Emblem / Reticle Badge -->
+<div class="self-center flex flex-col items-center justify-center relative my-auto">
+<div class="relative w-24 h-24 border border-gold-muted rounded-full flex items-center justify-center bg-canvas-obsidian/90 shadow-[0_0_24px_rgba(212,175,55,0.12)]">
+<!-- Internal Crosshairs -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="w-full h-[1px] bg-gold-whisper"></div>
+<div class="h-full w-[1px] bg-gold-whisper absolute"></div>
+</div>
+<div class="w-16 h-16 border border-primary/40 rounded-full flex items-center justify-center">
+<span class="font-display-xl-mobile text-display-xl-mobile text-primary tracking-tighter">AS</span>
+</div>
+</div>
+</div>
+<!-- Bottom Card Spec Subtext -->
+<div class="relative z-10 bg-canvas-obsidian/95 p-2 border border-border-hairline flex flex-col">
+<div class="flex justify-between items-baseline">
+<span class="font-headline-sm text-sm text-text-primary font-semibold tracking-wide">Abdulghani Al-Shibami</span>
+<span class="font-label-sm text-label-sm text-primary">NODE #01</span>
+</div>
+<span class="font-label-sm text-label-sm text-text-dim tracking-wider uppercase">// Verified Systems Architect</span>
+</div>
+</div>
+<!-- Editorial Mobile Headline -->
+<div class="flex flex-col gap-space-sm mt-space-xs">
+<div class="inline-flex items-center gap-2">
+<span class="w-2 h-2 bg-primary"></span>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest">Executive Brief // 2025</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-text-primary font-medium tracking-tight">
+            Architecting <span class="font-display-xl-mobile italic text-primary font-normal">Autonomous Intelligence</span> &amp; Mission-Critical Distributed Systems
+          </h1>
+<p class="font-body-md text-body-md text-text-muted mt-1 leading-relaxed">
+            Bridging enterprise distributed computing, high-frequency state machines, and autonomous AI agents with uncompromising mathematical rigor.
+          </p>
+</div>
+<!-- Full-Width Stacked Touch Targets (Ergonomic mobile flow) -->
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<!-- Primary Gold Button -->
+<a class="w-full h-12 bg-canvas-obsidian border border-primary text-text-primary font-label-md text-label-md uppercase tracking-[0.12em] flex items-center justify-between px-space-md hover:bg-gold-whisper active:opacity-80 transition-all duration-150" href="#flagship">
+<span>Explore Projects (12)</span>
+<span class="material-symbols-outlined text-primary text-[18px]">arrow_forward</span>
+</a>
+<!-- Secondary Charcoal Button with Gold Accent -->
+<button class="w-full h-12 bg-surface-elevated border border-border-hairline hover:border-gold-muted text-text-secondary font-label-md text-label-md uppercase tracking-[0.12em] flex items-center justify-between px-space-md active:scale-[0.99] transition-all duration-150" type="button">
+<span class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px] text-primary">terminal</span>
+<span>Launch Interactive Lab</span>
+</span>
+<span class="font-label-sm text-label-sm text-text-dim">v4.8</span>
+</button>
+<!-- Subtle Resume Download Link -->
+<a class="self-center py-2 px-3 font-label-sm text-label-sm text-text-dim hover:text-primary transition-colors flex items-center gap-1.5 uppercase tracking-wider" href="#resume">
+<span class="material-symbols-outlined text-[15px]">download</span>
+<span class="underline decoration-border-hairline underline-offset-4">Download Executive Resume (PDF)</span>
+</a>
+</div>
+</section>
+<!-- 3. MOBILE ENGINEERING TELEMETRY GRID -->
+<section class="flex flex-col gap-space-sm" id="telemetry">
+<div class="flex justify-between items-baseline border-b border-border-hairline pb-2">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest">// 03 TELEMETRY_MATRIX</span>
+<span class="font-label-sm text-label-sm text-text-dim">INVARIANTS: LIVE</span>
+</div>
+<!-- 2x2 High Density Telemetry Cards -->
+<div class="grid grid-cols-2 gap-space-xs">
+<!-- Metric 1 -->
+<div class="bg-surface-elevated border border-border-hairline p-space-md flex flex-col justify-between relative overflow-hidden group hover:border-gold-muted transition-colors">
+<div class="flex justify-between items-center text-text-dim mb-2">
+<span class="font-label-sm text-[9px] uppercase tracking-wider text-text-dim">AuraLedger</span>
+<span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
+</div>
+<div class="font-display-xl-mobile text-[26px] leading-tight text-text-primary font-semibold">
+              145k <span class="text-primary font-label-md text-xs">TPS</span>
+</div>
+<div class="font-label-sm text-label-sm text-text-muted mt-2 border-t border-border-hairline pt-1">
+              Throughput Peak
+            </div>
+</div>
+<!-- Metric 2 -->
+<div class="bg-surface-elevated border border-border-hairline p-space-md flex flex-col justify-between relative overflow-hidden group hover:border-gold-muted transition-colors">
+<div class="flex justify-between items-center text-text-dim mb-2">
+<span class="font-label-sm text-[9px] uppercase tracking-wider text-text-dim">Latency</span>
+<span class="material-symbols-outlined text-[12px] text-primary">speed</span>
+</div>
+<div class="font-display-xl-mobile text-[26px] leading-tight text-text-primary font-semibold">
+              0.8 <span class="text-primary font-label-md text-xs">ms</span>
+</div>
+<div class="font-label-sm text-label-sm text-text-muted mt-2 border-t border-border-hairline pt-1">
+              Consensus p99
+            </div>
+</div>
+<!-- Metric 3 -->
+<div class="bg-surface-elevated border border-border-hairline p-space-md flex flex-col justify-between relative overflow-hidden group hover:border-gold-muted transition-colors">
+<div class="flex justify-between items-center text-text-dim mb-2">
+<span class="font-label-sm text-[9px] uppercase tracking-wider text-text-dim">Execution</span>
+<span class="w-1.5 h-1.5 bg-border-hairline rounded-full"></span>
+</div>
+<div class="font-display-xl-mobile text-[26px] leading-tight text-text-primary font-semibold">
+              10M+
+            </div>
+<div class="font-label-sm text-label-sm text-text-muted mt-2 border-t border-border-hairline pt-1">
+              Daily Operations
+            </div>
+</div>
+<!-- Metric 4 -->
+<div class="bg-surface-elevated border border-border-hairline p-space-md flex flex-col justify-between relative overflow-hidden group hover:border-gold-muted transition-colors">
+<div class="flex justify-between items-center text-text-dim mb-2">
+<span class="font-label-sm text-[9px] uppercase tracking-wider text-primary">Formal Proof</span>
+<span class="material-symbols-outlined text-[12px] text-primary">verified</span>
+</div>
+<div class="font-display-xl-mobile text-[26px] leading-tight text-text-primary font-semibold">
+              100%
+            </div>
+<div class="font-label-sm text-label-sm text-text-muted mt-2 border-t border-border-hairline pt-1">
+              TLA+ Verified
+            </div>
+</div>
+</div>
+</section>
+<!-- 4. FEATURED FLAGSHIP MOBILE PROJECT CARD -->
+<section class="flex flex-col gap-space-sm" id="flagship">
+<div class="flex justify-between items-baseline border-b border-border-hairline pb-2">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest">// 02 AURALEDGER_SPECS</span>
+<span class="font-label-sm text-label-sm text-text-dim">SYSTEM_CORE</span>
+</div>
+<!-- Architectural Bento Panel -->
+<article class="bg-surface-elevated border border-gold-muted p-space-md flex flex-col gap-space-md relative overflow-hidden">
+<!-- Subtle Specular Corner Tag -->
+<div class="flex items-center justify-between">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 bg-canvas-obsidian border border-gold-muted/40 font-label-sm text-[9px] text-primary tracking-wider uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+              PRODUCTION VERIFIED
+            </div>
+<span class="font-label-sm text-label-sm text-text-dim uppercase tracking-wider">RUN #4092</span>
+</div>
+<!-- Title & Editorial Description -->
+<div class="flex flex-col gap-1">
+<h2 class="font-headline-sm text-headline-sm text-text-primary font-semibold">
+              AuraLedger: Distributed Consensus Engine
+            </h2>
+<p class="font-body-sm text-body-sm text-text-muted leading-relaxed">
+              Ultra-low latency, Byzantine-tolerant distributed state machine built on custom lock-free memory rings and non-blocking I/O.
+            </p>
+</div>
+<!-- Technical Stack Badges -->
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 bg-canvas-obsidian border border-border-hairline font-label-sm text-label-sm text-text-secondary">
+              C# .NET 9
+            </span>
+<span class="px-2 py-0.5 bg-canvas-obsidian border border-border-hairline font-label-sm text-label-sm text-text-secondary">
+              Raft Consensus
+            </span>
+<span class="px-2 py-0.5 bg-canvas-obsidian border border-border-hairline font-label-sm text-label-sm text-text-secondary">
+              Memory-Mapped Ring Buffers
+            </span>
+</div>
+<!-- Technical Micro-Telemetry Strip -->
+<div class="grid grid-cols-3 gap-2 bg-canvas-obsidian p-space-sm border border-border-hairline font-label-sm">
+<div class="flex flex-col">
+<span class="text-text-dim text-[9px] uppercase">Throughput</span>
+<span class="font-semibold text-text-primary">145k tx/s</span>
+</div>
+<div class="flex flex-col border-x border-border-hairline px-2">
+<span class="text-text-dim text-[9px] uppercase">p99 Latency</span>
+<span class="font-semibold text-primary">0.8 ms</span>
+</div>
+<div class="flex flex-col pl-1">
+<span class="text-text-dim text-[9px] uppercase">SLA Target</span>
+<span class="font-semibold text-text-primary">99.999%</span>
+</div>
+</div>
+<!-- Action Row -->
+<div class="flex items-center gap-space-xs pt-1">
+<a class="flex-1 h-10 bg-canvas-obsidian border border-primary hover:bg-gold-whisper text-text-primary font-label-md text-label-md uppercase tracking-wider flex items-center justify-center gap-2 transition-colors" href="#casestudy">
+<span>View Case Study</span>
+<span class="material-symbols-outlined text-[15px] text-primary">arrow_outward</span>
+</a>
+<button aria-label="Launch AuraLedger Demo" class="w-10 h-10 bg-canvas-obsidian border border-border-hairline hover:border-gold-muted text-primary flex items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">play_arrow</span>
+</button>
+<button aria-label="View Source Code Repository" class="w-10 h-10 bg-canvas-obsidian border border-border-hairline hover:border-gold-muted text-text-dim hover:text-text-primary flex items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">code</span>
+</button>
+</div>
+</article>
+</section>
+<!-- 5. MOBILE THEME TRANSFORMATION PREVIEW CARD -->
+<section class="flex flex-col gap-space-sm" id="dual-theme">
+<div class="flex justify-between items-baseline border-b border-border-hairline pb-2">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest">// 04 SYSTEM_PALETTE</span>
+<span class="font-label-sm text-label-sm text-text-dim">DUAL_CORE</span>
+</div>
+<div class="bg-surface-elevated border border-border-hairline p-space-md flex flex-col gap-space-md">
+<div class="flex flex-col gap-1">
+<h3 class="font-headline-sm text-lg text-text-primary font-medium">
+              Seamless Dual-Theme &amp; RTL Architecture
+            </h3>
+<p class="font-body-sm text-body-sm text-text-muted">
+              Engineered with bilateral state support. Effortlessly toggles between the commanding Obsidian Night and the pristine Porcelain Architectural daylight skin.
+            </p>
+</div>
+<!-- Split Visual Preview Deck -->
+<div class="w-full h-24 border border-border-hairline flex relative overflow-hidden">
+<!-- Left Side: Obsidian -->
+<div class="w-1/2 h-full bg-canvas-obsidian p-2.5 flex flex-col justify-between border-r border-gold-muted/50">
+<span class="font-label-sm text-[9px] text-primary tracking-widest uppercase">Obsidian Mode</span>
+<div class="flex items-center gap-1">
+<span class="w-2.5 h-2.5 bg-primary"></span>
+<span class="font-headline-sm text-xs text-text-primary font-semibold">Dark / Precision</span>
+</div>
+</div>
+<!-- Right Side: Porcelain Preview -->
+<div class="w-1/2 h-full bg-[#F9F9FB] p-2.5 flex flex-col justify-between text-[#0D1C2D]">
+<span class="font-label-sm text-[9px] text-[#997A15] tracking-widest uppercase font-semibold">Porcelain Mode</span>
+<div class="flex items-center gap-1">
+<span class="w-2.5 h-2.5 bg-[#D4AF37]"></span>
+<span class="font-headline-sm text-xs text-[#0D1C2D] font-semibold">Light / Architectural</span>
+</div>
+</div>
+</div>
+<!-- Toggle Pill Interactive Control -->
+<button class="w-full py-2.5 px-3 bg-canvas-obsidian border border-gold-muted/50 hover:border-primary text-text-secondary font-label-sm text-label-sm flex items-center justify-between uppercase tracking-wider transition-all" id="previewTogglePill" type="button">
+<span class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+<span id="themePillLabel">Obsidian Mode Active</span>
+</span>
+<span class="text-primary flex items-center gap-1 font-semibold">
+              Preview Light
+              <span class="material-symbols-outlined text-[14px]">sync_alt</span>
+</span>
+</button>
+</div>
+</section>
+</main>
+<!-- 6. COLOPHON & FOOTER (Shared Component Exact Match) -->
+<footer class="flex flex-col gap-space-md px-margin-mobile py-space-xl border-t border-border-hairline bg-canvas-obsidian mt-auto" id="colophon">
+<!-- Footer Top Links Stack -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm font-label-sm text-label-sm">
+<a class="text-text-dim hover:text-primary transition-colors" href="#terminal">TERMINAL</a>
+<a class="text-text-dim hover:text-primary transition-colors" href="#publickey">PUBLIC_KEY</a>
+<a class="text-text-dim hover:text-primary transition-colors" href="#manifest">MANIFEST</a>
+<a class="text-primary underline decoration-primary underline-offset-4 flex items-center gap-0.5" href="#hero">
+<span>BACK_TO_TOP</span>
+<span class="material-symbols-outlined text-[13px]">arrow_upward</span>
+</a>
+</div>
+<!-- Social & Technical Coordinates -->
+<div class="flex justify-between items-center pt-space-xs border-t border-border-hairline/60">
+<div class="flex items-center gap-4 text-text-dim font-label-sm">
+<a class="hover:text-primary transition-colors" href="https://github.com" rel="noreferrer" target="_blank">GitHub</a>
+<a class="hover:text-primary transition-colors" href="https://linkedin.com" rel="noreferrer" target="_blank">LinkedIn</a>
+<a class="hover:text-primary transition-colors" href="mailto:contact@shibami.io">Email</a>
+<a class="hover:text-primary transition-colors" href="#notes">Notes</a>
+</div>
+<span class="font-label-sm text-[10px] text-primary">SYS_OK</span>
+</div>
+<!-- Legal Systems Copyright Text -->
+<div class="flex flex-col gap-1 text-text-dim font-label-sm text-[10px] leading-relaxed pt-space-xs">
+<p>© 2025 ABDULGHANI AL-SHIBAMI. ALL RIGHTS RESERVED. SPEC_VERSION: 4.8.2</p>
+<p class="text-text-dim/80">Precision Systems &amp; Sovereign Architecture. Lat: 24.7136° N, Lon: 46.6753° E.</p>
+</div>
+</footer>
+<!-- Floating Quick Back-To-Top Tactile Action -->
+<a aria-label="Return to top" class="fixed bottom-6 right-6 z-30 w-10 h-10 bg-canvas-obsidian/90 backdrop-blur-md border border-gold-muted text-primary hover:bg-gold-whisper flex items-center justify-center shadow-lg active:scale-95 transition-all" href="#hero">
+<span class="material-symbols-outlined text-[18px]">keyboard_arrow_up</span>
+</a>
+</div>
+<!-- Vanilla Micro-Interactions Script for Mobile Drawer and Palette Simulation -->
+<script>
+    // Navigation Drawer Toggle Logic
+    const drawerToggleBtn = document.getElementById('drawerToggleBtn');
+    const drawerCloseBtn = document.getElementById('drawerCloseBtn');
+    const drawerOverlay = document.getElementById('drawerOverlay');
+    const drawerPanel = document.getElementById('drawerPanel');
+    const drawerLinks = drawerPanel.querySelectorAll('a');
+
+    function openDrawer() {
+      drawerOverlay.classList.remove('opacity-0', 'pointer-events-none');
+      drawerOverlay.classList.add('opacity-100');
+      drawerPanel.classList.remove('-translate-x-full');
+      drawerPanel.classList.add('translate-x-0');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDrawer() {
+      drawerOverlay.classList.remove('opacity-100');
+      drawerOverlay.classList.add('opacity-0', 'pointer-events-none');
+      drawerPanel.classList.remove('translate-x-0');
+      drawerPanel.classList.add('-translate-x-full');
+      document.body.style.overflow = '';
+    }
+
+    drawerToggleBtn.addEventListener('click', openDrawer);
+    drawerCloseBtn.addEventListener('click', closeDrawer);
+    drawerOverlay.addEventListener('click', (e) => {
+      if (e.target === drawerOverlay) closeDrawer();
+    });
+
+    drawerLinks.forEach(link => {
+      link.addEventListener('click', closeDrawer);
+    });
+
+    // Theme Preview Switcher Micro-interaction
+    const previewTogglePill = document.getElementById('previewTogglePill');
+    const themePillLabel = document.getElementById('themePillLabel');
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    let isLightPreview = false;
+
+    function toggleThemePreview() {
+      isLightPreview = !isLightPreview;
+      if (isLightPreview) {
+        document.documentElement.classList.remove('dark');
+        themePillLabel.textContent = "Porcelain Mode Active";
+        themeToggleBtn.innerHTML = '<span class="material-symbols-outlined text-[16px]">light_mode</span>';
+      } else {
+        document.documentElement.classList.add('dark');
+        themePillLabel.textContent = "Obsidian Mode Active";
+        themeToggleBtn.innerHTML = '<span class="material-symbols-outlined text-[16px]">dark_mode</span>';
+      }
+    }
+
+    previewTogglePill.addEventListener('click', toggleThemePreview);
+    themeToggleBtn.addEventListener('click', toggleThemePreview);
+  </script>
+</body></html>

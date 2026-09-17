@@ -1,0 +1,32 @@
+{
+  "referenceNumber": "02",
+  "referenceName": "Home — Desktop — Light — English",
+  "stitchScreenId": "17202556a5ce4788a4ae611fcbe0981b",
+  "stitchProjectId": "1524242436626085687",
+  "designSystem": "assets/aeacd8808ba444a48c73a9930c0ac71a",
+  "viewport": "DESKTOP (1440px / 2560px)",
+  "theme": "LIGHT",
+  "language": "English (en)",
+  "direction": "LTR",
+  "screenshotFile": "screenshot.png",
+  "htmlFile": "screen.html",
+  "sections": [
+    "Top Navigation Bar with refined uppercase tracking, theme toggle, and language switcher",
+    "Hero Section with [PROFILE_IMAGE] architectural coordinates reticle, monogram 'AS', Executive Title, Subtitle, Solid Royal Gold CTA (Explore Projects), Outline Secondary CTA (Get in Touch)",
+    "High-Impact Executive Metrics Counter Strip (5+ Years Experience, 20+ Systems Built, 100% Production Grade, 99.99% Availability)",
+    "Curated Systems Architecture Preview (3-column crisp white cards with hairline sand-gold borders)",
+    "Technical Mastery & Architectural Toolkit Matrix (Core Systems, Cloud & DevOps, Data & Streaming, Architecture)",
+    "Direct Dispatch & Advisory Consultation Banner with Royal Gold Action",
+    "Clean Luxury Editorial Footer with Brand Stamp and Colophon"
+  ],
+  "designTokens": {
+    "background": "#FBFBFD",
+    "surface": "#FFFFFF",
+    "surfaceLow": "#F3F3F6",
+    "accent": "#997A15",
+    "accentGold": "#D4AF37",
+    "textPrimary": "#0F172A",
+    "textSecondary": "#475569",
+    "border": "#E2D9C8"
+  }
+}

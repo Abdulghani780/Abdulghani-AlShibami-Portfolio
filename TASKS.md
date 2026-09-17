@@ -28,7 +28,7 @@
 - **TITLE:** Root Governance Files Generation
 - **PHASE:** 01
 - **PRIORITY:** P0
-- **STATUS:** IN_PROGRESS
+- **STATUS:** COMPLETED
 - **DESCRIPTION:** Create root governance files (`README.md`, `AGENTS.md`, `SKILLS.md`, `MCP.md`, `PROMPTS.md`, `ROADMAP.md`, `TASKS.md`, `PROGRESS.md`, `IMPLEMENTATION_LOG.md`, `CHANGELOG.md`).
 - **DEPENDENCIES:** TSK-001
 - **FILES:** Root directory Markdown files
@@ -40,7 +40,7 @@
 - **TITLE:** Comprehensive `docs/` Specification System
 - **PHASE:** 01
 - **PRIORITY:** P0
-- **STATUS:** READY
+- **STATUS:** COMPLETED
 - **DESCRIPTION:** Create the 37 canonical documentation files in `docs/` (00 to 36).
 - **DEPENDENCIES:** TSK-010
 - **FILES:** `docs/*`
@@ -50,7 +50,22 @@
 
 ---
 
-### PHASE 02 — Technical & Product Architecture
+### PHASE 02 — Visual Design References & Design Tokens (URGENT DESIGN GATE)
+- **ID:** `TSK-025`
+- **TITLE:** Visual Design Reference Generation Gate (12/12 Completed)
+- **PHASE:** 02
+- **PRIORITY:** P0
+- **STATUS:** COMPLETED
+- **DESCRIPTION:** Generate exactly 12 primary visual references via StitchMCP, store screenshots, HTML blueprints, and meta.json in `design-references/01` to `12`, document in `docs/VISUAL_DESIGN_REFERENCE.md`, and extract tokens into `docs/07_DESIGN_SYSTEM.md`, `docs/06_UI_UX_SPECIFICATION.md`, and `docs/09_PAGE_SPECIFICATIONS.md`.
+- **DEPENDENCIES:** TSK-011
+- **FILES:** `design-references/*`, `docs/VISUAL_DESIGN_REFERENCE.md`, `docs/07_DESIGN_SYSTEM.md`, `docs/06_UI_UX_SPECIFICATION.md`, `docs/09_PAGE_SPECIFICATIONS.md`
+- **DATABASE IMPACT:** None
+- **TESTS:** Verification of 36 files across 12 directories, WCAG contrast checks, RTL layout checks, Stitch screen IDs verification.
+- **DEFINITION OF DONE:** Exactly 12 references generated, stored, documented, and design tokens extracted.
+
+---
+
+### PHASE 03 — Technical & Product Architecture
 - **ID:** `TSK-020`
 - **TITLE:** Architecture & Tech Stack Specifications
 - **PHASE:** 02

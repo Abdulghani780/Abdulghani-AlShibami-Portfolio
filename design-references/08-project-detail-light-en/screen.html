@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AuraLedger — Enterprise Distributed Consensus Engine | Architectural Monograph</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-container": "#cba72f",
+            "on-secondary-fixed-variant": "#584400",
+            "on-surface": "#1a1c1d",
+            "on-secondary": "#ffffff",
+            "on-tertiary-container": "#4e3d00",
+            "surface-container-lowest": "#ffffff",
+            "primary-fixed-dim": "#bec6e0",
+            "tertiary-fixed": "#ffe088",
+            "surface-bright": "#f9f9fb",
+            "on-background": "#1a1c1d",
+            "on-tertiary-fixed-variant": "#574500",
+            "on-primary-fixed-variant": "#3f465c",
+            "primary-container": "#131b2e",
+            "surface-dim": "#d9dadc",
+            "surface": "#f9f9fb",
+            "outline": "#76777d",
+            "on-error-container": "#93000a",
+            "surface-variant": "#e2e2e4",
+            "secondary-fixed": "#ffe08e",
+            "primary": "#000000",
+            "on-tertiary-fixed": "#241a00",
+            "on-secondary-fixed": "#241a00",
+            "secondary": "#755b00",
+            "primary-fixed": "#dae2fd",
+            "tertiary-fixed-dim": "#e9c349",
+            "surface-container-low": "#f3f3f5",
+            "error-container": "#ffdad6",
+            "inverse-surface": "#2f3132",
+            "secondary-fixed-dim": "#e8c35a",
+            "inverse-on-surface": "#f0f0f2",
+            "surface-container": "#edeef0",
+            "tertiary": "#735c00",
+            "error": "#ba1a1a",
+            "on-primary-fixed": "#131b2e",
+            "background": "#f9f9fb",
+            "secondary-container": "#fdd66b",
+            "surface-container-high": "#e8e8ea",
+            "on-primary-container": "#7c839b",
+            "on-tertiary": "#ffffff",
+            "on-secondary-container": "#755c00",
+            "on-primary": "#ffffff",
+            "surface-tint": "#565e74",
+            "inverse-primary": "#bec6e0",
+            "outline-variant": "#c6c6cd",
+            "surface-container-highest": "#e2e2e4",
+            "on-surface-variant": "#45464d",
+            "on-error": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-lg": "1.5rem",
+            "gutter": "2rem",
+            "space-xs": "0.25rem",
+            "space-xl": "2.5rem",
+            "space-md": "1rem",
+            "space-3xl": "6rem",
+            "space-2xl": "4rem",
+            "space-sm": "0.5rem",
+            "margin": "4rem",
+            "margin-mobile": "1.25rem",
+            "gutter-mobile": "1rem"
+          },
+          "fontFamily": {
+            "body-sm": ["Geist"],
+            "body-md": ["Geist"],
+            "body-lg": ["Geist"],
+            "title-lg": ["Geist"],
+            "headline-lg": ["Playfair Display"],
+            "code-sm": ["Geist"],
+            "label-sm": ["Geist"],
+            "label-md": ["Geist"],
+            "headline-lg-mobile": ["Playfair Display"],
+            "display-mobile": ["Playfair Display"],
+            "headline-sm": ["Playfair Display"],
+            "title-md": ["Geist"],
+            "display": ["Playfair Display"],
+            "headline-md": ["Playfair Display"]
+          },
+          "fontSize": {
+            "body-sm": ["0.875rem", { "lineHeight": "1.4rem", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "body-md": ["1rem", { "lineHeight": "1.65rem", "letterSpacing": "0em", "fontWeight": "400" }],
+            "body-lg": ["1.125rem", { "lineHeight": "1.85rem", "letterSpacing": "0em", "fontWeight": "400" }],
+            "title-lg": ["1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["3rem", { "lineHeight": "3.5rem", "letterSpacing": "-0.02em", "fontWeight": "500" }],
+            "code-sm": ["0.8125rem", { "lineHeight": "1.25rem", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label-sm": ["0.6875rem", { "lineHeight": "1rem", "letterSpacing": "0.12em", "fontWeight": "600" }],
+            "label-md": ["0.8125rem", { "lineHeight": "1.125rem", "letterSpacing": "0.08em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+            "display-mobile": ["2.75rem", { "lineHeight": "3.25rem", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "headline-sm": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "0em", "fontWeight": "600" }],
+            "title-md": ["1.125rem", { "lineHeight": "1.6rem", "letterSpacing": "0em", "fontWeight": "500" }],
+            "display": ["4.5rem", { "lineHeight": "5rem", "letterSpacing": "-0.03em", "fontWeight": "600" }],
+            "headline-md": ["2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.01em", "fontWeight": "500" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 350, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .sand-hairline {
+      border: 1px solid #E2D9C8;
+    }
+    .sand-hairline-b {
+      border-bottom: 1px solid #E2D9C8;
+    }
+    .sand-hairline-t {
+      border-top: 1px solid #E2D9C8;
+    }
+    .subtle-burnish {
+      background: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<!-- TOP APP BAR -->
+<header class="sticky top-0 w-full z-50 bg-surface-container-lowest/90 backdrop-blur-md shadow-[0_4px_20px_-2px_rgba(15,23,42,0.03)] sand-hairline-b">
+<div class="flex justify-between items-center max-w-[1440px] mx-auto px-margin-mobile md:px-gutter lg:px-margin h-20">
+<!-- Brand Anchor -->
+<div class="flex items-center gap- space-md">
+<a class="font-headline-sm text-headline-sm text-primary tracking-tight font-semibold flex items-center gap-space-xs" href="#">
+<span>AuraLedger</span>
+<span class="text-secondary font-body-sm text-label-sm tracking-widest pl-2 font-mono uppercase hidden sm:inline-block">// ARCHITECT</span>
+</a>
+</div>
+<!-- Navigation Links -->
+<nav class="hidden md:flex items-center gap-space-lg">
+<a class="text-secondary border-b-2 border-secondary font-label-md text-label-md uppercase tracking-wider pb-1 transition-colors duration-200" href="#architecture">Architecture</a>
+<a class="text-on-surface-variant hover:text-primary font-label-md text-label-md uppercase tracking-wider pb-1 transition-colors duration-200" href="#consensus">Consensus</a>
+<a class="text-on-surface-variant hover:text-primary font-label-md text-label-md uppercase tracking-wider pb-1 transition-colors duration-200" href="#benchmarks">Benchmarks</a>
+<a class="text-on-surface-variant hover:text-primary font-label-md text-label-md uppercase tracking-wider pb-1 transition-colors duration-200" href="#topology">Topology</a>
+<a class="text-on-surface-variant hover:text-primary font-label-md text-label-md uppercase tracking-wider pb-1 transition-colors duration-200" href="#specs">Specs</a>
+</nav>
+<!-- Trailing Action Cluster -->
+<div class="flex items-center gap-space-sm">
+<div class="hidden lg:flex items-center text-label-sm font-label-sm text-on-surface-variant px-space-sm py-1 border border-outline-variant/40 rounded-lg">
+<span class="text-primary font-semibold">EN</span>
+<span class="mx-1 text-outline-variant">|</span>
+<span class="hover:text-secondary cursor-pointer">AR</span>
+</div>
+<button class="p-2 text-on-surface-variant hover:text-secondary transition-colors duration-200" title="Terminal Console">
+<span class="material-symbols-outlined text-[20px]" data-icon="terminal">terminal</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-secondary transition-colors duration-200" title="Share Monograph">
+<span class="material-symbols-outlined text-[20px]" data-icon="share">share</span>
+</button>
+<a class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#E2D9C8] hover:border-secondary text-primary font-label-md text-label-md uppercase tracking-wider transition-all duration-200" href="#whitepaper">
+          Whitepaper
+        </a>
+<a class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider hover:bg-slate-800 transition-all duration-200 shadow-sm" href="#simulation">
+<span>GitHub</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="code">code</span>
+</a>
+</div>
+</div>
+</header>
+<main class="subtle-burnish">
+<!-- CASE STUDY HERO SECTION -->
+<section class="max-w-[1440px] mx-auto px-margin-mobile md:px-gutter lg:px-margin pt-space-2xl pb-space-3xl">
+<!-- Breadcrumb & Context Kickers -->
+<div class="flex flex-wrap items-center justify-between gap-4 mb-space-lg">
+<nav class="flex items-center gap-2 font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">
+<a class="hover:text-secondary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[14px]" data-icon="arrow_back">arrow_back</span>
+            Back to Projects
+          </a>
+<span class="text-outline-variant">/</span>
+<span>Systems &amp; Distributed Computing</span>
+<span class="text-outline-variant">/</span>
+<span class="text-secondary font-semibold">AuraLedger</span>
+</nav>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm uppercase tracking-widest sand-hairline">
+<span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+            PRODUCTION SHOWCASE // 2025
+          </span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-fixed/40 text-secondary font-label-sm text-label-sm uppercase tracking-widest border border-secondary/20">
+<span class="material-symbols-outlined text-[12px]" data-icon="verified">verified</span>
+            FORMALLY VERIFIED TLA+
+          </span>
+</div>
+</div>
+<!-- Hero Titles -->
+<div class="max-w-5xl">
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight leading-none mb-space-md">
+          AuraLedger <span class="text-secondary font-normal italic">—</span> High-Throughput Raft &amp; Gossip Distributed Consensus Engine
+        </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-4xl leading-relaxed mb-space-xl">
+          A mission-critical distributed state machine replicating transactional financial ledgers at sub-millisecond p99 latencies across partitioned cloud topologies with zero stop-the-world garbage collection pause anomalies.
+        </p>
+</div>
+<!-- Executive Metadata Strip -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 p-space-md bg-surface-container-lowest rounded-lg sand-hairline shadow-[0_4px_20px_-2px_rgba(15,23,42,0.03)] mb-space-xl">
+<div class="border-r border-[#E2D9C8]/60 pr-4 last:border-none">
+<div class="font-label-sm text-label-sm text-secondary uppercase tracking-wider mb-1">Architecture Substrate</div>
+<div class="font-title-md text-title-md text-primary">C# .NET 9 Core / Linux Native</div>
+</div>
+<div class="border-r border-[#E2D9C8]/60 pr-4 last:border-none">
+<div class="font-label-sm text-label-sm text-secondary uppercase tracking-wider mb-1">Consensus Algorithm</div>
+<div class="font-title-md text-title-md text-primary">Optimized Raft + Speculative Pre-Vote</div>
+</div>
+<div class="border-r border-[#E2D9C8]/60 pr-4 last:border-none">
+<div class="font-label-sm text-label-sm text-secondary uppercase tracking-wider mb-1">Architectural Role</div>
+<div class="font-title-md text-title-md text-primary">Chief Systems Architect</div>
+</div>
+<div>
+<div class="font-label-sm text-label-sm text-secondary uppercase tracking-wider mb-1">Storage Subsystem</div>
+<div class="font-title-md text-title-md text-primary">Vectorized WAL + Circular Arenas</div>
+</div>
+</div>
+<!-- Action Button Row -->
+<div class="flex flex-wrap items-center gap-space-md">
+<a class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-lg bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider hover:bg-slate-800 transition-all duration-200 shadow-[0_10px_25px_-5px_rgba(15,23,42,0.15)]" href="#simulation">
+<span class="material-symbols-outlined text-[18px] text-secondary-fixed" data-icon="play_circle">play_circle</span>
+          Launch Interactive Web Simulation
+        </a>
+<a class="inline-flex items-center gap-2.5 px-5 py-3.5 rounded-lg bg-surface-container-lowest text-primary sand-hairline hover:border-secondary transition-all duration-200 font-label-md text-label-md uppercase tracking-wider shadow-sm" href="#topology">
+<span class="material-symbols-outlined text-[18px]" data-icon="code">code</span>
+          View Source On GitHub
+        </a>
+<a class="inline-flex items-center gap-2.5 px-5 py-3.5 text-primary hover:text-secondary transition-colors duration-200 font-label-md text-label-md uppercase tracking-wider underline underline-offset-8 decoration-[#E2D9C8]" href="#whitepaper">
+<span class="material-symbols-outlined text-[18px]" data-icon="description">description</span>
+          Architecture Whitepaper (PDF)
+        </a>
+</div>
+</section>
+<!-- KEY TELEMETRY & BENCHMARK HERO METRICS (4 CARDS) -->
+<section class="max-w-[1440px] mx-auto px-margin-mobile md:px-gutter lg:px-margin pb-space-3xl">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-lg">
+<!-- Metric Card 1 -->
+<div class="p-space-lg bg-surface-container-lowest rounded-lg sand-hairline shadow-[0_4px_20px_-2px_rgba(15,23,42,0.03)] hover:border-secondary transition-all duration-200">
+<div class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-3">Deterministic Throughput</div>
+<div class="font-headline-lg text-headline-lg text-primary tracking-tight mb-2">145<span class="text-secondary font-title-lg">k</span></div>
+<div class="font-label-md text-label-md text-on-surface font-semibold mb-1">tx / second committed</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Sustained burst load benchmarked across 5-node cluster with zero drop-off.</p>
+</div>
+<!-- Metric Card 2 -->
+<div class="p-space-lg bg-surface-container-lowest rounded-lg sand-hairline shadow-[0_4px_20px_-2px_rgba(15,23,42,0.03)] hover:border-secondary transition-all duration-200">
+<div class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-3">Quorum Latency Profile</div>
+<div class="font-headline-lg text-headline-lg text-primary tracking-tight mb-2">0.8<span class="text-secondary font-title-lg">ms</span></div>
+<div class="font-label-md text-label-md text-on-surface font-semibold mb-1">p99 End-to-End Consensus</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Cross-region consensus sync including disk flush and network dispatch.</p>
+</div>
+<!-- Metric Card 3 -->
+<div class="p-space-lg bg-surface-container-lowest rounded-lg sand-hairline shadow-[0_4px_20px_-2px_rgba(15,23,42,0.03)] hover:border-secondary transition-all duration-200">
+<div class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-3">Continuous Resilience</div>
+<div class="font-headline-lg text-headline-lg text-primary tracking-tight mb-2">99.999<span class="text-secondary font-title-lg">%</span></div>
+<div class="font-label-md text-label-md text-on-surface font-semibold mb-1">High Availability SLA</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Zero uncoordinated service halts; autonomous split recovery without operator intervention.</p>
+</div>
+<!-- Metric Card 4 -->
+<div class="p-space-lg bg-surface-container-lowest rounded-lg sand-hairline shadow-[0_4px_20px_-2px_rgba(15,23,42,0.03)] hover:border-secondary transition-all duration-200">
+<div class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-3">Partition Invariant</div>
+<div class="font-headline-lg text-headline-lg text-primary tracking-tight mb-2">RPO=0</div>
+<div class="font-label-md text-label-md text-on-surface font-semibold mb-1">RTO &lt; 1.2s Failover</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Formally verified across 10,000,000 synthetic partition and packet-drop chaos runs.</p>
+</div>
+</div>
+</section>
+<!-- EXECUTIVE PROBLEM & ARCHITECTURAL SOLUTION SPLIT GRID -->
+<section class="max-w-[1440px] mx-auto px-margin-mobile md:px-gutter lg:px-margin pb-space-3xl" id="architecture">
+<div class="mb-space-lg">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Architectural Context</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">The Consensus Conundrum: Latency vs. Guarantees</h2>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-xl">
+<!-- Problem Card -->
+<div class="p-space-xl bg-surface-container-lowest rounded-lg sand-hairline shadow-[0_4px_20px_-2px_rgba(15,23,42,0.03)] relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-error"></div>
+<div class="font-label-sm text-label-sm text-error uppercase tracking-widest mb-2 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]" data-icon="report_problem">report_problem</span>
+            01. The Engineering Challenge
+          </div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-space-md">Vulnerabilities in Traditional Settlement Pipelines</h3>
+<div class="space-y-space-md font-body-md text-body-md text-on-surface-variant leading-relaxed">
+<p>
+              High-frequency financial settlement networks operating under volatile 60,000+ tx/s transaction storms traditionally suffer from synchronous state pauses. When legacy Java or Go based distributed state machines experience GC stop-the-world spikes, heartbeats miss their deadlines.
+            </p>
+<p>
+              This trigger cascade causes disruptive leadership flapping, network partitions, split-brain scenarios, and duplicate state entries. Conventional WAL (Write-Ahead Logging) storage engines introduce heavy memory allocations, causing buffer churn and non-deterministic disk tail latencies exceeding 45 milliseconds.
+            </p>
+</div>
+<div class="mt-space-lg p-space-md bg-surface-container-low rounded-lg sand-hairline">
+<div class="font-label-sm text-label-sm text-primary uppercase tracking-widest mb-2 font-semibold">Critical Failure Modes Identified</div>
+<ul class="space-y-2 font-body-sm text-body-sm text-on-surface-variant">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-error text-[16px] mt-0.5" data-icon="close">close</span>
+                Gen2 Managed Heap Garbage Collection jitter creating phantom node deaths.
+              </li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-error text-[16px] mt-0.5" data-icon="close">close</span>
+                Double-spend vulnerabilities during transient asymmetric routing partitions.
+              </li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-error text-[16px] mt-0.5" data-icon="close">close</span>
+                Synchronous serialization overhead degrading multi-tenant throughput.
+              </li>
+</ul>
+</div>
+</div>
+<!-- Solution Card -->
+<div class="p-space-xl bg-surface-container-lowest rounded-lg sand-hairline shadow-[0_4px_20px_-2px_rgba(15,23,42,0.03)] relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-secondary"></div>
+<div class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-2 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]" data-icon="check_circle">check_circle</span>
+            02. The Architectural Solution
+          </div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-space-md">Deterministic Execution Without Stop-the-World Pauses</h3>
+<div class="space-y-space-md font-body-md text-body-md text-on-surface-variant leading-relaxed">
+<p>
+              AuraLedger solves non-determinism by pairing an aggressively optimized, speculative pre-vote Raft dialect with a zero-allocation unmanaged memory substrate written on C# .NET 9. By completely bypassing the managed Garbage Collector for all critical path log writes, latency collapses to sub-millisecond constants.
+            </p>
+<p>
+              State transactions are written into lock-free circular memory-mapped ring buffers utilizing direct kernel IO ring calls. Bounded lease-reads allow reads to execute entirely locally from the leader without inter-node round-trips while mathematically preserving linearizability.
+            </p>
+</div>
+<div class="mt-space-lg p-space-md bg-secondary-fixed/15 rounded-lg border border-secondary/30">
+<div class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-2 font-semibold">Architectural Breakthroughs</div>
+<ul class="space-y-2 font-body-sm text-body-sm text-on-surface">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-[16px] mt-0.5" data-icon="check">check</span>
+                Zero-copy serialization with Span&lt;T&gt; and direct off-heap native memory layout.
+              </li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-[16px] mt-0.5" data-icon="check">check</span>
+                Speculative Pre-Vote mechanism to immunize cluster from partitioned stale terms.
+              </li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-[16px] mt-0.5" data-icon="check">check</span>
+                Direct NVMe vectorized disk journal achieving sustained 145k IOPS saturation.
+              </li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- INTERACTIVE SYSTEM TOPOLOGY & DATA PIPELINE FLOW DIAGRAM -->
+<section class="max-w-[1440px] mx-auto px-margin-mobile md:px-gutter lg:px-margin pb-space-3xl" id="topology">
+<div class="p-space-xl bg-surface-container-lowest rounded-lg sand-hairline shadow-[0_4px_20px_-2px_rgba(15,23,42,0.03)]">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-space-xl border-b border-[#E2D9C8]/60 pb-space-md">
+<div>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">End-to-End Execution Topology</span>
+<h2 class="font-headline-sm text-headline-sm text-primary tracking-tight">Replication Pipeline &amp; Quorum Topology</h2>
+</div>
+<!-- Live Status Telemetry Pill -->
+<div class="flex items-center gap-3 px-4 py-2 bg-surface-container-low rounded-lg sand-hairline">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+<div class="font-label-sm text-label-sm text-on-surface font-mono">
+              QUORUM: 5/5 ACTIVE | IPC: &lt; 0.4ms | HEARTBEAT: 50ms
+            </div>
+</div>
+</div>
+<!-- Visual Flow Diagram -->
+<div class="grid grid-cols-1 md:grid-cols-5 gap-4 relative">
+<!-- Stage 1 -->
+<div class="p-4 bg-surface-container-low rounded-lg sand-hairline flex flex-col justify-between">
+<div>
+<div class="font-label-sm text-label-sm text-secondary uppercase tracking-wider mb-2">Stage 01</div>
+<div class="font-title-md text-title-md text-primary mb-1">Ingestion Gate</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mb-3">Bi-directional gRPC Stream over HTTP/3 with Protobuf zero-copy payload.</div>
+</div>
+<div class="font-code-sm text-code-sm font-mono text-secondary bg-surface-container-lowest p-2 rounded sand-hairline">
+              ingress_tps: 145,120
+            </div>
+</div>
+<!-- Connector -->
+<div class="hidden md:flex items-center justify-center -mx-2 z-10">
+<span class="material-symbols-outlined text-secondary text-[24px]" data-icon="east">east</span>
+</div>
+<!-- Stage 2 -->
+<div class="p-4 bg-surface-container-low rounded-lg sand-hairline flex flex-col justify-between">
+<div>
+<div class="font-label-sm text-label-sm text-secondary uppercase tracking-wider mb-2">Stage 02</div>
+<div class="font-title-md text-title-md text-primary mb-1">Ring Buffer</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mb-3">Lock-free LMAX Disruptor pattern queue holding inflight ledger proposals.</div>
+</div>
+<div class="font-code-sm text-code-sm font-mono text-secondary bg-surface-container-lowest p-2 rounded sand-hairline">
+              arena_alloc: 0_bytes
+            </div>
+</div>
+<!-- Stage 3 (Leader Highlight) -->
+<div class="p-4 bg-surface-container-lowest rounded-lg border-2 border-secondary shadow-md flex flex-col justify-between relative">
+<div class="absolute -top-3 left-4 px-2 py-0.5 bg-secondary text-on-secondary font-label-sm text-label-sm rounded uppercase">
+              LEADER NODE
+            </div>
+<div>
+<div class="font-label-sm text-label-sm text-secondary uppercase tracking-wider mb-2">Stage 03</div>
+<div class="font-title-md text-title-md text-primary mb-1">Raft Leader Engine</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mb-3">State machine dispatch, speculative pre-vote consensus orchestration.</div>
+</div>
+<div class="font-code-sm text-code-sm font-mono text-primary font-semibold bg-secondary-fixed/30 p-2 rounded border border-secondary/20">
+              term: 54092 | quorum: 3/5
+            </div>
+</div>
+<!-- Stage 4 -->
+<div class="p-4 bg-surface-container-low rounded-lg sand-hairline flex flex-col justify-between">
+<div>
+<div class="font-label-sm text-label-sm text-secondary uppercase tracking-wider mb-2">Stage 04</div>
+<div class="font-title-md text-title-md text-primary mb-1">Vectorized WAL</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mb-3">Direct NVMe unbuffered ring write with 512-byte sector memory alignment.</div>
+</div>
+<div class="font-code-sm text-code-sm font-mono text-secondary bg-surface-container-lowest p-2 rounded sand-hairline">
+              fsync_p99: 0.22ms
+            </div>
+</div>
+<!-- Stage 5 -->
+<div class="p-4 bg-surface-container-low rounded-lg sand-hairline flex flex-col justify-between">
+<div>
+<div class="font-label-sm text-label-sm text-secondary uppercase tracking-wider mb-2">Stage 05</div>
+<div class="font-title-md text-title-md text-primary mb-1">Sharded Store</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mb-3">Immutable append-only ledger partitions committed to Citus / NVMe storage.</div>
+</div>
+<div class="font-code-sm text-code-sm font-mono text-secondary bg-surface-container-lowest p-2 rounded sand-hairline">
+              state: LINEARIZABLE
+            </div>
+</div>
+</div>
+<!-- Interactive Topology Node Matrix -->
+<div class="mt-space-lg pt-space-md border-t border-[#E2D9C8]/60 grid grid-cols-2 md:grid-cols-5 gap-3">
+<div class="p-3 bg-surface-container rounded sand-hairline text-center">
+<div class="font-label-sm text-label-sm text-secondary uppercase">Node Alpha (US-East)</div>
+<div class="font-title-md text-title-md font-semibold text-primary">LEADER</div>
+<span class="inline-block w-2 h-2 rounded-full bg-emerald-500 mt-1"></span>
+</div>
+<div class="p-3 bg-surface-container rounded sand-hairline text-center">
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase">Node Beta (EU-West)</div>
+<div class="font-title-md text-title-md text-on-surface">FOLLOWER</div>
+<span class="inline-block w-2 h-2 rounded-full bg-emerald-500 mt-1"></span>
+</div>
+<div class="p-3 bg-surface-container rounded sand-hairline text-center">
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase">Node Gamma (AP-South)</div>
+<div class="font-title-md text-title-md text-on-surface">FOLLOWER</div>
+<span class="inline-block w-2 h-2 rounded-full bg-emerald-500 mt-1"></span>
+</div>
+<div class="p-3 bg-surface-container rounded sand-hairline text-center">
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase">Node Delta (SA-East)</div>
+<div class="font-title-md text-title-md text-on-surface">FOLLOWER</div>
+<span class="inline-block w-2 h-2 rounded-full bg-emerald-500 mt-1"></span>
+</div>
+<div class="p-3 bg-surface-container rounded sand-hairline text-center">
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase">Node Epsilon (ME-Central)</div>
+<div class="font-title-md text-title-md text-on-surface">FOLLOWER</div>
+<span class="inline-block w-2 h-2 rounded-full bg-emerald-500 mt-1"></span>
+</div>
+</div>
+</div>
+</section>
+<!-- KEY ARCHITECTURAL INNOVATIONS & CORE SUBSYSTEMS (4 CARDS) -->
+<section class="max-w-[1440px] mx-auto px-margin-mobile md:px-gutter lg:px-margin pb-space-3xl" id="consensus">
+<div class="mb-space-lg">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Engineering Innovations</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Four Foundations of Deterministic Consensus</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg">
+<!-- Innovation 1 -->
+<div class="p-space-lg bg-surface-container-lowest rounded-lg sand-hairline shadow-[0_4px_20px_-2px_rgba(15,23,42,0.03)] flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="p-2.5 rounded-lg bg-secondary-fixed/30 text-secondary sand-hairline">
+<span class="material-symbols-outlined text-[24px]" data-icon="memory">memory</span>
+</span>
+<span class="font-code-sm text-code-sm font-mono text-secondary px-2.5 py-1 rounded bg-surface-container-low sand-hairline">
+                NativeMemory::AlignedAlloc
+              </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-2">Zero-Allocation Log Compaction</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">
+              Eliminates log bloat without impeding write paths. Employs background LSM tree merges running entirely in dedicated off-heap native unmanaged arenas. Compaction threads consume isolated CPU cores, ensuring zero GC pressure on the primary Raft replication loop.
+            </p>
+</div>
+<div class="pt-4 border-t border-[#E2D9C8]/60 flex items-center justify-between text-label-sm font-label-sm uppercase tracking-wider text-secondary">
+<span>GC Invariant: 0 bytes/tx</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+<!-- Innovation 2 -->
+<div class="p-space-lg bg-surface-container-lowest rounded-lg sand-hairline shadow-[0_4px_20px_-2px_rgba(15,23,42,0.03)] flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="p-2.5 rounded-lg bg-secondary-fixed/30 text-secondary sand-hairline">
+<span class="material-symbols-outlined text-[24px]" data-icon="speed">speed</span>
+</span>
+<span class="font-code-sm text-code-sm font-mono text-secondary px-2.5 py-1 rounded bg-surface-container-low sand-hairline">
+                O_DIRECT | Span&lt;T&gt;
+              </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-2">Custom Vectorized WAL Engine</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">
+              Bypasses standard operating system page caches via direct disk alignment using unmanaged circular ring arenas. Slices incoming batch frames with high-performance C# Span&lt;T&gt; constructs, packing up to 2,048 state changes per single vectorized NVMe sector commit.
+            </p>
+</div>
+<div class="pt-4 border-t border-[#E2D9C8]/60 flex items-center justify-between text-label-sm font-label-sm uppercase tracking-wider text-secondary">
+<span>Disk I/O: 145,000 IOPS Saturation</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+<!-- Innovation 3 -->
+<div class="p-space-lg bg-surface-container-lowest rounded-lg sand-hairline shadow-[0_4px_20px_-2px_rgba(15,23,42,0.03)] flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="p-2.5 rounded-lg bg-secondary-fixed/30 text-secondary sand-hairline">
+<span class="material-symbols-outlined text-[24px]" data-icon="hub">hub</span>
+</span>
+<span class="font-code-sm text-code-sm font-mono text-secondary px-2.5 py-1 rounded bg-surface-container-low sand-hairline">
+                Speculative Pre-Vote
+              </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-2">Dynamic Quorum &amp; Split-Brain Mitigation</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">
+              A candidate node must successfully complete an unincremented Pre-Vote trial round before triggering term elections. If a partitioned node rejoins with a lagging log index, it is neutralized without disrupting active leadership or invalidating active linearizable leases.
+            </p>
+</div>
+<div class="pt-4 border-t border-[#E2D9C8]/60 flex items-center justify-between text-label-sm font-label-sm uppercase tracking-wider text-secondary">
+<span>Partition Recovery: &lt; 1.2 seconds</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+<!-- Innovation 4 -->
+<div class="p-space-lg bg-surface-container-lowest rounded-lg sand-hairline shadow-[0_4px_20px_-2px_rgba(15,23,42,0.03)] flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="p-2.5 rounded-lg bg-secondary-fixed/30 text-secondary sand-hairline">
+<span class="material-symbols-outlined text-[24px]" data-icon="swap_horiz">swap_horiz</span>
+</span>
+<span class="font-code-sm text-code-sm font-mono text-secondary px-2.5 py-1 rounded bg-surface-container-low sand-hairline">
+                HTTP/3 QUIC + POSIX Shm
+              </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-2">Dual-Protocol RPC Engine</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">
+              Hybrid multiplexing engine combining HTTP/3 QUIC over WAN clusters to eliminate head-of-line packet blocking with POSIX shared-memory memory IPC for intra-node telemetry and local co-located reader processes running at pure bus speed.
+            </p>
+</div>
+<div class="pt-4 border-t border-[#E2D9C8]/60 flex items-center justify-between text-label-sm font-label-sm uppercase tracking-wider text-secondary">
+<span>Inter-Process Latency: 0.08ms</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+</div>
+</section>
+<!-- DEEP TECHNICAL BOTTLENECK ANALYSIS -->
+<section class="max-w-[1440px] mx-auto px-margin-mobile md:px-gutter lg:px-margin pb-space-3xl">
+<div class="p-space-xl bg-surface-container-lowest rounded-lg sand-hairline shadow-[0_4px_20px_-2px_rgba(15,23,42,0.03)]">
+<div class="mb-space-lg">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Hardened Systems Engineering</span>
+<h2 class="font-headline-sm text-headline-sm text-primary tracking-tight">Overcoming Deep Runtime Bottlenecks</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg">
+<!-- Bottleneck 1 -->
+<div class="p-space-md bg-surface-container-low rounded-lg sand-hairline">
+<div class="flex items-center gap-2 mb-2 font-label-sm text-label-sm text-error uppercase tracking-wider font-semibold">
+<span class="material-symbols-outlined text-[18px]" data-icon="warning">warning</span>
+              Challenge 01: .NET Managed Heap Gen2 GC Spikes Under 60k+ TPS
+            </div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-3">
+              Standard heap-allocated byte arrays for network serialization quickly promote to Generation 2 under high throughput. When Gen2 collections fire, background threads halt, triggering false Raft election timeouts and split-brain cascades.
+            </p>
+<div class="p-3 bg-surface-container-lowest rounded sand-hairline">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider block mb-1">Architectural Solution:</span>
+<p class="font-body-sm text-body-sm text-on-surface">
+                Implemented custom unmanaged memory pools (<code class="font-mono text-secondary">NativeMemoryArena</code>) with pinned memory slabs. Zero allocations touch the managed CLR garbage collector on the critical replication trajectory.
+              </p>
+</div>
+</div>
+<!-- Bottleneck 2 -->
+<div class="p-space-md bg-surface-container-low rounded-lg sand-hairline">
+<div class="flex items-center gap-2 mb-2 font-label-sm text-label-sm text-error uppercase tracking-wider font-semibold">
+<span class="material-symbols-outlined text-[18px]" data-icon="electrical_services">electrical_services</span>
+              Challenge 02: Network Partitions &amp; Disruptive Leadership Flapping
+            </div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-3">
+              Isolated nodes reconnecting to the quorum incremented their local terms and broadcast election messages, prematurely forcing legitimate active leaders into follower states and freezing cluster writes for seconds.
+            </p>
+<div class="p-3 bg-surface-container-lowest rounded sand-hairline">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider block mb-1">Architectural Solution:</span>
+<p class="font-body-sm text-body-sm text-on-surface">
+                Engineered speculative pre-vote validation rounds. Isolated nodes must verify reachability to a majority without term increments. Validated via rigorous TLA+ formal verification models.
+              </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- EMPIRICAL BENCHMARK MATRIX (TABLE) -->
+<section class="max-w-[1440px] mx-auto px-margin-mobile md:px-gutter lg:px-margin pb-space-3xl" id="benchmarks">
+<div class="mb-space-lg">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Empirical Telemetry</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Comparative Systems Benchmark Matrix</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">5-Node Cluster | c6i.4xlarge AWS instances | NVMe Direct IO | 100-byte ledger payload</p>
+</div>
+<div class="overflow-x-auto bg-surface-container-lowest rounded-lg sand-hairline shadow-[0_4px_20px_-2px_rgba(15,23,42,0.03)]">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="sand-hairline-b bg-surface-container-low text-on-surface font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-4 px-6">Consensus Engine Substrate</th>
+<th class="py-4 px-6">Max Throughput (tx/s)</th>
+<th class="py-4 px-6">p95 Latency</th>
+<th class="py-4 px-6">p99 Latency</th>
+<th class="py-4 px-6">Memory Footprint</th>
+<th class="py-4 px-6">Partition Failover Time</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#E2D9C8]/60 font-body-sm text-body-sm">
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="py-4 px-6 font-semibold text-primary">Standard Distributed SQL</td>
+<td class="py-4 px-6 text-on-surface font-mono">18,500 tx/s</td>
+<td class="py-4 px-6 text-on-surface font-mono">12.4 ms</td>
+<td class="py-4 px-6 text-error font-mono font-semibold">38.2 ms</td>
+<td class="py-4 px-6 text-on-surface font-mono">4.2 GB (GC Churn)</td>
+<td class="py-4 px-6 text-on-surface font-mono">8.4 seconds</td>
+</tr>
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="py-4 px-6 font-semibold text-primary">Traditional Paxos Java Layer</td>
+<td class="py-4 px-6 text-on-surface font-mono">54,000 tx/s</td>
+<td class="py-4 px-6 text-on-surface font-mono">4.8 ms</td>
+<td class="py-4 px-6 text-on-surface font-mono">14.1 ms</td>
+<td class="py-4 px-6 text-on-surface font-mono">2.8 GB</td>
+<td class="py-4 px-6 text-on-surface font-mono">3.6 seconds</td>
+</tr>
+<tr class="bg-secondary-fixed/15 font-semibold">
+<td class="py-4 px-6 text-primary flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                AuraLedger Core Engine (Ours)
+              </td>
+<td class="py-4 px-6 text-secondary font-mono text-title-md">145,200 tx/s</td>
+<td class="py-4 px-6 text-secondary font-mono">0.32 ms</td>
+<td class="py-4 px-6 text-secondary font-mono">0.81 ms</td>
+<td class="py-4 px-6 text-secondary font-mono">180 MB (Deterministic)</td>
+<td class="py-4 px-6 text-secondary font-mono">&lt; 1.2 seconds</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- INTERACTIVE BROWSER SIMULATION CALLOUT BANNER -->
+<section class="max-w-[1440px] mx-auto px-margin-mobile md:px-gutter lg:px-margin pb-space-3xl" id="simulation">
+<div class="p-space-xl bg-surface-container-lowest rounded-lg border-2 border-secondary shadow-[0_20px_35px_-8px_rgba(15,23,42,0.06)] relative overflow-hidden">
+<div class="relative z-10 max-w-3xl">
+<div class="flex items-center gap-2 mb-2 font-label-sm text-label-sm text-secondary uppercase tracking-widest font-semibold">
+<span class="material-symbols-outlined text-[18px]" data-icon="terminal">terminal</span>
+            Interactive Sandboxed Environment
+          </div>
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight mb-space-sm leading-tight">
+            Experience the AuraLedger Consensus Cluster in Real Time
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-space-lg">
+            Directly test Byzantine packet loss, trigger asynchronous partition splits, and inspect deterministic log replication with our in-browser WebAssembly cluster emulator.
+          </p>
+<div class="flex flex-wrap items-center gap-space-md">
+<button class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider hover:bg-slate-800 transition-all duration-200">
+<span class="material-symbols-outlined text-[18px] text-secondary-fixed" data-icon="play_arrow">play_arrow</span>
+              Launch Interactive Ledger Terminal
+            </button>
+<a class="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-surface-container-low text-primary sand-hairline hover:border-secondary transition-all duration-200 font-label-md text-label-md uppercase tracking-wider" href="#specs">
+<span class="material-symbols-outlined text-[18px]" data-icon="verified">verified</span>
+              Read Formally Verified TLA+ Spec
+            </a>
+</div>
+</div>
+<!-- Decorative Subtle Background Pattern -->
+<div class="absolute right-0 top-0 bottom-0 w-1/3 opacity-5 pointer-events-none hidden lg:flex items-center justify-center font-mono text-[220px] font-black text-secondary select-none">
+          RAFT
+        </div>
+</div>
+</section>
+<!-- NEXT-GEN PROTOCOL ROADMAP -->
+<section class="max-w-[1440px] mx-auto px-margin-mobile md:px-gutter lg:px-margin pb-space-3xl" id="specs">
+<div class="mb-space-lg">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Architectural Trajectory</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Next-Generation Protocol Evolution</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+<!-- Roadmap 1 -->
+<div class="p-space-lg bg-surface-container-lowest rounded-lg sand-hairline">
+<div class="font-label-sm text-label-sm text-secondary uppercase tracking-wider mb-2">Phase 1 // Q3 2025</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-2">FPGA Consensus Offload</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Offloading Raft state heartbeats and CRC32 ledger validations directly to SmartNIC FPGA hardware circuits to reach sub-100 microsecond latencies.
+          </p>
+</div>
+<!-- Roadmap 2 -->
+<div class="p-space-lg bg-surface-container-lowest rounded-lg sand-hairline">
+<div class="font-label-sm text-label-sm text-secondary uppercase tracking-wider mb-2">Phase 2 // Q4 2025</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-2">CRYSTALS-Dilithium Signatures</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Integrating post-quantum lattice-based digital signatures into zero-copy batch log headers to ensure cryptographic immunity against quantum cryptanalysis.
+          </p>
+</div>
+<!-- Roadmap 3 -->
+<div class="p-space-lg bg-surface-container-lowest rounded-lg sand-hairline">
+<div class="font-label-sm text-label-sm text-secondary uppercase tracking-wider mb-2">Phase 3 // 2026</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-2">Cross-Cluster Atomic Swaps</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Formalized two-phase commit over heterogeneous Raft domains allowing sovereign high-frequency ledgers to coordinate zero-counterparty settlements.
+          </p>
+</div>
+</div>
+</section>
+</main>
+<!-- EDITORIAL COLOPHON FOOTER (FROM SHARED COMPONENTS JSON) -->
+<footer class="w-full bg-surface-container-low border-t border-outline-variant/70">
+<div class="max-w-[1440px] mx-auto px-margin-mobile md:px-gutter lg:px-margin py-space-2xl">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-space-lg mb-space-lg">
+<div>
+<div class="font-headline-sm text-headline-sm text-primary tracking-tight font-semibold">
+            AuraLedger
+          </div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+            Enterprise Distributed Consensus Engine // Formally Verified Architectural Dossier
+          </div>
+</div>
+<!-- Colophon Links from JSON -->
+<div class="flex flex-wrap items-center gap-space-md">
+<a class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider hover:text-primary transition-colors duration-200" href="#architecture">Systems Architecture</a>
+<a class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider hover:text-primary transition-colors duration-200" href="#consensus">Consensus Whitepaper</a>
+<a class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider hover:text-primary transition-colors duration-200" href="#benchmarks">Benchmark Methodology</a>
+<a class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider hover:text-primary transition-colors duration-200" href="#specs">Security Audits</a>
+<a class="text-secondary font-label-sm text-label-sm uppercase tracking-wider hover:text-secondary transition-colors duration-200" href="#simulation">Executive Contact</a>
+</div>
+</div>
+<div class="pt-space-md border-t border-[#E2D9C8]/60 flex flex-col sm:flex-row justify-between items-center gap-4 text-on-surface-variant font-body-sm text-body-sm">
+<div>
+          © 2025 Abdulghani Al-Shibami. Architectural Monograph &amp; Systems Engineering Colophon.
+        </div>
+<div class="flex items-center gap-4">
+<span class="font-code-sm text-code-sm font-mono text-secondary">PGP: 4A8F C291 0D29 881B</span>
+<a class="hover:text-primary transition-colors flex items-center gap-1 font-label-sm text-label-sm uppercase tracking-wider" href="#">
+<span>Back to Top</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="arrow_upward">arrow_upward</span>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

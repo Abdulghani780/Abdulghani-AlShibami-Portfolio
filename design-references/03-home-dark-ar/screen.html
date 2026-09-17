@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>عبدالغني الشبامي | مهندس برمجيات أول ومعماري نظم</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-fixed-dim": "#e9c349",
+            "on-tertiary-container": "#454549",
+            "error": "#ffb4ab",
+            "inverse-on-surface": "#313031",
+            "surface-container-highest": "#353436",
+            "outline": "#99907c",
+            "surface-container": "#201f20",
+            "secondary-fixed-dim": "#d4c78f",
+            "surface-container-lowest": "#0e0e0f",
+            "on-surface": "#e5e2e3",
+            "on-tertiary": "#303034",
+            "surface-container-high": "#2a2a2b",
+            "on-error": "#690005",
+            "on-tertiary-fixed-variant": "#47464b",
+            "on-secondary": "#383006",
+            "surface": "#131314",
+            "on-primary": "#3c2f00",
+            "on-surface-variant": "#d0c5af",
+            "primary-container": "#d4af37",
+            "error-container": "#93000a",
+            "on-primary-fixed": "#241a00",
+            "primary": "#f2ca50",
+            "on-primary-fixed-variant": "#574500",
+            "tertiary-fixed": "#e4e1e7",
+            "on-secondary-fixed": "#211b00",
+            "outline-variant": "#4d4635",
+            "tertiary-fixed-dim": "#c8c5cb",
+            "primary-fixed": "#ffe088",
+            "surface-bright": "#3a393a",
+            "secondary": "#d4c78f",
+            "surface-tint": "#e9c349",
+            "on-background": "#e5e2e3",
+            "on-secondary-container": "#c2b57f",
+            "on-secondary-fixed-variant": "#4f471b",
+            "surface-variant": "#353436",
+            "inverse-primary": "#735c00",
+            "background": "#131314",
+            "tertiary-container": "#b4b2b7",
+            "on-primary-container": "#554300",
+            "secondary-container": "#4f471b",
+            "inverse-surface": "#e5e2e3",
+            "surface-dim": "#131314",
+            "secondary-fixed": "#f1e3a9",
+            "surface-container-low": "#1c1b1c",
+            "tertiary": "#d0cdd3",
+            "on-tertiary-fixed": "#1b1b1f",
+            "on-error-container": "#ffdad6"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "gutter": "1.5rem",
+            "space-xl": "2.5rem",
+            "margin-tablet": "2rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1.5rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem",
+            "space-2xl": "4rem",
+            "margin-mobile": "1.25rem",
+            "gutter-tablet": "1.25rem",
+            "gutter-mobile": "1rem",
+            "margin": "4rem"
+          },
+          "fontFamily": {
+            "title-md": ["Plus Jakarta Sans"],
+            "display-xl-mobile": ["Noto Serif"],
+            "display-xl": ["Noto Serif"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Noto Serif"],
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-sm": ["Noto Serif"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "headline-md": ["Noto Serif"],
+            "title-lg": ["Plus Jakarta Sans"],
+            "headline-lg": ["Noto Serif"]
+          },
+          "fontSize": {
+            "title-md": ["1rem", { "lineHeight": "1.5rem", "letterSpacing": "0", "fontWeight": "600" }],
+            "display-xl-mobile": ["2.25rem", { "lineHeight": "3rem", "letterSpacing": "0", "fontWeight": "700" }],
+            "display-xl": ["3.5rem", { "lineHeight": "4.5rem", "letterSpacing": "0", "fontWeight": "700" }],
+            "body-lg": ["1.125rem", { "lineHeight": "1.875rem", "letterSpacing": "0", "fontWeight": "400" }],
+            "body-sm": ["0.875rem", { "lineHeight": "1.375rem", "letterSpacing": "0", "fontWeight": "400" }],
+            "headline-lg-mobile": ["1.75rem", { "lineHeight": "2.5rem", "letterSpacing": "0", "fontWeight": "600" }],
+            "label-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.05em", "fontWeight": "500" }],
+            "headline-sm": ["1.25rem", { "lineHeight": "1.875rem", "letterSpacing": "0", "fontWeight": "600" }],
+            "label-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.08em", "fontWeight": "600" }],
+            "body-md": ["1rem", { "lineHeight": "1.625rem", "letterSpacing": "0", "fontWeight": "400" }],
+            "headline-md": ["1.75rem", { "lineHeight": "2.5rem", "letterSpacing": "0", "fontWeight": "600" }],
+            "title-lg": ["1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "0", "fontWeight": "600" }],
+            "headline-lg": ["2.5rem", { "lineHeight": "3.25rem", "letterSpacing": "0", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    /* Subtle luxury mesh background pattern */
+    .architectural-grid {
+      background-image: linear-gradient(to right, rgba(212, 175, 55, 0.03) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(212, 175, 55, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .gold-glow {
+      box-shadow: 0 8px 32px -4px rgba(212, 175, 55, 0.12), 0 2px 8px -2px rgba(0, 0, 0, 0.8);
+    }
+    .gold-glow-hover:hover {
+      box-shadow: 0 12px 40px -4px rgba(212, 175, 55, 0.22), 0 4px 12px -2px rgba(0, 0, 0, 0.9);
+    }
+  </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface antialiased selection:bg-primary-container selection:text-on-primary architectural-grid min-h-screen flex flex-col">
+<!-- ================= TOP NAVIGATION BAR (Shared Component: TopNavBar) ================= -->
+<header class="sticky top-0 z-50 bg-surface/90 dark:bg-surface/90 backdrop-blur-md border-b border-outline-variant/30 dark:border-outline-variant/30 shadow-[0_8px_32px_-4px_rgba(212,175,55,0.12)] dark:shadow-[0_8px_32px_-4px_rgba(212,175,55,0.12)]">
+<div class="flex justify-between items-center w-full px-6 md:px-16 max-w-[1440px] mx-auto h-20 rtl">
+<!-- Right: Brand Logo & Emblem -->
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded border border-primary/40 bg-surface-container-low flex items-center justify-center text-primary font-headline-sm text-headline-sm shadow-inner">
+<span class="material-symbols-outlined text-primary text-xl">architecture</span>
+</div>
+<div class="flex flex-col">
+<span class="text-title-lg font-title-lg text-primary dark:text-primary tracking-wide font-bold">عبدالغني الشبامي</span>
+<span class="text-label-sm font-label-sm text-secondary tracking-widest text-[10px]">SENIOR SYSTEMS ARCHITECT</span>
+</div>
+</div>
+<!-- Center: Navigation Links -->
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-primary dark:text-primary border-b-2 border-primary pb-1 font-semibold text-body-md font-body-md transition-all duration-200" href="#hero">الرئيسية</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-normal hover:text-primary dark:hover:text-primary transition-colors duration-200 text-body-md font-body-md" href="#about">عني</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-normal hover:text-primary dark:hover:text-primary transition-colors duration-200 text-body-md font-body-md" href="#skills">المهارات</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-normal hover:text-primary dark:hover:text-primary transition-colors duration-200 text-body-md font-body-md" href="#projects">المشاريع</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-normal hover:text-primary dark:hover:text-primary transition-colors duration-200 text-body-md font-body-md" href="#experience">الخبرات</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-normal hover:text-primary dark:hover:text-primary transition-colors duration-200 text-body-md font-body-md" href="#contact">تواصل معي</a>
+</nav>
+<!-- Left: Actions (CV, Language Switcher, Dark Mode) -->
+<div class="flex items-center gap-4">
+<!-- CV Button (trailing_primary_action) -->
+<a class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded border border-primary/60 bg-surface-container hover:bg-primary hover:text-surface-container-lowest text-primary text-label-md font-label-md transition-all duration-200 active:scale-95 shadow-[0_2px_12px_rgba(212,175,55,0.15)]" href="#cv">
+<span>السيرة الذاتية</span>
+<span class="material-symbols-outlined text-sm">download</span>
+</a>
+<!-- Language Switcher (trailing_secondary_action) -->
+<button class="px-2.5 py-1 text-label-sm font-label-sm text-secondary hover:text-primary border border-outline-variant/40 rounded transition-colors duration-200">
+          AR | EN
+        </button>
+<!-- Theme Toggle (trailing_icon_actions) -->
+<button class="w-9 h-9 rounded flex items-center justify-center text-on-surface-variant hover:text-primary border border-outline-variant/30 hover:border-primary/40 transition-all duration-200">
+<span class="material-symbols-outlined text-xl">dark_mode</span>
+</button>
+</div>
+</div>
+</header>
+<!-- ================= HERO SECTION ================= -->
+<section class="relative py-16 md:py-24 border-b border-outline-variant/20 overflow-hidden" id="hero">
+<!-- Ambient architectural gold flare -->
+<div class="absolute top-1/4 -right-48 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute bottom-10 -left-48 w-96 h-96 bg-primary-container/5 rounded-full blur-3xl pointer-events-none"></div>
+<div class="max-w-[1440px] mx-auto px-6 md:px-16 relative z-10">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+<!-- Right: Text Content & Authoritative Headline (7 Cols) -->
+<div class="lg:col-span-7 flex flex-col items-start text-right">
+<!-- Status Badge -->
+<div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/30 text-primary text-label-sm font-label-sm mb-6">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_#f2ca50]"></span>
+<span>متاح للاستشارات المعمارية والحلول المؤسسية المتقدمة</span>
+</div>
+<!-- Hero Headline -->
+<h1 class="text-display-xl font-display-xl text-on-surface tracking-tight mb-6 font-bold leading-tight">
+            مهندس برمجيات أول <br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-l from-primary via-primary-fixed-dim to-secondary">
+              ومعماري نُظم معقدة
+            </span>
+</h1>
+<!-- Subheadline -->
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-2xl mb-10 leading-relaxed">
+            تصميم وبناء الأنظمة الموزعة المنيعة، والخدمات السحابية فائقة الأداء بموثوقية سيادية ودقة هندسية متناهية. صياغة معماريات قابلة للتوسع اللانهائي دون أي انقطاع.
+          </p>
+<!-- CTAs Aligned for RTL -->
+<div class="flex flex-wrap items-center gap-4 mb-10 w-full sm:w-auto">
+<!-- Primary Gold CTA -->
+<a class="px-6 py-3.5 rounded border-2 border-primary bg-surface-container-lowest text-primary hover:bg-primary hover:text-surface-container-lowest text-title-md font-title-md flex items-center justify-center gap-3 transition-all duration-300 shadow-[0_0_20px_rgba(212,175,55,0.2)] hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] active:scale-95" href="#projects">
+<span>استكشف المشاريع</span>
+<span class="material-symbols-outlined text-lg transform rotate-180">arrow_right_alt</span>
+</a>
+<!-- Secondary Outline CTA -->
+<a class="px-6 py-3.5 rounded border border-outline-variant hover:border-primary/80 bg-surface-container-low/60 hover:bg-surface-container text-on-surface hover:text-primary text-title-md font-title-md flex items-center justify-center gap-2 transition-all duration-200" href="#contact">
+<span>تواصل معي</span>
+<span class="material-symbols-outlined text-lg">mail</span>
+</a>
+</div>
+<!-- Social / Dispatch Links -->
+<div class="flex items-center gap-6 pt-4 border-t border-outline-variant/30 w-full">
+<span class="text-label-sm font-label-sm text-outline">قنوات الاتصال المباشر:</span>
+<a class="flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition-colors text-body-sm font-body-sm" href="https://github.com" rel="noopener" target="_blank">
+<span class="material-symbols-outlined text-base">terminal</span>
+<span>GitHub</span>
+</a>
+<a class="flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition-colors text-body-sm font-body-sm" href="https://linkedin.com" rel="noopener" target="_blank">
+<span class="material-symbols-outlined text-base">link</span>
+<span>LinkedIn</span>
+</a>
+<a class="flex items-center gap-1.5 text-secondary hover:text-primary transition-colors text-body-sm font-body-sm" href="#dispatch">
+<span class="material-symbols-outlined text-base">send</span>
+<span>مباشر (Direct Dispatch)</span>
+</a>
+</div>
+</div>
+<!-- Left: Hero Architectural Visual & Monogram Dossier (5 Cols in RTL) -->
+<div class="lg:col-span-5 flex justify-center lg:justify-end">
+<div class="relative w-72 h-72 sm:w-96 sm:h-96 flex items-center justify-center">
+<!-- Outer Concentric Coordinate Radar Rings -->
+<div class="absolute inset-0 rounded-full border border-primary/20 border-dashed animate-[spin_60s_linear_infinite]"></div>
+<div class="absolute -inset-4 rounded-full border border-outline-variant/30 pointer-events-none"></div>
+<div class="absolute -inset-8 rounded-full border border-primary/10 pointer-events-none"></div>
+<!-- Compass coordinate ticks -->
+<div class="absolute -top-3 text-[10px] font-mono text-primary/60 tracking-wider">LAT 24.7136° N</div>
+<div class="absolute -bottom-3 text-[10px] font-mono text-primary/60 tracking-wider">LNG 46.6753° E</div>
+<!-- Double-ring Gold Housing -->
+<div class="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full p-2 bg-gradient-to-tr from-primary/40 via-surface-container-high to-primary/20 shadow-[0_0_50px_rgba(212,175,55,0.15)] flex items-center justify-center">
+<!-- Inner Obsidian Monolith Cavity -->
+<div class="w-full h-full rounded-full bg-surface-container-low border border-primary/30 p-4 flex flex-col items-center justify-center text-center relative overflow-hidden group">
+<!-- Background Geometric Grid -->
+<div class="absolute inset-0 opacity-20 architectural-grid"></div>
+<!-- Monogram AS and Architectural Core -->
+<div class="relative z-10 w-24 h-24 rounded-full bg-surface-container border-2 border-primary/60 flex items-center justify-center mb-3 shadow-[inset_0_0_20px_rgba(212,175,55,0.2)]">
+<span class="font-headline-lg text-headline-lg text-primary tracking-widest font-bold">AS</span>
+</div>
+<!-- Professional Crest Title -->
+<div class="relative z-10">
+<div class="text-title-md font-title-md text-on-surface font-semibold mb-1">عبدالغني الشبامي</div>
+<div class="inline-flex items-center gap-1 text-label-sm font-label-sm text-secondary bg-surface-container-high px-2.5 py-0.5 rounded border border-primary/20">
+<span class="material-symbols-outlined text-xs text-primary" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span>مهندس معماري نظم معتمد</span>
+</div>
+</div>
+<!-- Spec readout ticker -->
+<div class="absolute bottom-3 text-[9px] font-mono text-outline tracking-wider uppercase">
+                  SYS: DISTRIBUTED // K8S // GO // RUST
+                </div>
+</div>
+</div>
+<!-- Floating Architectural Marker Badge -->
+<div class="absolute -bottom-2 right-4 bg-surface-container border border-primary/40 rounded px-3 py-2 shadow-xl flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">verified_user</span>
+<span class="text-[11px] font-title-md text-on-surface">ISO/IEC 25010 Compliant</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= IMPACT & KEY METRICS STRIP ================= -->
+<section class="bg-surface-container-low border-b border-outline-variant/30 py-10">
+<div class="max-w-[1440px] mx-auto px-6 md:px-16">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 divide-y sm:divide-y-0 sm:divide-x sm:divide-x-reverse divide-outline-variant/30">
+<!-- Metric 1 -->
+<div class="pt-6 sm:pt-0 sm:px-6 flex flex-col text-right">
+<div class="text-display-xl-mobile sm:text-display-xl font-display-xl text-primary font-bold tracking-tight mb-1">
+            +5
+          </div>
+<div class="text-title-md font-title-md text-on-surface font-semibold mb-0.5">سنوات خبرة متقدمة</div>
+<div class="text-body-sm font-body-sm text-outline">ريادة واستشارات هندسية لأنظمة الإنتاج الحساسة</div>
+</div>
+<!-- Metric 2 -->
+<div class="pt-6 sm:pt-0 sm:px-6 flex flex-col text-right">
+<div class="text-display-xl-mobile sm:text-display-xl font-display-xl text-primary font-bold tracking-tight mb-1">
+            +20
+          </div>
+<div class="text-title-md font-title-md text-on-surface font-semibold mb-0.5">نظاماً برمجياً ضخماً</div>
+<div class="text-body-sm font-body-sm text-outline">حلول معمارية مؤسسية موزعة وعالية الكثافة</div>
+</div>
+<!-- Metric 3 -->
+<div class="pt-6 sm:pt-0 sm:px-6 flex flex-col text-right">
+<div class="text-display-xl-mobile sm:text-display-xl font-display-xl text-primary font-bold tracking-tight mb-1">
+            100%
+          </div>
+<div class="text-title-md font-title-md text-on-surface font-semibold mb-0.5">موثوقية تشغيلية</div>
+<div class="text-body-sm font-body-sm text-outline">مطابقة صارمة لمعايير اتفاقيات مستوى الخدمة (SLA)</div>
+</div>
+<!-- Metric 4 -->
+<div class="pt-6 sm:pt-0 sm:px-6 flex flex-col text-right">
+<div class="text-display-xl-mobile sm:text-display-xl font-display-xl text-primary font-bold tracking-tight mb-1">
+            99.99%
+          </div>
+<div class="text-title-md font-title-md text-on-surface font-semibold mb-0.5">جاهزية وتوافر مستمر</div>
+<div class="text-body-sm font-body-sm text-outline">بنية تحتية سحابية متباينة متعددة المراكز</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= CURATED SYSTEMS ARCHITECTURE / FEATURED PROJECTS ================= -->
+<section class="py-20 md:py-28 border-b border-outline-variant/20" id="projects">
+<div class="max-w-[1440px] mx-auto px-6 md:px-16">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+<div>
+<div class="flex items-center gap-2 text-secondary text-label-sm font-label-sm uppercase tracking-widest mb-2">
+<span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
+<span>// أرشيف النظم الحية والحلول المعمارية</span>
+</div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface font-bold">
+            نظم ومعمارية هندسية مختارة
+          </h2>
+</div>
+<p class="text-body-md font-body-md text-outline max-w-md text-right">
+          نماذج من المعماريات المعقدة المصممة لتحمل أعباء الإنتاج الحرجة، مع التركيز على التحمل الزلزالي للبيانات وزمن الاستجابة اللحظي.
+        </p>
+</div>
+<!-- Projects Dossiers (Bento Architectural Grid) -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Project Card 1 -->
+<div class="relative bg-surface-container rounded-lg border border-primary/20 hover:border-primary/60 p-8 flex flex-col justify-between transition-all duration-300 group hover:-translate-y-1 gold-glow-hover">
+<!-- Gilded RTL Top-Right Accent Line -->
+<div class="absolute top-0 right-0 w-24 h-[2px] bg-gradient-to-l from-primary to-transparent"></div>
+<div>
+<!-- Technical Index -->
+<div class="flex items-center justify-between text-outline text-label-sm font-label-sm mb-6">
+<span class="font-mono text-primary/80">#ARCH-01 // LEDGER</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high border border-outline-variant/30 text-xs">High Concurrency</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface group-hover:text-primary transition-colors mb-3">
+              محرك المعاملات الموزعة والتوافق الزمني (AuraLedger)
+            </h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-6 leading-relaxed">
+              محرك إجماع وتوافق حسابي مبني خصيصاً للمؤسسات المصرفية والمالية. يدعم تجنب تكرار المعاملات بتسامح خطأ بيزنطي عالي مع التوافقية الصارمة وفق معايير ACID.
+            </p>
+<!-- Metrics Specs Box -->
+<div class="grid grid-cols-2 gap-3 mb-6 p-3 rounded bg-surface-container-lowest border border-outline-variant/30 text-right">
+<div>
+<span class="text-[10px] text-outline block uppercase font-mono">Throughput</span>
+<span class="text-title-md font-title-md text-primary font-mono">50K+ TPS</span>
+</div>
+<div>
+<span class="text-[10px] text-outline block uppercase font-mono">Consensus</span>
+<span class="text-title-md font-title-md text-secondary font-mono">Raft / Paxos</span>
+</div>
+</div>
+<!-- Tech Tags -->
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-2.5 py-1 text-xs rounded bg-surface-container-high border border-primary/20 text-primary">Rust</span>
+<span class="px-2.5 py-1 text-xs rounded bg-surface-container-high border border-outline-variant/30 text-on-surface-variant">C++20</span>
+<span class="px-2.5 py-1 text-xs rounded bg-surface-container-high border border-outline-variant/30 text-on-surface-variant">gRPC</span>
+<span class="px-2.5 py-1 text-xs rounded bg-surface-container-high border border-outline-variant/30 text-on-surface-variant">Zero-Copy</span>
+</div>
+</div>
+<!-- Bottom Action Link -->
+<a class="inline-flex items-center gap-2 text-primary text-title-md font-title-md group-hover:underline" href="#arch-01">
+<span>عرض وثيقة المعمارية</span>
+<span class="material-symbols-outlined text-base transform rotate-180 transition-transform group-hover:-translate-x-1">arrow_right_alt</span>
+</a>
+</div>
+<!-- Project Card 2 -->
+<div class="relative bg-surface-container rounded-lg border border-primary/20 hover:border-primary/60 p-8 flex flex-col justify-between transition-all duration-300 group hover:-translate-y-1 gold-glow-hover">
+<!-- Gilded RTL Top-Right Accent Line -->
+<div class="absolute top-0 right-0 w-24 h-[2px] bg-gradient-to-l from-primary to-transparent"></div>
+<div>
+<!-- Technical Index -->
+<div class="flex items-center justify-between text-outline text-label-sm font-label-sm mb-6">
+<span class="font-mono text-primary/80">#ARCH-02 // STREAM</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high border border-outline-variant/30 text-xs">Real-Time</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface group-hover:text-primary transition-colors mb-3">
+              منصة التدفق الفوري للبيانات الضخمة (HyperScale Pipeline)
+            </h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-6 leading-relaxed">
+              بنية تدفق موجهة بالأحداث (Event-Driven) قادرة على ابتلاع مليارات الأحداث اليومية وتحليلها في زمن الاستجابة الحرج عبر بنية موزعة ذات معالجة متوازية.
+            </p>
+<!-- Metrics Specs Box -->
+<div class="grid grid-cols-2 gap-3 mb-6 p-3 rounded bg-surface-container-lowest border border-outline-variant/30 text-right">
+<div>
+<span class="text-[10px] text-outline block uppercase font-mono">Latency</span>
+<span class="text-title-md font-title-md text-primary font-mono">&lt; 4ms P99</span>
+</div>
+<div>
+<span class="text-[10px] text-outline block uppercase font-mono">Volume</span>
+<span class="text-title-md font-title-md text-secondary font-mono">2.4 TB/Day</span>
+</div>
+</div>
+<!-- Tech Tags -->
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-2.5 py-1 text-xs rounded bg-surface-container-high border border-primary/20 text-primary">Apache Kafka</span>
+<span class="px-2.5 py-1 text-xs rounded bg-surface-container-high border border-outline-variant/30 text-on-surface-variant">Go (Golang)</span>
+<span class="px-2.5 py-1 text-xs rounded bg-surface-container-high border border-outline-variant/30 text-on-surface-variant">ClickHouse</span>
+<span class="px-2.5 py-1 text-xs rounded bg-surface-container-high border border-outline-variant/30 text-on-surface-variant">Kubernetes</span>
+</div>
+</div>
+<!-- Bottom Action Link -->
+<a class="inline-flex items-center gap-2 text-primary text-title-md font-title-md group-hover:underline" href="#arch-02">
+<span>عرض وثيقة المعمارية</span>
+<span class="material-symbols-outlined text-base transform rotate-180 transition-transform group-hover:-translate-x-1">arrow_right_alt</span>
+</a>
+</div>
+<!-- Project Card 3 -->
+<div class="relative bg-surface-container rounded-lg border border-primary/20 hover:border-primary/60 p-8 flex flex-col justify-between transition-all duration-300 group hover:-translate-y-1 gold-glow-hover">
+<!-- Gilded RTL Top-Right Accent Line -->
+<div class="absolute top-0 right-0 w-24 h-[2px] bg-gradient-to-l from-primary to-transparent"></div>
+<div>
+<!-- Technical Index -->
+<div class="flex items-center justify-between text-outline text-label-sm font-label-sm mb-6">
+<span class="font-mono text-primary/80">#ARCH-03 // SECURITY</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high border border-outline-variant/30 text-xs">Zero-Trust</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface group-hover:text-primary transition-colors mb-3">
+              الشبكة السحابية السيادية الآمنة (Sovereign Cloud Mesh)
+            </h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-6 leading-relaxed">
+              معمارية تشبيك خدمات هجينة تخضع لمعايير انعدام الثقة (Zero-Trust)، مدعمة بتشفير متبادل ومراقبة حركة الاتصالات الصامتة وإدارة المفاتيح المركزية المشفرة.
+            </p>
+<!-- Metrics Specs Box -->
+<div class="grid grid-cols-2 gap-3 mb-6 p-3 rounded bg-surface-container-lowest border border-outline-variant/30 text-right">
+<div>
+<span class="text-[10px] text-outline block uppercase font-mono">Security Model</span>
+<span class="text-title-md font-title-md text-primary font-mono">mTLS &amp; SPIFFE</span>
+</div>
+<div>
+<span class="text-[10px] text-outline block uppercase font-mono">Compliance</span>
+<span class="text-title-md font-title-md text-secondary font-mono">FedRAMP Ready</span>
+</div>
+</div>
+<!-- Tech Tags -->
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-2.5 py-1 text-xs rounded bg-surface-container-high border border-primary/20 text-primary">Istio Mesh</span>
+<span class="px-2.5 py-1 text-xs rounded bg-surface-container-high border border-outline-variant/30 text-on-surface-variant">Terraform</span>
+<span class="px-2.5 py-1 text-xs rounded bg-surface-container-high border border-outline-variant/30 text-on-surface-variant">Vault</span>
+<span class="px-2.5 py-1 text-xs rounded bg-surface-container-high border border-outline-variant/30 text-on-surface-variant">Envoy Proxy</span>
+</div>
+</div>
+<!-- Bottom Action Link -->
+<a class="inline-flex items-center gap-2 text-primary text-title-md font-title-md group-hover:underline" href="#arch-03">
+<span>عرض وثيقة المعمارية</span>
+<span class="material-symbols-outlined text-base transform rotate-180 transition-transform group-hover:-translate-x-1">arrow_right_alt</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= TECHNICAL MASTERY & ARCHITECTURAL TOOLKIT ================= -->
+<section class="py-20 md:py-28 border-b border-outline-variant/20 bg-surface-container-lowest" id="skills">
+<div class="max-w-[1440px] mx-auto px-6 md:px-16">
+<!-- Section Title -->
+<div class="text-center max-w-3xl mx-auto mb-16">
+<div class="inline-flex items-center gap-2 text-primary text-label-sm font-label-sm uppercase tracking-widest mb-3">
+<span class="material-symbols-outlined text-base">precision_manufacturing</span>
+<span>// مصفوفة الكفاءة الهندسية المتقدمة</span>
+</div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface font-bold mb-4">
+          قدرات المعمارية وهندسة النظم العميقة
+        </h2>
+<p class="text-body-md font-body-md text-on-surface-variant">
+          نطاقات تخصصية تركز على الأداء، التوسع الأفقي المستقر، وبناء النظم التحتية الحصينة للمؤسسات الكبرى.
+        </p>
+</div>
+<!-- Domain Matrix Grid (4 Columns) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Domain 1 -->
+<div class="p-6 rounded-lg bg-surface-container-low border border-outline-variant/30 hover:border-primary/50 transition-all duration-200">
+<div class="w-12 h-12 rounded bg-surface-container border border-primary/30 flex items-center justify-center text-primary mb-5 shadow-sm">
+<span class="material-symbols-outlined text-2xl">memory</span>
+</div>
+<h4 class="text-headline-sm font-headline-sm text-on-surface mb-2">النظم الأساسية والبرمجة منخفضة المستوى</h4>
+<p class="text-body-sm font-body-sm text-outline mb-4">
+            تحسين استهلاك الذاكرة، والتوازي النقي دون قفل (Lock-Free Concurrency) لكتابة محركات ذات كفاءة معالجة قصوى.
+          </p>
+<ul class="space-y-1.5 text-body-sm font-body-sm text-on-surface-variant">
+<li class="flex items-center gap-2">
+<span class="text-primary text-xs">◆</span>
+<span>Go (Golang) &amp; Rust Ecosystem</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="text-primary text-xs">◆</span>
+<span>C++20 Systems Programming</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="text-primary text-xs">◆</span>
+<span>SIMD &amp; Cache-Locality Tuning</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="text-primary text-xs">◆</span>
+<span>Zero-Allocation Frameworks</span>
+</li>
+</ul>
+</div>
+<!-- Domain 2 -->
+<div class="p-6 rounded-lg bg-surface-container-low border border-outline-variant/30 hover:border-primary/50 transition-all duration-200">
+<div class="w-12 h-12 rounded bg-surface-container border border-primary/30 flex items-center justify-center text-primary mb-5 shadow-sm">
+<span class="material-symbols-outlined text-2xl">cloud</span>
+</div>
+<h4 class="text-headline-sm font-headline-sm text-on-surface mb-2">الحوسبة السحابية وهندسة الاعتمادية</h4>
+<p class="text-body-sm font-body-sm text-outline mb-4">
+            هندسة السحب الهجينة المؤتمتة كلياً عبر الشيفرة (IaC) وضمان استمرارية التشغيل التلقائي الذاتي.
+          </p>
+<ul class="space-y-1.5 text-body-sm font-body-sm text-on-surface-variant">
+<li class="flex items-center gap-2">
+<span class="text-primary text-xs">◆</span>
+<span>Kubernetes (CKS/CKA level)</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="text-primary text-xs">◆</span>
+<span>Terraform &amp; OpenTofu Architecture</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="text-primary text-xs">◆</span>
+<span>Envoy Proxy &amp; Istio Service Mesh</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="text-primary text-xs">◆</span>
+<span>Chaos Engineering &amp; Observability</span>
+</li>
+</ul>
+</div>
+<!-- Domain 3 -->
+<div class="p-6 rounded-lg bg-surface-container-low border border-outline-variant/30 hover:border-primary/50 transition-all duration-200">
+<div class="w-12 h-12 rounded bg-surface-container border border-primary/30 flex items-center justify-center text-primary mb-5 shadow-sm">
+<span class="material-symbols-outlined text-2xl">database</span>
+</div>
+<h4 class="text-headline-sm font-headline-sm text-on-surface mb-2">معالجة البيانات والتدفق اللحظي</h4>
+<p class="text-body-sm font-body-sm text-outline mb-4">
+            تصميم بحيرات ومخازن البيانات العمودية والتقسيم الأفقي (Sharding) مع ضمان عدم ضياع أي سجل رقمي.
+          </p>
+<ul class="space-y-1.5 text-body-sm font-body-sm text-on-surface-variant">
+<li class="flex items-center gap-2">
+<span class="text-primary text-xs">◆</span>
+<span>Apache Kafka &amp; Redpanda Stream</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="text-primary text-xs">◆</span>
+<span>ClickHouse Analytical Engines</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="text-primary text-xs">◆</span>
+<span>PostgreSQL Citus / Partitioning</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="text-primary text-xs">◆</span>
+<span>Distributed Cache: Redis Cluster</span>
+</li>
+</ul>
+</div>
+<!-- Domain 4 -->
+<div class="p-6 rounded-lg bg-surface-container-low border border-outline-variant/30 hover:border-primary/50 transition-all duration-200">
+<div class="w-12 h-12 rounded bg-surface-container border border-primary/30 flex items-center justify-center text-primary mb-5 shadow-sm">
+<span class="material-symbols-outlined text-2xl">hub</span>
+</div>
+<h4 class="text-headline-sm font-headline-sm text-on-surface mb-2">المعمارية المؤسسية المتقدمة</h4>
+<p class="text-body-sm font-body-sm text-outline mb-4">
+            صياغة نماذج العمل المعقدة بتقسيم النطاقات الوظيفية المنفصلة وتجنب المعماريات المتشابكة المنهكة.
+          </p>
+<ul class="space-y-1.5 text-body-sm font-body-sm text-on-surface-variant">
+<li class="flex items-center gap-2">
+<span class="text-primary text-xs">◆</span>
+<span>Domain-Driven Design (DDD)</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="text-primary text-xs">◆</span>
+<span>Event Sourcing &amp; CQRS Patterns</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="text-primary text-xs">◆</span>
+<span>Hexagonal &amp; Clean Architecture</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="text-primary text-xs">◆</span>
+<span>Zero-Trust Security Frameworks</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= CONTACT & ADVISORY CALLOUT ================= -->
+<section class="py-20 md:py-28 relative" id="contact">
+<div class="max-w-[1440px] mx-auto px-6 md:px-16">
+<!-- Obsidian & Gold Executive Advisory Card -->
+<div class="relative bg-gradient-to-br from-surface-container to-surface-container-low rounded-xl border border-primary/40 p-8 md:p-14 gold-glow overflow-hidden">
+<!-- Structural corner accent lines -->
+<div class="absolute top-0 right-0 w-32 h-[3px] bg-primary"></div>
+<div class="absolute top-0 right-0 w-[3px] h-32 bg-primary"></div>
+<div class="absolute bottom-0 left-0 w-32 h-[3px] bg-primary/40"></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+<div class="lg:col-span-8 text-right">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-primary/10 text-primary border border-primary/20 text-label-sm font-label-sm mb-4">
+<span class="material-symbols-outlined text-sm">handshake</span>
+<span>بدء حوار معماري واستشاري رفيع المستوى</span>
+</div>
+<h3 class="text-headline-lg font-headline-lg text-on-surface font-bold mb-4">
+              جاهز لقيادة التحول المعماري لنظم مؤسستك؟
+            </h3>
+<p class="text-body-lg font-body-lg text-on-surface-variant leading-relaxed max-w-2xl">
+              أقدم استشارات متخصصة لمراجعة وتدقيق المعماريات التقنية (Architectural Audit)، وإعادة هيكلة الأنظمة القديمة إلى حلول موزعة فائقة الموثوقية والأمان للمؤسسات الرائدة.
+            </p>
+</div>
+<div class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-4 justify-center items-stretch">
+<!-- Direct Dispatch Action -->
+<a class="px-6 py-4 rounded border-2 border-primary bg-primary text-surface-container-lowest hover:bg-primary-fixed text-title-md font-title-md flex items-center justify-center gap-3 transition-all duration-200 font-bold shadow-lg shadow-primary/20 active:scale-95 text-center" href="mailto:contact@alshibami.tech">
+<span>إرسال برقية مباشرة</span>
+<span class="material-symbols-outlined text-lg">send</span>
+</a>
+<!-- Technical Dossier Review Action -->
+<a class="px-6 py-4 rounded border border-outline-variant hover:border-primary/60 bg-surface-container-lowest text-on-surface hover:text-primary text-title-md font-title-md flex items-center justify-center gap-3 transition-all duration-200 text-center" href="#dossier">
+<span>استعراض الملف التقني الكامل</span>
+<span class="material-symbols-outlined text-lg">description</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= FOOTER (Shared Component: Footer) ================= -->
+<footer class="mt-auto bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant/20 dark:border-outline-variant/20">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-6 md:px-16 py-12 max-w-[1440px] mx-auto rtl gap-6">
+<!-- Brand & Copyright -->
+<div class="flex flex-col md:flex-row items-center gap-4 text-center md:text-right">
+<span class="text-headline-sm font-headline-sm text-primary dark:text-primary font-bold">
+          عبدالغني الشبامي
+        </span>
+<span class="hidden md:inline text-outline">|</span>
+<p class="text-body-sm font-body-sm text-on-surface-variant dark:text-on-surface-variant">
+          جميع الحقوق محفوظة © ٢٠٢٥ عبدالغني الشبامي. هندسة وتطوير النظم المعمارية المتقدمة.
+        </p>
+</div>
+<!-- Footer Navigation Links -->
+<nav class="flex flex-wrap justify-center items-center gap-6">
+<a class="text-label-sm font-label-sm text-primary dark:text-primary font-medium hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#hero">الرئيسية</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#projects">المشاريع</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#skills">الخبرات</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#contact">تواصل معي</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#privacy">سياسة الخصوصية</a>
+</nav>
+</div>
+</footer>
+</body></html>

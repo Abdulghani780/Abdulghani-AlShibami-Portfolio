@@ -1,0 +1,33 @@
+{
+  "referenceNumber": "04",
+  "referenceName": "Home — Desktop — Light — Arabic RTL",
+  "stitchScreenId": "275b7c9604e2407eb58c177148540c0d",
+  "stitchProjectId": "1524242436626085687",
+  "designSystem": "assets/f318f9ae40714ca9b4af394f67ac8f62",
+  "viewport": "DESKTOP (1440px / 2560px)",
+  "theme": "LIGHT",
+  "language": "Arabic (ar)",
+  "direction": "RTL (Right-to-Left)",
+  "screenshotFile": "screenshot.png",
+  "htmlFile": "screen.html",
+  "sections": [
+    "TopNavBar RTL: Brand on right 'عبدالغني الشبامي' with subtitle 'مهندس برمجيات أول ومعماري نظم', center Arabic nav links, left trailing items (Resume, AR/EN switcher, light/dark toggle)",
+    "Hero Section RTL: Right-side content with status pill, executive display headline 'مهندس برمجيات أول ومعماري نُظم معقدة', supporting subtitle, primary gold CTA 'استكشف المشاريع ←' and secondary outline 'تواصل معي'; Left-side circular architectural profile placeholder [صورة شخصية / PROFILE_IMAGE] with coordinates",
+    "Key Metrics Counter Strip: 4-column elegant porcelain cards (+5 سنوات خبرة، +20 نظاماً برمجياً، 100% موثوقية، 99.99% جاهزية)",
+    "Featured Projects (نظم ومعمارية هندسية مختارة) with crisp white cards, gold badges, and 'عرض وثيقة المعمارية ←'",
+    "Technical Mastery & Architectural Capabilities (قدرات المعمارية وهندسة النظم العميقة) across 4 domains",
+    "Call-to-Action Advisory Banner (جاهز لقيادة التحول المعماري لنظم مؤسستك؟)",
+    "Full RTL Arabic Footer with copyright and verification links"
+  ],
+  "designTokens": {
+    "background": "#FBFBFD",
+    "surface": "#FFFFFF",
+    "surfaceLow": "#F3F3F5",
+    "accent": "#997A15",
+    "accentGold": "#D4AF37",
+    "textPrimary": "#0F172A",
+    "textSecondary": "#334155",
+    "textMuted": "#64748B",
+    "border": "#EAE5D9"
+  }
+}

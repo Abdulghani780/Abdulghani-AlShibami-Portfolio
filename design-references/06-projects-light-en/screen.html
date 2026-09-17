@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Abdulghani Al-Shibami — Systems Architecture &amp; Engineering Portfolio</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Playfair Display and Geist -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&amp;family=Geist:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration Verbatim -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-fixed": "#131b2e",
+            "on-surface": "#1a1c1d",
+            "surface-container-lowest": "#ffffff",
+            "primary-fixed-dim": "#bec6e0",
+            "surface-dim": "#d9dadc",
+            "on-primary-fixed-variant": "#3f465c",
+            "inverse-surface": "#2f3132",
+            "on-surface-variant": "#45464d",
+            "error": "#ba1a1a",
+            "surface-variant": "#e2e2e4",
+            "on-secondary": "#ffffff",
+            "on-error-container": "#93000a",
+            "tertiary-container": "#cba72f",
+            "on-tertiary": "#ffffff",
+            "on-error": "#ffffff",
+            "on-primary": "#ffffff",
+            "inverse-primary": "#bec6e0",
+            "on-background": "#1a1c1d",
+            "tertiary-fixed": "#ffe088",
+            "primary-container": "#131b2e",
+            "on-tertiary-fixed-variant": "#574500",
+            "primary-fixed": "#dae2fd",
+            "tertiary": "#735c00",
+            "on-secondary-container": "#755c00",
+            "on-tertiary-container": "#4e3d00",
+            "secondary-fixed": "#ffe08e",
+            "surface-container-high": "#e8e8ea",
+            "surface-container": "#edeef0",
+            "secondary": "#755b00",
+            "background": "#f9f9fb",
+            "outline-variant": "#c6c6cd",
+            "outline": "#76777d",
+            "error-container": "#ffdad6",
+            "primary": "#000000",
+            "on-tertiary-fixed": "#241a00",
+            "surface-container-highest": "#e2e2e4",
+            "secondary-container": "#fdd66b",
+            "tertiary-fixed-dim": "#e9c349",
+            "surface": "#f9f9fb",
+            "inverse-on-surface": "#f0f0f2",
+            "on-secondary-fixed-variant": "#584400",
+            "surface-bright": "#f9f9fb",
+            "surface-container-low": "#f3f3f5",
+            "on-primary-container": "#7c839b",
+            "surface-tint": "#565e74",
+            "secondary-fixed-dim": "#e8c35a",
+            "on-secondary-fixed": "#241a00"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-md": "1rem",
+            "gutter": "2rem",
+            "space-xl": "2.5rem",
+            "space-3xl": "6rem",
+            "margin-mobile": "1.25rem",
+            "gutter-mobile": "1rem",
+            "space-2xl": "4rem",
+            "space-lg": "1.5rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "margin": "4rem"
+          },
+          "fontFamily": {
+            "headline-sm": ["Playfair Display"],
+            "label-md": ["Geist"],
+            "label-sm": ["Geist"],
+            "headline-md": ["Playfair Display"],
+            "body-lg": ["Geist"],
+            "title-md": ["Geist"],
+            "headline-lg": ["Playfair Display"],
+            "code-sm": ["Geist Mono", "Geist"],
+            "body-sm": ["Geist"],
+            "body-md": ["Geist"],
+            "display-mobile": ["Playfair Display"],
+            "title-lg": ["Geist"],
+            "headline-lg-mobile": ["Playfair Display"],
+            "display": ["Playfair Display"]
+          },
+          "fontSize": {
+            "headline-sm": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "0em", "fontWeight": "600" }],
+            "label-md": ["0.8125rem", { "lineHeight": "1.125rem", "letterSpacing": "0.08em", "fontWeight": "600" }],
+            "label-sm": ["0.6875rem", { "lineHeight": "1rem", "letterSpacing": "0.12em", "fontWeight": "600" }],
+            "headline-md": ["2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+            "body-lg": ["1.125rem", { "lineHeight": "1.85rem", "letterSpacing": "0em", "fontWeight": "400" }],
+            "title-md": ["1.125rem", { "lineHeight": "1.6rem", "letterSpacing": "0em", "fontWeight": "500" }],
+            "headline-lg": ["3rem", { "lineHeight": "3.5rem", "letterSpacing": "-0.02em", "fontWeight": "500" }],
+            "code-sm": ["0.8125rem", { "lineHeight": "1.25rem", "letterSpacing": "0em", "fontWeight": "400" }],
+            "body-sm": ["0.875rem", { "lineHeight": "1.4rem", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "body-md": ["1rem", { "lineHeight": "1.65rem", "letterSpacing": "0em", "fontWeight": "400" }],
+            "display-mobile": ["2.75rem", { "lineHeight": "3.25rem", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "title-lg": ["1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+            "display": ["4.5rem", { "lineHeight": "5rem", "letterSpacing": "-0.03em", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    /* Architectural Blueprint Sub-grid Background */
+    .architectural-grid {
+      background-size: 32px 32px;
+      background-image: 
+        linear-gradient(to right, rgba(226, 217, 200, 0.28) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(226, 217, 200, 0.28) 1px, transparent 1px);
+    }
+    .sand-hairline {
+      border: 1px solid #E2D9C8;
+    }
+    .sand-hairline-t {
+      border-top: 1px solid #E2D9C8;
+    }
+    .sand-hairline-b {
+      border-bottom: 1px solid #E2D9C8;
+    }
+    .sand-hairline-r {
+      border-right: 1px solid #E2D9C8;
+    }
+    .gold-glow:hover {
+      box-shadow: 0 20px 35px -8px rgba(15, 23, 42, 0.06), 0 1px 4px 0 rgba(153, 122, 21, 0.12);
+      border-color: #B89628;
+    }
+    .gold-glow-active {
+      box-shadow: 0 16px 32px -6px rgba(115, 92, 0, 0.08), 0 0 0 1px #997A15;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased selection:bg-tertiary-fixed selection:text-on-tertiary-fixed architectural-grid min-h-screen flex flex-col font-body-md">
+<!-- ========================================================================= -->
+<!-- SHARED COMPONENT: TopNavBar (Exact JSON Schema Implementation)            -->
+<!-- ========================================================================= -->
+<header class="docked full-width top-0 sticky z-50 bg-surface-container-lowest/90 backdrop-blur-md shadow-[0_4px_20px_-2px_rgba(15,23,42,0.03)] border-b border-outline-variant/60">
+<div class="max-w-7xl mx-auto px-margin h-20 flex items-center justify-between">
+<!-- Brand Logo / Monograph Anchor -->
+<a class="text-title-lg font-title-lg text-primary tracking-tight font-semibold flex items-center gap-space-sm group" href="#home">
+<span class="w-8 h-8 rounded-lg bg-primary-container text-on-secondary flex items-center justify-center font-code-sm text-label-sm border border-tertiary font-bold tracking-normal transition-transform group-hover:scale-105">
+          AS
+        </span>
+<span class="tracking-tight">Abdulghani Al-Shibami</span>
+<span class="hidden lg:inline-block text-label-sm font-label-sm text-tertiary bg-tertiary/10 px-2 py-0.5 rounded-DEFAULT ml-2 border border-tertiary/30">ARCHITECT</span>
+</a>
+<!-- Desktop Executive Navigation Links -->
+<nav class="hidden md:flex items-center gap-space-xl text-label-md font-label-md">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 hover:text-tertiary" href="#home">Home</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 hover:text-tertiary" href="#about">About</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 hover:text-tertiary" href="#skills">Skills</a>
+<!-- ACTIVE STATE: Projects (Identified via context matching) -->
+<a class="text-tertiary border-b border-tertiary pb-1 font-semibold transition-colors duration-200" href="#projects">Projects</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 hover:text-tertiary" href="#experience">Experience</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 hover:text-tertiary" href="#contact">Contact</a>
+</nav>
+<!-- Trailing Action Clustered Controls -->
+<div class="flex items-center gap-space-md">
+<!-- Language Switcher -->
+<button class="text-label-sm font-label-sm text-on-surface-variant hover:text-primary transition-colors duration-150 px-2 py-1 rounded-DEFAULT hover:bg-surface-container-low" title="Switch Language">
+          EN | AR
+        </button>
+<!-- Mode Toggle Icon -->
+<button aria-label="Toggle Theme" class="p-2 text-on-surface-variant hover:text-primary transition-colors duration-150 rounded-DEFAULT hover:bg-surface-container-low flex items-center justify-center">
+<span class="material-symbols-outlined text-[1.25rem]" data-icon="dark_mode">dark_mode</span>
+</button>
+<!-- Primary Action: Curriculum Vitae -->
+<a class="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 bg-primary text-on-primary rounded-lg text-label-md font-label-md border border-primary hover:bg-[#1E293B] transition-all duration-200 active:scale-[0.99] shadow-sm" href="#cv">
+<span>Curriculum Vitae</span>
+<span class="material-symbols-outlined text-[1rem]" data-icon="arrow_outward">arrow_outward</span>
+</a>
+</div>
+</div>
+</header>
+<!-- ========================================================================= -->
+<!-- MAIN EDITORIAL CATALOG CANVAS                                             -->
+<!-- ========================================================================= -->
+<main class="flex-grow max-w-7xl mx-auto px-4 sm:px-8 lg:px-margin py-space-xl md:py-space-2xl w-full">
+<!-- Hero Header / Architectural Breadcrumb & Meta -->
+<header class="mb-space-2xl border-b border-[#E2D9C8] pb-space-xl">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm mb-space-md">
+<div class="flex items-center gap-2 font-code-sm text-label-sm text-tertiary uppercase tracking-wider">
+<span class="inline-block w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+<span>// PRODUCTION ARTIFACTS &amp; REPOSITORY INDEX</span>
+</div>
+<div class="font-code-sm text-label-sm text-on-surface-variant/80 tracking-widest uppercase">
+          LATITUDE: 24.7136° N • HIGH-CONCURRENCY CATALOG V4.8
+        </div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-end">
+<div class="lg:col-span-8">
+<h1 class="text-headline-lg font-headline-lg text-primary tracking-tight leading-tight">
+            Engineered Systems &amp; <span class="italic font-headline-lg text-tertiary">Software Architectures</span>
+</h1>
+</div>
+<div class="lg:col-span-4">
+<p class="text-body-md font-body-md text-on-surface-variant leading-relaxed">
+            Production systems, distributed backends, desktop simulations, and AI agents. Hand-crafted with mathematical rigor, zero-loss consensus algorithms, and resilient operational design.
+          </p>
+</div>
+</div>
+</header>
+<!-- Search & Filter Architectural Command Center -->
+<section class="mb-space-2xl">
+<div class="bg-surface-container-lowest sand-hairline rounded-lg p-space-md shadow-sm">
+<div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-md">
+<!-- Search System Input -->
+<div class="relative flex-1">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-on-surface-variant">
+<span class="material-symbols-outlined text-[1.125rem]" data-icon="search">search</span>
+</span>
+<input class="w-full pl-10 pr-20 py-2 bg-[#F9F9FB] border border-[#E2D9C8] rounded-DEFAULT text-body-sm font-body-sm text-primary focus:outline-none focus:border-tertiary focus:ring-2 focus:ring-tertiary/20 placeholder-on-surface-variant/60" placeholder="Search codebases, protocols (Raft, Citus), kernels, or sub-systems..." type="text"/>
+<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+<span class="font-code-sm text-label-sm bg-surface-container-lowest border border-[#E2D9C8] text-on-surface-variant px-1.5 py-0.5 rounded-DEFAULT shadow-2xs">
+                $ ⌘K
+              </span>
+</div>
+</div>
+<!-- Controls: View & Sort -->
+<div class="flex items-center gap-space-sm self-end lg:self-center">
+<!-- View Mode Switcher -->
+<div class="flex items-center sand-hairline rounded-DEFAULT p-0.5 bg-surface-container-low">
+<button class="p-1.5 rounded-DEFAULT bg-surface-container-lowest text-primary shadow-2xs" title="Grid View">
+<span class="material-symbols-outlined text-[1.1rem]" data-icon="grid_view">grid_view</span>
+</button>
+<button class="p-1.5 rounded-DEFAULT text-on-surface-variant hover:text-primary transition-colors" title="List View">
+<span class="material-symbols-outlined text-[1.1rem]" data-icon="view_agenda">view_agenda</span>
+</button>
+</div>
+<!-- Sort Dropdown -->
+<div class="relative">
+<button class="flex items-center gap-2 px-3 py-2 sand-hairline rounded-DEFAULT bg-surface-container-lowest text-label-md font-label-md text-primary hover:border-tertiary transition-colors">
+<span class="text-on-surface-variant">Sort:</span>
+<span class="font-semibold">Criticality / Recent</span>
+<span class="material-symbols-outlined text-[1rem]" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Category Horizontal Filter Cluster -->
+<div class="mt-space-md pt-space-sm sand-hairline-t flex flex-wrap items-center gap-2">
+<span class="text-label-sm font-label-sm text-on-surface-variant/70 uppercase mr-2 tracking-wider">Substrate:</span>
+<button class="px-3 py-1 rounded-DEFAULT text-label-sm font-label-sm bg-tertiary text-on-tertiary border border-tertiary font-medium shadow-sm flex items-center gap-1.5">
+<span>All</span>
+<span class="text-[0.625rem] px-1 rounded-full bg-white/20">7</span>
+</button>
+<button class="px-3 py-1 rounded-DEFAULT text-label-sm font-label-sm bg-surface-container-lowest sand-hairline text-on-surface-variant hover:border-tertiary hover:text-tertiary transition-all flex items-center gap-1.5">
+<span>Web Applications</span>
+<span class="text-[0.625rem] px-1 rounded-full bg-surface-container">2</span>
+</button>
+<button class="px-3 py-1 rounded-DEFAULT text-label-sm font-label-sm bg-surface-container-lowest sand-hairline text-on-surface-variant hover:border-tertiary hover:text-tertiary transition-all flex items-center gap-1.5">
+<span>Desktop / C#</span>
+<span class="text-[0.625rem] px-1 rounded-full bg-surface-container">2</span>
+</button>
+<button class="px-3 py-1 rounded-DEFAULT text-label-sm font-label-sm bg-surface-container-lowest sand-hairline text-on-surface-variant hover:border-tertiary hover:text-tertiary transition-all flex items-center gap-1.5">
+<span>Python Systems</span>
+<span class="text-[0.625rem] px-1 rounded-full bg-surface-container">1</span>
+</button>
+<button class="px-3 py-1 rounded-DEFAULT text-label-sm font-label-sm bg-surface-container-lowest sand-hairline text-on-surface-variant hover:border-tertiary hover:text-tertiary transition-all flex items-center gap-1.5">
+<span>AI / Machine Learning</span>
+<span class="text-[0.625rem] px-1 rounded-full bg-surface-container">1</span>
+</button>
+<button class="px-3 py-1 rounded-DEFAULT text-label-sm font-label-sm bg-surface-container-lowest sand-hairline text-on-surface-variant hover:border-tertiary hover:text-tertiary transition-all flex items-center gap-1.5">
+<span>Database Architectures</span>
+<span class="text-[0.625rem] px-1 rounded-full bg-surface-container">1</span>
+</button>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- FEATURED FLAGSHIP ARCHITECTURE CARD                                       -->
+<!-- ========================================================================= -->
+<section class="mb-space-3xl">
+<div class="relative bg-surface-container-lowest border-2 border-tertiary/40 rounded-lg p-space-lg md:p-space-xl shadow-[0_4px_20px_-2px_rgba(15,23,42,0.03)] hover:shadow-[0_20px_35px_-8px_rgba(15,23,42,0.06)] transition-all duration-300">
+<!-- Subtle corner watermark badge -->
+<div class="absolute -top-3 left-8 bg-surface-container-lowest px-3 py-0.5 border border-tertiary rounded-DEFAULT font-code-sm text-label-sm text-tertiary flex items-center gap-1.5 uppercase font-semibold">
+<span class="material-symbols-outlined text-[0.875rem]" data-icon="stars" data-weight="fill">stars</span>
+          ARCHITECTURAL FLAGSHIP PROJECT
+        </div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl pt-2">
+<!-- Left Column: Primary Systems Dossier -->
+<div class="lg:col-span-7 flex flex-col justify-between space-y-space-lg">
+<div>
+<!-- Micro Status Badges -->
+<div class="flex flex-wrap items-center gap-2 mb-space-sm font-code-sm text-label-sm">
+<span class="inline-flex items-center gap-1.5 text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-DEFAULT border border-emerald-200">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span>
+                  ● Production Flagship
+                </span>
+<span class="text-on-surface-variant bg-surface-container-low px-2 py-0.5 rounded-DEFAULT sand-hairline">
+                  YEAR: 2024
+                </span>
+<span class="text-tertiary bg-tertiary/10 px-2 py-0.5 rounded-DEFAULT border border-tertiary/30">
+                  Multi-Region Distributed Raft Consensus
+                </span>
+</div>
+<!-- Title -->
+<h2 class="text-headline-md font-headline-md text-primary tracking-tight mb-space-sm">
+                AuraLedger: Distributed Fault-Tolerant Transaction Engine
+              </h2>
+<!-- Description -->
+<p class="text-body-md font-body-md text-on-surface-variant leading-relaxed mb-space-lg">
+                Engineered a deterministic consensus engine with asynchronous peer replication, memory-mapped ring buffers, and sub-millisecond atomic settlement across partitioned cloud networks without single-point failure or data loss.
+              </p>
+<!-- Technical Substrates Pills -->
+<div class="space-y-1.5">
+<div class="text-label-sm font-label-sm text-on-surface-variant/70 uppercase tracking-widest">
+                  System Substrates &amp; Hardware Primitives:
+                </div>
+<div class="flex flex-wrap gap-2">
+<span class="font-code-sm text-code-sm bg-[#F3F3F6] sand-hairline px-2.5 py-1 rounded-DEFAULT text-primary font-medium">C# / .NET 8</span>
+<span class="font-code-sm text-code-sm bg-[#F3F3F6] sand-hairline px-2.5 py-1 rounded-DEFAULT text-primary font-medium">Raft Consensus Protocol</span>
+<span class="font-code-sm text-code-sm bg-[#F3F3F6] sand-hairline px-2.5 py-1 rounded-DEFAULT text-primary font-medium">PostgreSQL Citus</span>
+<span class="font-code-sm text-code-sm bg-[#F3F3F6] sand-hairline px-2.5 py-1 rounded-DEFAULT text-primary font-medium">Docker Swarm</span>
+<span class="font-code-sm text-code-sm bg-[#F3F3F6] sand-hairline px-2.5 py-1 rounded-DEFAULT text-primary font-medium">Zero-Copy Memory IO</span>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-wrap items-center gap-space-md pt-space-sm sand-hairline-t">
+<a class="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-on-primary rounded-lg text-label-md font-label-md border border-primary hover:bg-[#1E293B] transition-all duration-150 shadow-sm" href="#demo">
+<span>Interactive Demo ↗</span>
+</a>
+<a class="inline-flex items-center gap-2 px-4 py-2.5 bg-surface-container-lowest text-primary rounded-lg text-label-md font-label-md sand-hairline hover:border-tertiary hover:text-tertiary transition-all duration-150" href="#case-study">
+<span class="material-symbols-outlined text-[1.125rem]" data-icon="menu_book">menu_book</span>
+<span>Case Study Spec</span>
+</a>
+<a class="inline-flex items-center gap-1.5 text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors underline decoration-[#E2D9C8] underline-offset-4 hover:decoration-tertiary" href="#github">
+<span class="material-symbols-outlined text-[1.125rem]" data-icon="code">code</span>
+<span>GitHub</span>
+</a>
+</div>
+</div>
+<!-- Right Column: Benchmark Telemetry Pane -->
+<div class="lg:col-span-5 bg-[#FBFBFD] sand-hairline rounded-DEFAULT p-space-md flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-sm sand-hairline-b mb-space-md font-code-sm text-label-sm">
+<span class="text-tertiary font-semibold tracking-wider">// BENCHMARK TELEMETRY SPECS</span>
+<span class="text-on-surface-variant bg-surface-container-high px-2 py-0.5 rounded-DEFAULT">RUN #4092</span>
+</div>
+<!-- Metric Grid Display -->
+<div class="grid grid-cols-2 gap-3 mb-space-md">
+<div class="bg-surface-container-lowest sand-hairline p-3 rounded-DEFAULT">
+<div class="text-label-sm font-label-sm text-tertiary uppercase tracking-wider">Throughput</div>
+<div class="text-headline-sm font-code-sm text-primary mt-1 font-semibold">50k+ TPS</div>
+<div class="text-[0.6875rem] text-on-surface-variant mt-0.5">Deterministic stress</div>
+</div>
+<div class="bg-surface-container-lowest sand-hairline p-3 rounded-DEFAULT">
+<div class="text-label-sm font-label-sm text-tertiary uppercase tracking-wider">Consensus Latency</div>
+<div class="text-headline-sm font-code-sm text-primary mt-1 font-semibold">&lt; 4ms</div>
+<div class="text-[0.6875rem] text-on-surface-variant mt-0.5">P99 Cross-Zone Sync</div>
+</div>
+<div class="bg-surface-container-lowest sand-hairline p-3 rounded-DEFAULT">
+<div class="text-label-sm font-label-sm text-tertiary uppercase tracking-wider">Availability</div>
+<div class="text-headline-sm font-code-sm text-primary mt-1 font-semibold">99.999%</div>
+<div class="text-[0.6875rem] text-on-surface-variant mt-0.5">Partition Tolerant SLA</div>
+</div>
+<div class="bg-surface-container-lowest sand-hairline p-3 rounded-DEFAULT">
+<div class="text-label-sm font-label-sm text-tertiary uppercase tracking-wider">Durability</div>
+<div class="text-headline-sm font-code-sm text-primary mt-1 font-semibold">RPO = 0</div>
+<div class="text-[0.6875rem] text-on-surface-variant mt-0.5">Zero Data Loss Assured</div>
+</div>
+</div>
+<!-- Telemetry Specs Table -->
+<div class="font-code-sm text-code-sm border-t border-[#E2D9C8] pt-3 space-y-2">
+<div class="flex justify-between items-center text-on-surface-variant">
+<span>Topology Cluster:</span>
+<span class="text-primary font-medium">5 Raft Nodes, Quorum 3</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant">
+<span>Storage Protocol:</span>
+<span class="text-primary font-medium">Direct SSD Ring Log mmap</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant">
+<span>Network Protocol:</span>
+<span class="text-primary font-medium">Zero-Copy gRPC / HTTP3</span>
+</div>
+</div>
+</div>
+<!-- Architectural Status Indicator -->
+<div class="mt-space-md pt-space-sm sand-hairline-t flex items-center justify-between text-label-sm font-code-sm">
+<span class="text-on-surface-variant">Integrity Status:</span>
+<span class="text-emerald-700 flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[1rem]" data-icon="verified_user">verified_user</span>
+                FORMALLY VERIFIED
+              </span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- SECTION HEADER: INDEXED REPOSITORIES                                      -->
+<!-- ========================================================================= -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-space-xl border-b border-[#E2D9C8] pb-space-sm gap-2">
+<div>
+<div class="font-code-sm text-label-sm text-tertiary uppercase tracking-wider">// INDEXED CODEBASES &amp; DISTRIBUTED RUNTIMES</div>
+<h2 class="text-headline-sm font-headline-sm text-primary">Engineered Portfolio Deployments</h2>
+</div>
+<div class="font-code-sm text-label-sm text-on-surface-variant/80">
+        TOTAL REPOSITORIES ACTIVE: 07 | VERIFIED COMPILATIONS: 100%
+      </div>
+</div>
+<!-- ========================================================================= -->
+<!-- 6 RESPONSIVE PROJECT CARDS GRID (3-Column Layout)                         -->
+<!-- ========================================================================= -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter mb-space-3xl">
+<!-- CARD 01: Streaming Engine -->
+<article class="bg-surface-container-lowest sand-hairline rounded-lg p-space-lg flex flex-col justify-between transition-all duration-200 gold-glow group">
+<div>
+<!-- Header Meta -->
+<div class="flex items-center justify-between font-code-sm text-label-sm mb-space-sm">
+<span class="text-tertiary font-semibold">// 01. STREAMING ENGINE</span>
+<span class="inline-flex items-center gap-1 text-emerald-700 text-[0.6875rem] font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+              PRODUCTION
+            </span>
+</div>
+<!-- Project Title -->
+<h3 class="text-title-lg font-title-lg text-primary tracking-tight group-hover:text-tertiary transition-colors mb-1">
+            HyperScale Event Streaming Fabric
+          </h3>
+<p class="font-code-sm text-label-sm text-on-surface-variant/70 mb-space-md">Python Systems / Data Engine • 2024</p>
+<!-- Summary -->
+<p class="text-body-sm font-body-sm text-on-surface-variant leading-relaxed mb-space-lg">
+            High-throughput ingestion gateway dispatching millions of events per second with adaptive backpressure, dynamic payload validation, and custom partition balancing.
+          </p>
+<!-- Substrates Chips -->
+<div class="flex flex-wrap gap-1.5 mb-space-lg">
+<span class="font-code-sm text-label-sm bg-[#F3F3F6] sand-hairline px-2 py-0.5 rounded-DEFAULT text-primary">Python</span>
+<span class="font-code-sm text-label-sm bg-[#F3F3F6] sand-hairline px-2 py-0.5 rounded-DEFAULT text-primary">Kafka</span>
+<span class="font-code-sm text-label-sm bg-[#F3F3F6] sand-hairline px-2 py-0.5 rounded-DEFAULT text-primary">ClickHouse</span>
+<span class="font-code-sm text-label-sm bg-[#F3F3F6] sand-hairline px-2 py-0.5 rounded-DEFAULT text-primary">Redis</span>
+<span class="font-code-sm text-label-sm bg-[#F3F3F6] sand-hairline px-2 py-0.5 rounded-DEFAULT text-primary">FastStream</span>
+</div>
+</div>
+<!-- Links -->
+<div class="pt-space-md sand-hairline-t flex items-center justify-between">
+<a class="text-label-md font-label-md text-primary font-semibold hover:text-tertiary inline-flex items-center gap-1" href="#live">
+<span>Live Demo ↗</span>
+</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#spec">
+            Spec Sheet
+          </a>
+</div>
+</article>
+<!-- CARD 02: Infrastructure Mesh -->
+<article class="bg-surface-container-lowest sand-hairline rounded-lg p-space-lg flex flex-col justify-between transition-all duration-200 gold-glow group">
+<div>
+<!-- Header Meta -->
+<div class="flex items-center justify-between font-code-sm text-label-sm mb-space-sm">
+<span class="text-tertiary font-semibold">// 02. INFRASTRUCTURE MESH</span>
+<span class="inline-flex items-center gap-1 text-emerald-700 text-[0.6875rem] font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+              DEPLOYS LIVE
+            </span>
+</div>
+<!-- Project Title -->
+<h3 class="text-title-lg font-title-lg text-primary tracking-tight group-hover:text-tertiary transition-colors mb-1">
+            Sovereign Cloud Mesh &amp; Zero-Trust Controller
+          </h3>
+<p class="font-code-sm text-label-sm text-on-surface-variant/70 mb-space-md">Web Applications / Infrastructure • 2023</p>
+<!-- Summary -->
+<p class="text-body-sm font-body-sm text-on-surface-variant leading-relaxed mb-space-lg">
+            Zero-trust multi-cloud mesh with mTLS cryptographic provenance, hardware-backed identity attestations, and automated topology failovers across private data clusters.
+          </p>
+<!-- Substrates Chips -->
+<div class="flex flex-wrap gap-1.5 mb-space-lg">
+<span class="font-code-sm text-label-sm bg-[#F3F3F6] sand-hairline px-2 py-0.5 rounded-DEFAULT text-primary">Go (Golang)</span>
+<span class="font-code-sm text-label-sm bg-[#F3F3F6] sand-hairline px-2 py-0.5 rounded-DEFAULT text-primary">Kubernetes</span>
+<span class="font-code-sm text-label-sm bg-[#F3F3F6] sand-hairline px-2 py-0.5 rounded-DEFAULT text-primary">Istio</span>
+<span class="font-code-sm text-label-sm bg-[#F3F3F6] sand-hairline px-2 py-0.5 rounded-DEFAULT text-primary">Terraform</span>
+<span class="font-code-sm text-label-sm bg-[#F3F3F6] sand-hairline px-2 py-0.5 rounded-DEFAULT text-primary">Next.js UI</span>
+</div>
+</div>
+<!-- Links -->
+<div class="pt-space-md sand-hairline-t flex items-center justify-between">
+<a class="text-label-md font-label-md text-primary font-semibold hover:text-tertiary inline-flex items-center gap-1" href="#live">
+<span>Live Demo ↗</span>
+</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#spec">
+            Interactive Demo
+          </a>
+</div>
+</article>
+<!-- CARD 03: Low-Latency Desktop -->
+<article class="bg-surface-container-lowest sand-hairline rounded-lg p-space-lg flex flex-col justify-between transition-all duration-200 gold-glow group">
+<div>
+<!-- Header Meta -->
+<div class="flex items-center justify-between font-code-sm text-label-sm mb-space-sm">
+<span class="text-tertiary font-semibold">// 03. LOW-LATENCY DESKTOP</span>
+<span class="inline-flex items-center gap-1 text-slate-800 text-[0.6875rem] font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-700"></span>
+              ENTERPRISE
+            </span>
+</div>
+<!-- Project Title -->
+<h3 class="text-title-lg font-title-lg text-primary tracking-tight group-hover:text-tertiary transition-colors mb-1">
+            OmniTrader C# Low-Latency Execution Desktop
+          </h3>
+<p class="font-code-sm text-label-sm text-on-surface-variant/70 mb-space-md">Desktop / C# • 2024</p>
+<!-- Summary -->
+<p class="text-body-sm font-body-sm text-on-surface-variant leading-relaxed mb-space-lg">
+            High-frequency trading terminal and desktop simulation engine built for real-time L2 order book rendering and millisecond telemetry dispatch with zero garbage collection spikes.
+          </p>
+<!-- Substrates Chips -->
+<div class="flex flex-wrap gap-1.5 mb-space-lg">
+<span class="font-code-sm text-label-sm bg-[#F3F3F6] sand-hairline px-2 py-0.5 rounded-DEFAULT text-primary">C#</span>
+<span class="font-code-sm text-label-sm bg-[#F3F3F6] sand-hairline px-2 py-0.5 rounded-DEFAULT text-primary">WPF / .NET 8</span>
+<span class="font-code-sm text-label-sm bg-[#F3F3F6] sand-hairline px-2 py-0.5 rounded-DEFAULT text-primary">gRPC</span>
+<span class="font-code-sm text-label-sm bg-[#F3F3F6] sand-hairline px-2 py-0.5 rounded-DEFAULT text-primary">Rx.NET</span>
+<span class="font-code-sm text-label-sm bg-[#F3F3F6] sand-hairline px-2 py-0.5 rounded-DEFAULT text-primary">DirectWrite</span>
+</div>
+</div>
+<!-- Links -->
+<div class="pt-space-md sand-hairline-t flex items-center justify-between">
+<a class="text-label-md font-label-md text-primary font-semibold hover:text-tertiary inline-flex items-center gap-1" href="#live">
+<span>Interactive Demo ↗</span>
+</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#spec">
+            Case Study
+          </a>
+</div>
+</article>
+<!-- CARD 04: Agentic AI -->
+<article class="bg-surface-container-lowest sand-hairline rounded-lg p-space-lg flex flex-col justify-between transition-all duration-200 gold-glow group">
+<div>
+<!-- Header Meta -->
+<div class="flex items-center justify-between font-code-sm text-label-sm mb-space-sm">
+<span class="text-tertiary font-semibold">// 04. AGENTIC AI</span>
+<span class="inline-flex items-center gap-1 text-purple-800 text-[0.6875rem] font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span>
+              RESEARCH &amp; PROD
+            </span>
+</div>
+<!-- Project Title -->
+<h3 class="text-title-lg font-title-lg text-primary tracking-tight group-hover:text-tertiary transition-colors mb-1">
+            CognitiveMesh Autonomous Multi-Agent Swarm
+          </h3>
+<p class="font-code-sm text-label-sm text-on-surface-variant/70 mb-space-md">AI / Machine Learning • 2024</p>
+<!-- Summary -->
+<p class="text-body-sm font-body-sm text-on-surface-variant leading-relaxed mb-space-lg">
+            Distributed LLM agent orchestration platform executing recursive tool use, semantic memory indexing, and self-correcting code generation pipelines without human intervention.
+          </p>
+<!-- Substrates Chips -->
+<div class="flex flex-wrap gap-1.5 mb-space-lg">
+<span class="font-code-sm text-label-sm bg-[#F3F3F6] sand-hairline px-2 py-0.5 rounded-DEFAULT text-primary">Python</span>
+<span class="font-code-sm text-label-sm bg-[#F3F3F6] sand-hairline px-2 py-0.5 rounded-DEFAULT text-primary">PyTorch</span>
+<span class="font-code-sm text-label-sm bg-[#F3F3F6] sand-hairline px-2 py-0.5 rounded-DEFAULT text-primary">LangChain</span>
+<span class="font-code-sm text-label-sm bg-[#F3F3F6] sand-hairline px-2 py-0.5 rounded-DEFAULT text-primary">pgvector</span>
+<span class="font-code-sm text-label-sm bg-[#F3F3F6] sand-hairline px-2 py-0.5 rounded-DEFAULT text-primary">FastAPI</span>
+</div>
+</div>
+<!-- Links -->
+<div class="pt-space-md sand-hairline-t flex items-center justify-between">
+<a class="text-label-md font-label-md text-primary font-semibold hover:text-tertiary inline-flex items-center gap-1" href="#live">
+<span>Live Demo ↗</span>
+</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#spec">
+            Interactive Demo
+          </a>
+</div>
+</article>
+<!-- CARD 05: Data Isolation Engine -->
+<article class="bg-surface-container-lowest sand-hairline rounded-lg p-space-lg flex flex-col justify-between transition-all duration-200 gold-glow group">
+<div>
+<!-- Header Meta -->
+<div class="flex items-center justify-between font-code-sm text-label-sm mb-space-sm">
+<span class="text-tertiary font-semibold">// 05. DATA ISOLATION ENGINE</span>
+<span class="inline-flex items-center gap-1 text-emerald-700 text-[0.6875rem] font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+              PRODUCTION
+            </span>
+</div>
+<!-- Project Title -->
+<h3 class="text-title-lg font-title-lg text-primary tracking-tight group-hover:text-tertiary transition-colors mb-1">
+            AegisVault Distributed Multi-Tenant Store
+          </h3>
+<p class="font-code-sm text-label-sm text-on-surface-variant/70 mb-space-md">Database Architectures • 2023</p>
+<!-- Summary -->
+<p class="text-body-sm font-body-sm text-on-surface-variant leading-relaxed mb-space-lg">
+            Cryptographically isolated multi-tenant database partitioning layer with automated row-level security orchestration and zero-knowledge audit trails for regulated finance.
+          </p>
+<!-- Substrates Chips -->
+<div class="flex flex-wrap gap-1.5 mb-space-lg">
+<span class="font-code-sm text-label-sm bg-[#F3F3F6] sand-hairline px-2 py-0.5 rounded-DEFAULT text-primary">Next.js</span>
+<span class="font-code-sm text-label-sm bg-[#F3F3F6] sand-hairline px-2 py-0.5 rounded-DEFAULT text-primary">Supabase</span>
+<span class="font-code-sm text-label-sm bg-[#F3F3F6] sand-hairline px-2 py-0.5 rounded-DEFAULT text-primary">PostgreSQL</span>
+<span class="font-code-sm text-label-sm bg-[#F3F3F6] sand-hairline px-2 py-0.5 rounded-DEFAULT text-primary">TypeScript</span>
+<span class="font-code-sm text-label-sm bg-[#F3F3F6] sand-hairline px-2 py-0.5 rounded-DEFAULT text-primary">Citus Sharding</span>
+</div>
+</div>
+<!-- Links -->
+<div class="pt-space-md sand-hairline-t flex items-center justify-between">
+<a class="text-label-md font-label-md text-primary font-semibold hover:text-tertiary inline-flex items-center gap-1" href="#live">
+<span>Live Demo ↗</span>
+</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#spec">
+            Architecture Spec
+          </a>
+</div>
+</article>
+<!-- CARD 06: GPU Simulation -->
+<article class="bg-surface-container-lowest sand-hairline rounded-lg p-space-lg flex flex-col justify-between transition-all duration-200 gold-glow group">
+<div>
+<!-- Header Meta -->
+<div class="flex items-center justify-between font-code-sm text-label-sm mb-space-sm">
+<span class="text-tertiary font-semibold">// 06. GPU SIMULATION</span>
+<span class="inline-flex items-center gap-1 text-sky-800 text-[0.6875rem] font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-sky-600"></span>
+              VERIFIED
+            </span>
+</div>
+<!-- Project Title -->
+<h3 class="text-title-lg font-title-lg text-primary tracking-tight group-hover:text-tertiary transition-colors mb-1">
+            NeuroForge Real-Time Neural Simulation Studio
+          </h3>
+<p class="font-code-sm text-label-sm text-on-surface-variant/70 mb-space-md">Desktop / C# • 2024</p>
+<!-- Summary -->
+<p class="text-body-sm font-body-sm text-on-surface-variant leading-relaxed mb-space-lg">
+            Hardware-accelerated desktop workstation suite for visualizing continuous physics and neural weights across parallel GPU compute clusters in high-fidelity 60 FPS real-time.
+          </p>
+<!-- Substrates Chips -->
+<div class="flex flex-wrap gap-1.5 mb-space-lg">
+<span class="font-code-sm text-label-sm bg-[#F3F3F6] sand-hairline px-2 py-0.5 rounded-DEFAULT text-primary">C#</span>
+<span class="font-code-sm text-label-sm bg-[#F3F3F6] sand-hairline px-2 py-0.5 rounded-DEFAULT text-primary">.NET 8</span>
+<span class="font-code-sm text-label-sm bg-[#F3F3F6] sand-hairline px-2 py-0.5 rounded-DEFAULT text-primary">Compute Shaders</span>
+<span class="font-code-sm text-label-sm bg-[#F3F3F6] sand-hairline px-2 py-0.5 rounded-DEFAULT text-primary">Vulkan Interop</span>
+<span class="font-code-sm text-label-sm bg-[#F3F3F6] sand-hairline px-2 py-0.5 rounded-DEFAULT text-primary">SQLite</span>
+</div>
+</div>
+<!-- Links -->
+<div class="pt-space-md sand-hairline-t flex items-center justify-between">
+<a class="text-label-md font-label-md text-primary font-semibold hover:text-tertiary inline-flex items-center gap-1" href="#live">
+<span>Live Demo ↗</span>
+</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#spec">
+            Interactive Demo
+          </a>
+</div>
+</article>
+</div>
+<!-- ========================================================================= -->
+<!-- BOTTOM CALL TO ACTION BANNER                                              -->
+<!-- ========================================================================= -->
+<section class="bg-surface-container-lowest sand-hairline rounded-lg p-space-xl md:p-space-2xl text-center relative overflow-hidden shadow-sm mb-space-xl">
+<div class="max-w-3xl mx-auto relative z-10">
+<div class="font-code-sm text-label-sm text-tertiary uppercase tracking-widest mb-space-xs">// EXECUTIVE COLLABORATION</div>
+<h2 class="text-headline-md font-headline-md text-primary tracking-tight mb-space-md">Initiate an Architectural Dialogue</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant leading-relaxed mb-space-xl">
+          Seeking principal-level software architecture, fault-tolerant distributed system consultations, or strategic engineering advisory for mission-critical platforms?
+        </p>
+<div class="flex flex-wrap items-center justify-center gap-space-md">
+<a class="px-6 py-3 bg-tertiary text-on-tertiary rounded-lg text-label-md font-label-md hover:bg-tertiary/90 transition-all duration-150 shadow-sm flex items-center gap-2" href="#contact">
+<span>Discuss Systems</span>
+<span class="material-symbols-outlined text-[1rem]" data-icon="send">send</span>
+</a>
+<a class="px-6 py-3 bg-surface-container-lowest text-primary rounded-lg text-label-md font-label-md sand-hairline hover:border-tertiary hover:text-tertiary transition-all duration-150 flex items-center gap-2" href="#cv">
+<span class="material-symbols-outlined text-[1.125rem]" data-icon="description">description</span>
+<span>Download Executive CV</span>
+</a>
+</div>
+</div>
+</section>
+</main>
+<!-- ========================================================================= -->
+<!-- SHARED COMPONENT: Footer (Exact JSON Schema Implementation)               -->
+<!-- ========================================================================= -->
+<footer class="docked full-width bg-surface-container-lowest border-t border-outline-variant/60">
+<div class="max-w-7xl mx-auto px-margin py-space-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-space-lg">
+<!-- Brand & Copyright Monograph -->
+<div class="flex flex-col gap-1">
+<div class="text-title-md font-title-md text-primary tracking-normal font-semibold">
+          Abdulghani Al-Shibami
+        </div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">
+          © 2025 Abdulghani Al-Shibami. All rights reserved. Sovereign Systems Architecture &amp; High-Impact Engineering.
+        </div>
+</div>
+<!-- Footer Colophon Navigation Links -->
+<div class="flex flex-wrap items-center gap-space-lg text-label-sm font-label-sm">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="#architecture-dossier">Architecture Dossier</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="#system-telemetry">System Telemetry</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="https://github.com" rel="noopener noreferrer" target="_blank">GitHub</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="https://linkedin.com" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="#pgp">PGP Key</a>
+<a class="text-primary underline underline-offset-4 decoration-tertiary" href="#colophon">Colophon</a>
+</div>
+</div>
+</footer>
+<!-- Subtle Micro-Interactions Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Keyboard shortcut simulation for command palette
+      document.addEventListener('keydown', (e) => {
+        if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+          e.preventDefault();
+          const searchInput = document.querySelector('input[type="text"]');
+          if (searchInput) {
+            searchInput.focus();
+          }
+        }
+      });
+    });
+  </script>
+</body></html>

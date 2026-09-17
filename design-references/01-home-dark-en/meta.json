@@ -1,0 +1,29 @@
+{
+  "referenceNumber": "01",
+  "referenceName": "Home — Desktop — Dark — English",
+  "stitchScreenId": "241e915ad6754b6099cfc14bd95c0492",
+  "stitchProjectId": "1524242436626085687",
+  "designSystem": "assets/973a5e94f39948ad81611fe5c438902a",
+  "viewport": "DESKTOP (1440px / 2560px)",
+  "theme": "DARK",
+  "language": "English (en)",
+  "direction": "LTR",
+  "screenshotFile": "screenshot.png",
+  "htmlFile": "screen.html",
+  "sections": [
+    "Global Navigation Bar with Royal Gold Monogram, Nav Links, Theme Toggle, Language Switcher",
+    "Hero Section with [PROFILE_IMAGE] double-ring circular placeholder, Executive Title, Subtitle, Primary CTA (Explore Projects), Secondary CTA (Get in Touch), Social Links",
+    "Metrics Counter Strip (5+ Years Experience, 20+ Systems Built, 100% Production Grade, 99.99% Availability)",
+    "Featured Projects Preview (AuraLedger, HyperScale Event Gateway, Sovereign Cloud Mesh)",
+    "Skills & Architectural Toolkit Grid (Core Systems, Cloud & DevOps, Data & Streaming, Architectural Paradigms)",
+    "Minimalist Luxury Footer with Colophon & Legal Notices"
+  ],
+  "designTokens": {
+    "background": "#0B0B0C",
+    "surface": "#131314",
+    "accent": "#D4AF37",
+    "textPrimary": "#FFFFFF",
+    "textSecondary": "#94A3B8",
+    "border": "rgba(212, 175, 55, 0.25)"
+  }
+}
