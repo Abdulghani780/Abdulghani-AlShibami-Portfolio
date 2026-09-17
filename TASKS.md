@@ -160,7 +160,7 @@
 - **TITLE:** Sandboxed Interactive Demo System & Simulations
 - **PHASE:** 09
 - **PRIORITY:** P0
-- **STATUS:** READY
+- **STATUS:** IN_PROGRESS
 - **DESCRIPTION:** Build `DemoViewer` supporting Real Live, Embedded, and Interactive Web Simulations (for C# / Python desktop apps).
 - **DEPENDENCIES:** TSK-080
 - **FILES:** `components/features/demos/*`, `app/[locale]/projects/[slug]/demo/page.tsx`

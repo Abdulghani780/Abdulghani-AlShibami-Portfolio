@@ -180,3 +180,29 @@ The UI components in this repository adhere to strict architectural discipline:
 ### 5.10. `DemoCalloutBanner` (`components/features/projects/case-study/DemoCalloutBanner.tsx`)
 - **Purpose:** Prominent glowing gold banner featuring honest simulation disclosures and a direct trigger to launch the in-browser simulation sandbox.
 
+---
+
+## 6. Interactive Demo System Components (`components/features/demos/` & `demos/`)
+
+### 6.1. `DemoViewer` (`components/features/demos/DemoViewer.tsx`)
+- **Purpose:** Central coordinator component orchestrating all 6 canonical demo modes (`interactive_simulation`, `real_live`, `embedded`, `video`, `repo`, `none`).
+- **Props:** `project: Project`, `locale: Locale`.
+- **Security:** Enforces strict sandboxing on iframes, secure `noopener noreferrer` on external tabs, and clean unmounting.
+
+### 6.2. `DemoShell` (`demos/shared/DemoShell.tsx`)
+- **Purpose:** Reusable desktop window chrome encapsulating in-browser simulations with macOS/Windows control dots, title bar, fullscreen toggle, state reset trigger, and status bar.
+- **Props:** `title`, `projectSlug`, `locale`, `disclaimer`, `onReset`, `statusText`, `statusItems`, `children`.
+
+### 6.3. `DemoDisclosure` (`demos/shared/DemoDisclosure.tsx`)
+- **Purpose:** Prominent technical integrity disclosure banner clearly stating that in-browser simulations run on safe mock data and do not execute native desktop runtimes.
+
+### 6.4. `DemoToolbar` & `DemoStatusBar` (`demos/shared/`)
+- **Purpose:** Standardized controls and live telemetry status monitors for simulation environments.
+
+### 6.5. Concrete Simulation Sandboxes (`demos/simulations/`)
+- **`YusraSimulation.tsx`:** Windows Desktop C# WinForms enterprise accounting simulation with interactive double-entry balance validation, customer invoicing, and local SQL Server ACID transaction logs.
+- **`CampusITTrackerSimulation.tsx`:** 3-tier campus network topology monitor with dynamic ICMP latency ping simulation and incident ticketing desk.
+- **`MetaAlgorithmLabSimulation.tsx`:** Real client-side algorithmic benchmark runner and step-by-step sorting visualizer (QuickSort, BubbleSort, InsertionSort).
+- **`AuraLedgerSimulation.tsx`:** 5-node distributed consensus Raft state machine simulator with chaos network partition controls.
+
+

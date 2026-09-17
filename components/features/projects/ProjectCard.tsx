@@ -102,11 +102,23 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           </Button>
         </Link>
 
-        {project.demoType === "interactive_simulation" && project.demoUrl && (
-          <Link href={`/${locale}${project.demoUrl}`} className="shrink-0">
+        {project.demoType !== "none" && (
+          <Link href={`/${locale}/projects/${project.slug}/demo`} className="shrink-0">
             <Button variant="gold-outline" size="sm">
               <span className="h-1.5 w-1.5 rounded-full bg-status-emerald animate-pulse" />
-              <span>{isRtl ? "تشغيل المحاكاة" : "Launch Simulation"}</span>
+              <span>
+                {project.demoType === "real_live"
+                  ? isRtl
+                    ? "الموقع المباشر"
+                    : "Live Demo"
+                  : project.demoType === "repo"
+                  ? isRtl
+                    ? "المستودع"
+                    : "Repository"
+                  : isRtl
+                  ? "تشغيل المحاكاة"
+                  : "Launch Simulation"}
+              </span>
             </Button>
           </Link>
         )}

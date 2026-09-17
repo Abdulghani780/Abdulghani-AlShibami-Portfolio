@@ -10,7 +10,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [0.4.0] - 2026-09-17
+## [0.5.0] - 2026-09-18
+
+### Added
+- **Data Integrity Gate Completed:** Audited and classified all project data into canonical tiers (`VERIFIED_OWNER_DATA`, `USER_PROVIDED_PLACEHOLDER`, `UNVERIFIED_AI_GENERATED_CONTENT`). Created `docs/PROJECT_DATA_AUDIT.md`.
+- **Verified Owner Projects:** Realigned primary catalog around genuine owner systems: **YUSRA** (C# WinForms / SQL Server enterprise ledger), **Campus IT Infrastructure Tracker**, **MetaAlgorithm Lab**, and **Nexora Tech**.
+- **Fabricated Metrics Neutralization:** Permanently neutralized unverified claims (`145k tx/s`, `0.8ms p99`, `99.999% SLA`, `500,000 txns`), reframing them as honest demonstration targets and `[VERIFIED METRIC REQUIRED]`.
+- **Roadmap Phase Numbering Harmonization:** Reconciled phase numbering to the canonical 21-phase master lifecycle (`Phase 09: Interactive Demo System & Sandboxes`), recorded in `docs/34_DECISION_LOG.md` (ADR-005) and synchronized across all governance documents.
+- **Scalable Demo Registry:** Built `demos/registry/index.ts` mapping project slugs to canonical demo modes and simulation components.
+- **Unified `DemoViewer` Coordinator:** Created `components/features/demos/DemoViewer.tsx` handling all 6 canonical demo modes (`interactive_simulation`, `real_live`, `embedded`, `video`, `repo`, `none`).
+- **Reusable Simulation Shell Suite:** Built `DemoShell.tsx`, `DemoDisclosure.tsx`, `DemoToolbar.tsx`, and `DemoStatusBar.tsx`.
+- **Interactive Simulation Sandboxes:**
+  - **`YusraSimulation.tsx`:** High-fidelity C# WinForms enterprise accounting simulation with real-time double-entry balance validation and customer invoice generation.
+  - **`CampusITTrackerSimulation.tsx`:** 3-tier campus network topology monitor with dynamic ICMP latency ping simulation and incident ticketing desk.
+  - **`MetaAlgorithmLabSimulation.tsx`:** Real client-side algorithmic benchmark runner and step-by-step sorting visualizer.
+  - **`AuraLedgerSimulation.tsx`:** Refactored 5-node distributed Raft consensus state machine simulator with chaos network partition controls.
+- **Dynamic Demo Route:** Created `app/[locale]/projects/[slug]/demo/page.tsx` with dynamic metadata and static prerendering for both English and Arabic.
+- **Security Audit:** Created `docs/DEMO_SECURITY_REVIEW.md` and `docs/DEMO_COVERAGE_MATRIX.md`.
+
+### Verified
+- TypeScript compilation: 0 errors (`pnpm typecheck`).
+- ESLint: 0 warnings or errors (`pnpm lint`).
+- Static Generation: 30/30 static pages prerendered (`pnpm build`).
+- Full Visual Browser QA: Verified YUSRA (Dark, Light, Arabic RTL, Mobile 393px), Campus IT Tracker, MetaAlgorithm Lab, and AuraLedger via Chrome DevTools subagent with recorded WebP session artifact (`demo_system_qa_1789680017131.webp`).
+
 
 ### Added
 - **Security & Data Sanitization:** Permanently removed fabricated PGP fingerprint (`0x8F94D29E`) and geographic coordinates (`LAT: 24.7136° N, LON: 46.6753° E`). Replaced with safe system versioning tags (`SYS_REV: v2.4.0`, `ASPECT_RATIO: 1:1`).

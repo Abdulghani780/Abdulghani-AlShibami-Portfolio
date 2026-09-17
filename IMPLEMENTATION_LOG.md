@@ -189,8 +189,54 @@
   - Production Build: `pnpm build` -> PASSED (all 24 static pages prerendered successfully).
   - Visual Browser Subagent QA: Tested across Dark Mode EN, Light Mode EN, Arabic RTL (`/ar/projects`), Case Study Dark (`/en/projects/auraledger`), Case Study Light, Case Study RTL (`/ar/projects/auraledger`), 404 State Machine Fault (`/en/projects/invalid-slug`), and Mobile iPhone (393px) reflow. Full session recorded in `project_system_verification_1789677982349.webp`.
 - **Git Commit:**
-  - Pending commit: `feat(projects): implement catalog and case study system`.
+  - `e34f4b5` & `d2c5187`: `feat(projects): implement catalog, dynamic case studies, and sanitized DAL`.
 - **Next Step:**
-  - Phase 05: Interactive Demo System.
+  - Phase 09: Interactive Demo System & Data Integrity Gate.
+
+---
+
+## [2026-09-18] Entry 005 — Phase 09 (Milestone 05): Interactive Demo System & Data Integrity Gate
+- **Phase:** PHASE 09 — Interactive Demo System & Sandboxes (Milestone 05)
+- **Task:** TSK-090 (Sandboxed Interactive Demo System & Simulations)
+- **Objective:** Enforce strict data integrity gate, purge unverified/fabricated metrics, harmonize roadmap phase numbering, and build a production-grade scalable Demo System supporting all 6 canonical demo modes and bespoke interactive simulations for verified owner projects.
+- **Files Changed / Created:**
+  - `docs/PROJECT_DATA_AUDIT.md`: Comprehensive audit classifying all projects into `VERIFIED_OWNER_DATA`, `USER_PROVIDED_PLACEHOLDER`, and `UNVERIFIED_AI_GENERATED_CONTENT`.
+  - `docs/DEMO_COVERAGE_MATRIX.md`: Canonical demo coverage tracking table across all projects.
+  - `docs/DEMO_SECURITY_REVIEW.md`: Sandbox security analysis covering iframe permissions, CSP, and origin validation.
+  - `docs/34_DECISION_LOG.md`: Added ADR-005 harmonizing phase numbering across all governance docs to the 21-phase master lifecycle.
+  - `types/project.ts`: Added `verificationStatus` metadata field.
+  - `lib/data/projectsData.ts`: Re-centered catalog on genuine owner projects (**YUSRA**, **Campus IT Infrastructure Tracker**, **MetaAlgorithm Lab**, **Nexora Tech**, plus **AuraLedger** as a demonstration prototype) and neutralized unverified metrics into demonstration targets.
+  - `lib/i18n/dictionaries.ts`: Neutralized homepage metrics, added `demos` dictionary keys for both English and Arabic.
+  - `demos/registry/index.ts`: Strongly typed `DEMO_REGISTRY` mapping project slugs to demo modes and simulation components.
+  - `demos/shared/DemoShell.tsx`: Reusable desktop window chrome with title bar, control dots, fullscreen, reset, and status bar.
+  - `demos/shared/DemoDisclosure.tsx`: Honest technical integrity banner explicitly stating in-browser simulation status with mock data.
+  - `demos/shared/DemoToolbar.tsx`: Reusable toolbar with breadcrumbs, reset, and fullscreen toggles.
+  - `demos/shared/DemoStatusBar.tsx`: Telemetry and simulation status bar.
+  - `demos/simulations/YusraSimulation.tsx`: WinForms C# enterprise accounting simulation featuring General Journal with real-time double-entry balance validation, customer invoicing with 15% VAT calculation, and local SQL Server ACID transaction log.
+  - `demos/simulations/CampusITTrackerSimulation.tsx`: 3-tier campus network topology monitor with dynamic ICMP ping latency testing and incident ticketing drawer.
+  - `demos/simulations/MetaAlgorithmLabSimulation.tsx`: Real client-side in-browser sorting algorithm visualizer (QuickSort, BubbleSort, InsertionSort) with step-by-step animation and real-time comparison counters.
+  - `demos/simulations/AuraLedgerSimulation.tsx`: 5-node distributed consensus Raft state machine simulator with leader election and chaos partition injection.
+  - `components/features/demos/DemoViewer.tsx`: Coordinator component orchestrating all 6 canonical demo modes (`interactive_simulation`, `real_live`, `embedded`, `video`, `repo`, `none`).
+  - `app/[locale]/projects/[slug]/demo/page.tsx`: Dynamic demo route with dynamic SEO metadata and static prerendering across all localized paths.
+  - `components/features/projects/case-study/CaseStudyHero.tsx`: Updated demo button supporting all 6 demo modes.
+  - `components/features/projects/case-study/DemoCalloutBanner.tsx`: Dynamic project-tailored callout banner.
+  - `components/features/projects/ProjectCard.tsx`: Updated demo button supporting all demo modes.
+  - `ROADMAP.md`, `docs/32_ROADMAP.md`, `TASKS.md`, `PROGRESS.md`, `docs/36_PROJECT_STATUS.md`: Harmonized phase numbering and updated status.
+- **Tests & Verification:**
+  - TypeScript compilation: `pnpm typecheck` -> PASSED (0 errors).
+  - ESLint: `pnpm lint` -> PASSED (0 errors, 0 warnings).
+  - Production Build: `pnpm build` -> PASSED (all 30 static pages prerendered successfully with zero errors).
+  - Visual Browser Subagent QA:
+    - YUSRA WinForms Simulation: Verified General Journal double-entry balance check (19,500 balanced), Invoicing VAT computation, and SQL Server transaction log.
+    - Theme Verification: Verified Dark Mode (Obsidian/Gold) and Light Mode (Porcelain/Slate/Gold).
+    - Localization: Verified Arabic YUSRA demo in full RTL layout and typography.
+    - Campus IT Tracker: Tested ICMP ping latency measurement on Lab Switch 302 and ticket dispatch.
+    - MetaAlgorithm Lab: Animated QuickSort benchmark observing real comparison counters and color states.
+    - AuraLedger Sandbox: Tested leader isolation triggering speculative pre-voting and failover to Node-2.
+    - Mobile Viewport (393px width): Confirmed responsive layout reflow with zero horizontal overflow.
+    - Full WebP session recording: `demo_system_qa_1789680017131.webp`.
+- **Git Commit:**
+  - Pending: `feat(demos): implement interactive demo system and enforce data integrity gate`.
+
 
 

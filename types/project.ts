@@ -98,6 +98,7 @@ export interface Project {
   };
   year: number;
   status: "Completed" | "In Progress" | "Maintained";
+  verificationStatus?: "VERIFIED_OWNER_DATA" | "USER_PROVIDED_PLACEHOLDER" | "UNVERIFIED_AI_GENERATED_CONTENT";
   featured: boolean;
   technologies: Technology[];
   githubUrl?: string;

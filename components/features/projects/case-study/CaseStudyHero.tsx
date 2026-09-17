@@ -83,11 +83,23 @@ export const CaseStudyHero: React.FC<CaseStudyHeroProps> = ({
 
         {/* Action Button Strip */}
         <div className="flex flex-wrap items-center gap-4 pt-2">
-          {project.demoType === "interactive_simulation" && project.demoUrl && (
-            <Link href={`/${locale}${project.demoUrl}`}>
+          {project.demoType !== "none" && (
+            <Link href={`/${locale}/projects/${project.slug}/demo`}>
               <Button variant="primary" size="md">
                 <span className="h-2 w-2 rounded-full bg-status-emerald animate-pulse" />
-                <span>{isRtl ? "تشغيل مختبر المحاكاة التفاعلي" : "Launch Interactive Simulation"}</span>
+                <span>
+                  {project.demoType === "real_live"
+                    ? isRtl
+                      ? "فتح التطبيق المباشر"
+                      : "Open Live Demo"
+                    : project.demoType === "repo"
+                    ? isRtl
+                      ? "استعراض المستودع البرمجي"
+                      : "View Repository"
+                    : isRtl
+                    ? "تشغيل مختبر المحاكاة التفاعلي"
+                    : "Launch Interactive Demo"}
+                </span>
                 <span className={cn("text-xs", isRtl && "rotate-180")}>→</span>
               </Button>
             </Link>

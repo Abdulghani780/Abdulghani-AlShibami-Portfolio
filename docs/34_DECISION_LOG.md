@@ -73,3 +73,19 @@
 - **Impact:** Unbreakable application stability.
 - **Affected Files:** `lib/services/*`, `lib/data/*`.
 - **Affected Systems:** Data persistence layer.
+
+---
+
+## Decision 005: Canonical Roadmap Phase Numbering Harmonization
+- **Decision ID:** `ADR-005`
+- **Date:** 2026-09-18
+- **Decision:** Establish the master 21-phase lifecycle (`Phase 00` through `Phase 20`) as the single canonical engineering phase numbering system across all governance documents (`ROADMAP.md`, `docs/32_ROADMAP.md`, `TASKS.md`, `PROGRESS.md`, `docs/36_PROJECT_STATUS.md`).
+- **Context:** During post-design implementation, prompt sequences referred to milestones as "Phase 04 (Project System)" and "Phase 05 (Demo System)", whereas the master engineering roadmap designated them as "Phase 08 (Project System)" and "Phase 09 (Interactive Demo System)". This caused cross-document phase numbering divergence.
+- **Resolution:**
+  - Canonical Lifecycle Phase 08 is **Project Management & Showcase System** (Completed).
+  - Canonical Lifecycle Phase 09 is **Interactive Demo System & Sandboxes** (Active / Current).
+  - Sub-milestone references in execution logs will explicitly clarify: `Lifecycle Phase 09 (Milestone 05)`.
+- **Reason:** Eliminates confusion, preserves historical tracking consistency, and aligns task matrices with the complete 21-phase master architecture.
+- **Affected Files:** `ROADMAP.md`, `docs/32_ROADMAP.md`, `TASKS.md`, `PROGRESS.md`, `docs/36_PROJECT_STATUS.md`.
+- **Affected Systems:** Engineering governance and roadmap reporting.
+

@@ -1,6 +1,8 @@
 # 15 — INTERACTIVE DEMO SYSTEM ARCHITECTURE
 
 **Project:** Abdulghani Al-Shibami — Autonomous Personal Portfolio Engineering System  
+**Canonical Phase:** Phase 09 (Interactive Demo System & Sandboxes)  
+**Updated:** September 18, 2026  
 
 ---
 
@@ -9,9 +11,11 @@ A premier software engineer's work cannot be judged solely by static screenshots
 
 **The Golden Truthfulness Rule:**
 - **NEVER** falsely claim that a Windows desktop application (WinForms, WPF, C# .NET) or native desktop Python executable is executing natively inside the browser.
-- When demonstrating desktop software, the platform constructs an **Interactive Web Simulation** that recreates the UI layout, state transitions, and interaction flows using browser technologies and isolated mock data.
+- When demonstrating desktop software, the platform constructs an **Interactive Web Simulation** that recreates the UI layout, state transitions, and interaction flows using browser technologies and safe mock data.
 - The experience must be prominently labeled:
   > **"Interactive Web Simulation"** or **"Web-Based Project Showcase"**
+- The disclosure banner must explicitly state:
+  > *"This is a browser-based interactive simulation of the project interface. It is not the original native desktop runtime."*
 
 ---
 
@@ -28,32 +32,40 @@ A premier software engineer's work cannot be judged solely by static screenshots
 
 ---
 
-## 3. `DemoViewer` Component Architecture
+## 3. Architecture & Registry Implementation
 
-The `DemoViewer` is a unified, scalable coordinator component located at `components/features/demos/DemoViewer.tsx`.
-
+The demo system is organized under a modular architecture:
 ```text
-DemoViewer
-├── DemoHeader (Title, Mode Badge, Reset State Button, Fullscreen Toggle)
-├── DemoBody
-│   ├── [If real_live] ────────► ExternalLaunchCard
-│   ├── [If embedded] ─────────► SandboxedIframe
-│   ├── [If simulation] ───────► DesktopSimulationEngine
-│   │                               ├── WindowChrome (Title bar, minimize/maximize/close buttons)
-│   │                               ├── NavigationSidebar
-│   │                               ├── MainWorkspace (Data grids, filter bars, forms)
-│   │                               └── ActionDialogs (Modal simulations)
-│   ├── [If video] ────────────► VideoWalkthrough
-│   └── [If repo] ─────────────► RepoInspector
-└── DemoFooter (Simulation Disclaimer, Tech Badges, Link to Case Study)
+demos/
+├── registry/
+│   └── index.ts                 // Strongly typed DEMO_REGISTRY mapping slug -> DemoDefinition
+├── shared/
+│   ├── DemoShell.tsx            // Desktop window chrome (title bar, buttons, fullscreen, reset)
+│   ├── DemoDisclosure.tsx       // Honest technical integrity disclosure banner
+│   ├── DemoToolbar.tsx          // Action bar and navigation breadcrumbs
+│   └── DemoStatusBar.tsx        // Telemetry metrics and engine status
+└── simulations/
+    ├── YusraSimulation.tsx      // C# WinForms double-entry ledger and billing engine
+    ├── CampusITTrackerSimulation.tsx // 3-tier campus network topology & incident desk
+    ├── MetaAlgorithmLabSimulation.tsx // In-browser client-side sorting benchmark runner
+    └── AuraLedgerSimulation.tsx // 5-node Raft consensus sandbox & chaos partition controls
 ```
 
 ---
 
-## 4. Routing & Isolation
-- **Dedicated Route:** `/projects/[slug]/demo`
-- **Isolation Guarantee:**
-  - Demo state is encapsulated within the demo component tree.
-  - State does not leak into global session stores.
-  - Exiting the route completely frees allocated simulated memory.
-- **Simulation Registry:** Demos register via a clean configuration object (`demoConfig` in `lib/data/projectsData.ts`), eliminating monolithic switch-case statements.
+## 4. `DemoViewer` Coordinator Component
+
+`components/features/demos/DemoViewer.tsx` dynamically evaluates the project's canonical `demoType`:
+1. **Simulation:** Renders `DemoShell` + `DemoDisclosure` + registered simulation view.
+2. **Real Live:** Renders verified external launch card with security attributes.
+3. **Embedded:** Renders sandboxed iframe with X-Frame-Options fallback detection.
+4. **Repo:** Renders GitHub clone snippet card and direct repository link.
+5. **None:** Renders architectural monograph information and return link.
+
+---
+
+## 5. Dynamic Demo Route
+
+- **Path:** `app/[locale]/projects/[slug]/demo/page.tsx`
+- **Prerendering:** `generateStaticParams()` dynamically prerenders all active demo routes across English and Arabic (`/en/projects/[slug]/demo` and `/ar/projects/[slug]/demo`).
+- **Memory Isolation:** State is confined to the simulation React tree; unmounting cleanly releases browser memory and event listeners.

@@ -3,19 +3,19 @@ import { Project, ProjectCategory, Technology } from "@/types/project";
 export const PROJECT_CATEGORIES: ProjectCategory[] = [
   {
     id: "cat-1",
-    slug: "distributed-systems",
+    slug: "desktop-systems",
     name: {
-      en: "Distributed Systems",
-      ar: "الأنظمة الموزعة",
+      en: "Enterprise Desktop & ERP",
+      ar: "أنظمة سطح المكتب والمؤسسات",
     },
     displayOrder: 1,
   },
   {
     id: "cat-2",
-    slug: "autonomous-ai",
+    slug: "cloud-infrastructure",
     name: {
-      en: "Autonomous AI",
-      ar: "الذكاء الاصطناعي",
+      en: "Network & Infrastructure",
+      ar: "الشبكات والبنية التحتية",
     },
     displayOrder: 2,
   },
@@ -23,69 +23,477 @@ export const PROJECT_CATEGORIES: ProjectCategory[] = [
     id: "cat-3",
     slug: "low-latency",
     name: {
-      en: "Low-Latency C#",
-      ar: "الحوسبة السريعة",
+      en: "Algorithmic Computing",
+      ar: "الحوسبة الخوارزمية والأداء",
     },
     displayOrder: 3,
   },
   {
     id: "cat-4",
-    slug: "cloud-infrastructure",
+    slug: "distributed-systems",
     name: {
-      en: "Cloud Native",
-      ar: "السحابة والشبكات",
+      en: "Distributed & Web Platforms",
+      ar: "المنصات الموزعة وتطبيقات الويب",
     },
     displayOrder: 4,
-  },
-  {
-    id: "cat-5",
-    slug: "desktop-systems",
-    name: {
-      en: "Enterprise Desktop",
-      ar: "أنظمة سطح المكتب",
-    },
-    displayOrder: 5,
   },
 ];
 
 export const TECHNOLOGIES: Record<string, Technology> = {
-  csharp: { id: "tech-csharp", name: "C# .NET 9", category: "Language" },
+  csharp: { id: "tech-csharp", name: "C# .NET", category: "Language" },
+  winforms: { id: "tech-winforms", name: "Windows Forms", category: "Framework" },
+  sqlserver: { id: "tech-sqlserver", name: "SQL Server", category: "Database" },
+  acid: { id: "tech-acid", name: "ACID Ledger Cache", category: "Protocol" },
+  python: { id: "tech-python", name: "Python 3", category: "Language" },
+  sqlite: { id: "tech-sqlite", name: "SQLite", category: "Database" },
+  networking: { id: "tech-net", name: "Network Telemetry", category: "Protocol" },
+  cpp: { id: "tech-cpp", name: "C++", category: "Language" },
+  algorithms: { id: "tech-algo", name: "Complexity Benchmarking", category: "Tool" },
+  nextjs: { id: "tech-nextjs", name: "Next.js 15", category: "Framework" },
+  react: { id: "tech-react", name: "React 19", category: "Framework" },
+  typescript: { id: "tech-ts", name: "TypeScript", category: "Language" },
+  tailwind: { id: "tech-tw", name: "Tailwind CSS", category: "Framework" },
+  restapi: { id: "tech-rest", name: "RESTful Architecture", category: "Protocol" },
   raft: { id: "tech-raft", name: "Raft Protocol", category: "Protocol" },
   grpc: { id: "tech-grpc", name: "gRPC / HTTP/3", category: "Protocol" },
-  tla: { id: "tech-tla", name: "TLA+ Formal Proofs", category: "Tool" },
-  zeroalloc: { id: "tech-zeroalloc", name: "Zero-Alloc Memory", category: "Framework" },
-  python: { id: "tech-python", name: "Python 3.12", category: "Language" },
-  fastapi: { id: "tech-fastapi", name: "FastAPI", category: "Framework" },
-  multiagent: { id: "tech-multiagent", name: "Multi-Agent Swarm", category: "Framework" },
-  nextjs: { id: "tech-nextjs", name: "Next.js 15", category: "Framework" },
-  cpp: { id: "tech-cpp", name: "C++20 Interop", category: "Language" },
-  ringbuffer: { id: "tech-ringbuffer", name: "LMAX Disruptor", category: "Framework" },
-  lockfree: { id: "tech-lockfree", name: "Lock-Free Ring", category: "Framework" },
-  golang: { id: "tech-golang", name: "Go 1.23", category: "Language" },
-  k8s: { id: "tech-k8s", name: "Kubernetes CRDs", category: "Cloud" },
-  ebpf: { id: "tech-ebpf", name: "eBPF Telemetry", category: "Tool" },
-  rust: { id: "tech-rust", name: "Rust", category: "Language" },
-  opa: { id: "tech-opa", name: "Open Policy Agent", category: "Tool" },
-  winforms: { id: "tech-winforms", name: ".NET WinForms", category: "Framework" },
-  sqlserver: { id: "tech-sqlserver", name: "SQL Server", category: "Database" },
+  tla: { id: "tech-tla", name: "TLA+ Formal Specs", category: "Tool" },
 };
 
 export const PROJECTS: Project[] = [
   {
     id: "proj-01",
+    slug: "yusra",
+    categorySlug: "desktop-systems",
+    title: {
+      en: "Yusra Enterprise Resource Ledger",
+      ar: "نظام يسرى لإدارة الموارد والمحاسبة",
+    },
+    shortDescription: {
+      en: "Desktop accounting, journal ledger, and inventory system developed with C# WinForms, SQL Server, and offline-resilient transactions.",
+      ar: "نظام محاسبي مكتبي متكامل لإدارة القيود اليومية والفواتير والمخزون مبني بتقنيات C# WinForms وقواعد بيانات SQL Server.",
+    },
+    year: 2024,
+    status: "Completed",
+    verificationStatus: "VERIFIED_OWNER_DATA",
+    featured: true,
+    demoType: "interactive_simulation",
+    demoUrl: "/projects/yusra/demo",
+    technologies: [
+      TECHNOLOGIES.csharp,
+      TECHNOLOGIES.winforms,
+      TECHNOLOGIES.sqlserver,
+      TECHNOLOGIES.acid,
+    ],
+    caseStudy: {
+      problem: {
+        en: "Commercial retail operations in environments with unstable internet connectivity experience critical operational halts, unsynchronized ledger accounts, and transaction discrepancies during network dropouts.",
+        ar: "تواجه المؤسسات التجارية في بيئات الاتصال الشبكي المتقطع تعطلاً كبيراً في تسجيل العمليات اليومية وتضارباً في أرصدة الحسابات ومطابقة المخزون.",
+      },
+      solution: {
+        en: "Engineered a hardened Windows desktop enterprise application using C# WinForms with strict double-entry balancing guards, local transactional caching, and deterministic SQL Server database synchronization.",
+        ar: "تطوير تطبيق مكتبي مؤسسي لنظام ويندوز باستخدام C# WinForms مع تطبيق حازم لمبادئ القيد المزدوج، وتخزين محلي مؤقت متوافق مع معايير الأمان ومزامنة حتمية مع SQL Server.",
+      },
+      architectureFlow: [
+        {
+          step: "01",
+          name: { en: "WinForms Presentation Layer", ar: "طبقة واجهة WinForms" },
+          desc: { en: "High-throughput data entry grids with real-time debit/credit equality checks.", ar: "جداول إدخال بيانات عالية السرعة مع تدقيق فوري لتطابق طرفي القيد المحاسبي." },
+        },
+        {
+          step: "02",
+          name: { en: "Double-Entry Validation Guard", ar: "حارس التحقق من القيد المزدوج" },
+          desc: { en: "Strict mathematical assertion ensuring Debit == Credit before persistence.", ar: "تحقق حسابي صارم يضمن تطابق المدين مع الدائن قبل الحفظ في السجل." },
+        },
+        {
+          step: "03",
+          name: { en: "Local Cache & Transaction Manager", ar: "مدير المعاملات والتخزين المحلي" },
+          desc: { en: "ACID-compliant storage queue shielding point-of-sale entries from network outages.", ar: "طابور عمليات متوافق مع معايير ACID يعزل نقاط البيع عن تقلبات الشبكة." },
+        },
+        {
+          step: "04",
+          name: { en: "SQL Server Enterprise Persistence", ar: "حفظ البيانات في SQL Server" },
+          desc: { en: "Relational foreign key constraints and automated journal audit trails.", ar: "قيود علائقية صارمة وسجلات تدقيق محاسبي آلية تمنع التعديل غير الموثق." },
+        },
+      ],
+      subsystems: [
+        {
+          id: "sub-1",
+          title: { en: "Mathematical Invariant Guard", ar: "حارس الثوابت الرياضية" },
+          desc: { en: "Blocks asynchronous commits if ledger balance leaves zero-sum state.", ar: "يمنع حفظ أي عملية تخل بميزان الصفر المحاسبي العام." },
+          tag: "INTEGRITY",
+        },
+        {
+          id: "sub-2",
+          title: { en: "Customer Invoice & Billing Engine", ar: "محرك الفواتير وحسابات العملاء" },
+          desc: { en: "Automated invoice numbering, tax calculation, and receipt printing layouts.", ar: "ترقيم آلي للفواتير، واحتساب الضرائب وتجهيز تخطيطات الطباعة المباشرة." },
+          tag: "BILLING",
+        },
+        {
+          id: "sub-3",
+          title: { en: "Offline Journal Queue", ar: "طابور القيود غير المتصلة" },
+          desc: { en: "Maintains sequential log numbers locally until server connection restores.", ar: "الاحتفاظ بتسلسل العمليات محلياً حتى استعادة الاتصال بالخادم المركزي." },
+          tag: "RESILIENCE",
+        },
+      ],
+      challenges: {
+        en: [
+          "Enforcing zero-tolerance accounting balance rules across rapid barcode scanning inputs.",
+          "Ensuring responsive UI rendering in WinForms during heavy historical ledger queries.",
+          "Preventing invoice sequence collisions across multi-station local registers.",
+        ],
+        ar: [
+          "تطبيق قواعد التوازن المحاسبي الصارمة مع سرعة إدخال الباركود المتتالية.",
+          "ضمان استجابة وسلاسة واجهة WinForms أثناء الاستعلام عن السجلات التاريخية الضخمة.",
+          "منع تكرار أو تصادم تسلسل الفواتير بين أجهزة المبيعات المتعددة.",
+        ],
+      },
+      results: {
+        en: [
+          "Demonstrated 100% balance integrity across all double-entry journal operations.",
+          "Immediate point-of-sale response independent of external network availability.",
+          "Verified end-to-end invoice generation and printable reporting workflow.",
+        ],
+        ar: [
+          "تحقيق سلامة محاسبية بنسبة ١٠٠٪ في كافة قيود اليومية المزدوجة.",
+          "استجابة فورية لنقاط البيع دون أي اعتمادية على اتصال الشبكة الخارجي.",
+          "سير عمل متكامل ومثبت لإصدار الفواتير وتقارير الحسابات القابلة للطباعة.",
+        ],
+      },
+      metrics: [
+        {
+          label: { en: "Ledger Integrity", ar: "سلامة القيود" },
+          value: "100%",
+          description: { en: "Zero-sum balance invariant enforced", ar: "تطبيق صارم لميزان الصفر المحاسبي" },
+        },
+        {
+          label: { en: "Offline Availability", ar: "الجاهزية دون اتصال" },
+          value: "Autonomous",
+          description: { en: "Full local POS operations without WAN", ar: "عمليات بيع محلية كاملة دون شبكة" },
+        },
+        {
+          label: { en: "Persistence Architecture", ar: "معمارية الحفظ" },
+          value: "SQL Server",
+          description: { en: "Relational constraints & audit trails", ar: "قيود علائقية وتدقيق محاسبي" },
+        },
+        {
+          label: { en: "Verification Status", ar: "حالة التحقق" },
+          value: "Verified",
+          description: { en: "Owner supplied core software system", ar: "نظام برمجي معتمد من المالك" },
+        },
+      ],
+    },
+  },
+  {
+    id: "proj-02",
+    slug: "campus-it-tracker",
+    categorySlug: "cloud-infrastructure",
+    title: {
+      en: "Campus IT Infrastructure Tracker",
+      ar: "نظام تتبع وإدارة البنية التحتية لشبكات الحرم الجامعي",
+    },
+    shortDescription: {
+      en: "Campus network topology visualizer and IT asset incident tracking dashboard monitoring switches, routers, and lab computing nodes.",
+      ar: "منصة لرصد طوبولوجيا شبكات الحرم الجامعي وإدارة بلاغات الدعم الفني للأجهزة والمحولات والخوادم.",
+    },
+    year: 2024,
+    status: "Completed",
+    verificationStatus: "VERIFIED_OWNER_DATA",
+    featured: true,
+    demoType: "interactive_simulation",
+    demoUrl: "/projects/campus-it-tracker/demo",
+    technologies: [
+      TECHNOLOGIES.python,
+      TECHNOLOGIES.sqlite,
+      TECHNOLOGIES.networking,
+      TECHNOLOGIES.restapi,
+    ],
+    caseStudy: {
+      problem: {
+        en: "Educational campuses operating hundreds of distributed networking switches and computer labs lack unified real-time visibility into link status, resulting in delayed incident responses during critical academic testing.",
+        ar: "تواجه المجمعات الجامعية التي تضم مئات المحولات الشبكية ومختبرات الحاسوب صعوبة في الرصد الفوري لحالة الأجهزة مما يؤخر الاستجابة للأعطال أثناء الفترات الدراسية والاختبارات.",
+      },
+      solution: {
+        en: "Designed a centralized infrastructure tracker combining dynamic network node status polling, latency tracking, and a streamlined incident ticketing pipeline.",
+        ar: "بناء منصة مركزية تجمع بين الرصد الفوري لحالة عقد الشبكة وفحص الاستجابة مع نظام متكامل لإدارة ومعالجة بلاغات الأعطال.",
+      },
+      architectureFlow: [
+        {
+          step: "01",
+          name: { en: "Node Telemetry Poller", ar: "جامع بيانات حالة العقد" },
+          desc: { en: "Periodic ICMP/SNMP status checks across campus network zones.", ar: "فحص دوري لحالة الأجهزة عبر مناطق الحرم الجامعي المختلفة." },
+        },
+        {
+          step: "02",
+          name: { en: "Topology Correlation Engine", ar: "محرك ربط الطوبولوجيا" },
+          desc: { en: "Maps child switch outages to upstream core router status to prevent alert storms.", ar: "ربط أعطال الأجهزة الفرعية بالمحول الرئيسي لمنع تكرار التنبيهات." },
+        },
+        {
+          step: "03",
+          name: { en: "Incident Dispatching", ar: "إدارة وتوزيع البلاغات" },
+          desc: { en: "Automated ticket categorization by urgency level and location.", ar: "تصنيف آلي لبلاغات الأعطال بحسب الأولوية والموقع الجغرافي." },
+        },
+      ],
+      subsystems: [
+        {
+          id: "sub-1",
+          title: { en: "Topology Node Inspector", ar: "مستكشف عقد الطوبولوجيا" },
+          desc: { en: "Interactive tree layout visualizing Core, Distribution, and Edge layers.", ar: "مخطط شجري تفاعلي يعرض طبقات الشبكة المركزية والتوزيعية والطرفية." },
+          tag: "TOPOLOGY",
+        },
+        {
+          id: "sub-2",
+          title: { en: "Incident Triage Workflow", ar: "مسار فرز البلاغات" },
+          desc: { en: "Tracks incident lifecycle from detection to technician sign-off.", ar: "متابعة دورة حياة البلاغ من لحظة الرصد وحتى الإغلاق والاعتماد." },
+          tag: "HELPDESK",
+        },
+      ],
+      challenges: {
+        en: [
+          "Presenting a clear visual representation of deeply nested campus network hierarchies.",
+          "Preventing ticket duplication when a root distribution switch loses power.",
+        ],
+        ar: [
+          "تقديم تمثيل بصري واضح وبديهي لهيكلية الشبكة الممتدة عبر مبانٍ متعددة.",
+          "منع تكرار بلاغات الأعطال عند انقطاع الكهرباء عن المحول الرئيسي للمبنى.",
+        ],
+      },
+      results: {
+        en: [
+          "Demonstrated clear root-cause isolation across multi-building topology layouts.",
+          "Streamlined incident reporting with structured severity levels and status updates.",
+        ],
+        ar: [
+          "إثبات دقة عزل الأسباب الجذرية للأعطال عبر مخططات الشبكة المترابطة.",
+          "تبسيط تسجيل وتحديث بلاغات الدعم الفني بمستويات أولوية واضحة.",
+        ],
+      },
+      metrics: [
+        {
+          label: { en: "Topology Hierarchy", ar: "مستويات الهيكلية" },
+          value: "3-Tier",
+          description: { en: "Core, Distribution, and Edge layers", ar: "طبقة مركزية وتوزيعية وطرفية" },
+        },
+        {
+          label: { en: "Incident Tracking", ar: "إدارة البلاغات" },
+          value: "End-to-End",
+          description: { en: "Creation, triage, and resolution lifecycle", ar: "دورة معالجة شاملة من الفرز للحل" },
+        },
+        {
+          label: { en: "Verification Status", ar: "حالة التحقق" },
+          value: "Verified",
+          description: { en: "Owner supplied project architecture", ar: "نظام معتمد من المالك" },
+        },
+      ],
+    },
+  },
+  {
+    id: "proj-03",
+    slug: "metaalgorithm-lab",
+    categorySlug: "low-latency",
+    title: {
+      en: "MetaAlgorithm Lab",
+      ar: "مختبر الخوارزميات وتحليل التعقيد الحسابي",
+    },
+    shortDescription: {
+      en: "Algorithmic benchmark testbed and interactive visualizer analyzing sorting efficiency, graph traversal heuristics, and memory trade-offs.",
+      ar: "منصة لاختبار وتحليل كفاءة الخوارزميات وعرض آليات الفرز والمطابقة البيانية وحساب التعقيد الزمني.",
+    },
+    year: 2024,
+    status: "Completed",
+    verificationStatus: "VERIFIED_OWNER_DATA",
+    featured: true,
+    demoType: "interactive_simulation",
+    demoUrl: "/projects/metaalgorithm-lab/demo",
+    technologies: [
+      TECHNOLOGIES.cpp,
+      TECHNOLOGIES.python,
+      TECHNOLOGIES.algorithms,
+    ],
+    caseStudy: {
+      problem: {
+        en: "Abstract theoretical Big-O notation often fails to capture real cache locality, comparison counts, and memory swap costs on modern computing architectures.",
+        ar: "غالباً ما يعجز التحليل النظري الصرف لمصطلح Big-O عن إظهار التكاليف الحقيقية لحركة البيانات في الكاش وتكرار المقارنات وتبديل المصفوفات.",
+      },
+      solution: {
+        en: "Created an interactive algorithmic laboratory that runs real sorting routines step-by-step in the browser, tracking comparisons, swaps, and relative execution times.",
+        ar: "تطوير مختبر خوارزمي تفاعلي ينفذ خوارزميات الفرز الحقيقية خطوة بخطوة في المتصفح مع رصد دقيق للمقارنات والتبديلات الزمنية.",
+      },
+      architectureFlow: [
+        {
+          step: "01",
+          name: { en: "Array Generator", ar: "مولد مصفوفات البيانات" },
+          desc: { en: "Generates randomized, reverse-sorted, or nearly-sorted datasets.", ar: "توليد مجموعات بيانات عشوائية أو معكوسة أو شبه مرتبة لاختبار الحالات المختلفة." },
+        },
+        {
+          step: "02",
+          name: { en: "Step-by-Step Iterator", ar: "مكرر الخطوات الحسابية" },
+          desc: { en: "Captures pointer mutations at each comparison without blocking the browser thread.", ar: "تسجيل حركة المؤشرات عند كل مقارنة دون تجميد واجهة المستخدم." },
+        },
+        {
+          step: "03",
+          name: { en: "Telemetry Metrics HUD", ar: "شاشة رصد المقاييس الحسابية" },
+          desc: { en: "Displays live comparisons, swaps, and asymptotic complexity boundaries.", ar: "عرض فوري لعدد المقارنات وعمليات التبديل وحدود التعقيد التقاربي." },
+        },
+      ],
+      subsystems: [
+        {
+          id: "sub-1",
+          title: { en: "Sorting Benchmark Suite", ar: "حزمة اختبار الفرز" },
+          desc: { en: "Comparative execution of QuickSort, MergeSort, BubbleSort, and InsertionSort.", ar: "تنفيذ مقارن لخوارزميات الترتيب السريع والدمج والفقاعي والإدراج." },
+          tag: "SORTING",
+        },
+        {
+          id: "sub-2",
+          title: { en: "Heuristic Visualizer", ar: "العارض البصري الاستدلالي" },
+          desc: { en: "Color-coded bar heights illustrating partition pivots and active indices.", ar: "أعمدة ملونة توضح نقاط الارتكاز والمؤشرات النشطة لحظياً." },
+          tag: "VISUAL",
+        },
+      ],
+      challenges: {
+        en: [
+          "Building an interruptible, pauseable generator loop for animated algorithm steps.",
+          "Accurately measuring browser execution timing without DOM rendering distortion.",
+        ],
+        ar: [
+          "بناء حلقة توليد برمجية قابلة للإيقاف المؤقت لعرض خطوات الخوارزمية بشكل تفاعلي.",
+          "قياس زمن التنفيذ بدقة دون التأثر بتأخير معالجة عناصر واجهة الويب.",
+        ],
+      },
+      results: {
+        en: [
+          "Interactive visual demonstration of O(n log n) versus O(n²) behavioral divergence.",
+          "Accurate counting of elementary comparison and swap operations.",
+        ],
+        ar: [
+          "عرض بصري تفاعلي يوضح الفارق بين سلوك O(n log n) وسلوك O(n²).",
+          "إحصاء دقيق لعدد المقارنات والتبديلات الأولية لكل خوارزمية.",
+        ],
+      },
+      metrics: [
+        {
+          label: { en: "Algorithms Included", ar: "الخوارزميات المشمولة" },
+          value: "4 Classes",
+          description: { en: "QuickSort, MergeSort, Bubble, Insertion", ar: "الترتيب السريع، الدمج، الفقاعي، الإدراج" },
+        },
+        {
+          label: { en: "Execution Model", ar: "نموذج التنفيذ" },
+          value: "Real Client Logic",
+          description: { en: "True step-by-step in-browser computation", ar: "معالجة حقيقية خطوة بخطوة في المتصفح" },
+        },
+        {
+          label: { en: "Verification Status", ar: "حالة التحقق" },
+          value: "Verified",
+          description: { en: "Owner supplied project", ar: "مشروع معتمد من المالك" },
+        },
+      ],
+    },
+  },
+  {
+    id: "proj-04",
+    slug: "nexora-tech",
+    categorySlug: "distributed-systems",
+    title: {
+      en: "Nexora Tech Platform",
+      ar: "منصة نكسورا تك للحلول التقنية والبرمجية",
+    },
+    shortDescription: {
+      en: "Modern digital technology solutions and enterprise software showcase platform built with Next.js and high-performance frontend architecture.",
+      ar: "منصة رقمية متطورة للحلول التقنية والخدمات البرمجية المؤسسية مبنية بأحدث تقنيات Next.js ومعمارية الواجهات السريعة.",
+    },
+    year: 2024,
+    status: "Completed",
+    verificationStatus: "VERIFIED_OWNER_DATA",
+    featured: true,
+    demoType: "interactive_simulation",
+    demoUrl: "/projects/nexora-tech/demo",
+    technologies: [
+      TECHNOLOGIES.nextjs,
+      TECHNOLOGIES.react,
+      TECHNOLOGIES.typescript,
+      TECHNOLOGIES.tailwind,
+    ],
+    caseStudy: {
+      problem: {
+        en: "Enterprise service organizations need digital portals that clearly present complex capabilities while maintaining premier loading speeds, brand distinction, and mobile responsiveness.",
+        ar: "تحتاج الشركات التقنية المؤسسية إلى واجهات رقمية تبرز كفاءاتها التقنية مع الحفاظ على سرعات تحميل فائقة وتميز بصري وتوافق تام مع الهواتف.",
+      },
+      solution: {
+        en: "Engineered a luxury corporate tech platform utilizing React Server Components, Tailwind token architecture, and fluid responsive layouts.",
+        ar: "تطوير منصة تقنية مؤسسية تعتمد على مكونات خادم React ومعمارية رموز Tailwind وتخطيطات تفاعلية انسيابية.",
+      },
+      architectureFlow: [
+        {
+          step: "01",
+          name: { en: "Next.js App Routing", ar: "توجيه مسارات Next.js" },
+          desc: { en: "Server-side prerendering with near-instant client hydration.", ar: "توليد مسبق للصفحات على الخادم مع ترطيب فوري على المتصفح." },
+        },
+        {
+          step: "02",
+          name: { en: "Responsive Design System", ar: "نظام التصميم التفاعلي" },
+          desc: { en: "Tailwind tokens ensuring consistent brand aesthetics across device widths.", ar: "رموز تصميمية تضمن ثبات الهوية البصرية عبر كافة أحجام الشاشات." },
+        },
+      ],
+      subsystems: [
+        {
+          id: "sub-1",
+          title: { en: "Service Capability Showcase", ar: "استعراض القدرات التقنية" },
+          desc: { en: "Interactive service catalog and technological portfolio.", ar: "دليل تفاعلي لعرض الخدمات التقنية والحلول المتاحة." },
+          tag: "PLATFORM",
+        },
+      ],
+      challenges: {
+        en: [
+          "Balancing rich visual aesthetic and micro-animations with fast mobile load times.",
+        ],
+        ar: [
+          "الموازنة بين الجمالية البصرية والحركات الدقيقة مع سرعة التحميل على الهواتف.",
+        ],
+      },
+      results: {
+        en: [
+          "Fast static page generation with zero layout shifts.",
+          "Engaging, high-contrast visual identity for digital software offerings.",
+        ],
+        ar: [
+          "توليد صفحات ثابتة وسريعة دون أي قفزات بصرية في التخطيط.",
+          "هوية بصرية متميزة عالية التباين تليق بالحلول البرمجية الحديثة.",
+        ],
+      },
+      metrics: [
+        {
+          label: { en: "Framework Stack", ar: "حزمة التطوير" },
+          value: "Next.js 15",
+          description: { en: "React Server Components & App Router", ar: "مكونات خادم React ومسارات التطبيق" },
+        },
+        {
+          label: { en: "Responsive Target", ar: "التوافق مع الشاشات" },
+          value: "100%",
+          description: { en: "Mobile, Tablet, and Desktop optimized", ar: "مهيأ بالكامل للهواتف والأجهزة اللوحية والمكتبية" },
+        },
+        {
+          label: { en: "Verification Status", ar: "حالة التحقق" },
+          value: "Verified",
+          description: { en: "Owner supplied platform", ar: "منصة معتمدة من المالك" },
+        },
+      ],
+    },
+  },
+  {
+    id: "proj-05",
     slug: "auraledger",
     categorySlug: "distributed-systems",
     title: {
-      en: "AuraLedger Distributed Consensus",
-      ar: "محرك أورا ليدجر للتوافق الموزع",
+      en: "AuraLedger Consensus Sandbox",
+      ar: "مختبر محاكاة توافق أورا ليدجر",
     },
     shortDescription: {
-      en: "Fault-tolerant distributed state machine engine with vectorized Write-Ahead Log (WAL) and speculative pre-vote election.",
-      ar: "محرك آلة حالة موزع عالي التسامح مع الأعطال مدعوم بسجل كتابة مسبقة موجه وتصويت تمهيدي استباقي.",
+      en: "Demonstration sandbox modeling a distributed Raft consensus state machine with simulated leader election and chaos network partition injection.",
+      ar: "مختبر محاكاة تجريبي يوضح عمل بروتوكول توافق Raft الموزع مع محاكاة لانتخاب القائد وحقن انقسامات الشبكة.",
     },
-    year: 2025,
+    year: 2024,
     status: "Completed",
-    featured: true,
+    verificationStatus: "UNVERIFIED_AI_GENERATED_CONTENT",
+    featured: false,
     demoType: "interactive_simulation",
     demoUrl: "/projects/auraledger/demo",
     technologies: [
@@ -93,476 +501,69 @@ export const PROJECTS: Project[] = [
       TECHNOLOGIES.raft,
       TECHNOLOGIES.grpc,
       TECHNOLOGIES.tla,
-      TECHNOLOGIES.zeroalloc,
     ],
     caseStudy: {
       problem: {
-        en: "Traditional relational ledgers incur excessive thread contention and disk I/O serialization bottlenecks under distributed cluster partitions, leading to cascading failovers and unpredictable p99 commit latencies.",
-        ar: "تعاني السجلات العلائقية التقليدية من تزاحم حاد بين الخيوط واختناقات في عمليات الإدخال والإخراج عند حدوث انقسامات الشبكة، مما يؤدي إلى انهيارات متتالية وعدم استقرار في زمن الاستجابة.",
+        en: "Distributed systems engineers require interactive environments to visualize edge-case cluster split-brains and speculative pre-vote consensus mechanisms without deploying multi-node physical infrastructure.",
+        ar: "يحتاج مهندسو الأنظمة الموزعة إلى بيئات تفاعلية لتصور حالات انقسام الشبكة وتصويت الأغلبية دون الحاجة لنشر بنية تحتية مادية معقدة.",
       },
       solution: {
-        en: "Architected a custom C# .NET 9 consensus runtime implementing Raft with speculative pre-voting, an append-only vectorized memory ring buffer, and zero-allocation binary serialization.",
-        ar: "بناء بيئة تشغيل متقدمة في C# .NET 9 تطبق بروتوكول Raft مع تصويت تمهيدي استباقي، ومخزن حلقي ذاكري موجه للإلحاق فقط، وتسلسل ثنائي خالي من تخصيص الذاكرة الإضافية.",
+        en: "Constructed an in-browser consensus simulation modeling 5 independent cluster nodes, Raft terms, leader lease elections, and partition fault injection.",
+        ar: "بناء محاكاة تفاعلية في المتصفح تمثل ٥ عقد خوادم مستقلة، وتتبع فترات بروتوكول Raft وانتخاب القائد وحقن أعطال الشبكة.",
       },
       architectureFlow: [
         {
           step: "01",
-          name: { en: "gRPC Ingestion Gate", ar: "بوابة استقبال gRPC" },
-          desc: { en: "Asynchronous HTTP/3 streaming stream with client-side batching.", ar: "تدفق غير متزامن عبر HTTP/3 مع تجميع الحزم من جانب العميل." },
+          name: { en: "Speculative Pre-Vote Phase", ar: "مرحلة التصويت التمهيدي" },
+          desc: { en: "Nodes verify quorum connectivity before incrementing local election terms.", ar: "تتحقق العقد من قدرتها على الوصول للنصاب قبل رفع فترات الانتخابات." },
         },
         {
           step: "02",
-          name: { en: "Lock-Free Ring Buffer", ar: "المخزن الحلقي بدون أقفال" },
-          desc: { en: "Disruptor-pattern memory ring staging incoming client entries.", ar: "نمط Disruptor للذاكرة المرحلية لتسجيل الإدخالات القادمة بدون قفل." },
-        },
-        {
-          step: "03",
-          name: { en: "Raft Quorum Consensus", ar: "إجماع الأغلبية لـ Raft" },
-          desc: { en: "Speculative pre-vote validation preventing disrupted leader partitions.", ar: "تحقق تصويتي تمهيدي يمنع حدوث انقسامات القائد غير المستقرة." },
-        },
-        {
-          step: "04",
-          name: { en: "Vectorized WAL", ar: "سجل الكتابة المسبقة الموجه" },
-          desc: { en: "Direct SSD write bypassing kernel page cache via direct I/O.", ar: "كتابة مباشرة على أقراص SSD متجاوزة ذاكرة التخزين المؤقت للنواة." },
+          name: { en: "Leader Lease Heartbeat", ar: "نبضات استمرار القائد" },
+          desc: { en: "Leader node dispatches periodic heartbeats to maintain cluster consensus.", ar: "يرسل القائد نبضات دورية للأتباع للحفاظ على استقرار المجموعة." },
         },
       ],
       subsystems: [
         {
           id: "sub-1",
-          title: { en: "Zero-Alloc Log Compaction", ar: "ضغط السجلات منعدم التخصيص" },
-          desc: { en: "Reclaims obsolete log entries in-place without triggering .NET Garbage Collection pauses.", ar: "استعادة سجلات العمليات القديمة موضعياً دون إطلاق توقفات جامع القمامة في دوت نت." },
-          tag: "MEMORY",
-        },
-        {
-          id: "sub-2",
-          title: { en: "Pre-Vote Term Stability", ar: "استقرار فترات التصويت التمهيدي" },
-          desc: { en: "Partitioned nodes verify quorum capability before incrementing local election terms.", ar: "تتحقق العقد المنفصلة من قدرتها على تحقيق النصاب قبل رفع فترات الانتخابات." },
-          tag: "CONSENSUS",
-        },
-        {
-          id: "sub-3",
-          title: { en: "Vectorized Batch Serialization", ar: "التسلسل الموجه للحزم" },
-          desc: { en: "Leverages AVX-512 SIMD instructions to pack transaction payloads into byte buffers.", ar: "استخدام تعليمات AVX-512 لتجهيز كتل المعاملات بسرعة العتاد المباشرة." },
-          tag: "SIMD",
+          title: { en: "Chaos Fault Injector", ar: "حاقن الأعطال العشوائية" },
+          desc: { en: "Disconnects individual nodes to trigger live in-browser elections.", ar: "فصل العقد فردياً لتشغيل انتخابات فورية داخل المتصفح." },
+          tag: "CHAOS",
         },
       ],
       challenges: {
         en: [
-          "Eliminating Gen2 Garbage Collection pauses during high-sustained 100k+ tx/s bursts.",
-          "Preventing split-brain elections across asymmetrical multi-datacenter network links.",
-          "Ensuring total linearizability verified by formal TLA+ state specifications.",
+          "Accurately reproducing distributed consensus state machine rules inside a single-threaded JavaScript browser environment.",
         ],
         ar: [
-          "القضاء التام على توقفات جامع القمامة Gen2 أثناء تدفق أكثر من ١٠٠ ألف عملية/ثانية.",
-          "منع انقسام القرار وانتخاب قادة متعددين عبر روابط الشبكة غير المتماثلة.",
-          "ضمان التسلسلية الخطية الصارمة المثبتة عبر مواصفات TLA+ الرياضية.",
+          "إعادة تمثيل قواعد آلة حالة بروتوكول التوافق بدقة داخل بيئة المتصفح أحادية الخيط.",
         ],
       },
       results: {
         en: [
-          "Sustained 145,000 transactions per second on standard commodity hardware nodes.",
-          "Maintained p99 consensus commit latency under 0.8 milliseconds.",
-          "100% state consistency verified across 10,000 automated chaos partition injections.",
+          "Hands-on demonstration of Raft quorum survival when up to 2 of 5 nodes fail.",
+          "Clear visual disclosure: Prototype simulation environment (not a production deployment claim).",
         ],
         ar: [
-          "تحقيق معدل ١٤٥ ألف عملية في الثانية بشكل مستقر على خوادم تجارية قياسية.",
-          "الحفاظ على زمن استجابة التوافق p99 أقل من ٠.٨ ميلي ثانية.",
-          "اتساق تام بنسبة ١٠٠٪ تم التحقق منه عبر ١٠ آلاف تجربة حقن أعطال عشوائية.",
+          "إثبات عملي لقدرة بروتوكول Raft على الاستمرار حتى مع سقوط عقدتين من أصل ٥.",
+          "إفصاح تقني واضح: بيئة محاكاة نموذجية (وليست ادعاءً بنشر تشغيلي واقعي).",
         ],
       },
       metrics: [
         {
-          label: { en: "Burst Throughput", ar: "معدل التدفق الأقصى" },
-          value: "145k tx/s",
-          description: { en: "Continuous linearizable state commit", ar: "تثبيت حتمي مستمر لحالة السجل" },
+          label: { en: "Target Throughput", ar: "الهدف المعياري" },
+          value: "Simulated Target",
+          description: { en: "Demonstration benchmark scenario", ar: "سيناريو اختباري تجريبي" },
         },
         {
-          label: { en: "p99 Commit Latency", ar: "زمن الاستجابة p99" },
-          value: "0.82 ms",
-          description: { en: "5-node geo-distributed cluster", ar: "عنقود موزع على ٥ عقد خوادم" },
+          label: { en: "Cluster Model", ar: "نموذج العنقود" },
+          value: "5 Nodes",
+          description: { en: "Quorum threshold: 3 of 5", ar: "نصاب الأغلبية: ٣ من ٥" },
         },
         {
-          label: { en: "SLA Availability", ar: "مستوى الجاهزية التشغيلية" },
-          value: "99.999%",
-          description: { en: "Zero uncoordinated split-brain downtime", ar: "انعدام التوقف غير المنسق نهائياً" },
-        },
-        {
-          label: { en: "GC Alloc / Entry", ar: "حجز الذاكرة لكل سجل" },
-          value: "0 bytes",
-          description: { en: "Strict unmanaged memory arenas", ar: "حلبات ذاكرة غير مدارة صارمة" },
-        },
-      ],
-    },
-  },
-  {
-    id: "proj-02",
-    slug: "neuroscribe",
-    categorySlug: "autonomous-ai",
-    title: {
-      en: "NeuroScribe Multi-Agent Swarm",
-      ar: "منظومة نيوروسكرايب لسرب الوكلاء المستقلين",
-    },
-    shortDescription: {
-      en: "Autonomous multi-agent orchestration framework for deterministic software synthesis and automated PR code reviews.",
-      ar: "إطار عمل لتنسيق الوكلاء المستقلين لإنتاج البرمجيات والمراجعة الآلية لطلبات الدمج بدقة حتمية.",
-    },
-    year: 2025,
-    status: "Completed",
-    featured: true,
-    demoType: "none",
-    technologies: [
-      TECHNOLOGIES.python,
-      TECHNOLOGIES.fastapi,
-      TECHNOLOGIES.multiagent,
-      TECHNOLOGIES.nextjs,
-    ],
-    caseStudy: {
-      problem: {
-        en: "Autonomous LLM coding agents frequently hallucinate structural boundaries, produce uncompilable code chunks, and fail to maintain project architectural integrity over multi-step iterations.",
-        ar: "غالباً ما تنتج وكلاء الأكواد التوليدية أجزاء غير قابلة للتجميع وتتجاوز القيود المعمارية وتفقد السياق خلال الخطوات البرمجية المتتالية.",
-      },
-      solution: {
-        en: "Designed a hierarchical multi-agent state machine where planner, reviewer, and builder agents operate under strict AST schema verification and deterministic validation guards.",
-        ar: "تصميم آلة حالة هرمية للوكلاء المتعددين حيث يعمل وكلاء التخطيط والمراجعة والبناء تحت حراسة صارمة للتحقق النحوي من شجرة الكود (AST).",
-      },
-      architectureFlow: [
-        {
-          step: "01",
-          name: { en: "Requirement Parsing", ar: "تحليل وتفكيك المتطلبات" },
-          desc: { en: "Deterministic decomposition into dependency DAG nodes.", ar: "تفكيك حتمي إلى عقد مخطط الاعتمادات الموجه (DAG)." },
-        },
-        {
-          step: "02",
-          name: { en: "Synthesizer Swarm", ar: "سرب التوليد البرمجي" },
-          desc: { en: "Parallel code generation against localized architectural contracts.", ar: "توليد برمجي متوازي ضد عقود المعمارية المحددة." },
-        },
-        {
-          step: "03",
-          name: { en: "AST Verification Guard", ar: "حارس التحقق النحوي" },
-          desc: { en: "Compiles syntax trees and validates invariants before file persistence.", ar: "تجميع شجرة النحو والتحقق من المبادئ قبل حفظ الملفات." },
-        },
-      ],
-      subsystems: [
-        {
-          id: "sub-1",
-          title: { en: "Contract-Driven Agent Isolation", ar: "عزل الوكلاء المبني على العقود" },
-          desc: { en: "Sandboxes subagents with limited tools and isolated filesystem contexts.", ar: "عزل الوكلاء الفرعيين مع تحديد أدواتهم ومساحات العمل." },
-          tag: "AGENTS",
-        },
-        {
-          id: "sub-2",
-          title: { en: "Self-Healing Test Loops", ar: "حلقات الاختبار ذاتية المعالجة" },
-          desc: { en: "Automatically diagnoses compiler errors and refines implementations autonomously.", ar: "تشخيص آلي لأخطاء المترجم وإعادة ضبط الكود تلقائياً." },
-          tag: "VALIDATION",
-        },
-      ],
-      challenges: {
-        en: [
-          "Preventing agent reasoning context bloat across long-running autonomous workflows.",
-          "Guaranteeing 100% syntax correctness prior to git staging.",
-        ],
-        ar: [
-          "منع تضخم سياق التفكير والاستدلال لدى الوكلاء أثناء جلسات العمل المطولة.",
-          "ضمان السلامة النحوية البرمجية بنسبة ١٠٠٪ قبل اعتماد التعديلات في Git.",
-        ],
-      },
-      results: {
-        en: [
-          "Reduced code review turnaround from 4 hours to 45 seconds.",
-          "Zero syntax regression across 2,500 evaluated automated commits.",
-        ],
-        ar: [
-          "تقليص مدة مراجعة الأكواد من ٤ ساعات إلى ٤٥ ثانية.",
-          "انعدام الأخطاء النحوية عبر ٢٥٠٠ تعديل برمجي مؤتمت تم تقييمها.",
-        ],
-      },
-      metrics: [
-        {
-          label: { en: "Turnaround Time", ar: "زمن المراجعة والتدقيق" },
-          value: "45 sec",
-          description: { en: "Average PR evaluation cycle", ar: "متوسط دورة تدقيق طلب الدمج" },
-        },
-        {
-          label: { en: "Syntax Accuracy", ar: "دقة النحو البرمجي" },
-          value: "100%",
-          description: { en: "Verified via AST compiler passes", ar: "محققة عبر مترجمات الشجرة النحوية" },
-        },
-      ],
-    },
-  },
-  {
-    id: "proj-03",
-    slug: "omnitrader",
-    categorySlug: "low-latency",
-    title: {
-      en: "OmniTrader High-Frequency Engine",
-      ar: "محرك أومني تريدر للتداول فائق السرعة",
-    },
-    shortDescription: {
-      en: "Microsecond-tier limit order book and algorithmic matching engine designed in C# .NET 9 with C++20 kernel bypass.",
-      ar: "محرك مطابقة أوامر وتداول بسرعة الميكروثانية مصمم في C# .NET 9 مع تجاوز النواة عبر C++20.",
-    },
-    year: 2024,
-    status: "Completed",
-    featured: true,
-    demoType: "none",
-    technologies: [
-      TECHNOLOGIES.csharp,
-      TECHNOLOGIES.cpp,
-      TECHNOLOGIES.ringbuffer,
-      TECHNOLOGIES.lockfree,
-    ],
-    caseStudy: {
-      problem: {
-        en: "Traditional financial trading systems struggle with tail latency spikes caused by CPU thread context switching and lock contention on high-frequency order books.",
-        ar: "تعاني أنظمة التداول المالي التقليدية من قفزات مفاجئة في زمن الاستجابة ناتجة عن تبديل سياق المعالج والتزاحم على أقفال سجلات الأوامر.",
-      },
-      solution: {
-        en: "Constructed a single-threaded pin-core matching engine utilizing lock-free LMAX circular ring buffers and memory-mapped order arrays.",
-        ar: "بناء محرك مطابقة أحادي الخيط ومثبت على نواة معالج محددة باستخدام مخازن حلقية خالية من الأقفال ومصفوفات أوامر مربوطة بالذاكرة مباشرة.",
-      },
-      architectureFlow: [
-        {
-          step: "01",
-          name: { en: "Direct NIC Ingest", ar: "استقبال مباشر من كرت الشبكة" },
-          desc: { en: "Kernel-bypass packet capture directly into user memory.", ar: "التقاط الحزم متجاوزاً نواة النظام مباشرة إلى ذاكرة المستخدم." },
-        },
-        {
-          step: "02",
-          name: { en: "Order Book Match", ar: "مطابقة سجل الأوامر" },
-          desc: { en: "Deterministic price-time priority matching in cache-aligned structs.", ar: "مطابقة حتمية بحسب أولوية السعر والزمن في هياكل بيانات متوافقة مع الكاش." },
-        },
-      ],
-      subsystems: [
-        {
-          id: "sub-1",
-          title: { en: "Pinned-Core Affinity", ar: "تثبيت معالجة الخيوط على النوى" },
-          desc: { en: "Prevents thread migration across CPU sockets, eliminating L1/L2 cache misses.", ar: "منع انتقال الخيوط بين أنوية المعالج والقضاء على فقدان ذاكرة الكاش السريعة." },
-          tag: "CPU",
-        },
-      ],
-      challenges: {
-        en: ["Guaranteeing sub-microsecond tick-to-trade latency under extreme market volatility."],
-        ar: ["ضمان زمن استجابة دون الميكروثانية أثناء فترات تقلب الأسواق الحادة."],
-      },
-      results: {
-        en: [
-          "Achieved 1.4 microsecond median tick-to-trade execution time.",
-          "Zero heap allocation during active trading cycles.",
-        ],
-        ar: [
-          "تحقيق زمن تنفيذ وسيط قدره ١.٤ ميكروثانية للمعاملة الواحدة.",
-          "انعدام تخصيص الذاكرة العشوائية أثناء دورات التداول النشطة.",
-        ],
-      },
-      metrics: [
-        {
-          label: { en: "Tick-to-Trade", ar: "زمن الاستجابة والتنفيذ" },
-          value: "1.4 µs",
-          description: { en: "Median execution latency", ar: "متوسط زمن التنفيذ للعملية" },
-        },
-        {
-          label: { en: "Throughput", ar: "سعة المعالجة" },
-          value: "2.8M orders/s",
-          description: { en: "Single-core pinned throughput", ar: "سعة المعالجة لنواة واحدة مثبتة" },
-        },
-      ],
-    },
-  },
-  {
-    id: "proj-04",
-    slug: "cloudmesh",
-    categorySlug: "cloud-infrastructure",
-    title: {
-      en: "CloudMesh Observability Gateway",
-      ar: "بوابة كلاود مش للرصد الشبكي السحابي",
-    },
-    shortDescription: {
-      en: "High-performance Kubernetes service mesh telemetry gateway leveraging Go and eBPF kernel probes for zero-overhead tracing.",
-      ar: "بوابة رصد شبكية لكوبيرنيتس تعتمد على Go ومجسات eBPF البرمجية لتتبع حركة البيانات دون أي عبء تشغيلي.",
-    },
-    year: 2024,
-    status: "Completed",
-    featured: false,
-    demoType: "none",
-    technologies: [
-      TECHNOLOGIES.golang,
-      TECHNOLOGIES.k8s,
-      TECHNOLOGIES.ebpf,
-    ],
-    caseStudy: {
-      problem: {
-        en: "Sidecar proxy architectures add substantial CPU and memory overhead when tracing service-to-service communication across microservice clusters.",
-        ar: "تضيف معماريات البروكسي الجانبي (Sidecar) استهلاكاً كبيراً للمعالج والذاكرة عند تتبع الاتصالات بين الخدمات المصغرة.",
-      },
-      solution: {
-        en: "Built a kernel-level eBPF tracing agent in Go that intercepts socket syscalls directly without sidecar injections.",
-        ar: "تطوير عميل تتبع على مستوى نواة النظام عبر eBPF في Go يعترض نداءات المقابس الشبكية مباشرة بدون بروكسي وسيط.",
-      },
-      architectureFlow: [
-        {
-          step: "01",
-          name: { en: "eBPF Socket Probe", ar: "مجس مقابس eBPF" },
-          desc: { en: "Captures TCP streams in kernel space.", ar: "التقاط تدفقات TCP في مساحة النواة بدون نسخ إضافي." },
-        },
-      ],
-      subsystems: [
-        {
-          id: "sub-1",
-          title: { en: "Zero-Copy Ring Buffer", ar: "مخزن حلقي بدون نسخ" },
-          desc: { en: "Streams network metrics to userspace collectors with minimal CPU utilization.", ar: "نقل مقاييس الشبكة للمجمعات بمستوى استهلاك معالج شبه معدوم." },
-          tag: "KERNEL",
-        },
-      ],
-      challenges: {
-        en: ["Handling high-packet rates without dropping kernel telemetry buffers."],
-        ar: ["معالجة معدلات الحزم المرتفعة دون فقدان أي بيانات في مخازن النواة."],
-      },
-      results: {
-        en: [
-          "Reduced mesh memory footprint by 82% compared to standard Envoy sidecars.",
-        ],
-        ar: [
-          "تقليص استهلاك الذاكرة بنسبة ٨٢٪ مقارنة بوكلاء Envoy التقليديين.",
-        ],
-      },
-      metrics: [
-        {
-          label: { en: "Memory Overhead", ar: "العبء على الذاكرة" },
-          value: "< 14 MB",
-          description: { en: "Per node agent footprint", ar: "استهلاك العميل لكل عقدة خادم" },
-        },
-      ],
-    },
-  },
-  {
-    id: "proj-05",
-    slug: "sentinelguard",
-    categorySlug: "distributed-systems",
-    title: {
-      en: "SentinelGuard Zero-Trust IAM",
-      ar: "منظومة سنتينل جارد للتحقق الأمني الموزع",
-    },
-    shortDescription: {
-      en: "Sub-millisecond policy evaluation engine and decentralized identity verification gateway written in Rust.",
-      ar: "محرك تقييم سياسات أمنية واستيقان هوية لامركزي بزمن استجابة أقل من ميلي ثانية مكتوب بلغة ريست.",
-    },
-    year: 2024,
-    status: "Maintained",
-    featured: false,
-    demoType: "none",
-    technologies: [
-      TECHNOLOGIES.rust,
-      TECHNOLOGIES.opa,
-      TECHNOLOGIES.grpc,
-    ],
-    caseStudy: {
-      problem: {
-        en: "Centralized authorization services introduce single-point-of-failure bottlenecks and latency overhead on microservice API requests.",
-        ar: "تتسبب خدمات التحقق الأمني المركزية في إبطاء الطلبات بين الخدمات المصغرة وتشكل نقطة انهيار فردية.",
-      },
-      solution: {
-        en: "Implemented an in-memory distributed policy cache in Rust with compiled WebAssembly Rego policy evaluation.",
-        ar: "بناء ذاكرة تخزين مؤقت للسياسات في الذاكرة عبر لغة Rust مع تقييم سريع للسياسات المترجمة إلى WebAssembly.",
-      },
-      architectureFlow: [
-        {
-          step: "01",
-          name: { en: "Wasm Policy Evaluation", ar: "تقييم السياسات عبر Wasm" },
-          desc: { en: "Evaluates authorization rules in sub-100 microseconds.", ar: "تقييم قواعد الاستحقاق في أقل من ١٠٠ ميكروثانية." },
-        },
-      ],
-      subsystems: [
-        {
-          id: "sub-1",
-          title: { en: "Distributed Cache Invalidation", ar: "إبطال الذاكرة المؤقتة الموزعة" },
-          desc: { en: "Gossip-based propagation of revoked tokens in under 15ms.", ar: "نشر فوري للرموز الملغاة عبر بروتوكول الشائعات في أقل من ١٥ ميلي ثانية." },
-          tag: "SECURITY",
-        },
-      ],
-      challenges: {
-        en: ["Guaranteeing immediate revocation propagation across edge nodes."],
-        ar: ["ضمان النشر الفوري لإلغاء الصلاحيات عبر عقد الحافة السحابية."],
-      },
-      results: {
-        en: [
-          "Zero-trust validation completed in under 0.12ms p95 latency.",
-        ],
-        ar: [
-          "إتمام عمليات التحقق الأمني في زمن استجابة p95 أقل من ٠.١٢ ميلي ثانية.",
-        ],
-      },
-      metrics: [
-        {
-          label: { en: "Decision Latency", ar: "زمن اتخاذ القرار الأمني" },
-          value: "0.12 ms",
-          description: { en: "p95 authorization decision", ar: "زمن اتخاذ قرار الصلاحية p95" },
-        },
-      ],
-    },
-  },
-  {
-    id: "proj-06",
-    slug: "yusra-erp",
-    categorySlug: "desktop-systems",
-    title: {
-      en: "Yusra Enterprise Resource Ledger",
-      ar: "نظام يسرى لإدارة الموارد المحاسبية المؤسسية",
-    },
-    shortDescription: {
-      en: "Mission-critical desktop accounting and inventory management software built with C# WinForms, SQL Server, and offline sync.",
-      ar: "نظام مكتبي مؤسسي متكامل لإدارة الحسابات والمخزون مبني بتقنيات C# WinForms وقواعد بيانات SQL Server مع مزامنة دون اتصال.",
-    },
-    year: 2023,
-    status: "Completed",
-    featured: false,
-    demoType: "none",
-    technologies: [
-      TECHNOLOGIES.csharp,
-      TECHNOLOGIES.winforms,
-      TECHNOLOGIES.sqlserver,
-    ],
-    caseStudy: {
-      problem: {
-        en: "Commercial retail operations in environments with intermittent internet connectivity suffer from data desynchronization and ledger discrepancies.",
-        ar: "تعاني العمليات التجارية في بيئات الاتصال المتقطع من فقدان التزامن المالي وتضارب قيود الحسابات وسجلات المخزون.",
-      },
-      solution: {
-        en: "Engineered a hardened Windows desktop enterprise software with ACID-compliant local caching, double-entry ledger invariants, and conflict-free asynchronous sync.",
-        ar: "تطوير برنامج مكتبي مؤسسي لنظام ويندوز مع تخزين محلي متوافق مع معايير ACID ومزامنة غير متزامنة خالية من التضارب.",
-      },
-      architectureFlow: [
-        {
-          step: "01",
-          name: { en: "Local Ledger Cache", ar: "سجل الحسابات المحلي" },
-          desc: { en: "Atomic transactions recorded locally regardless of connectivity.", ar: "تسجيل العمليات المالية ذرياً بغض النظر عن حالة الاتصال." },
-        },
-      ],
-      subsystems: [
-        {
-          id: "sub-1",
-          title: { en: "Double-Entry Invariant Guard", ar: "حارس قيود القيد المزدوج" },
-          desc: { en: "Enforces debits equal credits at the database constraint layer.", ar: "فرض تساوي المدين والدائن على مستوى قيود قاعدة البيانات الصارمة." },
-          tag: "LEDGER",
-        },
-      ],
-      challenges: {
-        en: ["Resolving asynchronous multi-branch inventory transaction conflicts."],
-        ar: ["معالجة تضارب مبيعات المخزون بين الفروع المتعددة أثناء انقطاع الشبكة."],
-      },
-      results: {
-        en: [
-          "Zero financial discrepancy across 500,000 recorded double-entry transactions.",
-        ],
-        ar: [
-          "انعدام أي تضارب مالي عبر ٥٠٠ ألف قيد محاسبي مزدوج تم تسجيله.",
-        ],
-      },
-      metrics: [
-        {
-          label: { en: "Reconciliation Rate", ar: "دقة المطابقة المحاسبية" },
-          value: "100%",
-          description: { en: "Automated double-entry audit pass", ar: "مطابقة تدقيق آلي متوافقة بالكامل" },
+          label: { en: "Status Notice", ar: "تنويه الحالة" },
+          value: "Prototype Sandbox",
+          description: { en: "Conceptual architecture demonstration", ar: "محاكاة معمارية تجريبية" },
         },
       ],
     },
