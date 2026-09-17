@@ -38,6 +38,7 @@ lerna-debug.log*
 # System and Editor files
 .DS_Store
 *.pem
+*.tsbuildinfo
 Thumbs.db
 .idea/
 .vscode/

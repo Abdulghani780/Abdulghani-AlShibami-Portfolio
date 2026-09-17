@@ -85,7 +85,7 @@
 - **TITLE:** Design Tokens & Dual-Theme Specification
 - **PHASE:** 04
 - **PRIORITY:** P0
-- **STATUS:** READY
+- **STATUS:** COMPLETED
 - **DESCRIPTION:** Define Obsidian Black, Royal Gold, White color tokens, typography scales, and WCAG contrast.
 - **DEPENDENCIES:** TSK-020
 - **FILES:** `docs/06_UI_UX_SPECIFICATION.md`, `docs/07_DESIGN_SYSTEM.md`, `docs/17_THEMING.md`
@@ -115,7 +115,7 @@
 - **TITLE:** Next.js Application Initialization with TypeScript & Tailwind CSS
 - **PHASE:** 06
 - **PRIORITY:** P0
-- **STATUS:** READY
+- **STATUS:** COMPLETED
 - **DESCRIPTION:** Scaffold Next.js project with PNPM, configure Tailwind CSS with custom tokens, Lucide icons, and strict TypeScript.
 - **DEPENDENCIES:** TSK-030, TSK-050
 - **FILES:** `package.json`, `tsconfig.json`, `tailwind.config.ts`, `next.config.ts`, `app/*`
@@ -130,7 +130,7 @@
 - **TITLE:** Core Navigation, Hero, and Responsive Layout
 - **PHASE:** 07
 - **PRIORITY:** P0
-- **STATUS:** READY
+- **STATUS:** COMPLETED
 - **DESCRIPTION:** Build Navbar with mobile drawer, Luxury Hero with profile placeholder, Footer, ThemeToggle, and LanguageSwitcher.
 - **DEPENDENCIES:** TSK-060
 - **FILES:** `components/layout/*`, `components/ui/*`, `app/[locale]/page.tsx`
@@ -175,7 +175,7 @@
 - **TITLE:** Full LTR/RTL and Dark/Light Mode Engine
 - **PHASE:** 10
 - **PRIORITY:** P0
-- **STATUS:** READY
+- **STATUS:** COMPLETED
 - **DESCRIPTION:** Implement dictionary-based i18n for English and Arabic, CSS logical properties, and flash-free theme provider.
 - **DEPENDENCIES:** TSK-070
 - **FILES:** `lib/i18n/*`, `lib/theme/*`, `middleware.ts`

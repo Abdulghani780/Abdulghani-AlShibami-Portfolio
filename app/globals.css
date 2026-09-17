@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Porcelain Sovereign / Architectural Prestige (Light Mode) */
+    --canvas-bg: #FBFBFD;
+    --surface-elevated: #FFFFFF;
+    --surface-overlay: #F3F3F6;
+    --surface-interactive: #EDEAE2;
+    --surface-low: #F5F3ED;
+
+    --border-hairline: #E2D9C8;
+    --border-gold: rgba(153, 122, 21, 0.35);
+
+    --gold-primary: #997A15;
+    --gold-light: #B8860B;
+    --gold-dark: #755B00;
+    --gold-muted: rgba(153, 122, 21, 0.08);
+    --gold-glow: rgba(153, 122, 21, 0.18);
+
+    --text-primary: #0F172A;
+    --text-secondary: #334155;
+    --text-muted: #64748B;
+
+    --status-emerald: #059669;
+    --status-amber: #D97706;
+    --status-rose: #DC2626;
+
+    --font-serif: "Playfair Display", "Noto Serif", Georgia, serif;
+    --font-sans: "Geist", "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-mono: "JetBrains Mono", "Roboto Mono", monospace;
+    --font-arabic: "Noto Kufi Arabic", "Noto Sans Arabic", -apple-system, sans-serif;
+  }
+
+  .dark {
+    /* Obsidian & Gilded Precision (Dark Mode) */
+    --canvas-bg: #0B0B0C;
+    --surface-elevated: #121214;
+    --surface-overlay: #18181B;
+    --surface-interactive: #202023;
+    --surface-low: #0E0E0F;
+
+    --border-hairline: #27272A;
+    --border-gold: rgba(212, 175, 55, 0.35);
+
+    --gold-primary: #D4AF37;
+    --gold-light: #F2CA50;
+    --gold-dark: #997A15;
+    --gold-muted: rgba(212, 175, 55, 0.12);
+    --gold-glow: rgba(212, 175, 55, 0.25);
+
+    --text-primary: #FFFFFF;
+    --text-secondary: #94A3B8;
+    --text-muted: #71717A;
+
+    --status-emerald: #10B981;
+    --status-amber: #F59E0B;
+    --status-rose: #EF4444;
+  }
+
+  * {
+    box-sizing: border-box;
+    border-color: var(--border-hairline);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--canvas-bg);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    transition: background-color 200ms cubic-bezier(0.4, 0, 0.2, 1), color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Selection highlight */
+  ::selection {
+    background-color: var(--gold-muted);
+    color: var(--gold-light);
+  }
+
+  /* Accessible outline focus states */
+  :focus-visible {
+    outline: 2px solid var(--gold-primary);
+    outline-offset: 2px;
+  }
+}
+
+/* RTL Specific Typography and Layout Adjustments */
+[dir="rtl"] {
+  font-family: var(--font-arabic);
+}
+
+[dir="rtl"] body {
+  line-height: 1.75;
+}
+
+[dir="rtl"] .font-serif {
+  font-family: var(--font-arabic), var(--font-serif);
+}
+
+[dir="rtl"] .font-sans {
+  font-family: var(--font-arabic), var(--font-sans);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--canvas-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-hairline);
+  border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-primary);
+}
+
+/* Monospace Telemetry HUD helper */
+.font-mono-num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}

@@ -12,7 +12,7 @@ To prevent the jarring "flash of unstyled/wrong theme" (FOUC), an inline script 
 <script>
   (function() {
     try {
-      var theme = localStorage.getItem('app-theme') || 'dark';
+      var theme = localStorage.getItem('portfolio-theme') || 'dark';
       var root = document.documentElement;
       if (theme === 'system') {
         var isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;

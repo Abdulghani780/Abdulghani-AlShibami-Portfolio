@@ -98,3 +98,55 @@
   - Validated contrast ratios (>10:1 for text) across both dark obsidian and light porcelain palettes.
 - **Git Commit:**
   - Prepared for commit with conventional message `feat(design): complete 12/12 visual design references and token extraction`.
+
+---
+
+## [2026-09-17] Entry 003 — Post-Design Implementation Bootstrap: Design System, Core App Shell & Homepage
+- **Phase:** PHASE 01 — Design Token Implementation, PHASE 02 — Core App Shell, PHASE 03 — Homepage
+- **Task:** TSK-030, TSK-060, TSK-070, TSK-100
+- **Objective:** Build and verify foundational design tokens, zero-flash dual-theme engine, bilingual i18n/RTL system, core atomic UI components, app shell, and complete homepage derived directly from the 12 Stitch visual references.
+- **Files Changed / Created:**
+  - `docs/IMPLEMENTATION_BASELINE.md`: Initial audit and gap analysis
+  - `package.json`, `pnpm-lock.yaml`: Next.js 15.5, React 19, Tailwind CSS 3.4, Lucide React, clsx, tailwind-merge
+  - `tsconfig.json`: Strict TypeScript with `@/*` aliases
+  - `tailwind.config.ts`: Custom design tokens (Obsidian `#0B0B0C`, `#121214`, Royal Gold `#D4AF37`, etc.)
+  - `app/globals.css`: Dual-theme CSS custom variables, reset, and RTL logical properties
+  - `lib/theme/ThemeProvider.tsx`: Zero-flash theme provider with localStorage persistence
+  - `lib/i18n/dictionaries.ts`: Complete English and Arabic dictionaries
+  - `components/ui/Button.tsx`: Royal Gold, hairline surface, ghost, danger, and gold-outline variants
+  - `components/ui/Badge.tsx`: Monospace tags with animated pulsing status dots
+  - `components/ui/Card.tsx`: Architectural panels with optional gold corner brackets (`┌ ┐ └ ┘`)
+  - `components/ui/Container.tsx`: 1440px max-width container
+  - `components/ui/SectionHeading.tsx`: Editorial Playfair serif headings with monospace kickers
+  - `components/layout/ThemeToggle.tsx`: Sun/Moon animated theme toggle
+  - `components/layout/LanguageSwitcher.tsx`: Pathname-aware locale switcher
+  - `components/layout/Navbar.tsx`: Sticky glassmorphic navigation bar with mobile drawer
+  - `components/layout/Footer.tsx`: Technical colophon, safety notice, PGP fingerprint, back-to-top
+  - `components/features/ContactForm.tsx`: Interactive client-side inquiry form island
+  - `app/layout.tsx`: Root layout with zero-flash inline script and Google Fonts preconnect
+  - `app/[locale]/layout.tsx`: Locale-aware layout setting `dir="rtl"` / `dir="ltr"`
+  - `app/[locale]/page.tsx`: Complete Homepage matching References 01–04 and 11
+  - `app/[locale]/showcase/page.tsx`: Internal UI component checkpoint page
+  - `app/[locale]/projects/auraledger/demo/page.tsx`: Interactive Raft consensus cluster simulation sandbox
+  - `app/not-found.tsx`: Custom 404 state machine fault page
+  - `docs/10_COMPONENT_ARCHITECTURE.md`: Component catalog and documentation
+- **What Was Implemented:**
+  - Complete Design System implementation in code directly matching Stitch visual references.
+  - Core App Shell with zero hydration mismatch and zero flash of unstyled theme content.
+  - Complete Homepage featuring un-fabricated `[PROFILE_IMAGE]` placeholder, telemetry HUD, honest simulation disclosure banner, featured projects grid, core competency pillars, and executive contact inquiry form.
+  - Interactive Raft consensus cluster simulator demonstrating high-fidelity browser state machine emulation.
+- **Problems & Solutions:**
+  - *Problem:* Server Component in `app/[locale]/page.tsx` threw error on inline client form submission handler.
+  - *Solution:* Extracted form into an isolated client island component `components/features/ContactForm.tsx` marked with `"use client"`.
+  - *Problem:* Raw `//` text inside JSX triggered ESLint `react/jsx-no-comment-textnodes` errors.
+  - *Solution:* Wrapped literal text comments inside JSX expressions `{"// ..."}` across all affected files.
+- **Tests & Verification:**
+  - ESLint: `pnpm lint` -> PASSED (0 errors, 0 warnings).
+  - TypeScript: `pnpm typecheck` -> PASSED (0 errors).
+  - Production Build: `pnpm build` -> PASSED (all 10 static pages prerendered successfully).
+  - Browser subagent visual verification: Dark/Light modes, English/Arabic, LTR/RTL, Desktop/Mobile (393px), and Interactive Simulation chaos partition / REPL terminal execution visually inspected and recorded as WebP video and PNG artifacts.
+- **Git Commit:**
+  - Pending commit: `feat(ui): implement design system, core app shell, and homepage`.
+- **Next Step:**
+  - Phase 04: Project System Architecture & All Project Detail Pages.
+

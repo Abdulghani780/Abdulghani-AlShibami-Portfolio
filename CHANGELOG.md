@@ -10,6 +10,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.3.0] - 2026-09-17
+
+### Added
+- **Design System Implementation:** Configured exact design tokens in `tailwind.config.ts` and `app/globals.css` with deep Obsidian canvas, surface elevations, Royal Gold accents, and CSS logical properties.
+- **Zero-Flash Theming Engine:** Built `ThemeProvider.tsx` supporting Dark and Light modes with localStorage persistence and inline hydration guard.
+- **Bilingual i18n & RTL Foundation:** Built English and Arabic dictionaries with automatic layout direction switching (`dir="rtl"` / `dir="ltr"`).
+- **Core Atomic UI Components:** Created `Button`, `Badge` (with pulsing live status indicators), `Card` (with architectural gold corner brackets), `Container`, and `SectionHeading`.
+- **Global App Shell:** Implemented glassmorphic `Navbar` with mobile slide-out drawer, architectural colophon `Footer` with security fingerprint and honest simulation disclosure, `ThemeToggle`, and `LanguageSwitcher`.
+- **Complete Homepage:** Implemented full homepage (`app/[locale]/page.tsx`) with status ticker, un-fabricated `[PROFILE_IMAGE]` placeholder, telemetry HUD, simulation disclosure banner, featured projects, core competencies, and interactive contact inquiry island.
+- **Interactive Consensus Simulation Sandbox:** Implemented `app/[locale]/projects/auraledger/demo/page.tsx` reproducing high-throughput Raft consensus with cluster fault injection, split-brain partitioning, and REPL terminal.
+- **Internal Component Showcase:** Added `/en/showcase` and `/ar/showcase` checkpoint routes.
+- **Component Architecture Catalog:** Created `docs/10_COMPONENT_ARCHITECTURE.md`.
+
+### Verified
+- Zero TypeScript errors (`pnpm typecheck`).
+- Zero ESLint errors or warnings (`pnpm lint`).
+- 100% successful static production build (`pnpm build` prerendered all 10 routes).
+- Full browser visual validation via Chrome DevTools / browser subagent across Dark, Light, English, Arabic RTL, and Mobile 393px viewports.
+
+---
+
 ## [0.2.0] - 2026-09-17
 
 ### Added
