@@ -113,10 +113,10 @@ The UI components in this repository adhere to strict architectural discipline:
 ---
 
 ### 3.2. `Footer` (`components/layout/Footer.tsx`)
-- **Purpose:** Architectural colophon, legal simulation disclosure, PGP verification fingerprints, and back-to-top navigation.
+- **Purpose:** Architectural colophon, legal simulation disclosure, verified direct links, and back-to-top navigation.
 - **Key Elements:**
   - Monospace Safety Notice: Explicitly states that in-browser demos are sandboxed reproductions of compiled binaries.
-  - PGP Security Fingerprint: Cryptographic verification anchor for executive communication.
+  - Verified Links: GitHub and LinkedIn profiles with external arrows.
   - Smooth Back-to-Top trigger.
 
 ---
@@ -139,3 +139,44 @@ The UI components in this repository adhere to strict architectural discipline:
 - **Purpose:** Client-side form island providing input sanitization, real-time feedback, and accessible error handling for executive inquiries.
 - **Validation:** Enforces email structure, name requirements, and message length limits.
 - **Feedback State:** Switches gracefully to confirmation panel upon transmission (`// TRANSMISSION CONFIRMED`).
+
+---
+
+## 5. Project System & Case Study Components (`components/features/projects/`)
+
+### 5.1. `TechnologyBadge` (`components/features/projects/TechnologyBadge.tsx`)
+- **Purpose:** Compact monospaced technology tag color-coded by architectural discipline (Language, Framework, Protocol, Database, Tool, Cloud).
+- **Props:** `technology: Technology | string`, `size?: "xs" | "sm"`, `className?: string`.
+- **Theming:** Adapts seamlessly across dark obsidian and light porcelain backgrounds with crisp border hairlines.
+
+### 5.2. `ProjectCard` (`components/features/projects/ProjectCard.tsx`)
+- **Purpose:** Flagship architectural card presenting system metadata, category kicker, title, localized summary, technology tags, and direct action triggers.
+- **Props:** `project: Project`, `locale: Locale`, `categoryName?: string`, `isFeaturedHero?: boolean`.
+- **Special States:** Supports `isFeaturedHero` rendering with expanded 3-column span, gold luminescence, and dual primary/simulation buttons.
+
+### 5.3. `ProjectFilters` (`components/features/projects/ProjectFilters.tsx`)
+- **Purpose:** Accessible, keyboard-navigable category filter pills paired with an instant search filter input.
+- **Props:** `categories: ProjectCategory[]`, `activeCategory: string`, `onSelectCategory`, `searchQuery`, `onSearchChange`, `locale`, `totalCount`.
+- **A11y:** Uses `aria-pressed` states on filter triggers and full keyboard tab stops.
+
+### 5.4. `CaseStudyHero` (`components/features/projects/case-study/CaseStudyHero.tsx`)
+- **Purpose:** Monograph header featuring full breadcrumb hierarchy (`Projects / Category / Project`), status badge, grand serif title, substrate metadata, and primary simulation launcher.
+
+### 5.5. `CaseStudyMetrics` (`components/features/projects/case-study/CaseStudyMetrics.tsx`)
+- **Purpose:** High-density 4-card telemetry grid showcasing verified empirical invariants (e.g. `145k tx/s`, `0.82ms p99`, `99.999% SLA`, `0 bytes GC`).
+
+### 5.6. `ProblemSolutionSection` (`components/features/projects/case-study/ProblemSolutionSection.tsx`)
+- **Purpose:** Split comparison cards contrasting runtime constraints and failure modes against the engineered deterministic solution.
+
+### 5.7. `ArchitectureTopology` (`components/features/projects/case-study/ArchitectureTopology.tsx`)
+- **Purpose:** Visual 4-stage pipeline execution diagram demonstrating end-to-end data transit through the architecture.
+
+### 5.8. `SubsystemsGrid` (`components/features/projects/case-study/SubsystemsGrid.tsx`)
+- **Purpose:** 3-column architectural card grid detailing modular subsystems, low-level optimizations, and algorithmic design decisions.
+
+### 5.9. `ChallengesResultsSection` (`components/features/projects/case-study/ChallengesResultsSection.tsx`)
+- **Purpose:** Rigorous breakdown of low-level runtime bottlenecks resolved paired with mathematically verified production invariants.
+
+### 5.10. `DemoCalloutBanner` (`components/features/projects/case-study/DemoCalloutBanner.tsx`)
+- **Purpose:** Prominent glowing gold banner featuring honest simulation disclosures and a direct trigger to launch the in-browser simulation sandbox.
+

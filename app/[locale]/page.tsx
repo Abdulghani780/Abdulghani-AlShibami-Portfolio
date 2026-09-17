@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { ContactForm } from "@/components/features/ContactForm";
+import { projectRepository } from "@/lib/services/projectRepository";
+import { ProjectCard } from "@/components/features/projects/ProjectCard";
 
 export default async function HomePage({
   params,
@@ -22,6 +24,13 @@ export default async function HomePage({
   const currentLocale = locale as Locale;
   const dict = dictionaries[currentLocale];
   const isRtl = currentLocale === "ar";
+
+  const [featuredProjects, categories] = await Promise.all([
+    projectRepository.getFeaturedProjects(),
+    projectRepository.getCategories(),
+  ]);
+
+  const categoryMap = new Map(categories.map((c) => [c.slug, c.name[currentLocale]]));
 
   return (
     <div className="space-y-24 sm:space-y-32 py-12 sm:py-20">
@@ -235,164 +244,38 @@ export default async function HomePage({
               className="mb-0"
             />
             <Link
-              href={`/${currentLocale}#featured-projects`}
+              href={`/${currentLocale}/projects`}
               className="font-mono text-xs text-gold hover:text-gold-light transition-colors uppercase tracking-wider shrink-0"
             >
               {dict.featured.viewAll}
             </Link>
           </div>
 
+          {/* Connected Featured Projects Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Flagship Card: AuraLedger */}
-            <Card hoverEffect cornerBrackets className="lg:col-span-2 flex flex-col justify-between space-y-6">
-              <div className="space-y-4">
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <Badge variant="gold" dot dotColor="emerald">
-                    {dict.featured.statusProduction}
-                  </Badge>
-                  <span className="font-mono text-[10px] text-content-muted">
-                    SUBSTRATE: C# .NET 9 CORE
-                  </span>
-                </div>
-
-                <div className="space-y-2">
-                  <h3 className="font-serif text-2xl sm:text-3xl font-normal text-content-primary">
-                    AuraLedger: Distributed Consensus Engine & Order Matching
-                  </h3>
-                  <p className="text-content-secondary text-sm leading-relaxed">
-                    A high-throughput distributed state machine implementing optimized Raft consensus, speculative pre-vote phases, and unmanaged memory-mapped circular ring buffers at 145k tx/s.
-                  </p>
-                </div>
-
-                {/* Technology Badges */}
-                <div className="flex flex-wrap gap-2 pt-2">
-                  {["C# 13", ".NET 9", "Raft Consensus", "MemoryMappedFiles", "TLA+ Verified", "gRPC HTTP/3"].map(
-                    (tag) => (
-                      <span
-                        key={tag}
-                        className="px-2.5 py-1 text-[10px] font-mono border border-hairline bg-surface/80 text-content-secondary"
-                      >
-                        {tag}
-                      </span>
-                    )
-                  )}
-                </div>
+            {featuredProjects[0] && (
+              <div className="lg:col-span-2">
+                <ProjectCard
+                  project={featuredProjects[0]}
+                  locale={currentLocale}
+                  categoryName={categoryMap.get(featuredProjects[0].categorySlug)}
+                  isFeaturedHero
+                  className="h-full"
+                />
               </div>
+            )}
 
-              {/* Telemetry Strip & Actions */}
-              <div className="pt-6 border-t border-hairline/60 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
-                <div className="font-mono text-xs text-content-muted flex items-center gap-4">
-                  <span>THROUGHPUT: <strong className="text-gold font-semibold">145k TPS</strong></span>
-                  <span>p99: <strong className="text-content-primary font-semibold">0.8ms</strong></span>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <Link href={`/${currentLocale}/projects/auraledger/demo`}>
-                    <Button variant="primary" size="sm">
-                      {dict.featured.demoCta}
-                    </Button>
-                  </Link>
-                  <a
-                    href="https://github.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center h-8 px-3 border border-hairline bg-surface hover:border-gold hover:text-gold text-xs font-mono tracking-wider transition-colors uppercase"
-                  >
-                    {dict.featured.sourceCta} ↗
-                  </a>
-                </div>
-              </div>
-            </Card>
-
-            {/* Project 02: NeuroScribe Multi-Agent */}
-            <Card hoverEffect className="flex flex-col justify-between space-y-6">
-              <div className="space-y-4">
-                <div className="flex items-center justify-between gap-2">
-                  <Badge variant="status" dot dotColor="amber">
-                    {dict.featured.statusVerified}
-                  </Badge>
-                  <span className="font-mono text-[10px] text-content-muted">
-                    AI AGENT SWARM
-                  </span>
-                </div>
-
-                <div className="space-y-2">
-                  <h3 className="font-serif text-xl sm:text-2xl font-normal text-content-primary">
-                    NeuroScribe: Multi-Agent Code Generation Fabric
-                  </h3>
-                  <p className="text-content-secondary text-xs sm:text-sm leading-relaxed">
-                    Multi-agent autonomous coding swarm coordinating planning, synthesis, static linting, and formal verification gates with 99.4% syntactic pass rates.
-                  </p>
-                </div>
-
-                <div className="flex flex-wrap gap-2 pt-2">
-                  {["TypeScript", "LangGraph", "Next.js 15", "PostgreSQL"].map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2 py-0.5 text-[10px] font-mono border border-hairline bg-surface/80 text-content-secondary"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="pt-4 border-t border-hairline/60 flex items-center justify-between">
-                <span className="font-mono text-[11px] text-content-muted">
-                  PASS: <strong className="text-status-emerald font-semibold">99.4%</strong>
-                </span>
-                <Link href={`/${currentLocale}/projects/auraledger/demo`}>
-                  <Button variant="secondary" size="sm">
-                    {dict.featured.demoCta}
-                  </Button>
-                </Link>
-              </div>
-            </Card>
-
-            {/* Project 03: OmniTrader C# */}
-            <Card hoverEffect className="flex flex-col justify-between space-y-6">
-              <div className="space-y-4">
-                <div className="flex items-center justify-between gap-2">
-                  <Badge variant="status">
-                    {dict.featured.statusProduction}
-                  </Badge>
-                  <span className="font-mono text-[10px] text-content-muted">
-                    C# DESKTOP / WPF
-                  </span>
-                </div>
-
-                <div className="space-y-2">
-                  <h3 className="font-serif text-xl sm:text-2xl font-normal text-content-primary">
-                    OmniTrader: Sub-Millisecond L2 Execution Terminal
-                  </h3>
-                  <p className="text-content-secondary text-xs sm:text-sm leading-relaxed">
-                    Native desktop algorithmic trading workstation featuring LMAX Disruptor order pipelines and hardware-accelerated charting.
-                  </p>
-                </div>
-
-                <div className="flex flex-wrap gap-2 pt-2">
-                  {[".NET 9", "WPF", "Disruptor", "Zero GC"].map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2 py-0.5 text-[10px] font-mono border border-hairline bg-surface/80 text-content-secondary"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="pt-4 border-t border-hairline/60 flex items-center justify-between">
-                <span className="font-mono text-[11px] text-content-muted">
-                  DISPATCH: <strong className="text-gold font-semibold">&lt; 45μs</strong>
-                </span>
-                <Link href={`/${currentLocale}/projects/auraledger/demo`}>
-                  <Button variant="secondary" size="sm">
-                    {dict.featured.demoCta}
-                  </Button>
-                </Link>
-              </div>
-            </Card>
+            <div className="space-y-8 flex flex-col justify-between">
+              {featuredProjects.slice(1, 3).map((project) => (
+                <ProjectCard
+                  key={project.id}
+                  project={project}
+                  locale={currentLocale}
+                  categoryName={categoryMap.get(project.categorySlug)}
+                  className="h-full"
+                />
+              ))}
+            </div>
           </div>
         </Container>
       </section>

@@ -59,9 +59,6 @@ export function Footer({ dict }: { dict: Dictionary }) {
                   <span className="text-[9px]">↗</span>
                 </a>
               </li>
-              <li>
-                <span className="text-content-muted">PGP: 0x8F94D29E</span>
-              </li>
             </ul>
           </div>
 

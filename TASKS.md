@@ -145,13 +145,13 @@
 - **TITLE:** Project Catalog & Dynamic Case Study Route
 - **PHASE:** 08
 - **PRIORITY:** P0
-- **STATUS:** READY
+- **STATUS:** COMPLETED
 - **DESCRIPTION:** Build ProjectCard, filterable ProjectGrid, search, and dynamic `/projects/[slug]` case study renderer.
 - **DEPENDENCIES:** TSK-070
 - **FILES:** `components/features/projects/*`, `app/[locale]/projects/[slug]/page.tsx`, `lib/data/*`
 - **DATABASE IMPACT:** Connects to DAL with local fallback data.
-- **TESTS:** Slug routing and category filtering test.
-- **DEFINITION OF DONE:** Case study renders full architecture, challenges, results, and tech badges.
+- **TESTS:** Slug routing, category filtering test, responsive reflow, and dark/light verification.
+- **DEFINITION OF DONE:** Catalog and case study routes fully operational, 24 static routes prerendered, and browser QA verified.
 
 ---
 

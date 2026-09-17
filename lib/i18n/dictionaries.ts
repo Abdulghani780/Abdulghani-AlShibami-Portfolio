@@ -81,6 +81,41 @@ export interface Dictionary {
     safetyNotice: string;
     backToTop: string;
   };
+  projectsPage: {
+    title: string;
+    subtitle: string;
+    operationalCount: string;
+    filtersAll: string;
+    filterByDomain: string;
+    viewDetails: string;
+    launchDemo: string;
+    viewCode: string;
+    statusCompleted: string;
+    statusInProgress: string;
+    statusMaintained: string;
+    emptyHeading: string;
+    emptyDescription: string;
+    clearFilters: string;
+  };
+  caseStudy: {
+    backToCatalog: string;
+    overview: string;
+    problemTitle: string;
+    solutionTitle: string;
+    architectureTitle: string;
+    subsystemsTitle: string;
+    challengesTitle: string;
+    resultsTitle: string;
+    techStackTitle: string;
+    simulationBannerTitle: string;
+    simulationBannerDesc: string;
+    launchSimulation: string;
+    viewRepository: string;
+    verifiedInvariant: string;
+    metricsTitle: string;
+    notFoundTitle: string;
+    notFoundDesc: string;
+  };
 }
 
 export const dictionaries: Record<Locale, Dictionary> = {
@@ -113,7 +148,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       resumeCta: "Architecture Dossier (CV)",
       profilePlaceholder: "[PROFILE_IMAGE]",
       profileVerified: "Verified Systems Architect",
-      coordinates: "LAT: 24.7136° N, LON: 46.6753° E",
+      coordinates: "SYS_REV: v2.4.0 // ASPECT_RATIO: 1:1",
     },
     telemetry: {
       heading: "System Telemetry & Production Invariants",
@@ -162,8 +197,43 @@ export const dictionaries: Record<Locale, Dictionary> = {
     footer: {
       rights: "© 2026 Abdulghani Al-Shibami. All rights reserved.",
       philosophy: "Architectural Computing & Autonomous Systems. Designed with Obsidian & Gilded Precision.",
-      safetyNotice: "Zero Native Desktop Code Executed In-Browser // Verified Web Simulation Sandbox.",
+      safetyNotice: "Zero native desktop binaries executed in-browser // Sandboxed Web Simulation Environment.",
       backToTop: "Back to Top ↑",
+    },
+    projectsPage: {
+      title: "Engineered Systems Catalog",
+      subtitle: "Production-grade distributed computing platforms, autonomous AI orchestrators, and high-frequency state machines.",
+      operationalCount: "6 Verified Architectural Systems",
+      filtersAll: "All Systems",
+      filterByDomain: "Domain Filter",
+      viewDetails: "Architectural Dossier",
+      launchDemo: "Launch Simulation",
+      viewCode: "Repository",
+      statusCompleted: "Production Verified",
+      statusInProgress: "Active Engineering",
+      statusMaintained: "Maintained Standard",
+      emptyHeading: "No Matching Systems Found",
+      emptyDescription: "No engineering systems match the selected filter criteria.",
+      clearFilters: "Reset Active Filters",
+    },
+    caseStudy: {
+      backToCatalog: "← Return to Systems Catalog",
+      overview: "Executive Architectural Overview",
+      problemTitle: "Architectural Problem & Invariants",
+      solutionTitle: "Engineered Solution & Vectorized Implementation",
+      architectureTitle: "System Topology & Execution Pipeline",
+      subsystemsTitle: "Subsystems & Algorithmic Innovations",
+      challengesTitle: "Runtime Bottlenecks & Overcoming Constraints",
+      resultsTitle: "Empirical Outcomes & Verified Benchmarks",
+      techStackTitle: "Core Substrate & Technologies",
+      simulationBannerTitle: "INTERACTIVE WEB SIMULATION AVAILABLE",
+      simulationBannerDesc: "Explore this system in the browser sandbox. High-fidelity state machine reproduction (compiled native binaries run out-of-browser).",
+      launchSimulation: "Launch Interactive Simulation Sandbox →",
+      viewRepository: "View Verified Repository",
+      verifiedInvariant: "MATHEMATICALLY VERIFIED INVARIANT",
+      metricsTitle: "Verified Empirical Telemetry",
+      notFoundTitle: "System Case Study Not Found",
+      notFoundDesc: "The requested architectural system is either in private development or does not exist.",
     },
   },
   ar: {
@@ -195,7 +265,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       resumeCta: "تحميل السيرة الذاتية (PDF)",
       profilePlaceholder: "[صورة_الملف_الشخصي]",
       profileVerified: "مهندس نظم معتمد",
-      coordinates: "الإحداثيات: ٢٤.٧١٣٦° شمالاً، ٤٦.٦٧٥٣° شرقاً",
+      coordinates: "إصدار_النظام: v2.4.0 // النسبة: 1:1",
     },
     telemetry: {
       heading: "القياسات التشغيلية ومؤشرات الموثوقية",
@@ -246,6 +316,41 @@ export const dictionaries: Record<Locale, Dictionary> = {
       philosophy: "الحوسبة المعمارية والأنظمة المستقلة. صُممت بدقة الأوبسيديان والذهب الملكي.",
       safetyNotice: "لا يتم تشغيل أي كود مكتبي أصلي داخل المتصفح // بيئة محاكاة ويب آمنة ومعتمدة.",
       backToTop: "العودة للأعلى ↑",
+    },
+    projectsPage: {
+      title: "دليل الأنظمة الهندسية والمشاريع",
+      subtitle: "منصات حوسبة موزعة مؤسسية، محركات ذكاء اصطناعي مستقلة، وآلات حالة فائقة السرعة مثبتة تجريبياً.",
+      operationalCount: "٦ أنظمة معمارية تشغيلية",
+      filtersAll: "كافة الأنظمة",
+      filterByDomain: "تصفية حسب التخصص",
+      viewDetails: "الدراسة المعمارية",
+      launchDemo: "تشغيل المحاكاة",
+      viewCode: "المستودع البرمجي",
+      statusCompleted: "معتمد للإنتاج",
+      statusInProgress: "قيد التطوير النشط",
+      statusMaintained: "نظام مستقر ومستمر",
+      emptyHeading: "لا توجد أنظمة مطابقة للتصفية",
+      emptyDescription: "لم يتم العثور على أي نظام هندسي يطابق معايير التصفية المحددة.",
+      clearFilters: "إعادة ضبط التصفية",
+    },
+    caseStudy: {
+      backToCatalog: "← العودة إلى دليل الأنظمة الهندسية",
+      overview: "نظرة معمارية تنفيذية عامة",
+      problemTitle: "الإشكاليات الهندسية والقيود التشغيلية",
+      solutionTitle: "الحل المعماري والتطبيق الفعلي",
+      architectureTitle: "طوبولوجيا النظام ومسار المعالجة الحتمي",
+      subsystemsTitle: "الأنظمة الفرعية والابتكارات الخوارزمية",
+      challengesTitle: "عقبات التشغيل ومعالجة الاختناقات",
+      resultsTitle: "المخرجات التجريبية والقياسات المعتمدة",
+      techStackTitle: "التقنيات والمكتبات الأساسية",
+      simulationBannerTitle: "بيئة محاكاة تفاعلية متاحة داخل المتصفح",
+      simulationBannerDesc: "استكشف آلة الحالة داخل بيئة المحاكاة. إعادة إنتاج حتمية دقيقة (الكود المكتبي الأصلي يعمل خارج المتصفح).",
+      launchSimulation: "تشغيل مختبر المحاكاة التفاعلي ←",
+      viewRepository: "استعراض المستودع المعتمد",
+      verifiedInvariant: "مبدأ هندسي مثبت رياضياً",
+      metricsTitle: "القياسات التشغيلية التجريبية",
+      notFoundTitle: "دراسة الحالة المطلوبة غير موجودة",
+      notFoundDesc: "النظام المعماري المطلوب قد يكون قيد التطوير الداخلي أو تم نقله لمسار آخر.",
     },
   },
 };

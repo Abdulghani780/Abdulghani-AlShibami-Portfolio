@@ -10,6 +10,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.4.0] - 2026-09-17
+
+### Added
+- **Security & Data Sanitization:** Permanently removed fabricated PGP fingerprint (`0x8F94D29E`) and geographic coordinates (`LAT: 24.7136° N, LON: 46.6753° E`). Replaced with safe system versioning tags (`SYS_REV: v2.4.0`, `ASPECT_RATIO: 1:1`).
+- **Decoupled Data Access Layer:** Built `ProjectRepository` in `lib/services/projectRepository.ts` supporting 6 normalized engineering systems across 5 technical categories with local fallback.
+- **Unified Homepage Feed:** Connected Homepage Featured Projects directly to `projectRepository.getFeaturedProjects()`.
+- **Project Catalog Route (`/[locale]/projects`):** Built catalog derived from References 05, 06, and 12 with category filter pills, keyword search, featured spotlight card, and 3-column responsive systems grid.
+- **Modular Case Study Engine (`/[locale]/projects/[slug]`):** Built 7 reusable monograph components (`CaseStudyHero`, `CaseStudyMetrics`, `ProblemSolutionSection`, `ArchitectureTopology`, `SubsystemsGrid`, `ChallengesResultsSection`, `DemoCalloutBanner`) with auto-generated localized SEO metadata and 404 state machine handling.
+- **Component Documentation:** Documented all 11 new project and case study components in `docs/10_COMPONENT_ARCHITECTURE.md`.
+
+### Verified
+- TypeScript compilation: 0 errors (`pnpm typecheck`).
+- ESLint: 0 warnings or errors (`pnpm lint`).
+- Static Generation: 24/24 static pages prerendered (`pnpm build`).
+- Full Visual Browser QA: Verified Dark/Light, English/Arabic RTL, and Mobile viewports via Chrome DevTools subagent with recorded WebP session artifact.
+
+---
+
 ## [0.3.0] - 2026-09-17
 
 ### Added

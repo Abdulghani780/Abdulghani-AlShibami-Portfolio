@@ -146,7 +146,51 @@
   - Production Build: `pnpm build` -> PASSED (all 10 static pages prerendered successfully).
   - Browser subagent visual verification: Dark/Light modes, English/Arabic, LTR/RTL, Desktop/Mobile (393px), and Interactive Simulation chaos partition / REPL terminal execution visually inspected and recorded as WebP video and PNG artifacts.
 - **Git Commit:**
-  - Pending commit: `feat(ui): implement design system, core app shell, and homepage`.
+  - `62434f1 feat(ui): implement design system, core app shell, and homepage`
 - **Next Step:**
   - Phase 04: Project System Architecture & All Project Detail Pages.
+
+---
+
+## [2026-09-17] Entry 004 — Phase 04: Project System, Dynamic Case Studies & Security Sanitization
+- **Phase:** PHASE 04 — Project System & Case Studies
+- **Task:** TSK-080 (Project Catalog & Dynamic Case Study Route)
+- **Objective:** Build scalable Project Catalog and Case Study engine derived from References 05, 06, 07, 08, and 12, purge fabricated security/coordinate data, and connect homepage to unified data access layer.
+- **Files Changed / Created:**
+  - `components/layout/Footer.tsx`: Removed fabricated PGP fingerprint (`0x8F94D29E`).
+  - `lib/i18n/dictionaries.ts`: Replaced fabricated latitude/longitude with safe architectural tags (`SYS_REV: v2.4.0 // ASPECT_RATIO: 1:1`), added `projectsPage` and `caseStudy` bilingual dictionaries.
+  - `docs/33_OPEN_QUESTIONS.md`: Recorded PGP public key and geographical coordinates as pending owner input.
+  - `types/project.ts`: Strict TypeScript interfaces for projects, categories, technologies, metrics, and case studies.
+  - `lib/data/projectsData.ts`: Normalized, authentic architecture data for 6 systems across 5 technical categories.
+  - `lib/services/projectRepository.ts`: Decoupled `ProjectRepository` abstraction with local fallback and typed methods.
+  - `components/features/projects/TechnologyBadge.tsx`: Category-colored architectural technology pill.
+  - `components/features/projects/ProjectCard.tsx`: Flagship project card supporting corner brackets, localized summary, and dual action triggers.
+  - `components/features/projects/ProjectFilters.tsx`: Accessible category filter buttons with active gold indicator and search filter.
+  - `components/features/projects/ProjectCatalogView.tsx`: Client island orchestrating instant filtering, featured spotlight, and responsive 3-column grid.
+  - `components/features/projects/case-study/CaseStudyHero.tsx`: Monograph dossier header with status badge, serif title, and simulation CTA.
+  - `components/features/projects/case-study/CaseStudyMetrics.tsx`: 4-card telemetry grid for verified empirical invariants.
+  - `components/features/projects/case-study/ProblemSolutionSection.tsx`: Split card layout contrasting system constraints with vectorized solution.
+  - `components/features/projects/case-study/ArchitectureTopology.tsx`: 4-stage pipeline execution diagram with interactive hover highlights.
+  - `components/features/projects/case-study/SubsystemsGrid.tsx`: 3-column architectural card grid detailing modular subsystems.
+  - `components/features/projects/case-study/ChallengesResultsSection.tsx`: Low-level runtime bottlenecks paired with empirical benchmark verification.
+  - `components/features/projects/case-study/DemoCalloutBanner.tsx`: Glowing gold banner with honest simulation disclosure and direct sandbox launcher.
+  - `app/[locale]/projects/page.tsx`: Catalog route supporting bilingual SSG and dynamic filters.
+  - `app/[locale]/projects/[slug]/page.tsx`: Dynamic case study route supporting localized metadata, SSG for all slugs, and 404 handling.
+  - `app/[locale]/page.tsx`: Connected Featured Projects section directly to `projectRepository.getFeaturedProjects()`.
+  - `docs/14_PROJECT_SYSTEM.md`: Updated specification reflecting complete implementation.
+  - `docs/10_COMPONENT_ARCHITECTURE.md`: Documented all 11 new project and case study components.
+- **What Was Implemented:**
+  - Complete, scalable Project Catalog (`/[locale]/projects`) and dynamic Case Study engine (`/[locale]/projects/[slug]`).
+  - Total data integrity: zero fabricated companies, clients, external URLs, PGP keys, or coordinates.
+  - Unified data access layer feeding Homepage, Catalog, Case Studies, and Demo System.
+- **Tests & Verification:**
+  - ESLint: `pnpm lint` -> PASSED (0 errors, 0 warnings).
+  - TypeScript: `pnpm typecheck` -> PASSED (0 errors).
+  - Production Build: `pnpm build` -> PASSED (all 24 static pages prerendered successfully).
+  - Visual Browser Subagent QA: Tested across Dark Mode EN, Light Mode EN, Arabic RTL (`/ar/projects`), Case Study Dark (`/en/projects/auraledger`), Case Study Light, Case Study RTL (`/ar/projects/auraledger`), 404 State Machine Fault (`/en/projects/invalid-slug`), and Mobile iPhone (393px) reflow. Full session recorded in `project_system_verification_1789677982349.webp`.
+- **Git Commit:**
+  - Pending commit: `feat(projects): implement catalog and case study system`.
+- **Next Step:**
+  - Phase 05: Interactive Demo System.
+
 

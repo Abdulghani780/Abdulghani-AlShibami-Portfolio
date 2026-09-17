@@ -17,7 +17,7 @@ export function Navbar({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { href: `/${locale}`, label: dict.nav.projects },
+    { href: `/${locale}/projects`, label: dict.nav.projects },
     { href: `/${locale}/projects/auraledger/demo`, label: dict.nav.simulation },
     { href: `/${locale}#competencies`, label: dict.nav.skills },
     { href: `/${locale}#telemetry`, label: dict.nav.specifications },
