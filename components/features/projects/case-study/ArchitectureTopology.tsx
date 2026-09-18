@@ -18,7 +18,7 @@ export const ArchitectureTopology: React.FC<ArchitectureTopologyProps> = ({
   return (
     <div id="architecture" className="space-y-6">
       <SectionHeading
-        kicker="// PIPELINE SPECIFICATION"
+        kicker={isRtl ? "// مواصفات مسار المعالجة" : "// PIPELINE SPECIFICATION"}
         title={isRtl ? "طوبولوجيا النظام ومسار المعالجة" : "System Topology & Execution Pipeline"}
         subtitle={
           isRtl

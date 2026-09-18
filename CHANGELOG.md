@@ -10,6 +10,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.6.0] - 2026-09-18
+
+### Added
+- **Internationalization & Theming Final Polish (Phase 10):**
+  - Complete bi-directional parity between English (`en`) and Arabic (`ar`) with zero text leaks in kickers, badges, or empty states.
+  - Document-level synchronization of `<html lang="..." dir="...">` via `LocaleHtmlSync` and inline script for zero-flash hydration.
+  - Deep route preservation in `LanguageSwitcher`, ensuring transitions between English and Arabic retain the active nested route (e.g. `/en/projects/yusra/demo` ↔ `/ar/projects/yusra/demo`).
+  - Directional icon mirroring in RTL for back, forward, and workflow sequences with invariant symbol preservation.
+  - Created `docs/PHASE_10_I18N_THEME_QA.md` documenting full 8-way matrix verification.
+
+### Changed & Sanitized
+- **Fabricated Metadata Cleaned:** Permanently removed GPS coordinates (`LAT: 24.7136° N, LON: 46.6753° E`), arbitrary hardware tags (`SYS_REV: v2.4.0 // ARCH: x64_AVX512`), and arbitrary revision marks (`ARCH_INDEX: SYS-2025-V2`).
+- **Verified Flagship Demonstration:** Verified YUSRA C# WinForms enterprise ledger as genuine owner project before connecting to primary homepage CTA.
+- **Footer Cleaned:** Replaced pseudo-technical version tags with clean colophon (`Next.js 15 // Tailwind CSS`).
+
+### Verified
+- **TypeScript:** 0 errors (`pnpm typecheck`).
+- **ESLint:** 0 warnings or errors (`pnpm lint`).
+- **Production Build:** 30/30 static pages prerendered (`pnpm build`).
+- **Visual Browser QA:** Verified all 8 matrix combinations, deep route switching, and zero horizontal overflow on mobile 393px with recorded WebP artifact (`phase10_qa_matrix_1789755443787.webp`).
+
+---
+
 ## [0.5.0] - 2026-09-18
 
 ### Added

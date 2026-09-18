@@ -13,6 +13,7 @@ import { ArchitectureTopology } from "@/components/features/projects/case-study/
 import { SubsystemsGrid } from "@/components/features/projects/case-study/SubsystemsGrid";
 import { ChallengesResultsSection } from "@/components/features/projects/case-study/ChallengesResultsSection";
 import { DemoCalloutBanner } from "@/components/features/projects/case-study/DemoCalloutBanner";
+import { dictionaries } from "@/lib/i18n/dictionaries";
 
 interface ProjectDetailPageProps {
   params: Promise<{
@@ -71,6 +72,7 @@ export default async function ProjectDetailPage({
   const category = await projectRepository.getCategoryBySlug(project.categorySlug);
   const categoryName = category?.name[typedLocale] || project.categorySlug;
   const isRtl = typedLocale === "ar";
+  const dict = dictionaries[typedLocale];
 
   return (
     <div className="space-y-12 sm:space-y-16 pb-20">
@@ -139,7 +141,7 @@ export default async function ProjectDetailPage({
         <div className="border border-hairline bg-surface p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="space-y-1 text-center sm:text-start">
             <div className="font-mono text-[10px] text-gold uppercase tracking-wider">
-              {"// END OF ARCHITECTURAL DOSSIER"}
+              {dict.kickers.endDossier}
             </div>
             <p className="text-content-secondary text-xs">
               {isRtl
@@ -150,7 +152,7 @@ export default async function ProjectDetailPage({
 
           <Link href={`/${typedLocale}/projects`}>
             <Button variant="secondary" size="md">
-              <span>{isRtl ? "← العودة إلى الدليل" : "Return to Systems Catalog"}</span>
+              <span>{isRtl ? "→ العودة إلى الدليل" : "← Return to Systems Catalog"}</span>
             </Button>
           </Link>
         </div>

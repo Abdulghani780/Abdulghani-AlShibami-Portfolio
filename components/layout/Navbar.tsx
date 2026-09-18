@@ -18,7 +18,7 @@ export function Navbar({
 
   const navLinks = [
     { href: `/${locale}/projects`, label: dict.nav.projects },
-    { href: `/${locale}/projects/auraledger/demo`, label: dict.nav.simulation },
+    { href: `/${locale}/projects/yusra/demo`, label: dict.nav.simulation },
     { href: `/${locale}#competencies`, label: dict.nav.skills },
     { href: `/${locale}#telemetry`, label: dict.nav.specifications },
   ];

@@ -80,6 +80,20 @@ export interface Dictionary {
     philosophy: string;
     safetyNotice: string;
     backToTop: string;
+    directLinks: string;
+    githubLabel: string;
+    linkedinLabel: string;
+  };
+  kickers: {
+    telemetry: string;
+    featured: string;
+    competencies: string;
+    contact: string;
+    emptyCatalog: string;
+    pipeline: string;
+    subsystems: string;
+    verification: string;
+    endDossier: string;
   };
   projectsPage: {
     title: string;
@@ -167,7 +181,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       resumeCta: "Architecture Dossier (CV)",
       profilePlaceholder: "[PROFILE_IMAGE]",
       profileVerified: "Verified Systems Architect",
-      coordinates: "SYS_REV: v2.4.0 // ASPECT_RATIO: 1:1",
+      coordinates: "ASPECT_RATIO: 1:1 // VERIFIED CONTAINER",
     },
     telemetry: {
       heading: "System Telemetry & Design Invariants",
@@ -218,6 +232,20 @@ export const dictionaries: Record<Locale, Dictionary> = {
       philosophy: "Architectural Computing & Autonomous Systems. Designed with Obsidian & Gilded Precision.",
       safetyNotice: "Zero native desktop binaries executed in-browser // Sandboxed Web Simulation Environment.",
       backToTop: "Back to Top ↑",
+      directLinks: "// Direct Links",
+      githubLabel: "GitHub Repository",
+      linkedinLabel: "LinkedIn Profile",
+    },
+    kickers: {
+      telemetry: "// EMPIRICAL VERIFICATION",
+      featured: "// DISTRIBUTED RUNTIMES",
+      competencies: "// FOUNDATIONAL PILLARS",
+      contact: "// INITIATE TRANSMISSION",
+      emptyCatalog: "// 0 SYSTEMS MATCHED",
+      pipeline: "// PIPELINE SPECIFICATION",
+      subsystems: "// SUBSYSTEM INNOVATIONS",
+      verification: "// RIGOROUS VERIFICATION",
+      endDossier: "// END OF ARCHITECTURAL DOSSIER",
     },
     projectsPage: {
       title: "Engineering Systems & Projects Catalog",
@@ -303,7 +331,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       resumeCta: "تحميل السيرة الذاتية (PDF)",
       profilePlaceholder: "[صورة_الملف_الشخصي]",
       profileVerified: "مهندس نظم معتمد",
-      coordinates: "إصدار_النظام: v2.4.0 // النسبة: 1:1",
+      coordinates: "النسبة: 1:1 // حاوية معتمدة",
     },
     telemetry: {
       heading: "القياسات الهندسية ومحددات التصميم",
@@ -354,6 +382,20 @@ export const dictionaries: Record<Locale, Dictionary> = {
       philosophy: "الحوسبة المعمارية والأنظمة المستقلة. صُممت بدقة الأوبسيديان والذهب الملكي.",
       safetyNotice: "لا يتم تشغيل أي كود مكتبي أصلي داخل المتصفح // بيئة محاكاة ويب آمنة ومعتمدة.",
       backToTop: "العودة للأعلى ↑",
+      directLinks: "// روابط مباشرة",
+      githubLabel: "مستودع GitHub",
+      linkedinLabel: "الملف الشخصي على LinkedIn",
+    },
+    kickers: {
+      telemetry: "// التحقق التجريبي",
+      featured: "// الأنظمة التشغيلية",
+      competencies: "// الركائز الهندسية",
+      contact: "// بدء التواصل الهندسي",
+      emptyCatalog: "// لا توجد نتائج مطابقة",
+      pipeline: "// مواصفات مسار المعالجة",
+      subsystems: "// ابتكارات الأنظمة الفرعية",
+      verification: "// التحقق والنتائج المعمارية",
+      endDossier: "// نهاية الملف المعماري",
     },
     projectsPage: {
       title: "دليل الأنظمة الهندسية والمشاريع",

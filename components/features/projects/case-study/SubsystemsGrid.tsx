@@ -18,7 +18,7 @@ export const SubsystemsGrid: React.FC<SubsystemsGridProps> = ({
   return (
     <div className="space-y-6">
       <SectionHeading
-        kicker="// SUBSYSTEM INNOVATIONS"
+        kicker={isRtl ? "// ابتكارات الأنظمة الفرعية" : "// SUBSYSTEM INNOVATIONS"}
         title={isRtl ? "الأنظمة الفرعية والابتكارات الخوارزمية" : "Subsystems & Algorithmic Innovations"}
         subtitle={
           isRtl

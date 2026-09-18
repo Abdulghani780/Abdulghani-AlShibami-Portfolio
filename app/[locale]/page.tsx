@@ -78,7 +78,7 @@ export default async function HomePage({
                   </Button>
                 </Link>
 
-                <Link href={`/${currentLocale}/projects/auraledger/demo`}>
+                <Link href={`/${currentLocale}/projects/yusra/demo`}>
                   <Button variant="secondary" size="md" className="w-full sm:w-auto">
                     {dict.hero.simulationCta}
                   </Button>
@@ -100,7 +100,7 @@ export default async function HomePage({
                   <span>ID: ALSHIBAMI-01</span>
                   <span className="text-status-emerald flex items-center gap-1">
                     <span className="h-1.5 w-1.5 rounded-full bg-status-emerald animate-ping inline-block" />
-                    ONLINE
+                    {isRtl ? "متصل" : "ONLINE"}
                   </span>
                 </div>
 
@@ -127,7 +127,7 @@ export default async function HomePage({
                 {/* Card Footer coordinates */}
                 <div className="border-t border-hairline pt-3 flex items-center justify-between font-mono text-[9px] text-content-muted">
                   <span>{dict.hero.coordinates}</span>
-                  <span>ARCH: x64_AVX512</span>
+                  <span>{isRtl ? "ملف موثق" : "VERIFIED DOSSIER"}</span>
                 </div>
               </div>
             </div>
@@ -141,7 +141,7 @@ export default async function HomePage({
       <section id="telemetry" className="border-y border-hairline bg-surface/30 py-16">
         <Container>
           <SectionHeading
-            kicker="// EMPIRICAL VERIFICATION"
+            kicker={dict.kickers.telemetry}
             title={dict.telemetry.heading}
             subtitle={dict.telemetry.subheading}
           />
@@ -222,7 +222,7 @@ export default async function HomePage({
               </p>
             </div>
 
-            <Link href={`/${currentLocale}/projects/auraledger/demo`} className="shrink-0 w-full md:w-auto">
+            <Link href={`/${currentLocale}/projects/yusra/demo`} className="shrink-0 w-full md:w-auto">
               <Button variant="primary" size="md" className="w-full">
                 {dict.hero.simulationCta} {isRtl ? "←" : "→"}
               </Button>
@@ -238,7 +238,7 @@ export default async function HomePage({
         <Container>
           <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-10 md:mb-14">
             <SectionHeading
-              kicker="// DISTRIBUTED RUNTIMES"
+              kicker={dict.kickers.featured}
               title={dict.featured.heading}
               subtitle={dict.featured.subheading}
               className="mb-0"
@@ -286,7 +286,7 @@ export default async function HomePage({
       <section id="competencies" className="border-t border-hairline bg-surface/20 py-20">
         <Container>
           <SectionHeading
-            kicker="// FOUNDATIONAL PILLARS"
+            kicker={dict.kickers.competencies}
             title={dict.competencies.heading}
             subtitle={dict.competencies.subheading}
           />
@@ -343,7 +343,7 @@ export default async function HomePage({
           <div className="max-w-2xl mx-auto border border-hairline bg-surface p-8 sm:p-12 space-y-8">
             <div className="space-y-3 text-center">
               <div className="font-mono text-[11px] text-gold uppercase tracking-[0.2em]">
-                {"// INITIATE TRANSMISSION"}
+                {dict.kickers.contact}
               </div>
               <h3 className="font-serif text-3xl font-normal text-content-primary">
                 {isRtl ? "تواصل معي مباشرة" : "Executive Inquiry & Contact"}

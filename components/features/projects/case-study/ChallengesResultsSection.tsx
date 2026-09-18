@@ -17,7 +17,7 @@ export const ChallengesResultsSection: React.FC<ChallengesResultsSectionProps> =
   return (
     <div className="space-y-8">
       <SectionHeading
-        kicker="// RIGOROUS VERIFICATION"
+        kicker={isRtl ? "// التحقق والنتائج المعمارية" : "// RIGOROUS VERIFICATION"}
         title={isRtl ? "تجاوز العقبات والنتائج التجريبية" : "Engineering Challenges & Empirical Outcomes"}
         subtitle={
           isRtl

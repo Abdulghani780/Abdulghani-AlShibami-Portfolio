@@ -103,7 +103,7 @@ export const ProjectCatalogView: React.FC<ProjectCatalogViewProps> = ({
         /* Empty State */
         <div className="border border-hairline bg-surface p-12 text-center space-y-4">
           <div className="font-mono text-xs text-gold uppercase tracking-widest">
-            {"// 0 SYSTEMS MATCHED"}
+            {isRtl ? "// لا توجد أنظمة مطابقة" : "// 0 SYSTEMS MATCHED"}
           </div>
           <h4 className="font-serif text-2xl font-normal text-content-primary">
             {isRtl ? "لم يتم العثور على أنظمة مطابقة" : "No Matching Systems Found"}

@@ -44,7 +44,7 @@ export const CaseStudyHero: React.FC<CaseStudyHeroProps> = ({
             href={`/${locale}/projects`}
             className="text-gold hover:text-gold-light uppercase tracking-wider"
           >
-            {isRtl ? "← العودة للدليل" : "← Systems Catalog"}
+            {isRtl ? "→ العودة للدليل" : "← Systems Catalog"}
           </Link>
         </div>
 

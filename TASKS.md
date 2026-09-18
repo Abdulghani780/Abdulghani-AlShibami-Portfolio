@@ -157,31 +157,31 @@
 
 ### PHASE 09 — Interactive Demo System
 - **ID:** `TSK-090`
-- **TITLE:** Sandboxed Interactive Demo System & Simulations
+- **TITLE:** Sandboxed Interactive Demo System & Data Integrity Gate
 - **PHASE:** 09
 - **PRIORITY:** P0
-- **STATUS:** IN_PROGRESS
+- **STATUS:** COMPLETED
 - **DESCRIPTION:** Build `DemoViewer` supporting Real Live, Embedded, and Interactive Web Simulations (for C# / Python desktop apps).
 - **DEPENDENCIES:** TSK-080
-- **FILES:** `components/features/demos/*`, `app/[locale]/projects/[slug]/demo/page.tsx`
+- **FILES:** `components/features/demos/*`, `app/[locale]/projects/[slug]/demo/page.tsx`, `demos/*`
 - **DATABASE IMPACT:** None
-- **TESTS:** Simulation state transitions and sandbox isolation.
-- **DEFINITION OF DONE:** Interactive demo loaded with clear simulation labeling and functional UI flows.
+- **TESTS:** Simulation state transitions, double-entry ledger balance validation, and sandbox isolation.
+- **DEFINITION OF DONE:** Interactive demo loaded with clear simulation labeling, honest data disclosures, and functional UI flows.
 
 ---
 
-### PHASE 10 — Internationalization & Theming
+### PHASE 10 — Internationalization & Theming Final Polish
 - **ID:** `TSK-100`
-- **TITLE:** Full LTR/RTL and Dark/Light Mode Engine
+- **TITLE:** Full LTR/RTL and Dark/Light Mode Engine Final Polish
 - **PHASE:** 10
 - **PRIORITY:** P0
 - **STATUS:** COMPLETED
-- **DESCRIPTION:** Implement dictionary-based i18n for English and Arabic, CSS logical properties, and flash-free theme provider.
-- **DEPENDENCIES:** TSK-070
-- **FILES:** `lib/i18n/*`, `lib/theme/*`, `middleware.ts`
+- **DESCRIPTION:** Implement dictionary-based i18n for English and Arabic, CSS logical properties, directional icon mirroring, root html lang/dir synchronization, and flash-free theme provider.
+- **DEPENDENCIES:** TSK-070, TSK-090
+- **FILES:** `lib/i18n/*`, `lib/theme/*`, `components/layout/LocaleHtmlSync.tsx`, `docs/PHASE_10_I18N_THEME_QA.md`
 - **DATABASE IMPACT:** None
-- **TESTS:** Language toggling retains current route; theme persists in localStorage.
-- **DEFINITION OF DONE:** Zero layout shift or inversion glitches across all pages.
+- **TESTS:** 8-way matrix verified via Chrome DevTools (EN/AR x LTR/RTL x Dark/Light x Mobile/Desktop); deep route preservation verified (`/projects/yusra/demo`).
+- **DEFINITION OF DONE:** Zero layout shift, zero horizontal overflow (`scrollWidth <= clientWidth`), zero FOUC, no fabricated metadata, and 100% bilingual parity.
 
 ---
 

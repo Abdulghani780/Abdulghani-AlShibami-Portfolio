@@ -236,7 +236,41 @@
     - Mobile Viewport (393px width): Confirmed responsive layout reflow with zero horizontal overflow.
     - Full WebP session recording: `demo_system_qa_1789680017131.webp`.
 - **Git Commit:**
-  - Pending: `feat(demos): implement interactive demo system and enforce data integrity gate`.
+  - Commit `3c77764`: `feat(demos): implement interactive demo system and enforce data integrity gate`.
+- **Next Step:**
+  - Phase 10: Internationalization & Theming Final Polish.
 
+---
 
-
+## [2026-09-18] Entry 006 — Phase 10: Internationalization & Theming Final Polish
+- **Phase:** PHASE 10 — Internationalization & Theming Final Polish (Milestone 10)
+- **Task:** TSK-100 (Full LTR/RTL and Dark/Light Mode Engine Final Polish)
+- **Objective:** Final production-grade polish for i18n, RTL directional symmetry, dual-theming discipline, elimination of fabricated technical metadata, root html lang/dir synchronization, deep route preservation, and full 8-way matrix verification.
+- **Files Changed / Created:**
+  - `docs/PHASE_10_I18N_THEME_QA.md`: Comprehensive quality assurance document recording 8-way matrix results, deep route switching, icon symmetry, and metadata sanitization.
+  - `components/layout/LocaleHtmlSync.tsx`: Client-side synchronization of `document.documentElement.lang` and `dir` on route changes.
+  - `app/[locale]/layout.tsx`: Zero-flash inline script and `LocaleHtmlSync` integration for root HTML element synchronization.
+  - `lib/i18n/dictionaries.ts`: Added missing localized keys for kickers (`telemetry`, `featured`, `competencies`, `contact`, `emptyCatalog`, `pipeline`, `subsystems`, `verification`, `endDossier`) and footer links; removed unverified `sysRev` and `catalogIndex` hardware tags; neutralized profile container coordinates.
+  - `components/layout/Footer.tsx`: Permanently removed GPS coordinates (`LAT: 24.7136° N, LON: 46.6753° E`) and `SYS_REV` hardware strings; localized direct links and social labels; updated colophon to `Next.js 15 // Tailwind CSS`.
+  - `app/[locale]/page.tsx`: Localized all section kickers using dictionary keys; localized profile status badge (`ONLINE` / `متصل`); removed `ARCH: x64_AVX512` hardware claim; updated hero and banner demo CTA to verified owner simulation (`/projects/yusra/demo`).
+  - `app/[locale]/projects/page.tsx`: Replaced arbitrary `ARCH_INDEX: SYS-2025-V2` with honest bilingual index label (`Verified Systems Index` / `سجل الأنظمة المعتمدة`).
+  - `app/[locale]/projects/[slug]/page.tsx`: Localized end of dossier kicker (`dict.kickers.endDossier`); mirrored return arrow in RTL (`→ العودة إلى الدليل`).
+  - `components/features/projects/ProjectCatalogView.tsx`: Localized empty state kicker (`// 0 SYSTEMS MATCHED` / `// لا توجد أنظمة مطابقة`).
+  - `components/features/projects/case-study/ArchitectureTopology.tsx`, `SubsystemsGrid.tsx`, `ChallengesResultsSection.tsx`: Localized pipeline, subsystem, and verification kickers in Arabic and English.
+  - `components/features/projects/case-study/CaseStudyHero.tsx`: Mirrored return breadcrumbs arrow in RTL (`→ العودة للدليل`).
+  - `components/features/demos/DemoViewer.tsx`: Integrated `BackIcon` (ArrowLeft in LTR, ArrowRight in RTL) into all case study return links.
+  - `components/layout/Navbar.tsx`: Updated simulation navigation item to point to verified flagship demo (`/projects/yusra/demo`).
+  - `docs/16_I18N.md`, `docs/17_THEMING.md`, `docs/33_OPEN_QUESTIONS.md`, `PROGRESS.md`, `TASKS.md`, `docs/36_PROJECT_STATUS.md`: Synchronized documentation.
+- **Tests & Verification:**
+  - TypeScript compilation: `pnpm typecheck` -> PASSED (0 errors).
+  - ESLint: `pnpm lint` -> PASSED (0 errors, 0 warnings).
+  - Production Build: `pnpm build` -> PASSED (all 30 static pages prerendered successfully with 0 errors).
+  - Visual Browser Subagent QA:
+    - 8-way matrix verified: EN Dark Desktop, EN Light Desktop, AR Light Desktop, AR Dark Desktop, EN Dark Mobile (393px), EN Light Mobile, AR Light Mobile, AR Dark Mobile.
+    - Deep route preservation: `/en/projects/yusra/demo` ↔ `/ar/projects/yusra/demo` seamlessly switched without redirection to `/ar`.
+    - Horizontal overflow check: `scrollWidth <= clientWidth` across all 4 mobile viewports (0 overflow).
+    - Full WebP session recording: `phase10_qa_matrix_1789755443787.webp`.
+- **Git Commit:**
+  - `feat(i18n): finalize localization, rtl mirroring, and dual-theming engine`
+- **Next Step:**
+  - Phase 11: Contact System & Security Handling.

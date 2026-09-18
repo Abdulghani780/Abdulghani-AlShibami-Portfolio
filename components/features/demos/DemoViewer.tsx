@@ -85,9 +85,10 @@ export function DemoViewer({ project, locale }: DemoViewerProps) {
             </a>
             <Link
               href={`/${locale}/projects/${project.slug}`}
-              className="py-2.5 px-4 bg-surface border border-border hover:border-brand-gold/40 text-text-dim text-xs sm:text-sm rounded-lg transition-colors"
+              className="py-2.5 px-4 bg-surface border border-border hover:border-brand-gold/40 text-text-dim text-xs sm:text-sm rounded-lg transition-colors inline-flex items-center gap-2"
             >
-              {locale === "ar" ? "العودة للدراسة المعمارية" : "Return to Case Study"}
+              <BackIcon className="w-3.5 h-3.5" />
+              <span>{locale === "ar" ? "العودة للدراسة المعمارية" : "Return to Case Study"}</span>
             </Link>
           </div>
         </div>
@@ -203,9 +204,10 @@ export function DemoViewer({ project, locale }: DemoViewerProps) {
             </a>
             <Link
               href={`/${locale}/projects/${project.slug}`}
-              className="py-2.5 px-4 bg-surface border border-border hover:border-brand-gold/40 text-text-dim text-xs sm:text-sm rounded-lg transition-colors"
+              className="py-2.5 px-4 bg-surface border border-border hover:border-brand-gold/40 text-text-dim text-xs sm:text-sm rounded-lg transition-colors inline-flex items-center gap-2"
             >
-              {locale === "ar" ? "العودة للدراسة المعمارية" : "Return to Case Study"}
+              <BackIcon className="w-3.5 h-3.5" />
+              <span>{locale === "ar" ? "العودة للدراسة المعمارية" : "Return to Case Study"}</span>
             </Link>
           </div>
         </div>

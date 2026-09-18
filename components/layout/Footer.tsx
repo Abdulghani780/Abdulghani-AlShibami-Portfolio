@@ -34,7 +34,7 @@ export function Footer({ dict }: { dict: Dictionary }) {
           {/* Social & Verification Anchors */}
           <div className="md:col-span-3 space-y-3 font-mono text-xs">
             <div className="text-gold tracking-[0.16em] uppercase text-[10px] font-semibold">
-              {"// Direct Links"}
+              {dict.footer.directLinks}
             </div>
             <ul className="space-y-2 text-content-secondary">
               <li>
@@ -44,8 +44,8 @@ export function Footer({ dict }: { dict: Dictionary }) {
                   rel="noopener noreferrer"
                   className="hover:text-gold transition-colors inline-flex items-center gap-1.5"
                 >
-                  <span>GitHub Repository</span>
-                  <span className="text-[9px]">↗</span>
+                  <span>{dict.footer.githubLabel}</span>
+                  <span className="text-[9px] rtl:rotate-[-90deg]">↗</span>
                 </a>
               </li>
               <li>
@@ -55,8 +55,8 @@ export function Footer({ dict }: { dict: Dictionary }) {
                   rel="noopener noreferrer"
                   className="hover:text-gold transition-colors inline-flex items-center gap-1.5"
                 >
-                  <span>LinkedIn Profile</span>
-                  <span className="text-[9px]">↗</span>
+                  <span>{dict.footer.linkedinLabel}</span>
+                  <span className="text-[9px] rtl:rotate-[-90deg]">↗</span>
                 </a>
               </li>
             </ul>
@@ -70,16 +70,13 @@ export function Footer({ dict }: { dict: Dictionary }) {
             >
               <span>{dict.footer.backToTop}</span>
             </button>
-            <div className="font-mono text-[10px] text-content-muted">
-              LAT: 24.7136° N, LON: 46.6753° E
-            </div>
           </div>
         </div>
 
         {/* Bottom Colophon Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-[11px] text-content-muted">
           <div>{dict.footer.rights}</div>
-          <div>SPEC_VERSION: 2.4.0-RELEASE // NEXT.JS 15</div>
+          <div>Next.js 15 // Tailwind CSS</div>
         </div>
       </div>
     </footer>

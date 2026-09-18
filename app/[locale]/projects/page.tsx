@@ -62,7 +62,7 @@ export default async function ProjectsPage({ params }: ProjectsPageProps) {
             </div>
 
             <div className="font-mono text-xs text-content-muted">
-              ARCH_INDEX: SYS-2025-V2
+              {typedLocale === "ar" ? "سجل الأنظمة المعتمدة" : "Verified Systems Index"}
             </div>
           </div>
 
