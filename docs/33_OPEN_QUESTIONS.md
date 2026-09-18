@@ -8,8 +8,8 @@
 ## 1. Critical (Architecture & Identity)
 - [x] **Primary Visual Direction:** Confirmed as Luxury Obsidian Black (`#0B0B0C`), Royal Gold (`#D4AF37`), and Crisp White (`#FFFFFF`).
 - [x] **Bilingual Support:** Confirmed as English (Primary/LTR) and Arabic (Secondary/RTL).
-- [ ] **Profile Photograph:** Actual portrait image not yet supplied.  
-  *Current Resolution:* Staged as `[PROFILE_IMAGE]` placeholder referencing `public/images/profile/avatar.png`. Can be replaced at any time by dropping the image file into that directory without changing code.
+- [x] **Profile Photograph:** Resolved in Phase 10.1. Authentic high-resolution portrait photograph `Abdulghani Alshibami.jpg` (2300x1824 px) verified and converted into web-optimized WebP variants (`abdulghani-profile.webp`, `abdulghani-profile-hero.webp`, `abdulghani-profile-thumb.webp`) in `public/images/profile/` and integrated into the Hero component.
+- [x] **Authentic Project Catalog:** Resolved in Phase 10.1. Exactly 5 authentic projects from `Projects/` harmonized into `projectsData.ts`: `campus-it-tracker`, `metaalgorithm-lab`, `novatech`, `cafena`, and `gp`. Unverified entries (`yusra`, `auraledger`, `nexora-tech`) permanently removed.
 
 ---
 
@@ -18,9 +18,7 @@
   *Current Resolution:* Direct footer link omitted until Abdulghani Al-Shibami supplies the genuine PGP public key fingerprint.
 - [ ] **Geographical Coordinates & Architecture Metadata:** Fabricated latitude/longitude (`24.7136° N, 46.6753° E`) and arbitrary hardware tags (`SYS_REV`, `ARCH: x64_AVX512`) were removed permanently in Phase 10.  
   *Current Resolution:* Clean, truthful colophon (`Next.js 15 // Tailwind CSS`) without fabricated telemetry. Real operational city/region can be provided when desired.
-- [ ] **Specific Project Repositories & Real Case Studies:** Initial project entries will be seeded with verified software systems (such as Desktop Enterprise Management in C#/.NET, Python Automation & Data Tools, AI Agent Architectures, and Modern Web Applications).  
-  *Action:* Owner can supply additional private/public GitHub URLs or specific project titles as desired; the system dynamically renders whichever are provided.
-- [ ] **Academic Degree & University Details:** Initial academic milestones will feature structured placeholders (e.g. Computer Science / Software Engineering degree) ready for exact university name and graduation year details.
+- [ ] **Academic Degree & University Details:** Initial academic milestones feature structured placeholders (e.g. Computer Science / Software Engineering degree) ready for exact university name and graduation year details.
 
 ---
 

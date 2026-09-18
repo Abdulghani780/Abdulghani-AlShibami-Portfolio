@@ -38,18 +38,23 @@ The demo system is organized under a modular architecture:
 ```text
 demos/
 ├── registry/
-│   └── index.ts                 // Strongly typed DEMO_REGISTRY mapping slug -> DemoDefinition
+│   └── index.ts                 // Strongly typed DEMO_REGISTRY mapping 5 verified slugs -> DemoDefinition
 ├── shared/
 │   ├── DemoShell.tsx            // Desktop window chrome (title bar, buttons, fullscreen, reset)
 │   ├── DemoDisclosure.tsx       // Honest technical integrity disclosure banner
 │   ├── DemoToolbar.tsx          // Action bar and navigation breadcrumbs
 │   └── DemoStatusBar.tsx        // Telemetry metrics and engine status
 └── simulations/
-    ├── YusraSimulation.tsx      // C# WinForms double-entry ledger and billing engine
     ├── CampusITTrackerSimulation.tsx // 3-tier campus network topology & incident desk
-    ├── MetaAlgorithmLabSimulation.tsx // In-browser client-side sorting benchmark runner
-    └── AuraLedgerSimulation.tsx // 5-node Raft consensus sandbox & chaos partition controls
+    └── MetaAlgorithmLabSimulation.tsx // In-browser client-side sorting benchmark runner
 ```
+
+### Active Registered Slugs:
+1. `campus-it-tracker`: `interactive_simulation` (Campus IT Tracker)
+2. `metaalgorithm-lab`: `interactive_simulation` (MetaAlgorithm Lab)
+3. `novatech`: `real_live` (NOVA TECH Cyber Gadgets)
+4. `cafena`: `real_live` (Cafena Specialty Coffee)
+5. `gp`: `interactive_simulation` (Graduation Project Portal)
 
 ---
 
@@ -57,7 +62,7 @@ demos/
 
 `components/features/demos/DemoViewer.tsx` dynamically evaluates the project's canonical `demoType`:
 1. **Simulation:** Renders `DemoShell` + `DemoDisclosure` + registered simulation view.
-2. **Real Live:** Renders verified external launch card with security attributes.
+2. **Real Live:** Renders verified launch card with security attributes.
 3. **Embedded:** Renders sandboxed iframe with X-Frame-Options fallback detection.
 4. **Repo:** Renders GitHub clone snippet card and direct repository link.
 5. **None:** Renders architectural monograph information and return link.

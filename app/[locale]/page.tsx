@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { dictionaries, Locale } from "@/lib/i18n/dictionaries";
 import { Container } from "@/components/ui/Container";
@@ -78,7 +79,7 @@ export default async function HomePage({
                   </Button>
                 </Link>
 
-                <Link href={`/${currentLocale}/projects/yusra/demo`}>
+                <Link href={`/${currentLocale}/projects/campus-it-tracker/demo`}>
                   <Button variant="secondary" size="md" className="w-full sm:w-auto">
                     {dict.hero.simulationCta}
                   </Button>
@@ -86,9 +87,9 @@ export default async function HomePage({
               </div>
             </div>
 
-            {/* Right/Left Profile Placeholder Column (Strictly [PROFILE_IMAGE]) */}
+            {/* Right/Left Authentic Profile Portrait Column */}
             <div className="lg:col-span-5 flex justify-center lg:justify-end">
-              <div className="relative w-full max-w-sm sm:max-w-md aspect-[4/5] border border-gold/40 bg-surface/60 p-6 flex flex-col justify-between backdrop-blur-sm transition-all duration-300 hover:border-gold hover:shadow-gold">
+              <div className="relative w-full max-w-sm sm:max-w-md aspect-[4/5] border border-gold/40 bg-surface/60 p-4 sm:p-5 flex flex-col justify-between backdrop-blur-sm transition-all duration-300 hover:border-gold hover:shadow-gold group">
                 {/* Corner Technical Coordinate Brackets */}
                 <span className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-gold pointer-events-none" />
                 <span className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-gold pointer-events-none" />
@@ -96,36 +97,41 @@ export default async function HomePage({
                 <span className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-gold pointer-events-none" />
 
                 {/* Header status inside card */}
-                <div className="flex items-center justify-between font-mono text-[10px] text-content-muted">
+                <div className="flex items-center justify-between font-mono text-[10px] text-content-muted pb-2.5 border-b border-hairline/60">
                   <span>ID: ALSHIBAMI-01</span>
-                  <span className="text-status-emerald flex items-center gap-1">
+                  <span className="text-status-emerald flex items-center gap-1.5 font-semibold">
                     <span className="h-1.5 w-1.5 rounded-full bg-status-emerald animate-ping inline-block" />
                     {isRtl ? "متصل" : "ONLINE"}
                   </span>
                 </div>
 
-                {/* Central Replacement Placeholder */}
-                <div className="my-auto text-center space-y-4 py-8">
-                  <div className="w-24 h-24 mx-auto border border-dashed border-gold/50 flex items-center justify-center font-serif text-3xl text-gold/80 bg-gold/5 rounded-none">
-                    AS
-                  </div>
-                  <div className="space-y-1">
-                    <div className="font-mono text-sm tracking-[0.25em] text-gold font-bold uppercase">
-                      {dict.hero.profilePlaceholder}
+                {/* Portrait Frame with Genuine Profile Image */}
+                <div className="relative my-2.5 w-full flex-1 min-h-[280px] sm:min-h-[340px] overflow-hidden border border-gold/30 bg-surface-dark">
+                  <Image
+                    src="/images/profile/abdulghani-profile-hero.webp"
+                    alt={isRtl ? "عبدالغني الشبامي" : "Abdulghani Al-Shibami"}
+                    fill
+                    priority
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
+                    className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                  />
+                  {/* Subtle Gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/20 pointer-events-none" />
+
+                  {/* Identification Label */}
+                  <div className="absolute bottom-2.5 inset-x-2.5 bg-black/80 backdrop-blur-md border border-gold/40 p-2.5 flex items-center justify-between font-mono text-[10px]">
+                    <div>
+                      <div className="text-gold font-bold">{dict.hero.name}</div>
+                      <div className="text-content-muted text-[9px]">{dict.hero.profileVerified}</div>
                     </div>
-                    <div className="font-mono text-[11px] text-content-muted uppercase tracking-wider">
-                      {dict.hero.profileVerified}
-                    </div>
-                  </div>
-                  <div className="text-[11px] text-content-secondary max-w-[240px] mx-auto leading-relaxed">
-                    {isRtl
-                      ? "إطار مخصص لاستقبال الصورة الشخصية الرسمية للمهندس عبدالغني الشبامي."
-                      : "Reserved architectural container for Abdulghani Al-Shibami's official photograph."}
+                    <span className="text-status-emerald text-[9px] uppercase tracking-wider font-semibold border border-status-emerald/40 px-1.5 py-0.5">
+                      {isRtl ? "موثق" : "VERIFIED"}
+                    </span>
                   </div>
                 </div>
 
                 {/* Card Footer coordinates */}
-                <div className="border-t border-hairline pt-3 flex items-center justify-between font-mono text-[9px] text-content-muted">
+                <div className="border-t border-hairline pt-2.5 flex items-center justify-between font-mono text-[9px] text-content-muted">
                   <span>{dict.hero.coordinates}</span>
                   <span>{isRtl ? "ملف موثق" : "VERIFIED DOSSIER"}</span>
                 </div>
@@ -222,7 +228,7 @@ export default async function HomePage({
               </p>
             </div>
 
-            <Link href={`/${currentLocale}/projects/yusra/demo`} className="shrink-0 w-full md:w-auto">
+            <Link href={`/${currentLocale}/projects/campus-it-tracker/demo`} className="shrink-0 w-full md:w-auto">
               <Button variant="primary" size="md" className="w-full">
                 {dict.hero.simulationCta} {isRtl ? "←" : "→"}
               </Button>

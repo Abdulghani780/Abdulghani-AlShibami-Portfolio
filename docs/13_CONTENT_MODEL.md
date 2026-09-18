@@ -118,3 +118,29 @@ export interface ExperienceItem {
   };
 }
 ```
+
+---
+
+## 3. Verified Project Content Inventory (Phase 10.1 Harmonization)
+
+Following the Phase 10.1 Owner Project Catalog Harmonization, the portfolio content repository is strictly bounded to the 5 authentic projects verified in `Projects/`:
+
+| Project Slug | Title (EN / AR) | Category | Primary Technologies | Demo Type |
+|---|---|---|---|---|
+| `campus-it-tracker` | Campus IT Infrastructure & ITIL Asset Tracker / نظام تتبع البنية التحتية للحرم الجامعي | `desktop-systems` | C# .NET 4.8, WinForms, Oracle 10g | `interactive_simulation` |
+| `metaalgorithm-lab` | MetaAlgorithm Lab / مختبر الخوارزميات وتحليل التعقيد الحسابي التجريبي | `algorithmic-computing` | Python 3.10+, PyQt6, SciPy, Matplotlib | `interactive_simulation` |
+| `novatech` | NOVA TECH Cyber Gadgets / متجر نوفا تيك للأجهزة الذكية | `web-platforms` | HTML5, CSS3, Vanilla JS (ES6) | `real_live` |
+| `cafena` | Cafena Specialty Coffee / كافينا لتجربة القهوة المختصة | `web-platforms` | HTML5, CSS3, Vanilla JS (ES6) | `real_live` |
+| `gp` | Graduation Project Portal / منصة مشاريع التخرج الجامعية | `academic-systems` | PHP 8, MySQL 8, HTML5, CSS3, JS | `interactive_simulation` |
+
+*Removed Projects:* `yusra`, `auraledger`, and `nexora-tech` have been permanently removed from the active content model.
+
+### Profile Image Asset Specification
+- **Source:** `Abdulghani Alshibami.jpg` (2300x1824 px, 2.78 MB JPEG).
+- **Web Variants:**
+  - `public/images/profile/abdulghani-profile.webp` (1200x952 px)
+  - `public/images/profile/abdulghani-profile-hero.webp` (800x1000 px, 4:5 aspect ratio)
+  - `public/images/profile/abdulghani-profile-thumb.webp` (400x400 px, 1:1 aspect ratio)
+- **Alt Text:**
+  - English: `Abdulghani Al-Shibami`
+  - Arabic: `عبدالغني الشبامي`

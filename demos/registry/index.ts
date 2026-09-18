@@ -1,7 +1,5 @@
 import React from "react";
 import { DemoType } from "@/types/project";
-import { AuraLedgerSimulation } from "@/demos/simulations/AuraLedgerSimulation";
-import { YusraSimulation } from "@/demos/simulations/YusraSimulation";
 import { CampusITTrackerSimulation } from "@/demos/simulations/CampusITTrackerSimulation";
 import { MetaAlgorithmLabSimulation } from "@/demos/simulations/MetaAlgorithmLabSimulation";
 
@@ -33,37 +31,20 @@ export interface DemoDefinition {
 }
 
 export const DEMO_REGISTRY: Record<string, DemoDefinition> = {
-  yusra: {
-    slug: "yusra",
-    demoType: "interactive_simulation",
-    title: {
-      en: "Yusra Enterprise Resource Ledger — Desktop Simulation",
-      ar: "نظام يسرى لإدارة الموارد والمحاسبة — محاكاة سطح المكتب",
-    },
-    subtitle: {
-      en: "Interactive simulation of C# WinForms double-entry journal and invoice generation workflows.",
-      ar: "محاكاة تفاعلية لقيود اليومية المزدوجة وفواتير المبيعات لنظام C# WinForms المكتبي.",
-    },
-    disclaimer: {
-      en: "This is a browser-based interactive simulation of the C# WinForms desktop application using safe mock data. It is not the native desktop executable.",
-      ar: "هذه محاكاة تفاعلية عبر المتصفح لتطبيق سطح المكتب C# WinForms باستخدام بيانات تجريبية آمنة وليست البرنامج المكتبي الأصلي.",
-    },
-    component: YusraSimulation,
-  },
   "campus-it-tracker": {
     slug: "campus-it-tracker",
     demoType: "interactive_simulation",
     title: {
-      en: "Campus IT Infrastructure Tracker — Topology Monitor",
-      ar: "نظام تتبع شبكات الحرم الجامعي — مراقبة الطوبولوجيا",
+      en: "Campus IT Infrastructure Tracker — Topology & ITIL Simulator",
+      ar: "نظام تتبع شبكات الحرم الجامعي — محاكي الطوبولوجيا وITIL",
     },
     subtitle: {
-      en: "Simulated campus network operations center with live node telemetry and incident triage.",
-      ar: "محاكاة لمركز عمليات شبكة الحرم الجامعي مع مراقبة حية لحالة الأجهزة وإدارة البلاغات.",
+      en: "Interactive simulation of campus network operations, equipment locating, and ITIL incident triage.",
+      ar: "محاكاة تفاعلية لمركز عمليات شبكة الحرم الجامعي وتحديد مواقع الأجهزة وفرز البلاغات.",
     },
     disclaimer: {
-      en: "This is an in-browser simulation of the network topology monitor using synthetic campus node telemetry.",
-      ar: "هذه محاكاة تفاعلية داخل المتصفح لنظام مراقبة الشبكة تعتمد على بيانات افتراضية لأجهزة الحرم الجامعي.",
+      en: "This is a browser-based simulation of the C# WinForms desktop application and Oracle backend using authentic offline business logic.",
+      ar: "هذه محاكاة تفاعلية داخل المتصفح لتطبيق سطح المكتب C# WinForms مع قاعدة بيانات Oracle باستخدام منطق العمل المحلي المعتمد.",
     },
     component: CampusITTrackerSimulation,
   },
@@ -79,45 +60,58 @@ export const DEMO_REGISTRY: Record<string, DemoDefinition> = {
       ar: "منصة تفاعلية بصرية لتنفيذ خوارزميات الفرز خطوة بخطوة ورصد دقيق لعدد المقارنات وزمن التنفيذ.",
     },
     disclaimer: {
-      en: "This benchmark executes genuine JavaScript/TypeScript sorting algorithms client-side in your browser.",
-      ar: "تنفذ هذه المنصة خوارزميات الفرز الحقيقية مباشرة داخل المتصفح من جانب العميل.",
+      en: "This benchmark executes genuine sorting algorithms client-side in your browser, reproducing the core scientific engine of the Python/PyQt6 workstation.",
+      ar: "تنفذ هذه المنصة خوارزميات الفرز الحقيقية مباشرة داخل المتصفح من جانب العميل، مما يحاكي المحرك العلمي لبرنامج Python/PyQt6.",
     },
     component: MetaAlgorithmLabSimulation,
   },
-  "nexora-tech": {
-    slug: "nexora-tech",
-    demoType: "interactive_simulation",
+  novatech: {
+    slug: "novatech",
+    demoType: "real_live",
     title: {
-      en: "Nexora Tech Platform — Digital Capabilities Portal",
-      ar: "منصة نكسورا تك — بوابة استعراض القدرات الرقمية",
+      en: "NOVA TECH — Cyber Gadgets & Smart Tech Store",
+      ar: "نوفا تيك | متجر الأجهزة والتقنيات الذكية المستقبلية",
     },
     subtitle: {
-      en: "Interactive demonstration of modern full-stack responsive capabilities and service showcases.",
-      ar: "عرض تفاعلي لمعمارية المنصات الرقمية الحديثة المتوافقة مع كافة أحجام الشاشات.",
+      en: "Interactive cybernetic e-commerce storefront with dual theming, live search, offcanvas cart, and checkout simulation.",
+      ar: "متجر إلكتروني مستقبلي تفاعلي بمظهر داكن وفاتح، وسلة جانبية بحساب فوري للضريبة، وبحث حي، ومحاكاة للفواتير.",
     },
     disclaimer: {
-      en: "Interactive platform presentation. Verified production deployment URL is pending owner domain configuration.",
-      ar: "عرض تفاعلي لقدرات المنصة. رابط النشر التشغيلي قيد انتظار إعدادات النطاق الخاصة بالمالك.",
+      en: "This showcase demonstrates the verified client-side web application of NOVA TECH. All shopping cart computations and invoices execute client-side.",
+      ar: "يستعرض هذا العرض تطبيق الويب المعتمد لمتجر نوفا تيك. كافة حسابات السلة والضرائب والفواتير تتم من جانب العميل.",
     },
-    liveUrl: "https://github.com/Abdulghani-Al-Shibami",
-    repoUrl: "https://github.com/Abdulghani-Al-Shibami",
   },
-  auraledger: {
-    slug: "auraledger",
-    demoType: "interactive_simulation",
+  cafena: {
+    slug: "cafena",
+    demoType: "real_live",
     title: {
-      en: "AuraLedger Distributed Consensus — Raft Sandbox",
-      ar: "محرك أورا ليدجر للتوافق الموزع — مختبر بروتوكول Raft",
+      en: "Cafena — Artisanal Specialty Coffee Experience",
+      ar: "كافينا | تجربة القهوة المختصة الفاخرة",
     },
     subtitle: {
-      en: "Interactive 5-node consensus state machine with Raft leader election and chaos partition injection.",
-      ar: "محاكاة لآلة حالة التوافق عبر ٥ عقد خوادم مع انتخاب القائد واختبار انقسام الشبكة.",
+      en: "Interactive Arabic specialty coffee portal featuring in-browser cart arithmetic and client-side catalog search.",
+      ar: "منصة تفاعلية عربية فاخرة للقهوة المختصة مع حساب فوري لمحتويات السلة وبحث مباشر في قائمة المشروبات.",
     },
     disclaimer: {
-      en: "Prototype Demonstration Sandbox: This is a browser-based simulation of a Raft consensus state machine using mock network partitions.",
-      ar: "مختبر محاكاة تجريبي: محاكاة لبروتوكول توافق Raft داخل المتصفح تمثل انقسامات الشبكة تجريبياً.",
+      en: "This showcase demonstrates the verified Vanilla HTML5/CSS3/ES6 web application of Cafena with real-time cart calculations.",
+      ar: "يستعرض هذا العرض تطبيق الويب المعتمد لكافينا المبني بلغة جافاسكريبت نقية مع حساب فوري للأسعار في المتصفح.",
     },
-    component: AuraLedgerSimulation,
+  },
+  gp: {
+    slug: "gp",
+    demoType: "interactive_simulation",
+    title: {
+      en: "Graduation Project Portal — Academic Proposals System",
+      ar: "منصة مشاريع التخرج — نظام مقترحات الأبحاث الأكاديمية",
+    },
+    subtitle: {
+      en: "Interactive academic proposal submission and faculty review workflow simulation.",
+      ar: "محاكاة تفاعلية لمسار تقديم مقترحات مشاريع التخرج واعتمادها من اللجان الأكاديمية.",
+    },
+    disclaimer: {
+      en: "This interactive showcase simulates the fullstack PHP 8 & MySQL Graduation Project platform using client-side mock data.",
+      ar: "هذا العرض التفاعلي يحاكي منصة مشاريع التخرج المبنية بـ PHP 8 وMySQL باستخدام بيانات تجريبية آمنة.",
+    },
   },
 };
 

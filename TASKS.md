@@ -185,6 +185,36 @@
 
 ---
 
+### REAL PROJECT INTEGRATION AUDIT — Read-Only Source Analysis & Planning
+- **ID:** `TSK-105`
+- **TITLE:** Authentic Projects Deep Audit & Integration Architecture
+- **PHASE:** Post-Phase 10 Integration Gate
+- **PRIORITY:** P0
+- **STATUS:** COMPLETED
+- **DESCRIPTION:** Conduct exhaustive read-only inspection of 5 authentic projects (`Cafena`, `Campuse_IT_Tracker`, `Gp`, `MetaAlgorithmLab_Clean_Structure`, `NovaTech`) and personal portrait `Abdulghani Alshibami.jpg`. Verify stack, features, databases, runnability, UI screens, security, and demo feasibility. Create master documentation suite.
+- **DEPENDENCIES:** TSK-100
+- **FILES:** `docs/REAL_PROJECTS_AUDIT.md`, `docs/REAL_PROJECT_DEMO_PLAN.md`, `docs/REAL_PROJECT_SOURCE_MANIFEST.md`, `docs/GITHUB_PROJECT_MAPPING.md`
+- **DATABASE IMPACT:** None. Zero database connections made to original databases.
+- **TESTS:** Read-only verification, zero file modifications in `Projects/`, profile image inspection (2300x1824 px).
+- **DEFINITION OF DONE:** All 5 projects fully audited, profile image verified, master documentation generated, and Section 28 final audit report delivered.
+
+---
+
+### PHASE 10.1 — Owner Project Catalog Harmonization & Profile Integration
+- **ID:** `TSK-106`
+- **TITLE:** Synchronize Catalog with 5 Verified Projects & Profile WebP Integration
+- **PHASE:** 10.1
+- **PRIORITY:** P0
+- **STATUS:** COMPLETED
+- **DESCRIPTION:** Purge unverified project entries (`yusra`, `auraledger`, `nexora-tech`) from active catalog, metadata, and routing. Add/verify 5 authentic projects (`campus-it-tracker`, `metaalgorithm-lab`, `novatech`, `cafena`, `gp`). Generate optimized WebP profile assets from `Abdulghani Alshibami.jpg` and integrate into Hero. Update demo registry, categories, technologies, and telemetry.
+- **DEPENDENCIES:** TSK-105
+- **FILES:** `lib/data/projectsData.ts`, `demos/registry/index.ts`, `app/[locale]/page.tsx`, `components/layout/Navbar.tsx`, `components/features/projects/case-study/DemoCalloutBanner.tsx`, `lib/i18n/dictionaries.ts`, `public/images/profile/*.webp`
+- **DATABASE IMPACT:** None.
+- **TESTS:** `pnpm typecheck` (0 errors), `pnpm lint` (0 errors/warnings), `pnpm build` (30/30 static pages prerendered).
+- **DEFINITION OF DONE:** Exactly 5 projects in catalog, zero unverified projects exposed, profile WebP integrated, all static pages generated successfully.
+
+---
+
 ### PHASE 11 — Contact System & Security
 - **ID:** `TSK-110`
 - **TITLE:** Contact Form with Zod Validation & Rate Limiting

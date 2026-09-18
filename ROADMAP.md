@@ -129,7 +129,16 @@
 - **Deliverables:** `lib/i18n/*`, `lib/theme/*`, `16_I18N.md`, `17_THEMING.md`.
 - **Dependencies:** Phase 07.
 - **Validation:** Zero layout breakages when switching between English (LTR) and Arabic (RTL).
-- **Status:** READY.
+- **Status:** COMPLETED.
+
+---
+
+### PHASE 10.1 — Owner Project Catalog Harmonization & Profile Integration
+- **Goal:** Synchronize the portfolio catalog strictly with the 5 authentic projects (`campus-it-tracker`, `metaalgorithm-lab`, `novatech`, `cafena`, `gp`), purge all unverified entries (`yusra`, `auraledger`, `nexora-tech`), and integrate optimized web variants of the genuine profile portrait `Abdulghani Alshibami.jpg`.
+- **Deliverables:** `lib/data/projectsData.ts`, `demos/registry/index.ts`, `public/images/profile/*.webp`, updated Hero and Telemetry.
+- **Dependencies:** Real Project Integration Audit.
+- **Validation:** Exactly 5 projects in catalog; 30 static pages prerendered; 0 type errors; 0 lint errors.
+- **Status:** COMPLETED.
 
 ---
 

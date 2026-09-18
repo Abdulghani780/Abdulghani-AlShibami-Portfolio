@@ -29,20 +29,13 @@ export const DemoCalloutBanner: React.FC<DemoCalloutBannerProps> = ({
     ? "تتيح لك بيئة المحاكاة التفاعلية تجربة واجهة النظام وسير عملياته ببيانات تجريبية آمنة دون الحاجة لتثبيت برمجيات إضافية."
     : "The interactive simulation provides hands-on inspection of user interface flows, data validation rules, and system behavior using safe mock data.";
 
-  if (project.slug === "yusra") {
-    bannerTitle = isRtl
-      ? "اختبر نظام يسرى المحاسبي وقيود اليومية المزدوجة"
-      : "Test Yusra Enterprise Double-Entry Ledger & Billing";
-    bannerDesc = isRtl
-      ? "محاكاة تفاعلية لتطبيق سطح المكتب C# WinForms تتيح تجربة تسجيل قيود اليومية مع فحص التوازن الحسابي وإصدار الفواتير فورياً."
-      : "Interactive simulation of the C# WinForms desktop software: test real-time double-entry balance validation and generate printable sales invoices.";
-  } else if (project.slug === "campus-it-tracker") {
+  if (project.slug === "campus-it-tracker") {
     bannerTitle = isRtl
       ? "رصد طوبولوجيا شبكات الحرم الجامعي وفرز البلاغات"
       : "Monitor Campus Network Nodes & Incident Triage";
     bannerDesc = isRtl
-      ? "محاكاة لمركز إدارة الشبكة تتيح فحص استجابة العقد عبر ICMP Ping وتسجيل وتوزيع بلاغات الدعم الفني."
-      : "Interactive network operations center simulation: perform live ICMP pings across campus node tiers and dispatch incident response tickets.";
+      ? "محاكاة لمركز إدارة الشبكة تتيح فحص استجابة العقد وتتبع عهد الأجهزة وتوزيع بلاغات الدعم الفني."
+      : "Interactive network operations center simulation: inspect campus equipment mapping and dispatch incident response tickets.";
   } else if (project.slug === "metaalgorithm-lab") {
     bannerTitle = isRtl
       ? "تشغيل وتحليل خوارزميات الفرز خطوة بخطوة"
@@ -50,13 +43,27 @@ export const DemoCalloutBanner: React.FC<DemoCalloutBannerProps> = ({
     bannerDesc = isRtl
       ? "اختبار خوارزميات الفرز الحقيقية في المتصفح مع عرض بصري متحرك لحركة المؤشرات وإحصاء دقيق للمقارنات والتبديلات."
       : "Execute real client-side sorting algorithms with step-by-step animated bar charts and real-time comparison counters.";
-  } else if (project.slug === "auraledger") {
+  } else if (project.slug === "novatech") {
     bannerTitle = isRtl
-      ? "اختبر آلة الحالة الموزعة وتوافق Raft في المتصفح"
-      : "Test Raft Consensus State Machine & Fault Injection";
+      ? "استكشف متجر نوفا تيك والتسوق الإلكتروني المستقبلي"
+      : "Experience NOVA TECH Cyber Gadgets Storefront";
     bannerDesc = isRtl
-      ? "محاكاة معمارية لـ ٥ عقد خوادم توضح انتخاب القائد وحقن انقسامات الشبكة العشوائية واستعادة التوافق."
-      : "Architectural consensus sandbox: isolate cluster nodes, observe speculative pre-voting, and inspect vectorized WAL commit streams.";
+      ? "تطبيق ويب تفاعلي يستعرض الأجهزة الذكية مع سلة مشتريات جانبية، ومظهر داكن وفاتح، ومحاكاة فورية للفواتير."
+      : "Interactive web storefront showcasing smart devices, offcanvas cart calculations, dual theming, and checkout invoicing.";
+  } else if (project.slug === "cafena") {
+    bannerTitle = isRtl
+      ? "تجربة مقهى كافينا الفاخر وسلة التسوق المباشرة"
+      : "Experience Cafena Artisanal Coffee & Dynamic Cart";
+    bannerDesc = isRtl
+      ? "منصة ويب عربية سريعة بنكهة تراثية فاخرة تتيح تصفح محاصيل القهوة وحساب فوري لقيمة الطلبات بالريال."
+      : "Fast responsive Arabic specialty coffee platform with real-time in-browser cart arithmetic and search filtering.";
+  } else if (project.slug === "gp") {
+    bannerTitle = isRtl
+      ? "منصة مقترحات مشاريع التخرج وإدارة الاعتماد"
+      : "Test Academic Graduation Project Proposal Lifecycle";
+    bannerDesc = isRtl
+      ? "محاكاة لمسار رفع مقترحات المشاريع الجامعية من قبل الطلاب ومراجعتها واعتمادها من اللجان المشرفة."
+      : "Interactive simulation of the academic graduation project submission, committee review, and approval workflow.";
   }
 
   const demoUrl = project.demoUrl ? `/${locale}${project.demoUrl}` : `/${locale}/projects/${project.slug}/demo`;

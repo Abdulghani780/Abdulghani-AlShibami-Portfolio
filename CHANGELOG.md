@@ -10,7 +10,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [0.6.0] - 2026-09-18
+## [0.7.0] - 2026-09-18
+
+### Added
+- **Owner Project Catalog Harmonization (Phase 10.1):**
+  - Synchronized portfolio catalog strictly with the 5 authentic projects verified in `Projects/`:
+    1. **Campus IT Tracker** (`campus-it-tracker`): C# .NET 4.8 WinForms & Oracle 10g enterprise ITIL system.
+    2. **MetaAlgorithm Lab** (`metaalgorithm-lab`): Python 3.10+, PyQt6, SciPy algorithmic complexity workstation.
+    3. **NOVA TECH** (`novatech`): Modern cybernetic smart tech e-commerce web platform.
+    4. **Cafena** (`cafena`): Arabic specialty coffee e-commerce web application with live cart arithmetic.
+    5. **Graduation Project Portal** (`gp`): Fullstack PHP 8 & MySQL 8 academic proposal platform.
+- **Profile Image Integration:**
+  - Audited authentic portrait `Abdulghani Alshibami.jpg` (2300x1824 px, 2.78 MB JPEG).
+  - Generated web-optimized WebP variants in `public/images/profile/`:
+    - `abdulghani-profile.webp` (1200x952 px)
+    - `abdulghani-profile-hero.webp` (800x1000 px, 4:5 aspect ratio)
+    - `abdulghani-profile-thumb.webp` (400x400 px, 1:1 aspect ratio)
+  - Integrated authentic portrait into Homepage Hero with Next.js `Image`, responsive sizes, and verified alt text (`Abdulghani Al-Shibami` / `عبدالغني الشبامي`).
+- **Telemetry Realigned:** Telemetry section now reflects genuine verified metrics (5 Verified Projects, 2 Platforms, 3 Domains, 100% Bilingual Parity).
+
+### Removed
+- **Unverified & Legacy Records Purged:**
+  - `yusra` removed from catalog, navigation, routing, and demo registries.
+  - `auraledger` permanently deleted from catalog.
+  - `nexora-tech` permanently deleted from catalog (replaced by authentic `novatech`).
+
+### Verified
+- **TypeScript:** 0 errors (`pnpm typecheck`).
+- **ESLint:** 0 warnings or errors (`pnpm lint`).
+- **Production Build:** All 30 static pages prerendered cleanly (`pnpm build`).
+
+---
 
 ### Added
 - **Internationalization & Theming Final Polish (Phase 10):**

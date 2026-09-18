@@ -47,3 +47,7 @@ Thumbs.db
 *.njsproj
 *.sln
 *.sw?
+
+# Original projects source material & raw external assets (DO NOT COMMIT)
+Projects/
+/Abdulghani Alshibami.jpg
