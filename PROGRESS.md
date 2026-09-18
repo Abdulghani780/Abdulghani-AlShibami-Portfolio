@@ -50,6 +50,16 @@
   - [x] Integrated authentic portrait into Hero with responsive Next.js Image component, verified alt text, and luxury framing.
   - [x] Updated Demo Registry, Navbar navigation links, Callout banners, and verified Telemetry metrics.
   - [x] Verified: `pnpm typecheck` (0 errors), `pnpm lint` (0 errors/warnings), `pnpm build` (all 30 static pages prerendered).
+- [x] **REAL PROJECT DEMO IMPLEMENTATION (5/5 VERIFIED SIMULATIONS):**
+  - [x] Implemented `CafenaSimulation.tsx` (Specialty coffee menu, search, quantity controls, cart drawer, receipt generator).
+  - [x] Upgraded `CampusITTrackerSimulation.tsx` (KPI dashboard, interactive campus room map, ITIL Kanban desk, inventory, custody transfer).
+  - [x] Implemented `GpSimulation.tsx` (Dual role switcher: Student vs Admin, proposal submitter, moderation queue, approved directory).
+  - [x] Upgraded `MetaAlgorithmLabSimulation.tsx` (Sorting visualizer, HeapSort, Big-O empirical regression table, LaTeX report modal).
+  - [x] Implemented `NovaTechSimulation.tsx` (24h deal timer, quick view specs, 15% VAT cart drawer, digital invoice generator).
+  - [x] Standardized `DEMO_REGISTRY` to `interactive_simulation` for all 5 verified projects.
+  - [x] Removed deleted mock simulation files (`AuraLedgerSimulation.tsx`, `YusraSimulation.tsx`).
+  - [x] Created `docs/REAL_PROJECT_DEMO_TRACEABILITY.md` and updated `docs/DEMO_COVERAGE_MATRIX.md`.
+  - [x] Verified compilation, linting, and Next.js static build.
 
 ---
 

@@ -200,9 +200,10 @@ The UI components in this repository adhere to strict architectural discipline:
 - **Purpose:** Standardized controls and live telemetry status monitors for simulation environments.
 
 ### 6.5. Concrete Simulation Sandboxes (`demos/simulations/`)
-- **`YusraSimulation.tsx`:** Windows Desktop C# WinForms enterprise accounting simulation with interactive double-entry balance validation, customer invoicing, and local SQL Server ACID transaction logs.
-- **`CampusITTrackerSimulation.tsx`:** 3-tier campus network topology monitor with dynamic ICMP latency ping simulation and incident ticketing desk.
-- **`MetaAlgorithmLabSimulation.tsx`:** Real client-side algorithmic benchmark runner and step-by-step sorting visualizer (QuickSort, BubbleSort, InsertionSort).
-- **`AuraLedgerSimulation.tsx`:** 5-node distributed consensus Raft state machine simulator with chaos network partition controls.
+- **`CafenaSimulation.tsx`:** Artisanal specialty coffee e-commerce simulation with authentic menu catalog, real-time search, quantity controls, and offcanvas cart with 15% VAT and SAR calculations.
+- **`CampusITTrackerSimulation.tsx`:** C# WinForms / Oracle desktop workstation simulation featuring overview KPI metrics, interactive campus room map, ITIL Kanban service desk, and hardware custody transfer workflow.
+- **`GpSimulation.tsx`:** Academic graduation project management portal with dual-role switcher (Student vs Faculty Admin), proposal submission form, and moderation review queue.
+- **`MetaAlgorithmLabSimulation.tsx`:** Scientific algorithmic benchmark visualizer and empirical Big-O regression workbench (QuickSort, HeapSort, InsertionSort, BubbleSort) with LaTeX research report modal.
+- **`NovaTechSimulation.tsx`:** Cybernetic smart gadgets storefront simulation with 24-hour deal countdown, quick view specs modal, free shipping threshold progress bar, and digital invoice generator.
 
 

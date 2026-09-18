@@ -2,6 +2,9 @@ import React from "react";
 import { DemoType } from "@/types/project";
 import { CampusITTrackerSimulation } from "@/demos/simulations/CampusITTrackerSimulation";
 import { MetaAlgorithmLabSimulation } from "@/demos/simulations/MetaAlgorithmLabSimulation";
+import { CafenaSimulation } from "@/demos/simulations/CafenaSimulation";
+import { GpSimulation } from "@/demos/simulations/GpSimulation";
+import { NovaTechSimulation } from "@/demos/simulations/NovaTechSimulation";
 
 export interface DemoProps {
   locale: "en" | "ar";
@@ -67,9 +70,9 @@ export const DEMO_REGISTRY: Record<string, DemoDefinition> = {
   },
   novatech: {
     slug: "novatech",
-    demoType: "real_live",
+    demoType: "interactive_simulation",
     title: {
-      en: "NOVA TECH — Cyber Gadgets & Smart Tech Store",
+      en: "NOVA TECH — Cyber Gadgets & Smart Tech Storefront",
       ar: "نوفا تيك | متجر الأجهزة والتقنيات الذكية المستقبلية",
     },
     subtitle: {
@@ -77,13 +80,14 @@ export const DEMO_REGISTRY: Record<string, DemoDefinition> = {
       ar: "متجر إلكتروني مستقبلي تفاعلي بمظهر داكن وفاتح، وسلة جانبية بحساب فوري للضريبة، وبحث حي، ومحاكاة للفواتير.",
     },
     disclaimer: {
-      en: "This showcase demonstrates the verified client-side web application of NOVA TECH. All shopping cart computations and invoices execute client-side.",
+      en: "This showcase demonstrates the verified client-side web application of NOVA TECH. All shopping cart computations, VAT, and invoices execute client-side.",
       ar: "يستعرض هذا العرض تطبيق الويب المعتمد لمتجر نوفا تيك. كافة حسابات السلة والضرائب والفواتير تتم من جانب العميل.",
     },
+    component: NovaTechSimulation,
   },
   cafena: {
     slug: "cafena",
-    demoType: "real_live",
+    demoType: "interactive_simulation",
     title: {
       en: "Cafena — Artisanal Specialty Coffee Experience",
       ar: "كافينا | تجربة القهوة المختصة الفاخرة",
@@ -96,6 +100,7 @@ export const DEMO_REGISTRY: Record<string, DemoDefinition> = {
       en: "This showcase demonstrates the verified Vanilla HTML5/CSS3/ES6 web application of Cafena with real-time cart calculations.",
       ar: "يستعرض هذا العرض تطبيق الويب المعتمد لكافينا المبني بلغة جافاسكريبت نقية مع حساب فوري للأسعار في المتصفح.",
     },
+    component: CafenaSimulation,
   },
   gp: {
     slug: "gp",
@@ -112,6 +117,7 @@ export const DEMO_REGISTRY: Record<string, DemoDefinition> = {
       en: "This interactive showcase simulates the fullstack PHP 8 & MySQL Graduation Project platform using client-side mock data.",
       ar: "هذا العرض التفاعلي يحاكي منصة مشاريع التخرج المبنية بـ PHP 8 وMySQL باستخدام بيانات تجريبية آمنة.",
     },
+    component: GpSimulation,
   },
 };
 

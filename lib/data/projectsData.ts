@@ -320,7 +320,7 @@ export const PROJECTS: Project[] = [
     status: "Completed",
     verificationStatus: "VERIFIED_OWNER_DATA",
     featured: true,
-    demoType: "real_live",
+    demoType: "interactive_simulation",
     demoUrl: "/projects/novatech/demo",
     technologies: [
       TECHNOLOGIES.html5,
@@ -440,7 +440,7 @@ export const PROJECTS: Project[] = [
     status: "Completed",
     verificationStatus: "VERIFIED_OWNER_DATA",
     featured: false,
-    demoType: "real_live",
+    demoType: "interactive_simulation",
     demoUrl: "/projects/cafena/demo",
     technologies: [
       TECHNOLOGIES.html5,

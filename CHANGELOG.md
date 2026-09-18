@@ -10,6 +10,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.8.0] - 2026-09-18
+
+### Added
+- **Authentic Interactive Project Demos (Real Project Demo Implementation):**
+  - **Cafena Simulation (`CafenaSimulation.tsx`)**: Artisanal specialty coffee e-commerce portal with authentic menu catalog, real-time query search, offcanvas cart with 15% VAT and SAR calculations, table reservation form, and simulated receipt preview.
+  - **Campus IT Tracker Simulation (`CampusITTrackerSimulation.tsx`)**: High-fidelity reproduction of C# WinForms / Oracle enterprise workstation featuring Overview Dashboard, interactive campus room map, ITIL Kanban desk (New, Triaged, In Progress, Resolved), hardware inventory table, and asset custody transfer workflow.
+  - **Gp Platform Simulation (`GpSimulation.tsx`)**: Academic graduation project management portal with dual-role switcher (Student vs Faculty Admin), student proposal submitter, moderation evaluation queue, and approved project directory.
+  - **MetaAlgorithm Lab Simulation (`MetaAlgorithmLabSimulation.tsx`)**: Scientific algorithmic workbench featuring step-by-step sorting visualizer (QuickSort, HeapSort, InsertionSort, BubbleSort), empirical Big-O regression scaling matrix ($N=16$ to $N=512$), and LaTeX research report excerpt preview modal.
+  - **NovaTech Simulation (`NovaTechSimulation.tsx`)**: Cybernetic smart gadgets storefront simulation with 24-hour deal countdown clock, quick view specs modal, offcanvas cart with 500 SAR free shipping threshold, and digital invoice generator (`NOV-XXXXXX`).
+  - **Traceability Documentation:** Created `docs/REAL_PROJECT_DEMO_TRACEABILITY.md` establishing exhaustive mapping of all 5 simulations to their source code evidence in `Projects/`.
+  - **Unified DEMO_REGISTRY:** Standardized all 5 verified projects to `demoType: "interactive_simulation"` with localized titles, subtitles, and Technical Integrity Disclosures.
+
+### Removed
+- Deleted lingering unverified mock simulation files: `AuraLedgerSimulation.tsx` and `YusraSimulation.tsx`.
+
+### Verified
+- **TypeScript:** 0 errors (`pnpm typecheck`).
+- **ESLint:** 0 warnings or errors (`pnpm lint`).
+- **Production Static Prerendering:** All 10 demo paths (`/[locale]/projects/[slug]/demo` for 5 projects across `en` and `ar`) compiling cleanly.
+
+---
+
 ## [0.7.0] - 2026-09-18
 
 ### Added

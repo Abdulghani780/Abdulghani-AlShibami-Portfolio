@@ -45,15 +45,18 @@ demos/
 │   ├── DemoToolbar.tsx          // Action bar and navigation breadcrumbs
 │   └── DemoStatusBar.tsx        // Telemetry metrics and engine status
 └── simulations/
-    ├── CampusITTrackerSimulation.tsx // 3-tier campus network topology & incident desk
-    └── MetaAlgorithmLabSimulation.tsx // In-browser client-side sorting benchmark runner
+    ├── CafenaSimulation.tsx          // Artisanal coffee e-commerce, search, and cart
+    ├── CampusITTrackerSimulation.tsx // ITIL Kanban, campus room map, and custody transfer
+    ├── GpSimulation.tsx              // Academic proposal submission and moderation queue
+    ├── MetaAlgorithmLabSimulation.tsx // In-browser sorting visualizer and Big-O regression
+    └── NovaTechSimulation.tsx        // Cyber gadgets storefront, deal timer, and digital invoice
 ```
 
 ### Active Registered Slugs:
 1. `campus-it-tracker`: `interactive_simulation` (Campus IT Tracker)
 2. `metaalgorithm-lab`: `interactive_simulation` (MetaAlgorithm Lab)
-3. `novatech`: `real_live` (NOVA TECH Cyber Gadgets)
-4. `cafena`: `real_live` (Cafena Specialty Coffee)
+3. `novatech`: `interactive_simulation` (NOVA TECH Cyber Gadgets)
+4. `cafena`: `interactive_simulation` (Cafena Specialty Coffee)
 5. `gp`: `interactive_simulation` (Graduation Project Portal)
 
 ---
