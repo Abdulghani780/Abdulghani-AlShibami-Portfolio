@@ -105,6 +105,20 @@ export const CaseStudyHero: React.FC<CaseStudyHeroProps> = ({
             </Link>
           )}
 
+          {project.githubUrl && (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex"
+            >
+              <Button variant="secondary" size="md">
+                <span>{isRtl ? "المستودع البرمجي" : "Source Code"}</span>
+                <span className="text-xs">↗</span>
+              </Button>
+            </a>
+          )}
+
           <a href="#architecture">
             <Button variant="secondary" size="md">
               <span>{isRtl ? "استعراض المعمارية" : "Architecture Topology"}</span>

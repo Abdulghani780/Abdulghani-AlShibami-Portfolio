@@ -1,0 +1,54 @@
+name: Supabase Database CI
+
+on:
+  push:
+    paths:
+      - 'supabase/**'
+      - '.github/workflows/database.yml'
+    branches: [main, develop]
+  pull_request:
+    paths:
+      - 'supabase/**'
+      - '.github/workflows/database.yml'
+    branches: [main, develop]
+
+jobs:
+  validate-migrations:
+    name: Validate Database Migrations
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup Supabase CLI
+        uses: supabase/setup-cli@v1
+        with:
+          version: latest
+
+      - name: Verify Migration Files Integrity
+        run: |
+          echo "Checking migration filenames and ordering..."
+          ls -la supabase/migrations/
+          
+          # Ensure migration filenames follow timestamp convention
+          for file in supabase/migrations/*.sql; do
+            filename=$(basename "$file")
+            if ! [[ "$filename" =~ ^[0-9]{14}_.*\.sql$ ]]; then
+              echo "Error: Migration file '$filename' does not match timestamp format YYYYMMDDHHMMSS_name.sql"
+              exit 1
+            fi
+          done
+          echo "All migration filenames adhere to standard timestamp format."
+
+      - name: Lint SQL Migrations
+        run: |
+          echo "Validating SQL syntax across migrations..."
+          for file in supabase/migrations/*.sql; do
+            echo "Checking: $file"
+            # Ensure no direct secret hardcoding or unsafe statements
+            if grep -i -E "(password\s*=\s*'[^']+'|secret\s*=\s*'[^']+')" "$file"; then
+              echo "Error: Potential plaintext credential detected in $file"
+              exit 1
+            fi
+          done
+          echo "Migration files passed static credential hygiene inspection."

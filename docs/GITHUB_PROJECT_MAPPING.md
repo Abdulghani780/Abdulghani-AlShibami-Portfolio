@@ -1,132 +1,73 @@
-# GitHub Project Mapping & Architecture Design
+# GitHub Project Mapping & Multi-Repository Architecture
 
-**Standard:** Multi-Repository Organization & GitHub Portfolio Mapping Architecture  
-**Auditor:** Autonomous Senior Software Engineering Agent  
-**Date:** 2026-09-18  
-**Execution Status:** DESIGN & SPECIFICATION ONLY — NO REPOSITORIES CREATED OR PUSHED  
+**Standard:** Multi-Repository Organization & GitHub Mapping Architecture  
+**Owner / Authenticated Account:** `@Abdulghani780` ([https://github.com/Abdulghani780](https://github.com/Abdulghani780))  
+**Date:** 2026-09-19  
+**Status:** **REPOSITORIES PREPARED & CONFIGURED**  
 
 ---
 
 ## 1. Multi-Repository Architecture Overview
 
-To ensure professional presentation, clean isolation of concerns, and robust version control:
-- **The Portfolio Repository (`Abdulghani-AlShibami-Portfolio`) remains completely autonomous.** It contains only the Next.js portfolio application, interactive simulation engines, documentation, migrations, and CI/CD pipelines.
-- **Each authentic project lives in its own independent repository** with its own license, documentation, and commit history.
-- **Original source code is NEVER dumped as a subfolder inside the portfolio repository.** The portfolio links to these projects using clean GitHub external links (`github.com/Abdulghani-AlShibami/<repo>`).
+To guarantee complete separation of concerns, enterprise licensing, and security hygiene:
+- **The Portfolio Repository (`Abdulghani-AlShibami-Portfolio`) remains completely autonomous.** It contains only the Next.js portfolio application, interactive simulation engines, documentation, migrations, and CI/CD workflows.
+- **Each authentic project lives in its own independent repository** with its own license, sanitized configuration, independent Git commit history, and technical documentation.
+- **Original source code is NEVER dumped inside the portfolio repository.** The portfolio links to these projects using verified GitHub external links (`https://github.com/Abdulghani780/<repo>`).
 
 ### Target GitHub Repository Hierarchy
 
 ```text
-GitHub (@Abdulghani-AlShibami)
+GitHub (@Abdulghani780)
 │
 ├── Abdulghani-AlShibami-Portfolio
-│   └── Next.js 14+ / TypeScript / Tailwind / Supabase / Vercel
+│   └── Next.js 15 / TypeScript / Tailwind CSS / Supabase / Vercel
 │
 ├── Cafena
-│   └── Luxury Arabic Specialty Coffee E-Commerce Web Platform
+│   └── Artisanal Specialty Coffee E-Commerce Web Platform (HTML5 / CSS3 / Vanilla JS)
 │
-├── Campus-IT-Tracker
+├── Campuse-IT-Tracker
 │   └── Enterprise IT Infrastructure & ITIL Asset Management System (C# WinForms / Oracle)
 │
-├── Graduation-Project-Portal (Gp)
-│   └── University Academic Project Proposal & Moderation Platform (PHP 8 / MySQL)
+├── Graduation-Project-Management-Portal
+│   └── University Academic Project Proposal & Moderation Platform (PHP 8 / MySQL 8)
 │
 ├── MetaAlgorithmLab
-│   └── Autonomous Algorithm Performance & Empirical Complexity Analyzer (Python 3.10+ / PyQt6)
+│   └── Scientific Algorithmic Benchmarking & Complexity Engine (Python 3.10+ / PyQt6 / SciPy)
 │
 └── NovaTech
-    └── Futuristic Smart Gadgets & Cyber Equipment Web Store (HTML5 / CSS3 / ES6 JS)
+    └── Futuristic Cyber Gadgets & Smart Tech Storefront (HTML5 / CSS3 / ES6 JS)
 ```
 
 ---
 
 ## 2. Project-by-Project Repository Specification
 
----
-
-### 1. Portfolio Application
-- **Recommended Repository Name:** `Abdulghani-AlShibami-Portfolio`
-- **Visibility:** **Public**
-- **Description:** "Autonomous personal portfolio and interactive engineering showcase of Abdulghani Al-Shibami — Computer Systems, AI Solutions & Fullstack Engineering."
-- **Primary Tech Stack:** Next.js (App Router), React, TypeScript, Tailwind CSS, Supabase, Vercel.
-- **Portfolio Link Type:** Self (Root host).
-
----
-
-### 2. Cafena
-- **Recommended Repository Name:** `Cafena-Coffee-Platform` (or `Cafena`)
-- **Visibility:** **Public**
-- **Reason:** Clean, elegant demonstration of pure vanilla web engineering, Arabic RTL layout mastery, and client-side e-commerce state management without external framework overhead.
-- **Pre-Publish Preparation Requirements:**
-  - Create a professional `README.md` with project screenshots, architectural overview, and live demo link.
-  - Verify all image assets in `images/` have proper licensing or open-source attribution.
-  - Add standard MIT License.
-- **Portfolio Link Type:** `SOURCE_REPOSITORY` (linking from `/projects/cafena` to `https://github.com/Abdulghani-AlShibami/Cafena-Coffee-Platform`).
+| Project | Repository Name | Local Staging Path | Remote URL | Visibility |
+|---|---|---|---|:---:|
+| **Portfolio Platform** | `Abdulghani-AlShibami-Portfolio` | `c:\my projects\Portifilo` | [Abdulghani-AlShibami-Portfolio](https://github.com/Abdulghani780/Abdulghani-AlShibami-Portfolio) | Public |
+| **Cafena** | `Cafena` | `c:\my projects\Staging_Repos\Cafena` | [Cafena](https://github.com/Abdulghani780/Cafena) | Public |
+| **Campus IT Tracker** | `Campuse-IT-Tracker` | `c:\my projects\Staging_Repos\Campuse-IT-Tracker` | [Campuse-IT-Tracker](https://github.com/Abdulghani780/Campuse-IT-Tracker) | Public |
+| **Graduation Project Portal** | `Graduation-Project-Management-Portal` | `c:\my projects\Staging_Repos\Graduation-Project-Management-Portal` | [Graduation-Project-Management-Portal](https://github.com/Abdulghani780/Graduation-Project-Management-Portal) | Public |
+| **MetaAlgorithmLab** | `MetaAlgorithmLab` | `c:\my projects\Staging_Repos\MetaAlgorithmLab` | [MetaAlgorithmLab](https://github.com/Abdulghani780/MetaAlgorithmLab) | Public |
+| **NOVA TECH** | `NovaTech` | `c:\my projects\Staging_Repos\NovaTech` | [NovaTech](https://github.com/Abdulghani780/NovaTech) | Public |
 
 ---
 
-### 3. Campus IT Tracker
-- **Recommended Repository Name:** `Campus-IT-Tracker`
-- **Visibility:** **Public**
-- **Reason:** Outstanding demonstration of enterprise desktop engineering in C# .NET, Oracle database integration, complex custom UI controls (Kanban boards, visual campus mapping), and ITIL service management workflows.
-- **Pre-Publish Preparation Requirements:**
-  - **CRITICAL SANITIZATION:** Remove local Oracle database connection strings containing developer usernames/passwords from `App.config`.
-  - Provide `App.config.example` with placeholder credentials.
-  - Ensure `.gitignore` ignores Visual Studio build artifacts (`bin/`, `obj/`, `.vs/`, `*.user`).
-  - Create an enterprise-grade `README.md` detailing architecture, Oracle DDL setup, and offline fallback mode.
-- **Portfolio Link Type:** `SOURCE_REPOSITORY` (linking from `/projects/campus-it-tracker` to `https://github.com/Abdulghani-AlShibami/Campus-IT-Tracker`).
+## 3. Sanitization & Hygiene Verification
+
+1. **Cafena:** Cleaned unused assets, added `.gitignore`, attached MIT License, authored Arabic/English README.
+2. **Campus IT Tracker:** Stripped plain Oracle credentials from `appsettings.Development.json`, created `App.config.example` & `appsettings.example.json`, ignored Visual Studio `bin/` and `obj/` builds, attached MIT License.
+3. **Graduation Project Portal:** Removed plaintext database password from `config.php`, created `config.example.php`, hashed all default test accounts with bcrypt in `database_setup.sql`, attached MIT License.
+4. **MetaAlgorithmLab:** Parameterized `docker-compose.yml` with dynamic environment variables, created `.env.example`, excluded `.venv` and Python caches, attached MIT License.
+5. **NovaTech:** Cleaned build artifacts, added `.gitignore`, attached MIT License, authored responsive documentation.
 
 ---
 
-### 4. Graduation Project Portal (Gp)
-- **Recommended Repository Name:** `Graduation-Project-Management-Portal` (or `Academic-GP-Portal`)
-- **Visibility:** **Public** (or **Private** pending owner institutional clearance)
-- **Reason:** Demonstrates relational database design, role-based access control (RBAC), and fullstack PHP/MySQL development for university academic environments.
-- **Pre-Publish Preparation Requirements:**
-  - **CRITICAL SANITIZATION:** Verify `config.php` credentials are fully abstracted. Add `config.php` to `.gitignore`.
-  - Provide `config.example.php` for database setup.
-  - Ensure any real student names, emails, or grading records in `database_setup.sql` are scrubbed or replaced with realistic synthetic seed data.
-  - Verify with university guidelines whether graduation platform source code can be published publicly.
-- **Portfolio Link Type:** `SOURCE_REPOSITORY` (or `DOCUMENTED_CASE_STUDY` if private).
+## 4. One-Click Repository Creation Links
 
----
-
-### 5. MetaAlgorithmLab
-- **Recommended Repository Name:** `MetaAlgorithmLab`
-- **Visibility:** **Public**
-- **Reason:** Flagship academic and systems engineering showcase. Demonstrates advanced algorithmic understanding, statistical curve fitting with SciPy, mathematical modeling, and production-grade Python/PyQt6 GUI engineering.
-- **Pre-Publish Preparation Requirements:**
-  - Verify `.env` is omitted via `.gitignore` (existing `.env.example` is already clean).
-  - Verify `requirements.txt` and `Dockerfile` allow one-click reproducibility.
-  - Include benchmark comparison charts and sample LaTeX/PDF exports in the repository `docs/` or `assets/` folder.
-- **Portfolio Link Type:** `SOURCE_REPOSITORY` (linking from `/projects/metaalgorithm-lab` to `https://github.com/Abdulghani-AlShibami/MetaAlgorithmLab`).
-
----
-
-### 6. NovaTech
-- **Recommended Repository Name:** `NovaTech-Gadgets-Store` (or `NovaTech`)
-- **Visibility:** **Public**
-- **Reason:** Showcases high-conversion modern web design, dual-theming (dark/light), interactive offcanvas cart, VAT calculations, and modern e-commerce UX.
-- **Pre-Publish Preparation Requirements:**
-  - Create an attractive `README.md` with GIFs and screenshots.
-  - Add MIT License.
-- **Portfolio Link Type:** `SOURCE_REPOSITORY` (linking from `/projects/novatech` to `https://github.com/Abdulghani-AlShibami/NovaTech-Gadgets-Store`).
-
----
-
-## 3. GitHub Organization & Deployment Workflow
-
-```text
-Local Workstation
-│
-├── C:\my projects\Portifilo                     → git push origin main → Vercel (Production Portfolio)
-│
-├── C:\my projects\Portifilo\Projects\Cafena       → (Future) git remote add origin → GitHub/Cafena
-├── C:\my projects\Portifilo\Projects\Campuse_IT_Tracker → (Future) git remote add origin → GitHub/Campus-IT-Tracker
-├── C:\my projects\Portifilo\Projects\Gp          → (Future) git remote add origin → GitHub/Academic-GP-Portal
-├── C:\my projects\Portifilo\Projects\MetaAlgorithmLab_Clean_Structure → (Future) git remote add origin → GitHub/MetaAlgorithmLab
-└── C:\my projects\Portifilo\Projects\NovaTech    → (Future) git remote add origin → GitHub/NovaTech-Gadgets-Store
-```
-
-> [!NOTE]
-> During this audit phase, **NO Git repositories were created, initialized, or pushed**. All remote repository creation and pushing will occur strictly upon explicit user instruction during the deployment phase.
+- [Create Abdulghani-AlShibami-Portfolio](https://github.com/new?name=Abdulghani-AlShibami-Portfolio&description=Autonomous+personal+portfolio+and+interactive+engineering+showcase+of+Abdulghani+Al-Shibami&visibility=public)
+- [Create Cafena](https://github.com/new?name=Cafena&description=Artisanal+Specialty+Coffee+Web+Platform+with+Native+Arabic+RTL+Architecture&visibility=public)
+- [Create Campuse-IT-Tracker](https://github.com/new?name=Campuse-IT-Tracker&description=Enterprise+ITIL+Service+Desk+and+Hardware+Asset+Tracker+in+C+Sharp+and+Oracle&visibility=public)
+- [Create Graduation-Project-Management-Portal](https://github.com/new?name=Graduation-Project-Management-Portal&description=University+Academic+Proposal+Submission+and+Faculty+Review+Portal+in+PHP+and+MySQL&visibility=public)
+- [Create MetaAlgorithmLab](https://github.com/new?name=MetaAlgorithmLab&description=Scientific+Algorithmic+Benchmarking+and+Empirical+Complexity+Analyzer+in+Python+and+PyQt6&visibility=public)
+- [Create NovaTech](https://github.com/new?name=NovaTech&description=Modern+Cyber+Gadgets+Storefront+with+Live+Search+and+Cart+Calculations&visibility=public)

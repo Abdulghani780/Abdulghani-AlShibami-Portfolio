@@ -39,7 +39,7 @@ export function Footer({ dict }: { dict: Dictionary }) {
             <ul className="space-y-2 text-content-secondary">
               <li>
                 <a
-                  href="https://github.com"
+                  href="https://github.com/Abdulghani780"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-gold transition-colors inline-flex items-center gap-1.5"

@@ -80,6 +80,7 @@ export const PROJECTS: Project[] = [
     featured: true,
     demoType: "interactive_simulation",
     demoUrl: "/projects/campus-it-tracker/demo",
+    githubUrl: "https://github.com/Abdulghani780/Campuse-IT-Tracker",
     technologies: [
       TECHNOLOGIES.csharp,
       TECHNOLOGIES.winforms,
@@ -201,6 +202,7 @@ export const PROJECTS: Project[] = [
     featured: true,
     demoType: "interactive_simulation",
     demoUrl: "/projects/metaalgorithm-lab/demo",
+    githubUrl: "https://github.com/Abdulghani780/MetaAlgorithmLab",
     technologies: [
       TECHNOLOGIES.python,
       TECHNOLOGIES.pyqt6,
@@ -322,6 +324,7 @@ export const PROJECTS: Project[] = [
     featured: true,
     demoType: "interactive_simulation",
     demoUrl: "/projects/novatech/demo",
+    githubUrl: "https://github.com/Abdulghani780/NovaTech",
     technologies: [
       TECHNOLOGIES.html5,
       TECHNOLOGIES.css3,
@@ -442,6 +445,7 @@ export const PROJECTS: Project[] = [
     featured: false,
     demoType: "interactive_simulation",
     demoUrl: "/projects/cafena/demo",
+    githubUrl: "https://github.com/Abdulghani780/Cafena",
     technologies: [
       TECHNOLOGIES.html5,
       TECHNOLOGIES.css3,
@@ -561,6 +565,7 @@ export const PROJECTS: Project[] = [
     featured: false,
     demoType: "interactive_simulation",
     demoUrl: "/projects/gp/demo",
+    githubUrl: "https://github.com/Abdulghani780/Graduation-Project-Management-Portal",
     technologies: [
       TECHNOLOGIES.php,
       TECHNOLOGIES.mysql,

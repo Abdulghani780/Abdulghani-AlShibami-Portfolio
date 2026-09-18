@@ -166,7 +166,7 @@ export function DemoViewer({ project, locale }: DemoViewerProps) {
 
   // 4. REPO DEMO MODE
   if (demoType === "repo") {
-    const repoUrl = project.githubUrl || demoDef?.repoUrl || "https://github.com/Abdulghani-Al-Shibami";
+    const repoUrl = project.githubUrl || demoDef?.repoUrl || "https://github.com/Abdulghani780";
     return (
       <Container className="py-10 sm:py-16">
         <div className="max-w-2xl mx-auto p-6 sm:p-8 bg-surface border border-border rounded-xl shadow-xl flex flex-col gap-6 text-center items-center">

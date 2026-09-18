@@ -37,6 +37,7 @@ export const DEMO_REGISTRY: Record<string, DemoDefinition> = {
   "campus-it-tracker": {
     slug: "campus-it-tracker",
     demoType: "interactive_simulation",
+    repoUrl: "https://github.com/Abdulghani780/Campuse-IT-Tracker",
     title: {
       en: "Campus IT Infrastructure Tracker — Topology & ITIL Simulator",
       ar: "نظام تتبع شبكات الحرم الجامعي — محاكي الطوبولوجيا وITIL",
@@ -54,6 +55,7 @@ export const DEMO_REGISTRY: Record<string, DemoDefinition> = {
   "metaalgorithm-lab": {
     slug: "metaalgorithm-lab",
     demoType: "interactive_simulation",
+    repoUrl: "https://github.com/Abdulghani780/MetaAlgorithmLab",
     title: {
       en: "MetaAlgorithm Lab — In-Browser Benchmark Runner",
       ar: "مختبر الخوارزميات — منصة التحليل والاختبار المباشر",
@@ -71,6 +73,7 @@ export const DEMO_REGISTRY: Record<string, DemoDefinition> = {
   novatech: {
     slug: "novatech",
     demoType: "interactive_simulation",
+    repoUrl: "https://github.com/Abdulghani780/NovaTech",
     title: {
       en: "NOVA TECH — Cyber Gadgets & Smart Tech Storefront",
       ar: "نوفا تيك | متجر الأجهزة والتقنيات الذكية المستقبلية",
@@ -88,6 +91,7 @@ export const DEMO_REGISTRY: Record<string, DemoDefinition> = {
   cafena: {
     slug: "cafena",
     demoType: "interactive_simulation",
+    repoUrl: "https://github.com/Abdulghani780/Cafena",
     title: {
       en: "Cafena — Artisanal Specialty Coffee Experience",
       ar: "كافينا | تجربة القهوة المختصة الفاخرة",
@@ -105,6 +109,7 @@ export const DEMO_REGISTRY: Record<string, DemoDefinition> = {
   gp: {
     slug: "gp",
     demoType: "interactive_simulation",
+    repoUrl: "https://github.com/Abdulghani780/Graduation-Project-Management-Portal",
     title: {
       en: "Graduation Project Portal — Academic Proposals System",
       ar: "منصة مشاريع التخرج — نظام مقترحات الأبحاث الأكاديمية",
