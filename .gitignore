@@ -51,3 +51,5 @@ Thumbs.db
 # Original projects source material & raw external assets (DO NOT COMMIT)
 Projects/
 /Abdulghani Alshibami.jpg
+
+supabase/.temp/
