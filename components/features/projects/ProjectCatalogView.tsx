@@ -4,6 +4,7 @@ import React, { useState, useMemo } from "react";
 import { Project, ProjectCategory, Locale } from "@/types/project";
 import { ProjectFilters } from "./ProjectFilters";
 import { ProjectCard } from "./ProjectCard";
+import { ProjectBentoShowcase } from "./ProjectBentoShowcase";
 import { Button } from "@/components/ui/Button";
 
 interface ProjectCatalogViewProps {
@@ -49,15 +50,7 @@ export const ProjectCatalogView: React.FC<ProjectCatalogViewProps> = ({
     });
   }, [initialProjects, activeCategory, searchQuery, locale]);
 
-  // Separate flagship hero project if on "all" view with no search query
-  const { heroProject, gridProjects } = useMemo(() => {
-    if (activeCategory === "all" && !searchQuery.trim()) {
-      const hero = filteredProjects.find((p) => p.featured) || filteredProjects[0];
-      const rest = filteredProjects.filter((p) => p.id !== hero?.id);
-      return { heroProject: hero, gridProjects: rest };
-    }
-    return { heroProject: null, gridProjects: filteredProjects };
-  }, [filteredProjects, activeCategory, searchQuery]);
+  const isBentoDefaultView = activeCategory === "all" && !searchQuery.trim();
 
   return (
     <div className="space-y-8">
@@ -72,25 +65,13 @@ export const ProjectCatalogView: React.FC<ProjectCatalogViewProps> = ({
         totalCount={initialProjects.length}
       />
 
-      {/* Featured Spotlight Card */}
-      {heroProject && (
-        <div className="space-y-3">
-          <div className="font-mono text-xs text-gold uppercase tracking-[0.2em] font-semibold">
-            {"// "}{isRtl ? "النظام الرئيسي المعتمد" : "FEATURED FLAGSHIP ARCHITECTURE"}
-          </div>
-          <ProjectCard
-            project={heroProject}
-            locale={locale}
-            categoryName={categoryMap.get(heroProject.categorySlug)}
-            isFeaturedHero
-          />
-        </div>
-      )}
-
-      {/* Standard 3-Column Systems Grid */}
-      {gridProjects.length > 0 ? (
+      {/* When on All Projects with no search query: Render Reference 4 Bento Showcase Grid */}
+      {isBentoDefaultView ? (
+        <ProjectBentoShowcase projects={initialProjects} locale={locale} />
+      ) : filteredProjects.length > 0 ? (
+        /* Filtered Grid View */
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {gridProjects.map((project) => (
+          {filteredProjects.map((project) => (
             <ProjectCard
               key={project.id}
               project={project}
@@ -101,14 +82,14 @@ export const ProjectCatalogView: React.FC<ProjectCatalogViewProps> = ({
         </div>
       ) : (
         /* Empty State */
-        <div className="rounded-xl border border-glass-border bg-obsidian-card/70 backdrop-blur-md p-12 text-center space-y-4 shadow-glass">
-          <div className="font-mono text-xs text-gold uppercase tracking-widest font-semibold">
+        <div className="rounded-2xl border border-white/[0.08] bg-[#070A0F] p-12 text-center space-y-4 shadow-[0_10px_30px_rgba(0,0,0,0.8)] font-mono">
+          <div className="text-xs text-[#00FF9D] uppercase tracking-widest font-bold">
             {isRtl ? "// لا توجد أنظمة مطابقة" : "// 0 SYSTEMS MATCHED"}
           </div>
-          <h4 className="font-serif text-2xl font-normal text-content-primary">
+          <h4 className="font-serif text-2xl font-normal text-white">
             {isRtl ? "لم يتم العثور على أنظمة مطابقة" : "No Matching Systems Found"}
           </h4>
-          <p className="text-content-secondary text-sm max-w-md mx-auto">
+          <p className="text-white/60 text-sm max-w-md mx-auto">
             {isRtl
               ? "جرّب تغيير التصنيف أو مسح عبارة البحث للعثور على الأنظمة المطلوبة."
               : "Try adjusting your category selection or clearing the search filter."}

@@ -1,110 +1,104 @@
-# 09 — PAGE SPECIFICATIONS (MAPPED TO 12 VISUAL REFERENCES)
+# 09 — PAGE SPECIFICATIONS (MAPPED TO CANONICAL VISUAL REFERENCES)
 
 **Project:** Abdulghani Al-Shibami — Autonomous Personal Portfolio Engineering System  
-**Visual Reference Source:** StitchMCP Project `1524242436626085687` (`design-references/`)  
+**Owner:** عبدالغني الشبامي | Abdulghani Al-Shibami  
+**Canonical Visual References:**  
+1. `portfolio_hero_concept.jpg` — Hero Command Center
+2. `live_demo_studio.jpg` — Live Interactive Demo Studio
+3. `desktop_demo_simulation.jpg` — Desktop OS Workstation Sandbox
+4. `projects_showcase_grid.jpg` — Flagship Projects Showcase Bento Grid
 **Status:** Canonical Page Structure Authority  
-**Date:** September 17, 2026  
+**Date:** September 19, 2026  
 
 ---
 
-## 1. Page: Home (`/[locale]/page.tsx`)
-- **Mapped References:**
-  - `design-references/01-home-dark-en/` (Desktop Dark English)
-  - `design-references/02-home-light-en/` (Desktop Light English)
-  - `design-references/03-home-dark-ar/` (Desktop Dark Arabic RTL)
-  - `design-references/04-home-light-ar/` (Desktop Light Arabic RTL)
-  - `design-references/11-mobile-home/` (Mobile Dual-Theme)
-- **Render Mode:** Next.js App Router (RSC parent + Client interactive docks).
+## 1. Page: Home Command Center (`/[locale]/page.tsx`)
+- **Mapped Reference:** `portfolio_hero_concept.jpg`
+- **Render Mode:** Next.js App Router (Self-contained Dual-Column Command Center on Desktop, Stacked on Mobile).
 - **Core Modules & Layout:**
-  1. **Executive Sticky Navbar:**
-     - Left (or Right in RTL): Monogram logo + `Abdulghani Al-Shibami // Systems Architect`
-     - Center: Navigation links (`Projects`, `Systems Lab`, `Specs`, `Publications`, `About`)
-     - Right (or Left in RTL): Language Switcher (`EN | AR`), Theme Toggle (Sun/Moon), and Primary Gold Action (`Resume PDF` / `Contact`).
-  2. **Hero Section:**
-     - Latin Display: *Playfair Display* 56px (`display-hero`)
-     - Arabic Display: *Noto Serif* / *Noto Kufi Arabic*
-     - Owner Title: "Architecting Autonomous Intelligence & Mission-Critical Distributed Systems"
-     - Introductions: Concise statement balancing systems engineering with mathematical rigor.
-     - Profile Container: Clearly designated `[PROFILE_IMAGE]` geometric card (`280x340px` desktop, `200x200px` mobile) with gold coordinate brackets (`LAT: 24.7136° N, LON: 46.6753° E`) and verified architect badge.
-     - Action Cluster: Primary Gold Button ("Explore Projects (12)"), Secondary Ghost ("Launch Interactive Lab"), and CV download link.
-  3. **Real-Time Systems Telemetry Ribbon:**
-     - 4 high-contrast HUD cards: Throughput (`145k tx/s`), Consensus Latency (`0.8ms p99`), Uptime (`99.999% SLA`), and Formal Verification (`100% TLA+ Invariants`).
-  4. **Featured Systems Preview:**
-     - Top 3 flagship systems (AuraLedger, NeuroScribe, OmniTrader) featuring tech substrate badges, real-time telemetry metrics, and dual action links.
-  5. **Core Competencies Grid (4 Modules):**
-     - Distributed Systems & Consensus, Autonomous AI & Agent Swarms, Real-Time Low-Latency Computing, Cloud-Native Infrastructure.
-  6. **Technical Colophon Footer:**
-     - Copyright, system version, PGP public key, GitHub/LinkedIn links, and floating back-to-top button.
+  1. **Integrated Left Column Command Deck (`ReferenceLeftColumn.tsx`):**
+     - Top Navigation Header: Royal Gold / Emerald `AS` monogram, `ABDULGHANI AL-SHIBAMI`, role subtitle, pulsing green online status beacon, numbered navigation items (`01_HOME`, `02_ABOUT`, `03_PROJECTS`, `04_STACK`, `05_CONTACT`), Language Switcher (`EN | AR`), and Theme Toggle.
+     - Technical Hero Console: Monospace telemetry feed (`> INITIALIZING_PORTFOLIO.EXE`, `> STATUS: ONLINE`), monumental headline ("Building Systems Behind the Interface." / "بناء الأنظمة خلف الواجهة البرمجية."), positioning narrative, compact action buttons (`VIEW MY WORK ↗`, `DOWNLOAD CV ↓`), and scroll indicator.
+     - Profile & Identity Rail: Authentic profile portrait (`abdulghani-profile-hero.webp`) integrated with smooth dark vignette, adjacent vertical monospace metadata rail (`> WHO_AM_I`, `> ROLE`, `> LOCATION`, `> EXPERIENCE`, `> AVAILABILITY`).
+     - Selected Projects Strip: 3 high-density cards (`Campus IT Tracker`, `MetaAlgorithm Lab`, `NovaTech`) with category kickers, descriptions, action links, and authentic interface preview mockups.
+     - Telemetry Strip: `> SYSTEM_LOG` with live timestamps and actual statuses + `> TECH_STACK` brand badges (Next.js, TypeScript, Tailwind, React, Python, Oracle 10g, C# .NET, Supabase).
+     - Left Footer: Minimal identity, copyright, and "BASED IN SANA'A, YEMEN •".
+  2. **Right Column Case Studies & Technical Grid (`ReferenceRightColumn.tsx`):**
+     - Case Studies Header: `// CASE STUDIES` with `VIEW_ALL_CASE_STUDIES [ ]`.
+     - Stacked Case Study Rows: 3 horizontal project rows (`Campus IT Tracker`, `MetaAlgorithm Lab`, `Graduation Project Portal`) with thumbnails, descriptions, technology tags, verified architectural specs (`Enterprise Tier`, `O(n log n) Bench`, `3 User Roles`), and action links `↗`.
+     - Three-Part Technical Information Strip: `</> TECHNICAL SKILLS` (qualitative bars with gold percentage accents), `[#] SERVICES` (stacked capability blocks), and `[T] TOOLS I USE` (responsive non-truncated tag cloud).
+     - Lower Contact Section: `> LET'S_BUILD_SOMETHING_GREAT`, massive headline ("Ready to build what matters._" / "جاهز لبناء ما يُحدث أثراً._"), custom SVG vector `WireframeGlobe.tsx` with radar reticle, and contact action block with direct email.
+     - Integrated Contact Modal: Clicking `START A CONVERSATION` opens an accessible modal with the resilient Supabase `ContactForm`.
+     - Right Footer: Monogram `AS`, `// THANKS FOR VISITING`, and social anchors (GitHub, LinkedIn, Email).
 
 ---
 
-## 2. Page: Projects Catalog (`/[locale]/projects/page.tsx`)
-- **Mapped References:**
-  - `design-references/05-projects-dark-en/` (Desktop Dark English)
-  - `design-references/06-projects-light-en/` (Desktop Light English)
-  - `design-references/12-mobile-projects-details/` (Mobile Dual-Theme Projects)
-- **Render Mode:** Server Component parent + Client `ProjectCatalogIsland`.
+## 2. Page: Flagship Projects Showcase Bento Grid (`/[locale]/projects/page.tsx`)
+- **Mapped Reference:** `projects_showcase_grid.jpg`
+- **Render Mode:** Server Component parent + Client `ProjectCatalogView` & `ProjectBentoShowcase`.
 - **Core Modules & Layout:**
-  1. **Catalog Marquee:**
-     - Title: "Engineering Works & Autonomous Systems"
-     - Subtitle: "Mission-critical distributed state machines, autonomous agent swarms, and low-latency financial infrastructure."
-     - Status Ticker: "12 Systems Operational // Full In-Memory State".
-  2. **Domain & Protocol Filter Bar:**
-     - Horizontal swipeable chips: `[All (12)]`, `[Distributed Consensus (4)]`, `[Autonomous AI (3)]`, `[Low-Latency C# (3)]`, `[Cloud Native Mesh (2)]`.
-     - Demo Mode Secondary Filters: `[Real Live Demo]`, `[Interactive Simulation]`, `[Video Showcase]`, `[Code Walkthrough]`.
-     - Real-Time Search Input with gold focus halo.
-  3. **Projects Grid:**
-     - Desktop: Responsive 3-column architectural cards with corner brackets.
-     - Tablet: 2-column grid.
-     - Mobile: Single-column vertical stack with sticky persistent bottom action dock.
-  4. **Project Card Metadata:**
-     - Index counter (`// 01. SYSTEMS ARCHITECTURE`), Title, Status Badge (`● PRODUCTION SHOWCASE`), Substrate Tags, Telemetry strip, and Action buttons (`View Case Study`, `Launch Simulation`, `GitHub`).
+  1. **Bento Header & Filter Deck:**
+     - Title: "FLAGSHIP SYSTEMS // BENTO SHOWCASE"
+     - Subtitle: "Live instances of mission-critical systems and workstations running in verified sandbox environments."
+     - Domain & Status Filters: All, Enterprise IT, Algorithms & AI, Cloud & E-Commerce, Academic.
+     - View Mode Switcher: Bento Grid View vs Classic Dossier View.
+  2. **Asymmetric 5-Project Bento Grid (`ProjectBentoShowcase.tsx`):**
+     - **Top Left (Flagship Large):** `Campus IT Tracker` — Campus facility floorplan, network asset map, live ITIL ticket queue, execution telemetry.
+     - **Top Right (Flagship Large):** `MetaAlgorithm Lab` — Real-time complexity benchmark curves ($O(n \log n)$ vs $O(n^2)$), sorting visualizer canvas, live array size dials.
+     - **Bottom Left:** `Cafena Coffee Suite` — Roastery order queue, POS receipt generator, inventory tracking.
+     - **Bottom Middle:** `NovaTech Cloud` — Cloud infrastructure monitor, latency gauges, cluster node telemetry.
+     - **Bottom Right:** `GP Graduation Platform` — Multi-role academic evaluation portal, milestone timeline, defense moderation.
+  3. **Workstation Monitor Cards:**
+     - Traffic light controls (Red, Yellow, Green).
+     - Live Instance Badge (`INST_01: ONLINE`, `INST_02: BENCHMARKING`, etc.).
+     - Glowing circuit bus trace connecting cards to system backplane.
+     - Direct `[ Launch Workstation Demo ]` button.
 
 ---
 
-## 3. Page: Project Case Study (`/[locale]/projects/[slug]/page.tsx`)
-- **Mapped References:**
-  - `design-references/07-project-detail-dark-en/` (Desktop Dark English AuraLedger Dossier)
-  - `design-references/08-project-detail-light-en/` (Desktop Light English AuraLedger Dossier)
-  - `design-references/12-mobile-projects-details/` (Mobile Case Study Flow)
+## 3. Page: Live Interactive Demo Studio (`/[locale]/showcase/page.tsx`)
+- **Mapped Reference:** `live_demo_studio.jpg`
+- **Render Mode:** Interactive Client Studio (`LiveDemoStudio.tsx`).
+- **Core Modules & Layout:**
+  1. **Dual Workstation Control Deck:**
+     - Top workstation selector allowing switching between all 5 projects.
+     - Mode toggle: Single Workstation vs Dual Split-Screen Simulation.
+     - Live execution heartbeat, active FPS counter, and network throughput dials.
+  2. **Embedded Workstation Environments:**
+     - Native OS window frames with traffic light headers.
+     - Real-time interactive canvas (Campus room inspector, Algorithm sorting visualizer, Cafena POS, etc.).
+     - Shared command terminal streaming real-time simulation events.
+
+---
+
+## 4. Page: Project Case Study (`/[locale]/projects/[slug]/page.tsx`)
 - **Render Mode:** Dynamic Server Component with static parameter pre-generation and metadata optimization.
 - **Core Modules & Layout:**
-  1. **Dossier Header & Breadcrumb:**
-     - Breadcrumb navigation: `Projects / Systems & Distributed Computing / AuraLedger`.
-     - Substrate Tag: `C# .NET 9 Core / Distributed Systems`.
-     - Action Buttons: `Launch Interactive Web Simulation` (Primary Gold), `View Source on GitHub`, `Architecture Whitepaper (PDF)`.
-  2. **Key Telemetry HUD Cards (4 Cards):**
-     - `145,000 tx/s` write throughput, `0.8ms p99` latency, `99.999% SLA`, `RPO=0 / RTO<1.2s`.
-  3. **Problem & Solution Split Grid:**
-     - 01. The Engineering Bottleneck: Non-deterministic .NET GC pauses (45ms+) causing false heartbeat drops under 60k TPS storms.
-     - 02. The Architectural Solution: Pre-allocated off-heap circular ring buffers (`Span<T>`), vectorized WAL engine, zero allocations (`0.00 KB/tx`).
-  4. **System Topology & Data Pipeline Schematic:**
-     - Visual flow from gRPC client ingestion through LMAX ring buffer, Raft leader, NVMe WAL, and sharded storage with live node state readouts.
-  5. **Core Subsystems & Innovations Grid (4 Cards):**
-     - Zero-Allocation Log Compaction, Custom Vectorized WAL, Speculative Pre-Vote Quorum, Dual-Protocol RPC (gRPC + IPC).
-  6. **Empirical Benchmarks Matrix:**
-     - High-fidelity comparison table against Standard Distributed SQL and Traditional Java Paxos.
-  7. **Interactive Sandbox Callout Banner:**
-     - Dedicated gold-framed invitation card to test partition injections in the browser sandbox.
+  1. **Case Study Hero (`CaseStudyHero.tsx`):**
+     - Breadcrumb navigation, verified project title, architecture subtitle, substrate tags.
+     - Direct action triggers: `[ ⚡ Launch Workstation Demo ]` and `View GitHub Repository`.
+  2. **Technical Preview Panel (`ProjectPreviewGraphic.tsx`):**
+     - High-fidelity neon mint workstation monitor illustrating real project data and architecture.
+  3. **Problem & Solution Breakdown:**
+     - Detailed engineering constraints, bottlenecks, and architectural solutions.
+  4. **Demo Callout Banner (`DemoCalloutBanner.tsx`):**
+     - Workstation-framed invitation card with traffic lights and direct demo launch action.
 
 ---
 
-## 4. Page: Interactive Simulation Sandbox (`/[locale]/projects/[slug]/demo/page.tsx`)
-- **Mapped References:**
-  - `design-references/09-demo-dark-en/` (Desktop Dark English Simulation Sandbox)
-  - `design-references/10-demo-light-en/` (Desktop Light English Simulation Sandbox)
-- **Render Mode:** High-performance Client Component (`"use client"`).
+## 5. Page: Desktop OS Workstation Sandbox (`/[locale]/projects/[slug]/demo/page.tsx`)
+- **Mapped Reference:** `desktop_demo_simulation.jpg`
+- **Render Mode:** High-performance Client Component (`DemoShell.tsx`).
 - **Core Modules & Layout:**
-  1. **Top Simulation Disclosure Banner:**
-     - Prominent glowing gold badge: `INTERACTIVE WEB SIMULATION`.
-     - Disclaimer Pill: *"Sandboxed In-Browser Simulation of C# .NET 9 Core Architecture — High-fidelity state machine reproduction (compiled desktop/server runtime runs out-of-browser)."*
-     - Live Engine Heartbeat: Emerald pulsing beacon with core revision `v2.4.9-RELEASE`.
-  2. **Sandbox Control & Telemetry Bar:**
-     - Link back to dossier, cluster quorum readout (`5/5 Quorum Healthy`, Term `4,891`, Index `1,842,094`).
-     - Control Actions: `Inject Chaos Partition`, `Burst 25k TPS`, `Reset State`, `Fullscreen`, `Terminal REPL` toggle.
-  3. **3-Column Simulation Workspace:**
-     - **Left Control Deck:** Scenario presets (*Steady-State Settlement*, *Leader Partition Split-Brain*, *Cascading Byzantine Drop*, *Trading Storm*), sliders for latency (0-500ms) and packet drop (0-20%), and 5-Node Health Matrix with Kill/Heal triggers.
-     - **Central Topology Canvas:** Visual circular Raft cluster with animated RPC packet transit, radiant leader aura, and dynamic re-election triggers.
-     - **Right Telemetry Stream:** Real-time SVG throughput sparklines (`124.5k tx/s`), p99 latency curve (`0.82ms`), unmanaged memory gauge, and live Write-Ahead Log feed.
-  4. **Bottom Command Terminal / Simulation REPL:**
-     - Interactive developer CLI drawer with `aura-cli` prompt demonstrating failover logs and partition recovery in 42.1ms.
+  1. **Native OS Window Header:**
+     - Traffic light buttons (`#FF5F56`, `#FFBD2E`, `#27C93F`).
+     - Monospace title bar: `[PROJECT_NAME] v2.4 — Live Native Execution Sandbox`.
+     - Live status badge (`● ONLINE`, `● SIMULATING`).
+  2. **Interactive Simulation Canvas:**
+     - The authentic project simulation UI (Campus IT map, MetaAlgorithm sorter, Cafena POS, NovaTech store, GP portal).
+  3. **Real-Time Telemetry Bar (`DemoStatusBar.tsx`):**
+     - Live hardware dials: CPU Usage (18%), Memory Usage (14.8MB / 23%), Network Latency (12ms), Frame Rate (60 FPS).
+     - Direct toggle button for streaming terminal console.
+  4. **Streaming Terminal Drawer (`WorkstationConsole.tsx`):**
+     - Collapsible bottom drawer streaming execution logs with live timestamps and colored levels.
+     - Auto-scroll lock and clear logs triggers.

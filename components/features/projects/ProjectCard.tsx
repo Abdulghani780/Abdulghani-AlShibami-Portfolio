@@ -2,7 +2,6 @@ import React from "react";
 import Link from "next/link";
 import { Project, Locale } from "@/types/project";
 import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
 import { TechnologyBadge } from "./TechnologyBadge";
 import { ProjectPreviewGraphic } from "./ProjectPreviewGraphic";
 import { cn } from "@/lib/utils";
@@ -26,34 +25,35 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   const title = project.title[locale];
   const desc = project.shortDescription[locale];
   const detailUrl = `/${locale}/projects/${project.slug}`;
+  const demoUrl = `/${locale}/projects/${project.slug}/demo`;
 
   return (
     <div
       className={cn(
-        "rounded-xl border transition-all duration-300 group flex flex-col justify-between overflow-hidden",
+        "rounded-2xl border transition-all duration-300 group flex flex-col justify-between overflow-hidden relative",
         isFeaturedHero
-          ? "border-gold/40 bg-gradient-to-b from-obsidian-card/90 via-obsidian-card/80 to-obsidian/95 p-6 sm:p-8 md:p-10 shadow-gold-ambient hover:border-gold"
-          : "border-glass-border bg-obsidian-card/60 backdrop-blur-md p-6 hover:border-gold/40 hover:shadow-gold-ambient",
+          ? "border-[#00FF9D]/40 bg-gradient-to-b from-[#0A0E17]/95 via-[#070A0F]/90 to-[#04060A]/95 p-6 sm:p-8 md:p-10 shadow-[0_10px_35px_rgba(0,0,0,0.8),0_0_25px_rgba(0,255,157,0.08)] hover:border-[#00FF9D]"
+          : "border-white/[0.08] bg-[#070A0F]/90 backdrop-blur-md p-5 sm:p-6 hover:border-[#00FF9D]/50 hover:shadow-[0_10px_30px_rgba(0,0,0,0.8),0_0_20px_rgba(0,255,157,0.08)]",
         className
       )}
     >
-      <div className="space-y-5">
+      <div className="space-y-4">
         {/* Card Header: Category Kicker, Status, & Year */}
-        <div className="flex items-center justify-between gap-3 border-b border-glass-border/70 pb-3.5">
+        <div className="flex items-center justify-between gap-3 border-b border-white/[0.06] pb-3">
           <div className="flex items-center gap-2">
-            <span className="font-mono text-[11px] text-gold uppercase tracking-wider font-semibold">
+            <span className="font-mono text-[11px] text-[#00FF9D] uppercase tracking-wider font-semibold">
               {"// "}{categoryName || project.categorySlug}
             </span>
           </div>
 
           <div className="flex items-center gap-2">
-            <Badge
-              variant={project.status === "Completed" ? "gold" : "outline"}
-              dot
-              dotColor={project.status === "Completed" ? "emerald" : "amber"}
-            >
+            <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-[#00FF9D]/10 text-[#00FF9D] border border-[#00FF9D]/25 flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#00FF9D] animate-ping" />
+              <span>LIVE INSTANCE</span>
+            </span>
+            <span className="text-[11px] font-mono text-white/40">
               {project.year}
-            </Badge>
+            </span>
           </div>
         </div>
 
@@ -62,7 +62,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           <Link href={detailUrl} className="group/title block">
             <h3
               className={cn(
-                "font-serif font-normal text-content-primary group-hover/title:text-gold transition-colors tracking-tight",
+                "font-serif font-normal text-white group-hover/title:text-[#00FF9D] transition-colors tracking-tight",
                 isFeaturedHero ? "text-2xl sm:text-3xl lg:text-4xl" : "text-xl sm:text-2xl"
               )}
             >
@@ -77,7 +77,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         </div>
 
         {/* Project Description */}
-        <p className="text-content-secondary text-sm sm:text-base leading-relaxed line-clamp-3">
+        <p className="text-white/70 text-xs sm:text-sm leading-relaxed line-clamp-3">
           {desc}
         </p>
 
@@ -87,7 +87,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             <TechnologyBadge key={tech.id} technology={tech} size="xs" />
           ))}
           {project.technologies.length > (isFeaturedHero ? 6 : 4) && (
-            <span className="font-mono text-[10px] text-content-muted self-center px-1">
+            <span className="font-mono text-[10px] text-white/40 self-center px-1">
               +{project.technologies.length - (isFeaturedHero ? 6 : 4)}
             </span>
           )}
@@ -95,34 +95,33 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
       </div>
 
       {/* Card Actions Footer */}
-      <div className="pt-6 mt-6 border-t border-glass-border/60 flex flex-wrap items-center justify-between gap-3">
-        <Link href={detailUrl} className="shrink-0">
-          <Button variant="secondary" size="sm">
-            <span>{isRtl ? "الدراسة المعمارية" : "Case Study Dossier"}</span>
-            <span className={cn("text-xs transition-transform group-hover:translate-x-1", isRtl && "rotate-180")}>
-              →
-            </span>
-          </Button>
+      <div className="pt-5 mt-5 border-t border-white/[0.06] flex flex-wrap items-center justify-between gap-3">
+        <Link
+          href={detailUrl}
+          className="text-xs font-mono text-white/70 hover:text-white px-3 py-1.5 rounded bg-white/[0.04] border border-white/[0.08] hover:border-white/20 transition-all flex items-center gap-1.5"
+        >
+          <span>{isRtl ? "الدراسة المعمارية" : "Case Study"}</span>
+          <span className={cn("text-xs transition-transform group-hover:translate-x-1", isRtl && "rotate-180")}>
+            →
+          </span>
         </Link>
 
         {project.demoType !== "none" && (
-          <Link href={`/${locale}/projects/${project.slug}/demo`} className="shrink-0">
-            <Button variant="gold-outline" size="sm">
-              <span className="h-1.5 w-1.5 rounded-full bg-status-emerald animate-pulse" />
-              <span>
-                {project.demoType === "real_live"
-                  ? isRtl
-                    ? "الموقع المباشر"
-                    : "Live Demo"
-                  : project.demoType === "repo"
-                  ? isRtl
-                    ? "المستودع"
-                    : "Repository"
-                  : isRtl
-                  ? "تشغيل المحاكاة"
-                  : "Launch Simulation"}
-              </span>
-            </Button>
+          <Link
+            href={demoUrl}
+            className="text-xs font-mono font-bold text-[#00FF9D] hover:bg-[#00FF9D] hover:text-[#070A0F] px-3.5 py-1.5 rounded bg-[#00FF9D]/10 border border-[#00FF9D]/40 transition-all flex items-center gap-1.5 shadow-[0_0_12px_rgba(0,255,157,0.12)] active:scale-95"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-[#00FF9D] animate-pulse" />
+            <span>
+              {project.demoType === "real_live"
+                ? isRtl
+                  ? "الموقع المباشر"
+                  : "Live Demo"
+                : isRtl
+                ? "تشغيل محاكي الديمو"
+                : "Launch Workstation Demo"}
+            </span>
+            <span className="text-[10px] rtl:rotate-180">⚡</span>
           </Link>
         )}
       </div>

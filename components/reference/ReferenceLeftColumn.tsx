@@ -46,16 +46,16 @@ export function ReferenceLeftColumn({
   ];
 
   return (
-    <div className="w-full rounded-[22px] border border-white/[0.08] dark:border-white/[0.08] border-zinc-200/80 bg-[#070A0E]/95 dark:bg-[#070A0E]/95 bg-white/95 backdrop-blur-xl p-5 sm:p-7 flex flex-col justify-between space-y-8 shadow-2xl transition-colors duration-200">
+    <div className="w-full rounded-[22px] border border-white/[0.08] dark:border-white/[0.08] border-zinc-300 bg-[#070A0F] dark:bg-[#070A0F] bg-white backdrop-blur-xl p-5 sm:p-6 lg:p-7 flex flex-col justify-between space-y-7 shadow-2xl transition-colors duration-200">
       {/* ─────────────────────────────────────────────────────────────
-          1. INTEGRATED TOP NAVIGATION (Inside Left Column Top)
+          1. INTEGRATED TOP NAVIGATION (Exact Match to Reference AF)
       ───────────────────────────────────────────────────────────── */}
-      <header className="flex flex-wrap items-center justify-between gap-4 pb-5 border-b border-white/[0.07] dark:border-white/[0.07] border-zinc-200/80">
+      <header className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-white/[0.07] dark:border-white/[0.07] border-zinc-200">
         {/* Brand Monogram & Technical Identity */}
         <div className="flex items-center gap-3">
           <Link
             href={`/${locale}`}
-            className="w-8 h-8 rounded-lg border border-gold/50 bg-gold/10 flex items-center justify-center font-serif text-xs text-gold font-bold transition-all duration-200 hover:border-gold hover:bg-gold/20 hover:shadow-gold-ambient shrink-0"
+            className="font-mono text-2xl font-black tracking-tighter text-[#00FF9D] hover:opacity-90 transition-opacity select-none leading-none"
           >
             AS
           </Link>
@@ -65,13 +65,13 @@ export function ReferenceLeftColumn({
             </span>
             <span className="font-mono text-[9px] uppercase tracking-wider text-white/50 dark:text-white/50 text-zinc-500 flex items-center gap-1.5">
               <span>{isRtl ? "مهندس برمجيات ونظم ذكاء اصطناعي" : "SOFTWARE ENGINEER & AI SYSTEMS"}</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse inline-block" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#00FF9D] animate-pulse inline-block" />
             </span>
           </div>
         </div>
 
         {/* Center Monospace Numbered Nav Tabs */}
-        <nav className="hidden lg:flex items-center gap-3 font-mono text-[11px]">
+        <nav className="hidden lg:flex items-center gap-2 font-mono text-[11px]">
           {navItems.map((item) => {
             const isActive = activeTab === item.id;
             return (
@@ -79,9 +79,9 @@ export function ReferenceLeftColumn({
                 key={item.id}
                 href={item.href}
                 onClick={() => setActiveTab(item.id)}
-                className={`relative px-2.5 py-1 rounded transition-colors duration-200 ${
+                className={`relative px-3 py-1 transition-all duration-200 ${
                   isActive
-                    ? "text-gold font-semibold bg-gold/10 border border-gold/30"
+                    ? "text-[#00FF9D] font-bold border border-[#00FF9D] rounded-full bg-[#00FF9D]/5"
                     : "text-white/60 dark:text-white/60 text-zinc-600 hover:text-white dark:hover:text-white hover:text-zinc-900"
                 }`}
               >
@@ -104,32 +104,32 @@ export function ReferenceLeftColumn({
       {/* ─────────────────────────────────────────────────────────────
           2. HERO SECTION — TECHNICAL PROFILE CONSOLE
       ───────────────────────────────────────────────────────────── */}
-      <section id="about" className="space-y-6">
+      <section id="about" className="space-y-5">
         {/* Terminal Micro-Status Lines */}
         <div className="font-mono text-[11px] text-white/50 dark:text-white/50 text-zinc-500 space-y-0.5">
-          <div className="text-emerald-400 dark:text-emerald-400 text-emerald-600">
+          <div className="text-[#00FF9D]/80">
             &gt; INITIALIZING_PORTFOLIO.EXE
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 text-[#00FF9D]/90">
             <span>&gt; STATUS: ONLINE</span>
-            <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#00FF9D] animate-pulse" />
           </div>
         </div>
 
         {/* Hero Main Grid: Content (Left) + Portrait & Metadata (Right) */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-5 items-center">
           {/* Left Region: Headline, Prose & CTA Buttons */}
           <div className="md:col-span-7 space-y-4">
-            <h1 className="font-serif text-3xl sm:text-4xl lg:text-[42px] font-normal leading-[1.12] text-white dark:text-white text-zinc-900 tracking-tight">
+            <h1 className="font-serif text-3xl sm:text-4xl lg:text-[40px] font-normal leading-[1.12] text-white dark:text-white text-zinc-900 tracking-tight">
               {isRtl ? (
                 <>
                   بناء الأنظمة <br />
-                  خلف <span className="text-gold font-medium">الواجهة البرمجية.</span>
+                  خلف <span className="text-[#00FF9D] font-medium">الواجهة البرمجية.</span>
                 </>
               ) : (
                 <>
                   Building Systems <br />
-                  Behind the <span className="text-gold font-medium">Interface.</span>
+                  Behind the <span className="text-[#00FF9D] font-medium">Interface.</span>
                 </>
               )}
             </h1>
@@ -137,14 +137,14 @@ export function ReferenceLeftColumn({
             <p className="text-white/70 dark:text-white/70 text-zinc-600 text-xs sm:text-sm leading-relaxed max-w-md">
               {isRtl
                 ? "أصمم وأبني أنظمة رقمية متينة بمعمارية برمجية نظيفة، ترتكز على حل المشكلات الحقيقية والأثر القابل للقياس."
-                : "I design and build resilient digital products with clean architecture, focused on real problems and measurable impact."}
+                : "I design and build scalable digital products with clean architecture, focused on real problems and measurable impact."}
             </p>
 
-            {/* Compact Action Buttons */}
-            <div className="flex flex-wrap items-center gap-3 pt-2">
+            {/* Compact Action Buttons (Exact Reference Style) */}
+            <div className="flex flex-wrap items-center gap-3 pt-1">
               <Link
                 href={`/${locale}/projects`}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded border border-gold/60 bg-gold/15 text-gold text-xs font-mono font-medium hover:bg-gold/25 hover:border-gold transition-all duration-200 shadow-gold-ambient"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded border border-[#00FF9D] bg-[#00FF9D]/10 text-[#00FF9D] text-xs font-mono font-semibold hover:bg-[#00FF9D]/20 transition-all duration-200"
               >
                 <span>{isRtl ? "استعراض أعمالي" : "VIEW MY WORK"}</span>
                 <span className="text-[10px] rtl:rotate-180">↗</span>
@@ -154,14 +154,14 @@ export function ReferenceLeftColumn({
                 href="/Abdulghani-Alshibami-CV.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded border border-white/[0.12] dark:border-white/[0.12] border-zinc-300 bg-white/[0.03] text-white/80 dark:text-white/80 text-zinc-700 text-xs font-mono hover:border-white/30 transition-all duration-200"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded border border-white/[0.15] dark:border-white/[0.15] border-zinc-300 bg-transparent text-white/80 dark:text-white/80 text-zinc-700 text-xs font-mono hover:border-white/30 transition-all duration-200"
               >
                 <span>{isRtl ? "تحميل السيرة الذاتية" : "DOWNLOAD CV"}</span>
                 <span className="text-[10px]">↓</span>
               </a>
             </div>
 
-            <div className="font-mono text-[10px] text-white/40 dark:text-white/40 text-zinc-400 pt-1">
+            <div className="font-mono text-[10px] text-white/40 dark:text-white/40 text-zinc-400 pt-0.5">
               &gt; SCROLL_TO_EXPLORE ↓
             </div>
           </div>
@@ -169,7 +169,7 @@ export function ReferenceLeftColumn({
           {/* Right Region: Portrait + Vertical Metadata Rail */}
           <div className="md:col-span-5 flex items-stretch gap-3">
             {/* Integrated Portrait Frame */}
-            <div className="relative flex-1 min-h-[260px] sm:min-h-[290px] rounded-xl overflow-hidden border border-white/[0.1] dark:border-white/[0.1] border-zinc-200 bg-black/40 group">
+            <div className="relative flex-1 min-h-[260px] sm:min-h-[280px] rounded-xl overflow-hidden border border-white/[0.1] dark:border-white/[0.1] border-zinc-200 bg-[#090D14] group">
               <Image
                 src="/images/profile/abdulghani-profile-hero.webp"
                 alt="Abdulghani Al-Shibami"
@@ -178,8 +178,8 @@ export function ReferenceLeftColumn({
                 className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                 priority
               />
-              {/* Subtle Ambient Vignette Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#070A0E] via-[#070A0E]/30 to-transparent pointer-events-none" />
+              {/* Dark Gradient Vignette Blending to Base */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#070A0F] via-[#070A0F]/20 to-transparent pointer-events-none" />
             </div>
 
             {/* Vertical Metadata Rail */}
@@ -205,13 +205,13 @@ export function ReferenceLeftColumn({
               <div>
                 <span className="text-white/40 dark:text-white/40 text-zinc-400 block">&gt; EXPERIENCE</span>
                 <span className="text-white/90 dark:text-white/90 text-zinc-800 block">
-                  {isRtl ? "هندسة تطبيقية" : "Engineering"}
+                  {isRtl ? "هندسة برمجيات" : "Engineering"}
                 </span>
               </div>
               <div>
                 <span className="text-white/40 dark:text-white/40 text-zinc-400 block">&gt; AVAILABILITY</span>
-                <span className="text-emerald-400 dark:text-emerald-400 text-emerald-600 font-medium block">
-                  {isRtl ? "متاح للفرص" : "Open for opps"}
+                <span className="text-[#00FF9D] font-medium block">
+                  {isRtl ? "متاح للمشاريع" : "Open for projects"}
                 </span>
               </div>
             </div>
@@ -222,14 +222,14 @@ export function ReferenceLeftColumn({
       {/* ─────────────────────────────────────────────────────────────
           3. SELECTED PROJECTS STRIP (// SELECTED PROJECTS)
       ───────────────────────────────────────────────────────────── */}
-      <section className="space-y-4 pt-2">
+      <section className="space-y-3.5 pt-1">
         <div className="flex items-center justify-between border-b border-white/[0.06] dark:border-white/[0.06] border-zinc-200 pb-2">
           <span className="font-mono text-xs font-bold text-white/90 dark:text-white/90 text-zinc-800 tracking-wider">
             {"// SELECTED PROJECTS"}
           </span>
           <Link
             href={`/${locale}/projects`}
-            className="font-mono text-[10px] text-white/50 dark:text-white/50 text-zinc-500 hover:text-gold transition-colors flex items-center gap-1"
+            className="font-mono text-[10px] text-white/50 dark:text-white/50 text-zinc-500 hover:text-[#00FF9D] transition-colors flex items-center gap-1"
           >
             <span>{isRtl ? "عرض كافة المشاريع" : "VIEW_ALL_PROJECTS"}</span>
             <span className="text-[9px]">[ ]</span>
@@ -241,17 +241,17 @@ export function ReferenceLeftColumn({
           {/* Card 01: Campus IT Tracker */}
           <Link
             href={`/${locale}/projects/campus-it-tracker`}
-            className="group rounded-xl border border-white/[0.08] dark:border-white/[0.08] border-zinc-200/80 bg-[#0B0E14]/80 dark:bg-[#0B0E14]/80 bg-zinc-50/90 p-3 flex flex-col justify-between hover:border-gold/50 transition-all duration-300 space-y-3"
+            className="group rounded-xl border border-white/[0.08] dark:border-white/[0.08] border-zinc-200/80 bg-[#0A0E16]/80 dark:bg-[#0A0E16]/80 bg-zinc-50/90 p-3 flex flex-col justify-between hover:border-[#00FF9D]/60 transition-all duration-300 space-y-2.5"
           >
             <div className="space-y-1">
               <div className="flex items-center justify-between font-mono text-[10px] text-white/40 dark:text-white/40 text-zinc-400">
-                <span className="text-gold font-bold">01</span>
+                <span className="text-[#00FF9D] font-bold">01</span>
                 <span>+</span>
               </div>
-              <div className="font-mono text-[9px] text-white/40 dark:text-white/40 text-zinc-500 uppercase">
+              <div className="font-mono text-[9px] text-[#00FF9D]/70 uppercase">
                 {"// ENTERPRISE IT"}
               </div>
-              <h3 className="font-serif text-sm font-semibold text-white dark:text-white text-zinc-900 group-hover:text-gold transition-colors">
+              <h3 className="font-serif text-sm font-semibold text-white dark:text-white text-zinc-900 group-hover:text-[#00FF9D] transition-colors">
                 Campus IT Tracker
               </h3>
               <p className="text-white/60 dark:text-white/60 text-zinc-600 text-[10px] leading-relaxed line-clamp-2">
@@ -271,24 +271,24 @@ export function ReferenceLeftColumn({
                 <span>•</span>
                 <span>Oracle</span>
               </div>
-              <span className="text-white/40 group-hover:text-gold transition-colors">↗</span>
+              <span className="text-white/40 group-hover:text-[#00FF9D] transition-colors">↗</span>
             </div>
           </Link>
 
           {/* Card 02: MetaAlgorithm Lab */}
           <Link
             href={`/${locale}/projects/metaalgorithm-lab`}
-            className="group rounded-xl border border-white/[0.08] dark:border-white/[0.08] border-zinc-200/80 bg-[#0B0E14]/80 dark:bg-[#0B0E14]/80 bg-zinc-50/90 p-3 flex flex-col justify-between hover:border-gold/50 transition-all duration-300 space-y-3"
+            className="group rounded-xl border border-white/[0.08] dark:border-white/[0.08] border-zinc-200/80 bg-[#0A0E16]/80 dark:bg-[#0A0E16]/80 bg-zinc-50/90 p-3 flex flex-col justify-between hover:border-[#00FF9D]/60 transition-all duration-300 space-y-2.5"
           >
             <div className="space-y-1">
               <div className="flex items-center justify-between font-mono text-[10px] text-white/40 dark:text-white/40 text-zinc-400">
-                <span className="text-gold font-bold">02</span>
+                <span className="text-[#00FF9D] font-bold">02</span>
                 <span>+</span>
               </div>
-              <div className="font-mono text-[9px] text-white/40 dark:text-white/40 text-zinc-500 uppercase">
+              <div className="font-mono text-[9px] text-[#00FF9D]/70 uppercase">
                 {"// ALGORITHMIC AI"}
               </div>
-              <h3 className="font-serif text-sm font-semibold text-white dark:text-white text-zinc-900 group-hover:text-gold transition-colors">
+              <h3 className="font-serif text-sm font-semibold text-white dark:text-white text-zinc-900 group-hover:text-[#00FF9D] transition-colors">
                 MetaAlgorithm Lab
               </h3>
               <p className="text-white/60 dark:text-white/60 text-zinc-600 text-[10px] leading-relaxed line-clamp-2">
@@ -308,24 +308,24 @@ export function ReferenceLeftColumn({
                 <span>•</span>
                 <span>PyQt6</span>
               </div>
-              <span className="text-white/40 group-hover:text-gold transition-colors">↗</span>
+              <span className="text-white/40 group-hover:text-[#00FF9D] transition-colors">↗</span>
             </div>
           </Link>
 
           {/* Card 03: NovaTech */}
           <Link
             href={`/${locale}/projects/novatech`}
-            className="group rounded-xl border border-white/[0.08] dark:border-white/[0.08] border-zinc-200/80 bg-[#0B0E14]/80 dark:bg-[#0B0E14]/80 bg-zinc-50/90 p-3 flex flex-col justify-between hover:border-gold/50 transition-all duration-300 space-y-3"
+            className="group rounded-xl border border-white/[0.08] dark:border-white/[0.08] border-zinc-200/80 bg-[#0A0E16]/80 dark:bg-[#0A0E16]/80 bg-zinc-50/90 p-3 flex flex-col justify-between hover:border-[#00FF9D]/60 transition-all duration-300 space-y-2.5"
           >
             <div className="space-y-1">
               <div className="flex items-center justify-between font-mono text-[10px] text-white/40 dark:text-white/40 text-zinc-400">
-                <span className="text-gold font-bold">03</span>
+                <span className="text-[#00FF9D] font-bold">03</span>
                 <span>+</span>
               </div>
-              <div className="font-mono text-[9px] text-white/40 dark:text-white/40 text-zinc-500 uppercase">
+              <div className="font-mono text-[9px] text-[#00FF9D]/70 uppercase">
                 {"// MODERN COMMERCE"}
               </div>
-              <h3 className="font-serif text-sm font-semibold text-white dark:text-white text-zinc-900 group-hover:text-gold transition-colors">
+              <h3 className="font-serif text-sm font-semibold text-white dark:text-white text-zinc-900 group-hover:text-[#00FF9D] transition-colors">
                 NovaTech
               </h3>
               <p className="text-white/60 dark:text-white/60 text-zinc-600 text-[10px] leading-relaxed line-clamp-2">
@@ -345,7 +345,7 @@ export function ReferenceLeftColumn({
                 <span>•</span>
                 <span>Tailwind</span>
               </div>
-              <span className="text-white/40 group-hover:text-gold transition-colors">↗</span>
+              <span className="text-white/40 group-hover:text-[#00FF9D] transition-colors">↗</span>
             </div>
           </Link>
         </div>
@@ -354,7 +354,7 @@ export function ReferenceLeftColumn({
       {/* ─────────────────────────────────────────────────────────────
           4. BOTTOM TELEMETRY STRIP (SYSTEM_LOG & TECH_STACK)
       ───────────────────────────────────────────────────────────── */}
-      <section id="stack" className="grid grid-cols-1 sm:grid-cols-12 gap-4 pt-2">
+      <section id="stack" className="grid grid-cols-1 sm:grid-cols-12 gap-4 pt-1">
         {/* System Log */}
         <div className="sm:col-span-5 rounded-xl border border-white/[0.06] dark:border-white/[0.06] border-zinc-200/80 bg-black/40 dark:bg-black/40 bg-zinc-100/70 p-3 space-y-1.5 font-mono text-[10px]">
           <div className="text-white/40 dark:text-white/40 text-zinc-500 text-[9px]">
@@ -362,8 +362,8 @@ export function ReferenceLeftColumn({
           </div>
           <div className="text-white/70 dark:text-white/70 text-zinc-700 space-y-0.5 text-[9px]">
             <div>[{currentTime}] Portfolio initialized</div>
-            <div>[{currentTime}] Supabase connected</div>
-            <div className="text-emerald-400 dark:text-emerald-400 text-emerald-600 font-semibold">
+            <div>[{currentTime}] Loading projects</div>
+            <div className="text-[#00FF9D] font-semibold">
               [{currentTime}] Ready.
             </div>
           </div>
@@ -387,9 +387,9 @@ export function ReferenceLeftColumn({
             ].map((tech) => (
               <span
                 key={tech.label}
-                className="inline-flex items-center gap-1 px-2 py-0.5 rounded border border-white/[0.08] dark:border-white/[0.08] border-zinc-200 bg-white/[0.03] text-white/80 dark:text-white/80 text-zinc-700 font-mono text-[10px] hover:border-gold/40 transition-colors"
+                className="inline-flex items-center gap-1 px-2 py-0.5 rounded border border-white/[0.08] dark:border-white/[0.08] border-zinc-200 bg-white/[0.03] text-white/80 dark:text-white/80 text-zinc-700 font-mono text-[10px] hover:border-[#00FF9D]/50 transition-colors"
               >
-                <span className="text-gold text-[9px] font-bold">{tech.code}</span>
+                <span className="text-[#00FF9D] text-[9px] font-bold">{tech.code}</span>
                 <span>{tech.label}</span>
               </span>
             ))}
@@ -400,11 +400,11 @@ export function ReferenceLeftColumn({
       {/* ─────────────────────────────────────────────────────────────
           5. LEFT COLUMN FOOTER
       ───────────────────────────────────────────────────────────── */}
-      <footer className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-white/[0.06] dark:border-white/[0.06] border-zinc-200 font-mono text-[10px] text-white/40 dark:text-white/40 text-zinc-400">
+      <footer className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-white/[0.06] dark:border-white/[0.06] border-zinc-200 font-mono text-[10px] text-white/40 dark:text-white/40 text-zinc-400">
         <div>© 2026 Abdulghani Al-Shibami. All rights reserved.</div>
         <div className="flex items-center gap-1.5 text-white/60 dark:text-white/60 text-zinc-500">
           <span>{isRtl ? "صنعاء، اليمن" : "BASED IN SANA'A, YEMEN"}</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-full bg-[#00FF9D] inline-block animate-pulse" />
         </div>
       </footer>
     </div>

@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { Button } from "@/components/ui/Button";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 import { CheckCircle2, Send, Loader2 } from "lucide-react";
 
@@ -50,12 +49,12 @@ export function ContactForm({ isRtl }: { isRtl: boolean }) {
 
   if (submitted) {
     return (
-      <div className="p-8 border border-gold/40 bg-gold/5 text-center space-y-3 animate-in fade-in duration-300 rounded-lg">
-        <div className="flex items-center justify-center gap-2 text-gold font-mono text-xs font-bold uppercase tracking-widest">
-          <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+      <div className="p-8 border border-[#00FF9D]/40 bg-[#00FF9D]/5 text-center space-y-3 animate-in fade-in duration-300 rounded-xl font-mono">
+        <div className="flex items-center justify-center gap-2 text-[#00FF9D] text-xs font-bold uppercase tracking-widest">
+          <CheckCircle2 className="w-4 h-4 text-[#00FF9D]" />
           <span>{"// TRANSMISSION CONFIRMED"}</span>
         </div>
-        <p className="text-content-primary text-sm font-serif">
+        <p className="text-white text-sm font-sans">
           {isRtl
             ? "تم استقبال رسالتك بنجاح وحفظها بأمان. سيتم التواصل معك عبر القنوات الرسمية قريباً."
             : "Your technical advisory inquiry has been received and securely queued. Abdulghani Al-Shibami will respond promptly."}
@@ -66,7 +65,7 @@ export function ContactForm({ isRtl }: { isRtl: boolean }) {
             setSubmitted(false);
             setFormData({ name: "", email: "", subject: "", message: "" });
           }}
-          className="font-mono text-xs text-gold hover:underline pt-2 uppercase tracking-wider cursor-pointer transition-colors"
+          className="text-xs text-[#00FF9D] hover:underline pt-2 uppercase tracking-wider cursor-pointer transition-colors"
         >
           {isRtl ? "إرسال رسالة أخرى" : "Send Another Message"}
         </button>
@@ -75,10 +74,10 @@ export function ContactForm({ isRtl }: { isRtl: boolean }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-4 font-mono text-xs">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="space-y-1.5">
-          <label className="font-mono text-[11px] uppercase tracking-wider text-content-secondary block">
+          <label className="text-[11px] uppercase tracking-wider text-white/60 block">
             {isRtl ? "الاسم الكامل" : "Full Name"}
           </label>
           <input
@@ -88,12 +87,12 @@ export function ContactForm({ isRtl }: { isRtl: boolean }) {
             onChange={handleChange}
             required
             placeholder={isRtl ? "الاسم الكريم" : "Your Name / Organization"}
-            className="w-full h-11 px-4 bg-canvas border border-hairline focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none text-content-primary text-xs font-mono transition-all rounded"
+            className="w-full h-10 px-3.5 bg-black/40 border border-white/[0.1] focus:border-[#00FF9D] focus:ring-1 focus:ring-[#00FF9D]/30 focus:outline-none text-white text-xs transition-all rounded-lg"
           />
         </div>
 
         <div className="space-y-1.5">
-          <label className="font-mono text-[11px] uppercase tracking-wider text-content-secondary block">
+          <label className="text-[11px] uppercase tracking-wider text-white/60 block">
             {isRtl ? "البريد الإلكتروني" : "Email Address"}
           </label>
           <input
@@ -102,15 +101,15 @@ export function ContactForm({ isRtl }: { isRtl: boolean }) {
             value={formData.email}
             onChange={handleChange}
             required
-            placeholder="name@company.com"
-            className="w-full h-11 px-4 bg-canvas border border-hairline focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none text-content-primary text-xs font-mono transition-all rounded"
+            placeholder="eng@example.com"
+            className="w-full h-10 px-3.5 bg-black/40 border border-white/[0.1] focus:border-[#00FF9D] focus:ring-1 focus:ring-[#00FF9D]/30 focus:outline-none text-white text-xs transition-all rounded-lg"
           />
         </div>
       </div>
 
       <div className="space-y-1.5">
-        <label className="font-mono text-[11px] uppercase tracking-wider text-content-secondary block">
-          {isRtl ? "موضوع الاستشارة" : "Subject"}
+        <label className="text-[11px] uppercase tracking-wider text-white/60 block">
+          {isRtl ? "موضوع الرسالة" : "Subject"}
         </label>
         <input
           type="text"
@@ -118,14 +117,14 @@ export function ContactForm({ isRtl }: { isRtl: boolean }) {
           value={formData.subject}
           onChange={handleChange}
           required
-          placeholder={isRtl ? "موضوع الرسالة الهندسية" : "Engineering Project / Collaboration"}
-          className="w-full h-11 px-4 bg-canvas border border-hairline focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none text-content-primary text-xs font-mono transition-all rounded"
+          placeholder={isRtl ? "عنوان الاستشارة أو المشروع" : "Systems Architecture / Consulting / Project Inquiry"}
+          className="w-full h-10 px-3.5 bg-black/40 border border-white/[0.1] focus:border-[#00FF9D] focus:ring-1 focus:ring-[#00FF9D]/30 focus:outline-none text-white text-xs transition-all rounded-lg"
         />
       </div>
 
       <div className="space-y-1.5">
-        <label className="font-mono text-[11px] uppercase tracking-wider text-content-secondary block">
-          {isRtl ? "تفاصيل الرسالة" : "Technical Brief / Message"}
+        <label className="text-[11px] uppercase tracking-wider text-white/60 block">
+          {isRtl ? "تفاصيل الرسالة" : "Message"}
         </label>
         <textarea
           name="message"
@@ -133,34 +132,28 @@ export function ContactForm({ isRtl }: { isRtl: boolean }) {
           onChange={handleChange}
           required
           rows={4}
-          placeholder={
-            isRtl
-              ? "يرجى كتابة تفاصيل المشروع أو الاستشارة الهندسية..."
-              : "Describe your project parameters, objectives, or inquiry..."
-          }
-          className="w-full p-4 bg-canvas border border-hairline focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none text-content-primary text-xs font-mono transition-all resize-none rounded"
+          placeholder={isRtl ? "اكتب تفاصيل استفسارك الهندسي هنا..." : "Describe the scope, technical parameters, or timeline of your project..."}
+          className="w-full p-3.5 bg-black/40 border border-white/[0.1] focus:border-[#00FF9D] focus:ring-1 focus:ring-[#00FF9D]/30 focus:outline-none text-white text-xs transition-all rounded-lg resize-none"
         />
       </div>
 
-      <Button
+      <button
         type="submit"
-        variant="primary"
-        size="lg"
         disabled={isSubmitting}
-        className="w-full flex items-center justify-center gap-2 cursor-pointer transition-all duration-200"
+        className="w-full h-11 px-5 rounded-lg bg-[#00FF9D] hover:bg-[#00FF9D]/90 text-[#070A0F] font-bold text-xs flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(0,255,157,0.3)] transition-all active:scale-[0.98] disabled:opacity-50 cursor-pointer"
       >
         {isSubmitting ? (
           <>
-            <Loader2 className="w-4 h-4 animate-spin text-surface-dark" />
-            <span>{isRtl ? "جارٍ الإرسال والتسجيل..." : "Transmitting Advisory..."}</span>
+            <Loader2 className="w-4 h-4 animate-spin" />
+            <span>{isRtl ? "جاري الإرسال..." : "Transmitting..."}</span>
           </>
         ) : (
           <>
             <Send className="w-3.5 h-3.5" />
-            <span>{isRtl ? "إرسال الإرسالية الهندسية ←" : "Transmit Advisory Inquiry →"}</span>
+            <span>{isRtl ? "إرسال الرسالة المشفرة" : "Transmit Message"}</span>
           </>
         )}
-      </Button>
+      </button>
     </form>
   );
 }

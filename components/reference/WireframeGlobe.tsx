@@ -9,18 +9,18 @@ interface WireframeGlobeProps {
 
 export function WireframeGlobe({
   className = "",
-  accentColor = "currentColor",
+  accentColor = "#00FF9D",
 }: WireframeGlobeProps) {
   return (
     <div className={`relative flex items-center justify-center ${className}`}>
       {/* Ambient Back Glow */}
-      <div className="absolute inset-0 rounded-full bg-gold/5 dark:bg-gold/10 blur-xl pointer-events-none scale-75" />
+      <div className="absolute inset-0 rounded-full bg-[#00FF9D]/5 blur-xl pointer-events-none scale-75" />
 
       <svg
         viewBox="0 0 240 240"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-full text-gold/40 dark:text-gold/50"
+        className="w-full h-full text-[#00FF9D]/40"
       >
         {/* Outer Circular Boundary */}
         <circle
@@ -30,7 +30,7 @@ export function WireframeGlobe({
           stroke={accentColor}
           strokeWidth="1"
           strokeDasharray="3 3"
-          strokeOpacity="0.4"
+          strokeOpacity="0.35"
         />
         <circle
           cx="120"
@@ -49,7 +49,7 @@ export function WireframeGlobe({
           ry="18"
           stroke={accentColor}
           strokeWidth="0.8"
-          strokeOpacity="0.5"
+          strokeOpacity="0.45"
         />
         <ellipse
           cx="120"
@@ -58,7 +58,7 @@ export function WireframeGlobe({
           ry="44"
           stroke={accentColor}
           strokeWidth="0.8"
-          strokeOpacity="0.4"
+          strokeOpacity="0.35"
         />
         <ellipse
           cx="120"
@@ -67,7 +67,7 @@ export function WireframeGlobe({
           ry="68"
           stroke={accentColor}
           strokeWidth="0.8"
-          strokeOpacity="0.35"
+          strokeOpacity="0.3"
         />
 
         {/* Longitudinal Ellipses */}
@@ -78,7 +78,7 @@ export function WireframeGlobe({
           ry="92"
           stroke={accentColor}
           strokeWidth="0.8"
-          strokeOpacity="0.5"
+          strokeOpacity="0.45"
         />
         <ellipse
           cx="120"
@@ -87,7 +87,7 @@ export function WireframeGlobe({
           ry="86"
           stroke={accentColor}
           strokeWidth="0.8"
-          strokeOpacity="0.4"
+          strokeOpacity="0.35"
         />
         <ellipse
           cx="120"
@@ -96,7 +96,7 @@ export function WireframeGlobe({
           ry="72"
           stroke={accentColor}
           strokeWidth="0.8"
-          strokeOpacity="0.35"
+          strokeOpacity="0.3"
         />
 
         {/* Central Crosshairs & Radar Reticle */}
