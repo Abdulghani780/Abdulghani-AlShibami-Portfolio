@@ -332,6 +332,7 @@ export function CanonicalHero({ locale }: CanonicalHeroProps) {
               <button
                 type="button"
                 onClick={() => setTermLines([])}
+                aria-label="Clear terminal output"
                 className="text-zinc-500 hover:text-white text-[10px] font-mono"
               >
                 CLR
@@ -348,12 +349,13 @@ export function CanonicalHero({ locale }: CanonicalHeroProps) {
             </div>
             {/* Prompt input */}
             <form onSubmit={handleCommand} className="flex items-center gap-2 border-t border-zinc-800 pt-2 mt-2">
-              <span className="text-[#00FF9D] font-mono text-sm font-bold">›</span>
+              <span className="text-[#00FF9D] font-mono text-sm font-bold" aria-hidden="true">›</span>
               <input
                 type="text"
                 value={termInput}
                 onChange={(e) => setTermInput(e.target.value)}
                 placeholder="type 'help'..."
+                aria-label="Terminal command input"
                 className="flex-1 bg-transparent font-mono text-[11px] text-white placeholder-zinc-600 outline-none border-none text-left"
               />
               <span className="w-2 h-3.5 bg-[#00FF9D] type-cursor" />

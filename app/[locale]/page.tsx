@@ -29,7 +29,7 @@ export default async function HomePage({
           4. Live Interactive Demo Studio (new/live_demo_studio.jpg)
           5. Canonical Footer & Contact (new/projects_showcase_grid.jpg)
       ───────────────────────────────────────────────────────────── */}
-      <main className="w-full">
+      <div className="w-full">
         {/* Section 1: Hero Command Center */}
         <CanonicalHero locale={currentLocale} />
 
@@ -44,7 +44,7 @@ export default async function HomePage({
 
         {/* Section 5: Canonical Footer & Contact */}
         <CanonicalFooter locale={currentLocale} />
-      </main>
+      </div>
     </div>
   );
 }

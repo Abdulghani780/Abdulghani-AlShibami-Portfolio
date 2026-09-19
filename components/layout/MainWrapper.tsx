@@ -19,6 +19,7 @@ export function MainWrapper({
 
   return (
     <main
+      id="main-content"
       className={`flex-1 w-full transition-all duration-200 ${
         isHomePage ? "p-0" : "pt-20 sm:pt-24"
       }`}
