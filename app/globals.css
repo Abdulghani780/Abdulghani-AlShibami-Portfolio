@@ -5,24 +5,33 @@
 @layer base {
   :root {
     /* Porcelain Sovereign / Architectural Prestige (Light Mode) */
-    --canvas-bg: #FBFBFD;
+    --canvas-bg: #FBFBFC;
     --surface-elevated: #FFFFFF;
-    --surface-overlay: #F3F3F6;
-    --surface-interactive: #EDEAE2;
-    --surface-low: #F5F3ED;
+    --surface-overlay: #F4F4F8;
+    --surface-interactive: #ECEAE3;
+    --surface-low: #F6F5F2;
+    --surface-card: #FFFFFF;
 
-    --border-hairline: #E2D9C8;
-    --border-gold: rgba(153, 122, 21, 0.35);
+    --border-hairline: rgba(15, 23, 42, 0.09);
+    --border-gold: rgba(201, 162, 39, 0.38);
 
-    --gold-primary: #997A15;
-    --gold-light: #B8860B;
-    --gold-dark: #755B00;
-    --gold-muted: rgba(153, 122, 21, 0.08);
-    --gold-glow: rgba(153, 122, 21, 0.18);
+    --gold-primary: #B38612;
+    --gold-secondary: #997A15;
+    --gold-light: #C9A227;
+    --gold-soft: #D4AF37;
+    --gold-dark: #7A5C00;
+    --gold-muted: rgba(179, 134, 18, 0.09);
+    --gold-glow: rgba(179, 134, 18, 0.18);
 
-    --text-primary: #0F172A;
-    --text-secondary: #334155;
-    --text-muted: #64748B;
+    --glass-subtle: rgba(255, 255, 255, 0.72);
+    --glass-medium: rgba(255, 255, 255, 0.88);
+    --glass-strong: rgba(255, 255, 255, 0.96);
+    --glass-border: rgba(15, 23, 42, 0.08);
+    --glass-gold-border: rgba(179, 134, 18, 0.32);
+
+    --text-primary: #0A0A0C;
+    --text-secondary: #3F3F46;
+    --text-muted: #71717A;
 
     --status-emerald: #059669;
     --status-amber: #D97706;
@@ -35,24 +44,33 @@
   }
 
   .dark {
-    /* Obsidian & Gilded Precision (Dark Mode) */
-    --canvas-bg: #0B0B0C;
-    --surface-elevated: #121214;
-    --surface-overlay: #18181B;
-    --surface-interactive: #202023;
-    --surface-low: #0E0E0F;
+    /* Obsidian & Liquid Glass (Dark Mode) */
+    --canvas-bg: #050505;
+    --surface-elevated: #121216;
+    --surface-overlay: #18181D;
+    --surface-interactive: #1E1E24;
+    --surface-low: #0A0A0C;
+    --surface-card: #0E0E11;
 
-    --border-hairline: #27272A;
-    --border-gold: rgba(212, 175, 55, 0.35);
+    --border-hairline: rgba(255, 255, 255, 0.08);
+    --border-gold: rgba(201, 162, 39, 0.30);
 
-    --gold-primary: #D4AF37;
-    --gold-light: #F2CA50;
+    --gold-primary: #C9A227;
+    --gold-secondary: #D4AF37;
+    --gold-light: #E6C866;
+    --gold-soft: #F3E5AB;
     --gold-dark: #997A15;
-    --gold-muted: rgba(212, 175, 55, 0.12);
-    --gold-glow: rgba(212, 175, 55, 0.25);
+    --gold-muted: rgba(201, 162, 39, 0.12);
+    --gold-glow: rgba(201, 162, 39, 0.22);
+
+    --glass-subtle: rgba(255, 255, 255, 0.035);
+    --glass-medium: rgba(255, 255, 255, 0.06);
+    --glass-strong: rgba(255, 255, 255, 0.10);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-gold-border: rgba(201, 162, 39, 0.30);
 
     --text-primary: #FFFFFF;
-    --text-secondary: #94A3B8;
+    --text-secondary: #A1A1AA;
     --text-muted: #71717A;
 
     --status-emerald: #10B981;
@@ -94,13 +112,51 @@
   }
 }
 
+/* Liquid Glass Utilities */
+.glass-panel {
+  background: var(--glass-subtle);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-panel-hover {
+  transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-panel-hover:hover {
+  background: var(--glass-medium);
+  border-color: var(--glass-gold-border);
+  box-shadow: 0 12px 36px -10px rgba(0, 0, 0, 0.45);
+}
+
+.glass-nav {
+  background: var(--glass-medium);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+}
+
+.dark .ambient-glow-gold {
+  background: radial-gradient(ellipse 70% 50% at 50% -10%, rgba(201, 162, 39, 0.12) 0%, transparent 70%);
+}
+
+.ambient-glow-gold {
+  background: radial-gradient(ellipse 70% 50% at 50% -10%, rgba(179, 134, 18, 0.08) 0%, transparent 70%);
+}
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-primary) 50%, var(--gold-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 /* RTL Specific Typography and Layout Adjustments */
 [dir="rtl"] {
   font-family: var(--font-arabic);
 }
 
 [dir="rtl"] body {
-  line-height: 1.75;
+  line-height: 1.85;
 }
 
 [dir="rtl"] .font-serif {
@@ -123,7 +179,7 @@
 
 ::-webkit-scrollbar-thumb {
   background: var(--border-hairline);
-  border-radius: 0px;
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {

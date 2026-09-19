@@ -10,7 +10,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [0.9.1] - 2026-09-19
+## [1.0.0] - 2026-09-19 — Obsidian + Liquid Glass + Royal Gold Redesign
+
+### Added
+- **Obsidian + Liquid Glass + Royal Gold Visual System:**
+  - Implemented bespoke luxury color palette in `tailwind.config.ts`: Obsidian (`#050505`, `#0A0A0C`, `#0E0E11`, `#121216`), Royal Gold (`#C9A227`, `#D4AF37`, `#E6C866`), and Porcelain Sovereign (`#FBFBFC`) light theme.
+  - Engineered `GlassPanel.tsx` reusable translucent glass primitive with controlled blur (`16px`/`24px`), border reflections, and ambient gold hover glow.
+  - Added CSS design tokens and utilities in `app/globals.css`: `.glass-panel`, `.glass-panel-hover`, `.glass-nav`, `.ambient-glow-gold`, `.text-gold-gradient`.
+  - Built `ProjectPreviewGraphic.tsx`: Authentic engineered interface previews for all 5 verified projects (`Campus IT Tracker` network topology & ITIL desk, `MetaAlgorithm Lab` convergence graph, `Graduation Project Portal` review lifecycle, `Cafena` roastery cart, and `NovaTech` enterprise portal).
+- **Core App Shell & Navigation:**
+  - Redesigned `Navbar.tsx` into a floating liquid glass capsule island (`fixed top-0 inset-x-0 pt-3 max-w-5xl z-50`) with backdrop blur, centered editorial links, scroll elevation, and mobile drawer.
+  - Added top layout clearance in `app/[locale]/layout.tsx` (`pt-20 sm:pt-24`) to eliminate collision with floating navbar.
+  - Redesigned `Footer.tsx` with minimal liquid glass border, verified status ticker, and clean GitHub/LinkedIn anchors.
+  - Upgraded `ThemeToggle.tsx` with liquid glass styling and rounded-lg borders.
+- **Monumental Homepage & Editorial Hierarchy:**
+  - Upgraded Hero typography: Monumental clamp title `ABDULGHANI AL-SHIBAMI` (`text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem]`) with royal gold text gradient, role statement, and dual high-contrast action buttons.
+  - Framed authentic profile portrait in an integrated cinematic glass frame with subtle gold edge, status ticker (`AVAILABLE FOR HIRE`), and dark gradient vignette.
+  - Replaced isolated cards in Systems Telemetry with a unified horizontal floating liquid glass metric bar.
+  - Rebuilt Featured Projects section into an editorial product launch showcase featuring `Campus IT Tracker` flagship and asymmetrical secondary panels.
+  - Upgraded Architectural Competencies into distinct glass panels with gold kickers.
+  - Rebuilt Contact section into a centered, minimal liquid glass invitation with direct Supabase connection.
+- **Case Studies & Demo Shell:**
+  - Replaced boxy cards in `ProblemSolutionSection.tsx` and `ChallengesResultsSection.tsx` with open editorial case-study layouts and liquid glass spotlight panels.
+  - Upgraded `DemoCalloutBanner.tsx` with luxury gold ambient glow and high-contrast launch action.
+  - Modernized `DemoShell.tsx`: Replaced obsolete `x64 SIM` and simulated host strings with authentic `INTERACTIVE SIMULATION` badge and liquid glass frame.
+  - Fixed Windows case-insensitive `.gitignore` bug by anchoring `/Projects/` to the repository root.
 
 ### Added
 - **Supabase Production Client & Zero-Failure Fallback:**

@@ -1,6 +1,5 @@
 import React from "react";
 import { CaseStudy, Locale } from "@/types/project";
-import { Card } from "@/components/ui/Card";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Check, ChevronRight } from "lucide-react";
 
@@ -28,29 +27,29 @@ export const ChallengesResultsSection: React.FC<ChallengesResultsSectionProps> =
       />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {/* Constraints Card */}
-        <Card cornerBrackets className="border-hairline bg-surface p-6 sm:p-8 space-y-4">
-          <div className="font-mono text-[10px] text-status-amber uppercase tracking-wider font-semibold">
+        {/* Constraints Panel */}
+        <div className="rounded-2xl border border-glass-border bg-obsidian-card/70 backdrop-blur-md p-6 sm:p-8 space-y-4 shadow-glass">
+          <div className="font-mono text-xs text-status-amber uppercase tracking-wider font-semibold">
             {"// "}{isRtl ? "عقبات بيئة التشغيل المعالجة" : "CONSTRAINTS OVERCOME"}
           </div>
 
           <h4 className="font-serif text-2xl font-normal text-content-primary">
-            {isRtl ? "تحديات المعمارية والتنفيذ" : "Low-Level Runtime Bottlenecks"}
+            {isRtl ? "تحديات المعمارية والتنفيذ" : "Runtime Bottlenecks Resolved"}
           </h4>
 
-          <ul className="space-y-3 font-mono text-xs text-content-secondary">
+          <ul className="space-y-3 font-mono text-xs sm:text-sm text-content-secondary">
             {caseStudy.challenges[locale].map((challenge, idx) => (
-              <li key={idx} className="flex items-start gap-2">
-                <ChevronRight className="w-3.5 h-3.5 text-status-amber shrink-0 mt-0.5 rtl:rotate-180" />
+              <li key={idx} className="flex items-start gap-2.5">
+                <ChevronRight className="w-4 h-4 text-status-amber shrink-0 mt-0.5 rtl:rotate-180" />
                 <span className="leading-relaxed">{challenge}</span>
               </li>
             ))}
           </ul>
-        </Card>
+        </div>
 
-        {/* Outcomes Card */}
-        <Card cornerBrackets className="border-gold/30 bg-gold/5 p-6 sm:p-8 space-y-4">
-          <div className="font-mono text-[10px] text-gold uppercase tracking-wider font-semibold">
+        {/* Outcomes Panel */}
+        <div className="rounded-2xl border border-gold/40 bg-gradient-to-b from-gold/10 via-obsidian-card/80 to-obsidian-card/70 backdrop-blur-md p-6 sm:p-8 space-y-4 shadow-gold-ambient">
+          <div className="font-mono text-xs text-gold uppercase tracking-wider font-semibold">
             {"// "}{isRtl ? "المخرجات التجريبية الموثقة" : "EMPIRICAL OUTCOMES"}
           </div>
 
@@ -58,15 +57,15 @@ export const ChallengesResultsSection: React.FC<ChallengesResultsSectionProps> =
             {isRtl ? "النتائج المعيارية المحققة" : "Production Invariants Verified"}
           </h4>
 
-          <ul className="space-y-3 font-mono text-xs text-content-primary">
+          <ul className="space-y-3 font-mono text-xs sm:text-sm text-content-primary">
             {caseStudy.results[locale].map((result, idx) => (
-              <li key={idx} className="flex items-start gap-2">
-                <Check className="w-3.5 h-3.5 text-status-emerald shrink-0 mt-0.5" />
+              <li key={idx} className="flex items-start gap-2.5">
+                <Check className="w-4 h-4 text-status-emerald shrink-0 mt-0.5" />
                 <span className="leading-relaxed">{result}</span>
               </li>
             ))}
           </ul>
-        </Card>
+        </div>
       </div>
     </div>
   );

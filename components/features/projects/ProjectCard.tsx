@@ -1,10 +1,10 @@
 import React from "react";
 import Link from "next/link";
 import { Project, Locale } from "@/types/project";
-import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { TechnologyBadge } from "./TechnologyBadge";
+import { ProjectPreviewGraphic } from "./ProjectPreviewGraphic";
 import { cn } from "@/lib/utils";
 
 interface ProjectCardProps {
@@ -28,22 +28,20 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   const detailUrl = `/${locale}/projects/${project.slug}`;
 
   return (
-    <Card
-      cornerBrackets
-      hoverEffect
+    <div
       className={cn(
-        "flex flex-col justify-between transition-all duration-300 group",
+        "rounded-xl border transition-all duration-300 group flex flex-col justify-between overflow-hidden",
         isFeaturedHero
-          ? "border-gold/40 bg-gold/5 p-6 sm:p-8"
-          : "border-hairline bg-surface p-6",
+          ? "border-gold/40 bg-gradient-to-b from-obsidian-card/90 via-obsidian-card/80 to-obsidian/95 p-6 sm:p-8 md:p-10 shadow-gold-ambient hover:border-gold"
+          : "border-glass-border bg-obsidian-card/60 backdrop-blur-md p-6 hover:border-gold/40 hover:shadow-gold-ambient",
         className
       )}
     >
-      <div className="space-y-4">
+      <div className="space-y-5">
         {/* Card Header: Category Kicker, Status, & Year */}
-        <div className="flex items-center justify-between gap-2 border-b border-hairline/60 pb-3">
+        <div className="flex items-center justify-between gap-3 border-b border-glass-border/70 pb-3.5">
           <div className="flex items-center gap-2">
-            <span className="font-mono text-[10px] text-gold uppercase tracking-wider font-semibold">
+            <span className="font-mono text-[11px] text-gold uppercase tracking-wider font-semibold">
               {"// "}{categoryName || project.categorySlug}
             </span>
           </div>
@@ -64,8 +62,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           <Link href={detailUrl} className="group/title block">
             <h3
               className={cn(
-                "font-serif font-normal text-content-primary group-hover/title:text-gold transition-colors",
-                isFeaturedHero ? "text-2xl sm:text-3xl" : "text-xl sm:text-2xl"
+                "font-serif font-normal text-content-primary group-hover/title:text-gold transition-colors tracking-tight",
+                isFeaturedHero ? "text-2xl sm:text-3xl lg:text-4xl" : "text-xl sm:text-2xl"
               )}
             >
               {title}
@@ -73,13 +71,18 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           </Link>
         </div>
 
+        {/* Engineered Interface Preview Graphic */}
+        <div className="pt-1">
+          <ProjectPreviewGraphic slug={project.slug} locale={locale} />
+        </div>
+
         {/* Project Description */}
-        <p className="text-content-secondary text-xs sm:text-sm leading-relaxed line-clamp-3">
+        <p className="text-content-secondary text-sm sm:text-base leading-relaxed line-clamp-3">
           {desc}
         </p>
 
         {/* Technology Badges */}
-        <div className="flex flex-wrap gap-1.5 pt-2">
+        <div className="flex flex-wrap gap-1.5 pt-1">
           {project.technologies.slice(0, isFeaturedHero ? 6 : 4).map((tech) => (
             <TechnologyBadge key={tech.id} technology={tech} size="xs" />
           ))}
@@ -92,10 +95,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
       </div>
 
       {/* Card Actions Footer */}
-      <div className="pt-6 mt-4 border-t border-hairline/50 flex flex-wrap items-center justify-between gap-3">
+      <div className="pt-6 mt-6 border-t border-glass-border/60 flex flex-wrap items-center justify-between gap-3">
         <Link href={detailUrl} className="shrink-0">
           <Button variant="secondary" size="sm">
-            <span>{isRtl ? "الدراسة المعمارية" : "Architectural Dossier"}</span>
+            <span>{isRtl ? "الدراسة المعمارية" : "Case Study Dossier"}</span>
             <span className={cn("text-xs transition-transform group-hover:translate-x-1", isRtl && "rotate-180")}>
               →
             </span>
@@ -123,6 +126,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           </Link>
         )}
       </div>
-    </Card>
+    </div>
   );
 };

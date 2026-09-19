@@ -54,7 +54,7 @@ export default async function LocaleLayout({
       />
       <LocaleHtmlSync locale={currentLocale} />
       <Navbar locale={currentLocale} dict={dict} />
-      <main className="flex-1 w-full">{children}</main>
+      <main className="flex-1 w-full pt-20 sm:pt-24">{children}</main>
       <Footer dict={dict} />
     </div>
   );

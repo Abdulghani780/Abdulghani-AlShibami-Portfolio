@@ -69,7 +69,7 @@ export const DemoCalloutBanner: React.FC<DemoCalloutBannerProps> = ({
   const demoUrl = project.demoUrl ? `/${locale}${project.demoUrl}` : `/${locale}/projects/${project.slug}/demo`;
 
   return (
-    <div className="border border-gold/50 bg-gold/5 dark:bg-gold/10 p-6 sm:p-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 transition-all hover:border-gold shadow-[0_0_30px_rgba(212,175,55,0.08)]">
+    <div className="rounded-2xl border border-gold/40 bg-gradient-to-r from-gold/15 via-obsidian-card/85 to-obsidian-card/75 backdrop-blur-xl p-6 sm:p-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 transition-all hover:border-gold shadow-gold-ambient">
       <div className="space-y-3 max-w-2xl">
         <div className="flex items-center gap-3">
           <Badge variant="gold" dot dotColor="emerald">
@@ -85,8 +85,8 @@ export const DemoCalloutBanner: React.FC<DemoCalloutBannerProps> = ({
               ? "محاكاة ويب تفاعلية"
               : "INTERACTIVE WEB SIMULATION"}
           </Badge>
-          <span className="font-mono text-[10px] text-gold font-semibold uppercase tracking-wider">
-            {"// "}{isRtl ? "المحرك متصل بالإنترنت" : "SANDBOX ONLINE"}
+          <span className="font-mono text-xs text-gold font-semibold uppercase tracking-wider">
+            {"// "}{isRtl ? "بيئة المحاكاة جاهزة" : "SANDBOX ONLINE"}
           </span>
         </div>
 
@@ -94,14 +94,14 @@ export const DemoCalloutBanner: React.FC<DemoCalloutBannerProps> = ({
           {bannerTitle}
         </h3>
 
-        <p className="text-content-secondary text-xs sm:text-sm leading-relaxed">
+        <p className="text-content-secondary text-sm sm:text-base leading-relaxed">
           {bannerDesc}
         </p>
       </div>
 
-      <div className="shrink-0">
-        <Link href={demoUrl}>
-          <Button variant="primary" size="lg">
+      <div className="shrink-0 w-full lg:w-auto">
+        <Link href={demoUrl} className="w-full block">
+          <Button variant="primary" size="lg" className="w-full lg:w-auto shadow-gold-ambient">
             <span>
               {project.demoType === "real_live"
                 ? isRtl

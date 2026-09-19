@@ -75,7 +75,7 @@ export const ProjectCatalogView: React.FC<ProjectCatalogViewProps> = ({
       {/* Featured Spotlight Card */}
       {heroProject && (
         <div className="space-y-3">
-          <div className="font-mono text-[10px] text-gold uppercase tracking-[0.2em] font-semibold">
+          <div className="font-mono text-xs text-gold uppercase tracking-[0.2em] font-semibold">
             {"// "}{isRtl ? "النظام الرئيسي المعتمد" : "FEATURED FLAGSHIP ARCHITECTURE"}
           </div>
           <ProjectCard
@@ -101,8 +101,8 @@ export const ProjectCatalogView: React.FC<ProjectCatalogViewProps> = ({
         </div>
       ) : (
         /* Empty State */
-        <div className="border border-hairline bg-surface p-12 text-center space-y-4">
-          <div className="font-mono text-xs text-gold uppercase tracking-widest">
+        <div className="rounded-xl border border-glass-border bg-obsidian-card/70 backdrop-blur-md p-12 text-center space-y-4 shadow-glass">
+          <div className="font-mono text-xs text-gold uppercase tracking-widest font-semibold">
             {isRtl ? "// لا توجد أنظمة مطابقة" : "// 0 SYSTEMS MATCHED"}
           </div>
           <h4 className="font-serif text-2xl font-normal text-content-primary">

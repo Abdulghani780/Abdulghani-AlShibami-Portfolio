@@ -393,3 +393,38 @@
   - `pnpm lint` passed (0 errors, 0 warnings).
   - `pnpm build` passed (30/30 static pages prerendered).
 - **Status:** Completed.
+
+---
+
+## [2026-09-19] Entry 012 — Master Redesign: Obsidian + Liquid Glass + Royal Gold Visual Overhaul
+- **Phase:** MASTER DESIGN OVERHAUL — Obsidian + Liquid Glass + Royal Gold Redesign
+- **Task:** TSK-120 (Visual & UX Redesign under Official Design Direction)
+- **Objective:** Transform the portfolio's visual identity into a premium, technically sophisticated portfolio under the official design direction: Obsidian surfaces (`#050505`, `#0A0A0C`), Liquid Glass (`rgba(255,255,255,0.035–0.07)`), and Royal Gold highlights (`#C9A227`, `#D4AF37`). Elevate typography with monumental clamp sizing (64–96px desktop), eliminate "everything is a card", implement floating liquid glass navbar, product launch project presentations, and fix Light Mode button contrast.
+- **Files Created / Updated:**
+  - `tailwind.config.ts`: Added Obsidian palette (`#050505` to `#18181F`), Royal Gold scale, Liquid Glass tokens, custom shadows, and content paths.
+  - `app/globals.css`: Defined CSS variables for `:root` (Porcelain Sovereign `#FBFBFC`) and `.dark` (Obsidian `#050505`), glass utilities, ambient glow, gold text gradient, and custom scrollbars.
+  - `components/ui/GlassPanel.tsx`: Created reusable liquid glass panel primitive with controlled blur, border reflections, and ambient gold hover glow.
+  - `components/ui/Button.tsx`: Added `glass` and `gold-outline` variants; fixed Light Mode text contrast bug; added active state micro-interactions.
+  - `components/ui/SectionHeading.tsx`: Monumental responsive display sizing with refined gold kicker.
+  - `components/layout/Navbar.tsx`: Floating liquid glass capsule island (`fixed top-0 inset-x-0 pt-3 max-w-5xl z-50`), translucent backdrop blur, centered editorial links, dynamic scroll elevation, and mobile drawer.
+  - `app/[locale]/layout.tsx`: Added `pt-20 sm:pt-24` top layout clearance for floating navbar.
+  - `components/layout/Footer.tsx`: Redesigned with minimal liquid glass border, verified status ticker, and clean social anchors.
+  - `components/layout/ThemeToggle.tsx`: Upgraded with liquid glass styling and rounded-lg borders.
+  - `app/[locale]/page.tsx`: Monumental hero headline with gold gradient (`ABDULGHANI AL-SHIBAMI`), integrated authentic portrait in glass frame with `AVAILABLE FOR HIRE` status, horizontal floating glass telemetry horizon, product launch featured showcase, categorized competencies spectrum, and minimal liquid glass contact invitation.
+  - `components/features/projects/ProjectPreviewGraphic.tsx`: Created authentic engineered interface previews for all 5 verified projects.
+  - `components/features/projects/ProjectCard.tsx`: Redesigned with `GlassPanel`, `ProjectPreviewGraphic`, clear typography, and dual actions.
+  - `components/features/projects/ProjectCatalogView.tsx` & `ProjectFilters.tsx`: Upgraded with liquid glass panels and refined search inputs.
+  - `components/features/projects/case-study/ProblemSolutionSection.tsx` & `ChallengesResultsSection.tsx`: Open editorial case-study layouts replacing boxed cards.
+  - `components/features/projects/case-study/DemoCalloutBanner.tsx`: Luxury gold ambient glow and high-contrast launch action.
+  - `demos/shared/DemoShell.tsx`: Replaced obsolete `x64 SIM` with authentic `INTERACTIVE SIMULATION` badge and liquid glass window frame.
+  - `.gitignore`: Anchored `/Projects/` to root to resolve Windows case-insensitive component directory ignore bug.
+- **Verification Results:**
+  - `pnpm typecheck` passed (0 errors).
+  - `pnpm lint` passed (0 errors, 0 warnings).
+  - `pnpm build` passed (all 30 static pages prerendered).
+  - Browser QA (Chrome DevTools MCP):
+    - Verified Desktop 1536px (Dark Mode & Light Mode): Monumental typography, liquid glass navbar, telemetry horizon, project previews, contact form.
+    - Verified Arabic RTL 1536px: Correct text alignment, mirrored badge order, proper return flow.
+    - Verified Mobile 393px: Zero horizontal overflow (`scrollWidth === clientWidth`), responsive hamburger navigation, comfortable reading typography.
+    - Console messages: 0 errors, 0 hydration warnings.
+- **Status:** Completed. Ready for Git commit and deployment.
