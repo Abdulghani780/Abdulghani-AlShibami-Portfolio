@@ -1,9 +1,11 @@
 import React from "react";
 import { notFound } from "next/navigation";
-import { dictionaries, Locale } from "@/lib/i18n/dictionaries";
-import { projectRepository } from "@/lib/services/projectRepository";
-import { ReferenceLeftColumn } from "@/components/reference/ReferenceLeftColumn";
-import { ReferenceRightColumn } from "@/components/reference/ReferenceRightColumn";
+import { Locale } from "@/lib/i18n/dictionaries";
+import { CanonicalHero } from "@/components/canonical/CanonicalHero";
+import { CanonicalProjectsBento } from "@/components/canonical/CanonicalProjectsBento";
+import { CanonicalDesktopSimulator } from "@/components/canonical/CanonicalDesktopSimulator";
+import { CanonicalDemoStudio } from "@/components/canonical/CanonicalDemoStudio";
+import { CanonicalFooter } from "@/components/canonical/CanonicalFooter";
 
 export default async function HomePage({
   params,
@@ -16,34 +18,32 @@ export default async function HomePage({
   }
 
   const currentLocale = locale as Locale;
-  const dict = dictionaries[currentLocale];
-
-  const projects = await projectRepository.getProjects();
 
   return (
-    <div className="relative min-h-screen w-full bg-[#05080E] dark:bg-[#05080E] bg-zinc-100 text-white dark:text-white text-zinc-900 overflow-x-hidden selection:bg-[#00FF9D]/30 selection:text-[#00FF9D] transition-colors duration-200">
-      {/* Background Subtle Monospace Grid Overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[linear-gradient(to_right,rgba(0,0,0,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.04)_1px,transparent_1px)] bg-[size:3rem_3rem] pointer-events-none" />
-
-      {/* Subtle Ambient Radial Lighting */}
-      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#00FF9D]/[0.03] dark:bg-[#00FF9D]/[0.04] rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/3 right-1/4 translate-x-1/2 w-96 h-96 bg-[#00FF9D]/[0.02] dark:bg-[#00FF9D]/[0.03] rounded-full blur-3xl pointer-events-none" />
-
+    <div className="relative min-h-screen w-full bg-[#04070D] text-white overflow-x-hidden selection:bg-[#00FF9D]/30 selection:text-[#00FF9D]">
       {/* ─────────────────────────────────────────────────────────────
-          MASTER DESKTOP DUAL-COLUMN COMMAND CENTER (1536x1024 BLUEPRINT)
-          Left Column (~49%) + Right Column (~49%) with controlled gutter
+          CANONICAL FRONTEND REPLACEMENT (FROM APPROVED VISUAL REFERENCES)
+          1. Hero Command Center (new/portfolio_hero_concept.jpg)
+          2. Flagship Projects Showcase Bento Grid (new/projects_showcase_grid.jpg)
+          3. Live Desktop OS Workstation Sandbox (new/desktop_demo_simulation.jpg)
+          4. Live Interactive Demo Studio (new/live_demo_studio.jpg)
+          5. Canonical Footer & Contact (new/projects_showcase_grid.jpg)
       ───────────────────────────────────────────────────────────── */}
-      <main className="relative z-10 w-full max-w-[1580px] mx-auto p-3 sm:p-5 lg:p-6 grid grid-cols-1 xl:grid-cols-2 gap-5 lg:gap-6 min-h-screen items-stretch">
-        <ReferenceLeftColumn
-          locale={currentLocale}
-          dict={dict}
-          projects={projects}
-        />
-        <ReferenceRightColumn
-          locale={currentLocale}
-          dict={dict}
-          projects={projects}
-        />
+      <main className="w-full">
+        {/* Section 1: Hero Command Center */}
+        <CanonicalHero locale={currentLocale} />
+
+        {/* Section 2: Projects Showcase Bento Grid */}
+        <CanonicalProjectsBento locale={currentLocale} />
+
+        {/* Section 3: Native Desktop OS Workstation Sandbox */}
+        <CanonicalDesktopSimulator locale={currentLocale} />
+
+        {/* Section 4: Multi-Workstation Dual Simulation Studio */}
+        <CanonicalDemoStudio locale={currentLocale} />
+
+        {/* Section 5: Canonical Footer & Contact */}
+        <CanonicalFooter locale={currentLocale} />
       </main>
     </div>
   );
