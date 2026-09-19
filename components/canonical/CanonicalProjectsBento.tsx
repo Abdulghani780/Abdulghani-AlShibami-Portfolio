@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Locale } from "@/lib/i18n/dictionaries";
+import { PROJECTS as BASE_PROJECTS } from "@/lib/data/projectsData";
 
 interface CanonicalProjectsBentoProps {
   locale: Locale;
@@ -26,81 +27,92 @@ interface Project {
   githubUrl: string;
 }
 
-const PROJECTS: Project[] = [
+const BENTO_METRICS: Record<
+  string,
   {
-    slug: "campus-it-tracker",
-    name: "Campus IT Tracker",
-    nameAr: "نظام تتبع البنية التحتية",
-    stack: ["C# .NET", "Oracle DB", "WinForms"],
+    badge: string;
+    img?: string;
+    metric1Label: string;
+    metric1Value: string;
+    metric2Label: string;
+    metric2Value: string;
+    accentColor: string;
+    featured?: boolean;
+  }
+> = {
+  "campus-it-tracker": {
     badge: "INTERACTIVE SIMULATION",
     img: "/images/projects/campus-it-tracker/01-dashboard.webp",
     metric1Label: "Assets",
     metric1Value: "1,450+",
     metric2Label: "Helpdesk",
     metric2Value: "21 Active",
-    demoType: "INTERACTIVE SIMULATION",
     accentColor: "#00FF9D",
     featured: true,
-    githubUrl: "https://github.com/Abdulghani780/Campuse-IT-Tracker",
   },
-  {
-    slug: "metaalgorithm-lab",
-    name: "MetaAlgorithm Lab",
-    nameAr: "مختبر الميتا-خوارزمي",
-    stack: ["Python", "C++", "Qt", "Docker"],
+  "metaalgorithm-lab": {
     badge: "INTERACTIVE SIMULATION",
     metric1Label: "Algorithms",
     metric1Value: "12 + Types",
     metric2Label: "WASM Core",
     metric2Value: "86% Bench",
-    demoType: "INTERACTIVE SIMULATION",
     accentColor: "#00F0FF",
-    githubUrl: "https://github.com/Abdulghani780/MetaAlgorithmLab",
   },
-  {
-    slug: "cafena",
-    name: "Cafena Coffee Suite",
-    nameAr: "منظومة كافينا للكافيه",
-    stack: ["HTML/CSS", "JavaScript"],
+  cafena: {
     badge: "INTERACTIVE SIMULATION",
     img: "/images/projects/cafena/01-storefront-hero.webp",
     metric1Label: "Sales",
     metric1Value: "$12,650",
     metric2Label: "Orders",
     metric2Value: "412 / day",
-    demoType: "INTERACTIVE SIMULATION",
     accentColor: "#FFBD2E",
-    githubUrl: "https://github.com/Abdulghani780/Cafena",
   },
-  {
-    slug: "novatech",
-    name: "NovaTech Cloud Store",
-    nameAr: "متجر نوفاتك السحابي",
-    stack: ["HTML/CSS", "JavaScript"],
+  novatech: {
     badge: "INTERACTIVE SIMULATION",
     metric1Label: "Products",
     metric1Value: "350 SKUs",
     metric2Label: "Uptime",
     metric2Value: "99.8%",
-    demoType: "INTERACTIVE SIMULATION",
     accentColor: "#00F0FF",
-    githubUrl: "https://github.com/Abdulghani780/NovaTech",
   },
-  {
-    slug: "gp",
-    name: "GP Graduation Platform",
-    nameAr: "منصة مشاريع التخرج",
-    stack: ["PHP", "MySQL", "Bootstrap"],
+  gp: {
     badge: "INTERACTIVE SIMULATION",
     metric1Label: "Students",
     metric1Value: "Active Queue",
     metric2Label: "Defense",
     metric2Value: "Stage 3/4",
-    demoType: "INTERACTIVE SIMULATION",
     accentColor: "#00FF9D",
-    githubUrl: "https://github.com/Abdulghani780/Graduation-Project-Management-Portal",
   },
+};
+
+const BENTO_SLUGS = [
+  "campus-it-tracker",
+  "metaalgorithm-lab",
+  "cafena",
+  "novatech",
+  "gp",
 ];
+
+const PROJECTS: Project[] = BENTO_SLUGS.map((slug) => {
+  const bp = BASE_PROJECTS.find((p) => p.slug === slug);
+  const meta = BENTO_METRICS[slug];
+  return {
+    slug,
+    name: bp ? bp.title.en : slug,
+    nameAr: bp ? bp.title.ar : slug,
+    stack: bp ? bp.technologies.map((t) => t.name) : [],
+    badge: meta?.badge || "INTERACTIVE SIMULATION",
+    img: meta?.img,
+    metric1Label: meta?.metric1Label || "Metric",
+    metric1Value: meta?.metric1Value || "100%",
+    metric2Label: meta?.metric2Label || "Status",
+    metric2Value: meta?.metric2Value || "Active",
+    demoType: "INTERACTIVE SIMULATION",
+    accentColor: meta?.accentColor || "#00FF9D",
+    featured: meta?.featured,
+    githubUrl: bp?.githubUrl || "https://github.com/Abdulghani780",
+  };
+});
 
 const BADGE_COLORS: Record<string, string> = {
   "INTERACTIVE SIMULATION": "bg-[#00FF9D]/10 text-[#00FF9D] border-[#00FF9D]/30",
