@@ -370,5 +370,26 @@
   - `c:\my projects\Portifilo\Projects\` remained 100% read-only and uncommitted.
 - **Status:** Completed. Ready for owner repository creation and remote push.
 
+---
 
-
+## [2026-09-19] Entry 011 — UI/UX Vector Polish & Supabase Production Connection (Options 1 & 3)
+- **Phase:** POLISH & INFRASTRUCTURE INTEGRATION (OPTIONS 1 & 3)
+- **Task:** TSK-111 (Vector Iconography, Accessible Controls, Supabase Client & Resilient Service Layer)
+- **Objective:** Apply `ui-ux-pro-max` and `ui-styling` guidelines to replace all emojis with bespoke Lucide SVG icons, implement focus rings, transitions, and accessible cursor interactions; connect Supabase project `eusqacvumjordvthezen` with typed client and zero-failure local fallback in `projectRepository.ts`; wire `ContactForm.tsx` to `contact_messages` table.
+- **Files Created / Updated:**
+  - `lib/supabase/client.ts`: Created typed browser client supporting `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` with safe fallback.
+  - `lib/supabase/server.ts`: Created typed server client.
+  - `lib/services/projectRepository.ts`: Implemented `HybridProjectRepository` with zero-failure local fallback.
+  - `components/features/ContactForm.tsx`: Wired form to Supabase `contact_messages` table with loading state, icons, and resilient feedback.
+  - `demos/simulations/CafenaSimulation.tsx`: Replaced emojis with Lucide vector icons (`Coffee`, `Flame`, `Snowflake`, `CupSoda`, `Package`, `Cookie`), added `cursor-pointer`, `:focus-visible` rings, and smooth micro-interactions.
+  - `demos/simulations/NovaTechSimulation.tsx`: Replaced emojis with Lucide vector icons (`Headphones`, `Watch`, `Glasses`, `Mouse`, `Radio`, `Keyboard`), refined hover glow, focus rings, and drawer interactions.
+  - `demos/simulations/GpSimulation.tsx`: Replaced role switcher emojis with `GraduationCap` and `Scale`, and modal close button with `X`.
+  - `demos/simulations/MetaAlgorithmLabSimulation.tsx`: Replaced unicode cross with Lucide `X`.
+  - `components/features/projects/case-study/ChallengesResultsSection.tsx`: Replaced unicode checks with Lucide `Check` and `ChevronRight`.
+  - `components/features/projects/case-study/ArchitectureTopology.tsx`: Replaced unicode arrows and checks with Lucide `ArrowRight`, `ArrowLeft`, and `Check`.
+  - `.env.example`: Documented `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`.
+- **Verification Results:**
+  - `pnpm typecheck` passed (0 errors).
+  - `pnpm lint` passed (0 errors, 0 warnings).
+  - `pnpm build` passed (30/30 static pages prerendered).
+- **Status:** Completed.

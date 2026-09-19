@@ -20,6 +20,8 @@ import {
   ArrowRight,
   Sparkles,
   BookOpen,
+  Scale,
+  X,
 } from "lucide-react";
 
 interface GpProject {
@@ -219,26 +221,28 @@ export function GpSimulation({ locale = "en", isRtl = false }: DemoProps) {
               setActiveRole("student");
               if (activeView === "admin_queue") setActiveView("directory");
             }}
-            className={`px-2.5 py-1 rounded transition-colors ${
+            className={`px-2.5 py-1 rounded transition-colors flex items-center gap-1.5 cursor-pointer focus-visible:ring-2 focus-visible:ring-brand-gold/50 focus-visible:outline-none ${
               activeRole === "student"
-                ? "bg-brand-gold text-surface-dark font-bold"
+                ? "bg-brand-gold text-surface-dark font-bold shadow-sm"
                 : "text-text-muted hover:text-text-primary"
             }`}
           >
-            🎓 {isArabic ? "طالب" : "Student"}
+            <GraduationCap className="w-3.5 h-3.5" />
+            <span>{isArabic ? "طالب" : "Student"}</span>
           </button>
           <button
             onClick={() => {
               setActiveRole("admin");
               setActiveView("admin_queue");
             }}
-            className={`px-2.5 py-1 rounded transition-colors ${
+            className={`px-2.5 py-1 rounded transition-colors flex items-center gap-1.5 cursor-pointer focus-visible:ring-2 focus-visible:ring-brand-gold/50 focus-visible:outline-none ${
               activeRole === "admin"
-                ? "bg-brand-gold text-surface-dark font-bold"
+                ? "bg-brand-gold text-surface-dark font-bold shadow-sm"
                 : "text-text-muted hover:text-text-primary"
             }`}
           >
-            ⚖️ {isArabic ? "مشرف أكاديمي" : "Faculty Admin"}
+            <Scale className="w-3.5 h-3.5" />
+            <span>{isArabic ? "مشرف أكاديمي" : "Faculty Admin"}</span>
           </button>
         </div>
       }
@@ -594,9 +598,10 @@ export function GpSimulation({ locale = "en", isRtl = false }: DemoProps) {
                 </div>
                 <button
                   onClick={() => setSelectedProject(null)}
-                  className="p-1 rounded hover:bg-surface-secondary text-text-dim"
+                  className="p-1 rounded hover:bg-surface-secondary text-text-dim cursor-pointer"
+                  aria-label="Close Project Details"
                 >
-                  ✕
+                  <X className="w-4 h-4" />
                 </button>
               </div>
 

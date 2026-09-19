@@ -13,12 +13,26 @@ import {
   X,
   CheckCircle2,
   Sparkles,
-  ChevronRight,
   Star,
   Send,
   Receipt,
-  Heart,
+  Flame,
+  Snowflake,
+  CupSoda,
+  Package,
+  Cookie,
 } from "lucide-react";
+
+type CoffeeIconType =
+  | "espresso"
+  | "cappuccino"
+  | "latte"
+  | "v60"
+  | "coldbrew"
+  | "pistachio"
+  | "beans_harazi"
+  | "beans_ethiopian"
+  | "croissant";
 
 interface MenuItem {
   id: string;
@@ -31,12 +45,40 @@ interface MenuItem {
   descriptionAr: string;
   badgeEn?: string;
   badgeAr?: string;
-  imageEmoji: string;
+  iconType: CoffeeIconType;
 }
 
 interface CartItem {
   item: MenuItem;
   quantity: number;
+}
+
+function MenuIcon({
+  type,
+  className = "w-5 h-5 text-brand-gold",
+}: {
+  type: CoffeeIconType;
+  className?: string;
+}) {
+  switch (type) {
+    case "espresso":
+    case "cappuccino":
+      return <Coffee className={className} />;
+    case "latte":
+    case "pistachio":
+      return <CupSoda className={className} />;
+    case "v60":
+      return <Flame className={className} />;
+    case "coldbrew":
+      return <Snowflake className={className} />;
+    case "beans_harazi":
+    case "beans_ethiopian":
+      return <Package className={className} />;
+    case "croissant":
+      return <Cookie className={className} />;
+    default:
+      return <Coffee className={className} />;
+  }
 }
 
 export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
@@ -54,7 +96,7 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
       descriptionAr: "شوت مزدوج مركز ومحمص من حبوب بن إثيوبية عالية الارتفاع بنكهات زهرية وحمضية متوازنة.",
       badgeEn: "Signature",
       badgeAr: "مشروب التوقيع",
-      imageEmoji: "☕",
+      iconType: "espresso",
     },
     {
       id: "c2",
@@ -67,7 +109,7 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
       descriptionAr: "حليب طازج مبخر بقوام مخملي فوق إسبريسو مزدوج غني ومرشوش ببودرة الكاكاو العضوية.",
       badgeEn: "Best Seller",
       badgeAr: "الأكثر طلباً",
-      imageEmoji: "☕",
+      iconType: "cappuccino",
     },
     {
       id: "c3",
@@ -78,7 +120,7 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
       rating: 4.9,
       descriptionEn: "Smooth espresso blended with artisanal sweet condensed milk and homemade salted caramel drizzle.",
       descriptionAr: "إسبريسو سلس ممزوج بالحليب المكثف المحلي مع لمسات من صوص الكراميل المملح الخاص.",
-      imageEmoji: "🥛",
+      iconType: "latte",
     },
     {
       id: "c4",
@@ -91,7 +133,7 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
       descriptionAr: "استخلاص يدوي دقيق لحبوب البن الحرازي الأصيل بإيحاءات الكشمش الأسود والعسل الطبيعي.",
       badgeEn: "Reserve",
       badgeAr: "إصدار خاص",
-      imageEmoji: "🫗",
+      iconType: "v60",
     },
     {
       id: "c5",
@@ -104,7 +146,7 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
       descriptionAr: "استخلاص بطيء بالماء البارد لمدة ٢٤ ساعة لإنتاج قهوة خالية من المرارة بنكهات الشوكولاتة الداكنة.",
       badgeEn: "Summer Pick",
       badgeAr: "مفضل الصيف",
-      imageEmoji: "🧊",
+      iconType: "coldbrew",
     },
     {
       id: "c6",
@@ -115,7 +157,7 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
       rating: 4.7,
       descriptionEn: "Chilled fresh milk, authentic Iranian pistachio butter infusion, and a float of double espresso over ice.",
       descriptionAr: "حليب بارد ممزوج بكريمة الفستق الطبيعي الفاخرة مع شوت إسبريسو مسكوب بعناية فوق مكعبات الثلج.",
-      imageEmoji: "🥤",
+      iconType: "pistachio",
     },
     {
       id: "c7",
@@ -128,7 +170,7 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
       descriptionAr: "حبوب بن مختصة مجففة طبيعياً تحت أشعة الشمس على أسرة إفريقية في مرتفعات حراز الشاهقة.",
       badgeEn: "Micro-Lot",
       badgeAr: "محصول نادر",
-      imageEmoji: "🫘",
+      iconType: "beans_harazi",
     },
     {
       id: "c8",
@@ -139,7 +181,7 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
       rating: 4.9,
       descriptionEn: "Washed process Arabica with bright bergamot acidity, jasmine floral notes, and peach sweetness.",
       descriptionAr: "معالجة مغسولة تتميز بحمضية البرغموت المنعشة ونوتات الياسمين وحلاوة الخوخ الطازج.",
-      imageEmoji: "🫘",
+      iconType: "beans_ethiopian",
     },
     {
       id: "c9",
@@ -150,7 +192,7 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
       rating: 4.8,
       descriptionEn: "Flaky buttery French pastry filled with rich almond frangipane and topped with toasted sliced almonds.",
       descriptionAr: "معجنات فرنسية هشة ومقرمشة بالزبدة الطبيعية ومحشوة بكريمة اللوز ومغطاة بشرائح اللوز المحمص.",
-      imageEmoji: "🥐",
+      iconType: "croissant",
     },
   ];
 
@@ -161,7 +203,6 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
     { item: MENU_ITEMS[3], quantity: 1 },
   ]);
   const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
-  const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
   const [receiptModal, setReceiptModal] = useState<boolean>(false);
   const [activeTab, setActiveTab] = useState<"menu" | "story" | "contact">("menu");
   const [contactFeedback, setContactFeedback] = useState<string | null>(null);
@@ -197,21 +238,25 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
     setCart((prev) => prev.filter((ci) => ci.item.id !== itemId));
   };
 
-  const clearCart = () => setCart([]);
+  const clearCart = () => {
+    setCart([]);
+  };
 
-  const subtotal = cart.reduce((sum, ci) => sum + ci.item.price * ci.quantity, 0);
+  // Calculations
+  const subtotal = cart.reduce((acc, ci) => acc + ci.item.price * ci.quantity, 0);
   const vat = subtotal * 0.15;
   const total = subtotal + vat;
-  const totalCartCount = cart.reduce((sum, ci) => sum + ci.quantity, 0);
+  const totalItemsCount = cart.reduce((acc, ci) => acc + ci.quantity, 0);
 
-  // Filtered menu
+  // Filtered Items
   const filteredItems = MENU_ITEMS.filter((item) => {
-    const matchesCat = selectedCategory === "all" || item.category === selectedCategory;
+    const matchesCategory = selectedCategory === "all" || item.category === selectedCategory;
     const matchesSearch =
-      searchQuery.trim() === "" ||
       item.nameEn.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.nameAr.includes(searchQuery);
-    return matchesCat && matchesSearch;
+      item.nameAr.includes(searchQuery) ||
+      item.descriptionEn.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.descriptionAr.includes(searchQuery);
+    return matchesCategory && matchesSearch;
   });
 
   const handleReset = () => {
@@ -229,32 +274,35 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
 
   return (
     <DemoShell
-      title={isArabic ? "كافينا — مقهى القهوة الذهبية المختصة" : "Cafena — Artisanal Specialty Coffee Experience"}
+      title={isArabic ? "كافينا — منصة القهوة المختصة والتجارة الرقمية" : "CAFENA — Specialty Coffee Roastery & Storefront"}
       categoryName={isArabic ? "تطبيقات الويب والتجارة الإلكترونية" : "Web Platforms"}
       projectSlug="cafena"
       locale={locale}
       disclaimer={{
-        en: "This interactive showcase demonstrates the verified client-side web application of Cafena. All cart calculations, search indexing, and order receipts run locally in the browser sandbox.",
-        ar: "هذا العرض التفاعلي يحاكي تطبيق الويب المعتمد لكافينا (مقهى القهوة الذهبية). كافة عمليات السلة والبحث وحسابات الضرائب والفواتير تعمل محلياً داخل المتصفح.",
+        en: "This interactive simulation demonstrates the client-side catalog, real-time cart state, and order summary logic of the Cafena web platform. All transactions execute locally in your browser sandbox.",
+        ar: "هذا العرض التفاعلي يحاكي كتالوج المنتجات وسلة المشتريات وحساب الفواتير لمتجر كافينا. كافة العمليات تتم محلياً داخل المتصفح دون إرسال بيانات خارجية.",
       }}
       onReset={handleReset}
-      statusText="SANDBOX: OPERATIONAL"
+      statusText="STOREFRONT ONLINE // SANDBOX SESSION"
       statusItems={[
-        { label: isArabic ? "العناصر بالسلة" : "CART ITEMS", value: `${totalCartCount}` },
-        { label: isArabic ? "الإجمالي" : "TOTAL", value: `${total.toFixed(2)} SAR` },
+        { label: isArabic ? "عناصر السلة" : "CART COUNT", value: `${totalItemsCount}` },
+        { label: isArabic ? "المجموع" : "SUBTOTAL", value: `${subtotal.toFixed(2)} SAR` },
+        { label: isArabic ? "الإجمالي" : "FINAL TOTAL", value: `${total.toFixed(2)} SAR` },
       ]}
       toolbarActions={
         <div className="flex items-center gap-2">
-          {/* Quick Cart Trigger */}
           <button
-            onClick={() => setIsCartOpen(!isCartOpen)}
-            className="relative p-1.5 rounded-lg bg-surface border border-border text-brand-gold hover:bg-brand-gold/10 transition-colors"
-            title={isArabic ? "سلة المشتريات" : "Shopping Cart"}
+            onClick={() => setIsCartOpen(true)}
+            className="relative px-3 py-1.5 rounded-lg bg-surface-secondary border border-border hover:border-brand-gold/50 text-text-primary text-xs font-mono flex items-center gap-1.5 transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-brand-gold/50 focus-visible:outline-none"
+            aria-label="Open Shopping Cart"
           >
-            <ShoppingBag className="w-4 h-4" />
-            {totalCartCount > 0 && (
-              <span className="absolute -top-1.5 -right-1.5 bg-brand-gold text-surface-dark text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center shadow">
-                {totalCartCount}
+            <ShoppingBag className="w-3.5 h-3.5 text-brand-gold" />
+            <span className="hidden sm:inline font-bold">
+              {isArabic ? "السلة" : "Cart"}
+            </span>
+            {totalItemsCount > 0 && (
+              <span className="px-1.5 py-0.2 rounded-full bg-brand-gold text-surface-dark text-[10px] font-bold">
+                {totalItemsCount}
               </span>
             )}
           </button>
@@ -265,8 +313,8 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
         {/* Navigation Tabs Header */}
         <div className="flex items-center justify-between border-b border-border/80 pb-3 mb-5 flex-wrap gap-3">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full bg-brand-gold/15 border border-brand-gold/40 flex items-center justify-center text-brand-gold text-lg shadow-sm">
-              ☕
+            <div className="w-9 h-9 rounded-full bg-brand-gold/15 border border-brand-gold/40 flex items-center justify-center text-brand-gold shadow-sm shrink-0">
+              <Coffee className="w-5 h-5 text-brand-gold" />
             </div>
             <div>
               <div className="font-bold text-sm sm:text-base tracking-wide flex items-center gap-2">
@@ -285,7 +333,7 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
           <div className="flex items-center gap-1 bg-surface-secondary/70 p-1 rounded-lg border border-border text-xs font-medium">
             <button
               onClick={() => setActiveTab("menu")}
-              className={`px-3 py-1.5 rounded-md transition-all ${
+              className={`px-3 py-1.5 rounded-md transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-brand-gold/50 focus-visible:outline-none ${
                 activeTab === "menu"
                   ? "bg-brand-gold text-surface-dark font-bold shadow"
                   : "text-text-muted hover:text-text-primary"
@@ -295,7 +343,7 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
             </button>
             <button
               onClick={() => setActiveTab("story")}
-              className={`px-3 py-1.5 rounded-md transition-all ${
+              className={`px-3 py-1.5 rounded-md transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-brand-gold/50 focus-visible:outline-none ${
                 activeTab === "story"
                   ? "bg-brand-gold text-surface-dark font-bold shadow"
                   : "text-text-muted hover:text-text-primary"
@@ -305,7 +353,7 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
             </button>
             <button
               onClick={() => setActiveTab("contact")}
-              className={`px-3 py-1.5 rounded-md transition-all ${
+              className={`px-3 py-1.5 rounded-md transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-brand-gold/50 focus-visible:outline-none ${
                 activeTab === "contact"
                   ? "bg-brand-gold text-surface-dark font-bold shadow"
                   : "text-text-muted hover:text-text-primary"
@@ -333,7 +381,7 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
                   <button
                     key={cat.id}
                     onClick={() => setSelectedCategory(cat.id)}
-                    className={`px-2.5 py-1.5 rounded-lg whitespace-nowrap transition-colors text-xs font-mono ${
+                    className={`px-2.5 py-1.5 rounded-lg whitespace-nowrap transition-colors text-xs font-mono cursor-pointer focus-visible:ring-2 focus-visible:ring-brand-gold/50 focus-visible:outline-none ${
                       selectedCategory === cat.id
                         ? "bg-brand-gold/20 text-brand-gold border border-brand-gold/40 font-bold"
                         : "bg-surface border border-border/70 text-text-muted hover:text-text-primary"
@@ -346,18 +394,19 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
 
               {/* Instant Search Box */}
               <div className="relative min-w-[220px]">
-                <Search className="w-3.5 h-3.5 absolute top-1/2 -translate-y-1/2 left-3 rtl:left-auto rtl:right-3 text-text-dim" />
+                <Search className="w-3.5 h-3.5 absolute top-1/2 -translate-y-1/2 left-3 rtl:left-auto rtl:right-3 text-text-dim pointer-events-none" />
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder={isArabic ? "ابحث عن مشروب أو محصول..." : "Search coffee or roast..."}
-                  className="w-full bg-surface border border-border rounded-lg pl-8 pr-3 rtl:pl-3 rtl:pr-8 py-1.5 text-xs text-text-primary placeholder:text-text-dim focus:outline-none focus:border-brand-gold/50 transition-colors"
+                  className="w-full bg-surface border border-border rounded-lg pl-8 pr-3 rtl:pl-3 rtl:pr-8 py-1.5 text-xs text-text-primary placeholder:text-text-dim focus:outline-none focus:border-brand-gold/50 focus:ring-1 focus:ring-brand-gold/30 transition-colors"
                 />
                 {searchQuery && (
                   <button
                     onClick={() => setSearchQuery("")}
-                    className="absolute top-1/2 -translate-y-1/2 right-2.5 rtl:right-auto rtl:left-2.5 text-text-dim hover:text-text-primary"
+                    className="absolute top-1/2 -translate-y-1/2 right-2.5 rtl:right-auto rtl:left-2.5 text-text-dim hover:text-text-primary cursor-pointer p-0.5"
+                    aria-label="Clear Search"
                   >
                     <X className="w-3 h-3" />
                   </button>
@@ -376,8 +425,8 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
                   >
                     <div>
                       <div className="flex items-start justify-between gap-2 mb-2">
-                        <div className="w-10 h-10 rounded-xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center text-xl shrink-0 group-hover:scale-105 transition-transform">
-                          {item.imageEmoji}
+                        <div className="w-10 h-10 rounded-xl bg-brand-gold/10 border border-brand-gold/25 flex items-center justify-center shrink-0 group-hover:scale-105 group-hover:bg-brand-gold/15 transition-all">
+                          <MenuIcon type={item.iconType} className="w-5 h-5 text-brand-gold" />
                         </div>
                         {item.badgeEn && (
                           <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full bg-brand-gold/15 text-brand-gold border border-brand-gold/30">
@@ -409,14 +458,16 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
                         <div className="flex items-center gap-1.5 bg-surface border border-border rounded-lg p-0.5">
                           <button
                             onClick={() => updateQuantity(item.id, -1)}
-                            className="w-5 h-5 rounded flex items-center justify-center text-text-dim hover:text-text-primary hover:bg-surface-secondary transition-colors"
+                            className="w-5 h-5 rounded flex items-center justify-center text-text-dim hover:text-text-primary hover:bg-surface-secondary transition-colors cursor-pointer"
+                            aria-label="Decrease Quantity"
                           >
                             <Minus className="w-3 h-3" />
                           </button>
                           <span className="text-xs font-mono font-bold px-1.5">{inCart.quantity}</span>
                           <button
                             onClick={() => updateQuantity(item.id, 1)}
-                            className="w-5 h-5 rounded flex items-center justify-center text-text-dim hover:text-text-primary hover:bg-surface-secondary transition-colors"
+                            className="w-5 h-5 rounded flex items-center justify-center text-text-dim hover:text-text-primary hover:bg-surface-secondary transition-colors cursor-pointer"
+                            aria-label="Increase Quantity"
                           >
                             <Plus className="w-3 h-3" />
                           </button>
@@ -424,7 +475,7 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
                       ) : (
                         <button
                           onClick={() => addToCart(item)}
-                          className="py-1 px-2.5 rounded-lg bg-brand-gold text-surface-dark text-xs font-bold font-mono hover:brightness-110 active:scale-95 transition-all flex items-center gap-1"
+                          className="py-1 px-2.5 rounded-lg bg-brand-gold text-surface-dark text-xs font-bold font-mono hover:brightness-110 active:scale-95 transition-all flex items-center gap-1 cursor-pointer shadow-sm"
                         >
                           <Plus className="w-3 h-3" />
                           <span>{isArabic ? "إضافة" : "Add"}</span>
@@ -518,7 +569,7 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
                     <input
                       required
                       defaultValue="Ahmad Al-Mansoor"
-                      className="w-full bg-surface border border-border rounded-lg px-3 py-2 text-text-primary focus:outline-none focus:border-brand-gold/50"
+                      className="w-full bg-surface border border-border rounded-lg px-3 py-2 text-text-primary focus:outline-none focus:border-brand-gold/50 focus:ring-1 focus:ring-brand-gold/30"
                     />
                   </div>
                   <div>
@@ -528,7 +579,7 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
                     <input
                       required
                       defaultValue="+966 50 123 4567"
-                      className="w-full bg-surface border border-border rounded-lg px-3 py-2 text-text-primary focus:outline-none focus:border-brand-gold/50 font-mono"
+                      className="w-full bg-surface border border-border rounded-lg px-3 py-2 text-text-primary focus:outline-none focus:border-brand-gold/50 focus:ring-1 focus:ring-brand-gold/30 font-mono"
                     />
                   </div>
                   <div>
@@ -538,12 +589,12 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
                     <textarea
                       rows={2}
                       defaultValue={isArabic ? "حجز طاولة لـ شخصين لتجربة قهوة V60 الحرازية" : "Table for 2 to experience the V60 Harazi pour-over."}
-                      className="w-full bg-surface border border-border rounded-lg px-3 py-2 text-text-primary focus:outline-none focus:border-brand-gold/50"
+                      className="w-full bg-surface border border-border rounded-lg px-3 py-2 text-text-primary focus:outline-none focus:border-brand-gold/50 focus:ring-1 focus:ring-brand-gold/30"
                     />
                   </div>
                   <button
                     type="submit"
-                    className="w-full py-2.5 rounded-lg bg-brand-gold text-surface-dark font-bold hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2 shadow"
+                    className="w-full py-2.5 rounded-lg bg-brand-gold text-surface-dark font-bold hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2 shadow cursor-pointer"
                   >
                     <Send className="w-3.5 h-3.5" />
                     <span>{isArabic ? "إرسال طلب الحجز" : "Submit Reservation"}</span>
@@ -557,18 +608,18 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
         {/* OFFCANVAS SHOPPING CART DRAWER */}
         {isCartOpen && (
           <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex justify-end">
-            <div className="w-full max-w-sm bg-surface border-l rtl:border-l-0 rtl:border-r border-border h-full flex flex-col p-4 sm:p-5 shadow-2xl animate-fade-in">
-              {/* Drawer Header */}
+            <div className="w-full max-w-sm bg-surface border-l rtl:border-l-0 rtl:border-r border-border h-full flex flex-col p-4 sm:p-5 shadow-2xl animate-fade-in font-sans">
               <div className="flex items-center justify-between border-b border-border pb-3 mb-3">
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 font-mono">
                   <ShoppingBag className="w-4 h-4 text-brand-gold" />
-                  <h3 className="font-bold text-sm font-mono">
-                    {isArabic ? "سلة المشتريات" : "Shopping Cart"} ({totalCartCount})
+                  <h3 className="font-bold text-sm">
+                    {isArabic ? "سلة مشتريات كافينا" : "Cafena Roastery Cart"} ({totalItemsCount})
                   </h3>
                 </div>
                 <button
                   onClick={() => setIsCartOpen(false)}
-                  className="p-1 rounded-lg hover:bg-surface-secondary text-text-dim hover:text-text-primary"
+                  className="p-1 rounded-lg hover:bg-surface-secondary text-text-dim hover:text-text-primary cursor-pointer"
+                  aria-label="Close Cart"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -582,7 +633,9 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
                     className="p-2.5 rounded-lg bg-surface-secondary/40 border border-border flex items-center justify-between gap-2 text-xs"
                   >
                     <div className="flex items-center gap-2.5 min-w-0">
-                      <span className="text-lg shrink-0">{ci.item.imageEmoji}</span>
+                      <div className="w-8 h-8 rounded-lg bg-brand-gold/10 border border-brand-gold/25 flex items-center justify-center shrink-0">
+                        <MenuIcon type={ci.item.iconType} className="w-4 h-4 text-brand-gold" />
+                      </div>
                       <div className="truncate">
                         <div className="font-bold text-text-primary truncate">
                           {isArabic ? ci.item.nameAr : ci.item.nameEn}
@@ -597,21 +650,24 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
                       <div className="flex items-center gap-1 bg-surface border border-border rounded p-0.5">
                         <button
                           onClick={() => updateQuantity(ci.item.id, -1)}
-                          className="w-4 h-4 flex items-center justify-center text-text-dim hover:text-text-primary"
+                          className="w-4 h-4 flex items-center justify-center text-text-dim hover:text-text-primary cursor-pointer"
+                          aria-label="Decrease Quantity"
                         >
                           <Minus className="w-2.5 h-2.5" />
                         </button>
                         <span className="font-mono text-xs px-1 font-bold">{ci.quantity}</span>
                         <button
                           onClick={() => updateQuantity(ci.item.id, 1)}
-                          className="w-4 h-4 flex items-center justify-center text-text-dim hover:text-text-primary"
+                          className="w-4 h-4 flex items-center justify-center text-text-dim hover:text-text-primary cursor-pointer"
+                          aria-label="Increase Quantity"
                         >
                           <Plus className="w-2.5 h-2.5" />
                         </button>
                       </div>
                       <button
                         onClick={() => removeItem(ci.item.id)}
-                        className="text-text-dim hover:text-rose-400 p-1 transition-colors"
+                        className="text-text-dim hover:text-rose-400 p-1 transition-colors cursor-pointer"
+                        aria-label="Remove Item"
                       >
                         <Trash2 className="w-3.5 h-3.5" />
                       </button>
@@ -648,14 +704,14 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
                         setIsCartOpen(false);
                         setReceiptModal(true);
                       }}
-                      className="flex-1 py-2.5 rounded-lg bg-brand-gold text-surface-dark font-bold text-xs hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-1.5 shadow"
+                      className="flex-1 py-2.5 rounded-lg bg-brand-gold text-surface-dark font-bold text-xs hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-1.5 shadow cursor-pointer"
                     >
                       <Receipt className="w-3.5 h-3.5" />
                       <span>{isArabic ? "تأكيد الطلب والمحاكاة" : "Simulate Checkout"}</span>
                     </button>
                     <button
                       onClick={clearCart}
-                      className="p-2.5 rounded-lg bg-surface border border-border text-text-dim hover:text-rose-400 transition-colors"
+                      className="p-2.5 rounded-lg bg-surface border border-border text-text-dim hover:text-rose-400 transition-colors cursor-pointer"
                       title={isArabic ? "إفراغ السلة" : "Empty Cart"}
                     >
                       <Trash2 className="w-4 h-4" />
@@ -670,23 +726,24 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
         {/* ORDER RECEIPT MODAL */}
         {receiptModal && (
           <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4">
-            <div className="w-full max-w-md bg-surface border border-brand-gold/40 rounded-xl p-5 shadow-2xl space-y-4">
+            <div className="w-full max-w-md bg-surface border border-brand-gold/40 rounded-xl p-5 shadow-2xl space-y-4 font-mono">
               <div className="flex items-center justify-between border-b border-border pb-2.5">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-5 h-5 text-emerald-400" />
-                  <h3 className="font-bold text-sm font-mono text-text-primary">
+                  <h3 className="font-bold text-sm text-text-primary">
                     {isArabic ? "إيصال طلب المحاكاة الإلكتروني" : "Order Receipt Preview"}
                   </h3>
                 </div>
                 <button
                   onClick={() => setReceiptModal(false)}
-                  className="p-1 rounded hover:bg-surface-secondary text-text-dim"
+                  className="p-1 rounded hover:bg-surface-secondary text-text-dim cursor-pointer"
+                  aria-label="Close Receipt"
                 >
                   <X className="w-4 h-4" />
                 </button>
               </div>
 
-              <div className="bg-surface-secondary/60 p-3.5 rounded-lg font-mono text-xs space-y-2 border border-border">
+              <div className="bg-surface-secondary/60 p-3.5 rounded-lg text-xs space-y-2 border border-border">
                 <div className="flex justify-between text-text-dim">
                   <span>RECEIPT NO:</span>
                   <span className="font-bold text-text-primary">CAF-{Math.floor(100000 + Math.random() * 900000)}</span>
@@ -728,7 +785,7 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
                   setReceiptModal(false);
                   clearCart();
                 }}
-                className="w-full py-2 bg-brand-gold text-surface-dark font-bold text-xs rounded-lg hover:brightness-110 transition-all"
+                className="w-full py-2 bg-brand-gold text-surface-dark font-bold text-xs rounded-lg hover:brightness-110 transition-all cursor-pointer"
               >
                 {isArabic ? "إغلاق وبدء طلب جديد" : "Close & Start New Order"}
               </button>

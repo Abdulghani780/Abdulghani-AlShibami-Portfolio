@@ -10,6 +10,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.9.1] - 2026-09-19
+
+### Added
+- **Supabase Production Client & Zero-Failure Fallback:**
+  - Installed `@supabase/supabase-js` (`v2.116.0`).
+  - Implemented `lib/supabase/client.ts` and `lib/supabase/server.ts` with graceful credential inspection.
+  - Implemented `HybridProjectRepository` in `lib/services/projectRepository.ts` providing seamless data resolution from Supabase cloud tables with instant local fallback.
+  - Connected `ContactForm.tsx` to insert inquiries into Supabase `contact_messages` table with real-time feedback and offline resilience.
+- **UI/UX Vector Iconography & Micro-Interactions (ui-ux-pro-max):**
+  - Fully eliminated all emojis across interactive simulations (`CafenaSimulation.tsx`, `NovaTechSimulation.tsx`, `GpSimulation.tsx`, `MetaAlgorithmLabSimulation.tsx`).
+  - Rendered bespoke Lucide SVG vector icon badges (`Coffee`, `Flame`, `Snowflake`, `CupSoda`, `Package`, `Cookie`, `Headphones`, `Watch`, `Glasses`, `Mouse`, `Radio`, `Keyboard`, `GraduationCap`, `Scale`, `X`).
+  - Enhanced `ChallengesResultsSection.tsx` and `ArchitectureTopology.tsx` with Lucide `Check`, `ChevronRight`, `ArrowRight`, and `ArrowLeft` vector indicators.
+  - Added accessible focus rings (`:focus-visible:ring-2 focus-visible:ring-brand-gold/50`), `cursor-pointer`, and smooth transitions across all simulation controls.
+
+---
+
 ## [0.9.0] - 2026-09-19
 
 ### Added

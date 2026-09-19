@@ -2,6 +2,7 @@ import React from "react";
 import { ArchitectureStage, Locale } from "@/types/project";
 import { Card } from "@/components/ui/Card";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { ArrowRight, ArrowLeft, Check } from "lucide-react";
 
 interface ArchitectureTopologyProps {
   stages: ArchitectureStage[];
@@ -37,8 +38,16 @@ export const ArchitectureTopology: React.FC<ArchitectureTopologyProps> = ({
           >
             <div className="flex items-center justify-between font-mono text-xs text-gold">
               <span className="font-bold">STAGE {stage.step}</span>
-              <span className="text-content-muted text-[10px]">
-                {idx < stages.length - 1 ? (isRtl ? "←" : "→") : "✓"}
+              <span className="text-content-muted flex items-center">
+                {idx < stages.length - 1 ? (
+                  isRtl ? (
+                    <ArrowLeft className="w-3.5 h-3.5 text-gold/70" />
+                  ) : (
+                    <ArrowRight className="w-3.5 h-3.5 text-gold/70" />
+                  )
+                ) : (
+                  <Check className="w-3.5 h-3.5 text-status-emerald" />
+                )}
               </span>
             </div>
 

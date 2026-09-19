@@ -2,6 +2,7 @@ import React from "react";
 import { CaseStudy, Locale } from "@/types/project";
 import { Card } from "@/components/ui/Card";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Check, ChevronRight } from "lucide-react";
 
 interface ChallengesResultsSectionProps {
   caseStudy: CaseStudy;
@@ -40,7 +41,7 @@ export const ChallengesResultsSection: React.FC<ChallengesResultsSectionProps> =
           <ul className="space-y-3 font-mono text-xs text-content-secondary">
             {caseStudy.challenges[locale].map((challenge, idx) => (
               <li key={idx} className="flex items-start gap-2">
-                <span className="text-status-amber shrink-0">▸</span>
+                <ChevronRight className="w-3.5 h-3.5 text-status-amber shrink-0 mt-0.5 rtl:rotate-180" />
                 <span className="leading-relaxed">{challenge}</span>
               </li>
             ))}
@@ -60,7 +61,7 @@ export const ChallengesResultsSection: React.FC<ChallengesResultsSectionProps> =
           <ul className="space-y-3 font-mono text-xs text-content-primary">
             {caseStudy.results[locale].map((result, idx) => (
               <li key={idx} className="flex items-start gap-2">
-                <span className="text-status-emerald shrink-0">✓</span>
+                <Check className="w-3.5 h-3.5 text-status-emerald shrink-0 mt-0.5" />
                 <span className="leading-relaxed">{result}</span>
               </li>
             ))}

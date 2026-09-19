@@ -18,6 +18,7 @@ import {
   CheckCircle2,
   Sparkles,
   Layers,
+  X,
 } from "lucide-react";
 
 type AlgorithmType = "quicksort" | "bubblesort" | "insertionsort" | "heapsort";
@@ -431,9 +432,10 @@ export function MetaAlgorithmLabSimulation({ locale = "en", isRtl = false }: Dem
                 </div>
                 <button
                   onClick={() => setReportModal(false)}
-                  className="p-1 rounded hover:bg-surface-secondary text-text-dim"
+                  className="p-1 rounded hover:bg-surface-secondary text-text-dim cursor-pointer"
+                  aria-label="Close Report Preview"
                 >
-                  ✕
+                  <X className="w-4 h-4" />
                 </button>
               </div>
 

@@ -6,7 +6,6 @@ import { DemoProps } from "@/demos/registry";
 import {
   ShoppingBag,
   Search,
-  Zap,
   Star,
   Plus,
   Minus,
@@ -16,17 +15,25 @@ import {
   Clock,
   Eye,
   Flame,
-  ShieldCheck,
   Truck,
-  FileText,
-  SlidersHorizontal,
-  Headphones,
-  Watch,
-  Gamepad2,
-  Home,
   Sparkles,
   Receipt,
+  Headphones,
+  Watch,
+  Glasses,
+  Mouse,
+  Radio,
+  Keyboard,
+  Cpu,
 } from "lucide-react";
+
+type ProductIconType =
+  | "headphones"
+  | "smartwatch"
+  | "vr_headset"
+  | "gaming_mouse"
+  | "drone"
+  | "keyboard";
 
 interface Product {
   id: number;
@@ -39,7 +46,7 @@ interface Product {
   reviewsCount: number;
   tagEn: string;
   tagAr: string;
-  emoji: string;
+  iconType: ProductIconType;
   descriptionEn: string;
   descriptionAr: string;
   specsEn: string[];
@@ -49,6 +56,31 @@ interface Product {
 interface CartItem {
   product: Product;
   quantity: number;
+}
+
+function ProductIcon({
+  type,
+  className = "w-5 h-5 text-brand-gold",
+}: {
+  type: ProductIconType;
+  className?: string;
+}) {
+  switch (type) {
+    case "headphones":
+      return <Headphones className={className} />;
+    case "smartwatch":
+      return <Watch className={className} />;
+    case "vr_headset":
+      return <Glasses className={className} />;
+    case "gaming_mouse":
+      return <Mouse className={className} />;
+    case "drone":
+      return <Radio className={className} />;
+    case "keyboard":
+      return <Keyboard className={className} />;
+    default:
+      return <Cpu className={className} />;
+  }
 }
 
 export function NovaTechSimulation({ locale = "en", isRtl = false }: DemoProps) {
@@ -66,7 +98,7 @@ export function NovaTechSimulation({ locale = "en", isRtl = false }: DemoProps) 
       reviewsCount: 142,
       tagEn: "Hot Deal",
       tagAr: "الأكثر طلباً",
-      emoji: "🎧",
+      iconType: "headphones",
       descriptionEn: "Professional over-ear audio with hybrid active noise cancellation, 360 spatial sound, and 50-hour battery life.",
       descriptionAr: "سماعة رأس احترافية مع إلغاء ضوضاء نشط متقدم وصوت مكاني 360 درجة وبطارية تدوم حتى 50 ساعة.",
       specsEn: ["Hybrid Active Noise Cancellation", "50h Ultra Battery Life", "Fast Charge: 10m -> 5h", "Bluetooth 5.4 Hi-Res Audio"],
@@ -83,7 +115,7 @@ export function NovaTechSimulation({ locale = "en", isRtl = false }: DemoProps) 
       reviewsCount: 98,
       tagEn: "New 2026",
       tagAr: "جديد 2026",
-      emoji: "⌚",
+      iconType: "smartwatch",
       descriptionEn: "Aerospace-grade titanium chassis with bright sapphire AMOLED display and AI-powered biometrics.",
       descriptionAr: "هيكل من التيتانيوم المقاوم مع شاشة AMOLED ساطعة ومستشعرات صحية ولياقة متقدمة مدعومة بالذكاء الاصطناعي.",
       specsEn: ["Titanium Aerospace Chassis", "100m Water Resistance", "ECG & SpO2 Biometrics", "7-Day Continuous Battery"],
@@ -100,7 +132,7 @@ export function NovaTechSimulation({ locale = "en", isRtl = false }: DemoProps) 
       reviewsCount: 76,
       tagEn: "15% OFF",
       tagAr: "خصم 15%",
-      emoji: "🥽",
+      iconType: "vr_headset",
       descriptionEn: "Next-gen spatial computing with dual 4K Micro-OLED displays, precision eye tracking, and haptic audio.",
       descriptionAr: "عش تجربة غامرة لا مثيل لها بدقة 8K مع تتبع فوري للعين وحركة اليدين وتوافق كامل مع أحدث الألعاب.",
       specsEn: ["Dual 4K Micro-OLED per eye", "120Hz Ultra Refresh Rate", "Dedicated Spatial Coprocessor", "Spatial 3D Audio Array"],
@@ -117,7 +149,7 @@ export function NovaTechSimulation({ locale = "en", isRtl = false }: DemoProps) 
       reviewsCount: 215,
       tagEn: "Top Rated",
       tagAr: "الأكثر مبيعاً",
-      emoji: "🖱️",
+      iconType: "gaming_mouse",
       descriptionEn: "Ultra-lightweight 55g competition chassis with 30,000 DPI optical sensor and 0.1ms wireless response.",
       descriptionAr: "حساسية خارقة تصل إلى 30,000 DPI مع وزن خفيف 55 جرام وسرعة استجابة لاسلكية 0.1ms.",
       specsEn: ["30,000 DPI Optical Sensor", "90M Click Optical Switches", "55g Ultra Lightweight", "Dynamic Customizable RGB"],
@@ -134,7 +166,7 @@ export function NovaTechSimulation({ locale = "en", isRtl = false }: DemoProps) 
       reviewsCount: 84,
       tagEn: "Pro Series",
       tagAr: "إصدار احترافي",
-      emoji: "🛸",
+      iconType: "drone",
       descriptionEn: "3-axis mechanical gimbal with 4K HDR camera, 10km video transmission, and omnidirectional obstacle avoidance.",
       descriptionAr: "مانع اهتزاز ميكانيكي ثلاثي المحاور مع تصوير 4K HDR ونقل فيديو لمسافة 10 كم وتفادٍ ذكي للعوائق.",
       specsEn: ["4K HDR 60fps Video", "10km Digital Transmission", "38-min Flight Duration", "AI Follow & Return Home"],
@@ -151,7 +183,7 @@ export function NovaTechSimulation({ locale = "en", isRtl = false }: DemoProps) 
       reviewsCount: 110,
       tagEn: "Custom",
       tagAr: "مخصص",
-      emoji: "⌨️",
+      iconType: "keyboard",
       descriptionEn: "Hot-swappable mechanical keyboard with CNC aluminum top plate, lubricated switches, and sound dampening foam.",
       descriptionAr: "لوحة مفاتيح ميكانيكية بمفاتيح قابلة للتبديل السريع وهيكل ألومنيوم مع طبقات عزل صوتي متطورة.",
       specsEn: ["Hot-Swappable Switches", "Gasket Mounted Structure", "Tri-Mode Wireless / BT / USB", "PBT Double-Shot Keycaps"],
@@ -202,8 +234,8 @@ export function NovaTechSimulation({ locale = "en", isRtl = false }: DemoProps) 
       prev
         .map((ci) => {
           if (ci.product.id === productId) {
-            const nextQty = ci.quantity + delta;
-            return nextQty > 0 ? { ...ci, quantity: nextQty } : null;
+            const newQty = ci.quantity + delta;
+            return newQty > 0 ? { ...ci, quantity: newQty } : null;
           }
           return ci;
         })
@@ -215,8 +247,11 @@ export function NovaTechSimulation({ locale = "en", isRtl = false }: DemoProps) 
     setCart((prev) => prev.filter((ci) => ci.product.id !== productId));
   };
 
-  const clearCart = () => setCart([]);
+  const clearCart = () => {
+    setCart([]);
+  };
 
+  // Calculations
   const subtotal = cart.reduce((sum, ci) => sum + ci.product.price * ci.quantity, 0);
   const vat = subtotal * 0.15;
   const freeShippingThreshold = 500;
@@ -264,25 +299,30 @@ export function NovaTechSimulation({ locale = "en", isRtl = false }: DemoProps) 
         { label: isArabic ? "الإجمالي" : "TOTAL", value: `${finalTotal.toFixed(2)} SAR` },
       ]}
       toolbarActions={
-        <button
-          onClick={() => setIsCartOpen(!isCartOpen)}
-          className="relative p-1.5 rounded-lg bg-surface border border-border text-brand-gold hover:bg-brand-gold/10 transition-colors"
-          title={isArabic ? "سلة التسوق" : "View Cart Drawer"}
-        >
-          <ShoppingBag className="w-4 h-4" />
-          {totalCartCount > 0 && (
-            <span className="absolute -top-1.5 -right-1.5 bg-brand-gold text-surface-dark text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center shadow">
-              {totalCartCount}
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => setIsCartOpen(!isCartOpen)}
+            className="relative px-3 py-1.5 rounded-lg bg-surface-secondary border border-border hover:border-brand-gold/50 text-text-primary text-xs font-mono flex items-center gap-1.5 transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-brand-gold/50 focus-visible:outline-none"
+            aria-label="View Cart Drawer"
+          >
+            <ShoppingBag className="w-3.5 h-3.5 text-brand-gold" />
+            <span className="hidden sm:inline font-bold">
+              {isArabic ? "السلة" : "Cart"}
             </span>
-          )}
-        </button>
+            {totalCartCount > 0 && (
+              <span className="px-1.5 py-0.2 rounded-full bg-brand-gold text-surface-dark text-[10px] font-bold">
+                {totalCartCount}
+              </span>
+            )}
+          </button>
+        </div>
       }
     >
       <div className="p-3 sm:p-5 bg-surface text-text-primary min-h-[580px] flex flex-col font-sans">
         {/* Deal of the Day Banner */}
         <div className="bg-gradient-to-r from-brand-gold/15 via-surface-secondary to-surface border border-brand-gold/30 rounded-xl p-3.5 sm:p-4 mb-4 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-sm">
           <div className="flex items-center gap-3 text-center sm:text-left rtl:sm:text-right">
-            <div className="w-10 h-10 rounded-xl bg-brand-gold/20 text-brand-gold flex items-center justify-center shrink-0 text-xl">
+            <div className="w-10 h-10 rounded-xl bg-brand-gold/20 text-brand-gold flex items-center justify-center shrink-0">
               <Flame className="w-5 h-5 text-amber-500 animate-pulse" />
             </div>
             <div>
@@ -318,7 +358,7 @@ export function NovaTechSimulation({ locale = "en", isRtl = false }: DemoProps) 
             </div>
             <button
               onClick={() => addToCart(PRODUCTS[2])}
-              className="px-3 py-1 bg-brand-gold text-surface-dark font-bold rounded-lg text-xs hover:brightness-110 active:scale-95 transition-all ml-1 rtl:ml-0 rtl:mr-1 shadow"
+              className="px-3 py-1 bg-brand-gold text-surface-dark font-bold rounded-lg text-xs hover:brightness-110 active:scale-95 transition-all ml-1 rtl:ml-0 rtl:mr-1 shadow cursor-pointer focus-visible:ring-2 focus-visible:ring-brand-gold/50 focus-visible:outline-none"
             >
               {isArabic ? "اغتنم العرض" : "Claim Deal"}
             </button>
@@ -338,7 +378,7 @@ export function NovaTechSimulation({ locale = "en", isRtl = false }: DemoProps) 
               <button
                 key={cat.id}
                 onClick={() => setCategoryFilter(cat.id)}
-                className={`px-2.5 py-1 rounded-lg whitespace-nowrap transition-colors ${
+                className={`px-2.5 py-1 rounded-lg whitespace-nowrap transition-colors cursor-pointer focus-visible:ring-2 focus-visible:ring-brand-gold/50 focus-visible:outline-none ${
                   categoryFilter === cat.id
                     ? "bg-brand-gold text-surface-dark font-bold shadow"
                     : "bg-surface border border-border text-text-muted hover:text-text-primary"
@@ -350,13 +390,13 @@ export function NovaTechSimulation({ locale = "en", isRtl = false }: DemoProps) 
           </div>
 
           <div className="relative min-w-[200px]">
-            <Search className="w-3.5 h-3.5 absolute top-1/2 -translate-y-1/2 left-3 rtl:left-auto rtl:right-3 text-text-dim" />
+            <Search className="w-3.5 h-3.5 absolute top-1/2 -translate-y-1/2 left-3 rtl:left-auto rtl:right-3 text-text-dim pointer-events-none" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={isArabic ? "ابحث في كتالوج الأجهزة..." : "Search cyber gadgets..."}
-              className="w-full bg-surface border border-border rounded-lg pl-8 pr-3 rtl:pl-3 rtl:pr-8 py-1.5 text-xs text-text-primary focus:outline-none focus:border-brand-gold"
+              className="w-full bg-surface border border-border rounded-lg pl-8 pr-3 rtl:pl-3 rtl:pr-8 py-1.5 text-xs text-text-primary focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold/30"
             />
           </div>
         </div>
@@ -372,8 +412,8 @@ export function NovaTechSimulation({ locale = "en", isRtl = false }: DemoProps) 
               >
                 <div>
                   <div className="flex items-start justify-between gap-2 mb-2">
-                    <div className="w-10 h-10 rounded-xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center text-xl shrink-0 group-hover:scale-105 transition-transform">
-                      {product.emoji}
+                    <div className="w-10 h-10 rounded-xl bg-brand-gold/10 border border-brand-gold/25 flex items-center justify-center shrink-0 group-hover:scale-105 group-hover:bg-brand-gold/15 transition-all">
+                      <ProductIcon type={product.iconType} className="w-5 h-5 text-brand-gold" />
                     </div>
                     <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full bg-brand-gold/15 text-brand-gold border border-brand-gold/30">
                       {isArabic ? product.tagAr : product.tagEn}
@@ -407,8 +447,9 @@ export function NovaTechSimulation({ locale = "en", isRtl = false }: DemoProps) 
                   <div className="flex items-center gap-1.5">
                     <button
                       onClick={() => setQuickViewProduct(product)}
-                      className="p-1.5 rounded-lg bg-surface border border-border text-text-dim hover:text-brand-gold transition-colors"
+                      className="p-1.5 rounded-lg bg-surface border border-border text-text-dim hover:text-brand-gold transition-colors cursor-pointer"
                       title={isArabic ? "معاينة المواصفات" : "Quick Specs View"}
+                      aria-label="Quick Specs View"
                     >
                       <Eye className="w-3.5 h-3.5" />
                     </button>
@@ -417,14 +458,16 @@ export function NovaTechSimulation({ locale = "en", isRtl = false }: DemoProps) 
                       <div className="flex items-center gap-1 bg-surface border border-border rounded-lg p-0.5">
                         <button
                           onClick={() => updateQuantity(product.id, -1)}
-                          className="w-5 h-5 rounded flex items-center justify-center text-text-dim hover:text-text-primary"
+                          className="w-5 h-5 rounded flex items-center justify-center text-text-dim hover:text-text-primary cursor-pointer"
+                          aria-label="Decrease Quantity"
                         >
                           <Minus className="w-3 h-3" />
                         </button>
                         <span className="text-xs font-mono font-bold px-1.5">{inCart.quantity}</span>
                         <button
                           onClick={() => updateQuantity(product.id, 1)}
-                          className="w-5 h-5 rounded flex items-center justify-center text-text-dim hover:text-text-primary"
+                          className="w-5 h-5 rounded flex items-center justify-center text-text-dim hover:text-text-primary cursor-pointer"
+                          aria-label="Increase Quantity"
                         >
                           <Plus className="w-3 h-3" />
                         </button>
@@ -432,7 +475,7 @@ export function NovaTechSimulation({ locale = "en", isRtl = false }: DemoProps) 
                     ) : (
                       <button
                         onClick={() => addToCart(product)}
-                        className="py-1 px-2.5 rounded-lg bg-brand-gold text-surface-dark text-xs font-bold font-mono hover:brightness-110 active:scale-95 transition-all flex items-center gap-1"
+                        className="py-1 px-2.5 rounded-lg bg-brand-gold text-surface-dark text-xs font-bold font-mono hover:brightness-110 active:scale-95 transition-all flex items-center gap-1 cursor-pointer shadow-sm"
                       >
                         <Plus className="w-3 h-3" />
                         <span>{isArabic ? "إضافة" : "Add"}</span>
@@ -451,13 +494,15 @@ export function NovaTechSimulation({ locale = "en", isRtl = false }: DemoProps) 
           </div>
         )}
 
-        {/* QUICK VIEW SPECIFICATION MODAL */}
+        {/* QUICK VIEW MODAL */}
         {quickViewProduct && (
-          <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4 font-sans">
-            <div className="w-full max-w-md bg-surface border border-brand-gold/40 rounded-xl p-5 shadow-2xl space-y-4">
+          <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4">
+            <div className="w-full max-w-lg bg-surface border border-border rounded-xl p-5 shadow-2xl space-y-4 font-sans animate-fade-in">
               <div className="flex items-start justify-between border-b border-border pb-3">
-                <div className="flex items-center gap-2.5">
-                  <span className="text-2xl">{quickViewProduct.emoji}</span>
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-xl bg-brand-gold/10 border border-brand-gold/25 flex items-center justify-center shrink-0">
+                    <ProductIcon type={quickViewProduct.iconType} className="w-6 h-6 text-brand-gold" />
+                  </div>
                   <div>
                     <span className="text-[10px] font-mono text-brand-gold font-bold uppercase">
                       {isArabic ? quickViewProduct.tagAr : quickViewProduct.tagEn}
@@ -469,7 +514,8 @@ export function NovaTechSimulation({ locale = "en", isRtl = false }: DemoProps) 
                 </div>
                 <button
                   onClick={() => setQuickViewProduct(null)}
-                  className="p-1 rounded hover:bg-surface-secondary text-text-dim"
+                  className="p-1 rounded hover:bg-surface-secondary text-text-dim cursor-pointer"
+                  aria-label="Close Quick View"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -508,7 +554,7 @@ export function NovaTechSimulation({ locale = "en", isRtl = false }: DemoProps) 
                     setQuickViewProduct(null);
                     setIsCartOpen(true);
                   }}
-                  className="py-2 px-4 bg-brand-gold text-surface-dark font-bold text-xs rounded-lg hover:brightness-110 active:scale-95 transition-all flex items-center gap-1.5 shadow font-mono"
+                  className="py-2 px-4 bg-brand-gold text-surface-dark font-bold text-xs rounded-lg hover:brightness-110 active:scale-95 transition-all flex items-center gap-1.5 shadow font-mono cursor-pointer"
                 >
                   <ShoppingBag className="w-3.5 h-3.5" />
                   <span>{isArabic ? "إضافة للسلة وفتح الطلب" : "Add to Cart & View"}</span>
@@ -531,7 +577,8 @@ export function NovaTechSimulation({ locale = "en", isRtl = false }: DemoProps) 
                 </div>
                 <button
                   onClick={() => setIsCartOpen(false)}
-                  className="p-1 rounded-lg hover:bg-surface-secondary text-text-dim hover:text-text-primary"
+                  className="p-1 rounded-lg hover:bg-surface-secondary text-text-dim hover:text-text-primary cursor-pointer"
+                  aria-label="Close Cart"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -564,7 +611,9 @@ export function NovaTechSimulation({ locale = "en", isRtl = false }: DemoProps) 
                     className="p-2.5 rounded-lg bg-surface-secondary/40 border border-border flex items-center justify-between gap-2 text-xs"
                   >
                     <div className="flex items-center gap-2.5 min-w-0">
-                      <span className="text-lg shrink-0">{ci.product.emoji}</span>
+                      <div className="w-8 h-8 rounded-lg bg-brand-gold/10 border border-brand-gold/25 flex items-center justify-center shrink-0">
+                        <ProductIcon type={ci.product.iconType} className="w-4 h-4 text-brand-gold" />
+                      </div>
                       <div className="truncate">
                         <div className="font-bold text-text-primary truncate">
                           {isArabic ? ci.product.nameAr : ci.product.nameEn}
@@ -579,36 +628,33 @@ export function NovaTechSimulation({ locale = "en", isRtl = false }: DemoProps) 
                       <div className="flex items-center gap-1 bg-surface border border-border rounded p-0.5">
                         <button
                           onClick={() => updateQuantity(ci.product.id, -1)}
-                          className="w-4 h-4 flex items-center justify-center text-text-dim hover:text-text-primary"
+                          className="w-4 h-4 flex items-center justify-center text-text-dim hover:text-text-primary cursor-pointer"
+                          aria-label="Decrease Quantity"
                         >
                           <Minus className="w-2.5 h-2.5" />
                         </button>
                         <span className="font-mono text-xs px-1 font-bold">{ci.quantity}</span>
                         <button
                           onClick={() => updateQuantity(ci.product.id, 1)}
-                          className="w-4 h-4 flex items-center justify-center text-text-dim hover:text-text-primary"
+                          className="w-4 h-4 flex items-center justify-center text-text-dim hover:text-text-primary cursor-pointer"
+                          aria-label="Increase Quantity"
                         >
                           <Plus className="w-2.5 h-2.5" />
                         </button>
                       </div>
                       <button
                         onClick={() => removeItem(ci.product.id)}
-                        className="text-text-dim hover:text-rose-400 p-1 transition-colors"
+                        className="text-text-dim hover:text-rose-400 p-1 transition-colors cursor-pointer"
+                        aria-label="Remove Item"
                       >
                         <Trash2 className="w-3.5 h-3.5" />
                       </button>
                     </div>
                   </div>
                 ))}
-
-                {cart.length === 0 && (
-                  <div className="py-12 text-center text-xs text-text-dim font-mono">
-                    {isArabic ? "سلة التسوق فارغة حالياً." : "Your cart is currently empty."}
-                  </div>
-                )}
               </div>
 
-              {/* Arithmetic & Invoice Simulation */}
+              {/* Order Calculations & Checkout */}
               {cart.length > 0 && (
                 <div className="border-t border-border pt-3 mt-3 space-y-2 text-xs font-mono">
                   <div className="flex justify-between text-text-dim">
@@ -620,8 +666,10 @@ export function NovaTechSimulation({ locale = "en", isRtl = false }: DemoProps) 
                     <span>{vat.toFixed(2)} SAR</span>
                   </div>
                   <div className="flex justify-between text-text-dim">
-                    <span>{isArabic ? "الشحن والتوصيل السريع:" : "Express Shipping:"}</span>
-                    <span>{isFreeShipping ? "FREE (0.00)" : `${shippingFee.toFixed(2)} SAR`}</span>
+                    <span>{isArabic ? "رسوم الشحن:" : "Shipping:"}</span>
+                    <span className={isFreeShipping ? "text-emerald-400 font-bold" : ""}>
+                      {isFreeShipping ? (isArabic ? "مجاني" : "FREE") : `${shippingFee.toFixed(2)} SAR`}
+                    </span>
                   </div>
                   <div className="flex justify-between font-bold text-sm text-text-primary border-t border-border/60 pt-1.5">
                     <span>{isArabic ? "الإجمالي النهائي:" : "Final Total:"}</span>
@@ -634,14 +682,14 @@ export function NovaTechSimulation({ locale = "en", isRtl = false }: DemoProps) 
                         setIsCartOpen(false);
                         setInvoiceModal(true);
                       }}
-                      className="flex-1 py-2.5 rounded-lg bg-brand-gold text-surface-dark font-bold text-xs hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-1.5 shadow"
+                      className="flex-1 py-2.5 rounded-lg bg-brand-gold text-surface-dark font-bold text-xs hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-1.5 shadow cursor-pointer"
                     >
                       <Receipt className="w-3.5 h-3.5" />
                       <span>{isArabic ? "إتمام الشراء ومحاكاة الفاتورة" : "Simulate Order & Invoice"}</span>
                     </button>
                     <button
                       onClick={clearCart}
-                      className="p-2.5 rounded-lg bg-surface border border-border text-text-dim hover:text-rose-400 transition-colors"
+                      className="p-2.5 rounded-lg bg-surface border border-border text-text-dim hover:text-rose-400 transition-colors cursor-pointer"
                       title={isArabic ? "إفراغ السلة" : "Empty Cart"}
                     >
                       <Trash2 className="w-4 h-4" />
@@ -656,7 +704,7 @@ export function NovaTechSimulation({ locale = "en", isRtl = false }: DemoProps) 
         {/* ORDER INVOICE MODAL */}
         {invoiceModal && (
           <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4 font-mono">
-            <div className="w-full max-w-md bg-surface border border-brand-gold/40 rounded-xl p-5 shadow-2xl space-y-4">
+            <div className="w-full max-w-md bg-surface border border-brand-gold/40 rounded-xl p-5 shadow-2xl space-y-4 animate-fade-in">
               <div className="flex items-center justify-between border-b border-border pb-2.5">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-5 h-5 text-emerald-400" />
@@ -666,7 +714,8 @@ export function NovaTechSimulation({ locale = "en", isRtl = false }: DemoProps) 
                 </div>
                 <button
                   onClick={() => setInvoiceModal(false)}
-                  className="p-1 rounded hover:bg-surface-secondary text-text-dim"
+                  className="p-1 rounded hover:bg-surface-secondary text-text-dim cursor-pointer"
+                  aria-label="Close Invoice"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -714,7 +763,7 @@ export function NovaTechSimulation({ locale = "en", isRtl = false }: DemoProps) 
                   setInvoiceModal(false);
                   clearCart();
                 }}
-                className="w-full py-2 bg-brand-gold text-surface-dark font-bold text-xs rounded-lg hover:brightness-110 transition-all font-mono"
+                className="w-full py-2 bg-brand-gold text-surface-dark font-bold text-xs rounded-lg hover:brightness-110 transition-all font-mono cursor-pointer"
               >
                 {isArabic ? "إغلاق وبدء جولة جديدة" : "Close & Reset Order"}
               </button>
