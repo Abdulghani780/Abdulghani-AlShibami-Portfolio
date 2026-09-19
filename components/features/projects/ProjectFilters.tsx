@@ -28,7 +28,7 @@ export const ProjectFilters: React.FC<ProjectFiltersProps> = ({
   return (
     <div className="space-y-4 font-mono">
       {/* Category Pills and Search Bar Grid */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 rounded-2xl border border-white/[0.08] bg-[#070A0F] p-4 shadow-lg">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 rounded-2xl border border-slate-800/80 bg-slate-900/70 backdrop-blur-md p-4 shadow-lg">
         {/* Category Filter Pills */}
         <div className="flex flex-wrap items-center gap-2">
           <button
@@ -37,8 +37,8 @@ export const ProjectFilters: React.FC<ProjectFiltersProps> = ({
             className={cn(
               "text-xs px-3.5 py-1.5 rounded-lg border transition-all cursor-pointer uppercase tracking-wider",
               activeCategory === "all"
-                ? "border-[#00FF9D] bg-[#00FF9D]/15 text-[#00FF9D] font-bold shadow-[0_0_12px_rgba(0,255,157,0.25)]"
-                : "border-white/[0.08] bg-white/[0.03] text-white/70 hover:border-[#00FF9D]/40 hover:text-white"
+                ? "border-indigo-500 bg-indigo-500/20 text-indigo-300 font-bold shadow-[0_0_15px_rgba(99,102,241,0.25)]"
+                : "border-slate-800 bg-slate-800/40 text-slate-300 hover:border-indigo-500/40 hover:text-white"
             )}
           >
             {isRtl ? "كافة الأنظمة" : "All Systems"}{" "}
@@ -55,8 +55,8 @@ export const ProjectFilters: React.FC<ProjectFiltersProps> = ({
                 className={cn(
                   "text-xs px-3.5 py-1.5 rounded-lg border transition-all cursor-pointer uppercase tracking-wider",
                   isActive
-                    ? "border-[#00FF9D] bg-[#00FF9D]/15 text-[#00FF9D] font-bold shadow-[0_0_12px_rgba(0,255,157,0.25)]"
-                    : "border-white/[0.08] bg-white/[0.03] text-white/70 hover:border-[#00FF9D]/40 hover:text-white"
+                    ? "border-indigo-500 bg-indigo-500/20 text-indigo-300 font-bold shadow-[0_0_15px_rgba(99,102,241,0.25)]"
+                    : "border-slate-800 bg-slate-800/40 text-slate-300 hover:border-indigo-500/40 hover:text-white"
                 )}
               >
                 {category.name[locale]}
@@ -73,7 +73,7 @@ export const ProjectFilters: React.FC<ProjectFiltersProps> = ({
             onChange={(e) => onSearchChange(e.target.value)}
             placeholder={isRtl ? "بحث في الأنظمة..." : "Filter systems..."}
             aria-label={isRtl ? "بحث في الأنظمة" : "Filter systems"}
-            className="w-full h-9 px-3.5 rounded-lg border border-white/[0.1] bg-black/40 text-white placeholder:text-white/40 text-xs focus:border-[#00FF9D] focus:ring-1 focus:ring-[#00FF9D]/30 focus:outline-none transition-all"
+            className="w-full h-9 px-3.5 rounded-lg border border-slate-700/60 bg-slate-950/60 text-white placeholder:text-slate-500 text-xs focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400/30 focus:outline-none transition-all"
           />
         </div>
       </div>

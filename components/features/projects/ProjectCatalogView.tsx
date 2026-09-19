@@ -4,7 +4,7 @@ import React, { useState, useMemo } from "react";
 import { Project, ProjectCategory, Locale } from "@/types/project";
 import { ProjectFilters } from "./ProjectFilters";
 import { ProjectCard } from "./ProjectCard";
-import { ProjectBentoShowcase } from "./ProjectBentoShowcase";
+import { CanonicalProjectsBento } from "@/components/canonical/CanonicalProjectsBento";
 import { Button } from "@/components/ui/Button";
 
 interface ProjectCatalogViewProps {
@@ -65,9 +65,9 @@ export const ProjectCatalogView: React.FC<ProjectCatalogViewProps> = ({
         totalCount={initialProjects.length}
       />
 
-      {/* When on All Projects with no search query: Render Reference 4 Bento Showcase Grid */}
+      {/* When on All Projects with no search query: Render Bento Showcase Grid with 3D renders */}
       {isBentoDefaultView ? (
-        <ProjectBentoShowcase projects={initialProjects} locale={locale} />
+        <CanonicalProjectsBento locale={locale} />
       ) : filteredProjects.length > 0 ? (
         /* Filtered Grid View */
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -82,14 +82,14 @@ export const ProjectCatalogView: React.FC<ProjectCatalogViewProps> = ({
         </div>
       ) : (
         /* Empty State */
-        <div className="rounded-2xl border border-white/[0.08] bg-[#070A0F] p-12 text-center space-y-4 shadow-[0_10px_30px_rgba(0,0,0,0.8)] font-mono">
-          <div className="text-xs text-[#00FF9D] uppercase tracking-widest font-bold">
+        <div className="rounded-2xl border border-slate-800 bg-slate-900/70 backdrop-blur-md p-12 text-center space-y-4 shadow-[0_10px_30px_rgba(2,6,23,0.8)] font-mono">
+          <div className="text-xs text-cyan-400 uppercase tracking-widest font-bold">
             {isRtl ? "// لا توجد أنظمة مطابقة" : "// 0 SYSTEMS MATCHED"}
           </div>
           <h4 className="font-serif text-2xl font-normal text-white">
             {isRtl ? "لم يتم العثور على أنظمة مطابقة" : "No Matching Systems Found"}
           </h4>
-          <p className="text-white/60 text-sm max-w-md mx-auto">
+          <p className="text-slate-300 text-sm max-w-md mx-auto">
             {isRtl
               ? "جرّب تغيير التصنيف أو مسح عبارة البحث للعثور على الأنظمة المطلوبة."
               : "Try adjusting your category selection or clearing the search filter."}

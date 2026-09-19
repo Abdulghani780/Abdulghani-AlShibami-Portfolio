@@ -63,8 +63,8 @@ export function Navbar({
           "w-full max-w-5xl mx-auto rounded-2xl pointer-events-auto transition-all duration-300",
           "border px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between backdrop-blur-xl",
           isScrolled
-            ? "bg-[#070A0F]/95 border-[#00FF9D]/40 shadow-[0_10px_35px_rgba(0,0,0,0.8),0_0_20px_rgba(0,255,157,0.12)]"
-            : "bg-[#070A0F]/85 border-white/[0.08] shadow-lg"
+            ? "bg-[#0B1120]/95 border-indigo-500/30 shadow-[0_10px_35px_rgba(2,6,23,0.8),0_0_20px_rgba(99,102,241,0.15)]"
+            : "bg-[#0B1120]/80 border-slate-700/40 shadow-lg"
         )}
       >
         {/* Brand Identity & Monogram */}
@@ -72,14 +72,14 @@ export function Navbar({
           href={`/${locale}`}
           className="flex items-center gap-3 group focus:outline-none"
         >
-          <span className="w-8 h-8 rounded-lg border border-[#00FF9D] bg-[#00FF9D]/10 flex items-center justify-center font-mono text-sm text-[#00FF9D] font-black transition-all duration-200 group-hover:bg-[#00FF9D]/20 group-hover:shadow-[0_0_12px_rgba(0,255,157,0.4)] shrink-0">
+          <span className="w-8 h-8 rounded-lg border border-indigo-500/50 bg-indigo-500/10 flex items-center justify-center font-mono text-sm text-indigo-400 font-black transition-all duration-200 group-hover:bg-indigo-500/20 group-hover:border-cyan-400 group-hover:shadow-[0_0_12px_rgba(99,102,241,0.4)] shrink-0">
             AS
           </span>
           <div className="flex flex-col">
-            <span className="font-mono text-xs tracking-wider text-white font-bold group-hover:text-[#00FF9D] transition-colors uppercase">
+            <span className="font-mono text-xs tracking-wider text-white font-bold group-hover:text-indigo-300 transition-colors uppercase">
               {isRtl ? "عبدالغني الشبامي" : "Abdulghani Al-Shibami"}
             </span>
-            <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-white/50">
+            <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-slate-400">
               {"// "}{isRtl ? "أنظمة وذكاء اصطناعي" : "AI & SYSTEMS"}
             </span>
           </div>
@@ -91,7 +91,7 @@ export function Navbar({
             <Link
               key={link.href}
               href={link.href}
-              className="text-white/70 hover:text-[#00FF9D] transition-colors relative py-1 hover:drop-shadow-[0_0_8px_rgba(0,255,157,0.3)]"
+              className="text-slate-300 hover:text-cyan-400 transition-colors relative py-1 hover:drop-shadow-[0_0_8px_rgba(6,182,212,0.4)]"
             >
               {link.label}
             </Link>
@@ -107,7 +107,7 @@ export function Navbar({
           <div className="hidden sm:block">
             <Link
               href={`/${locale}/projects`}
-              className="px-3.5 py-1.5 rounded-lg bg-[#00FF9D] hover:bg-[#00FF9D]/90 text-[#070A0F] font-mono font-bold text-xs shadow-[0_0_12px_rgba(0,255,157,0.3)] transition-all active:scale-95"
+              className="px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-indigo-500 to-cyan-500 hover:from-indigo-600 hover:to-cyan-600 text-white font-mono font-bold text-xs shadow-[0_0_15px_rgba(99,102,241,0.3)] transition-all active:scale-95"
             >
               {isRtl ? "المشاريع الحية" : "Live Projects"}
             </Link>
@@ -117,7 +117,7 @@ export function Navbar({
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden inline-flex items-center justify-center w-8 h-8 rounded-lg border border-white/[0.1] bg-white/[0.04] text-white hover:border-[#00FF9D] transition-colors cursor-pointer"
+            className="md:hidden inline-flex items-center justify-center w-8 h-8 rounded-lg border border-slate-700/60 bg-slate-800/40 text-slate-200 hover:border-indigo-400 transition-colors cursor-pointer"
             aria-label={mobileMenuOpen ? dict.nav.menuClose : dict.nav.menuOpen}
           >
             {mobileMenuOpen ? (
@@ -158,17 +158,17 @@ export function Navbar({
 
       {/* Mobile Dropdown Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden w-full max-w-5xl mx-auto mt-2 rounded-2xl border border-white/[0.12] bg-[#070A0F]/95 backdrop-blur-2xl p-5 space-y-4 shadow-2xl pointer-events-auto animate-in slide-in-from-top-2 duration-200">
+        <div className="md:hidden w-full max-w-5xl mx-auto mt-2 rounded-2xl border border-indigo-500/20 bg-[#0B1120]/95 backdrop-blur-2xl p-5 space-y-4 shadow-2xl pointer-events-auto animate-in slide-in-from-top-2 duration-200">
           <nav className="flex flex-col space-y-2 font-mono text-xs uppercase tracking-wider">
             {navLinks.map((link, idx) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between text-white/80 hover:text-[#00FF9D] py-2 border-b border-white/[0.06] transition-colors"
+                className="flex items-center justify-between text-slate-200 hover:text-cyan-400 py-2 border-b border-slate-800/80 transition-colors"
               >
                 <span>{link.label}</span>
-                <span className="text-[10px] text-[#00FF9D] font-mono">0{idx + 1}</span>
+                <span className="text-[10px] text-cyan-400 font-mono">0{idx + 1}</span>
               </Link>
             ))}
           </nav>

@@ -49,12 +49,12 @@ export function ContactForm({ isRtl }: { isRtl: boolean }) {
 
   if (submitted) {
     return (
-      <div className="p-8 border border-[#00FF9D]/40 bg-[#00FF9D]/5 text-center space-y-3 animate-in fade-in duration-300 rounded-xl font-mono">
-        <div className="flex items-center justify-center gap-2 text-[#00FF9D] text-xs font-bold uppercase tracking-widest">
-          <CheckCircle2 className="w-4 h-4 text-[#00FF9D]" />
+      <div className="p-8 border border-emerald-500/40 bg-emerald-500/10 text-center space-y-3 animate-in fade-in duration-300 rounded-xl font-mono">
+        <div className="flex items-center justify-center gap-2 text-emerald-400 text-xs font-bold uppercase tracking-widest">
+          <CheckCircle2 className="w-4 h-4 text-emerald-400" />
           <span>{"// TRANSMISSION CONFIRMED"}</span>
         </div>
-        <p className="text-white text-sm font-sans">
+        <p className="text-slate-200 text-sm font-sans">
           {isRtl
             ? "تم استقبال رسالتك بنجاح وحفظها بأمان. سيتم التواصل معك عبر القنوات الرسمية قريباً."
             : "Your technical advisory inquiry has been received and securely queued. Abdulghani Al-Shibami will respond promptly."}
@@ -65,7 +65,7 @@ export function ContactForm({ isRtl }: { isRtl: boolean }) {
             setSubmitted(false);
             setFormData({ name: "", email: "", subject: "", message: "" });
           }}
-          className="text-xs text-[#00FF9D] hover:underline pt-2 uppercase tracking-wider cursor-pointer transition-colors"
+          className="text-xs text-cyan-400 hover:underline pt-2 uppercase tracking-wider cursor-pointer transition-colors"
         >
           {isRtl ? "إرسال رسالة أخرى" : "Send Another Message"}
         </button>
@@ -77,7 +77,7 @@ export function ContactForm({ isRtl }: { isRtl: boolean }) {
     <form onSubmit={handleSubmit} className="space-y-4 font-mono text-xs">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="space-y-1.5">
-          <label className="text-[11px] uppercase tracking-wider text-white/60 block">
+          <label className="text-[11px] uppercase tracking-wider text-slate-400 block">
             {isRtl ? "الاسم الكامل" : "Full Name"}
           </label>
           <input
@@ -87,12 +87,12 @@ export function ContactForm({ isRtl }: { isRtl: boolean }) {
             onChange={handleChange}
             required
             placeholder={isRtl ? "الاسم الكريم" : "Your Name / Organization"}
-            className="w-full h-10 px-3.5 bg-black/40 border border-white/[0.1] focus:border-[#00FF9D] focus:ring-1 focus:ring-[#00FF9D]/30 focus:outline-none text-white text-xs transition-all rounded-lg"
+            className="w-full h-10 px-3.5 bg-slate-950/60 border border-slate-700/60 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400/30 focus:outline-none text-white text-xs transition-all rounded-lg"
           />
         </div>
 
         <div className="space-y-1.5">
-          <label className="text-[11px] uppercase tracking-wider text-white/60 block">
+          <label className="text-[11px] uppercase tracking-wider text-slate-400 block">
             {isRtl ? "البريد الإلكتروني" : "Email Address"}
           </label>
           <input
@@ -102,13 +102,13 @@ export function ContactForm({ isRtl }: { isRtl: boolean }) {
             onChange={handleChange}
             required
             placeholder="eng@example.com"
-            className="w-full h-10 px-3.5 bg-black/40 border border-white/[0.1] focus:border-[#00FF9D] focus:ring-1 focus:ring-[#00FF9D]/30 focus:outline-none text-white text-xs transition-all rounded-lg"
+            className="w-full h-10 px-3.5 bg-slate-950/60 border border-slate-700/60 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400/30 focus:outline-none text-white text-xs transition-all rounded-lg"
           />
         </div>
       </div>
 
       <div className="space-y-1.5">
-        <label className="text-[11px] uppercase tracking-wider text-white/60 block">
+        <label className="text-[11px] uppercase tracking-wider text-slate-400 block">
           {isRtl ? "موضوع الرسالة" : "Subject"}
         </label>
         <input
@@ -118,12 +118,12 @@ export function ContactForm({ isRtl }: { isRtl: boolean }) {
           onChange={handleChange}
           required
           placeholder={isRtl ? "عنوان الاستشارة أو المشروع" : "Systems Architecture / Consulting / Project Inquiry"}
-          className="w-full h-10 px-3.5 bg-black/40 border border-white/[0.1] focus:border-[#00FF9D] focus:ring-1 focus:ring-[#00FF9D]/30 focus:outline-none text-white text-xs transition-all rounded-lg"
+          className="w-full h-10 px-3.5 bg-slate-950/60 border border-slate-700/60 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400/30 focus:outline-none text-white text-xs transition-all rounded-lg"
         />
       </div>
 
       <div className="space-y-1.5">
-        <label className="text-[11px] uppercase tracking-wider text-white/60 block">
+        <label className="text-[11px] uppercase tracking-wider text-slate-400 block">
           {isRtl ? "تفاصيل الرسالة" : "Message"}
         </label>
         <textarea
@@ -133,14 +133,14 @@ export function ContactForm({ isRtl }: { isRtl: boolean }) {
           required
           rows={4}
           placeholder={isRtl ? "اكتب تفاصيل استفسارك الهندسي هنا..." : "Describe the scope, technical parameters, or timeline of your project..."}
-          className="w-full p-3.5 bg-black/40 border border-white/[0.1] focus:border-[#00FF9D] focus:ring-1 focus:ring-[#00FF9D]/30 focus:outline-none text-white text-xs transition-all rounded-lg resize-none"
+          className="w-full p-3.5 bg-slate-950/60 border border-slate-700/60 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400/30 focus:outline-none text-white text-xs transition-all rounded-lg resize-none"
         />
       </div>
 
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full h-11 px-5 rounded-lg bg-[#00FF9D] hover:bg-[#00FF9D]/90 text-[#070A0F] font-bold text-xs flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(0,255,157,0.3)] transition-all active:scale-[0.98] disabled:opacity-50 cursor-pointer"
+        className="w-full h-11 px-5 rounded-lg bg-gradient-to-r from-indigo-500 to-cyan-500 hover:from-indigo-600 hover:to-cyan-600 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(99,102,241,0.35)] transition-all active:scale-[0.98] disabled:opacity-50 cursor-pointer"
       >
         {isSubmitting ? (
           <>

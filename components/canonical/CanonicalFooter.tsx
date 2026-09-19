@@ -46,31 +46,31 @@ export function CanonicalFooter({ locale }: CanonicalFooterProps) {
   return (
     <footer
       id="contact"
-      className="relative w-full bg-[#030508] text-white overflow-hidden"
+      className="relative bg-[#090D16] border-t border-slate-800/80 overflow-hidden"
       dir={isAr ? "rtl" : "ltr"}
     >
       {/* Top border data line */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00FF9D]/40 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-500/40 to-transparent" />
 
       {/* Subtle glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-64 bg-[#00FF9D]/[0.025] rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-64 bg-indigo-500/[0.05] rounded-full blur-[100px] pointer-events-none" />
 
       {/* ── CTA Band ── */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-20">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="max-w-lg">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#00FF9D]/08 border border-[#00FF9D]/25 font-mono text-[10px] tracking-[0.18em] text-[#00FF9D] uppercase mb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#00FF9D] animate-ping" />
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 font-mono text-[10px] tracking-[0.18em] text-cyan-400 uppercase mb-4">
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
               {isAr ? "SECTION 05 / تواصل" : "SECTION 05 / CONTACT"}
             </div>
             <h3 className="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
               {isAr ? (
-                <>هل لديك مشروع يحتاج<br /><span className="text-[#00FF9D]">هندسة متقدمة؟</span></>
+                <>هل لديك مشروع يحتاج<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-cyan-400 to-emerald-400">هندسة متقدمة؟</span></>
               ) : (
-                <>Ready to architect<br /><span className="text-[#00FF9D]">something great?</span></>
+                <>Ready to architect<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-cyan-400 to-emerald-400">something great?</span></>
               )}
             </h3>
-            <p className="text-zinc-400 text-sm mt-3 leading-relaxed max-w-sm">
+            <p className="text-slate-400 text-sm mt-3 leading-relaxed max-w-sm">
               {isAr
                 ? "لديّ خبرة في بناء منصات تقنية معقدة — من قواعد البيانات إلى الواجهات الذكية."
                 : "From database architecture to real-time dashboards — let's build systems that matter."}
@@ -81,11 +81,11 @@ export function CanonicalFooter({ locale }: CanonicalFooterProps) {
             <button
               type="button"
               onClick={() => setShowContactModal(true)}
-              className="px-8 py-4 rounded-full bg-[#00FF9D] text-black font-semibold text-sm tracking-wider uppercase font-mono transition-all duration-200 shadow-[0_0_30px_rgba(0,255,157,0.5)] hover:shadow-[0_0_45px_rgba(0,255,157,0.8)] hover:scale-[1.04] active:scale-[0.97]"
+              className="px-8 py-4 rounded-full bg-gradient-to-r from-indigo-500 via-cyan-500 to-emerald-500 hover:from-indigo-600 hover:to-emerald-600 text-white font-semibold text-sm tracking-wider uppercase font-mono transition-all duration-200 shadow-[0_0_30px_rgba(99,102,241,0.5)] hover:shadow-[0_0_45px_rgba(6,182,212,0.7)] hover:scale-[1.04] active:scale-[0.97]"
             >
               {isAr ? "ابدأ محادثة الآن ↗" : "START A CONVERSATION ↗"}
             </button>
-            <p className="text-zinc-600 font-mono text-[11px]">
+            <p className="text-slate-500 font-mono text-[11px]">
               {isAr ? "يُرد في غضون 24 ساعة" : "Typically responds within 24 hours"}
             </p>
           </div>
@@ -93,36 +93,36 @@ export function CanonicalFooter({ locale }: CanonicalFooterProps) {
       </div>
 
       {/* ── Bottom Footer Bar ── */}
-      <div className="relative z-10 border-t border-zinc-900 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-8">
+      <div className="relative z-10 border-t border-slate-800/80 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-8">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
           {/* Logo + Copyright */}
           <div className="flex items-center gap-3">
-            <span className="w-8 h-8 rounded-lg bg-[#00FF9D]/12 border border-[#00FF9D]/35 flex items-center justify-center text-[#00FF9D] font-bold text-base shadow-[0_0_12px_rgba(0,255,157,0.25)]">
+            <span className="w-8 h-8 rounded-lg bg-indigo-500/15 border border-indigo-500/40 flex items-center justify-center text-indigo-300 font-bold text-base shadow-[0_0_12px_rgba(99,102,241,0.25)]">
               A
             </span>
-            <span className="font-mono text-[11px] text-zinc-500">
+            <span className="font-mono text-[11px] text-slate-400">
               Abdulghani Al-Shibami © {new Date().getFullYear()}
             </span>
           </div>
 
           {/* Navigation */}
-          <nav className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 font-mono text-xs text-zinc-500">
-            <Link href={`/${locale}`} className="hover:text-[#00FF9D] transition-colors">
+          <nav className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 font-mono text-xs text-slate-400">
+            <Link href={`/${locale}`} className="hover:text-cyan-400 transition-colors">
               {isAr ? "الرئيسية" : "Home"}
             </Link>
-            <a href="#projects" className="hover:text-[#00FF9D] transition-colors">
+            <a href="#projects" className="hover:text-cyan-400 transition-colors">
               {isAr ? "المشاريع" : "Projects"}
             </a>
-            <a href="#sandbox" className="hover:text-[#00FF9D] transition-colors">
+            <a href="#sandbox" className="hover:text-cyan-400 transition-colors">
               {isAr ? "المحاكي" : "Sandbox"}
             </a>
-            <a href="#studio" className="hover:text-[#00FF9D] transition-colors">
+            <a href="#studio" className="hover:text-cyan-400 transition-colors">
               {isAr ? "معمل الديمو" : "Demo Studio"}
             </a>
             <button
               type="button"
               onClick={() => setShowContactModal(true)}
-              className="hover:text-[#00FF9D] transition-colors"
+              className="hover:text-cyan-400 transition-colors"
             >
               {isAr ? "تواصل" : "Contact"}
             </button>
@@ -137,7 +137,7 @@ export function CanonicalFooter({ locale }: CanonicalFooterProps) {
                 target={link.href.startsWith("http") ? "_blank" : undefined}
                 rel="noopener noreferrer"
                 aria-label={link.label}
-                className="w-9 h-9 rounded-lg border border-zinc-800 flex items-center justify-center text-zinc-500 hover:text-[#00FF9D] hover:border-[#00FF9D]/40 hover:bg-[#00FF9D]/06 transition-all duration-200"
+                className="w-9 h-9 rounded-lg border border-slate-800 bg-slate-900/50 flex items-center justify-center text-slate-400 hover:text-cyan-400 hover:border-cyan-500/40 hover:bg-cyan-500/10 transition-all duration-200"
               >
                 {link.icon}
               </a>
@@ -146,25 +146,25 @@ export function CanonicalFooter({ locale }: CanonicalFooterProps) {
         </div>
 
         {/* Bottom tag */}
-        <div className="mt-6 text-center font-mono text-[10px] text-zinc-700">
+        <div className="mt-6 text-center font-mono text-[10px] text-slate-500">
           {isAr
-            ? "مبني بـ Next.js · TypeScript · Tailwind CSS · Supabase — على فرع redesign/final-liquid-glass-portfolio"
-            : "Built with Next.js · TypeScript · Tailwind CSS · Supabase — on branch redesign/final-liquid-glass-portfolio"}
+            ? "مبني بـ Next.js 15 · TypeScript · Tailwind CSS · Titanium Slate & Electric Architecture"
+            : "Built with Next.js 15 · TypeScript · Tailwind CSS · Titanium Slate & Electric Architecture"}
         </div>
       </div>
 
       {/* ── Contact Modal ── */}
       {showContactModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md" dir={isAr ? "rtl" : "ltr"}>
-          <div className="relative w-full max-w-lg bg-[#070A10] border border-[#00FF9D]/35 rounded-2xl p-6 shadow-[0_0_60px_rgba(0,255,157,0.18)]">
-            <div className="flex items-center justify-between pb-4 border-b border-zinc-800">
-              <span className="font-mono text-sm font-bold text-[#00FF9D]">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md" dir={isAr ? "rtl" : "ltr"}>
+          <div className="relative w-full max-w-lg bg-[#0B1120] border border-indigo-500/40 rounded-2xl p-6 shadow-[0_0_60px_rgba(99,102,241,0.25)]">
+            <div className="flex items-center justify-between pb-4 border-b border-slate-800">
+              <span className="font-mono text-sm font-bold text-cyan-400">
                 {"// "}{isAr ? "إرسال رسالة مباشرة" : "TRANSMIT MESSAGE TO SYSTEMS ARCHITECT"}
               </span>
               <button
                 type="button"
                 onClick={() => setShowContactModal(false)}
-                className="w-8 h-8 rounded-lg border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-600 transition-colors font-mono text-sm"
+                className="w-8 h-8 rounded-lg border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-slate-600 transition-colors font-mono text-sm cursor-pointer"
               >
                 ✕
               </button>

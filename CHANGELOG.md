@@ -10,6 +10,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.5.1] - 2026-09-19 — Global Design Token Harmonization & Catalog 3D Bento Integration
+
+### Added & Enhanced
+- **Global Titanium Slate & Electric Palette Harmonization:**
+  - Upgraded `Navbar.tsx` and `Footer.tsx` with Titanium Slate surfaces (`#0B1120`), Electric Indigo borders, and Cyan interactive states.
+  - Upgraded `CanonicalFooter.tsx` and `ContactForm.tsx` with Electric Indigo/Cyan glowing CTAs, dark slate input fields, and emerald transmission confirmation badges.
+  - Modernized `DemoCalloutBanner.tsx` and `LiveDemoStudio.tsx` with sleek slate gradients and emerald live status indicators.
+  - Synchronized `ProjectCard.tsx`, `ProjectFilters.tsx`, and `TechnologyBadge.tsx` with modern theme tokens.
+  - Modernized `ProjectPreviewGraphic.tsx` mini-terminal representations across all 5 projects.
+- **Projects Catalog 3D Bento Integration (`ProjectCatalogView.tsx`):**
+  - Integrated `CanonicalProjectsBento` into `/[locale]/projects` default view, bringing 3D concept renders and interactive visualizers directly to the projects page.
+  - Deduplicated codebase by safely removing redundant `ProjectBentoShowcase.tsx`.
+- **Zero-Defect Verification:**
+  - `pnpm build`: 30/30 static pages prerendered with 0 errors.
+  - TypeScript & ESLint: 100% clean pass.
+
+---
+
 ## [1.5.0] - 2026-09-19 — Titanium Slate & Electric Palette Visual Redesign with 3D Concept Renders
 
 ### Added & Enhanced

@@ -67,11 +67,11 @@ export const DemoCalloutBanner: React.FC<DemoCalloutBannerProps> = ({
   const demoUrl = project.demoUrl ? `/${locale}${project.demoUrl}` : `/${locale}/projects/${project.slug}/demo`;
 
   return (
-    <div className="rounded-2xl border border-[#00FF9D]/30 bg-[#070A0F] p-6 sm:p-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 transition-all hover:border-[#00FF9D]/60 shadow-[0_15px_40px_rgba(0,0,0,0.8),0_0_25px_rgba(0,255,157,0.08)]">
+    <div className="rounded-2xl border border-indigo-500/30 bg-gradient-to-r from-[#0F172A] via-[#0B1120] to-[#090D16] p-6 sm:p-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 transition-all hover:border-indigo-500/60 shadow-[0_15px_40px_rgba(2,6,23,0.8),0_0_25px_rgba(99,102,241,0.15)]">
       <div className="space-y-3 max-w-2xl font-mono">
         <div className="flex items-center gap-3">
-          <span className="px-2.5 py-0.5 rounded text-[10px] font-bold bg-[#00FF9D]/10 text-[#00FF9D] border border-[#00FF9D]/30 flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#00FF9D] animate-ping" />
+          <span className="px-2.5 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
             <span>
               {project.demoType === "real_live"
                 ? isRtl
@@ -82,7 +82,7 @@ export const DemoCalloutBanner: React.FC<DemoCalloutBannerProps> = ({
                 : "WORKSTATION SANDBOX"}
             </span>
           </span>
-          <span className="text-xs text-white/40 hidden sm:inline">
+          <span className="text-xs text-slate-400 hidden sm:inline">
             {"// "}{isRtl ? "بيئة التشغيل جاهزة" : "ACTIVE RUNTIME READY"}
           </span>
         </div>
@@ -91,7 +91,7 @@ export const DemoCalloutBanner: React.FC<DemoCalloutBannerProps> = ({
           {bannerTitle}
         </h3>
 
-        <p className="text-white/70 text-xs sm:text-sm leading-relaxed font-sans">
+        <p className="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
           {bannerDesc}
         </p>
       </div>
@@ -99,7 +99,7 @@ export const DemoCalloutBanner: React.FC<DemoCalloutBannerProps> = ({
       <div className="shrink-0 w-full lg:w-auto">
         <Link
           href={demoUrl}
-          className="w-full lg:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#00FF9D] hover:bg-[#00FF9D]/90 text-[#070A0F] font-mono font-bold text-sm shadow-[0_0_20px_rgba(0,255,157,0.3)] transition-all active:scale-95"
+          className="w-full lg:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-cyan-500 hover:from-indigo-600 hover:to-cyan-600 text-white font-mono font-bold text-sm shadow-[0_0_20px_rgba(99,102,241,0.35)] transition-all active:scale-95"
         >
           <span>
             {project.demoType === "real_live"

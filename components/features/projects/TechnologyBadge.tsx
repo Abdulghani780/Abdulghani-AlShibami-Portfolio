@@ -17,13 +17,13 @@ export const TechnologyBadge: React.FC<TechnologyBadgeProps> = ({
   const category = typeof technology === "string" ? "Tool" : technology.category;
 
   const categoryBorder = {
-    Language: "border-[#00FF9D]/30 text-[#00FF9D] bg-[#00FF9D]/5",
-    Framework: "border-cyan-500/30 text-cyan-400 bg-cyan-500/5",
-    Protocol: "border-emerald-500/30 text-emerald-400 bg-emerald-500/5",
-    Database: "border-amber-500/30 text-amber-400 bg-amber-500/5",
-    Tool: "border-white/[0.08] text-white/70 bg-white/[0.03]",
-    Cloud: "border-sky-500/30 text-sky-400 bg-sky-500/5",
-  }[category] || "border-white/[0.08] text-white/70 bg-white/[0.03]";
+    Language: "border-indigo-500/30 text-indigo-300 bg-indigo-500/10",
+    Framework: "border-cyan-500/30 text-cyan-400 bg-cyan-500/10",
+    Protocol: "border-emerald-500/30 text-emerald-400 bg-emerald-500/10",
+    Database: "border-amber-500/30 text-amber-400 bg-amber-500/10",
+    Tool: "border-slate-700/60 text-slate-300 bg-slate-800/40",
+    Cloud: "border-sky-500/30 text-sky-400 bg-sky-500/10",
+  }[category] || "border-slate-700/60 text-slate-300 bg-slate-800/40";
 
   return (
     <span
