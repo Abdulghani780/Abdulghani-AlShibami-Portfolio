@@ -1,325 +1,363 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Locale } from "@/lib/i18n/dictionaries";
 
 interface CanonicalHeroProps {
   locale: Locale;
 }
 
+const TERMINAL_LINES_EN = [
+  { text: "[INIT] Quantum Emerald Runtime v3.4.1 — online", color: "text-[#00FF9D]" },
+  { text: "[AUTH] Engineer: Abdulghani Al-Shibami · Systems Architect", color: "text-[#00F0FF]" },
+  { text: "[LOAD] 5 flagship project instances linked to bus", color: "text-zinc-300" },
+  { text: "[PERF] Algorithm benchmarks: HeapSort 3.14ms · A* 1.2ms", color: "text-zinc-300" },
+  { text: "[STATUS] All systems online. Ready for command.", color: "text-[#00FF9D]" },
+];
+
+const TERMINAL_LINES_AR = [
+  { text: "[INIT] بيئة التشغيل v3.4.1 — نشطة", color: "text-[#00FF9D]" },
+  { text: "[AUTH] المهندس: عبدالغني الشبامي · مهندس أنظمة", color: "text-[#00F0FF]" },
+  { text: "[LOAD] 5 مشاريع رئيسية متصلة بالشبكة", color: "text-zinc-300" },
+  { text: "[STATUS] جميع الأنظمة جاهزة.", color: "text-[#00FF9D]" },
+];
+
 export function CanonicalHero({ locale }: CanonicalHeroProps) {
   const isAr = locale === "ar";
+  const [cpuVal, setCpuVal] = useState(18);
+  const [memVal, setMemVal] = useState(2.4);
+  const [algCount, setAlgCount] = useState(847);
+  const [termLines, setTermLines] = useState<{ text: string; color: string }[]>([]);
+  const [termInput, setTermInput] = useState("");
+  const termBodyRef = useRef<HTMLDivElement>(null);
+  const lines = isAr ? TERMINAL_LINES_AR : TERMINAL_LINES_EN;
 
-  // Dynamic telemetry states
-  const [cpuUsage, setCpuUsage] = useState("0.0 %");
-  const [streamRate, setStreamRate] = useState("12.87 M/s");
-  const [logs, setLogs] = useState<string[]>([
-    "[INIT] System kernel v3.4.1 initialized in 0.8ms",
-    "[AUTH] Operator: Abdulghani Al-Shibami (Systems Architect)",
-    "[NET] 5 Flagship Workstation Instances linked to bus",
-    "[STATUS] Ready for native WASM execution & live telemetry",
-    "> Waiting for operator command...",
-  ]);
-  const [terminalInput, setTerminalInput] = useState("");
-
+  // Progressive terminal reveal on mount
   useEffect(() => {
-    const interval = setInterval(() => {
-      const cpu = (Math.random() * 4 + 1.2).toFixed(1);
-      const rate = (Math.random() * 2 + 12).toFixed(2);
-      setCpuUsage(`${cpu} %`);
-      setStreamRate(`${rate} M/s`);
-    }, 2500);
-    return () => clearInterval(interval);
+    setTermLines([]);
+    let i = 0;
+    const tick = setInterval(() => {
+      if (i < lines.length) {
+        const nextLine = lines[i];
+        if (nextLine) {
+          setTermLines((prev) => [...prev, nextLine]);
+        }
+        i++;
+      } else {
+        clearInterval(tick);
+      }
+    }, 450);
+    return () => clearInterval(tick);
+  }, [isAr, lines]);
+
+  // Live telemetry ticker
+  useEffect(() => {
+    const id = setInterval(() => {
+      setCpuVal(Math.floor(Math.random() * 10 + 14));
+      setMemVal(parseFloat((Math.random() * 0.8 + 2.0).toFixed(1)));
+      setAlgCount((n) => n + Math.floor(Math.random() * 3));
+    }, 2400);
+    return () => clearInterval(id);
   }, []);
+
+  // Auto-scroll terminal
+  useEffect(() => {
+    if (termBodyRef.current) {
+      termBodyRef.current.scrollTop = termBodyRef.current.scrollHeight;
+    }
+  }, [termLines]);
 
   const handleCommand = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!terminalInput.trim()) return;
-    const cmd = terminalInput.trim().toLowerCase();
-    const newLogs = [...logs, `> ${terminalInput}`];
-
+    const cmd = termInput.trim().toLowerCase();
+    if (!cmd) return;
+    const entry = { text: `> ${termInput}`, color: "text-[#00FF9D]" };
+    let response: { text: string; color: string } | null = null;
     if (cmd === "help") {
-      newLogs.push("Available commands: 'projects', 'status', 'whoami', 'clear'");
+      response = { text: "Commands: projects · whoami · status · clear", color: "text-zinc-300" };
     } else if (cmd === "projects") {
-      newLogs.push("1: Campus IT Tracker | 2: MetaAlgorithm Lab | 3: Cafena | 4: NovaTech | 5: GP Portal");
+      response = { text: "1: Campus IT Tracker  2: MetaAlgorithm Lab  3: Cafena  4: NovaTech  5: GP Portal", color: "text-[#00F0FF]" };
     } else if (cmd === "whoami") {
-      newLogs.push("Abdulghani Al-Shibami — Software Engineer & AI Systems Builder");
+      response = { text: "Abdulghani Al-Shibami — Software Engineer & Systems Architect", color: "text-zinc-200" };
     } else if (cmd === "status") {
-      newLogs.push(`All 5 workstations online. CPU: ${cpuUsage}, Rate: ${streamRate}`);
+      response = { text: `CPU: ${cpuVal}%  MEM: ${memVal}GB  Algorithms: ${algCount}  Projects: 5`, color: "text-[#00FF9D]" };
     } else if (cmd === "clear") {
-      setLogs(["> Terminal cleared. Ready."]);
-      setTerminalInput("");
+      setTermLines([]);
+      setTermInput("");
       return;
     } else {
-      newLogs.push(`Command not recognized: '${cmd}'. Type 'help' for instructions.`);
+      response = { text: `Command not found: '${cmd}'. Type 'help'`, color: "text-zinc-500" };
     }
-
-    setLogs(newLogs);
-    setTerminalInput("");
+    setTermLines((prev) => [...prev, entry, ...(response ? [response] : [])]);
+    setTermInput("");
   };
 
+  const METRICS = [
+    { label: isAr ? "المعالج" : "CPU", value: `${cpuVal}%`, color: "text-[#00FF9D]" },
+    { label: isAr ? "الذاكرة" : "RAM", value: `${memVal}GB`, color: "text-[#00F0FF]" },
+    { label: isAr ? "خوارزميات" : "Algorithms", value: `${algCount}`, color: "text-white" },
+    { label: isAr ? "مشاريع" : "Projects", value: "5", color: "text-[#00FF9D]" },
+  ];
+
   return (
-    <section className="relative w-full min-h-[92vh] bg-[#04070D] text-white flex flex-col justify-between px-4 sm:px-8 lg:px-12 pt-6 pb-12 overflow-hidden border-b border-[#00FF9D]/15">
-      {/* Background radial glow */}
-      <div className="absolute top-1/3 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#00FF9D]/[0.035] rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-[#00F0FF]/[0.03] rounded-full blur-[140px] pointer-events-none" />
+    <section
+      className="relative w-full min-h-screen bg-[#04070D] text-white flex flex-col overflow-hidden"
+      dir={isAr ? "rtl" : "ltr"}
+    >
+      {/* ── Bioluminescent background glows ── */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#00FF9D]/[0.028] rounded-full blur-[160px]" />
+        <div className="absolute bottom-1/3 right-1/4 w-[500px] h-[500px] bg-[#00F0FF]/[0.022] rounded-full blur-[140px]" />
+        {/* Emerald dot particle grid */}
+        <div
+          className="absolute inset-0 opacity-[0.35]"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, rgba(0,255,157,0.4) 1px, transparent 1px)",
+            backgroundSize: "44px 44px",
+          }}
+        />
+      </div>
 
-      {/* ─────────────────────────────────────────────────────────────
-          1. TOP NAVIGATION (Exact to Reference 1)
-      ───────────────────────────────────────────────────────────── */}
-      <header className="relative z-20 w-full flex items-center justify-between pb-8">
-        <div className="flex items-center space-x-3 rtl:space-x-reverse">
-          <Link
-            href={`/${locale}`}
-            className="text-xl sm:text-2xl font-bold tracking-tight text-white hover:text-[#00FF9D] transition-colors"
-          >
-            Abdulghani Al-Shibami
-          </Link>
-          <span className="hidden sm:inline-block px-2 py-0.5 rounded text-[11px] font-mono bg-[#00FF9D]/10 text-[#00FF9D] border border-[#00FF9D]/30">
-            {isAr ? "نظام التشغيل: نشط" : "SYS_STATUS: ONLINE"}
-          </span>
-        </div>
+      {/* ── TOP NAVIGATION ── */}
+      <header className="relative z-20 w-full flex items-center justify-between px-6 sm:px-10 lg:px-16 pt-6 pb-4">
+        <Link
+          href={`/${locale}`}
+          className="font-mono text-sm font-bold tracking-widest text-white hover:text-[#00FF9D] transition-colors uppercase"
+        >
+          ABDULGHANI.DEV
+        </Link>
 
-        <nav className="flex items-center space-x-4 sm:space-x-6 rtl:space-x-reverse text-sm font-medium">
-          <a
-            href="#projects"
-            className="text-zinc-400 hover:text-white transition-colors"
-          >
-            {isAr ? "المشاريع" : "Projects"}
-          </a>
-          <a
-            href="#sandbox"
-            className="text-zinc-400 hover:text-white transition-colors"
-          >
-            {isAr ? "المحاكي المباشر" : "Live Sandbox"}
-          </a>
-          <a
-            href="#studio"
-            className="text-zinc-400 hover:text-white transition-colors"
-          >
-            {isAr ? "معمل الديمو" : "Demo Studio"}
-          </a>
-          <a
-            href="#contact"
-            className="text-zinc-400 hover:text-white transition-colors"
-          >
-            {isAr ? "تواصل" : "Contact"}
-          </a>
-
-          {/* Locale switcher */}
+        <nav className="flex items-center gap-3 sm:gap-6 lg:gap-8 text-xs font-mono font-medium">
+          {[
+            { href: "#projects", en: "Projects", ar: "المشاريع", mobile: true },
+            { href: "#sandbox", en: "Live Sandbox", ar: "المحاكي", mobile: false },
+            { href: "#studio", en: "Demo Studio", ar: "معمل الديمو", mobile: false },
+            { href: "#contact", en: "Contact", ar: "تواصل", mobile: true },
+          ].map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className={`text-zinc-400 hover:text-[#00FF9D] transition-colors relative group ${
+                item.mobile ? "inline-block" : "hidden md:inline-block"
+              }`}
+            >
+              {isAr ? item.ar : item.en}
+              <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-[#00FF9D] transition-all duration-300 group-hover:w-full" />
+            </a>
+          ))}
           <Link
             href={isAr ? "/en" : "/ar"}
-            className="px-2.5 py-1 rounded-md text-xs font-mono bg-zinc-900 border border-zinc-700 hover:border-[#00FF9D] text-[#00FF9D] transition-colors"
+            className="px-2.5 py-1 rounded-md text-[11px] font-mono bg-zinc-900 border border-zinc-700 hover:border-[#00FF9D]/60 text-[#00FF9D] transition-colors"
           >
-            {isAr ? "English" : "عربي"}
+            {isAr ? "EN" : "عربي"}
           </Link>
-
-          <a
-            href="#contact"
-            className="hidden sm:inline-block text-zinc-300 hover:text-[#00FF9D] text-xs font-mono transition-colors"
-          >
-            {isAr ? "دخول المشرف" : "Log in"}
-          </a>
         </nav>
       </header>
 
-      {/* ─────────────────────────────────────────────────────────────
-          2. HERO CONTENT GRID (Exact to Reference 1)
-      ───────────────────────────────────────────────────────────── */}
-      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center flex-1 my-auto">
-        {/* Left Column (lg:col-span-7) */}
+      {/* ── SECTION LABEL ── */}
+      <div className="relative z-10 px-6 sm:px-10 lg:px-16 pt-8">
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#00FF9D]/08 border border-[#00FF9D]/25 font-mono text-[10px] tracking-[0.18em] text-[#00FF9D] uppercase">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#00FF9D] animate-ping" />
+          {isAr ? "SECTION 01 / البطل" : "SECTION 01 / HERO"}
+        </div>
+      </div>
+
+      {/* ── CINEMATIC HERO TYPOGRAPHY + PORTRAIT ── */}
+      <div className="relative z-10 flex-1 grid grid-cols-1 lg:grid-cols-12 gap-0 items-center px-6 sm:px-10 lg:px-16 pt-4 pb-0">
+
+        {/* Left: Cinematic Headline (lg:col-span-7) */}
         <div className="lg:col-span-7 flex flex-col justify-center space-y-6">
-          {/* Telemetry metadata */}
-          <div className="font-mono text-xs text-[#00FF9D]/90 space-y-1">
-            <div className="text-[11px] tracking-widest text-[#00FF9D] font-bold">
-              SYSTEM STATUS TELEMETRY
-            </div>
-            <div className="flex items-center space-x-6 rtl:space-x-reverse text-zinc-400">
-              <span>CPU in status : <strong className="text-white font-mono">{cpuUsage}</strong></span>
-              <span>Monospacezs : <strong className="text-white font-mono">{streamRate}</strong></span>
-              <span>User Mode : <strong className="text-white font-mono">10.09 00Q</strong></span>
-            </div>
+          {/* Tag chips */}
+          <div className="flex flex-wrap gap-2">
+            {(isAr
+              ? ["مهندس برمجيات", "باحث خوارزميات", "مطور متكامل"]
+              : ["SOFTWARE ENGINEER", "ALGORITHM RESEARCHER", "FULL-STACK ARCHITECT"]
+            ).map((tag) => (
+              <span
+                key={tag}
+                className="px-3 py-1 rounded-full text-[10px] font-mono bg-zinc-900/80 border border-zinc-700/80 text-zinc-300 tracking-wider"
+              >
+                {tag}
+              </span>
+            ))}
           </div>
 
-          {/* Tags */}
-          <div className="flex items-center space-x-2 rtl:space-x-reverse pt-2">
-            <span className="px-3 py-1 rounded-full text-xs font-mono uppercase bg-zinc-900/80 border border-zinc-700 text-zinc-300">
-              EDITORIAL TYPOGRAPHY
-            </span>
-            <span className="px-3 py-1 rounded-full text-xs font-mono uppercase bg-zinc-900/80 border border-zinc-700 text-zinc-300">
-              HERO
-            </span>
+          {/* Cinematic display headline */}
+          <div className="space-y-0 leading-none">
+            {(isAr
+              ? ["هندسة", "الأنظمة", "والخوارزميات"]
+              : ["SOFTWARE", "ENGINEER", "& ARCHITECT"]
+            ).map((word, i) => (
+              <div
+                key={word}
+                className="overflow-hidden"
+                style={{ animationDelay: `${i * 120}ms` }}
+              >
+                <h1
+                  className={`block font-extrabold tracking-tight text-white leading-[0.92]
+                    ${i === 2
+                      ? "text-4xl sm:text-7xl lg:text-8xl text-transparent bg-clip-text bg-gradient-to-r from-[#00FF9D] via-[#4EFEB3] to-[#00F0FF]"
+                      : "text-5xl sm:text-7xl lg:text-[104px]"
+                    }`}
+                >
+                  {word}
+                </h1>
+              </div>
+            ))}
           </div>
-
-          {/* Monumental Headline */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.1] sm:leading-[1.15]">
-            {isAr ? (
-              <>
-                هندسة الذكاء البرمجي <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-200 to-[#00FF9D]">
-                  خلف الواجهة
-                </span>
-              </>
-            ) : (
-              <>
-                Architecting Intelligence <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-200 to-[#00FF9D]">
-                  Behind the Interface
-                </span>
-              </>
-            )}
-          </h1>
 
           {/* Subtitle */}
-          <p className="text-zinc-400 text-base sm:text-lg max-w-xl leading-relaxed">
+          <p className="text-zinc-400 text-sm sm:text-base max-w-lg leading-relaxed">
             {isAr
-              ? "منصة تحكم وهندسة برمجية متقدمة، تبث خطوط بيانات التيليمتري الحية بلون الزمرد النيوني الفسفوري."
-              : "A futuristic personal command center interface, presiding neon emerald's HUD bioluminescent data lines."}
+              ? "منصة تحكم هندسية متقدمة تبث خطوط البيانات البيولومينية الحية، مع ديمو تفاعلي لكل مشروع."
+              : "A futuristic engineering command center, streaming bioluminescent data lines and live interactive demos for every project."}
           </p>
 
-          {/* Action Buttons (Exact pill buttons from image) */}
-          <div className="flex flex-wrap items-center gap-4 pt-2">
+          {/* CTA Buttons */}
+          <div className="flex flex-wrap items-center gap-4">
             <a
               href="#projects"
-              className="px-6 py-3 rounded-full bg-[#00FF9D] text-black font-semibold text-xs tracking-wider uppercase transition-all duration-200 shadow-[0_0_25px_rgba(0,255,157,0.55)] hover:shadow-[0_0_35px_rgba(0,255,157,0.8)] hover:scale-[1.02] active:scale-[0.98]"
+              className="px-7 py-3.5 rounded-full bg-[#00FF9D] text-black font-semibold text-xs tracking-wider uppercase transition-all duration-200 shadow-[0_0_28px_rgba(0,255,157,0.5)] hover:shadow-[0_0_40px_rgba(0,255,157,0.8)] hover:scale-[1.03] active:scale-[0.97]"
             >
-              {isAr ? "استعراض المشاريع الخمسة" : "ACTION BUTTONS"}
+              {isAr ? "استعراض المشاريع" : "Explore Projects"}
             </a>
             <a
               href="#sandbox"
-              className="px-6 py-3 rounded-full bg-zinc-950 border border-[#00FF9D]/40 text-white font-medium text-xs tracking-wider uppercase transition-all duration-200 hover:bg-[#00FF9D]/10 hover:border-[#00FF9D] active:scale-[0.98]"
+              className="px-7 py-3.5 rounded-full bg-transparent border border-[#00FF9D]/40 text-white font-medium text-xs tracking-wider uppercase transition-all duration-200 hover:bg-[#00FF9D]/10 hover:border-[#00FF9D] active:scale-[0.97]"
             >
-              {isAr ? "تشغيل محاكي النظام" : "ACTION COMMAND"}
+              {isAr ? "تشغيل المحاكي" : "Launch Sandbox"}
             </a>
           </div>
 
-          {/* Bioluminescent data bus waves (flowing towards the right) */}
-          <div className="relative w-full h-12 overflow-hidden pointer-events-none opacity-80 my-2">
-            <svg className="w-full h-full" viewBox="0 0 600 48" fill="none" preserveAspectRatio="none">
-              <path
-                d="M 0 24 C 150 10, 300 38, 450 20 C 520 12, 570 30, 600 24"
-                stroke="#00FF9D"
-                strokeWidth="1.5"
-                strokeOpacity="0.8"
+          {/* Tech stack pills */}
+          <div>
+            <div className="font-mono text-[10px] tracking-[0.15em] text-zinc-500 uppercase pb-2.5">
+              {isAr ? "مكدس التقنيات الحي" : "LIVE TECH STACK"}
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {["Next.js", "TypeScript", "Python", "C# .NET", "Oracle DB", "Supabase", "Docker", "Tailwind"].map(
+                (tech) => (
+                  <span
+                    key={tech}
+                    className="px-3 py-1.5 rounded-full text-[11px] font-mono bg-zinc-900/90 border border-zinc-800 text-zinc-300 hover:border-[#00FF9D]/50 hover:text-[#00FF9D] transition-colors cursor-default"
+                  >
+                    {tech}
+                  </span>
+                )
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Right: Portrait + Terminal (lg:col-span-5) */}
+        <div className="lg:col-span-5 flex flex-col items-center lg:items-end justify-center gap-5 pt-8 lg:pt-0">
+          {/* Portrait with bioluminescent data lines */}
+          <div className="relative w-[220px] h-[220px] sm:w-[260px] sm:h-[260px] lg:w-[290px] lg:h-[290px] flex-shrink-0">
+            {/* Outer glowing ring */}
+            <div className="absolute inset-0 rounded-full border border-[#00FF9D]/40 shadow-[0_0_40px_rgba(0,255,157,0.25)] animate-pulse" />
+            <div className="absolute inset-[6px] rounded-full border border-[#00F0FF]/20" />
+            {/* Portrait image */}
+            <div className="absolute inset-3 rounded-full overflow-hidden border border-[#00FF9D]/30">
+              <Image
+                src="/images/profile/abdulghani-profile.webp"
+                alt="Abdulghani Al-Shibami"
+                fill
+                className="object-cover object-center"
+                priority
               />
-              <path
-                d="M 0 30 C 180 18, 320 42, 480 24 C 540 18, 580 32, 600 28"
-                stroke="#00F0FF"
-                strokeWidth="1"
-                strokeOpacity="0.6"
-              />
-              <path
-                d="M 0 18 C 120 8, 280 32, 420 16 C 500 8, 560 26, 600 20"
-                stroke="#00FF9D"
-                strokeWidth="0.8"
-                strokeOpacity="0.4"
-                strokeDasharray="4 4"
-              />
+            </div>
+            {/* Bioluminescent data lines radiating out */}
+            <svg
+              className="absolute inset-[-60px] w-[calc(100%+120px)] h-[calc(100%+120px)] pointer-events-none"
+              viewBox="-60 -60 420 420"
+              fill="none"
+            >
+              <path d="M 150 -60 L 150 20" stroke="#00FF9D" strokeWidth="1" strokeOpacity="0.6" strokeDasharray="4 4" />
+              <path d="M 150 280 L 150 360" stroke="#00FF9D" strokeWidth="1" strokeOpacity="0.6" strokeDasharray="4 4" />
+              <path d="M -60 150 L 20 150" stroke="#00F0FF" strokeWidth="1" strokeOpacity="0.5" strokeDasharray="4 4" />
+              <path d="M 280 150 L 360 150" stroke="#00F0FF" strokeWidth="1" strokeOpacity="0.5" strokeDasharray="4 4" />
+              <path d="M 60 60 L 30 30" stroke="#00FF9D" strokeWidth="0.8" strokeOpacity="0.4" />
+              <path d="M 240 60 L 270 30" stroke="#00FF9D" strokeWidth="0.8" strokeOpacity="0.4" />
+              <path d="M 60 240 L 30 270" stroke="#00F0FF" strokeWidth="0.8" strokeOpacity="0.4" />
+              <path d="M 240 240 L 270 270" stroke="#00F0FF" strokeWidth="0.8" strokeOpacity="0.4" />
+              {/* Corner dots */}
+              <circle cx="30" cy="30" r="2.5" fill="#00FF9D" fillOpacity="0.7" />
+              <circle cx="270" cy="30" r="2.5" fill="#00FF9D" fillOpacity="0.7" />
+              <circle cx="30" cy="270" r="2.5" fill="#00F0FF" fillOpacity="0.7" />
+              <circle cx="270" cy="270" r="2.5" fill="#00F0FF" fillOpacity="0.7" />
             </svg>
           </div>
 
-          {/* Live Tech Stack */}
-          <div className="pt-2">
-            <div className="font-mono text-[11px] tracking-widest text-zinc-400 uppercase pb-2">
-              LIVE TECH STACK
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {["Next.js", "TypeScript", "Tailwind CSS", "Python", "C# .NET", "Supabase", "PostgreSQL", "Docker"].map((tech) => (
-                <span
-                  key={tech}
-                  className="px-3.5 py-1.5 rounded-full text-xs font-mono bg-zinc-900/90 border border-zinc-700/80 text-zinc-300 hover:border-[#00FF9D]/60 hover:text-[#00FF9D] transition-colors"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Right Column: TECHNICAL CONSOLE (lg:col-span-4) */}
-        <div className="lg:col-span-4 flex flex-col items-center justify-center">
-          <div className="w-full max-w-md h-[480px] bg-[#070A0F] rounded-2xl border border-[#00FF9D]/30 p-4 flex flex-col justify-between shadow-[0_0_35px_-5px_rgba(0,255,157,0.15)] relative overflow-hidden">
-            {/* Header */}
-            <div className="flex items-center justify-between border-b border-zinc-800/80 pb-3">
-              <span className="font-mono text-xs tracking-wider text-[#00FF9D] font-bold">
-                TECHNICAL CONSOLE
+          {/* Technical Console */}
+          <div className="w-full max-w-sm bg-[#070A0F] rounded-2xl border border-[#00FF9D]/25 p-4 flex flex-col shadow-[0_0_35px_-5px_rgba(0,255,157,0.15)] relative overflow-hidden">
+            {/* Console header */}
+            <div className="flex items-center justify-between border-b border-zinc-800 pb-2.5 mb-2">
+              <span className="font-mono text-[10px] tracking-widest text-[#00FF9D] font-bold uppercase">
+                Technical Console
               </span>
               <button
                 type="button"
-                onClick={() => setLogs(["> Terminal reset. Ready."])}
-                className="text-zinc-500 hover:text-white text-xs font-mono"
-                title="Reset Console"
+                onClick={() => setTermLines([])}
+                className="text-zinc-500 hover:text-white text-[10px] font-mono"
               >
-                ✕
+                CLR
               </button>
             </div>
-
-            {/* Terminal Body */}
-            <div className="flex-1 py-3 font-mono text-xs space-y-2 overflow-y-auto scrollbar-thin scrollbar-thumb-zinc-800 text-zinc-300 select-text">
-              {logs.map((log, idx) => (
-                <div
-                  key={idx}
-                  className={
-                    log.startsWith(">")
-                      ? "text-[#00FF9D]"
-                      : log.includes("[AUTH]")
-                      ? "text-[#00F0FF]"
-                      : log.includes("[STATUS]")
-                      ? "text-emerald-400"
-                      : "text-zinc-400"
-                  }
-                >
-                  {log}
-                </div>
+            {/* Log body */}
+            <div
+              ref={termBodyRef}
+              className="flex-1 h-32 overflow-y-auto space-y-1 font-mono text-[10px] text-zinc-400 scrollbar-thin"
+            >
+              {termLines.filter(Boolean).map((line, i) => (
+                <div key={i} className={line?.color || "text-[#00FF9D]"}>{line?.text || ""}</div>
               ))}
             </div>
-
             {/* Prompt input */}
-            <form onSubmit={handleCommand} className="pt-2 border-t border-zinc-800 flex items-center space-x-2 rtl:space-x-reverse">
-              <span className="font-mono text-[#00FF9D] text-sm font-bold">&gt;</span>
+            <form onSubmit={handleCommand} className="flex items-center gap-2 border-t border-zinc-800 pt-2 mt-2">
+              <span className="text-[#00FF9D] font-mono text-sm font-bold">›</span>
               <input
                 type="text"
-                value={terminalInput}
-                onChange={(e) => setTerminalInput(e.target.value)}
-                placeholder="type 'help', 'projects', 'status'..."
-                className="flex-1 bg-transparent border-none outline-none font-mono text-xs text-white placeholder-zinc-600"
+                value={termInput}
+                onChange={(e) => setTermInput(e.target.value)}
+                placeholder="type 'help'..."
+                className="flex-1 bg-transparent font-mono text-[11px] text-white placeholder-zinc-600 outline-none border-none"
               />
-              <span className="w-2 h-4 bg-[#00FF9D] animate-pulse inline-block" />
+              <span className="w-2 h-3.5 bg-[#00FF9D] type-cursor" />
             </form>
           </div>
         </div>
+      </div>
 
-        {/* Far Right Vertical Telemetry Rail (lg:col-span-1) */}
-        <div className="hidden lg:flex lg:col-span-1 flex-col items-center justify-center h-full py-6">
-          <div className="w-10 h-[480px] bg-[#070A0F] rounded-xl border border-zinc-800/80 flex flex-col items-center justify-between py-4 relative shadow-inner">
-            <span className="[writing-mode:vertical-lr] text-[9px] font-mono tracking-widest text-zinc-500 uppercase">
-              TELEMETRY LARGE
-            </span>
-
-            {/* LED segmented bar */}
-            <div className="flex flex-col space-y-1 w-2 my-auto">
-              {Array.from({ length: 18 }).map((_, i) => (
-                <span
-                  key={i}
-                  className={`w-2 h-1 rounded-sm ${
-                    i > 12 ? "bg-[#00FF9D] shadow-[0_0_8px_#00FF9D]" : i > 8 ? "bg-[#00F0FF]/80" : "bg-zinc-800"
-                  }`}
-                />
-              ))}
-            </div>
-
-            <div className="flex flex-col items-center space-y-2">
-              <span className="[writing-mode:vertical-lr] text-[8px] font-mono text-zinc-400">
-                25 MB/s
-              </span>
-              <span className="[writing-mode:vertical-lr] text-[9px] font-mono tracking-widest text-[#00FF9D] uppercase">
-                TELEMETRY RAIL
-              </span>
+      {/* ── LIVE METRICS HUD BAR ── */}
+      <div className="relative z-10 mt-8 mx-6 sm:mx-10 lg:mx-16 mb-0">
+        <div className="w-full border-t border-[#00FF9D]/15 pt-5 pb-8">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-6">
+            {METRICS.map((m) => (
+              <div
+                key={m.label}
+                className="flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-zinc-900/80 border border-zinc-800 hover:border-[#00FF9D]/30 transition-colors"
+              >
+                <span className="font-mono text-[10px] text-zinc-500 uppercase tracking-wider">{m.label}:</span>
+                <span className={`font-mono text-sm font-bold ${m?.color || "text-[#00FF9D]"}`} suppressHydrationWarning>
+                  {m?.value}
+                </span>
+              </div>
+            ))}
+            {/* Separator + scroll indicator */}
+            <div className="flex items-center gap-2 ml-auto text-zinc-600">
+              <span className="font-mono text-[10px]">{isAr ? "اسحب لأسفل" : "SCROLL TO EXPLORE"}</span>
+              <span className="w-px h-4 bg-zinc-700" />
+              <span className="text-[#00FF9D] text-xs animate-bounce">↓</span>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Bottom gradient fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#04070D] to-transparent pointer-events-none z-10" />
     </section>
   );
 }

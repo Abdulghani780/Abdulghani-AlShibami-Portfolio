@@ -4,19 +4,19 @@
 
 @layer base {
   :root {
-    /* Porcelain & Slate (Light Mode) */
-    --canvas-bg: #F8FAFC;
+    /* ─── QUANTUM EMERALD — Light Mode ─── */
+    --canvas-bg: #F5F7FA;
     --surface-elevated: #FFFFFF;
-    --surface-overlay: #F1F5F9;
+    --surface-overlay: #EEF2F6;
     --surface-interactive: #E2E8F0;
-    --surface-low: #F8FAFC;
+    --surface-low: #F5F7FA;
     --surface-card: #FFFFFF;
-    --surface-secondary: #F1F5F9;
+    --surface-secondary: #EEF2F6;
     --surface-dark: #0F172A;
 
-    --border-hairline: rgba(15, 23, 42, 0.09);
+    --border-hairline: rgba(15, 23, 42, 0.08);
     --border-color: rgba(15, 23, 42, 0.12);
-    --border-gold: rgba(5, 150, 105, 0.38);
+    --border-gold: rgba(5, 150, 105, 0.35);
 
     --gold-primary: #059669;
     --gold-secondary: #0284C7;
@@ -30,51 +30,51 @@
     --glass-medium: rgba(255, 255, 255, 0.92);
     --glass-strong: rgba(255, 255, 255, 0.98);
     --glass-border: rgba(15, 23, 42, 0.08);
-    --glass-gold-border: rgba(5, 150, 105, 0.32);
+    --glass-gold-border: rgba(5, 150, 105, 0.28);
 
     --text-primary: #0F172A;
     --text-secondary: #334155;
     --text-muted: #64748B;
-    --text-dim: #64748B;
+    --text-dim: #94A3B8;
 
     --status-emerald: #059669;
     --status-amber: #D97706;
     --status-rose: #DC2626;
 
     --font-serif: "Playfair Display", "Noto Serif", Georgia, serif;
-    --font-sans: "Geist", "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --font-mono: "JetBrains Mono", "Roboto Mono", monospace;
+    --font-sans: "Geist", "Inter", "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-mono: "JetBrains Mono", "Fira Code", "Roboto Mono", monospace;
     --font-arabic: "Noto Kufi Arabic", "Noto Sans Arabic", -apple-system, sans-serif;
   }
 
   .dark {
-    /* Obsidian & Neon Mint (Dark Mode - Canonical Reference) */
-    --canvas-bg: #05080E;
-    --surface-elevated: #070A0F;
-    --surface-overlay: #0A0F1A;
-    --surface-interactive: #0E1524;
-    --surface-low: #04060A;
-    --surface-card: #070A0F;
+    /* ─── QUANTUM EMERALD — Dark Mode (PRIMARY HERO EXPERIENCE) ─── */
+    --canvas-bg: #04070D;
+    --surface-elevated: #060A10;
+    --surface-overlay: #080C14;
+    --surface-interactive: #0C1220;
+    --surface-low: #030508;
+    --surface-card: #070B12;
     --surface-secondary: #0A0F1A;
-    --surface-dark: #04060A;
+    --surface-dark: #020408;
 
-    --border-hairline: rgba(255, 255, 255, 0.08);
-    --border-color: rgba(255, 255, 255, 0.10);
-    --border-gold: rgba(0, 255, 157, 0.35);
+    --border-hairline: rgba(0, 255, 157, 0.07);
+    --border-color: rgba(0, 255, 157, 0.12);
+    --border-gold: rgba(0, 255, 157, 0.30);
 
     --gold-primary: #00FF9D;
     --gold-secondary: #00F0FF;
     --gold-light: #4EFEB3;
     --gold-soft: #A6FFDA;
     --gold-dark: #00C87A;
-    --gold-muted: rgba(0, 255, 157, 0.12);
-    --gold-glow: rgba(0, 255, 157, 0.25);
+    --gold-muted: rgba(0, 255, 157, 0.10);
+    --gold-glow: rgba(0, 255, 157, 0.22);
 
     --glass-subtle: rgba(255, 255, 255, 0.035);
     --glass-medium: rgba(255, 255, 255, 0.06);
     --glass-strong: rgba(255, 255, 255, 0.10);
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --glass-gold-border: rgba(0, 255, 157, 0.30);
+    --glass-border: rgba(255, 255, 255, 0.07);
+    --glass-gold-border: rgba(0, 255, 157, 0.25);
 
     --text-primary: #FFFFFF;
     --text-secondary: #A1A1AA;
@@ -107,20 +107,18 @@
     overflow-x: hidden;
   }
 
-  /* Selection highlight */
   ::selection {
-    background-color: var(--gold-muted);
-    color: var(--gold-primary);
+    background-color: rgba(0, 255, 157, 0.18);
+    color: #00FF9D;
   }
 
-  /* Accessible outline focus states */
   :focus-visible {
     outline: 2px solid var(--gold-primary);
     outline-offset: 2px;
   }
 }
 
-/* Liquid Glass Utilities */
+/* ─── Glass Panels ─── */
 .glass-panel {
   background: var(--glass-subtle);
   backdrop-filter: blur(16px);
@@ -133,49 +131,69 @@
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border: 1px solid var(--glass-gold-border);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36), 0 0 0 1px rgba(0, 255, 157, 0.06);
 }
 
-/* Cybernetic Data Circuit / Grid Backgrounds */
+/* ─── Bioluminescent Emerald Grids ─── */
 .circuit-grid {
-  background-image: linear-gradient(to right, rgba(0, 255, 157, 0.04) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(0, 255, 157, 0.04) 1px, transparent 1px);
-  background-size: 24px 24px;
+  background-image:
+    linear-gradient(to right, rgba(0, 255, 157, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 255, 157, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
 }
 
 .circuit-grid-dense {
-  background-image: linear-gradient(to right, rgba(0, 255, 157, 0.05) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(0, 255, 157, 0.05) 1px, transparent 1px);
-  background-size: 16px 16px;
+  background-image:
+    linear-gradient(to right, rgba(0, 255, 157, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 255, 157, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
-/* Workstation Traffic Lights */
-.traffic-btn-red {
-  background-color: #FF5F56;
-}
-.traffic-btn-yellow {
-  background-color: #FFBD2E;
-}
-.traffic-btn-green {
-  background-color: #00FF9D;
-  box-shadow: 0 0 8px rgba(0, 255, 157, 0.4);
+/* ─── Quantum Keyframe Animations ─── */
+@keyframes emerald-pulse {
+  0%, 100% { box-shadow: 0 0 12px rgba(0, 255, 157, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(0, 255, 157, 0.65); }
 }
 
-/* Custom Scrollbars */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+@keyframes data-flow {
+  0% { stroke-dashoffset: 200; opacity: 0.2; }
+  50% { opacity: 0.9; }
+  100% { stroke-dashoffset: 0; opacity: 0.2; }
 }
 
-::-webkit-scrollbar-track {
-  background: transparent;
+@keyframes type-cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.12);
-  border-radius: 9999px;
+@keyframes slide-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 255, 157, 0.4);
+@keyframes cinematic-reveal {
+  from { opacity: 0; transform: translateY(40px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
+
+@keyframes metrics-count {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.emerald-glow-pulse { animation: emerald-pulse 2.5s ease-in-out infinite; }
+.data-flow-animate  { animation: data-flow 3.5s linear infinite; }
+.type-cursor        { animation: type-cursor 1s step-end infinite; }
+.slide-in-up        { animation: slide-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.cinematic-reveal   { animation: cinematic-reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+/* ─── Workstation Traffic Lights ─── */
+.traffic-btn-red    { background-color: #FF5F56; }
+.traffic-btn-yellow { background-color: #FFBD2E; }
+.traffic-btn-green  { background-color: #27C93F; box-shadow: 0 0 8px rgba(39, 201, 63, 0.5); }
+
+/* ─── Custom Scrollbars ─── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(0, 255, 157, 0.2); border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0, 255, 157, 0.45); }

@@ -10,6 +10,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.3.0] - 2026-09-19 — Quantum Emerald Production Visual Redesign (Concept D)
+
+### Added & Enhanced
+- **Direct Homepage Canonical Architecture:**
+  - `CanonicalHero.tsx`: Bioluminescent emerald glows, cinematic display headline, real portrait with radiating cybernetic SVG grid, live metrics HUD bar, and interactive terminal console with command evaluation (`help`, `projects`, `whoami`, `status`, `clear`).
+  - `CanonicalProjectsBento.tsx`: Asymmetric bento grid showcasing all 5 verified projects (`Campus IT Tracker`, `MetaAlgorithm Lab`, `Cafena Coffee Suite`, `NovaTech Cloud`, `GP Platform`) with genuine image assets (`campus-it-tracker/01-dashboard.webp`, `cafena/01-storefront-hero.webp`), live sorting wave visualizer, accuracy/WASM gauges, and direct demo buttons.
+  - `CanonicalDesktopSimulator.tsx`: Live native execution sandbox modeling the MetaAlgorithm Lab OS window with WASM engine online beacon, animated Merge Sort bars, BFS traversal node graph, A* pathfinding SVG grid, database table inspector, and hardware telemetry dials.
+  - `CanonicalDemoStudio.tsx`: Multi-workstation dual simulation studio pairing ITIL campus network floorplan & Agile Kanban with algorithmic performance benchmarks (live SVG polyline CPU chart, MEM area chart, 15k req/s throughput, 3.14ms execution speed, and live code inspector toggle).
+  - `CanonicalFooter.tsx`: Glowing data line top border, large contact CTA band, direct transmission modal with resilient Supabase `contact_messages` form, SVG social anchors, and navigation links.
+- **Hydration & Reliability Fixes:**
+  - Fixed client-side hydration issues by moving local time/date rendering to client-state hooks with `suppressHydrationWarning`.
+  - Added `className="dark"` to root `<html>` tag to ensure zero-flicker dark mode rendering on initial SSR.
+  - Fixed terminal progressive line reveal closure in React StrictMode.
+- **Full Verification:**
+  - `pnpm tsc --noEmit` passed (0 errors).
+  - `pnpm lint` passed (0 errors, 0 warnings).
+  - `pnpm build` passed (30/30 static pages prerendered).
+  - Browser verification at `http://localhost:3030/en` and `http://localhost:3030/ar` with full English/Arabic RTL parity.
+
+---
+
 ## [1.2.0] - 2026-09-19 — Canonical Reference Frontend Replacement
 
 ### Added
