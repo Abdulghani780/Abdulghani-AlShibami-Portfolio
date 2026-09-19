@@ -4,19 +4,22 @@ import React from "react";
 import { cn } from "@/lib/utils";
 
 interface ProjectPreviewGraphicProps {
-  slug: string;
-  locale: "en" | "ar";
+  slug?: string;
+  projectSlug?: string;
+  locale?: "en" | "ar";
   className?: string;
 }
 
 export function ProjectPreviewGraphic({
   slug,
-  locale,
+  projectSlug,
+  locale = "en",
   className,
 }: ProjectPreviewGraphicProps) {
+  const activeSlug = slug || projectSlug || "campus-it-tracker";
   const isRtl = locale === "ar";
 
-  if (slug === "campus-it-tracker") {
+  if (activeSlug === "campus-it-tracker") {
     return (
       <div
         className={cn(
@@ -87,7 +90,7 @@ export function ProjectPreviewGraphic({
     );
   }
 
-  if (slug === "metaalgorithm-lab") {
+  if (activeSlug === "metaalgorithm-lab") {
     return (
       <div
         className={cn(
@@ -137,7 +140,7 @@ export function ProjectPreviewGraphic({
     );
   }
 
-  if (slug === "gp") {
+  if (activeSlug === "gp") {
     return (
       <div
         className={cn(
@@ -184,7 +187,7 @@ export function ProjectPreviewGraphic({
     );
   }
 
-  if (slug === "cafena") {
+  if (activeSlug === "cafena") {
     return (
       <div
         className={cn(

@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { Project, Locale } from "@/types/project";
-import { ProjectPreviewMockup } from "@/components/reference/ProjectPreviewMockup";
+import { ProjectPreviewGraphic } from "./ProjectPreviewGraphic";
 
 interface ProjectBentoShowcaseProps {
   projects: Project[];
@@ -61,8 +61,8 @@ export function ProjectBentoShowcase({ projects, locale }: ProjectBentoShowcaseP
               </div>
 
               {/* Mini Interactive Workstation Preview */}
-              <div className="h-44 sm:h-48 w-full rounded-xl overflow-hidden border border-white/[0.06] bg-[#05080E]">
-                <ProjectPreviewMockup projectSlug="campus-it-tracker" />
+              <div className="w-full rounded-xl overflow-hidden">
+                <ProjectPreviewGraphic slug="campus-it-tracker" locale={locale} />
               </div>
 
               {/* Tech Stack Chips */}
@@ -111,8 +111,8 @@ export function ProjectBentoShowcase({ projects, locale }: ProjectBentoShowcaseP
                 </span>
               </div>
 
-              <div className="h-44 sm:h-48 w-full rounded-xl overflow-hidden border border-white/[0.06] bg-[#05080E]">
-                <ProjectPreviewMockup projectSlug="metaalgorithm-lab" />
+              <div className="w-full rounded-xl overflow-hidden">
+                <ProjectPreviewGraphic slug="metaalgorithm-lab" locale={locale} />
               </div>
 
               <div className="flex flex-wrap items-center gap-1.5 pt-1 text-[10px] text-white/60">
@@ -172,8 +172,8 @@ export function ProjectBentoShowcase({ projects, locale }: ProjectBentoShowcaseP
                 </span>
               </div>
 
-              <div className="h-36 w-full rounded-xl overflow-hidden border border-white/[0.06] bg-[#05080E]">
-                <ProjectPreviewMockup projectSlug="cafena" />
+              <div className="w-full rounded-xl overflow-hidden">
+                <ProjectPreviewGraphic slug="cafena" locale={locale} />
               </div>
 
               <div className="flex flex-wrap items-center gap-1 text-[9.5px] text-white/60">
@@ -221,8 +221,8 @@ export function ProjectBentoShowcase({ projects, locale }: ProjectBentoShowcaseP
                 </span>
               </div>
 
-              <div className="h-36 w-full rounded-xl overflow-hidden border border-white/[0.06] bg-[#05080E]">
-                <ProjectPreviewMockup projectSlug="novatech" />
+              <div className="w-full rounded-xl overflow-hidden">
+                <ProjectPreviewGraphic slug="novatech" locale={locale} />
               </div>
 
               <div className="flex flex-wrap items-center gap-1 text-[9.5px] text-white/60">
@@ -270,8 +270,8 @@ export function ProjectBentoShowcase({ projects, locale }: ProjectBentoShowcaseP
                 </span>
               </div>
 
-              <div className="h-36 w-full rounded-xl overflow-hidden border border-white/[0.06] bg-[#05080E]">
-                <ProjectPreviewMockup projectSlug="gp" />
+              <div className="w-full rounded-xl overflow-hidden">
+                <ProjectPreviewGraphic slug="gp" locale={locale} />
               </div>
 
               <div className="flex flex-wrap items-center gap-1 text-[9.5px] text-white/60">
