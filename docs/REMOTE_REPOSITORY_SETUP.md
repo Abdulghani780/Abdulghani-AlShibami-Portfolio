@@ -9,7 +9,7 @@
 ## 1. Multi-Repository Ecosystem Map
 
 | Repository Name | Local Staging Path | Remote GitHub URL | Visibility | Status |
-|---|---|---|:---:|---|
+| --- | --- | --- | :---: | --- |
 | **`Abdulghani-AlShibami-Portfolio`** | `c:\my projects\Portifilo` | `https://github.com/Abdulghani780/Abdulghani-AlShibami-Portfolio.git` | Public | Prepared & Remote Added |
 | **`Cafena`** | `c:\my projects\Staging_Repos\Cafena` | `https://github.com/Abdulghani780/Cafena.git` | Public | Initialized & Remote Added |
 | **`Campuse-IT-Tracker`** | `c:\my projects\Staging_Repos\Campuse-IT-Tracker` | `https://github.com/Abdulghani780/Campuse-IT-Tracker.git` | Public | Initialized & Remote Added |
@@ -24,10 +24,12 @@
 During automated repository creation via the GitHub MCP tool, the user personal access token returned:
 `403 Resource not accessible by personal access token` (Read-only token; lacks `repo` / repository creation scope).
 
-### To Create the 6 Repositories on GitHub:
+### To Create the 6 Repositories on GitHub
 
 #### Option A: One-Click Web Creation (Recommended)
+
 Open each of the following URLs in your browser to create the empty public repository (do not initialize with README, .gitignore, or license, as our local repositories already contain authoritative versions):
+
 1. **Portfolio:** [Create Abdulghani-AlShibami-Portfolio](https://github.com/new?name=Abdulghani-AlShibami-Portfolio&description=Autonomous+personal+portfolio+and+interactive+engineering+showcase+of+Abdulghani+Al-Shibami&visibility=public)
 2. **Cafena:** [Create Cafena](https://github.com/new?name=Cafena&description=Artisanal+Specialty+Coffee+Web+Platform+with+Native+Arabic+RTL+Architecture&visibility=public)
 3. **Campuse-IT-Tracker:** [Create Campuse-IT-Tracker](https://github.com/new?name=Campuse-IT-Tracker&description=Enterprise+ITIL+Service+Desk+and+Hardware+Asset+Tracker+in+C+Sharp+and+Oracle&visibility=public)

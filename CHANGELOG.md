@@ -10,7 +10,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [1.0.0] - 2026-09-19 — Obsidian + Liquid Glass + Royal Gold Redesign
+## [1.1.0] - 2026-09-19 — Reference-Faithful Dual-Column Command Center Rebuild
+
+### Added
+- **Reference-Faithful Dual-Column Desktop Command Center (1536x1024 Blueprint):**
+  - Completely rebuilt the homepage presentation around the 1536x1024 dual-column technical editorial reference image.
+  - Implemented balanced split-screen layout (`~49%` Left Column, `~49%` Right Column) with a narrow controlled gutter (`24px`) on an elevated `#050709` Obsidian canvas with subtle dot-matrix atmospheric grid.
+- **Left Column Command Console (`ReferenceLeftColumn.tsx`):**
+  - Integrated Header/Navigation inside the top of the panel: Custom Royal Gold `AS` monogram, `ABDULGHANI AL-SHIBAMI`, role descriptor, pulsing green online status, numbered navigation items (`01_HOME`, `02_ABOUT`, `03_PROJECTS`, `04_STACK`, `05_CONTACT`), Language Switcher, and Theme Toggle.
+  - Technical Hero Console: Micro-telemetry lines (`> INITIALIZING_PORTFOLIO.EXE`, `> STATUS: ONLINE`), monumental headline ("Building Systems Behind the Interface." / "بناء الأنظمة خلف الواجهة البرمجية."), positioning paragraph, compact action buttons (`VIEW MY WORK ↗`, `DOWNLOAD CV ↓`), and scroll indicator.
+  - Profile & Identity Rail: Authentic profile portrait (`abdulghani-profile-hero.webp`) integrated with smooth dark vignette, adjacent vertical monospace metadata rail (`> WHO_AM_I`, `> ROLE`, `> LOCATION`, `> EXPERIENCE`, `> AVAILABILITY`).
+  - Selected Projects Strip: 3 high-density cards (`Campus IT Tracker`, `MetaAlgorithm Lab`, `NovaTech`) with indices, category kickers, descriptions, action links, and authentic interface preview mockups.
+  - Telemetry Strip: `> SYSTEM_LOG` with live timestamps and actual statuses + `> TECH_STACK` brand badges (Next.js, TypeScript, Tailwind, React, Python, Oracle 10g, C# .NET, Supabase).
+  - Left Footer: Minimal identity, copyright, and "BASED IN SANA'A, YEMEN •".
+- **Right Column Case Studies & Technical Grid (`ReferenceRightColumn.tsx`):**
+  - Case Studies Header: `// CASE STUDIES` with `VIEW_ALL_CASE_STUDIES [ ]`.
+  - Stacked Case Study Rows: 3 horizontal project rows (`Campus IT Tracker`, `MetaAlgorithm Lab`, `Graduation Project Portal`) with thumbnails, descriptions, technology tags, verified architectural specs (`Enterprise Tier`, `O(n log n) Bench`, `3 User Roles`), and action links `↗`.
+  - Three-Part Technical Information Strip: `</> TECHNICAL SKILLS` (qualitative bars with gold percentage accents), `[#] SERVICES` (stacked capability blocks), and `[T] TOOLS I USE` (responsive non-truncated tag cloud).
+  - Lower Contact Section: `> LET'S_BUILD_SOMETHING_GREAT`, massive headline ("Ready to build what matters._" / "جاهز لبناء ما يُحدث أثراً._"), custom SVG vector `WireframeGlobe.tsx` with radar reticle, and contact action block with direct email.
+  - Integrated Contact Modal: Clicking `START A CONVERSATION` opens an accessible modal with the resilient Supabase `ContactForm`.
+  - Right Footer: Monogram `AS`, `// THANKS FOR VISITING`, and social anchors (GitHub, LinkedIn, Email).
+- **Core Shell & Internationalization Parity:**
+  - Added `MainWrapper.tsx` to automatically adjust top clearance between homepage (zero top padding) and subpages (`pt-20 sm:pt-24`).
+  - Conditioned `Navbar.tsx` and `Footer.tsx` to hide on the homepage so the self-contained command center stands pristine, while preserving the standard navigation shell across `/projects`, `/showcase`, and demo routes.
+  - Sanitized `ContactForm.tsx` to remove generic placeholder names ("Alex Vance", "architect@enterprise.com") per prompt specification.
+  - Full bidirectional parity: 100% Arabic RTL mirroring and typography.
+  - Verified Light Mode luxury porcelain interpretation (`#F4F5F7` canvas, `#FFFFFF` panels, `#E2E8F0` borders).
 
 ### Added
 - **Obsidian + Liquid Glass + Royal Gold Visual System:**

@@ -1,12 +1,26 @@
 "use client";
 
 import React from "react";
+import { usePathname } from "next/navigation";
 import { Dictionary } from "@/lib/i18n/dictionaries";
 
 export function Footer({ dict }: { dict: Dictionary }) {
+  const pathname = usePathname();
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  const isHomePage =
+    pathname === "/en" ||
+    pathname === "/ar" ||
+    pathname === "/en/" ||
+    pathname === "/ar/" ||
+    pathname === "/" ||
+    pathname === "";
+
+  if (isHomePage) {
+    return null;
+  }
 
   return (
     <footer className="border-t border-glass-border bg-obsidian-card/60 backdrop-blur-md pt-16 pb-12 transition-colors duration-300">

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Locale, Dictionary } from "@/lib/i18n/dictionaries";
 import { ThemeToggle } from "./ThemeToggle";
 import { LanguageSwitcher } from "./LanguageSwitcher";
@@ -15,6 +16,7 @@ export function Navbar({
   locale: Locale;
   dict: Dictionary;
 }) {
+  const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -25,6 +27,16 @@ export function Navbar({
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const isHomePage =
+    pathname === `/${locale}` ||
+    pathname === `/${locale}/` ||
+    pathname === "/" ||
+    pathname === "";
+
+  if (isHomePage) {
+    return null;
+  }
 
   const navLinks = [
     { href: `/${locale}/projects`, label: dict.nav.projects },

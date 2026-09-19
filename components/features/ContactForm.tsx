@@ -87,7 +87,7 @@ export function ContactForm({ isRtl }: { isRtl: boolean }) {
             value={formData.name}
             onChange={handleChange}
             required
-            placeholder={isRtl ? "عبدالله المنصور" : "Alex Vance"}
+            placeholder={isRtl ? "الاسم الكريم" : "Your Name / Organization"}
             className="w-full h-11 px-4 bg-canvas border border-hairline focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none text-content-primary text-xs font-mono transition-all rounded"
           />
         </div>
@@ -102,7 +102,7 @@ export function ContactForm({ isRtl }: { isRtl: boolean }) {
             value={formData.email}
             onChange={handleChange}
             required
-            placeholder="architect@enterprise.com"
+            placeholder="name@company.com"
             className="w-full h-11 px-4 bg-canvas border border-hairline focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none text-content-primary text-xs font-mono transition-all rounded"
           />
         </div>
@@ -118,7 +118,7 @@ export function ContactForm({ isRtl }: { isRtl: boolean }) {
           value={formData.subject}
           onChange={handleChange}
           required
-          placeholder={isRtl ? "استشارة معمارية" : "Distributed Systems Advisory / Contract"}
+          placeholder={isRtl ? "موضوع الرسالة الهندسية" : "Engineering Project / Collaboration"}
           className="w-full h-11 px-4 bg-canvas border border-hairline focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none text-content-primary text-xs font-mono transition-all rounded"
         />
       </div>
@@ -129,14 +129,14 @@ export function ContactForm({ isRtl }: { isRtl: boolean }) {
         </label>
         <textarea
           name="message"
-          rows={4}
           value={formData.message}
           onChange={handleChange}
           required
+          rows={4}
           placeholder={
             isRtl
-              ? "اكتب تفاصيل استفسارك ومواصفات النظام..."
-              : "Describe your system parameters, throughput requirements, or architectural objectives..."
+              ? "يرجى كتابة تفاصيل المشروع أو الاستشارة الهندسية..."
+              : "Describe your project parameters, objectives, or inquiry..."
           }
           className="w-full p-4 bg-canvas border border-hairline focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none text-content-primary text-xs font-mono transition-all resize-none rounded"
         />

@@ -428,3 +428,32 @@
     - Verified Mobile 393px: Zero horizontal overflow (`scrollWidth === clientWidth`), responsive hamburger navigation, comfortable reading typography.
     - Console messages: 0 errors, 0 hydration warnings.
 - **Status:** Completed. Ready for Git commit and deployment.
+
+---
+
+## [2026-09-19] Entry 014 — Reference-Faithful Dual-Column Command Center Portfolio Rebuild
+- **Phase:** PHASE 11 — Reference-Faithful Dual-Column Command Center Rebuild
+- **Task:** TSK-130 (Recreate Reference Image Visual Blueprint with Verified Owner Data)
+- **Objective:** Rebuild the portfolio frontend experience strictly adhering to the 1536x1024 dual-column command-center visual reference blueprint provided by the user, while preserving Abdulghani Al-Shibami's real identity, authentic profile image, 5 verified projects, real technologies, and Supabase integration.
+- **Git Branch:** `redesign/reference-faithful-portfolio`
+- **Files Created / Updated:**
+  - `components/reference/ReferenceLeftColumn.tsx`: Created the tall left command-center panel (`~49%` width) featuring integrated top navigation (Royal Gold `AS` monogram, role, status dot, numbered monospace nav items `01_HOME` to `05_CONTACT`, LanguageSwitcher, ThemeToggle), terminal console lines (`> INITIALIZING_PORTFOLIO.EXE`, `> STATUS: ONLINE`), monumental editorial headline ("Building Systems Behind the Interface."), lead paragraph, compact CTA buttons (`VIEW MY WORK ↗`, `DOWNLOAD CV ↓`), tall authentic portrait of Abdulghani with smooth dark gradient vignette, vertical identity metadata rail (`WHO_AM_I`, `ROLE`, `LOCATION`, `EXPERIENCE`, `AVAILABILITY`), 3 selected project cards with authentic interface preview mockups (`Campus IT Tracker`, `MetaAlgorithm Lab`, `NovaTech`), bottom telemetry strip (`SYSTEM_LOG` with live timestamps + `TECH_STACK` brand badges), and left footer.
+  - `components/reference/ReferenceRightColumn.tsx`: Created the tall right command-center panel (`~49%` width) featuring `// CASE STUDIES` header, 3 stacked horizontal case study rows with preview thumbnails and verified architectural metrics (`Enterprise Tier`, `O(n log n) Bench`, `3 User Roles`), 3-column info grid (`</> TECHNICAL SKILLS` with qualitative gold bars, `[#] SERVICES` with capability cards, and `[T] TOOLS I USE` responsive tag cloud), lower contact section (`Ready to build what matters._` with custom SVG wireframe globe radar graphic, availability description, `START A CONVERSATION ↗` button, direct email), and right footer with `AS` monogram and social links.
+  - `components/reference/WireframeGlobe.tsx`: Created lightweight SVG vector wireframe sphere with latitude/longitude arcs, targeting reticle, and glowing nodes matching the reference visual motif.
+  - `components/reference/ProjectPreviewMockup.tsx`: High-fidelity SVG/HTML interface preview mockups for each of the verified projects.
+  - `components/layout/MainWrapper.tsx`: Dynamic layout wrapper eliminating top padding on the homepage while preserving clearance on subpages.
+  - `components/layout/Navbar.tsx` & `components/layout/Footer.tsx`: Conditioned to omit duplicate outer navbar and footer on the self-contained command-center homepage.
+  - `components/features/ContactForm.tsx`: Replaced generic placeholder names ("Alex Vance", "architect@enterprise.com") with professional, verified placeholders.
+  - `app/[locale]/page.tsx`: Assembled the dual-column command-center canvas at `max-w-[1580px]` with background dot-matrix grid and ambient lighting.
+- **Verification Results:**
+  - `pnpm tsc --noEmit` passed (0 TypeScript errors).
+  - `pnpm lint` passed (0 ESLint errors, 0 warnings).
+  - `pnpm build` passed (all 30 static pages prerendered).
+  - Browser QA (Chrome DevTools MCP & Browser Subagent):
+    - Desktop 1536x1024 (Dark Mode): Pixel-close recreation of reference layout, proportions, borders, radii, typography, and density.
+    - Desktop 1536x1024 (Light Mode): Deliberate luxury porcelain interpretation (`#F4F5F7` canvas, `#FFFFFF` surfaces, `#E2E8F0` borders).
+    - Desktop 1536x1024 (Arabic RTL): Full natural mirroring, correct directional alignment, Arabic typography, and zero string leaks.
+    - Mobile 393x852: Fluid, responsive single-stream stacking with 0 horizontal overflow.
+    - Interactive QA: Contact modal opens smoothly upon clicking `START A CONVERSATION`, with resilient form connected to Supabase `contact_messages`.
+- **Status:** Completed. Ready for Git commit and push to `redesign/reference-faithful-portfolio`.
+
