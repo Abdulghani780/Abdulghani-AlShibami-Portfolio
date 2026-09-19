@@ -13,7 +13,7 @@ export function ThemeToggle({ className }: { className?: string }) {
 
   if (!mounted) {
     return (
-      <div className="w-9 h-9 border border-hairline bg-surface/50 inline-flex items-center justify-center opacity-70" />
+      <div className="w-9 h-9 rounded-lg border border-glass-border bg-glass-subtle inline-flex items-center justify-center opacity-70" />
     );
   }
 
@@ -24,7 +24,7 @@ export function ThemeToggle({ className }: { className?: string }) {
       onClick={toggleTheme}
       type="button"
       aria-label="Toggle visual theme (Dark / Light)"
-      className={`relative inline-flex items-center justify-center w-9 h-9 border border-hairline bg-surface hover:border-gold hover:text-gold transition-colors duration-200 cursor-pointer ${className || ""}`}
+      className={`relative inline-flex items-center justify-center w-9 h-9 rounded-lg border border-glass-border bg-glass-subtle hover:border-gold/50 hover:text-gold transition-all duration-200 cursor-pointer active:scale-95 shadow-sm ${className || ""}`}
     >
       {isDark ? (
         /* Sun Icon for toggling to light */

@@ -360,3 +360,19 @@
 - **DATABASE IMPACT:** None
 - **TESTS:** Full end-to-end verification.
 - **DEFINITION OF DONE:** System declared Production Ready with documented proof.
+
+---
+
+### PHASE 16 (REVISION) — Canonical Reference Frontend Replacement
+- **ID:** `TSK-165`
+- **TITLE:** Canonical Reference Frontend Replacement from 4 Approved Images
+- **PHASE:** 16
+- **PRIORITY:** P0
+- **STATUS:** COMPLETED
+- **DESCRIPTION:** Fully replace the frontend presentation from the 4 approved visual references: Hero Command Center (Reference 1), Live Demo Studio (Reference 2), Desktop OS Workstation Sandbox with traffic lights & terminal drawer (Reference 3), and Flagship Projects Showcase Bento Grid (Reference 4).
+- **DEPENDENCIES:** TSK-080, TSK-090
+- **FILES:** `app/globals.css`, `tailwind.config.ts`, `components/features/projects/ProjectBentoShowcase.tsx`, `components/features/demos/LiveDemoStudio.tsx`, `demos/shared/WorkstationConsole.tsx`, `demos/shared/DemoShell.tsx`, `demos/shared/DemoStatusBar.tsx`, `components/reference/ProjectPreviewMockup.tsx`
+- **DATABASE IMPACT:** None (Supabase schema and data 100% untouched).
+- **TESTS:** `pnpm tsc --noEmit`, `pnpm lint`, `pnpm build` (30/30 static routes), and visual browser inspection across 8-way matrix.
+- **DEFINITION OF DONE:** All 4 references fully realized, 0 errors, branch `redesign/final-reference-frontend` committed.
+

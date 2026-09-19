@@ -4,6 +4,7 @@ import { dictionaries, Locale } from "@/lib/i18n/dictionaries";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { LocaleHtmlSync } from "@/components/layout/LocaleHtmlSync";
+import { MainWrapper } from "@/components/layout/MainWrapper";
 
 export async function generateStaticParams() {
   return [{ locale: "en" }, { locale: "ar" }];
@@ -54,7 +55,7 @@ export default async function LocaleLayout({
       />
       <LocaleHtmlSync locale={currentLocale} />
       <Navbar locale={currentLocale} dict={dict} />
-      <main className="flex-1 w-full">{children}</main>
+      <MainWrapper locale={currentLocale}>{children}</MainWrapper>
       <Footer dict={dict} />
     </div>
   );

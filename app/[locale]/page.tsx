@@ -1,16 +1,11 @@
 import React from "react";
-import Link from "next/link";
-import Image from "next/image";
 import { notFound } from "next/navigation";
-import { dictionaries, Locale } from "@/lib/i18n/dictionaries";
-import { Container } from "@/components/ui/Container";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Button } from "@/components/ui/Button";
-import { Card } from "@/components/ui/Card";
-import { Badge } from "@/components/ui/Badge";
-import { ContactForm } from "@/components/features/ContactForm";
-import { projectRepository } from "@/lib/services/projectRepository";
-import { ProjectCard } from "@/components/features/projects/ProjectCard";
+import { Locale } from "@/lib/i18n/dictionaries";
+import { CanonicalHero } from "@/components/canonical/CanonicalHero";
+import { CanonicalProjectsBento } from "@/components/canonical/CanonicalProjectsBento";
+import { CanonicalDesktopSimulator } from "@/components/canonical/CanonicalDesktopSimulator";
+import { CanonicalDemoStudio } from "@/components/canonical/CanonicalDemoStudio";
+import { CanonicalFooter } from "@/components/canonical/CanonicalFooter";
 
 export default async function HomePage({
   params,
@@ -23,348 +18,33 @@ export default async function HomePage({
   }
 
   const currentLocale = locale as Locale;
-  const dict = dictionaries[currentLocale];
-  const isRtl = currentLocale === "ar";
-
-  const [featuredProjects, categories] = await Promise.all([
-    projectRepository.getFeaturedProjects(),
-    projectRepository.getCategories(),
-  ]);
-
-  const categoryMap = new Map(categories.map((c) => [c.slug, c.name[currentLocale]]));
 
   return (
-    <div className="space-y-24 sm:space-y-32 py-12 sm:py-20">
+    <div className="relative min-h-screen w-full bg-[#04070D] text-white overflow-x-hidden selection:bg-[#00FF9D]/30 selection:text-[#00FF9D]">
       {/* ─────────────────────────────────────────────────────────────
-          1. HERO SECTION (References 01, 02, 03, 04, 11)
+          CANONICAL FRONTEND REPLACEMENT (FROM APPROVED VISUAL REFERENCES)
+          1. Hero Command Center (new/portfolio_hero_concept.jpg)
+          2. Flagship Projects Showcase Bento Grid (new/projects_showcase_grid.jpg)
+          3. Live Desktop OS Workstation Sandbox (new/desktop_demo_simulation.jpg)
+          4. Live Interactive Demo Studio (new/live_demo_studio.jpg)
+          5. Canonical Footer & Contact (new/projects_showcase_grid.jpg)
       ───────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden">
-        {/* Subtle Ambient Background Grid & Glow */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,var(--border-hairline)_1px,transparent_1px),linear-gradient(to_bottom,var(--border-hairline)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-30 pointer-events-none" />
+      <main className="w-full">
+        {/* Section 1: Hero Command Center */}
+        <CanonicalHero locale={currentLocale} />
 
-        <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Left/Right Text Column depending on RTL */}
-            <div className="lg:col-span-7 space-y-6 sm:space-y-8">
-              {/* Executive Status Ticker */}
-              <div className="inline-flex items-center gap-2">
-                <Badge variant="gold" dot dotColor="emerald">
-                  {dict.hero.greeting}
-                </Badge>
-                <span className="font-mono text-[10px] text-content-muted hidden sm:inline">
-                  {"// "}{dict.hero.coordinates}
-                </span>
-              </div>
+        {/* Section 2: Projects Showcase Bento Grid */}
+        <CanonicalProjectsBento locale={currentLocale} />
 
-              {/* Marquee Headline */}
-              <div className="space-y-3">
-                <h2 className="font-mono text-xs sm:text-sm uppercase tracking-[0.2em] text-gold font-medium">
-                  {dict.hero.name}
-                </h2>
-                <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal text-content-primary leading-[1.12] tracking-tight">
-                  {dict.hero.title}
-                </h1>
-              </div>
+        {/* Section 3: Native Desktop OS Workstation Sandbox */}
+        <CanonicalDesktopSimulator locale={currentLocale} />
 
-              {/* Introduction Prose */}
-              <p className="text-content-secondary text-base sm:text-lg leading-relaxed max-w-xl font-normal">
-                {dict.hero.subtitle}
-              </p>
+        {/* Section 4: Multi-Workstation Dual Simulation Studio */}
+        <CanonicalDemoStudio locale={currentLocale} />
 
-              {/* Stacked / Row Action Cluster */}
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
-                <Link href={`/${currentLocale}#featured-projects`}>
-                  <Button variant="primary" size="md" className="w-full sm:w-auto">
-                    {dict.hero.exploreCta} {isRtl ? "←" : "→"}
-                  </Button>
-                </Link>
-
-                <Link href={`/${currentLocale}/projects/campus-it-tracker/demo`}>
-                  <Button variant="secondary" size="md" className="w-full sm:w-auto">
-                    {dict.hero.simulationCta}
-                  </Button>
-                </Link>
-              </div>
-            </div>
-
-            {/* Right/Left Authentic Profile Portrait Column */}
-            <div className="lg:col-span-5 flex justify-center lg:justify-end">
-              <div className="relative w-full max-w-sm sm:max-w-md aspect-[4/5] border border-gold/40 bg-surface/60 p-4 sm:p-5 flex flex-col justify-between backdrop-blur-sm transition-all duration-300 hover:border-gold hover:shadow-gold group">
-                {/* Corner Technical Coordinate Brackets */}
-                <span className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-gold pointer-events-none" />
-                <span className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-gold pointer-events-none" />
-                <span className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-gold pointer-events-none" />
-                <span className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-gold pointer-events-none" />
-
-                {/* Header status inside card */}
-                <div className="flex items-center justify-between font-mono text-[10px] text-content-muted pb-2.5 border-b border-hairline/60">
-                  <span>ID: ALSHIBAMI-01</span>
-                  <span className="text-status-emerald flex items-center gap-1.5 font-semibold">
-                    <span className="h-1.5 w-1.5 rounded-full bg-status-emerald animate-ping inline-block" />
-                    {isRtl ? "متصل" : "ONLINE"}
-                  </span>
-                </div>
-
-                {/* Portrait Frame with Genuine Profile Image */}
-                <div className="relative my-2.5 w-full flex-1 min-h-[280px] sm:min-h-[340px] overflow-hidden border border-gold/30 bg-surface-dark">
-                  <Image
-                    src="/images/profile/abdulghani-profile-hero.webp"
-                    alt={isRtl ? "عبدالغني الشبامي" : "Abdulghani Al-Shibami"}
-                    fill
-                    priority
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
-                    className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                  />
-                  {/* Subtle Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/20 pointer-events-none" />
-
-                  {/* Identification Label */}
-                  <div className="absolute bottom-2.5 inset-x-2.5 bg-black/80 backdrop-blur-md border border-gold/40 p-2.5 flex items-center justify-between font-mono text-[10px]">
-                    <div>
-                      <div className="text-gold font-bold">{dict.hero.name}</div>
-                      <div className="text-content-muted text-[9px]">{dict.hero.profileVerified}</div>
-                    </div>
-                    <span className="text-status-emerald text-[9px] uppercase tracking-wider font-semibold border border-status-emerald/40 px-1.5 py-0.5">
-                      {isRtl ? "موثق" : "VERIFIED"}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Card Footer coordinates */}
-                <div className="border-t border-hairline pt-2.5 flex items-center justify-between font-mono text-[9px] text-content-muted">
-                  <span>{dict.hero.coordinates}</span>
-                  <span>{isRtl ? "ملف موثق" : "VERIFIED DOSSIER"}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* ─────────────────────────────────────────────────────────────
-          2. SYSTEMS TELEMETRY HUD (References 01, 02, 03, 04, 11)
-      ───────────────────────────────────────────────────────────── */}
-      <section id="telemetry" className="border-y border-hairline bg-surface/30 py-16">
-        <Container>
-          <SectionHeading
-            kicker={dict.kickers.telemetry}
-            title={dict.telemetry.heading}
-            subtitle={dict.telemetry.subheading}
-          />
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Metric 01: Throughput */}
-            <Card hoverEffect cornerBrackets className="space-y-2">
-              <div className="font-mono text-[11px] text-content-muted uppercase tracking-wider">
-                {dict.telemetry.throughputLabel}
-              </div>
-              <div className="font-mono text-3xl sm:text-4xl font-bold text-gold tracking-tight">
-                {dict.telemetry.throughputValue}
-              </div>
-              <div className="text-xs text-content-secondary">
-                {dict.telemetry.throughputDesc}
-              </div>
-            </Card>
-
-            {/* Metric 02: Latency */}
-            <Card hoverEffect cornerBrackets className="space-y-2">
-              <div className="font-mono text-[11px] text-content-muted uppercase tracking-wider">
-                {dict.telemetry.latencyLabel}
-              </div>
-              <div className="font-mono text-3xl sm:text-4xl font-bold text-content-primary tracking-tight">
-                {dict.telemetry.latencyValue}
-              </div>
-              <div className="text-xs text-content-secondary">
-                {dict.telemetry.latencyDesc}
-              </div>
-            </Card>
-
-            {/* Metric 03: Availability */}
-            <Card hoverEffect cornerBrackets className="space-y-2">
-              <div className="font-mono text-[11px] text-content-muted uppercase tracking-wider">
-                {dict.telemetry.availabilityLabel}
-              </div>
-              <div className="font-mono text-3xl sm:text-4xl font-bold text-status-emerald tracking-tight">
-                {dict.telemetry.availabilityValue}
-              </div>
-              <div className="text-xs text-content-secondary">
-                {dict.telemetry.availabilityDesc}
-              </div>
-            </Card>
-
-            {/* Metric 04: Invariants */}
-            <Card hoverEffect cornerBrackets className="space-y-2">
-              <div className="font-mono text-[11px] text-content-muted uppercase tracking-wider">
-                {dict.telemetry.verificationLabel}
-              </div>
-              <div className="font-mono text-3xl sm:text-4xl font-bold text-gold-light tracking-tight">
-                {dict.telemetry.verificationValue}
-              </div>
-              <div className="text-xs text-content-secondary">
-                {dict.telemetry.verificationDesc}
-              </div>
-            </Card>
-          </div>
-        </Container>
-      </section>
-
-      {/* ─────────────────────────────────────────────────────────────
-          3. SIMULATION DISCLOSURE BANNER (References 09 & 10 Standard)
-      ───────────────────────────────────────────────────────────── */}
-      <section>
-        <Container>
-          <div className="border border-gold/40 bg-gold/5 dark:bg-gold/10 p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 transition-all hover:border-gold">
-            <div className="space-y-2 max-w-2xl">
-              <div className="flex items-center gap-3">
-                <Badge variant="gold" dot dotColor="emerald">
-                  {dict.simulationBanner.badge}
-                </Badge>
-                <span className="font-mono text-[10px] text-gold font-semibold uppercase tracking-wider">
-                  {"// "}{dict.simulationBanner.engineOnline}
-                </span>
-              </div>
-              <p className="text-content-secondary text-xs sm:text-sm leading-relaxed">
-                {dict.simulationBanner.disclaimer}
-              </p>
-            </div>
-
-            <Link href={`/${currentLocale}/projects/campus-it-tracker/demo`} className="shrink-0 w-full md:w-auto">
-              <Button variant="primary" size="md" className="w-full">
-                {dict.hero.simulationCta} {isRtl ? "←" : "→"}
-              </Button>
-            </Link>
-          </div>
-        </Container>
-      </section>
-
-      {/* ─────────────────────────────────────────────────────────────
-          4. FEATURED PROJECTS SHOWCASE (References 01, 02, 05, 06, 12)
-      ───────────────────────────────────────────────────────────── */}
-      <section id="featured-projects">
-        <Container>
-          <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-10 md:mb-14">
-            <SectionHeading
-              kicker={dict.kickers.featured}
-              title={dict.featured.heading}
-              subtitle={dict.featured.subheading}
-              className="mb-0"
-            />
-            <Link
-              href={`/${currentLocale}/projects`}
-              className="font-mono text-xs text-gold hover:text-gold-light transition-colors uppercase tracking-wider shrink-0"
-            >
-              {dict.featured.viewAll}
-            </Link>
-          </div>
-
-          {/* Connected Featured Projects Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {featuredProjects[0] && (
-              <div className="lg:col-span-2">
-                <ProjectCard
-                  project={featuredProjects[0]}
-                  locale={currentLocale}
-                  categoryName={categoryMap.get(featuredProjects[0].categorySlug)}
-                  isFeaturedHero
-                  className="h-full"
-                />
-              </div>
-            )}
-
-            <div className="space-y-8 flex flex-col justify-between">
-              {featuredProjects.slice(1, 3).map((project) => (
-                <ProjectCard
-                  key={project.id}
-                  project={project}
-                  locale={currentLocale}
-                  categoryName={categoryMap.get(project.categorySlug)}
-                  className="h-full"
-                />
-              ))}
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* ─────────────────────────────────────────────────────────────
-          5. CORE ARCHITECTURAL COMPETENCIES (References 01 & 02)
-      ───────────────────────────────────────────────────────────── */}
-      <section id="competencies" className="border-t border-hairline bg-surface/20 py-20">
-        <Container>
-          <SectionHeading
-            kicker={dict.kickers.competencies}
-            title={dict.competencies.heading}
-            subtitle={dict.competencies.subheading}
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card hoverEffect className="space-y-3">
-              <div className="font-mono text-gold text-xs tracking-wider">{"// 01"}</div>
-              <h4 className="font-serif text-lg font-normal text-content-primary">
-                {dict.competencies.systemsTitle}
-              </h4>
-              <p className="text-xs text-content-secondary leading-relaxed">
-                {dict.competencies.systemsDesc}
-              </p>
-            </Card>
-
-            <Card hoverEffect className="space-y-3">
-              <div className="font-mono text-gold text-xs tracking-wider">{"// 02"}</div>
-              <h4 className="font-serif text-lg font-normal text-content-primary">
-                {dict.competencies.aiTitle}
-              </h4>
-              <p className="text-xs text-content-secondary leading-relaxed">
-                {dict.competencies.aiDesc}
-              </p>
-            </Card>
-
-            <Card hoverEffect className="space-y-3">
-              <div className="font-mono text-gold text-xs tracking-wider">{"// 03"}</div>
-              <h4 className="font-serif text-lg font-normal text-content-primary">
-                {dict.competencies.lowLatencyTitle}
-              </h4>
-              <p className="text-xs text-content-secondary leading-relaxed">
-                {dict.competencies.lowLatencyDesc}
-              </p>
-            </Card>
-
-            <Card hoverEffect className="space-y-3">
-              <div className="font-mono text-gold text-xs tracking-wider">{"// 04"}</div>
-              <h4 className="font-serif text-lg font-normal text-content-primary">
-                {dict.competencies.cloudTitle}
-              </h4>
-              <p className="text-xs text-content-secondary leading-relaxed">
-                {dict.competencies.cloudDesc}
-              </p>
-            </Card>
-          </div>
-        </Container>
-      </section>
-
-      {/* ─────────────────────────────────────────────────────────────
-          6. CONTACT & EXECUTIVE INQUIRY (Section ID: contact)
-      ───────────────────────────────────────────────────────────── */}
-      <section id="contact" className="py-20">
-        <Container>
-          <div className="max-w-2xl mx-auto border border-hairline bg-surface p-8 sm:p-12 space-y-8">
-            <div className="space-y-3 text-center">
-              <div className="font-mono text-[11px] text-gold uppercase tracking-[0.2em]">
-                {dict.kickers.contact}
-              </div>
-              <h3 className="font-serif text-3xl font-normal text-content-primary">
-                {isRtl ? "تواصل معي مباشرة" : "Executive Inquiry & Contact"}
-              </h3>
-              <p className="text-content-secondary text-xs sm:text-sm leading-relaxed max-w-lg mx-auto">
-                {isRtl
-                  ? "للمشاريع الاستشارية المعمارية، وتطوير الأنظمة الموزعة فائقة الموثوقية."
-                  : "For mission-critical systems architecture, distributed computing advisories, and engineering leadership inquiries."}
-              </p>
-            </div>
-
-            <ContactForm isRtl={isRtl} />
-          </div>
-        </Container>
-      </section>
+        {/* Section 5: Canonical Footer & Contact */}
+        <CanonicalFooter locale={currentLocale} />
+      </main>
     </div>
   );
 }

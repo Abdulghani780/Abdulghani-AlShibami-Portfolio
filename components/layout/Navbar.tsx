@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Locale, Dictionary } from "@/lib/i18n/dictionaries";
 import { ThemeToggle } from "./ThemeToggle";
 import { LanguageSwitcher } from "./LanguageSwitcher";
-import { Button } from "@/components/ui/Button";
+import { cn } from "@/lib/utils";
 
 export function Navbar({
   locale,
@@ -14,43 +15,73 @@ export function Navbar({
   locale: Locale;
   dict: Dictionary;
 }) {
+  const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const isHomePage =
+    pathname === `/${locale}` ||
+    pathname === `/${locale}/` ||
+    pathname === "/" ||
+    pathname === "";
+
+  if (isHomePage) {
+    return null;
+  }
+
+  const isRtl = locale === "ar";
 
   const navLinks = [
+    { href: `/${locale}`, label: isRtl ? "الرئيسية" : "Home" },
     { href: `/${locale}/projects`, label: dict.nav.projects },
-    { href: `/${locale}/projects/campus-it-tracker/demo`, label: dict.nav.simulation },
-    { href: `/${locale}#competencies`, label: dict.nav.skills },
-    { href: `/${locale}#telemetry`, label: dict.nav.specifications },
+    { href: `/${locale}/showcase`, label: isRtl ? "استوديو الديمو" : "Demo Studio" },
+    { href: `/${locale}#contact`, label: dict.nav.contact },
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-hairline bg-canvas/85 backdrop-blur-md transition-colors duration-200">
-      <div className="w-full max-w-arch mx-auto px-5 sm:px-8 md:px-12 lg:px-16 h-16 flex items-center justify-between">
-        {/* Brand & Monogram */}
+    <header className="fixed top-0 inset-x-0 z-50 pt-3 sm:pt-4 px-3 sm:px-6 pointer-events-none transition-all duration-300">
+      <div
+        className={cn(
+          "w-full max-w-5xl mx-auto rounded-2xl pointer-events-auto transition-all duration-300",
+          "border px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between backdrop-blur-xl",
+          isScrolled
+            ? "bg-[#070A0F]/95 border-[#00FF9D]/40 shadow-[0_10px_35px_rgba(0,0,0,0.8),0_0_20px_rgba(0,255,157,0.12)]"
+            : "bg-[#070A0F]/85 border-white/[0.08] shadow-lg"
+        )}
+      >
+        {/* Brand Identity & Monogram */}
         <Link
           href={`/${locale}`}
           className="flex items-center gap-3 group focus:outline-none"
         >
-          <span className="w-8 h-8 border border-gold/60 bg-gold/5 flex items-center justify-center font-serif text-sm text-gold font-bold transition-all duration-200 group-hover:border-gold group-hover:bg-gold/15 group-hover:shadow-[0_0_12px_rgba(212,175,55,0.4)]">
+          <span className="w-8 h-8 rounded-lg border border-[#00FF9D] bg-[#00FF9D]/10 flex items-center justify-center font-mono text-sm text-[#00FF9D] font-black transition-all duration-200 group-hover:bg-[#00FF9D]/20 group-hover:shadow-[0_0_12px_rgba(0,255,157,0.4)] shrink-0">
             AS
           </span>
           <div className="flex flex-col">
-            <span className="font-serif text-sm tracking-wide text-content-primary font-semibold group-hover:text-gold transition-colors">
-              {dict.nav.brand}
+            <span className="font-mono text-xs tracking-wider text-white font-bold group-hover:text-[#00FF9D] transition-colors uppercase">
+              {isRtl ? "عبدالغني الشبامي" : "Abdulghani Al-Shibami"}
             </span>
-            <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-content-muted">
-              {"// "}{dict.nav.role}
+            <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-white/50">
+              {"// "}{isRtl ? "أنظمة وذكاء اصطناعي" : "AI & SYSTEMS"}
             </span>
           </div>
         </Link>
 
-        {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-8 text-xs font-mono tracking-wider uppercase">
+        {/* Center Desktop Navigation Links */}
+        <nav className="hidden md:flex items-center gap-6 text-xs font-mono tracking-wider uppercase">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-content-secondary hover:text-gold transition-colors relative py-1"
+              className="text-white/70 hover:text-[#00FF9D] transition-colors relative py-1 hover:drop-shadow-[0_0_8px_rgba(0,255,157,0.3)]"
             >
               {link.label}
             </Link>
@@ -58,36 +89,32 @@ export function Navbar({
         </nav>
 
         {/* Right Action Cluster */}
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-2 sm:gap-2.5">
           <LanguageSwitcher currentLocale={locale} />
           <ThemeToggle />
 
           {/* Desktop Primary Action */}
           <div className="hidden sm:block">
-            <Button
-              size="sm"
-              variant="primary"
-              onClick={() => {
-                const el = document.getElementById("contact");
-                if (el) el.scrollIntoView({ behavior: "smooth" });
-              }}
+            <Link
+              href={`/${locale}/projects`}
+              className="px-3.5 py-1.5 rounded-lg bg-[#00FF9D] hover:bg-[#00FF9D]/90 text-[#070A0F] font-mono font-bold text-xs shadow-[0_0_12px_rgba(0,255,157,0.3)] transition-all active:scale-95"
             >
-              {dict.nav.contact}
-            </Button>
+              {isRtl ? "المشاريع الحية" : "Live Projects"}
+            </Link>
           </div>
 
           {/* Mobile Hamburger Toggle */}
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden inline-flex items-center justify-center w-9 h-9 border border-hairline bg-surface hover:border-gold text-content-primary transition-colors cursor-pointer"
+            className="md:hidden inline-flex items-center justify-center w-8 h-8 rounded-lg border border-white/[0.1] bg-white/[0.04] text-white hover:border-[#00FF9D] transition-colors cursor-pointer"
             aria-label={mobileMenuOpen ? dict.nav.menuClose : dict.nav.menuOpen}
           >
             {mobileMenuOpen ? (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
+                width="15"
+                height="15"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -101,8 +128,8 @@ export function Navbar({
             ) : (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
+                width="15"
+                height="15"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -119,36 +146,22 @@ export function Navbar({
         </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile Dropdown Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-hairline bg-canvas/98 backdrop-blur-xl px-6 py-8 space-y-6 animate-in slide-in-from-top-2 duration-200">
-          <nav className="flex flex-col space-y-4 font-mono text-sm uppercase tracking-wider">
+        <div className="md:hidden w-full max-w-5xl mx-auto mt-2 rounded-2xl border border-white/[0.12] bg-[#070A0F]/95 backdrop-blur-2xl p-5 space-y-4 shadow-2xl pointer-events-auto animate-in slide-in-from-top-2 duration-200">
+          <nav className="flex flex-col space-y-2 font-mono text-xs uppercase tracking-wider">
             {navLinks.map((link, idx) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between text-content-primary hover:text-gold py-2 border-b border-hairline/40 transition-colors"
+                className="flex items-center justify-between text-white/80 hover:text-[#00FF9D] py-2 border-b border-white/[0.06] transition-colors"
               >
                 <span>{link.label}</span>
-                <span className="text-[10px] text-gold font-mono">0{idx + 1}</span>
+                <span className="text-[10px] text-[#00FF9D] font-mono">0{idx + 1}</span>
               </Link>
             ))}
           </nav>
-
-          <div className="pt-2">
-            <Button
-              className="w-full"
-              variant="primary"
-              onClick={() => {
-                setMobileMenuOpen(false);
-                const el = document.getElementById("contact");
-                if (el) el.scrollIntoView({ behavior: "smooth" });
-              }}
-            >
-              {dict.nav.contact}
-            </Button>
-          </div>
         </div>
       )}
     </header>

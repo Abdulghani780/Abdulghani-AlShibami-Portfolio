@@ -2,9 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { Project, Locale } from "@/types/project";
 import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
-import { ExternalLink, Code } from "lucide-react";
 
 interface DemoCalloutBannerProps {
   project: Project;
@@ -22,101 +20,97 @@ export const DemoCalloutBanner: React.FC<DemoCalloutBannerProps> = ({
 
   // Dynamic content depending on project and demoType
   let bannerTitle = isRtl
-    ? "اختبر النظام التفاعلي مباشرة داخل المتصفح"
-    : "Experience System Workflows Live in Browser";
+    ? "اختبر النظام التفاعلي مباشرة داخل محاكي سطح المكتب"
+    : "Experience Native Workstation Sandbox in Browser";
 
   let bannerDesc = isRtl
-    ? "تتيح لك بيئة المحاكاة التفاعلية تجربة واجهة النظام وسير عملياته ببيانات تجريبية آمنة دون الحاجة لتثبيت برمجيات إضافية."
-    : "The interactive simulation provides hands-on inspection of user interface flows, data validation rules, and system behavior using safe mock data.";
+    ? "تتيح لك بيئة المحاكاة التفاعلية تجربة واجهة النظام كأنها تطبيق حقيقي يعمل على حاسوبك مع سجلات ترمينال وتيليمتري عتاد حقيقي."
+    : "The interactive workstation simulation provides authentic desktop runtime execution, live memory/CPU telemetry gauges, and streaming terminal logs.";
 
   if (project.slug === "campus-it-tracker") {
     bannerTitle = isRtl
       ? "رصد طوبولوجيا شبكات الحرم الجامعي وفرز البلاغات"
       : "Monitor Campus Network Nodes & Incident Triage";
     bannerDesc = isRtl
-      ? "محاكاة لمركز إدارة الشبكة تتيح فحص استجابة العقد وتتبع عهد الأجهزة وتوزيع بلاغات الدعم الفني."
-      : "Interactive network operations center simulation: inspect campus equipment mapping and dispatch incident response tickets.";
+      ? "محاكاة سطح مكتب لتطبيق C# WinForms وقاعدة بيانات Oracle 10g لفحص الأصول وبلاغات ITIL."
+      : "Interactive workstation simulation: inspect campus equipment mapping, custody auditing, and ITIL incident triage.";
   } else if (project.slug === "metaalgorithm-lab") {
     bannerTitle = isRtl
       ? "تشغيل وتحليل خوارزميات الفرز خطوة بخطوة"
       : "Run In-Browser Algorithm Benchmarks & Visualizer";
     bannerDesc = isRtl
-      ? "اختبار خوارزميات الفرز الحقيقية في المتصفح مع عرض بصري متحرك لحركة المؤشرات وإحصاء دقيق للمقارنات والتبديلات."
-      : "Execute real client-side sorting algorithms with step-by-step animated bar charts and real-time comparison counters.";
+      ? "اختبار خوارزميات الفرز والمسارات الحقيقية مع رسوم بيانية ومحرك WASM وفاحص متغيرات مباشر."
+      : "Execute real algorithmic benchmarks with step-by-step visualizations, variable inspectors, and WASM performance dials.";
   } else if (project.slug === "novatech") {
     bannerTitle = isRtl
       ? "استكشف متجر نوفا تيك والتسوق الإلكتروني المستقبلي"
-      : "Experience NOVA TECH Cyber Gadgets Storefront";
+      : "Experience NovaTech Cloud Gadgets Storefront";
     bannerDesc = isRtl
-      ? "تطبيق ويب تفاعلي يستعرض الأجهزة الذكية مع سلة مشتريات جانبية، ومظهر داكن وفاتح، ومحاكاة فورية للفواتير."
-      : "Interactive web storefront showcasing smart devices, offcanvas cart calculations, dual theming, and checkout invoicing.";
+      ? "تطبيق ويب تفاعلي يستعرض الأجهزة الذكية مع سلة مشتريات فورية وتزامن عقدي مع خوادم الحافة."
+      : "Interactive cloud storefront showcasing smart devices, dynamic cart calculations, and edge cluster telemetry.";
   } else if (project.slug === "cafena") {
     bannerTitle = isRtl
-      ? "تجربة مقهى كافينا الفاخر وسلة التسوق المباشرة"
-      : "Experience Cafena Artisanal Coffee & Dynamic Cart";
+      ? "تجربة مقهى كافينا الفاخر ونقاط البيع المباشرة"
+      : "Experience Cafena Artisanal POS & Operations";
     bannerDesc = isRtl
-      ? "منصة ويب عربية سريعة بنكهة تراثية فاخرة تتيح تصفح محاصيل القهوة وحساب فوري لقيمة الطلبات بالريال."
-      : "Fast responsive Arabic specialty coffee platform with real-time in-browser cart arithmetic and search filtering.";
+      ? "منصة ويب عربية سريعة بالكامل (RTL) لإدارة محاصيل القهوة وحساب فوري لفواتير المبيعات."
+      : "Fast responsive Arabic RTL coffee operations suite with live orders ledger, inventory telemetry, and POS checkout.";
   } else if (project.slug === "gp") {
     bannerTitle = isRtl
       ? "منصة مقترحات مشاريع التخرج وإدارة الاعتماد"
       : "Test Academic Graduation Project Proposal Lifecycle";
     bannerDesc = isRtl
-      ? "محاكاة لمسار رفع مقترحات المشاريع الجامعية من قبل الطلاب ومراجعتها واعتمادها من اللجان المشرفة."
-      : "Interactive simulation of the academic graduation project submission, committee review, and approval workflow.";
+      ? "محاكاة لمسار رفع مقترحات المشاريع الجامعية من قبل الطلاب ومراجعتها واعتمادها بلجان التحكيم."
+      : "Interactive simulation of the academic proposal submission, committee review, and rubric scoring workflow.";
   }
 
   const demoUrl = project.demoUrl ? `/${locale}${project.demoUrl}` : `/${locale}/projects/${project.slug}/demo`;
 
   return (
-    <div className="border border-gold/50 bg-gold/5 dark:bg-gold/10 p-6 sm:p-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 transition-all hover:border-gold shadow-[0_0_30px_rgba(212,175,55,0.08)]">
-      <div className="space-y-3 max-w-2xl">
+    <div className="rounded-2xl border border-[#00FF9D]/30 bg-[#070A0F] p-6 sm:p-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 transition-all hover:border-[#00FF9D]/60 shadow-[0_15px_40px_rgba(0,0,0,0.8),0_0_25px_rgba(0,255,157,0.08)]">
+      <div className="space-y-3 max-w-2xl font-mono">
         <div className="flex items-center gap-3">
-          <Badge variant="gold" dot dotColor="emerald">
-            {project.demoType === "real_live"
-              ? isRtl
-                ? "تطبيق تشغيلي مباشر"
-                : "LIVE PRODUCTION SYSTEM"
-              : project.demoType === "repo"
-              ? isRtl
-                ? "مستودع الكود"
-                : "SOURCE REPOSITORY"
-              : isRtl
-              ? "محاكاة ويب تفاعلية"
-              : "INTERACTIVE WEB SIMULATION"}
-          </Badge>
-          <span className="font-mono text-[10px] text-gold font-semibold uppercase tracking-wider">
-            {"// "}{isRtl ? "المحرك متصل بالإنترنت" : "SANDBOX ONLINE"}
+          <span className="px-2.5 py-0.5 rounded text-[10px] font-bold bg-[#00FF9D]/10 text-[#00FF9D] border border-[#00FF9D]/30 flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#00FF9D] animate-ping" />
+            <span>
+              {project.demoType === "real_live"
+                ? isRtl
+                  ? "تطبيق تشغيلي مباشر"
+                  : "LIVE PRODUCTION SYSTEM"
+                : isRtl
+                ? "محاكي سطح المكتب الحي"
+                : "WORKSTATION SANDBOX"}
+            </span>
+          </span>
+          <span className="text-xs text-white/40 hidden sm:inline">
+            {"// "}{isRtl ? "بيئة التشغيل جاهزة" : "ACTIVE RUNTIME READY"}
           </span>
         </div>
 
-        <h3 className="font-serif text-2xl sm:text-3xl font-normal text-content-primary">
+        <h3 className="font-serif text-2xl sm:text-3xl font-normal text-white">
           {bannerTitle}
         </h3>
 
-        <p className="text-content-secondary text-xs sm:text-sm leading-relaxed">
+        <p className="text-white/70 text-xs sm:text-sm leading-relaxed font-sans">
           {bannerDesc}
         </p>
       </div>
 
-      <div className="shrink-0">
-        <Link href={demoUrl}>
-          <Button variant="primary" size="lg">
-            <span>
-              {project.demoType === "real_live"
-                ? isRtl
-                  ? "فتح التطبيق المباشر"
-                  : "Launch Live Demo"
-                : project.demoType === "repo"
-                ? isRtl
-                  ? "استعراض المستودع البرمجي"
-                  : "View Repository"
-                : isRtl
-                ? "تشغيل مختبر المحاكاة التفاعلي"
-                : "Launch Interactive Demo"}
-            </span>
-            <span className={cn("text-sm", isRtl && "rotate-180")}>→</span>
-          </Button>
+      <div className="shrink-0 w-full lg:w-auto">
+        <Link
+          href={demoUrl}
+          className="w-full lg:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#00FF9D] hover:bg-[#00FF9D]/90 text-[#070A0F] font-mono font-bold text-sm shadow-[0_0_20px_rgba(0,255,157,0.3)] transition-all active:scale-95"
+        >
+          <span>
+            {project.demoType === "real_live"
+              ? isRtl
+                ? "فتح التطبيق المباشر"
+                : "Launch Live App"
+              : isRtl
+              ? "تشغيل محاكي سطح المكتب"
+              : "Launch Workstation Demo"}
+          </span>
+          <span>⚡</span>
         </Link>
       </div>
     </div>

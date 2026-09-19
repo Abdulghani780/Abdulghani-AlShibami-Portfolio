@@ -10,7 +10,83 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [0.9.1] - 2026-09-19
+## [1.2.0] - 2026-09-19 — Canonical Reference Frontend Replacement
+
+### Added
+- **Canonical Visual References Implementation (4/4 Approved Concepts):**
+  - **Reference 1 (`portfolio_hero_concept.jpg`):** Futuristic Hero Command Center with Neon Mint (`#00FF9D`), Electric Cyan (`#00F0FF`), and Deep Space Obsidian (`#05080E`), featuring live HUD telemetry, monospace terminal outputs, active green status beacons, and authentic developer profile portrait (`abdulghani-profile-hero.webp`).
+  - **Reference 2 (`live_demo_studio.jpg`):** Multi-workstation interactive demonstration suite (`LiveDemoStudio.tsx` on `/[locale]/showcase`) allowing interactive split-screen or tabbed live simulation across all 5 authentic projects with hardware dials.
+  - **Reference 3 (`desktop_demo_simulation.jpg`):** Native OS Desktop Workstation Sandbox (`DemoShell.tsx`, `DemoStatusBar.tsx`, and `WorkstationConsole.tsx`) with authentic traffic lights (Red/Yellow/Green), title bar, real-time hardware gauges (CPU 18%, MEM 14.8MB / 23%, NET 12ms, 60 FPS), and collapsible streaming terminal drawer with auto-scrolling log events.
+  - **Reference 4 (`projects_showcase_grid.jpg`):** Flagship Projects Showcase Bento Grid (`ProjectBentoShowcase.tsx`) exhibiting all 5 verified projects (`Campus IT Tracker`, `MetaAlgorithm Lab`, `Cafena Coffee Suite`, `NovaTech Cloud`, `GP Platform`) as live running instances with mini workstation monitors, glowing circuit bus traces, and direct `[ Launch Workstation Demo ]` triggers.
+- **Components & Layout Upgrades:**
+  - `ProjectBentoShowcase.tsx`: Asymmetric 5-panel bento grid with 2 top large cards and 3 bottom cards.
+  - `LiveDemoStudio.tsx`: Dual-workstation simulation suite.
+  - `WorkstationConsole.tsx`: Collapsible streaming event log drawer.
+  - `ProjectPreviewMockup.tsx`: Updated with high-fidelity mini workstation monitors for all 5 verified projects.
+  - `ProjectPreviewGraphic.tsx`: Upgraded to neon mint workstation styling for case studies.
+  - `Navbar.tsx` & `Footer.tsx`: Restyled with neon mint borders, active routes (`Showcase Studio`, `Projects Bento`), and full bidirectional i18n.
+  - `ContactForm.tsx`: Neon mint styling while preserving 100% resilient Supabase database persistence.
+- **Zero Backend Damage:**
+  - Supabase database schema, tables, migrations, RLS policies, backend data repositories, and API routes 100% untouched and preserved.
+  - Only the 5 authentic projects (`campus-it-tracker`, `metaalgorithm-lab`, `novatech`, `cafena`, `gp`).
+- **Full Automated & Browser QA:**
+  - TypeScript compilation: 0 errors (`pnpm tsc --noEmit`).
+  - ESLint: 0 warnings, 0 errors (`pnpm lint`).
+  - Next.js Production Build: 30/30 static pages prerendered (`pnpm build`).
+  - Browser verification across 8-way matrix (EN/AR, Dark/Light, Mobile/Desktop).
+
+---
+
+## [1.1.0] - 2026-09-19 — Reference-Faithful Dual-Column Command Center Rebuild
+
+### Added
+- **Reference-Faithful Dual-Column Desktop Command Center (1536x1024 Blueprint):**
+  - Completely rebuilt the homepage presentation around the 1536x1024 dual-column technical editorial reference image.
+  - Implemented balanced split-screen layout (`~49%` Left Column, `~49%` Right Column) with a narrow controlled gutter (`24px`) on an elevated `#050709` Obsidian canvas with subtle dot-matrix atmospheric grid.
+- **Left Column Command Console (`ReferenceLeftColumn.tsx`):**
+  - Integrated Header/Navigation inside the top of the panel: Custom Royal Gold `AS` monogram, `ABDULGHANI AL-SHIBAMI`, role descriptor, pulsing green online status, numbered navigation items (`01_HOME`, `02_ABOUT`, `03_PROJECTS`, `04_STACK`, `05_CONTACT`), Language Switcher, and Theme Toggle.
+  - Technical Hero Console: Micro-telemetry lines (`> INITIALIZING_PORTFOLIO.EXE`, `> STATUS: ONLINE`), monumental headline ("Building Systems Behind the Interface." / "بناء الأنظمة خلف الواجهة البرمجية."), positioning paragraph, compact action buttons (`VIEW MY WORK ↗`, `DOWNLOAD CV ↓`), and scroll indicator.
+  - Profile & Identity Rail: Authentic profile portrait (`abdulghani-profile-hero.webp`) integrated with smooth dark vignette, adjacent vertical monospace metadata rail (`> WHO_AM_I`, `> ROLE`, `> LOCATION`, `> EXPERIENCE`, `> AVAILABILITY`).
+  - Selected Projects Strip: 3 high-density cards (`Campus IT Tracker`, `MetaAlgorithm Lab`, `NovaTech`) with indices, category kickers, descriptions, action links, and authentic interface preview mockups.
+  - Telemetry Strip: `> SYSTEM_LOG` with live timestamps and actual statuses + `> TECH_STACK` brand badges (Next.js, TypeScript, Tailwind, React, Python, Oracle 10g, C# .NET, Supabase).
+  - Left Footer: Minimal identity, copyright, and "BASED IN SANA'A, YEMEN •".
+- **Right Column Case Studies & Technical Grid (`ReferenceRightColumn.tsx`):**
+  - Case Studies Header: `// CASE STUDIES` with `VIEW_ALL_CASE_STUDIES [ ]`.
+  - Stacked Case Study Rows: 3 horizontal project rows (`Campus IT Tracker`, `MetaAlgorithm Lab`, `Graduation Project Portal`) with thumbnails, descriptions, technology tags, verified architectural specs (`Enterprise Tier`, `O(n log n) Bench`, `3 User Roles`), and action links `↗`.
+  - Three-Part Technical Information Strip: `</> TECHNICAL SKILLS` (qualitative bars with gold percentage accents), `[#] SERVICES` (stacked capability blocks), and `[T] TOOLS I USE` (responsive non-truncated tag cloud).
+  - Lower Contact Section: `> LET'S_BUILD_SOMETHING_GREAT`, massive headline ("Ready to build what matters._" / "جاهز لبناء ما يُحدث أثراً._"), custom SVG vector `WireframeGlobe.tsx` with radar reticle, and contact action block with direct email.
+  - Integrated Contact Modal: Clicking `START A CONVERSATION` opens an accessible modal with the resilient Supabase `ContactForm`.
+  - Right Footer: Monogram `AS`, `// THANKS FOR VISITING`, and social anchors (GitHub, LinkedIn, Email).
+- **Core Shell & Internationalization Parity:**
+  - Added `MainWrapper.tsx` to automatically adjust top clearance between homepage (zero top padding) and subpages (`pt-20 sm:pt-24`).
+  - Conditioned `Navbar.tsx` and `Footer.tsx` to hide on the homepage so the self-contained command center stands pristine, while preserving the standard navigation shell across `/projects`, `/showcase`, and demo routes.
+  - Sanitized `ContactForm.tsx` to remove generic placeholder names ("Alex Vance", "architect@enterprise.com") per prompt specification.
+  - Full bidirectional parity: 100% Arabic RTL mirroring and typography.
+  - Verified Light Mode luxury porcelain interpretation (`#F4F5F7` canvas, `#FFFFFF` panels, `#E2E8F0` borders).
+
+### Added
+- **Obsidian + Liquid Glass + Royal Gold Visual System:**
+  - Implemented bespoke luxury color palette in `tailwind.config.ts`: Obsidian (`#050505`, `#0A0A0C`, `#0E0E11`, `#121216`), Royal Gold (`#C9A227`, `#D4AF37`, `#E6C866`), and Porcelain Sovereign (`#FBFBFC`) light theme.
+  - Engineered `GlassPanel.tsx` reusable translucent glass primitive with controlled blur (`16px`/`24px`), border reflections, and ambient gold hover glow.
+  - Added CSS design tokens and utilities in `app/globals.css`: `.glass-panel`, `.glass-panel-hover`, `.glass-nav`, `.ambient-glow-gold`, `.text-gold-gradient`.
+  - Built `ProjectPreviewGraphic.tsx`: Authentic engineered interface previews for all 5 verified projects (`Campus IT Tracker` network topology & ITIL desk, `MetaAlgorithm Lab` convergence graph, `Graduation Project Portal` review lifecycle, `Cafena` roastery cart, and `NovaTech` enterprise portal).
+- **Core App Shell & Navigation:**
+  - Redesigned `Navbar.tsx` into a floating liquid glass capsule island (`fixed top-0 inset-x-0 pt-3 max-w-5xl z-50`) with backdrop blur, centered editorial links, scroll elevation, and mobile drawer.
+  - Added top layout clearance in `app/[locale]/layout.tsx` (`pt-20 sm:pt-24`) to eliminate collision with floating navbar.
+  - Redesigned `Footer.tsx` with minimal liquid glass border, verified status ticker, and clean GitHub/LinkedIn anchors.
+  - Upgraded `ThemeToggle.tsx` with liquid glass styling and rounded-lg borders.
+- **Monumental Homepage & Editorial Hierarchy:**
+  - Upgraded Hero typography: Monumental clamp title `ABDULGHANI AL-SHIBAMI` (`text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem]`) with royal gold text gradient, role statement, and dual high-contrast action buttons.
+  - Framed authentic profile portrait in an integrated cinematic glass frame with subtle gold edge, status ticker (`AVAILABLE FOR HIRE`), and dark gradient vignette.
+  - Replaced isolated cards in Systems Telemetry with a unified horizontal floating liquid glass metric bar.
+  - Rebuilt Featured Projects section into an editorial product launch showcase featuring `Campus IT Tracker` flagship and asymmetrical secondary panels.
+  - Upgraded Architectural Competencies into distinct glass panels with gold kickers.
+  - Rebuilt Contact section into a centered, minimal liquid glass invitation with direct Supabase connection.
+- **Case Studies & Demo Shell:**
+  - Replaced boxy cards in `ProblemSolutionSection.tsx` and `ChallengesResultsSection.tsx` with open editorial case-study layouts and liquid glass spotlight panels.
+  - Upgraded `DemoCalloutBanner.tsx` with luxury gold ambient glow and high-contrast launch action.
+  - Modernized `DemoShell.tsx`: Replaced obsolete `x64 SIM` and simulated host strings with authentic `INTERACTIVE SIMULATION` badge and liquid glass frame.
+  - Fixed Windows case-insensitive `.gitignore` bug by anchoring `/Projects/` to the repository root.
 
 ### Added
 - **Supabase Production Client & Zero-Failure Fallback:**

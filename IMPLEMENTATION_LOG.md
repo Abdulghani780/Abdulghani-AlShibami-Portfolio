@@ -393,3 +393,104 @@
   - `pnpm lint` passed (0 errors, 0 warnings).
   - `pnpm build` passed (30/30 static pages prerendered).
 - **Status:** Completed.
+
+---
+
+## [2026-09-19] Entry 012 — Master Redesign: Obsidian + Liquid Glass + Royal Gold Visual Overhaul
+- **Phase:** MASTER DESIGN OVERHAUL — Obsidian + Liquid Glass + Royal Gold Redesign
+- **Task:** TSK-120 (Visual & UX Redesign under Official Design Direction)
+- **Objective:** Transform the portfolio's visual identity into a premium, technically sophisticated portfolio under the official design direction: Obsidian surfaces (`#050505`, `#0A0A0C`), Liquid Glass (`rgba(255,255,255,0.035–0.07)`), and Royal Gold highlights (`#C9A227`, `#D4AF37`). Elevate typography with monumental clamp sizing (64–96px desktop), eliminate "everything is a card", implement floating liquid glass navbar, product launch project presentations, and fix Light Mode button contrast.
+- **Files Created / Updated:**
+  - `tailwind.config.ts`: Added Obsidian palette (`#050505` to `#18181F`), Royal Gold scale, Liquid Glass tokens, custom shadows, and content paths.
+  - `app/globals.css`: Defined CSS variables for `:root` (Porcelain Sovereign `#FBFBFC`) and `.dark` (Obsidian `#050505`), glass utilities, ambient glow, gold text gradient, and custom scrollbars.
+  - `components/ui/GlassPanel.tsx`: Created reusable liquid glass panel primitive with controlled blur, border reflections, and ambient gold hover glow.
+  - `components/ui/Button.tsx`: Added `glass` and `gold-outline` variants; fixed Light Mode text contrast bug; added active state micro-interactions.
+  - `components/ui/SectionHeading.tsx`: Monumental responsive display sizing with refined gold kicker.
+  - `components/layout/Navbar.tsx`: Floating liquid glass capsule island (`fixed top-0 inset-x-0 pt-3 max-w-5xl z-50`), translucent backdrop blur, centered editorial links, dynamic scroll elevation, and mobile drawer.
+  - `app/[locale]/layout.tsx`: Added `pt-20 sm:pt-24` top layout clearance for floating navbar.
+  - `components/layout/Footer.tsx`: Redesigned with minimal liquid glass border, verified status ticker, and clean social anchors.
+  - `components/layout/ThemeToggle.tsx`: Upgraded with liquid glass styling and rounded-lg borders.
+  - `app/[locale]/page.tsx`: Monumental hero headline with gold gradient (`ABDULGHANI AL-SHIBAMI`), integrated authentic portrait in glass frame with `AVAILABLE FOR HIRE` status, horizontal floating glass telemetry horizon, product launch featured showcase, categorized competencies spectrum, and minimal liquid glass contact invitation.
+  - `components/features/projects/ProjectPreviewGraphic.tsx`: Created authentic engineered interface previews for all 5 verified projects.
+  - `components/features/projects/ProjectCard.tsx`: Redesigned with `GlassPanel`, `ProjectPreviewGraphic`, clear typography, and dual actions.
+  - `components/features/projects/ProjectCatalogView.tsx` & `ProjectFilters.tsx`: Upgraded with liquid glass panels and refined search inputs.
+  - `components/features/projects/case-study/ProblemSolutionSection.tsx` & `ChallengesResultsSection.tsx`: Open editorial case-study layouts replacing boxed cards.
+  - `components/features/projects/case-study/DemoCalloutBanner.tsx`: Luxury gold ambient glow and high-contrast launch action.
+  - `demos/shared/DemoShell.tsx`: Replaced obsolete `x64 SIM` with authentic `INTERACTIVE SIMULATION` badge and liquid glass window frame.
+  - `.gitignore`: Anchored `/Projects/` to root to resolve Windows case-insensitive component directory ignore bug.
+- **Verification Results:**
+  - `pnpm typecheck` passed (0 errors).
+  - `pnpm lint` passed (0 errors, 0 warnings).
+  - `pnpm build` passed (all 30 static pages prerendered).
+  - Browser QA (Chrome DevTools MCP):
+    - Verified Desktop 1536px (Dark Mode & Light Mode): Monumental typography, liquid glass navbar, telemetry horizon, project previews, contact form.
+    - Verified Arabic RTL 1536px: Correct text alignment, mirrored badge order, proper return flow.
+    - Verified Mobile 393px: Zero horizontal overflow (`scrollWidth === clientWidth`), responsive hamburger navigation, comfortable reading typography.
+    - Console messages: 0 errors, 0 hydration warnings.
+- **Status:** Completed. Ready for Git commit and deployment.
+
+---
+
+## [2026-09-19] Entry 014 — Reference-Faithful Dual-Column Command Center Portfolio Rebuild
+- **Phase:** PHASE 11 — Reference-Faithful Dual-Column Command Center Rebuild
+- **Task:** TSK-130 (Recreate Reference Image Visual Blueprint with Verified Owner Data)
+- **Objective:** Rebuild the portfolio frontend experience strictly adhering to the 1536x1024 dual-column command-center visual reference blueprint provided by the user, while preserving Abdulghani Al-Shibami's real identity, authentic profile image, 5 verified projects, real technologies, and Supabase integration.
+- **Git Branch:** `redesign/reference-faithful-portfolio`
+- **Files Created / Updated:**
+  - `components/reference/ReferenceLeftColumn.tsx`: Created the tall left command-center panel (`~49%` width) featuring integrated top navigation (Royal Gold `AS` monogram, role, status dot, numbered monospace nav items `01_HOME` to `05_CONTACT`, LanguageSwitcher, ThemeToggle), terminal console lines (`> INITIALIZING_PORTFOLIO.EXE`, `> STATUS: ONLINE`), monumental editorial headline ("Building Systems Behind the Interface."), lead paragraph, compact CTA buttons (`VIEW MY WORK ↗`, `DOWNLOAD CV ↓`), tall authentic portrait of Abdulghani with smooth dark gradient vignette, vertical identity metadata rail (`WHO_AM_I`, `ROLE`, `LOCATION`, `EXPERIENCE`, `AVAILABILITY`), 3 selected project cards with authentic interface preview mockups (`Campus IT Tracker`, `MetaAlgorithm Lab`, `NovaTech`), bottom telemetry strip (`SYSTEM_LOG` with live timestamps + `TECH_STACK` brand badges), and left footer.
+  - `components/reference/ReferenceRightColumn.tsx`: Created the tall right command-center panel (`~49%` width) featuring `// CASE STUDIES` header, 3 stacked horizontal case study rows with preview thumbnails and verified architectural metrics (`Enterprise Tier`, `O(n log n) Bench`, `3 User Roles`), 3-column info grid (`</> TECHNICAL SKILLS` with qualitative gold bars, `[#] SERVICES` with capability cards, and `[T] TOOLS I USE` responsive tag cloud), lower contact section (`Ready to build what matters._` with custom SVG wireframe globe radar graphic, availability description, `START A CONVERSATION ↗` button, direct email), and right footer with `AS` monogram and social links.
+  - `components/reference/WireframeGlobe.tsx`: Created lightweight SVG vector wireframe sphere with latitude/longitude arcs, targeting reticle, and glowing nodes matching the reference visual motif.
+  - `components/reference/ProjectPreviewMockup.tsx`: High-fidelity SVG/HTML interface preview mockups for each of the verified projects.
+  - `components/layout/MainWrapper.tsx`: Dynamic layout wrapper eliminating top padding on the homepage while preserving clearance on subpages.
+  - `components/layout/Navbar.tsx` & `components/layout/Footer.tsx`: Conditioned to omit duplicate outer navbar and footer on the self-contained command-center homepage.
+  - `components/features/ContactForm.tsx`: Replaced generic placeholder names ("Alex Vance", "architect@enterprise.com") with professional, verified placeholders.
+  - `app/[locale]/page.tsx`: Assembled the dual-column command-center canvas at `max-w-[1580px]` with background dot-matrix grid and ambient lighting.
+- **Verification Results:**
+  - `pnpm tsc --noEmit` passed (0 TypeScript errors).
+  - `pnpm lint` passed (0 ESLint errors, 0 warnings).
+  - `pnpm build` passed (all 30 static pages prerendered).
+  - Browser QA (Chrome DevTools MCP & Browser Subagent):
+    - Desktop 1536x1024 (Dark Mode): Pixel-close recreation of reference layout, proportions, borders, radii, typography, and density.
+    - Desktop 1536x1024 (Light Mode): Deliberate luxury porcelain interpretation (`#F4F5F7` canvas, `#FFFFFF` surfaces, `#E2E8F0` borders).
+    - Desktop 1536x1024 (Arabic RTL): Full natural mirroring, correct directional alignment, Arabic typography, and zero string leaks.
+    - Mobile 393x852: Fluid, responsive single-stream stacking with 0 horizontal overflow.
+    - Interactive QA: Contact modal opens smoothly upon clicking `START A CONVERSATION`, with resilient form connected to Supabase `contact_messages`.
+- **Status:** Completed. Ready for Git commit and push to `redesign/reference-faithful-portfolio`.
+
+---
+
+## [2026-09-19] Entry 015 — Canonical Reference Frontend Replacement from 4 Approved Visual References
+- **Phase:** PHASE 16 — Canonical Reference Frontend Replacement
+- **Task:** TSK-165 (Complete Frontend Redesign from 4 Approved References)
+- **Objective:** Fully replace the frontend presentation from the 4 approved visual references:
+  1. `portfolio_hero_concept.jpg`: Futuristic Hero Command Center (`#00FF9D` neon mint + `#05080E` obsidian), HUD telemetry, monospace console, real developer photo.
+  2. `live_demo_studio.jpg`: Interactive Live Demo Studio multi-workstation sandbox.
+  3. `desktop_demo_simulation.jpg`: Live Workstation Sandbox with native OS window chrome (traffic lights: red/yellow/green), real terminal drawer streaming WASM/system logs, CPU/MEM telemetry dials, and variable/database inspectors.
+  4. `projects_showcase_grid.jpg`: Flagship Projects Showcase Bento Grid exhibiting all 5 verified projects as live active instances with mini workstation monitors and direct demo launchers.
+- **Git Branch:** `redesign/final-reference-frontend`
+- **Files Created / Updated:**
+  - `app/globals.css`: Added canonical design tokens (`--neon-mint: #00FF9D`, `--electric-cyan: #00F0FF`, `--canvas-bg: #05080E`, `--surface-elevated: #070A0F`, `--surface-overlay: #0B111A`), workstation glow utilities, traffic light styles, and circuit-grid background patterns.
+  - `tailwind.config.ts`: Configured `neon-mint`, `electric-cyan`, workstation box-shadows, and circuit grid background utilities.
+  - `components/features/projects/ProjectBentoShowcase.tsx` *(NEW)*: Built asymmetric 5-project Bento showcase grid directly matching Reference 4 with 2 top large cards (`Campus IT Tracker`, `MetaAlgorithm Lab`) and 3 bottom cards (`Cafena`, `NovaTech`, `GP Platform`). Every card features traffic lights, live instance badges (`INST_01: ONLINE`), glowing circuit bus traces, execution stats (FPS, MEM, P99, Users), and direct `[ Launch Workstation Demo ]` actions.
+  - `components/features/projects/ProjectCatalogView.tsx`: Integrated `ProjectBentoShowcase` as the default view for the projects catalog (`/[locale]/projects`), with toggle to classic dossiers.
+  - `demos/shared/WorkstationConsole.tsx` *(NEW)*: Created collapsible streaming terminal drawer directly matching Reference 3 with real-time log event stream, auto-scroll lock, and clear logs triggers.
+  - `demos/shared/DemoShell.tsx`: Upgraded to native OS window chrome with traffic light circles (`#FF5F56`, `#FFBD2E`, `#27C93F`), monospace title bar, integrated `WorkstationConsole` drawer, and `DemoStatusBar`.
+  - `demos/shared/DemoStatusBar.tsx` & `DemoToolbar.tsx`: Upgraded with real-time hardware telemetry gauges (CPU 18%, MEM 14.8MB / 23%, NET 12ms, 60 FPS) and streaming terminal console toggle.
+  - `components/features/demos/LiveDemoStudio.tsx` *(NEW)* & `app/[locale]/showcase/page.tsx`: Built multi-workstation demonstration studio directly matching Reference 2, supporting single-window and dual split-screen simulation for all 5 verified projects with real-time hardware dials.
+  - `components/reference/ProjectPreviewMockup.tsx`: Replaced with high-fidelity mini workstation monitors for all 5 authentic projects with traffic lights and execution telemetry.
+  - `components/reference/ProjectPreviewGraphic.tsx`: Upgraded to neon mint workstation styling for case studies.
+  - `components/reference/ReferenceRightColumn.tsx`: Enhanced to display all 5 verified projects with direct `[ ⚡ Live Demo ]` actions.
+  - `components/features/projects/case-study/DemoCalloutBanner.tsx` & `CaseStudyHero.tsx`: Upgraded to neon mint workstation styling.
+  - `components/layout/Navbar.tsx` & `Footer.tsx`: Restyled with neon mint borders, active routes (`Showcase Studio`, `Projects Bento`), and full bidirectional i18n.
+  - `components/features/ContactForm.tsx`: Restyled with neon mint borders and glowing focus states, while keeping resilient Supabase database persistence 100% operational.
+- **Verification Results:**
+  - `pnpm tsc --noEmit` passed (0 errors).
+  - `pnpm lint` passed (0 warnings, 0 errors).
+  - `pnpm build` passed (30/30 static pages prerendered).
+  - Browser QA verified via Chrome DevTools across 8-way matrix (Desktop/Mobile, Dark/Light, EN/AR).
+- **Backend Integrity Check:**
+  - Supabase database schema, tables, migrations, RLS policies, backend data repositories, and API routes 100% untouched and preserved.
+  - Exactly the 5 authentic projects (`campus-it-tracker`, `metaalgorithm-lab`, `novatech`, `cafena`, `gp`).
+- **Status:** Completed. Ready for Git commit and push to `redesign/final-reference-frontend`.
+
+
