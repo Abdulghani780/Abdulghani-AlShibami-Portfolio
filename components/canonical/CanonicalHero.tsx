@@ -69,11 +69,15 @@ export function CanonicalHero({ locale }: CanonicalHeroProps) {
     }
   }, [termLines]);
 
-  const handleCommand = (e: React.FormEvent) => {
-    e.preventDefault();
-    const cmd = termInput.trim().toLowerCase();
-    if (!cmd) return;
-    const entry = { text: `> ${termInput}`, color: "text-[#00FF9D]" };
+  const [mousePos, setMousePos] = useState({ x: 700, y: 300 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMousePos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  };
+
+  const runQuickCommand = (cmd: string) => {
+    const entry = { text: `> ${cmd}`, color: "text-[#00FF9D]" };
     let response: { text: string; color: string } | null = null;
     if (cmd === "help") {
       response = { text: "Commands: projects · whoami · status · clear", color: "text-zinc-300" };
@@ -90,7 +94,14 @@ export function CanonicalHero({ locale }: CanonicalHeroProps) {
     } else {
       response = { text: `Command not found: '${cmd}'. Type 'help'`, color: "text-zinc-500" };
     }
-    setTermLines((prev) => [...prev, entry, ...(response ? [response] : [])]);
+    setTermLines((prev) => (response ? [...prev, entry, response] : [...prev, entry]));
+  };
+
+  const handleCommand = (e: React.FormEvent) => {
+    e.preventDefault();
+    const cmd = termInput.trim().toLowerCase();
+    if (!cmd) return;
+    runQuickCommand(cmd);
     setTermInput("");
   };
 
@@ -105,9 +116,21 @@ export function CanonicalHero({ locale }: CanonicalHeroProps) {
     <section
       className="relative w-full min-h-screen bg-[#04070D] text-white flex flex-col overflow-hidden"
       dir={isAr ? "rtl" : "ltr"}
+      onMouseMove={handleMouseMove}
     >
       {/* ── Bioluminescent background glows ── */}
       <div className="absolute inset-0 pointer-events-none">
+        {/* Mouse interactive spotlight */}
+        <div
+          className="absolute pointer-events-none transition-opacity duration-300"
+          style={{
+            width: "800px",
+            height: "800px",
+            left: `${mousePos.x - 400}px`,
+            top: `${mousePos.y - 400}px`,
+            background: "radial-gradient(circle, rgba(0,255,157,0.06) 0%, rgba(0,240,255,0.02) 40%, transparent 70%)",
+          }}
+        />
         <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#00FF9D]/[0.028] rounded-full blur-[160px]" />
         <div className="absolute bottom-1/3 right-1/4 w-[500px] h-[500px] bg-[#00F0FF]/[0.022] rounded-full blur-[140px]" />
         {/* Emerald dot particle grid */}
@@ -157,11 +180,16 @@ export function CanonicalHero({ locale }: CanonicalHeroProps) {
         </nav>
       </header>
 
-      {/* ── SECTION LABEL ── */}
-      <div className="relative z-10 px-6 sm:px-10 lg:px-16 pt-8">
+      {/* ── SECTION LABEL & AVAILABILITY STATUS ── */}
+      <div className="relative z-10 px-6 sm:px-10 lg:px-16 pt-8 flex flex-wrap items-center justify-between gap-3">
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#00FF9D]/08 border border-[#00FF9D]/25 font-mono text-[10px] tracking-[0.18em] text-[#00FF9D] uppercase">
           <span className="w-1.5 h-1.5 rounded-full bg-[#00FF9D] animate-ping" />
           {isAr ? "SECTION 01 / البطل" : "SECTION 01 / HERO"}
+        </div>
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900/90 border border-zinc-800 text-[11px] font-mono text-zinc-300">
+          <span className="w-2 h-2 rounded-full bg-[#00FF9D] animate-pulse" />
+          <span className="text-[#00FF9D] font-semibold">{isAr ? "الحالة:" : "STATUS:"}</span>
+          <span>{isAr ? "متاح لأدوار هندسة الأنظمة والذكاء الاصطناعي" : "Available for Systems Architecture & AI"}</span>
         </div>
       </div>
 
@@ -292,7 +320,10 @@ export function CanonicalHero({ locale }: CanonicalHeroProps) {
           </div>
 
           {/* Technical Console */}
-          <div className="w-full max-w-sm bg-[#070A0F] rounded-2xl border border-[#00FF9D]/25 p-4 flex flex-col shadow-[0_0_35px_-5px_rgba(0,255,157,0.15)] relative overflow-hidden">
+          <div
+            className="w-full max-w-sm bg-[#070A0F] rounded-2xl border border-[#00FF9D]/25 p-4 flex flex-col shadow-[0_0_35px_-5px_rgba(0,255,157,0.15)] relative overflow-hidden text-left"
+            dir="ltr"
+          >
             {/* Console header */}
             <div className="flex items-center justify-between border-b border-zinc-800 pb-2.5 mb-2">
               <span className="font-mono text-[10px] tracking-widest text-[#00FF9D] font-bold uppercase">
@@ -309,7 +340,7 @@ export function CanonicalHero({ locale }: CanonicalHeroProps) {
             {/* Log body */}
             <div
               ref={termBodyRef}
-              className="flex-1 h-32 overflow-y-auto space-y-1 font-mono text-[10px] text-zinc-400 scrollbar-thin"
+              className="flex-1 h-32 overflow-y-auto space-y-1 font-mono text-[10px] text-zinc-400 scrollbar-thin text-left"
             >
               {termLines.filter(Boolean).map((line, i) => (
                 <div key={i} className={line?.color || "text-[#00FF9D]"}>{line?.text || ""}</div>
@@ -323,10 +354,24 @@ export function CanonicalHero({ locale }: CanonicalHeroProps) {
                 value={termInput}
                 onChange={(e) => setTermInput(e.target.value)}
                 placeholder="type 'help'..."
-                className="flex-1 bg-transparent font-mono text-[11px] text-white placeholder-zinc-600 outline-none border-none"
+                className="flex-1 bg-transparent font-mono text-[11px] text-white placeholder-zinc-600 outline-none border-none text-left"
               />
               <span className="w-2 h-3.5 bg-[#00FF9D] type-cursor" />
             </form>
+            {/* Quick command chips */}
+            <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-zinc-800/60 mt-1">
+              <span className="font-mono text-[9px] text-zinc-600 uppercase mr-1">RUN:</span>
+              {["help", "projects", "whoami", "status", "clear"].map((cmd) => (
+                <button
+                  key={cmd}
+                  type="button"
+                  onClick={() => runQuickCommand(cmd)}
+                  className="px-2 py-0.5 rounded text-[9px] font-mono bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-[#00FF9D] hover:border-[#00FF9D]/40 transition-colors cursor-pointer"
+                >
+                  &gt; {cmd}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>

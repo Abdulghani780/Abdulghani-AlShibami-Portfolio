@@ -33,21 +33,31 @@ export function Navbar({
     pathname === "/" ||
     pathname === "";
 
-  if (isHomePage) {
-    return null;
-  }
-
   const isRtl = locale === "ar";
 
-  const navLinks = [
-    { href: `/${locale}`, label: isRtl ? "الرئيسية" : "Home" },
-    { href: `/${locale}/projects`, label: dict.nav.projects },
-    { href: `/${locale}/showcase`, label: isRtl ? "استوديو الديمو" : "Demo Studio" },
-    { href: `/${locale}#contact`, label: dict.nav.contact },
-  ];
+  const navLinks = isHomePage
+    ? [
+        { href: "#projects", label: isRtl ? "المشاريع" : "Projects" },
+        { href: "#sandbox", label: isRtl ? "المحاكي" : "Sandbox" },
+        { href: `/${locale}/showcase`, label: isRtl ? "استوديو العروض" : "Demo Studio" },
+        { href: "#contact", label: isRtl ? "تواصل" : "Contact" },
+      ]
+    : [
+        { href: `/${locale}`, label: isRtl ? "الرئيسية" : "Home" },
+        { href: `/${locale}/projects`, label: dict.nav.projects },
+        { href: `/${locale}/showcase`, label: isRtl ? "استوديو الديمو" : "Demo Studio" },
+        { href: `/${locale}#contact`, label: dict.nav.contact },
+      ];
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 pt-3 sm:pt-4 px-3 sm:px-6 pointer-events-none transition-all duration-300">
+    <header
+      className={cn(
+        "fixed top-0 inset-x-0 z-50 pt-3 sm:pt-4 px-3 sm:px-6 pointer-events-none transition-all duration-500",
+        isHomePage && !isScrolled
+          ? "opacity-0 -translate-y-5 pointer-events-none"
+          : "opacity-100 translate-y-0"
+      )}
+    >
       <div
         className={cn(
           "w-full max-w-5xl mx-auto rounded-2xl pointer-events-auto transition-all duration-300",

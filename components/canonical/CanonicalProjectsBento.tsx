@@ -23,6 +23,7 @@ interface Project {
   demoType: "INTERACTIVE SIMULATION" | "EMBEDDED DEMO" | "REAL LIVE DEMO" | "REPOSITORY";
   accentColor: string;
   featured?: boolean;
+  githubUrl: string;
 }
 
 const PROJECTS: Project[] = [
@@ -40,6 +41,7 @@ const PROJECTS: Project[] = [
     demoType: "INTERACTIVE SIMULATION",
     accentColor: "#00FF9D",
     featured: true,
+    githubUrl: "https://github.com/Abdulghani780/Campuse-IT-Tracker",
   },
   {
     slug: "metaalgorithm-lab",
@@ -53,6 +55,7 @@ const PROJECTS: Project[] = [
     metric2Value: "86% Bench",
     demoType: "INTERACTIVE SIMULATION",
     accentColor: "#00F0FF",
+    githubUrl: "https://github.com/Abdulghani780/MetaAlgorithmLab",
   },
   {
     slug: "cafena",
@@ -67,6 +70,7 @@ const PROJECTS: Project[] = [
     metric2Value: "412 / day",
     demoType: "REAL LIVE DEMO",
     accentColor: "#FFBD2E",
+    githubUrl: "https://github.com/Abdulghani780/Cafena",
   },
   {
     slug: "novatech",
@@ -80,6 +84,7 @@ const PROJECTS: Project[] = [
     metric2Value: "99.8%",
     demoType: "REAL LIVE DEMO",
     accentColor: "#00F0FF",
+    githubUrl: "https://github.com/Abdulghani780/NovaTech",
   },
   {
     slug: "gp",
@@ -93,6 +98,7 @@ const PROJECTS: Project[] = [
     metric2Value: "Stage 3/4",
     demoType: "EMBEDDED DEMO",
     accentColor: "#00FF9D",
+    githubUrl: "https://github.com/Abdulghani780/Graduation-Project-Management-Portal",
   },
 ];
 
@@ -189,29 +195,39 @@ export function CanonicalProjectsBento({ locale }: CanonicalProjectsBentoProps) 
             {isAr ? "SECTION 02 / المشاريع" : "SECTION 02 / PROJECTS"}
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold text-white">
-            {isAr ? (
-              <>استعراض المشاريع <span className="text-[#00FF9D]">الحية</span></>
-            ) : (
-              <>Flagship <span className="text-[#00FF9D]">Projects Showcase</span></>
-            )}
+            {isAr ? "المشاريع الهندسية وواجهات الديمو" : "Core Systems & Live Environments"}
           </h2>
+          <p className="text-zinc-500 text-sm mt-1 font-mono">
+            {isAr ? "استكشف الكود المصدري، دراسات المعمارية، والمحاكاة المباشرة" : "Production systems with interactive browser runtimes, architecture case studies, and code repositories"}
+          </p>
         </div>
-        <div className="flex items-center gap-2 font-mono text-[11px] text-zinc-400">
-          <span className="w-2 h-2 rounded-full bg-[#00FF9D] animate-ping" />
-          {isAr ? "5 مشاريع نشطة" : "5 ACTIVE PROJECT INSTANCES"}
+
+        {/* Global links */}
+        <div className="flex items-center gap-3">
+          <Link
+            href={`/${locale}/projects`}
+            className="px-4 py-2 rounded-xl bg-zinc-900/90 border border-zinc-700/80 text-zinc-300 hover:text-white hover:border-[#00FF9D]/50 font-mono text-xs transition-all flex items-center gap-2"
+          >
+            <span>{isAr ? "عرض أرشيف المشاريع" : "View All Projects"}</span>
+            <span className="text-[#00FF9D]">→</span>
+          </Link>
+          <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 font-mono text-xs text-zinc-400">
+            <span className="w-2 h-2 rounded-full bg-[#00FF9D] animate-pulse" />
+            5 DEPLOYMENTS ONLINE
+          </div>
         </div>
       </div>
 
-      {/* ── ASYMMETRIC BENTO GRID ── */}
+      {/* ── BENTO GRID ── */}
       <div className="relative z-10 max-w-7xl mx-auto space-y-6">
 
-        {/* TOP ROW: Featured (tall) + MetaAlgorithm Lab */}
+        {/* TOP ROW: Featured Workstation (7 cols) + MetaAlgorithm Lab (5 cols) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
 
-          {/* FEATURED CARD: Campus IT Tracker (tall) — lg:col-span-7 */}
-          <div className="lg:col-span-7 bg-[#070B12] rounded-2xl border border-[#00FF9D]/25 flex flex-col overflow-hidden shadow-[0_0_40px_-8px_rgba(0,255,157,0.15)] hover:border-[#00FF9D]/50 hover:shadow-[0_0_50px_-5px_rgba(0,255,157,0.25)] transition-all duration-300 group">
-            {/* Window chrome */}
-            <div className="flex items-center justify-between px-5 py-3 border-b border-zinc-800/80 bg-[#060A10]">
+          {/* Campus IT Tracker — lg:col-span-7 */}
+          <div className="lg:col-span-7 bg-[#070B12] rounded-2xl border border-[#00FF9D]/25 flex flex-col overflow-hidden shadow-[0_0_40px_-10px_rgba(0,255,157,0.12)] hover:border-[#00FF9D]/45 transition-all duration-300">
+            {/* Header / Title bar */}
+            <div className="flex items-center justify-between px-5 py-3 border-b border-zinc-800/80 bg-[#060A10]" dir="ltr">
               <div className="flex items-center gap-2">
                 <span className="w-3 h-3 rounded-full bg-[#FF5F56]" />
                 <span className="w-3 h-3 rounded-full bg-[#FFBD2E]" />
@@ -220,20 +236,20 @@ export function CanonicalProjectsBento({ locale }: CanonicalProjectsBentoProps) 
                   {isAr ? featured.nameAr : featured.name}
                 </span>
               </div>
-              <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-mono font-medium border ${BADGE_COLORS[featured.demoType]}`}>
-                <span className="w-1.5 h-1.5 rounded-full bg-[#00FF9D] animate-pulse" />
-                LIVE DEMO
+              <span className={`px-2.5 py-1 rounded-full text-[10px] font-mono border ${BADGE_COLORS[featured.demoType]}`}>
+                {featured.badge}
               </span>
             </div>
 
-            {/* App screenshot or live mockup */}
-            <div className="relative w-full h-52 sm:h-64 bg-[#04060A] overflow-hidden">
+            {/* Preview image / canvas */}
+            <div className="relative w-full h-56 sm:h-72 bg-[#030508] overflow-hidden border-b border-zinc-800/80">
               {featured.img ? (
                 <Image
                   src={featured.img}
-                  alt={`${featured.name} dashboard`}
+                  alt={featured.name}
                   fill
-                  className="object-cover object-top group-hover:scale-[1.02] transition-transform duration-500"
+                  className="object-cover object-top hover:scale-[1.03] transition-transform duration-700"
+                  priority
                 />
               ) : (
                 <div className="w-full h-full flex items-center justify-center">
@@ -241,7 +257,7 @@ export function CanonicalProjectsBento({ locale }: CanonicalProjectsBentoProps) 
                 </div>
               )}
               {/* Live overlay badge */}
-              <div className="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-black/70 backdrop-blur-sm border border-[#00FF9D]/30 font-mono text-[10px] text-[#00FF9D] flex items-center gap-1.5">
+              <div className="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-md border border-[#00FF9D]/30 font-mono text-[10px] text-[#00FF9D] flex items-center gap-1.5" dir="ltr">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#00FF9D] animate-ping" />
                 INTERACTIVE SIM ONLINE
               </div>
@@ -259,7 +275,7 @@ export function CanonicalProjectsBento({ locale }: CanonicalProjectsBentoProps) 
               </div>
             </div>
 
-            {/* Footer */}
+            {/* Footer with Stack, GitHub, Case Study & Launch Demo */}
             <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-4">
               <div className="flex flex-wrap gap-1.5">
                 {featured.stack.map((t) => (
@@ -268,18 +284,39 @@ export function CanonicalProjectsBento({ locale }: CanonicalProjectsBentoProps) 
                   </span>
                 ))}
               </div>
-              <Link
-                href={`/${locale}/projects/${featured.slug}/demo`}
-                className="px-5 py-2.5 rounded-lg bg-[#00FF9D] text-black font-mono font-semibold text-xs tracking-wider uppercase transition-all duration-200 shadow-[0_0_20px_rgba(0,255,157,0.4)] hover:shadow-[0_0_30px_rgba(0,255,157,0.7)] hover:scale-[1.02] active:scale-[0.97]"
-              >
-                {isAr ? "تشغيل ديمو المحطة" : "Launch Workstation Demo"}
-              </Link>
+              <div className="flex flex-wrap items-center gap-2.5">
+                <a
+                  href={featured.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-2 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 text-zinc-300 hover:text-white font-mono text-xs transition-colors inline-flex items-center gap-1.5"
+                  title="GitHub Repository"
+                >
+                  <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                  </svg>
+                  <span>GitHub</span>
+                </a>
+                <Link
+                  href={`/${locale}/projects/${featured.slug}`}
+                  className="px-3.5 py-2 rounded-lg bg-white/[0.06] hover:bg-white/[0.12] border border-white/10 text-zinc-200 hover:text-white font-mono text-xs transition-colors inline-flex items-center gap-1.5"
+                >
+                  <span>{isAr ? "المعمارية" : "Architecture"}</span>
+                  <span className="text-[#00FF9D]">→</span>
+                </Link>
+                <Link
+                  href={`/${locale}/projects/${featured.slug}/demo`}
+                  className="px-4 py-2 rounded-lg bg-[#00FF9D] text-black font-mono font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-[0_0_20px_rgba(0,255,157,0.4)] hover:shadow-[0_0_30px_rgba(0,255,157,0.7)] hover:scale-[1.02] active:scale-[0.97]"
+                >
+                  {isAr ? "تشغيل المحاكي" : "Launch Demo"}
+                </Link>
+              </div>
             </div>
           </div>
 
           {/* MetaAlgorithm Lab — lg:col-span-5 */}
           <div className="lg:col-span-5 bg-[#070B12] rounded-2xl border border-[#00F0FF]/20 flex flex-col overflow-hidden shadow-[0_0_35px_-8px_rgba(0,240,255,0.1)] hover:border-[#00F0FF]/40 transition-all duration-300">
-            <div className="flex items-center justify-between px-5 py-3 border-b border-zinc-800/80 bg-[#060A10]">
+            <div className="flex items-center justify-between px-5 py-3 border-b border-zinc-800/80 bg-[#060A10]" dir="ltr">
               <div className="flex items-center gap-2">
                 <span className="w-3 h-3 rounded-full bg-[#FF5F56]" />
                 <span className="w-3 h-3 rounded-full bg-[#FFBD2E]" />
@@ -322,8 +359,8 @@ export function CanonicalProjectsBento({ locale }: CanonicalProjectsBentoProps) 
                 <AlgoCircle value={73} label="Coverage" color="#FFBD2E" />
               </div>
 
-              {/* Terminal snippet */}
-              <div className="bg-[#030508] rounded-xl border border-zinc-800 p-3 font-mono text-[10px] space-y-1">
+              {/* Terminal snippet (Strict LTR) */}
+              <div className="bg-[#030508] rounded-xl border border-zinc-800 p-3 font-mono text-[10px] space-y-1 text-left" dir="ltr">
                 <div className="text-emerald-400">[BENCH] Sort time: 3.14ms</div>
                 <div className="text-[#00F0FF]">[MEM] Usage: 14.8MB / 64MB</div>
                 <div className="flex items-center text-[#00FF9D]">
@@ -341,12 +378,31 @@ export function CanonicalProjectsBento({ locale }: CanonicalProjectsBentoProps) 
                   </span>
                 ))}
               </div>
-              <Link
-                href={`/${locale}/projects/metaalgorithm-lab/demo`}
-                className="px-4 py-2 rounded-lg bg-[#00F0FF] text-black font-mono font-semibold text-xs uppercase hover:shadow-[0_0_20px_rgba(0,240,255,0.5)] transition-all"
-              >
-                {isAr ? "تشغيل" : "Launch Demo"}
-              </Link>
+              <div className="flex items-center gap-2">
+                <a
+                  href={PROJECTS[1].githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 text-zinc-400 hover:text-white transition-colors"
+                  title="GitHub"
+                >
+                  <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                  </svg>
+                </a>
+                <Link
+                  href={`/${locale}/projects/metaalgorithm-lab`}
+                  className="px-2.5 py-1.5 rounded-lg bg-white/[0.05] hover:bg-white/[0.1] border border-white/10 text-zinc-300 text-[11px] font-mono transition-colors"
+                >
+                  {isAr ? "المعمارية" : "Docs"}
+                </Link>
+                <Link
+                  href={`/${locale}/projects/metaalgorithm-lab/demo`}
+                  className="px-3.5 py-1.5 rounded-lg bg-[#00F0FF] text-black font-mono font-bold text-xs uppercase hover:shadow-[0_0_20px_rgba(0,240,255,0.5)] transition-all"
+                >
+                  {isAr ? "تشغيل" : "Demo"}
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -415,16 +471,28 @@ export function CanonicalProjectsBento({ locale }: CanonicalProjectsBentoProps) 
               </div>
 
               <div className="flex items-center justify-between gap-2 px-4 py-3 border-t border-zinc-800">
-                <div className="flex flex-wrap gap-1">
-                  {project.stack.map((t) => (
-                    <span key={t} className="px-2 py-0.5 rounded text-[10px] font-mono bg-zinc-900 text-zinc-500 border border-zinc-800">
-                      {t}
-                    </span>
-                  ))}
+                <div className="flex items-center gap-1.5">
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-1.5 rounded bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 text-zinc-400 hover:text-white transition-colors"
+                    title="GitHub"
+                  >
+                    <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24">
+                      <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                    </svg>
+                  </a>
+                  <Link
+                    href={`/${locale}/projects/${project.slug}`}
+                    className="px-2 py-1 rounded bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-[10px] font-mono text-zinc-400 hover:text-zinc-200 transition-colors"
+                  >
+                    {isAr ? "المعمارية" : "Docs"}
+                  </Link>
                 </div>
                 <Link
                   href={`/${locale}/projects/${project.slug}/demo`}
-                  className="flex-shrink-0 px-3.5 py-1.5 rounded-md font-mono font-semibold text-xs uppercase transition-all hover:scale-[1.03]"
+                  className="flex-shrink-0 px-3 py-1 rounded-md font-mono font-bold text-xs uppercase transition-all hover:scale-[1.03]"
                   style={{
                     backgroundColor: project.accentColor,
                     color: "#000",

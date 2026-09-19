@@ -10,7 +10,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [1.3.0] - 2026-09-19 — Quantum Emerald Production Visual Redesign (Concept D)
+## [1.4.0] - 2026-09-19 — Frontend UI/UX Overhaul & Functional Ergonomics
+
+### Added & Enhanced
+- **Floating Sticky Navigation on Homepage (`Navbar.tsx`):**
+  - Replaced early return on homepage with a glassmorphic floating pill navbar that glides into view on scroll (`scrollY > 20px`).
+  - Added contextual section links for the homepage (`#projects`, `#sandbox`, `Demo Studio`, `#contact`) alongside full global navigation for subpages.
+  - Fully restored access to `ThemeToggle`, `LanguageSwitcher`, and mobile hamburger drawer across the entire 4,200px homepage.
+- **Interactive Sandbox OS Window (`CanonicalDesktopSimulator.tsx`):**
+  - Enforced strict `dir="ltr"` and `text-left` on the OS window container, resolving RTL inversion bugs in traffic lights, monospace code logs, and vector graphs.
+  - Implemented real interactive tab switching across all 4 workstation views:
+    - **`Files`**: Live algorithm visualizers (Merge Sort bars, BFS graph traversal, A* pathfinding SVG grid, WASM terminal console).
+    - **`Tests`**: Interactive xUnit / .NET 8 WASM unit test suite runner with animated re-run button, 7 passing test cases with assertions, and 98.4% branch coverage telemetry.
+    - **`Metrics`**: Big-O complexity matrix table, empirical throughput benchmark comparison bars (SIMD vs QuickSort vs MergeSort vs A*), and L1/L2 cache hit ratio metrics.
+    - **`Settings`**: Interactive controls for SIMD hardware acceleration (AVX2/Simd128), WASM worker threads pool (2, 4, 8, 16), GC profiles, telemetry rate, and real-time calculated throughput impact.
+- **Enriched Project Showcase Bento (`CanonicalProjectsBento.tsx`):**
+  - Integrated secondary "Architecture / Case Study" links (`/[locale]/projects/[slug]`) for every project card.
+  - Integrated direct GitHub repository links for all 5 verified projects (`Campuse-IT-Tracker`, `MetaAlgorithmLab`, `Cafena`, `NovaTech`, `Graduation-Project-Management-Portal`).
+  - Added strict `dir="ltr"` on terminal snippets and window controls to prevent punctuation flipping in Arabic mode.
+- **Hero Interactivity & Quick Commands (`CanonicalHero.tsx`):**
+  - Added dynamic mouse-tracking spotlight radial glow.
+  - Added engineering availability status badge (`● Available for Systems Architecture & AI`).
+  - Added clickable quick command chips (`[help]`, `[projects]`, `[whoami]`, `[status]`, `[clear]`) with instant terminal evaluation.
+- **Global CSS Ergonomics (`app/globals.css`):**
+  - Added `scroll-padding-top: 5rem;` for smooth anchor alignment below the floating navbar.
+  - Added accessibility support for `prefers-reduced-motion`.
+  - Added custom `:focus-visible` focus ring styles.
 
 ### Added & Enhanced
 - **Direct Homepage Canonical Architecture:**
