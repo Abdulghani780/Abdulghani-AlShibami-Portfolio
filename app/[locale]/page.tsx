@@ -20,7 +20,7 @@ export default async function HomePage({
   const currentLocale = locale as Locale;
 
   return (
-    <div className="relative min-h-screen w-full bg-[#04070D] text-white overflow-x-hidden selection:bg-[#00FF9D]/30 selection:text-[#00FF9D]">
+    <div className="relative min-h-screen w-full bg-[#0B1120] text-white overflow-x-hidden selection:bg-indigo-500/30 selection:text-indigo-300">
       {/* ─────────────────────────────────────────────────────────────
           CANONICAL FRONTEND REPLACEMENT (FROM APPROVED VISUAL REFERENCES)
           1. Hero Command Center (new/portfolio_hero_concept.jpg)

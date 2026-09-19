@@ -54,28 +54,28 @@ export function CanonicalDesktopSimulator({ locale }: CanonicalDesktopSimulatorP
   return (
     <section
       id="sandbox"
-      className="relative w-full bg-[#03060B] text-white py-20 px-4 sm:px-8 lg:px-16 overflow-hidden"
+      className="relative w-full bg-[#080D1A] text-white py-20 px-4 sm:px-8 lg:px-16 overflow-hidden"
       dir={isAr ? "rtl" : "ltr"}
     >
       {/* Ambient glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-[#00FF9D]/[0.02] rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-indigo-500/[0.03] rounded-full blur-[120px] pointer-events-none" />
 
       {/* ── Section Header ── */}
       <div className="relative z-10 max-w-7xl mx-auto mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#00FF9D]/08 border border-[#00FF9D]/25 font-mono text-[10px] tracking-[0.18em] text-[#00FF9D] uppercase mb-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#00FF9D] animate-ping" />
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 font-mono text-[10px] tracking-[0.18em] text-emerald-400 uppercase mb-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
             {isAr ? "SECTION 03 / المحاكي" : "SECTION 03 / DESKTOP SANDBOX"}
           </div>
-          <h2 className="text-2xl sm:text-3xl font-bold text-white">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
             {isAr ? "بيئة التشغيل الأصيلة المباشرة" : "Live Native Execution Sandbox"}
           </h2>
-          <p className="text-zinc-500 text-sm mt-1 font-mono">
+          <p className="text-slate-400 text-sm mt-1 font-mono">
             {isAr ? "محاكاة نافذة نظام التشغيل الكاملة — تفاعل مع التبويبات والمقاييس" : "MetaAlgorithm Lab v2.4 — full OS window simulation with interactive runtime panels"}
           </p>
         </div>
-        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#00FF9D]/10 border border-[#00FF9D]/30 font-mono text-xs text-[#00FF9D]">
-          <span className="w-2 h-2 rounded-full bg-[#00FF9D] animate-ping" />
+        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 font-mono text-xs text-emerald-400">
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
           WASM ENGINE ONLINE
         </div>
       </div>

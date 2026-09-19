@@ -10,6 +10,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.5.0] - 2026-09-19 — Titanium Slate & Electric Palette Visual Redesign with 3D Concept Renders
+
+### Added & Enhanced
+- **Modern Titanium Slate Design System (Option 1):**
+  - Replaced terminal pitch black background with deep Titanium Slate (`#0B1120`, `#0F172A`).
+  - Implemented modern Linear/Vercel-inspired electric color palette: Electric Indigo (`#6366F1`), Azure Cyan (`#06B6D4`), Emerald (`#10B981`), and Warm Amber (`#F59E0B`).
+  - Added modern glassmorphism (`backdrop-blur-md`, subtle hairline borders, and electric glow box-shadows).
+- **Flagship 3D Concept Visual Assets:**
+  - `hero-abstract-core.jpg`: 3D Computational Core visual integrated into Hero right column.
+  - `metaalgorithm-lab/01-dashboard.jpg`: Algorithm visualizer dashboard wired to Bento grid with a dual-view toggle (3D Concept Render ↔ Live Runtime Visualizer).
+  - `novatech/01-storefront-hero.jpg`: Modern hardware/tech e-commerce storefront wired to Bento grid.
+  - `gp/01-proposals-portal.jpg`: Graduation project proposal and academic workflow portal wired to Bento grid.
+  - `cafena/01-storefront-hero.jpg`: Artisanal coffee management suite & POS wired to Bento grid.
+  - `campus-it-tracker/01-dashboard-modern.jpg`: High-resolution modern ITIL infrastructure console wired to featured Bento card.
+- **Architectural 3D Case Study Hero Banner:**
+  - Enhanced `CaseStudyHero.tsx` (`/[locale]/projects/[slug]`) to render the 3D concept render alongside project metadata and specifications.
+- **Verification & QA:**
+  - TypeScript validation: 0 errors (`pnpm tsc --noEmit`).
+  - ESLint verification: 0 warnings, 0 errors (`pnpm lint`).
+  - Next.js production build: 30/30 static pages prerendered successfully (`pnpm build`).
+
+---
+
 ## [1.4.0] - 2026-09-19 — Frontend UI/UX Overhaul & Functional Ergonomics
 
 ### Added & Enhanced

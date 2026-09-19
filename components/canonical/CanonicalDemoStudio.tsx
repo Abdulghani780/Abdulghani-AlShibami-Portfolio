@@ -45,26 +45,26 @@ export function CanonicalDemoStudio({ locale }: CanonicalDemoStudioProps) {
   return (
     <section
       id="studio"
-      className="relative w-full bg-[#04070D] text-white py-20 px-4 sm:px-8 lg:px-16 overflow-hidden"
+      className="relative w-full bg-[#0B1120] text-white py-20 px-4 sm:px-8 lg:px-16 overflow-hidden"
       dir={isAr ? "rtl" : "ltr"}
     >
       {/* Ambient glows */}
-      <div className="absolute bottom-1/3 left-1/4 w-[500px] h-[400px] bg-[#00F0FF]/[0.018] rounded-full blur-[130px] pointer-events-none" />
-      <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-[#00FF9D]/[0.018] rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/3 left-1/4 w-[500px] h-[400px] bg-cyan-500/[0.03] rounded-full blur-[130px] pointer-events-none" />
+      <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-indigo-500/[0.03] rounded-full blur-[120px] pointer-events-none" />
 
       {/* ── Section Header ── */}
       <div className="relative z-10 max-w-7xl mx-auto mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#00F0FF]/08 border border-[#00F0FF]/25 font-mono text-[10px] tracking-[0.18em] text-[#00F0FF] uppercase mb-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#00F0FF] animate-ping" />
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/25 font-mono text-[10px] tracking-[0.18em] text-cyan-400 uppercase mb-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
             {isAr ? "SECTION 04 / معمل الديمو" : "SECTION 04 / DEMO STUDIO"}
           </div>
-          <h2 className="text-2xl sm:text-3xl font-bold text-white">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
             {isAr ? "محطة المحاكاة المزدوجة المباشرة" : "Multi-Workstation Dual Simulation Studio"}
           </h2>
         </div>
-        <div className="flex items-center gap-2 font-mono text-[11px] text-zinc-400">
-          <span className="w-2 h-2 rounded-full bg-[#00FF9D] animate-pulse" />
+        <div className="flex items-center gap-2 font-mono text-[11px] text-slate-400">
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
           demos.portfolio.io (Sandbox)
         </div>
       </div>

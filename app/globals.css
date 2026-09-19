@@ -4,42 +4,42 @@
 
 @layer base {
   :root {
-    /* ─── QUANTUM EMERALD — Light Mode ─── */
-    --canvas-bg: #F5F7FA;
+    /* ─── TITANIUM SLATE & ELECTRIC INDIGO — Light Mode ─── */
+    --canvas-bg: #F8FAFC;
     --surface-elevated: #FFFFFF;
-    --surface-overlay: #EEF2F6;
+    --surface-overlay: #F1F5F9;
     --surface-interactive: #E2E8F0;
-    --surface-low: #F5F7FA;
+    --surface-low: #F8FAFC;
     --surface-card: #FFFFFF;
-    --surface-secondary: #EEF2F6;
+    --surface-secondary: #F1F5F9;
     --surface-dark: #0F172A;
 
     --border-hairline: rgba(15, 23, 42, 0.08);
     --border-color: rgba(15, 23, 42, 0.12);
-    --border-gold: rgba(5, 150, 105, 0.35);
+    --border-gold: rgba(99, 102, 241, 0.35);
 
-    --gold-primary: #059669;
-    --gold-secondary: #0284C7;
-    --gold-light: #10B981;
-    --gold-soft: #34D399;
-    --gold-dark: #047857;
-    --gold-muted: rgba(5, 150, 105, 0.09);
-    --gold-glow: rgba(5, 150, 105, 0.18);
+    --gold-primary: #6366F1;
+    --gold-secondary: #06B6D4;
+    --gold-light: #818CF8;
+    --gold-soft: #A5B4FC;
+    --gold-dark: #4F46E5;
+    --gold-muted: rgba(99, 102, 241, 0.09);
+    --gold-glow: rgba(99, 102, 241, 0.18);
 
     --glass-subtle: rgba(255, 255, 255, 0.85);
     --glass-medium: rgba(255, 255, 255, 0.92);
     --glass-strong: rgba(255, 255, 255, 0.98);
     --glass-border: rgba(15, 23, 42, 0.08);
-    --glass-gold-border: rgba(5, 150, 105, 0.28);
+    --glass-gold-border: rgba(99, 102, 241, 0.28);
 
     --text-primary: #0F172A;
     --text-secondary: #334155;
     --text-muted: #64748B;
     --text-dim: #94A3B8;
 
-    --status-emerald: #059669;
-    --status-amber: #D97706;
-    --status-rose: #DC2626;
+    --status-emerald: #10B981;
+    --status-amber: #F59E0B;
+    --status-rose: #EF4444;
 
     --font-serif: "Playfair Display", "Noto Serif", Georgia, serif;
     --font-sans: "Geist", "Inter", "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -48,42 +48,42 @@
   }
 
   .dark {
-    /* ─── QUANTUM EMERALD — Dark Mode (PRIMARY HERO EXPERIENCE) ─── */
-    --canvas-bg: #04070D;
-    --surface-elevated: #060A10;
-    --surface-overlay: #080C14;
-    --surface-interactive: #0C1220;
-    --surface-low: #030508;
-    --surface-card: #070B12;
-    --surface-secondary: #0A0F1A;
-    --surface-dark: #020408;
+    /* ─── TITANIUM SLATE & ELECTRIC INDIGO — Dark Mode (PRIMARY HERO EXPERIENCE) ─── */
+    --canvas-bg: #0B1120;
+    --surface-elevated: #0F172A;
+    --surface-overlay: #1E293B;
+    --surface-interactive: #1E293B;
+    --surface-low: #080D1A;
+    --surface-card: #0F172A;
+    --surface-secondary: #162032;
+    --surface-dark: #070B14;
 
-    --border-hairline: rgba(0, 255, 157, 0.07);
-    --border-color: rgba(0, 255, 157, 0.12);
-    --border-gold: rgba(0, 255, 157, 0.30);
+    --border-hairline: rgba(99, 102, 241, 0.12);
+    --border-color: rgba(99, 102, 241, 0.20);
+    --border-gold: rgba(99, 102, 241, 0.40);
 
-    --gold-primary: #00FF9D;
-    --gold-secondary: #00F0FF;
-    --gold-light: #4EFEB3;
-    --gold-soft: #A6FFDA;
-    --gold-dark: #00C87A;
-    --gold-muted: rgba(0, 255, 157, 0.10);
-    --gold-glow: rgba(0, 255, 157, 0.22);
+    --gold-primary: #6366F1;
+    --gold-secondary: #06B6D4;
+    --gold-light: #818CF8;
+    --gold-soft: #A5B4FC;
+    --gold-dark: #4F46E5;
+    --gold-muted: rgba(99, 102, 241, 0.12);
+    --gold-glow: rgba(99, 102, 241, 0.25);
 
-    --glass-subtle: rgba(255, 255, 255, 0.035);
-    --glass-medium: rgba(255, 255, 255, 0.06);
-    --glass-strong: rgba(255, 255, 255, 0.10);
-    --glass-border: rgba(255, 255, 255, 0.07);
-    --glass-gold-border: rgba(0, 255, 157, 0.25);
+    --glass-subtle: rgba(15, 23, 42, 0.75);
+    --glass-medium: rgba(15, 23, 42, 0.88);
+    --glass-strong: rgba(15, 23, 42, 0.95);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-gold-border: rgba(99, 102, 241, 0.30);
 
-    --text-primary: #FFFFFF;
-    --text-secondary: #A1A1AA;
-    --text-muted: #71717A;
-    --text-dim: #94A3B8;
+    --text-primary: #F8FAFC;
+    --text-secondary: #CBD5E1;
+    --text-muted: #94A3B8;
+    --text-dim: #64748B;
 
-    --status-emerald: #00FF9D;
-    --status-amber: #FFBD2E;
-    --status-rose: #FF5F56;
+    --status-emerald: #10B981;
+    --status-amber: #F59E0B;
+    --status-rose: #EF4444;
   }
 
   * {
@@ -109,8 +109,8 @@
   }
 
   ::selection {
-    background-color: rgba(0, 255, 157, 0.18);
-    color: #00FF9D;
+    background-color: rgba(99, 102, 241, 0.28);
+    color: #818CF8;
   }
 
   :focus-visible {
@@ -143,28 +143,33 @@
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border: 1px solid var(--glass-gold-border);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36), 0 0 0 1px rgba(0, 255, 157, 0.06);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(99, 102, 241, 0.12);
 }
 
-/* ─── Bioluminescent Emerald Grids ─── */
+/* ─── Titanium Slate & Electric Grids ─── */
 .circuit-grid {
   background-image:
-    linear-gradient(to right, rgba(0, 255, 157, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 255, 157, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(99, 102, 241, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
   background-size: 48px 48px;
 }
 
 .circuit-grid-dense {
   background-image:
-    linear-gradient(to right, rgba(0, 255, 157, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 255, 157, 0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(6, 182, 212, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(6, 182, 212, 0.06) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
-/* ─── Quantum Keyframe Animations ─── */
-@keyframes emerald-pulse {
-  0%, 100% { box-shadow: 0 0 12px rgba(0, 255, 157, 0.3); }
-  50% { box-shadow: 0 0 30px rgba(0, 255, 157, 0.65); }
+/* ─── Electric Keyframe Animations ─── */
+@keyframes electric-pulse {
+  0%, 100% { box-shadow: 0 0 12px rgba(99, 102, 241, 0.35); }
+  50% { box-shadow: 0 0 32px rgba(99, 102, 241, 0.7); }
+}
+
+@keyframes cyan-pulse {
+  0%, 100% { box-shadow: 0 0 12px rgba(6, 182, 212, 0.35); }
+  50% { box-shadow: 0 0 30px rgba(6, 182, 212, 0.7); }
 }
 
 @keyframes data-flow {
@@ -193,19 +198,22 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-.emerald-glow-pulse { animation: emerald-pulse 2.5s ease-in-out infinite; }
-.data-flow-animate  { animation: data-flow 3.5s linear infinite; }
-.type-cursor        { animation: type-cursor 1s step-end infinite; }
-.slide-in-up        { animation: slide-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-.cinematic-reveal   { animation: cinematic-reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.electric-glow-pulse { animation: electric-pulse 2.5s ease-in-out infinite; }
+.cyan-glow-pulse     { animation: cyan-pulse 2.5s ease-in-out infinite; }
+.emerald-glow-pulse  { animation: electric-pulse 2.5s ease-in-out infinite; }
+.data-flow-animate   { animation: data-flow 3.5s linear infinite; }
+.type-cursor         { animation: type-cursor 1s step-end infinite; }
+.slide-in-up         { animation: slide-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.cinematic-reveal    { animation: cinematic-reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 
 /* ─── Workstation Traffic Lights ─── */
-.traffic-btn-red    { background-color: #FF5F56; }
-.traffic-btn-yellow { background-color: #FFBD2E; }
-.traffic-btn-green  { background-color: #27C93F; box-shadow: 0 0 8px rgba(39, 201, 63, 0.5); }
+.traffic-btn-red    { background-color: #EF4444; }
+.traffic-btn-yellow { background-color: #F59E0B; }
+.traffic-btn-green  { background-color: #10B981; box-shadow: 0 0 8px rgba(16, 185, 129, 0.6); }
 
 /* ─── Custom Scrollbars ─── */
-::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(0, 255, 157, 0.2); border-radius: 9999px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(0, 255, 157, 0.45); }
+::-webkit-scrollbar-thumb { background: rgba(99, 102, 241, 0.25); border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(99, 102, 241, 0.5); }
+
