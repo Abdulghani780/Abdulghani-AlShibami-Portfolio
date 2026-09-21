@@ -34,6 +34,9 @@ jobs:
       - name: Run ESLint
         run: pnpm lint
 
+      - name: Run Automated Test Suites
+        run: pnpm test
+
       - name: Verify Production Build
         run: pnpm build
         env:
