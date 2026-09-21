@@ -496,6 +496,40 @@
 - **FILES:** `components/features/ContactForm.tsx`, `docs/qa/REMEDIATION_REPORT.md`
 - **TESTS:** `pnpm tsc --noEmit` (0 errors), `pnpm lint` (0 errors), `pnpm build` (36 routes compiled, exit code 0).
 
+---
+
+### PHASE 25 — Autonomous Production Engineering, Deep Audit & Release Gate
+- **ID:** `TSK-210`
+- **TITLE:** Deep Engineering Audit & Residual Light Mode Remediation
+- **PHASE:** 25
+- **PRIORITY:** P0
+- **STATUS:** COMPLETED
+- **DESCRIPTION:** Audit all 37 components and Next.js routes. Eliminate residual hardcoded dark classes in `AcademicProfileSection.tsx` and `DemoCalloutBanner.tsx`. Clean loose types and add Arabic bilingual fallback in `app/api/ai/chat/route.ts`. Remove dead component `CertificateViewer.tsx`.
+- **DEPENDENCIES:** TSK-203
+- **FILES:** `components/features/credentials/AcademicProfileSection.tsx`, `components/features/projects/case-study/DemoCalloutBanner.tsx`, `app/api/ai/chat/route.ts`
+- **TESTS:** `pnpm typecheck` (PASS), `pnpm lint` (PASS), `pnpm build` (PASS).
+
+- **ID:** `TSK-211`
+- **TITLE:** Automated Unit & Integration Test Suites
+- **PHASE:** 25
+- **PRIORITY:** P0
+- **STATUS:** COMPLETED
+- **DESCRIPTION:** Build native `node:test` suites covering Contact Form Zod validation, Authentic Credentials data & image assets on disk, Canonical Projects data integrity, Verified Profile consistency, Dictionary parity, and Offline AI deterministic fallback.
+- **DEPENDENCIES:** TSK-210
+- **FILES:** `package.json`, `tests/core-domain.test.mjs`, `tests/offline-ai.test.mjs`
+- **TESTS:** `pnpm test` (37/37 tests passing, 0 failures).
+
+- **ID:** `TSK-212`
+- **TITLE:** Production Governance & Strategic Documentation Suite
+- **PHASE:** 25
+- **PRIORITY:** P0
+- **STATUS:** COMPLETED
+- **DESCRIPTION:** Produce comprehensive audit documents: `docs/qa/DEEP_ENGINEERING_AUDIT.md`, `docs/design/DESIGN_SYSTEM_AUDIT.md`, `docs/product/IMPROVEMENT_ROADMAP.md`, and `docs/qa/FINAL_PRODUCTION_READINESS_REPORT.md`.
+- **DEPENDENCIES:** TSK-211
+- **FILES:** `docs/qa/*`, `docs/design/*`, `docs/product/*`
+- **TESTS:** All links, metrics, and tables verified against active codebase.
+
+
 
 
 

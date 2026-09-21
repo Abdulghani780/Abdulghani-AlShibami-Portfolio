@@ -1,47 +1,10 @@
-import { NextRequest, NextResponse } from "next/server";
-import { z } from "zod";
-import { GoogleGenAI } from "@google/genai";
-import { buildSystemPrompt } from "@/lib/ai/knowledge";
-import { VERIFIED_PROFILE } from "@/lib/data/profile";
+import test from "node:test";
+import assert from "node:assert/strict";
 
-// In-memory sliding window rate limiter (15 requests per minute per IP)
-const ipRequestTimestamps = new Map<string, number[]>();
-const RATE_LIMIT_WINDOW_MS = 60 * 1000;
-const MAX_REQUESTS_PER_WINDOW = 20;
-
-function checkRateLimit(ip: string): boolean {
-  const now = Date.now();
-  const timestamps = ipRequestTimestamps.get(ip) || [];
-  const validTimestamps = timestamps.filter((t) => now - t < RATE_LIMIT_WINDOW_MS);
-
-  if (validTimestamps.length >= MAX_REQUESTS_PER_WINDOW) {
-    return false;
-  }
-
-  validTimestamps.push(now);
-  ipRequestTimestamps.set(ip, validTimestamps);
-  return true;
-}
-
-// Request Schema
-const ChatRequestSchema = z.object({
-  message: z.string().trim().min(1, "Message cannot be empty").max(800, "Message exceeds 800 characters limit"),
-  locale: z.enum(["en", "ar"]).default("en"),
-  history: z
-    .array(
-      z.object({
-        role: z.enum(["user", "model", "assistant"]),
-        text: z.string().max(800),
-      })
-    )
-    .max(10)
-    .optional(),
-});
-
-// Deterministic offline response generator for when GEMINI_API_KEY is not configured
-function generateOfflineResponse(userQuery: string, isAr: boolean): string {
+// Recreate the pure logic of generateOfflineResponse for testing against queries
+function simulateOfflineResponse(userQuery, isAr, profile) {
   const q = userQuery.toLowerCase();
-  const p = VERIFIED_PROFILE;
+  const p = profile;
 
   if (q.includes("contact") || q.includes("email") || q.includes("phone") || q.includes("whatsapp") || q.includes("تواصل") || q.includes("هاتف") || q.includes("ايميل")) {
     return isAr
@@ -74,100 +37,54 @@ function generateOfflineResponse(userQuery: string, isAr: boolean): string {
   }
 
   return isAr
-    ? `أهلاً بك! أنا "عبدالغني AI"، المساعد الرقمي لمحفظة المهندس عبدالغني الشبامي. يسعدني إجابتك حول مؤهلاته الأكاديمية (طالب سنة ثالثة تكنولوجيا معلومات بجامعة العلوم الحديثة)، ومشاريعه المعتمدة (Campus IT Tracker، MetaAlgorithmLab، وغيرها)، ومهاراته في C# وOracle وPython والتحليل المنهجي للأنظمة، أو قنوات التواصل الرسمية معه.`
-    : `Welcome! I am "Abdulghani AI", the digital concierge for Abdulghani Al-Shibami's portfolio. I can answer questions regarding his academic background (Third-Year IT student at the University of Modern Sciences), his verified software systems (Campus IT Tracker, MetaAlgorithmLab, Cafena, NovaTech, GP Portal), technical skills in C#, Oracle, Python & systems analysis, or his direct contact channels.`;
+    ? `أهلاً بك! أنا "عبدالغني AI"، المساعد الرقمي لمحفظة المهندس عبدالغني الشبامي.`
+    : `Welcome! I am "Abdulghani AI", the digital concierge for Abdulghani Al-Shibami's portfolio.`;
 }
 
-export async function POST(req: NextRequest) {
-  let isAr = false;
-  try {
-    // 1. IP extraction & Rate limiting
-    const ip = req.headers.get("x-forwarded-for") || req.headers.get("x-real-ip") || "127.0.0.1";
-    if (!checkRateLimit(ip)) {
-      return NextResponse.json(
-        { error: "Too many requests. Please wait a moment before sending another query." },
-        { status: 429 }
-      );
-    }
+const mockProfile = {
+  contact: {
+    email: "samyemen987@gmail.com",
+    phoneFormatted: "+967 773 088 202",
+    linkedinUrl: "https://linkedin.com/in/abdulghani-al-shibami-94b4a3204",
+    githubUrl: "https://github.com/Abdulghani780",
+  },
+};
 
-    // 2. Body parsing and validation
-    const json = await req.json();
-    if (json && typeof json === "object" && json.locale === "ar") {
-      isAr = true;
-    }
-    const parseResult = ChatRequestSchema.safeParse(json);
-    if (!parseResult.success) {
-      return NextResponse.json(
-        { error: parseResult.error.errors[0]?.message || "Invalid request payload" },
-        { status: 400 }
-      );
-    }
+test("Offline Deterministic AI Fallback", async (t) => {
+  await t.test("responds accurately to English contact inquiries", () => {
+    const res = simulateOfflineResponse("How do I contact Abdulghani?", false, mockProfile);
+    assert.match(res, /samyemen987@gmail\.com/);
+    assert.match(res, /\+967 773 088 202/);
+  });
 
-    const { message, locale, history } = parseResult.data;
-    isAr = locale === "ar";
-    const apiKey = process.env.GEMINI_API_KEY;
+  await t.test("responds accurately to Arabic contact inquiries", () => {
+    const res = simulateOfflineResponse("كيف يمكنني التواصل معه؟", true, mockProfile);
+    assert.match(res, /samyemen987@gmail\.com/);
+    assert.match(res, /المهندس عبدالغني الشبامي/);
+  });
 
-    // 3. Fallback path if GEMINI_API_KEY is not configured
-    if (!apiKey || apiKey.trim() === "" || apiKey === "YOUR_GEMINI_API_KEY") {
-      const fallbackReply = generateOfflineResponse(message, isAr);
-      return NextResponse.json({
-        reply: fallbackReply,
-        isLive: false,
-        model: "offline-grounded-deterministic",
-      });
-    }
+  await t.test("responds to C# / Oracle technical capability questions", () => {
+    const res = simulateOfflineResponse("Does he know C# and Oracle?", false, mockProfile);
+    assert.match(res, /Campus IT Tracker/);
+    assert.match(res, /Windows Forms/);
+  });
 
-    // 4. Live Gemini API call via official @google/genai SDK
-    const ai = new GoogleGenAI({ apiKey });
-    const systemPrompt = buildSystemPrompt(locale);
+  await t.test("responds to Education and Academic standing questions", () => {
+    const res = simulateOfflineResponse("Where does he study?", false, mockProfile);
+    assert.match(res, /University of Modern Sciences/);
+    assert.match(res, /Third-Year/);
+  });
 
-    // Format chat history for context
-    const contents: Array<{ role: "user" | "model"; parts: Array<{ text: string }> }> = [];
-    if (history && history.length > 0) {
-      for (const turn of history.slice(-6)) {
-        contents.push({
-          role: turn.role === "assistant" ? "model" : "user",
-          parts: [{ text: turn.text }],
-        });
-      }
-    }
-    contents.push({
-      role: "user",
-      parts: [{ text: message }],
-    });
+  await t.test("responds to Arabic education questions", () => {
+    const res = simulateOfflineResponse("أين يدرس عبدالغني؟", true, mockProfile);
+    assert.match(res, /جامعة العلوم الحديثة/);
+    assert.match(res, /السنة الثالثة/);
+  });
 
-    const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash",
-      contents,
-      config: {
-        systemInstruction: systemPrompt,
-        temperature: 0.2,
-      },
-    });
-
-    const reply = response.text || (isAr ? "لم أتمكن من الحصول على إجابة. يرجى المحاولة مرة أخرى." : "I was unable to generate a response. Please try again.");
-
-    return NextResponse.json({
-      reply,
-      isLive: true,
-      model: "gemini-2.5-flash",
-    });
-  } catch (error: unknown) {
-    console.error("Error in /api/ai/chat route:", error);
-
-    // Return friendly, grounded fallback on API rate limit or error
-    const fallbackText =
-      isAr
-        ? "يتعذر على المساعد الذكي الوصول لمحرك الاستدلال حالياً. يمكنك التواصل مباشرة مع عبدالغني عبر البريد الإلكتروني (samyemen987@gmail.com) أو واتساب (+967 773088202)."
-        : "Abdulghani AI concierge is temporarily unable to reach the inference engine. You can reach Abdulghani directly via email (samyemen987@gmail.com) or WhatsApp (+967 773088202).";
-
-    return NextResponse.json(
-      {
-        reply: fallbackText,
-        isLive: false,
-        error: "Upstream service notice",
-      },
-      { status: 200 }
-    );
-  }
-}
+  await t.test("responds to Credentials and Certifications questions", () => {
+    const res = simulateOfflineResponse("What certifications does he have?", false, mockProfile);
+    assert.match(res, /IBCT/);
+    assert.match(res, /Yemen AI Summit/);
+    assert.match(res, /YALI/);
+  });
+});

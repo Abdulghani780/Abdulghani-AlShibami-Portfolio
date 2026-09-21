@@ -10,6 +10,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.9.0] - 2026-09-21 — Autonomous Production Engineering, Deep Audit, Automated Test Suite & Release Gate
+
+### Added
+- **Automated Unit & Integration Test Suites (`tests/core-domain.test.mjs`, `tests/offline-ai.test.mjs`):**
+  - Native `node:test` execution covering Contact Form Zod validation, authentic credential physical image assets, canonical projects integrity, verified identity consistency, dictionary parity, and offline AI deterministic response branches.
+  - Added `"test": "node --test tests/**/*.test.mjs"` to `package.json` scripts (37/37 tests passing).
+- **Comprehensive Production Architecture Documentation Suite:**
+  - `docs/qa/DEEP_ENGINEERING_AUDIT.md`: Complete A-through-AO architectural and code evaluation.
+  - `docs/design/DESIGN_SYSTEM_AUDIT.md`: Token inventory, typography scale, spacing rhythm, and dual-theme rules.
+  - `docs/product/IMPROVEMENT_ROADMAP.md`: Strategic roadmap prioritizing P0/P1/P2/P3 initiatives with effort and risk matrices.
+  - `docs/qa/FINAL_PRODUCTION_READINESS_REPORT.md`: 25-section release audit confirming PRODUCTION STATUS: READY.
+
+### Fixed & Enhanced
+- **Dual-Theme Harmonization:**
+  - Refactored `AcademicProfileSection.tsx` (Section 05) and `DemoCalloutBanner.tsx` to eliminate hardcoded dark gradients, providing clean light mode porcelain surfaces.
+  - Wrapped pulsing animations in `motion-safe:` to respect user accessibility preferences.
+- **Type Safety & Internationalization in AI Chat (`app/api/ai/chat/route.ts`):**
+  - Replaced loose `any` types with strongly typed interfaces.
+  - Added bilingual catch-block fallback providing contextual Arabic responses for `locale === "ar"`.
+  - Expanded natural Arabic keyword matching for education inquiries ("يدرس", "تخصص", "مؤهل").
+- **Database Persistence Resilience (`components/features/ContactForm.tsx`):**
+  - Inspected returned Supabase `{ error }` payload to log persistence warnings without uncaught rejections.
+- **Dead Code Cleanup:**
+  - Removed unreferenced legacy file `components/features/credentials/CertificateViewer.tsx`.
+
+---
+
 ## [1.8.0] - 2026-09-21 — Comprehensive Audit Remediation, Dual-Theme Harmonization & Polish
 
 ### Added

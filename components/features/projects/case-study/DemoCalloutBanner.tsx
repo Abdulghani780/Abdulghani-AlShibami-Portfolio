@@ -67,11 +67,11 @@ export const DemoCalloutBanner: React.FC<DemoCalloutBannerProps> = ({
   const demoUrl = project.demoUrl ? `/${locale}${project.demoUrl}` : `/${locale}/projects/${project.slug}/demo`;
 
   return (
-    <div className="rounded-2xl border border-indigo-500/30 bg-gradient-to-r from-[#0F172A] via-[#0B1120] to-[#090D16] p-6 sm:p-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 transition-all hover:border-indigo-500/60 shadow-[0_15px_40px_rgba(2,6,23,0.8),0_0_25px_rgba(99,102,241,0.15)]">
+    <div className="rounded-2xl border border-slate-200 dark:border-indigo-500/30 bg-white dark:bg-gradient-to-r dark:from-[#0F172A] dark:via-[#0B1120] dark:to-[#090D16] p-6 sm:p-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 transition-all hover:border-indigo-500/60 shadow-md dark:shadow-[0_15px_40px_rgba(2,6,23,0.8),0_0_25px_rgba(99,102,241,0.15)]">
       <div className="space-y-3 max-w-2xl font-mono">
         <div className="flex items-center gap-3">
-          <span className="px-2.5 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+          <span className="px-2.5 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 motion-safe:animate-ping" />
             <span>
               {project.demoType === "real_live"
                 ? isRtl
@@ -82,16 +82,16 @@ export const DemoCalloutBanner: React.FC<DemoCalloutBannerProps> = ({
                 : "WORKSTATION SANDBOX"}
             </span>
           </span>
-          <span className="text-xs text-slate-400 hidden sm:inline">
+          <span className="text-xs text-slate-500 dark:text-slate-400 hidden sm:inline">
             {"// "}{isRtl ? "بيئة التشغيل جاهزة" : "ACTIVE RUNTIME READY"}
           </span>
         </div>
 
-        <h3 className="font-serif text-2xl sm:text-3xl font-normal text-white">
+        <h3 className="font-serif text-2xl sm:text-3xl font-normal text-slate-900 dark:text-white">
           {bannerTitle}
         </h3>
 
-        <p className="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+        <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
           {bannerDesc}
         </p>
       </div>

@@ -69,7 +69,7 @@ export function ContactForm({ isRtl }: { isRtl: boolean }) {
     try {
       const supabase = getSupabaseBrowserClient();
       if (supabase) {
-        await supabase.from("contact_messages").insert([
+        const { error: insertError } = await supabase.from("contact_messages").insert([
           {
             name: formData.name.trim().slice(0, 100),
             email: formData.email.trim().slice(0, 254),
@@ -77,8 +77,12 @@ export function ContactForm({ isRtl }: { isRtl: boolean }) {
             message: formData.message.trim().slice(0, 2000),
           },
         ]);
+        if (insertError) {
+          console.warn("[ContactForm] Supabase persistence notice:", insertError.message);
+        }
       }
-    } catch {
+    } catch (err) {
+      console.warn("[ContactForm] Client transmission catch:", err);
       // Gracefully continue to confirmation screen even if offline or table unmigrated
     } finally {
       setIsSubmitting(false);
