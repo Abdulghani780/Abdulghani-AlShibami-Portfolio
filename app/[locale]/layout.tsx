@@ -5,6 +5,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { LocaleHtmlSync } from "@/components/layout/LocaleHtmlSync";
 import { MainWrapper } from "@/components/layout/MainWrapper";
+import { AbdulghaniAIModal } from "@/components/features/ai/AbdulghaniAIModal";
 
 export async function generateStaticParams() {
   return [{ locale: "en" }, { locale: "ar" }];
@@ -57,6 +58,7 @@ export default async function LocaleLayout({
       <Navbar locale={currentLocale} dict={dict} />
       <MainWrapper locale={currentLocale}>{children}</MainWrapper>
       <Footer dict={dict} />
+      <AbdulghaniAIModal locale={currentLocale} />
     </div>
   );
 }

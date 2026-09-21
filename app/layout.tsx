@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import "./globals.css";
 import { ThemeProvider } from "@/lib/theme/ThemeProvider";
 
@@ -8,13 +9,17 @@ export const metadata: Metadata = {
     "Executive personal portfolio of Abdulghani Al-Shibami. High-throughput distributed state machines, autonomous multi-agent systems, and low-latency infrastructure.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const headerList = await headers();
+  const locale = headerList.get("x-locale") || "en";
+  const dir = headerList.get("x-direction") || (locale === "ar" ? "rtl" : "ltr");
+
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang={locale} dir={dir} className="dark" suppressHydrationWarning>
       <head>
         {/* Zero-Flash Theme Script */}
         <script
