@@ -14,6 +14,8 @@ interface ProjectsPageProps {
   }>;
 }
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://abdulghani.dev";
+
 export async function generateMetadata({
   params,
 }: ProjectsPageProps): Promise<Metadata> {
@@ -21,15 +23,43 @@ export async function generateMetadata({
   if (locale !== "en" && locale !== "ar") return {};
 
   const isRtl = locale === "ar";
+  const title = isRtl
+    ? "دليل الأنظمة الهندسية — عبدالغني الشبامي"
+    : "Engineered Systems Catalog — Abdulghani Al-Shibami";
+  const description = isRtl
+    ? "معرض الأنظمة البرمجية الموزعة، أطر الذكاء الاصطناعي المستقلة، ومحركات مطابقة الأوامر منخفضة التأخير."
+    : "Catalog of distributed computing architectures, autonomous AI agent workflows, and low-latency state machines.";
+  const url = `${SITE_URL}/${locale}/projects`;
+  const ogImage = `${SITE_URL}/images/og-cover.png`;
+
   return {
-    title: isRtl
-      ? "دليل الأنظمة الهندسية — عبدالغني الشبامي"
-      : "Engineered Systems Catalog — Abdulghani Al-Shibami",
-    description: isRtl
-      ? "معرض الأنظمة البرمجية الموزعة، أطر الذكاء الاصطناعي المستقلة، ومحركات مطابقة الأوامر منخفضة التأخير."
-      : "Catalog of distributed computing architectures, autonomous AI agent workflows, and low-latency state machines.",
+    title,
+    description,
+    alternates: {
+      canonical: url,
+      languages: {
+        en: `${SITE_URL}/en/projects`,
+        ar: `${SITE_URL}/ar/projects`,
+      },
+    },
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: "Abdulghani Al-Shibami Portfolio",
+      locale: isRtl ? "ar_YE" : "en_US",
+      type: "website",
+      images: [{ url: ogImage, width: 1200, height: 630, alt: "Abdulghani Al-Shibami — Projects" }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [ogImage],
+    },
   };
 }
+
 
 export default async function ProjectsPage({ params }: ProjectsPageProps) {
   const { locale } = await params;
