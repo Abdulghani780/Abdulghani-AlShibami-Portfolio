@@ -52,14 +52,7 @@ export function Navbar({
       ];
 
   return (
-    <header
-      className={cn(
-        "fixed top-0 inset-x-0 z-50 pt-3 sm:pt-4 px-3 sm:px-6 pointer-events-none transition-all duration-500",
-        isHomePage && !isScrolled
-          ? "opacity-0 -translate-y-5 pointer-events-none"
-          : "opacity-100 translate-y-0"
-      )}
-    >
+    <header className="fixed top-0 inset-x-0 z-50 pt-3 sm:pt-4 px-3 sm:px-6 pointer-events-none transition-all duration-500 opacity-100 translate-y-0">
       <div
         className={cn(
           "w-full max-w-5xl mx-auto rounded-2xl pointer-events-auto transition-all duration-300",
@@ -174,6 +167,15 @@ export function Navbar({
               </Link>
             ))}
           </nav>
+          <div className="pt-2">
+            <Link
+              href={`/${locale}/projects`}
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full block py-2.5 rounded-lg text-center bg-gradient-to-r from-indigo-500 to-cyan-500 text-white font-mono font-bold text-xs shadow-md active:scale-95 transition-transform"
+            >
+              {isRtl ? "المشاريع الحية" : "Live Projects"}
+            </Link>
+          </div>
         </div>
       )}
     </header>

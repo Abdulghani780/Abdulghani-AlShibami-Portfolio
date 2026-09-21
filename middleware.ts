@@ -4,9 +4,11 @@ import type { NextRequest } from "next/server";
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Root redirect to /en
-  if (pathname === "/") {
-    return NextResponse.redirect(new URL("/en", request.url));
+  // Normalize locale routes: redirect any bare route without /en or /ar (e.g. /projects -> /en/projects)
+  if (!pathname.startsWith("/en") && !pathname.startsWith("/ar")) {
+    const targetUrl = new URL(`/en${pathname === "/" ? "" : pathname}`, request.url);
+    targetUrl.search = request.nextUrl.search;
+    return NextResponse.redirect(targetUrl);
   }
 
   // Detect locale from pathname

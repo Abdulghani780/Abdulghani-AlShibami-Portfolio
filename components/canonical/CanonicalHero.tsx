@@ -144,44 +144,8 @@ export function CanonicalHero({ locale }: CanonicalHeroProps) {
         />
       </div>
 
-      {/* ── TOP NAVIGATION ── */}
-      <header className="relative z-20 w-full flex items-center justify-between px-6 sm:px-10 lg:px-16 pt-6 pb-4">
-        <Link
-          href={`/${locale}`}
-          className="font-mono text-sm font-bold tracking-widest text-content-primary hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors uppercase"
-        >
-          ABDULGHANI.DEV
-        </Link>
-
-        <nav className="flex items-center gap-3 sm:gap-6 lg:gap-8 text-xs font-mono font-medium">
-          {[
-            { href: "#projects", en: "Projects", ar: "المشاريع", mobile: true },
-            { href: "#sandbox", en: "Live Sandbox", ar: "المحاكي", mobile: false },
-            { href: "#studio", en: "Demo Studio", ar: "معمل الديمو", mobile: false },
-            { href: "#contact", en: "Contact", ar: "تواصل", mobile: true },
-          ].map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className={`text-content-muted hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors relative group ${
-                item.mobile ? "inline-block" : "hidden md:inline-block"
-              }`}
-            >
-              {isAr ? item.ar : item.en}
-              <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-indigo-500 transition-all duration-300 group-hover:w-full" />
-            </a>
-          ))}
-          <Link
-            href={isAr ? "/en" : "/ar"}
-            className="px-2.5 py-1 rounded-md text-[11px] font-mono bg-surface-secondary border border-hairline hover:border-indigo-500/60 text-indigo-600 dark:text-indigo-400 transition-colors"
-          >
-            {isAr ? "EN" : "عربي"}
-          </Link>
-        </nav>
-      </header>
-
       {/* ── SECTION LABEL & AVAILABILITY STATUS ── */}
-      <div className="relative z-10 px-6 sm:px-10 lg:px-16 pt-8 flex flex-wrap items-center justify-between gap-3">
+      <div className="relative z-10 px-6 sm:px-10 lg:px-16 pt-20 sm:pt-24 flex flex-wrap items-center justify-between gap-3">
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/25 font-mono text-[10px] tracking-[0.18em] text-indigo-600 dark:text-indigo-400 uppercase font-bold">
           <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 dark:bg-indigo-400 motion-safe:animate-ping" />
           {isAr ? "SECTION 01 / البطل" : "SECTION 01 / HERO"}

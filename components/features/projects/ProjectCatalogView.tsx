@@ -4,7 +4,6 @@ import React, { useState, useMemo } from "react";
 import { Project, ProjectCategory, Locale } from "@/types/project";
 import { ProjectFilters } from "./ProjectFilters";
 import { ProjectCard } from "./ProjectCard";
-import { CanonicalProjectsBento } from "@/components/canonical/CanonicalProjectsBento";
 import { Button } from "@/components/ui/Button";
 
 interface ProjectCatalogViewProps {
@@ -50,8 +49,6 @@ export const ProjectCatalogView: React.FC<ProjectCatalogViewProps> = ({
     });
   }, [initialProjects, activeCategory, searchQuery, locale]);
 
-  const isBentoDefaultView = activeCategory === "all" && !searchQuery.trim();
-
   return (
     <div className="space-y-8">
       {/* Dynamic Filters Bar */}
@@ -65,18 +62,21 @@ export const ProjectCatalogView: React.FC<ProjectCatalogViewProps> = ({
         totalCount={initialProjects.length}
       />
 
-      {/* When on All Projects with no search query: Render Bento Showcase Grid with 3D renders */}
-      {isBentoDefaultView ? (
-        <CanonicalProjectsBento locale={locale} />
-      ) : filteredProjects.length > 0 ? (
-        /* Filtered Grid View */
+      {/* Projects Catalog Grid */}
+      {filteredProjects.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProjects.map((project) => (
+          {filteredProjects.map((project, idx) => (
             <ProjectCard
               key={project.id}
               project={project}
               locale={locale}
               categoryName={categoryMap.get(project.categorySlug)}
+              isFeaturedHero={activeCategory === "all" && !searchQuery.trim() && idx === 0}
+              className={
+                activeCategory === "all" && !searchQuery.trim() && idx === 0
+                  ? "md:col-span-2 lg:col-span-3"
+                  : undefined
+              }
             />
           ))}
         </div>
