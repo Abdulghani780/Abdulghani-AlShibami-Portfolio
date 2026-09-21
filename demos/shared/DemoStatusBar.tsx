@@ -40,10 +40,10 @@ export function DemoStatusBar({ status = "ONLINE", items = [], locale = "en" }: 
       <div className="flex items-center gap-3 flex-wrap">
         <div className="flex items-center gap-2">
           <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00FF9D] opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00FF9D]"></span>
+            <span className="motion-safe:animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
           </span>
-          <span className="font-bold text-[#00FF9D] uppercase tracking-wider text-[11px]">{status}</span>
+          <span className="font-bold text-emerald-400 uppercase tracking-wider text-[11px]">{status}</span>
         </div>
         <span className="hidden sm:inline text-white/20">|</span>
         <span className="text-[10px] text-white/50 hidden md:inline">
@@ -62,10 +62,10 @@ export function DemoStatusBar({ status = "ONLINE", items = [], locale = "en" }: 
         ))}
 
         {/* Live Simulated CPU Gauge */}
-        <div className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-[#00FF9D]">
-          <Cpu className="w-3 h-3 text-[#00FF9D]" />
+        <div className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-emerald-400">
+          <Cpu className="w-3 h-3 text-emerald-400" />
           <span className="text-white/50">CPU:</span>
-          <span className="font-bold text-[#00FF9D]">{cpuUsage}%</span>
+          <span className="font-bold text-emerald-400">{cpuUsage}%</span>
         </div>
 
         {/* Live Simulated Memory Gauge */}

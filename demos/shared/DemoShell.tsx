@@ -133,7 +133,7 @@ export function DemoShell({
       <DemoDisclosure disclaimer={disclaimer} locale={locale} isRtl={isRtl} />
 
       {/* Main Desktop Window Frame — Workstation Sandbox matching Concept 3 */}
-      <div className="w-full rounded-2xl border border-white/[0.12] bg-[#070A0F] shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_30px_rgba(0,255,157,0.06)] overflow-hidden flex flex-col transition-all duration-200">
+      <div className="w-full rounded-2xl border border-white/[0.12] bg-[#070A0F] shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_30px_rgba(16,185,129,0.06)] overflow-hidden flex flex-col transition-all duration-200">
         
         {/* Operating System Window Header Bar (Traffic Lights + Metadata) */}
         <div className="bg-[#090D17] px-4 py-2.5 border-b border-white/[0.08] flex items-center justify-between select-none flex-wrap gap-2">
@@ -142,9 +142,8 @@ export function DemoShell({
             <span className="w-3 h-3 rounded-full bg-[#FF5F56] hover:brightness-125 transition-all cursor-pointer shadow-sm" />
             <span className="w-3 h-3 rounded-full bg-[#FFBD2E] hover:brightness-125 transition-all cursor-pointer shadow-sm" />
             <span className="w-3 h-3 rounded-full bg-[#27C93F] hover:brightness-125 transition-all cursor-pointer shadow-sm shadow-[#27C93F]/40" />
-            
-            <span className="text-[11px] font-mono text-white/40 ml-2 hidden sm:inline">
-              // {projectSlug}.app
+            <span className="font-mono text-[11px] text-white/50 ml-1 hidden sm:inline">
+              Workstation-OS // {projectSlug}.sh
             </span>
           </div>
 
@@ -158,8 +157,8 @@ export function DemoShell({
             <span className="hidden md:inline text-white/40">
               [USER: A. Al-Shibami]
             </span>
-            <span className="px-2 py-0.5 rounded bg-[#00FF9D]/10 text-[#00FF9D] font-bold border border-[#00FF9D]/30 flex items-center gap-1.5 shadow-[0_0_10px_rgba(0,255,157,0.15)]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#00FF9D] animate-ping" />
+            <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-bold border border-emerald-500/30 flex items-center gap-1.5 shadow-[0_0_10px_rgba(16,185,129,0.15)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 motion-safe:animate-ping" />
               <span>{isRtl ? "بيئة حية مباشرة" : "ACTIVE RUNTIME"}</span>
             </span>
           </div>
