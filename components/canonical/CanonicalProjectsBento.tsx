@@ -188,12 +188,12 @@ export function CanonicalProjectsBento({ locale }: CanonicalProjectsBentoProps) 
   return (
     <section
       id="projects"
-      className="relative w-full bg-[#0B1120] text-white py-20 px-4 sm:px-8 lg:px-16 overflow-hidden"
+      className="relative w-full bg-canvas text-content-primary py-20 px-4 sm:px-8 lg:px-16 overflow-hidden transition-colors duration-300"
       dir={isAr ? "rtl" : "ltr"}
     >
       {/* Electric circuit grid */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-60"
+        className="absolute inset-0 pointer-events-none opacity-40 dark:opacity-60"
         style={{
           backgroundImage:
             "linear-gradient(to right, rgba(99,102,241,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(99,102,241,0.05) 1px, transparent 1px)",
@@ -207,14 +207,14 @@ export function CanonicalProjectsBento({ locale }: CanonicalProjectsBentoProps) 
       {/* ── Section Header ── */}
       <div className="relative z-10 max-w-7xl mx-auto mb-12 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/25 font-mono text-[10px] tracking-[0.18em] text-indigo-400 uppercase mb-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-ping" />
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/25 font-mono text-[10px] tracking-[0.18em] text-indigo-600 dark:text-indigo-400 uppercase mb-3 font-bold">
+            <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 dark:bg-indigo-400 motion-safe:animate-ping" />
             {isAr ? "SECTION 02 / المشاريع" : "SECTION 02 / PROJECTS"}
           </div>
-          <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-bold text-content-primary tracking-tight">
             {isAr ? "المشاريع الهندسية وواجهات الديمو" : "Core Systems & Live Environments"}
           </h2>
-          <p className="text-slate-400 text-sm mt-1 font-mono">
+          <p className="text-content-muted text-sm mt-1 font-mono">
             {isAr ? "استكشف الكود المصدري، دراسات المعمارية، والمحاكاة المباشرة" : "Production systems with interactive browser runtimes, architecture case studies, and code repositories"}
           </p>
         </div>
@@ -223,12 +223,12 @@ export function CanonicalProjectsBento({ locale }: CanonicalProjectsBentoProps) 
         <div className="flex items-center gap-3">
           <Link
             href={`/${locale}/projects`}
-            className="px-4 py-2 rounded-xl bg-slate-900/90 border border-slate-700/80 text-slate-300 hover:text-white hover:border-indigo-500/50 font-mono text-xs transition-all flex items-center gap-2"
+            className="px-4 py-2 rounded-xl bg-surface-secondary border border-hairline text-content-secondary hover:text-content-primary hover:border-indigo-500/50 font-mono text-xs transition-all flex items-center gap-2"
           >
             <span>{isAr ? "عرض أرشيف المشاريع" : "View All Projects"}</span>
-            <span className="text-indigo-400">→</span>
+            <span className="text-indigo-600 dark:text-indigo-400">→</span>
           </Link>
-          <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900 border border-slate-800 font-mono text-xs text-slate-400">
+          <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-secondary border border-hairline font-mono text-xs text-content-muted">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             5 DEPLOYMENTS ONLINE
           </div>
@@ -242,14 +242,14 @@ export function CanonicalProjectsBento({ locale }: CanonicalProjectsBentoProps) 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
 
           {/* Campus IT Tracker — lg:col-span-7 */}
-          <div className="lg:col-span-7 bg-[#0F172A] rounded-2xl border border-emerald-500/30 flex flex-col overflow-hidden shadow-[0_0_40px_-10px_rgba(16,185,129,0.15)] hover:border-emerald-500/50 transition-all duration-300">
+          <div className="lg:col-span-7 bg-surface-card rounded-2xl border border-emerald-500/30 flex flex-col overflow-hidden shadow-[0_0_40px_-10px_rgba(16,185,129,0.15)] hover:border-emerald-500/50 transition-all duration-300">
             {/* Header / Title bar */}
-            <div className="flex items-center justify-between px-5 py-3 border-b border-slate-800 bg-[#0B1120]" dir="ltr">
+            <div className="flex items-center justify-between px-5 py-3 border-b border-hairline bg-surface-secondary/70" dir="ltr">
               <div className="flex items-center gap-2">
                 <span className="w-3 h-3 rounded-full bg-red-500" />
                 <span className="w-3 h-3 rounded-full bg-amber-500" />
                 <span className="w-3 h-3 rounded-full bg-emerald-500" />
-                <span className="font-mono text-sm font-semibold text-white ml-2">
+                <span className="font-mono text-sm font-semibold text-content-primary ml-2">
                   {isAr ? featured.nameAr : featured.name}
                 </span>
               </div>
@@ -259,7 +259,7 @@ export function CanonicalProjectsBento({ locale }: CanonicalProjectsBentoProps) 
             </div>
 
             {/* Preview image / canvas */}
-            <div className="relative w-full h-60 sm:h-72 bg-[#0B1120] overflow-hidden border-b border-slate-800 group">
+            <div className="relative w-full h-60 sm:h-72 bg-surface-secondary/50 overflow-hidden border-b border-hairline group">
               {featured.img ? (
                 <Image
                   src={featured.img}
@@ -270,25 +270,25 @@ export function CanonicalProjectsBento({ locale }: CanonicalProjectsBentoProps) 
                 />
               ) : (
                 <div className="w-full h-full flex items-center justify-center">
-                  <span className="font-mono text-slate-700 text-sm">No preview</span>
+                  <span className="font-mono text-slate-500 text-sm">No preview</span>
                 </div>
               )}
               {/* Live overlay badge */}
               <div className="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-slate-950/80 backdrop-blur-md border border-emerald-500/40 font-mono text-[10px] text-emerald-400 flex items-center gap-1.5" dir="ltr">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 motion-safe:animate-ping" />
                 INTERACTIVE SIM ONLINE
               </div>
             </div>
 
             {/* Metrics row */}
-            <div className="grid grid-cols-2 gap-3 px-5 py-4 border-b border-slate-800">
-              <div className="bg-[#0B1120] rounded-xl border border-slate-800 p-3">
-                <div className="text-[10px] font-mono text-slate-400 uppercase">{featured.metric1Label}</div>
-                <div className="text-xl font-bold font-mono text-emerald-400">{featured.metric1Value}</div>
+            <div className="grid grid-cols-2 gap-3 px-5 py-4 border-b border-hairline">
+              <div className="bg-surface-secondary rounded-xl border border-hairline p-3">
+                <div className="text-[10px] font-mono text-content-muted uppercase">{featured.metric1Label}</div>
+                <div className="text-xl font-bold font-mono text-emerald-500 dark:text-emerald-400">{featured.metric1Value}</div>
               </div>
-              <div className="bg-[#0B1120] rounded-xl border border-slate-800 p-3">
-                <div className="text-[10px] font-mono text-slate-400 uppercase">{featured.metric2Label}</div>
-                <div className="text-xl font-bold font-mono text-white">{featured.metric2Value}</div>
+              <div className="bg-surface-secondary rounded-xl border border-hairline p-3">
+                <div className="text-[10px] font-mono text-content-muted uppercase">{featured.metric2Label}</div>
+                <div className="text-xl font-bold font-mono text-content-primary">{featured.metric2Value}</div>
               </div>
             </div>
 
@@ -296,7 +296,7 @@ export function CanonicalProjectsBento({ locale }: CanonicalProjectsBentoProps) 
             <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-4">
               <div className="flex flex-wrap gap-1.5">
                 {featured.stack.map((t) => (
-                  <span key={t} className="px-2.5 py-1 rounded-md text-[11px] font-mono bg-slate-800/80 border border-slate-700/80 text-slate-300">
+                  <span key={t} className="px-2.5 py-1 rounded-md text-[11px] font-mono bg-surface-secondary border border-hairline text-content-secondary">
                     {t}
                   </span>
                 ))}
@@ -306,7 +306,7 @@ export function CanonicalProjectsBento({ locale }: CanonicalProjectsBentoProps) 
                   href={featured.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-3 py-2 rounded-lg bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-slate-300 hover:text-white font-mono text-xs transition-colors inline-flex items-center gap-1.5"
+                  className="px-3 py-2 rounded-lg bg-surface-secondary hover:bg-surface-interactive border border-hairline text-content-secondary hover:text-content-primary font-mono text-xs transition-colors inline-flex items-center gap-1.5"
                   title="GitHub Repository"
                 >
                   <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
@@ -316,10 +316,10 @@ export function CanonicalProjectsBento({ locale }: CanonicalProjectsBentoProps) 
                 </a>
                 <Link
                   href={`/${locale}/projects/${featured.slug}`}
-                  className="px-3.5 py-2 rounded-lg bg-white/[0.06] hover:bg-white/[0.12] border border-white/10 text-slate-200 hover:text-white font-mono text-xs transition-colors inline-flex items-center gap-1.5"
+                  className="px-3.5 py-2 rounded-lg bg-surface-secondary hover:bg-surface-interactive border border-hairline text-content-primary font-mono text-xs transition-colors inline-flex items-center gap-1.5"
                 >
                   <span>{isAr ? "المعمارية" : "Architecture"}</span>
-                  <span className="text-emerald-400">→</span>
+                  <span className="text-emerald-500 dark:text-emerald-400">→</span>
                 </Link>
                 <Link
                   href={`/${locale}/projects/${featured.slug}/demo`}
@@ -332,13 +332,13 @@ export function CanonicalProjectsBento({ locale }: CanonicalProjectsBentoProps) 
           </div>
 
           {/* MetaAlgorithm Lab — lg:col-span-5 */}
-          <div className="lg:col-span-5 bg-[#0F172A] rounded-2xl border border-indigo-500/30 flex flex-col overflow-hidden shadow-[0_0_35px_-8px_rgba(99,102,241,0.15)] hover:border-indigo-500/50 transition-all duration-300">
-            <div className="flex items-center justify-between px-5 py-3 border-b border-slate-800 bg-[#0B1120]" dir="ltr">
+          <div className="lg:col-span-5 bg-surface-card rounded-2xl border border-indigo-500/30 flex flex-col overflow-hidden shadow-[0_0_35px_-8px_rgba(99,102,241,0.15)] hover:border-indigo-500/50 transition-all duration-300">
+            <div className="flex items-center justify-between px-5 py-3 border-b border-hairline bg-surface-secondary/70" dir="ltr">
               <div className="flex items-center gap-2">
                 <span className="w-3 h-3 rounded-full bg-red-500" />
                 <span className="w-3 h-3 rounded-full bg-amber-500" />
                 <span className="w-3 h-3 rounded-full bg-emerald-500" />
-                <span className="font-mono text-sm font-semibold text-white ml-2">
+                <span className="font-mono text-sm font-semibold text-content-primary ml-2">
                   {isAr ? PROJECTS[1].nameAr : PROJECTS[1].name}
                 </span>
               </div>
@@ -346,7 +346,7 @@ export function CanonicalProjectsBento({ locale }: CanonicalProjectsBentoProps) 
                 <button
                   type="button"
                   onClick={() => setMetaView(metaView === "render" ? "sim" : "render")}
-                  className="px-2 py-0.5 rounded text-[10px] font-mono bg-indigo-500/15 border border-indigo-500/35 text-indigo-300 hover:bg-indigo-500/25 transition-colors cursor-pointer"
+                  className="px-2 py-0.5 rounded text-[10px] font-mono bg-indigo-500/15 border border-indigo-500/35 text-indigo-600 dark:text-indigo-300 hover:bg-indigo-500/25 transition-colors cursor-pointer"
                 >
                   {metaView === "render" ? "⚡ Live Sim" : "🖼️ 3D Render"}
                 </button>
@@ -360,7 +360,7 @@ export function CanonicalProjectsBento({ locale }: CanonicalProjectsBentoProps) 
               {metaView === "render" ? (
                 /* 3D High-Res Concept Render View */
                 <div className="space-y-3">
-                  <div className="relative w-full h-44 sm:h-52 bg-[#0B1120] rounded-xl overflow-hidden border border-slate-800 group">
+                  <div className="relative w-full h-44 sm:h-52 bg-surface-secondary/50 rounded-xl overflow-hidden border border-hairline group">
                     <Image
                       src={PROJECTS[1].img!}
                       alt={PROJECTS[1].name}
@@ -369,39 +369,39 @@ export function CanonicalProjectsBento({ locale }: CanonicalProjectsBentoProps) 
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-transparent to-transparent opacity-60" />
                     <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-indigo-950/90 border border-indigo-500/40 text-[10px] font-mono text-indigo-300 flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-ping" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 motion-safe:animate-ping" />
                       3D Computational Core Visualizer
                     </div>
                   </div>
                   {/* Mini metrics bar */}
                   <div className="grid grid-cols-2 gap-2">
-                    <div className="bg-[#0B1120] rounded-lg border border-slate-800 p-2 text-center">
-                      <span className="text-[10px] font-mono text-slate-400 block">{PROJECTS[1].metric1Label}</span>
-                      <span className="text-sm font-bold font-mono text-indigo-400">{PROJECTS[1].metric1Value}</span>
+                    <div className="bg-surface-secondary rounded-lg border border-hairline p-2 text-center">
+                      <span className="text-[10px] font-mono text-content-muted block">{PROJECTS[1].metric1Label}</span>
+                      <span className="text-sm font-bold font-mono text-indigo-600 dark:text-indigo-400">{PROJECTS[1].metric1Value}</span>
                     </div>
-                    <div className="bg-[#0B1120] rounded-lg border border-slate-800 p-2 text-center">
-                      <span className="text-[10px] font-mono text-slate-400 block">{PROJECTS[1].metric2Label}</span>
-                      <span className="text-sm font-bold font-mono text-cyan-400">{PROJECTS[1].metric2Value}</span>
+                    <div className="bg-surface-secondary rounded-lg border border-hairline p-2 text-center">
+                      <span className="text-[10px] font-mono text-content-muted block">{PROJECTS[1].metric2Label}</span>
+                      <span className="text-sm font-bold font-mono text-cyan-600 dark:text-cyan-400">{PROJECTS[1].metric2Value}</span>
                     </div>
                   </div>
                 </div>
               ) : (
                 /* Interactive Algorithm Simulation View */
                 <>
-                  <div className="bg-[#0B1120] rounded-xl border border-slate-800 p-3">
-                    <div className="flex items-center justify-between text-[10px] font-mono text-slate-400 pb-2">
+                  <div className="bg-surface-secondary rounded-xl border border-hairline p-3">
+                    <div className="flex items-center justify-between text-[10px] font-mono text-content-muted pb-2">
                       <span>Algorithm Visualizer</span>
-                      <span className="text-cyan-400">O(n log n)</span>
+                      <span className="text-cyan-600 dark:text-cyan-400">O(n log n)</span>
                     </div>
                     <SortWaves color="#6366F1" />
                     <div className="mt-2">
-                      <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
+                      <div className="w-full bg-surface-interactive rounded-full h-1.5 overflow-hidden">
                         <div
                           className="bg-indigo-500 h-full rounded-full transition-all duration-500 shadow-[0_0_8px_#6366F1]"
                           style={{ width: `${sortProgress}%` }}
                         />
                       </div>
-                      <div className="flex justify-between text-[9px] font-mono text-slate-400 pt-1">
+                      <div className="flex justify-between text-[9px] font-mono text-content-muted pt-1">
                         <span>HeapSort running</span>
                         <span>{sortProgress}%</span>
                       </div>
@@ -416,7 +416,7 @@ export function CanonicalProjectsBento({ locale }: CanonicalProjectsBentoProps) 
                   </div>
 
                   {/* Terminal snippet (Strict LTR) */}
-                  <div className="bg-[#0B1120] rounded-xl border border-slate-800 p-3 font-mono text-[10px] space-y-1 text-left" dir="ltr">
+                  <div className="bg-surface-dark dark:bg-[#0B1120] text-slate-200 rounded-xl border border-hairline p-3 font-mono text-[10px] space-y-1 text-left" dir="ltr">
                     <div className="text-emerald-400">[BENCH] Sort time: 3.14ms</div>
                     <div className="text-cyan-400">[MEM] Usage: 14.8MB / 64MB</div>
                     <div className="flex items-center text-indigo-400">
@@ -428,10 +428,10 @@ export function CanonicalProjectsBento({ locale }: CanonicalProjectsBentoProps) 
               )}
             </div>
 
-            <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-4 border-t border-slate-800">
+            <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-4 border-t border-hairline">
               <div className="flex flex-wrap gap-1.5">
                 {PROJECTS[1].stack.map((t) => (
-                  <span key={t} className="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-800/80 border border-slate-700/80 text-slate-300">
+                  <span key={t} className="px-2 py-0.5 rounded text-[10px] font-mono bg-surface-secondary border border-hairline text-content-secondary">
                     {t}
                   </span>
                 ))}
@@ -441,7 +441,7 @@ export function CanonicalProjectsBento({ locale }: CanonicalProjectsBentoProps) 
                   href={PROJECTS[1].githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-400 hover:text-white transition-colors"
+                  className="p-2 rounded-lg bg-surface-secondary hover:bg-surface-interactive border border-hairline text-content-secondary hover:text-content-primary transition-colors"
                   title="GitHub"
                 >
                   <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
@@ -450,7 +450,7 @@ export function CanonicalProjectsBento({ locale }: CanonicalProjectsBentoProps) 
                 </a>
                 <Link
                   href={`/${locale}/projects/metaalgorithm-lab`}
-                  className="px-2.5 py-1.5 rounded-lg bg-white/[0.05] hover:bg-white/[0.1] border border-white/10 text-slate-300 text-[11px] font-mono transition-colors"
+                  className="px-2.5 py-1.5 rounded-lg bg-surface-secondary hover:bg-surface-interactive border border-hairline text-content-primary text-[11px] font-mono transition-colors"
                 >
                   {isAr ? "المعمارية" : "Docs"}
                 </Link>
@@ -470,14 +470,14 @@ export function CanonicalProjectsBento({ locale }: CanonicalProjectsBentoProps) 
           {secondary.slice(1).map((project) => (
             <div
               key={project.slug}
-              className="bg-[#0F172A] rounded-2xl border border-slate-800 flex flex-col overflow-hidden hover:border-slate-700 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
+              className="bg-surface-card rounded-2xl border border-hairline flex flex-col overflow-hidden hover:border-indigo-500/30 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.08)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
               style={{ borderTopColor: `${project.accentColor}50` }}
             >
               {/* Top accent bar */}
               <div className="h-1 w-full" style={{ backgroundColor: project.accentColor }} />
 
-              <div className="flex items-center justify-between px-4 py-3 border-b border-slate-800 bg-[#0B1120]">
-                <span className="font-mono text-sm font-semibold text-white">
+              <div className="flex items-center justify-between px-4 py-3 border-b border-hairline bg-surface-secondary/70">
+                <span className="font-mono text-sm font-semibold text-content-primary">
                   {isAr ? project.nameAr : project.name}
                 </span>
                 <span
@@ -494,30 +494,30 @@ export function CanonicalProjectsBento({ locale }: CanonicalProjectsBentoProps) 
               </div>
 
               {project.img && (
-                <div className="relative w-full h-44 bg-[#0B1120] overflow-hidden border-b border-slate-800 group">
+                <div className="relative w-full h-44 bg-surface-secondary/50 overflow-hidden border-b border-hairline group">
                   <Image
                     src={project.img}
                     alt={project.name}
                     fill
                     className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-transparent to-transparent opacity-60" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent opacity-60" />
                 </div>
               )}
 
               <div className="flex-1 p-4 space-y-2.5">
-                <div className="bg-[#0B1120] rounded-lg border border-slate-800 p-2.5 flex items-center justify-between">
-                  <span className="text-[11px] font-mono text-slate-400">{project.metric1Label}</span>
+                <div className="bg-surface-secondary rounded-lg border border-hairline p-2.5 flex items-center justify-between">
+                  <span className="text-[11px] font-mono text-content-muted">{project.metric1Label}</span>
                   <span className="font-mono text-sm font-bold" style={{ color: project.accentColor }}>
                     {project.metric1Value}
                   </span>
                 </div>
-                <div className="bg-[#0B1120] rounded-lg border border-slate-800 p-2.5 flex items-center justify-between">
-                  <span className="text-[11px] font-mono text-slate-400">{project.metric2Label}</span>
-                  <span className="font-mono text-sm font-bold text-white">{project.metric2Value}</span>
+                <div className="bg-surface-secondary rounded-lg border border-hairline p-2.5 flex items-center justify-between">
+                  <span className="text-[11px] font-mono text-content-muted">{project.metric2Label}</span>
+                  <span className="font-mono text-sm font-bold text-content-primary">{project.metric2Value}</span>
                 </div>
                 {/* Mini bar chart */}
-                <div className="bg-[#0B1120] rounded-lg border border-slate-800 p-2 h-10 flex items-end gap-0.5">
+                <div className="bg-surface-secondary rounded-lg border border-hairline p-2 h-10 flex items-end gap-0.5">
                   {[40, 60, 50, 80, 65, 90, 70, 85, 55].map((h, i) => (
                     <div
                       key={i}
@@ -528,13 +528,13 @@ export function CanonicalProjectsBento({ locale }: CanonicalProjectsBentoProps) 
                 </div>
               </div>
 
-              <div className="flex items-center justify-between gap-2 px-4 py-3 border-t border-slate-800">
+              <div className="flex items-center justify-between gap-2 px-4 py-3 border-t border-hairline">
                 <div className="flex items-center gap-1.5">
                   <a
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-1.5 rounded bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-400 hover:text-white transition-colors"
+                    className="p-1.5 rounded bg-surface-secondary hover:bg-surface-interactive border border-hairline text-content-secondary hover:text-content-primary transition-colors"
                     title="GitHub"
                   >
                     <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24">
@@ -543,7 +543,7 @@ export function CanonicalProjectsBento({ locale }: CanonicalProjectsBentoProps) 
                   </a>
                   <Link
                     href={`/${locale}/projects/${project.slug}`}
-                    className="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 border border-slate-700 text-[10px] font-mono text-slate-300 hover:text-white transition-colors"
+                    className="px-2 py-1 rounded bg-surface-secondary hover:bg-surface-interactive border border-hairline text-[10px] font-mono text-content-secondary hover:text-content-primary transition-colors"
                   >
                     {isAr ? "المعمارية" : "Docs"}
                   </Link>

@@ -17,27 +17,27 @@ export function LiveDemoStudio({ locale }: LiveDemoStudioProps) {
   return (
     <div className="w-full space-y-6 font-mono select-none">
       {/* Studio Header Bar matching Reference 2 */}
-      <div className="flex flex-wrap items-center justify-between gap-4 p-4 rounded-xl border border-slate-800/80 bg-[#0B1120] text-xs shadow-lg">
+      <div className="flex flex-wrap items-center justify-between gap-4 p-4 rounded-xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-[#0B1120] text-xs shadow-sm dark:shadow-lg transition-colors">
         <div className="flex items-center gap-2.5">
-          <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping" />
-          <span className="font-bold text-white tracking-wider text-sm">
+          <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 dark:bg-emerald-400 motion-safe:animate-ping" />
+          <span className="font-bold text-slate-900 dark:text-white tracking-wider text-sm">
             {isRtl ? "معمل المحاكاة الحية المزدوج" : "LIVE INTERACTIVE DEMO STUDIO"}
           </span>
-          <span className="text-slate-500 hidden sm:inline">|</span>
-          <span className="text-[10px] text-slate-400 hidden md:inline">
+          <span className="text-slate-400 dark:text-slate-500 hidden sm:inline">|</span>
+          <span className="text-[10px] text-slate-500 dark:text-slate-400 hidden md:inline">
             {"// WORKSTATION RUNTIME MULTI-SANDBOX"}
           </span>
         </div>
 
         {/* Layout Switcher: Dual / Campus IT / MetaAlgorithm */}
-        <div className="flex items-center gap-1.5 p-1 rounded-lg bg-slate-900/60 border border-slate-800 text-[11px]">
+        <div className="flex items-center gap-1.5 p-1 rounded-lg bg-slate-100 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 text-[11px]">
           <button
             type="button"
             onClick={() => setLayoutMode("dual")}
-            className={`px-3 py-1 rounded transition-all flex items-center gap-1.5 ${
+            className={`px-3 py-1 rounded transition-all flex items-center gap-1.5 cursor-pointer ${
               layoutMode === "dual"
                 ? "bg-gradient-to-r from-indigo-500 to-cyan-500 text-white font-bold shadow-[0_0_12px_rgba(99,102,241,0.3)]"
-                : "text-slate-400 hover:text-white"
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
             }`}
           >
             <Split className="w-3.5 h-3.5" />
@@ -46,10 +46,10 @@ export function LiveDemoStudio({ locale }: LiveDemoStudioProps) {
           <button
             type="button"
             onClick={() => setLayoutMode("campus")}
-            className={`px-2.5 py-1 rounded transition-all ${
+            className={`px-2.5 py-1 rounded transition-all cursor-pointer ${
               layoutMode === "campus"
-                ? "bg-indigo-500 text-white font-bold"
-                : "text-slate-400 hover:text-white"
+                ? "bg-indigo-600 dark:bg-indigo-500 text-white font-bold"
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
             }`}
           >
             <span>Campus IT</span>
@@ -57,10 +57,10 @@ export function LiveDemoStudio({ locale }: LiveDemoStudioProps) {
           <button
             type="button"
             onClick={() => setLayoutMode("algo")}
-            className={`px-2.5 py-1 rounded transition-all ${
+            className={`px-2.5 py-1 rounded transition-all cursor-pointer ${
               layoutMode === "algo"
-                ? "bg-cyan-500 text-white font-bold"
-                : "text-slate-400 hover:text-white"
+                ? "bg-cyan-600 dark:bg-cyan-500 text-white font-bold"
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
             }`}
           >
             <span>Algo Lab</span>

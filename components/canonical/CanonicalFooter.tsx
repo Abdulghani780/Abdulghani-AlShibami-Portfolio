@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { Locale } from "@/lib/i18n/dictionaries";
 import { ContactForm } from "@/components/features/ContactForm";
+import { ContactToolbar } from "@/components/features/ContactToolbar";
 
 interface CanonicalFooterProps {
   locale: Locale;
@@ -20,7 +21,7 @@ const SOCIAL_LINKS = [
     ),
   },
   {
-    href: "https://linkedin.com",
+    href: "https://linkedin.com/in/abdulghani-al-shibami-94b4a3204",
     label: "LinkedIn",
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
@@ -29,11 +30,29 @@ const SOCIAL_LINKS = [
     ),
   },
   {
-    href: "mailto:contact@abdulghani.dev",
+    href: "mailto:samyemen987@gmail.com",
     label: "Email",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-5 h-5">
         <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+  {
+    href: "https://wa.me/967773088202",
+    label: "WhatsApp",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+        <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.26-1.5-1.4-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.08 0 1.23.9 2.41 1.02 2.58.13.17 1.76 2.69 4.27 3.77.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.24-.19-.49-.31" />
+      </svg>
+    ),
+  },
+  {
+    href: "tel:+967773088202",
+    label: "Phone",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-5 h-5">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
   },
@@ -46,7 +65,7 @@ export function CanonicalFooter({ locale }: CanonicalFooterProps) {
   return (
     <footer
       id="contact"
-      className="relative bg-[#090D16] border-t border-slate-800/80 overflow-hidden"
+      className="relative bg-canvas border-t border-hairline overflow-hidden transition-colors duration-300"
       dir={isAr ? "rtl" : "ltr"}
     >
       {/* Top border data line */}
@@ -59,18 +78,18 @@ export function CanonicalFooter({ locale }: CanonicalFooterProps) {
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-20">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="max-w-lg">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 font-mono text-[10px] tracking-[0.18em] text-cyan-400 uppercase mb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
-              {isAr ? "SECTION 05 / تواصل" : "SECTION 05 / CONTACT"}
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 font-mono text-[10px] tracking-[0.18em] text-indigo-600 dark:text-cyan-400 uppercase mb-4 font-bold">
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 motion-safe:animate-ping" />
+              {isAr ? "SECTION 06 / تواصل" : "SECTION 06 / CONTACT"}
             </div>
-            <h3 className="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
+            <h3 className="text-3xl sm:text-4xl font-extrabold text-content-primary leading-tight">
               {isAr ? (
-                <>هل لديك مشروع يحتاج<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-cyan-400 to-emerald-400">هندسة متقدمة؟</span></>
+                <>هل لديك مشروع يحتاج<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 dark:from-indigo-400 via-cyan-500 dark:via-cyan-400 to-emerald-500 dark:to-emerald-400">هندسة متقدمة؟</span></>
               ) : (
-                <>Ready to architect<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-cyan-400 to-emerald-400">something great?</span></>
+                <>Ready to architect<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 dark:from-indigo-400 via-cyan-500 dark:via-cyan-400 to-emerald-500 dark:to-emerald-400">something great?</span></>
               )}
             </h3>
-            <p className="text-slate-400 text-sm mt-3 leading-relaxed max-w-sm">
+            <p className="text-content-muted text-sm mt-3 leading-relaxed max-w-sm">
               {isAr
                 ? "لديّ خبرة في بناء منصات تقنية معقدة — من قواعد البيانات إلى الواجهات الذكية."
                 : "From database architecture to real-time dashboards — let's build systems that matter."}
@@ -85,44 +104,52 @@ export function CanonicalFooter({ locale }: CanonicalFooterProps) {
             >
               {isAr ? "ابدأ محادثة الآن ↗" : "START A CONVERSATION ↗"}
             </button>
-            <p className="text-slate-500 font-mono text-[11px]">
+            <p className="text-content-muted font-mono text-[11px]">
               {isAr ? "يُرد في غضون 24 ساعة" : "Typically responds within 24 hours"}
             </p>
           </div>
         </div>
+
+        {/* 5-Channel Direct Verification Contact Toolbar */}
+        <div className="mt-12 pt-8 border-t border-hairline">
+          <div className="text-[11px] font-mono text-indigo-600 dark:text-cyan-400 uppercase tracking-widest font-semibold mb-3">
+            {"// "}{isAr ? "قنوات التواصل المباشرة المعتمدة" : "VERIFIED DIRECT COMMUNICATIONS SUITE"}
+          </div>
+          <ContactToolbar locale={locale} />
+        </div>
       </div>
 
       {/* ── Bottom Footer Bar ── */}
-      <div className="relative z-10 border-t border-slate-800/80 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-8">
+      <div className="relative z-10 border-t border-hairline max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-8">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
           {/* Logo + Copyright */}
           <div className="flex items-center gap-3">
-            <span className="w-8 h-8 rounded-lg bg-indigo-500/15 border border-indigo-500/40 flex items-center justify-center text-indigo-300 font-bold text-base shadow-[0_0_12px_rgba(99,102,241,0.25)]">
+            <span className="w-8 h-8 rounded-lg bg-indigo-500/15 border border-indigo-500/40 flex items-center justify-center text-indigo-500 dark:text-indigo-300 font-bold text-base shadow-[0_0_12px_rgba(99,102,241,0.25)]">
               A
             </span>
-            <span className="font-mono text-[11px] text-slate-400">
+            <span className="font-mono text-[11px] text-content-muted">
               Abdulghani Al-Shibami © {new Date().getFullYear()}
             </span>
           </div>
 
           {/* Navigation */}
-          <nav className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 font-mono text-xs text-slate-400">
-            <Link href={`/${locale}`} className="hover:text-cyan-400 transition-colors">
+          <nav className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 font-mono text-xs text-content-secondary">
+            <Link href={`/${locale}`} className="hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors">
               {isAr ? "الرئيسية" : "Home"}
             </Link>
-            <a href="#projects" className="hover:text-cyan-400 transition-colors">
+            <a href="#projects" className="hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors">
               {isAr ? "المشاريع" : "Projects"}
             </a>
-            <a href="#sandbox" className="hover:text-cyan-400 transition-colors">
+            <a href="#sandbox" className="hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors">
               {isAr ? "المحاكي" : "Sandbox"}
             </a>
-            <a href="#studio" className="hover:text-cyan-400 transition-colors">
+            <a href="#studio" className="hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors">
               {isAr ? "معمل الديمو" : "Demo Studio"}
             </a>
             <button
               type="button"
               onClick={() => setShowContactModal(true)}
-              className="hover:text-cyan-400 transition-colors"
+              className="hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors"
             >
               {isAr ? "تواصل" : "Contact"}
             </button>
@@ -137,7 +164,7 @@ export function CanonicalFooter({ locale }: CanonicalFooterProps) {
                 target={link.href.startsWith("http") ? "_blank" : undefined}
                 rel="noopener noreferrer"
                 aria-label={link.label}
-                className="w-9 h-9 rounded-lg border border-slate-800 bg-slate-900/50 flex items-center justify-center text-slate-400 hover:text-cyan-400 hover:border-cyan-500/40 hover:bg-cyan-500/10 transition-all duration-200"
+                className="w-9 h-9 rounded-lg border border-hairline bg-surface-secondary flex items-center justify-center text-content-secondary hover:text-indigo-600 dark:hover:text-cyan-400 hover:border-indigo-500/40 hover:bg-indigo-500/10 transition-all duration-200"
               >
                 {link.icon}
               </a>
@@ -146,7 +173,7 @@ export function CanonicalFooter({ locale }: CanonicalFooterProps) {
         </div>
 
         {/* Bottom tag */}
-        <div className="mt-6 text-center font-mono text-[10px] text-slate-500">
+        <div className="mt-6 text-center font-mono text-[10px] text-content-muted">
           {isAr
             ? "مبني بـ Next.js 15 · TypeScript · Tailwind CSS · Titanium Slate & Electric Architecture"
             : "Built with Next.js 15 · TypeScript · Tailwind CSS · Titanium Slate & Electric Architecture"}
@@ -156,15 +183,15 @@ export function CanonicalFooter({ locale }: CanonicalFooterProps) {
       {/* ── Contact Modal ── */}
       {showContactModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md" dir={isAr ? "rtl" : "ltr"}>
-          <div className="relative w-full max-w-lg bg-[#0B1120] border border-indigo-500/40 rounded-2xl p-6 shadow-[0_0_60px_rgba(99,102,241,0.25)]">
-            <div className="flex items-center justify-between pb-4 border-b border-slate-800">
-              <span className="font-mono text-sm font-bold text-cyan-400">
+          <div className="relative w-full max-w-lg bg-surface border border-hairline rounded-2xl p-6 shadow-2xl">
+            <div className="flex items-center justify-between pb-4 border-b border-hairline">
+              <span className="font-mono text-sm font-bold text-indigo-600 dark:text-cyan-400">
                 {"// "}{isAr ? "إرسال رسالة مباشرة" : "TRANSMIT MESSAGE TO SYSTEMS ARCHITECT"}
               </span>
               <button
                 type="button"
                 onClick={() => setShowContactModal(false)}
-                className="w-8 h-8 rounded-lg border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-slate-600 transition-colors font-mono text-sm cursor-pointer"
+                className="w-8 h-8 rounded-lg border border-hairline flex items-center justify-center text-content-muted hover:text-content-primary hover:border-indigo-500/40 transition-colors font-mono text-sm cursor-pointer"
               >
                 ✕
               </button>

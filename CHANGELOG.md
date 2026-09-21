@@ -10,6 +10,130 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.9.0] - 2026-09-21 — Autonomous Production Engineering, Deep Audit, Automated Test Suite & Release Gate
+
+### Added
+- **Automated Unit & Integration Test Suites (`tests/core-domain.test.mjs`, `tests/offline-ai.test.mjs`):**
+  - Native `node:test` execution covering Contact Form Zod validation, authentic credential physical image assets, canonical projects integrity, verified identity consistency, dictionary parity, and offline AI deterministic response branches.
+  - Added `"test": "node --test tests/**/*.test.mjs"` to `package.json` scripts (37/37 tests passing).
+- **Comprehensive Production Architecture Documentation Suite:**
+  - `docs/qa/DEEP_ENGINEERING_AUDIT.md`: Complete A-through-AO architectural and code evaluation.
+  - `docs/design/DESIGN_SYSTEM_AUDIT.md`: Token inventory, typography scale, spacing rhythm, and dual-theme rules.
+  - `docs/product/IMPROVEMENT_ROADMAP.md`: Strategic roadmap prioritizing P0/P1/P2/P3 initiatives with effort and risk matrices.
+  - `docs/qa/FINAL_PRODUCTION_READINESS_REPORT.md`: 25-section release audit confirming PRODUCTION STATUS: READY.
+
+### Fixed & Enhanced
+- **Dual-Theme Harmonization:**
+  - Refactored `AcademicProfileSection.tsx` (Section 05) and `DemoCalloutBanner.tsx` to eliminate hardcoded dark gradients, providing clean light mode porcelain surfaces.
+  - Wrapped pulsing animations in `motion-safe:` to respect user accessibility preferences.
+- **Type Safety & Internationalization in AI Chat (`app/api/ai/chat/route.ts`):**
+  - Replaced loose `any` types with strongly typed interfaces.
+  - Added bilingual catch-block fallback providing contextual Arabic responses for `locale === "ar"`.
+  - Expanded natural Arabic keyword matching for education inquiries ("يدرس", "تخصص", "مؤهل").
+- **Database Persistence Resilience (`components/features/ContactForm.tsx`):**
+  - Inspected returned Supabase `{ error }` payload to log persistence warnings without uncaught rejections.
+- **Dead Code Cleanup:**
+  - Removed unreferenced legacy file `components/features/credentials/CertificateViewer.tsx`.
+
+---
+
+## [1.8.0] - 2026-09-21 — Comprehensive Audit Remediation, Dual-Theme Harmonization & Polish
+
+### Added
+- **Genuine Dual-Theme Light Mode System:**
+  - Implemented semantic design tokens in CSS and Tailwind configuration for porcelain light surfaces (`#F8FAFC`, `#FFFFFF`) with crisp dark slate typography (`#0F172A`, `#334155`) meeting WCAG AA contrast standards.
+  - Full dual-theme styling across `CertificateModal`, `AbdulghaniAIModal`, `CaseStudyHero`, `ProjectCard`, `ProjectPreviewGraphic`, `LiveDemoStudio`, and `CredentialsCatalogView`.
+- **Server-Side Arabic HTML Tag Localization (`middleware.ts` & `app/layout.tsx`):**
+  - Configured middleware to inject `x-locale` and `x-direction` request headers.
+  - `app/layout.tsx` now renders `<html lang="ar" dir="rtl">` on `/ar` and `<html lang="en" dir="ltr">` on `/en` directly in the server rendered output stream.
+- **Comprehensive OpenGraph & Twitter Card Metadata:**
+  - Added rich social preview metadata, language alternates, and canonical self-references across `/`, `/projects`, `/credentials`, and `/showcase`.
+- **Showcase Navigation & Accessibility (`app/[locale]/showcase/page.tsx`):**
+  - Added semantic `<h1 className="sr-only">` and top breadcrumb navigation back to homepage and projects catalog.
+  - Refactored Design Token showcase cards to dual-theme semantic tokens.
+- **Client-Side Contact Form Validation (`ContactForm.tsx`):**
+  - Added character bounds, RFC5322 email regex, whitespace trimming, and XSS sanitization with accessible inline error alerts.
+- **Remediation Master Report (`docs/qa/REMEDIATION_REPORT.md`):**
+  - Comprehensive documentation covering all 22 required evaluation criteria.
+
+### Fixed & Enhanced
+- **Obsolete Token Purge:** Purged 37 residual instances of `#00FF9D` (Concept D neon mint), aligning them with `#10B981` (emerald) and Electric Indigo theme tokens.
+- **Reduced Motion Compliance:** Wrapped all pulsing beacons and indicator lights in `motion-safe:animate-ping` and `motion-safe:animate-pulse`.
+- **Sitemap Canonical Slugs:** Verified `app/sitemap.ts` contains strictly canonical `metaalgorithm-lab` slugs for both English and Arabic.
+- **Zero Dark Mode Regression:** Verified 100% aesthetic preservation of the approved Titanium Slate & Electric Indigo/Cyan dark mode.
+
+---
+
+## [1.7.0] - 2026-09-20 — Authentic Credentials & Certifications Integration
+
+### Added
+- **5 Authentic Verified Certificates Integration:**
+  - `tot-ibct-novice`: Train-The-Trainer Program: The Novice Trainer Level (IBCT & Edraak, Sept 12, 2026) with official stamp, QR code, and Dr. Ahmed Metwally signature.
+  - `yemen-ai-summit-2026`: Certificate of Participation — Yemen AI Summit 2026 (Modern Specialized University & AI Approach, July 1, 2026 / 16 Muharram 1448 AH) with university seal and Prof. Dr. Mujahid Al-Jabr signature.
+  - `ums-web-dev-ai`: Professional Workshop: Web Development Using AI Tools (University of Modern Sciences Innovation Center, May 4–11, 2026).
+  - `ums-innovation-award`: Second Place Award — Innovation & Entrepreneurship Competition (UMS IT Dept, Jan 19–26, 2026).
+  - `yali-english-proficiency`: Certificate of Completion — English Language Proficiency (Yemen-America Language Institute / US Embassy, Feb 8, 2023, Cert # 2320070557).
+- **Original Document Preservation Assets:**
+  - High-resolution web assets under `public/images/certificates/` preserving original documents, signatures, seals, and proportions.
+- **Interactive Certificate Modal (`CertificateModal.tsx`):**
+  - Smooth interactive zoom (+25% increments up to 250%, zoom out, and 100% reset).
+  - Strict aspect ratio preservation (`object-fit: contain`).
+  - Keyboard shortcuts (`+`, `-`, `0`, `Escape`).
+  - Full-resolution raw document viewer link.
+  - Dedicated non-overlapping metadata drawer.
+- **Dedicated Credentials Catalog Route (`app/[locale]/credentials/page.tsx`):**
+  - Prerendered SSG pages for English (`/en/credentials`) and Arabic (`/ar/credentials`).
+  - Category filter tabs (All, International Certifications, Awards, Workshops, Summits, Language).
+  - Responsive breadcrumbs and header.
+- **Gemini AI Grounding:**
+  - Grounded AI assistant knowledge base (`lib/ai/knowledge.ts`) and offline fallback in all 5 verified certificates with zero hallucination.
+
+### Enhanced
+- **Homepage Section 05 (`AcademicProfileSection.tsx`):**
+  - Rendered all 5 certificates in a responsive grid with isolated modal triggers and direct link to the credentials catalog.
+- **Sitemap (`app/sitemap.ts`):**
+  - Added `/en/credentials` and `/ar/credentials` (expanding indexable routes from 34 to 36).
+
+---
+
+## [1.6.1] - 2026-09-20 — Hostile QA Remediation & Zero-Defect Hardening
+
+### Fixed & Enhanced
+- **Section Badges Alignment:** Corrected section numbering inversion between Section 05 (`AcademicProfileSection.tsx`) and Section 06 (`CanonicalFooter.tsx`).
+- **Certificate Lightbox UX:** Added backdrop `onClick={onClose}` to `CertificateModal.tsx` allowing one-click dismissal.
+- **AI Modal Keyboard Accessibility:** Added `Escape` keydown handler to `AbdulghaniAIModal.tsx` to ensure keyboard accessible closing.
+- **Global Navigation:** Added `#credentials` direct anchor navigation link into `Navbar.tsx` for both desktop and mobile drawer menus.
+- **QA Documentation:** Authored [`docs/qa/FINAL_FUNCTIONAL_QA_REPORT.md`](file:///c:/my%20projects/Portifilo/docs/qa/FINAL_FUNCTIONAL_QA_REPORT.md) with comprehensive verification matrix.
+
+---
+
+## [1.6.0] - 2026-09-20 — Functional Bug Fixes, Authentic Academic Profile & Gemini AI Integration
+
+### Added
+- **Academic Credentials & Honors Showcase (`AcademicProfileSection.tsx`):**
+  - Section 05 embedded into homepage showcasing 3rd-Year Information Technology standing at University of Modern Sciences, Sana'a.
+  - Second Place Award: Innovation & Entrepreneurship Competition (UMS IT Dept, 2026/1).
+  - Specialized training: Web Development Using AI Tools (UMS, 2026/5) and English Language Proficiency (YALI, 2023/2).
+  - Train-The-Trainer (IBCT Novice Trainer Level, 12/9/2026) vector credential asset (`public/images/credentials/ibct-novice-trainer.svg`) and interactive lightbox viewer (`CertificateViewer.tsx`, `CertificateModal.tsx`).
+- **Official CV Access Points:**
+  - Generated official CV document at `public/docs/Abdulghani_Al-Shibami_CV.pdf` supporting dual in-browser sandboxed preview and direct download.
+- **Server-Side Gemini AI Concierge ("Abdulghani AI"):**
+  - Next.js dynamic API route handler `app/api/ai/chat/route.ts` using `@google/genai` (v2.23.0).
+  - Server-held `GEMINI_API_KEY` protection, Zod schema validation, and 20 req/min sliding-window IP rate limiting.
+  - Fact-grounded system prompt (`lib/ai/knowledge.ts`) strictly prohibiting fabricated claims, with deterministic offline fallback.
+  - Luxury client concierge modal (`AbdulghaniAIModal.tsx`) with bilingual prompt chips, minimize, clear conversation, and full mobile optimization.
+- **Multi-Channel Contact Integration (`ContactToolbar.tsx`):**
+  - Verified direct links for Phone (`tel:+967773088202`), WhatsApp (`https://wa.me/967773088202`), Email (`mailto:samyemen987@gmail.com`), LinkedIn, and GitHub.
+- **Metadata Routes:**
+  - Added static `public/favicon.ico` (1.8 KB), dynamic `app/robots.ts`, and dynamic `app/sitemap.ts` (34 entries).
+
+### Fixed
+- Fixed contact data drift in `CanonicalFooter.tsx` and `Footer.tsx`.
+- Purged residual mint `#00FF9D` hexes from Section 04 Demo Studio and `/showcase` page in favor of Azure Cyan design tokens.
+- Fixed untranslated Arabic string leaks in Section 04 Demo Studio.
+
+---
+
 ## [1.5.1] - 2026-09-19 — Global Design Token Harmonization & Catalog 3D Bento Integration
 
 ### Added & Enhanced

@@ -45,7 +45,7 @@ export function CanonicalDemoStudio({ locale }: CanonicalDemoStudioProps) {
   return (
     <section
       id="studio"
-      className="relative w-full bg-[#0B1120] text-white py-20 px-4 sm:px-8 lg:px-16 overflow-hidden"
+      className="relative w-full bg-canvas text-content-primary py-20 px-4 sm:px-8 lg:px-16 overflow-hidden transition-colors duration-300"
       dir={isAr ? "rtl" : "ltr"}
     >
       {/* Ambient glows */}
@@ -55,15 +55,15 @@ export function CanonicalDemoStudio({ locale }: CanonicalDemoStudioProps) {
       {/* ── Section Header ── */}
       <div className="relative z-10 max-w-7xl mx-auto mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/25 font-mono text-[10px] tracking-[0.18em] text-cyan-400 uppercase mb-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/25 font-mono text-[10px] tracking-[0.18em] text-cyan-600 dark:text-cyan-400 uppercase mb-3 font-bold">
+            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 motion-safe:animate-ping" />
             {isAr ? "SECTION 04 / معمل الديمو" : "SECTION 04 / DEMO STUDIO"}
           </div>
-          <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-bold text-content-primary tracking-tight">
             {isAr ? "محطة المحاكاة المزدوجة المباشرة" : "Multi-Workstation Dual Simulation Studio"}
           </h2>
         </div>
-        <div className="flex items-center gap-2 font-mono text-[11px] text-slate-400">
+        <div className="flex items-center gap-2 font-mono text-[11px] text-content-muted">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
           demos.portfolio.io (Sandbox)
         </div>
@@ -89,12 +89,15 @@ export function CanonicalDemoStudio({ locale }: CanonicalDemoStudioProps) {
 
           {/* Sub-header */}
           <div className="bg-[#070A10] px-4 py-2 border-b border-zinc-800 flex items-center justify-between text-[11px] font-mono text-zinc-400">
-            <span>Latency: <strong className="text-[#00FF9D]">{latency}ms</strong></span>
+            <span>{isAr ? "زمن الاستجابة:" : "Latency:"} <strong className="text-cyan-400">{latency}ms</strong></span>
             <div className="flex items-center gap-2">
-              <span>Code Inspector</span>
+              <span>{isAr ? "فاحص الكود" : "Code Inspector"}</span>
               <button
+                type="button"
                 onClick={() => setCodeInspector(!codeInspector)}
-                className={`w-8 h-4 rounded-full transition-colors relative ${codeInspector ? "bg-[#00FF9D]" : "bg-zinc-700"}`}
+                aria-label={isAr ? "تبديل فاحص الكود" : "Toggle Code Inspector"}
+                aria-pressed={codeInspector}
+                className={`w-8 h-4 rounded-full transition-colors relative cursor-pointer ${codeInspector ? "bg-cyan-400" : "bg-zinc-700"}`}
               >
                 <span className={`w-3 h-3 rounded-full bg-black absolute top-0.5 transition-transform ${codeInspector ? "left-4" : "left-0.5"}`} />
               </button>
@@ -106,9 +109,11 @@ export function CanonicalDemoStudio({ locale }: CanonicalDemoStudioProps) {
           <div className="p-4 grid grid-cols-2 gap-4 flex-1">
             {/* ITIL Floorplan SVG */}
             <div className="bg-[#04060A] rounded-xl border border-zinc-800 p-3 flex flex-col">
-              <div className="text-[10px] font-mono text-zinc-300 font-bold pb-2 text-center">ITIL Floorplan</div>
+              <div className="text-[10px] font-mono text-zinc-300 font-bold pb-2 text-center">
+                {isAr ? "مخطط طوابق ITIL" : "ITIL Floorplan"}
+              </div>
               <div className="relative flex-1 min-h-[160px] border border-zinc-800 rounded-lg bg-[#020306] flex items-center justify-center">
-                <svg className="w-full h-full" viewBox="0 0 180 160" fill="none">
+                <svg className="w-full h-full" viewBox="0 0 180 160" fill="none" aria-hidden="true">
                   {/* Rooms */}
                   <rect x="12" y="12" width="68" height="56" rx="2" fill="#070C14" stroke="#1F2937" />
                   <rect x="90" y="12" width="78" height="56" rx="2" fill="#070C14" stroke="#1F2937" />
@@ -120,32 +125,32 @@ export function CanonicalDemoStudio({ locale }: CanonicalDemoStudioProps) {
                   <text x="46" y="116" textAnchor="middle" fontSize="7" fill="#374151" fontFamily="monospace">Lab_04</text>
                   <text x="129" y="116" textAnchor="middle" fontSize="7" fill="#374151" fontFamily="monospace">Control</text>
                   {/* Path */}
-                  <path d="M 46 40 L 46 112 L 129 112 L 129 40" stroke="#00FF9D" strokeWidth="1" strokeDasharray="3 3" />
+                  <path d="M 46 40 L 46 112 L 129 112 L 129 40" stroke="#38BDF8" strokeWidth="1" strokeDasharray="3 3" />
                   {/* Network nodes */}
-                  <circle cx="46" cy="40" r="5" fill="#00FF9D" className="animate-pulse" />
+                  <circle cx="46" cy="40" r="5" fill="#38BDF8" className="animate-pulse" />
                   <circle cx="129" cy="40" r="6" fill="#00F0FF" />
-                  <circle cx="129" cy="112" r="5" fill="#00FF9D" />
+                  <circle cx="129" cy="112" r="5" fill="#38BDF8" />
                   <circle cx="46" cy="112" r="5" fill="#10B981" />
                 </svg>
               </div>
               <div className="flex justify-around text-[9px] font-mono pt-2 text-zinc-500">
-                <span className="text-[#00FF9D]">● Servers</span>
-                <span className="text-[#00F0FF]">● Network</span>
-                <span className="text-emerald-400">● Users</span>
+                <span className="text-cyan-400">{isAr ? "● خوادم" : "● Servers"}</span>
+                <span className="text-[#00F0FF]">{isAr ? "● شبكة" : "● Network"}</span>
+                <span className="text-emerald-400">{isAr ? "● مستخدمون" : "● Users"}</span>
               </div>
             </div>
 
             {/* Kanban Board */}
             <div className="bg-[#04060A] rounded-xl border border-zinc-800 p-3 flex flex-col">
               <div className="flex items-center justify-between text-[10px] font-mono pb-2">
-                <span className="font-bold text-white">Agile Workflow</span>
-                <span className="text-zinc-600">+ Sprint</span>
+                <span className="font-bold text-white">{isAr ? "سير العمل الرشيق" : "Agile Workflow"}</span>
+                <span className="text-zinc-600">{isAr ? "+ دورة" : "+ Sprint"}</span>
               </div>
               <div className="space-y-2 flex-1">
                 {[
-                  { title: "Campus IT Core Update", badge: "Critical", badgeColor: "bg-red-900/40 text-red-400", id: "781" },
-                  { title: "Deploy API Gateway", badge: "API-Fix", badgeColor: "bg-blue-900/40 text-blue-400", id: "412" },
-                  { title: "Custody Transfer Task", badge: "Deploy", badgeColor: "bg-emerald-900/40 text-emerald-400", id: "098" },
+                  { title: isAr ? "تحديث منصة Campus IT" : "Campus IT Core Update", badge: isAr ? "حرج" : "Critical", badgeColor: "bg-red-900/40 text-red-400", id: "781" },
+                  { title: isAr ? "بوابة واجهات البرمجة" : "Deploy API Gateway", badge: isAr ? "واجهة" : "API-Fix", badgeColor: "bg-blue-900/40 text-blue-400", id: "412" },
+                  { title: isAr ? "مهمة نقل العهدة" : "Custody Transfer Task", badge: isAr ? "نشر" : "Deploy", badgeColor: "bg-emerald-900/40 text-emerald-400", id: "098" },
                 ].map((task) => (
                   <div key={task.id} className="bg-[#0B101E] border border-zinc-800 rounded-lg p-2.5 font-mono text-[10px]">
                     <div className="text-zinc-200 font-semibold">{task.title}</div>
@@ -156,13 +161,15 @@ export function CanonicalDemoStudio({ locale }: CanonicalDemoStudioProps) {
                   </div>
                 ))}
               </div>
-              <div className="text-[10px] font-mono text-zinc-700 text-center pt-2">+ Add Custom Sprint Task</div>
+              <div className="text-[10px] font-mono text-zinc-700 text-center pt-2">
+                {isAr ? "+ إضافة مهمة جديدة" : "+ Add Custom Sprint Task"}
+              </div>
             </div>
           </div>
 
           {/* Footer */}
           <div className="bg-[#070A10] px-4 py-2 border-t border-zinc-800 text-[10px] font-mono text-zinc-600 flex justify-between">
-            <span>Demo Version v1.4.1</span>
+            <span>{isAr ? "إصدار العرض v1.4.1" : "Demo Version v1.4.1"}</span>
             <span suppressHydrationWarning>{dateString}</span>
           </div>
         </div>
@@ -219,18 +226,18 @@ export function CanonicalDemoStudio({ locale }: CanonicalDemoStudioProps) {
               {/* Memory Usage */}
               <div className="bg-[#04060A] rounded-xl border border-zinc-800 p-2.5">
                 <div className="flex justify-between text-[10px] font-mono text-zinc-500 pb-1">
-                  <span>Memory</span>
-                  <span className="text-[#00FF9D]">● MEM</span>
+                  <span>{isAr ? "الذاكرة" : "Memory"}</span>
+                  <span className="text-cyan-400">● MEM</span>
                 </div>
                 <div className="h-16 w-full">
-                  <svg className="w-full h-full" viewBox="0 0 110 40" fill="none">
+                  <svg className="w-full h-full" viewBox="0 0 110 40" fill="none" aria-hidden="true">
                     <path
                       d={`M 0 ${40 - memLoad[0]} Q 27.5 ${40 - memLoad[1]}, 55 ${40 - memLoad[2]} T 110 ${40 - memLoad[4]} L 110 40 L 0 40 Z`}
-                      fill="rgba(0,255,157,0.12)"
+                      fill="rgba(34,211,238,0.12)"
                     />
                     <path
                       d={`M 0 ${40 - memLoad[0]} Q 27.5 ${40 - memLoad[1]}, 55 ${40 - memLoad[2]} T 110 ${40 - memLoad[4]}`}
-                      stroke="#00FF9D"
+                      stroke="#22D3EE"
                       strokeWidth="1.5"
                       fill="none"
                     />
@@ -242,31 +249,35 @@ export function CanonicalDemoStudio({ locale }: CanonicalDemoStudioProps) {
             {/* Key metrics */}
             <div className="grid grid-cols-2 gap-3">
               <div className="bg-[#04060A] rounded-xl border border-zinc-800 p-2.5 font-mono">
-                <div className="text-[10px] text-zinc-500">Network Throughput</div>
+                <div className="text-[10px] text-zinc-500">{isAr ? "معدل تدفق الشبكة" : "Network Throughput"}</div>
                 <div className="text-base font-bold text-white">15k req/s</div>
               </div>
               <div className="bg-[#04060A] rounded-xl border border-zinc-800 p-2.5 font-mono">
-                <div className="text-[10px] text-zinc-500">Execution Speed</div>
-                <div className="text-base font-bold text-[#00FF9D]">3.14 ms</div>
+                <div className="text-[10px] text-zinc-500">{isAr ? "سرعة التنفيذ" : "Execution Speed"}</div>
+                <div className="text-base font-bold text-cyan-400">3.14 ms</div>
               </div>
             </div>
 
             {/* Code inspector + Data logging */}
             <div className="grid grid-cols-2 gap-3 font-mono text-[9px]">
               <div className="bg-[#04060A] rounded-xl border border-zinc-800 p-2.5 h-24 overflow-hidden">
-                <div className="text-zinc-200 font-bold border-b border-zinc-800 pb-1 mb-1">Live Code Inspector</div>
+                <div className="text-zinc-200 font-bold border-b border-zinc-800 pb-1 mb-1">
+                  {isAr ? "فاحص الكود الحي" : "Live Code Inspector"}
+                </div>
                 {codeInspector ? (
                   <>
-                    <div className="text-[#00FF9D]">Executing matrix ops…</div>
-                    <div>Thread: <span className="text-emerald-400">Active</span></div>
-                    <div className="text-zinc-600">Heap: 14.8MB allocated</div>
+                    <div className="text-cyan-400">{isAr ? "تنفيذ عمليات المصفوفات…" : "Executing matrix ops…"}</div>
+                    <div>{isAr ? "المسار: " : "Thread: "}<span className="text-emerald-400">{isAr ? "نشط" : "Active"}</span></div>
+                    <div className="text-zinc-600">{isAr ? "الذاكرة: 14.8MB مخصصة" : "Heap: 14.8MB allocated"}</div>
                   </>
                 ) : (
-                  <div className="text-zinc-600">Inspector paused</div>
+                  <div className="text-zinc-600">{isAr ? "الفاحص متوقف مؤقتاً" : "Inspector paused"}</div>
                 )}
               </div>
               <div className="bg-[#04060A] rounded-xl border border-zinc-800 p-2.5 h-24 overflow-hidden">
-                <div className="text-zinc-200 font-bold border-b border-zinc-800 pb-1 mb-1">Data Logging</div>
+                <div className="text-zinc-200 font-bold border-b border-zinc-800 pb-1 mb-1">
+                  {isAr ? "سجل البيانات" : "Data Logging"}
+                </div>
                 {logLines.map((line, i) => (
                   <div key={i} className="text-zinc-500">{line}</div>
                 ))}

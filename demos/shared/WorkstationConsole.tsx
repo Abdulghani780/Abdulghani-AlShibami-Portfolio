@@ -41,7 +41,7 @@ export function WorkstationConsole({
   const getLevelStyle = (level: WorkstationLog["level"]) => {
     switch (level) {
       case "exec":
-        return "text-[#00FF9D]";
+        return "text-emerald-400";
       case "metric":
         return "text-cyan-400";
       case "warn":
@@ -60,11 +60,11 @@ export function WorkstationConsole({
         className="px-4 py-2 bg-[#0A0F17] hover:bg-[#0D141F] flex items-center justify-between cursor-pointer border-b border-white/[0.04] transition-colors"
       >
         <div className="flex items-center gap-2 text-white/80">
-          <Terminal className="w-3.5 h-3.5 text-[#00FF9D]" />
+          <Terminal className="w-3.5 h-3.5 text-emerald-400" />
           <span className="font-bold text-[11px] text-white">
             {isRtl ? "شاشة الأوامر الحية (Live Workstation Terminal)" : "TERMINAL CONSOLE // LIVE EXECUTION STREAM"}
           </span>
-          <span className="px-1.5 py-0.5 rounded text-[9px] bg-[#00FF9D]/10 text-[#00FF9D] border border-[#00FF9D]/20">
+          <span className="px-1.5 py-0.5 rounded text-[9px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
             {logs.length} {isRtl ? "حدث" : "events"}
           </span>
         </div>
@@ -81,7 +81,7 @@ export function WorkstationConsole({
                 title={isRtl ? "نسخ السجلات" : "Copy Logs"}
                 className="p-1 rounded text-white/50 hover:text-white hover:bg-white/10 transition-colors"
               >
-                {copied ? <Check className="w-3 h-3 text-[#00FF9D]" /> : <Copy className="w-3 h-3" />}
+                {copied ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
               </button>
               <button
                 type="button"
@@ -120,9 +120,9 @@ export function WorkstationConsole({
               </div>
             ))
           )}
-          <div className="flex items-center gap-1 text-[#00FF9D] pt-1">
-            <span className="text-[#00FF9D] font-bold">&gt;</span>
-            <span className="inline-block w-1.5 h-3.5 bg-[#00FF9D] animate-pulse" />
+          <div className="flex items-center gap-1 text-emerald-400 pt-1">
+            <span className="text-emerald-400 font-bold">&gt;</span>
+            <span className="inline-block w-1.5 h-3.5 bg-emerald-400 animate-pulse" />
           </div>
         </div>
       )}

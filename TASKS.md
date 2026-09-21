@@ -406,4 +406,131 @@
 - **TESTS:** `pnpm build` passes with 30/30 static pages prerendered.
 - **DEFINITION OF DONE:** Complete color token consistency across all pages, 0 duplicate components, 0 build errors.
 
+---
+
+### PHASE 21 — Functional Stabilization, Verified Academic Profile & Gemini AI Integration
+- **ID:** `TSK-180`
+- **TITLE:** Functional Audit Bug Fixes & Metadata Generation
+- **PHASE:** 21
+- **PRIORITY:** P0
+- **STATUS:** COMPLETED
+- **DESCRIPTION:** Fix P0/P1 defects from `docs/qa/FUNCTIONAL_AUDIT_REPORT.md` (contact info drift, missing metadata assets, residual mint hexes, untranslated Arabic strings in Section 04 Demo Studio). Generate `public/favicon.ico`, `app/robots.ts`, and `app/sitemap.ts`.
+- **DEPENDENCIES:** TSK-171
+- **FILES:** `components/canonical/CanonicalFooter.tsx`, `components/layout/Footer.tsx`, `components/canonical/CanonicalDemoStudio.tsx`, `app/[locale]/showcase/page.tsx`, `public/favicon.ico`, `app/robots.ts`, `app/sitemap.ts`
+- **TESTS:** All routes tested with 200 OK.
+
+- **ID:** `TSK-181`
+- **TITLE:** Verified Academic Profile, Credentials, Awards & CV Integration
+- **PHASE:** 21
+- **PRIORITY:** P0
+- **STATUS:** COMPLETED
+- **DESCRIPTION:** Establish decoupled data models in `lib/data/` for authentic profile, credentials, and skills. Build Section 05 Academic Credentials & Honors (`AcademicProfileSection.tsx`) showcasing 3rd-Year IT status, 2nd Place UMS Award, UMS/YALI trainings, IBCT TOT Certificate with interactive lightbox viewer (`CertificateViewer.tsx`, `CertificateModal.tsx`), and official PDF CV (`public/docs/Abdulghani_Al-Shibami_CV.pdf`) with View and Download actions.
+- **DEPENDENCIES:** TSK-180
+- **FILES:** `lib/data/profile.ts`, `lib/data/credentials.ts`, `lib/data/skills.ts`, `components/features/credentials/*`, `public/images/credentials/*`, `public/docs/*`
+- **TESTS:** Direct download, view, and modal tests verified.
+
+- **ID:** `TSK-182`
+- **TITLE:** Server-Side Gemini AI Concierge ("Abdulghani AI") & Floating UI
+- **PHASE:** 21
+- **PRIORITY:** P0
+- **STATUS:** COMPLETED
+- **DESCRIPTION:** Implement server-side route `app/api/ai/chat/route.ts` powered by `@google/genai` (v2.23.0) with strictly server-held `GEMINI_API_KEY`, Zod schema validation, sliding-window IP rate limiting, factual grounding system prompt (`lib/ai/knowledge.ts`), and deterministic offline fallback. Mount floating client concierge (`AbdulghaniAIModal.tsx`) with bilingual chips, minimize, clear, and error handling.
+- **DEPENDENCIES:** TSK-181
+- **FILES:** `app/api/ai/chat/route.ts`, `lib/ai/knowledge.ts`, `components/features/ai/AbdulghaniAIModal.tsx`, `app/[locale]/layout.tsx`, `.env.example`
+- **TESTS:** Verified 200 OK for grounded English and Arabic prompts, 400 for empty payloads, and full Next.js build.
+
+---
+
+### PHASE 23 — Authentic Credentials & Certifications Integration
+- **ID:** `TSK-190`
+- **TITLE:** Authentic Credentials Archive, Interactive Zoom Viewer & Dedicated Catalog
+- **PHASE:** 23
+- **PRIORITY:** P0
+- **STATUS:** COMPLETED
+- **DESCRIPTION:** Integrate all 5 authentic certificate images (IBCT Novice Trainer TOT, Yemen AI Summit 2026, UMS AI Web Development Workshop, UMS Innovation Award, YALI English Language Proficiency) without website redesign. Create high-resolution web assets under `public/images/certificates/`, establish typed single source of truth in `lib/data/credentials.ts`, implement accessible `CertificateModal.tsx` with zoom controls (+25%, -25%, reset), aspect ratio preservation (`object-fit: contain`), Escape key dismiss, and separate metadata drawer. Build Section 05 showcase on homepage and dedicated route `/[locale]/credentials` with category filters and SSG. Ground Gemini AI assistant in all 5 verified certificates.
+- **DEPENDENCIES:** TSK-181, TSK-182
+- **FILES:** `lib/data/credentials.ts`, `components/features/credentials/*`, `app/[locale]/credentials/page.tsx`, `app/sitemap.ts`, `lib/ai/knowledge.ts`, `app/api/ai/chat/route.ts`, `docs/credentials/CREDENTIALS_INTEGRATION_REPORT.md`
+- **TESTS:** Browser automation (`credentials_qa_1789889465165.webp`), `pnpm tsc --noEmit` (0 errors), `pnpm lint` (0 errors), `pnpm build` (36 static/dynamic routes prerendered).
+- **DEFINITION OF DONE:** All 5 authentic certificates integrated with zero fabrication, zoom viewer fully functional, dedicated catalog route live, AI assistant answers verified, build green.
+
+---
+
+### PHASE 24 — Comprehensive Audit Remediation, Harmonization & Polish
+- **ID:** `TSK-200`
+- **TITLE:** Genuine Dual-Theme Light Mode System & Token Harmonization
+- **PHASE:** 24
+- **PRIORITY:** P0
+- **STATUS:** COMPLETED
+- **DESCRIPTION:** Implement semantic dual-theme tokens for porcelain light mode surfaces and crisp typography without altering the approved dark mode palette. Refactor all components bypassing tokens (`CertificateModal`, `AbdulghaniAIModal`, `CaseStudyHero`, `ProjectCard`, `ProjectPreviewGraphic`, `LiveDemoStudio`, `CredentialsCatalogView`). Purge obsolete `#00FF9D` neon mint in favor of emerald `#10B981`.
+- **DEPENDENCIES:** TSK-190
+- **FILES:** `components/features/*`, `components/canonical/*`, `demos/shared/*`, `app/globals.css`
+- **TESTS:** Verified in Chrome DevTools across Light and Dark themes.
+
+- **ID:** `TSK-201`
+- **TITLE:** Server-Side Arabic HTML Language & Direction Synchronization
+- **PHASE:** 24
+- **PRIORITY:** P0
+- **STATUS:** COMPLETED
+- **DESCRIPTION:** Configure Next.js middleware and root layout to emit `<html lang="ar" dir="rtl">` on `/ar` and `<html lang="en" dir="ltr">` on `/en` directly in the server rendered output.
+- **DEPENDENCIES:** TSK-200
+- **FILES:** `middleware.ts`, `app/layout.tsx`
+- **TESTS:** Verified via curl and server stream inspection.
+
+- **ID:** `TSK-202`
+- **TITLE:** OpenGraph, Canonical URLs, Showcase Semantics & Accessibility
+- **PHASE:** 24
+- **PRIORITY:** P1
+- **STATUS:** COMPLETED
+- **DESCRIPTION:** Add complete `generateMetadata` (canonical self-references, language alternates, OpenGraph 1200x630 card, Twitter summary card) across all core pages. Add semantic `<h1 className="sr-only">` and top breadcrumbs to `/showcase`. Apply `motion-safe:` to pulsing animations.
+- **DEPENDENCIES:** TSK-201
+- **FILES:** `app/[locale]/page.tsx`, `app/[locale]/projects/page.tsx`, `app/[locale]/credentials/page.tsx`, `app/[locale]/showcase/page.tsx`
+- **TESTS:** Evaluated metadata output in production build and browser.
+
+- **ID:** `TSK-203`
+- **TITLE:** Contact Input Validation & Remediation Reporting
+- **PHASE:** 24
+- **PRIORITY:** P2
+- **STATUS:** COMPLETED
+- **DESCRIPTION:** Implement client-side schema validation (RFC5322 regex, character length bounds, XSS sanitization) on `ContactForm.tsx`. Generate master report `docs/qa/REMEDIATION_REPORT.md` answering all 22 required items. Run end-to-end browser QA.
+- **DEPENDENCIES:** TSK-202
+- **FILES:** `components/features/ContactForm.tsx`, `docs/qa/REMEDIATION_REPORT.md`
+- **TESTS:** `pnpm tsc --noEmit` (0 errors), `pnpm lint` (0 errors), `pnpm build` (36 routes compiled, exit code 0).
+
+---
+
+### PHASE 25 — Autonomous Production Engineering, Deep Audit & Release Gate
+- **ID:** `TSK-210`
+- **TITLE:** Deep Engineering Audit & Residual Light Mode Remediation
+- **PHASE:** 25
+- **PRIORITY:** P0
+- **STATUS:** COMPLETED
+- **DESCRIPTION:** Audit all 37 components and Next.js routes. Eliminate residual hardcoded dark classes in `AcademicProfileSection.tsx` and `DemoCalloutBanner.tsx`. Clean loose types and add Arabic bilingual fallback in `app/api/ai/chat/route.ts`. Remove dead component `CertificateViewer.tsx`.
+- **DEPENDENCIES:** TSK-203
+- **FILES:** `components/features/credentials/AcademicProfileSection.tsx`, `components/features/projects/case-study/DemoCalloutBanner.tsx`, `app/api/ai/chat/route.ts`
+- **TESTS:** `pnpm typecheck` (PASS), `pnpm lint` (PASS), `pnpm build` (PASS).
+
+- **ID:** `TSK-211`
+- **TITLE:** Automated Unit & Integration Test Suites
+- **PHASE:** 25
+- **PRIORITY:** P0
+- **STATUS:** COMPLETED
+- **DESCRIPTION:** Build native `node:test` suites covering Contact Form Zod validation, Authentic Credentials data & image assets on disk, Canonical Projects data integrity, Verified Profile consistency, Dictionary parity, and Offline AI deterministic fallback.
+- **DEPENDENCIES:** TSK-210
+- **FILES:** `package.json`, `tests/core-domain.test.mjs`, `tests/offline-ai.test.mjs`
+- **TESTS:** `pnpm test` (37/37 tests passing, 0 failures).
+
+- **ID:** `TSK-212`
+- **TITLE:** Production Governance & Strategic Documentation Suite
+- **PHASE:** 25
+- **PRIORITY:** P0
+- **STATUS:** COMPLETED
+- **DESCRIPTION:** Produce comprehensive audit documents: `docs/qa/DEEP_ENGINEERING_AUDIT.md`, `docs/design/DESIGN_SYSTEM_AUDIT.md`, `docs/product/IMPROVEMENT_ROADMAP.md`, and `docs/qa/FINAL_PRODUCTION_READINESS_REPORT.md`.
+- **DEPENDENCIES:** TSK-211
+- **FILES:** `docs/qa/*`, `docs/design/*`, `docs/product/*`
+- **TESTS:** All links, metrics, and tables verified against active codebase.
+
+
+
+
+
 

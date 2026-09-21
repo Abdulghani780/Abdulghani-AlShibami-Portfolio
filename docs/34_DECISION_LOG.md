@@ -89,3 +89,19 @@
 - **Affected Files:** `ROADMAP.md`, `docs/32_ROADMAP.md`, `TASKS.md`, `PROGRESS.md`, `docs/36_PROJECT_STATUS.md`.
 - **Affected Systems:** Engineering governance and roadmap reporting.
 
+---
+
+## Decision 006: Authentic Original Certificate Preservation, Interactive Zoom & Aspect Integrity
+- **Decision ID:** `ADR-006`
+- **Date:** 2026-09-20
+- **Decision:** Treat all 5 user certificates as immutable source documents; prohibit HTML reconstructions or AI alterations; enforce aspect-ratio preservation (`object-fit: contain`) with client-side interactive zoom (+25% increments, reset to 100%, Escape key dismiss) and decoupled non-overlapping metadata drawer.
+- **Context:** Credentials must provide incontrovertible, verifiable proof of qualifications (IBCT, Yemen AI Summit, UMS, YALI) to employers and international reviewers. Reconstructing certificates in HTML or retouching stamps degrades authenticity.
+- **Options:**
+  1. Reconstruct certificates as stylized HTML/CSS cards (High risk of perceived falsification).
+  2. Display basic static images without zoom (Hard to inspect seals, signatures, and QR codes).
+  3. Original document preservation with high-resolution web delivery, interactive zoom modal, and isolated metadata drawer (Selected).
+- **Reason:** Guarantees absolute legal/academic authenticity, prevents distortion on all screens, and enables deep inspection of security markers.
+- **Affected Files:** `lib/data/credentials.ts`, `components/features/credentials/CertificateModal.tsx`, `app/[locale]/credentials/page.tsx`, `lib/ai/knowledge.ts`.
+- **Affected Systems:** Credentials showcase, presentation modals, AI grounding.
+
+
