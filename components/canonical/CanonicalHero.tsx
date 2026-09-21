@@ -114,7 +114,7 @@ export function CanonicalHero({ locale }: CanonicalHeroProps) {
 
   return (
     <section
-      className="relative w-full min-h-screen bg-[#0B1120] text-white flex flex-col overflow-hidden"
+      className="relative w-full min-h-screen bg-canvas text-content-primary flex flex-col overflow-hidden transition-colors duration-300"
       dir={isAr ? "rtl" : "ltr"}
       onMouseMove={handleMouseMove}
     >
@@ -135,7 +135,7 @@ export function CanonicalHero({ locale }: CanonicalHeroProps) {
         <div className="absolute bottom-1/3 right-1/4 w-[500px] h-[500px] bg-cyan-500/[0.03] rounded-full blur-[140px]" />
         {/* Indigo dot particle grid */}
         <div
-          className="absolute inset-0 opacity-[0.4]"
+          className="absolute inset-0 opacity-[0.3] dark:opacity-[0.4]"
           style={{
             backgroundImage:
               "radial-gradient(circle, rgba(99,102,241,0.3) 1px, transparent 1px)",
@@ -148,7 +148,7 @@ export function CanonicalHero({ locale }: CanonicalHeroProps) {
       <header className="relative z-20 w-full flex items-center justify-between px-6 sm:px-10 lg:px-16 pt-6 pb-4">
         <Link
           href={`/${locale}`}
-          className="font-mono text-sm font-bold tracking-widest text-white hover:text-indigo-400 transition-colors uppercase"
+          className="font-mono text-sm font-bold tracking-widest text-content-primary hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors uppercase"
         >
           ABDULGHANI.DEV
         </Link>
@@ -163,7 +163,7 @@ export function CanonicalHero({ locale }: CanonicalHeroProps) {
             <a
               key={item.href}
               href={item.href}
-              className={`text-slate-400 hover:text-indigo-400 transition-colors relative group ${
+              className={`text-content-muted hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors relative group ${
                 item.mobile ? "inline-block" : "hidden md:inline-block"
               }`}
             >
@@ -173,7 +173,7 @@ export function CanonicalHero({ locale }: CanonicalHeroProps) {
           ))}
           <Link
             href={isAr ? "/en" : "/ar"}
-            className="px-2.5 py-1 rounded-md text-[11px] font-mono bg-slate-900 border border-slate-700 hover:border-indigo-500/60 text-indigo-400 transition-colors"
+            className="px-2.5 py-1 rounded-md text-[11px] font-mono bg-surface-secondary border border-hairline hover:border-indigo-500/60 text-indigo-600 dark:text-indigo-400 transition-colors"
           >
             {isAr ? "EN" : "عربي"}
           </Link>
@@ -182,13 +182,13 @@ export function CanonicalHero({ locale }: CanonicalHeroProps) {
 
       {/* ── SECTION LABEL & AVAILABILITY STATUS ── */}
       <div className="relative z-10 px-6 sm:px-10 lg:px-16 pt-8 flex flex-wrap items-center justify-between gap-3">
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/25 font-mono text-[10px] tracking-[0.18em] text-indigo-400 uppercase">
-          <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-ping" />
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/25 font-mono text-[10px] tracking-[0.18em] text-indigo-600 dark:text-indigo-400 uppercase font-bold">
+          <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 dark:bg-indigo-400 motion-safe:animate-ping" />
           {isAr ? "SECTION 01 / البطل" : "SECTION 01 / HERO"}
         </div>
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/90 border border-slate-800 text-[11px] font-mono text-slate-300">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-secondary/90 border border-hairline text-[11px] font-mono text-content-secondary">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="text-emerald-400 font-semibold">{isAr ? "الحالة:" : "STATUS:"}</span>
+          <span className="text-emerald-500 dark:text-emerald-400 font-semibold">{isAr ? "الحالة:" : "STATUS:"}</span>
           <span>{isAr ? "متاح لأدوار هندسة الأنظمة والذكاء الاصطناعي" : "Available for Systems Architecture & AI"}</span>
         </div>
       </div>
@@ -206,7 +206,7 @@ export function CanonicalHero({ locale }: CanonicalHeroProps) {
             ).map((tag) => (
               <span
                 key={tag}
-                className="px-3 py-1 rounded-full text-[10px] font-mono bg-slate-900/80 border border-slate-700/80 text-slate-300 tracking-wider"
+                className="px-3 py-1 rounded-full text-[10px] font-mono bg-surface-secondary border border-hairline text-content-secondary tracking-wider"
               >
                 {tag}
               </span>
@@ -225,9 +225,9 @@ export function CanonicalHero({ locale }: CanonicalHeroProps) {
                 style={{ animationDelay: `${i * 120}ms` }}
               >
                 <h1
-                  className={`block font-extrabold tracking-tight text-white leading-[0.92]
+                  className={`block font-extrabold tracking-tight text-content-primary leading-[0.92]
                     ${i === 2
-                      ? "text-4xl sm:text-7xl lg:text-8xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-cyan-400 to-emerald-400"
+                      ? "text-4xl sm:text-7xl lg:text-8xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 dark:from-indigo-400 via-cyan-500 dark:via-cyan-400 to-emerald-500 dark:to-emerald-400"
                       : "text-5xl sm:text-7xl lg:text-[104px]"
                     }`}
                 >
@@ -238,7 +238,7 @@ export function CanonicalHero({ locale }: CanonicalHeroProps) {
           </div>
 
           {/* Subtitle */}
-          <p className="text-slate-400 text-sm sm:text-base max-w-lg leading-relaxed">
+          <p className="text-content-muted text-sm sm:text-base max-w-lg leading-relaxed">
             {isAr
               ? "منصة تحكم هندسية متقدمة مبنية على لوحة التيتانيوم السيبراني والأزرق الكهربائي، مع ديمو تفاعلي حقيقي لكل مشروع."
               : "A futuristic engineering command center crafted in Titanium Slate and Electric Indigo, streaming live interactive simulations for every project."}
@@ -254,7 +254,7 @@ export function CanonicalHero({ locale }: CanonicalHeroProps) {
             </a>
             <a
               href="#sandbox"
-              className="px-7 py-3.5 rounded-full bg-transparent border border-indigo-500/40 text-white font-medium text-xs tracking-wider uppercase transition-all duration-200 hover:bg-indigo-500/10 hover:border-indigo-400 active:scale-[0.97]"
+              className="px-7 py-3.5 rounded-full bg-surface border border-indigo-500/40 text-content-primary font-medium text-xs tracking-wider uppercase transition-all duration-200 hover:bg-indigo-500/10 hover:border-indigo-400 active:scale-[0.97]"
             >
               {isAr ? "تشغيل المحاكي" : "Launch Sandbox"}
             </a>
@@ -262,7 +262,7 @@ export function CanonicalHero({ locale }: CanonicalHeroProps) {
 
           {/* Tech stack pills */}
           <div>
-            <div className="font-mono text-[10px] tracking-[0.15em] text-slate-500 uppercase pb-2.5">
+            <div className="font-mono text-[10px] tracking-[0.15em] text-content-muted uppercase pb-2.5">
               {isAr ? "مكدس التقنيات الحي" : "LIVE TECH STACK"}
             </div>
             <div className="flex flex-wrap gap-2">
@@ -270,7 +270,7 @@ export function CanonicalHero({ locale }: CanonicalHeroProps) {
                 (tech) => (
                   <span
                     key={tech}
-                    className="px-3 py-1.5 rounded-full text-[11px] font-mono bg-slate-900/90 border border-slate-800 text-slate-300 hover:border-indigo-500/50 hover:text-indigo-400 transition-colors cursor-default"
+                    className="px-3 py-1.5 rounded-full text-[11px] font-mono bg-surface-secondary border border-hairline text-content-secondary hover:border-indigo-500/50 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-default"
                   >
                     {tech}
                   </span>
@@ -396,32 +396,32 @@ export function CanonicalHero({ locale }: CanonicalHeroProps) {
       </div>
 
       {/* ── LIVE METRICS HUD BAR ── */}
-      <div className="relative z-10 mt-8 mx-6 sm:mx-10 lg:mx-16 mb-0">
-        <div className="w-full border-t border-indigo-500/15 pt-5 pb-8">
+      <div className="relative z-10 mt-8 mx-6 sm:mx-10 lg:px-16 mb-0">
+        <div className="w-full border-t border-hairline pt-5 pb-8">
           <div className="flex flex-wrap items-center gap-3 sm:gap-6">
             {METRICS.map((m) => (
               <div
                 key={m.label}
-                className="flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-slate-900/80 border border-slate-800 hover:border-indigo-500/30 transition-colors"
+                className="flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-surface-secondary border border-hairline hover:border-indigo-500/30 transition-colors"
               >
-                <span className="font-mono text-[10px] text-slate-400 uppercase tracking-wider">{m.label}:</span>
-                <span className={`font-mono text-sm font-bold ${m?.color || "text-indigo-400"}`} suppressHydrationWarning>
+                <span className="font-mono text-[10px] text-content-muted uppercase tracking-wider">{m.label}:</span>
+                <span className={`font-mono text-sm font-bold ${m?.color || "text-indigo-600 dark:text-indigo-400"}`} suppressHydrationWarning>
                   {m?.value}
                 </span>
               </div>
             ))}
             {/* Separator + scroll indicator */}
-            <div className="flex items-center gap-2 ml-auto text-slate-400">
+            <div className="flex items-center gap-2 ml-auto text-content-muted">
               <span className="font-mono text-[10px]">{isAr ? "اسحب لأسفل" : "SCROLL TO EXPLORE"}</span>
-              <span className="w-px h-4 bg-slate-700" />
-              <span className="text-indigo-400 text-xs animate-bounce">↓</span>
+              <span className="w-px h-4 bg-hairline" />
+              <span className="text-indigo-600 dark:text-indigo-400 text-xs animate-bounce">↓</span>
             </div>
           </div>
         </div>
       </div>
 
       {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#0B1120] to-transparent pointer-events-none z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-canvas to-transparent pointer-events-none z-10" />
     </section>
   );
 }

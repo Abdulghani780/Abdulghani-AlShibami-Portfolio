@@ -23,7 +23,7 @@ export function ProjectPreviewGraphic({
     return (
       <div
         className={cn(
-          "w-full rounded-xl border border-slate-800/80 bg-[#0B1120] p-3 sm:p-4 font-mono text-[11px] select-none overflow-hidden relative group/preview shadow-[0_0_20px_rgba(99,102,241,0.06)]",
+          "w-full rounded-xl border border-slate-200 dark:border-slate-800/80 bg-slate-950 dark:bg-[#0B1120] p-3 sm:p-4 font-mono text-[11px] select-none overflow-hidden relative group/preview shadow-sm dark:shadow-[0_0_20px_rgba(99,102,241,0.06)]",
           className
         )}
       >
@@ -94,7 +94,7 @@ export function ProjectPreviewGraphic({
     return (
       <div
         className={cn(
-          "w-full rounded-xl border border-slate-800/80 bg-[#0B1120] p-3 sm:p-4 font-mono text-[11px] select-none overflow-hidden relative group/preview shadow-[0_0_20px_rgba(99,102,241,0.06)]",
+          "w-full rounded-xl border border-slate-200 dark:border-slate-800/80 bg-slate-950 dark:bg-[#0B1120] p-3 sm:p-4 font-mono text-[11px] select-none overflow-hidden relative group/preview shadow-sm dark:shadow-[0_0_20px_rgba(99,102,241,0.06)]",
           className
         )}
       >
@@ -144,7 +144,7 @@ export function ProjectPreviewGraphic({
     return (
       <div
         className={cn(
-          "w-full rounded-xl border border-slate-800/80 bg-[#0B1120] p-3 sm:p-4 font-mono text-[11px] select-none overflow-hidden relative group/preview shadow-[0_0_20px_rgba(99,102,241,0.06)]",
+          "w-full rounded-xl border border-slate-200 dark:border-slate-800/80 bg-slate-950 dark:bg-[#0B1120] p-3 sm:p-4 font-mono text-[11px] select-none overflow-hidden relative group/preview shadow-sm dark:shadow-[0_0_20px_rgba(99,102,241,0.06)]",
           className
         )}
       >
@@ -191,7 +191,7 @@ export function ProjectPreviewGraphic({
     return (
       <div
         className={cn(
-          "w-full rounded-xl border border-slate-800/80 bg-[#0B1120] p-3 sm:p-4 font-mono text-[11px] select-none overflow-hidden relative group/preview shadow-[0_0_20px_rgba(99,102,241,0.06)]",
+          "w-full rounded-xl border border-slate-200 dark:border-slate-800/80 bg-slate-950 dark:bg-[#0B1120] p-3 sm:p-4 font-mono text-[11px] select-none overflow-hidden relative group/preview shadow-sm dark:shadow-[0_0_20px_rgba(99,102,241,0.06)]",
           className
         )}
       >
@@ -234,7 +234,7 @@ export function ProjectPreviewGraphic({
   return (
     <div
       className={cn(
-        "w-full rounded-xl border border-slate-800/80 bg-[#0B1120] p-3 sm:p-4 font-mono text-[11px] select-none overflow-hidden relative group/preview shadow-[0_0_20px_rgba(99,102,241,0.06)]",
+        "w-full rounded-xl border border-slate-200 dark:border-slate-800/80 bg-slate-950 dark:bg-[#0B1120] p-3 sm:p-4 font-mono text-[11px] select-none overflow-hidden relative group/preview shadow-sm dark:shadow-[0_0_20px_rgba(99,102,241,0.06)]",
         className
       )}
     >

@@ -54,7 +54,7 @@ export function CanonicalDesktopSimulator({ locale }: CanonicalDesktopSimulatorP
   return (
     <section
       id="sandbox"
-      className="relative w-full bg-[#080D1A] text-white py-20 px-4 sm:px-8 lg:px-16 overflow-hidden"
+      className="relative w-full bg-canvas text-content-primary py-20 px-4 sm:px-8 lg:px-16 overflow-hidden transition-colors duration-300"
       dir={isAr ? "rtl" : "ltr"}
     >
       {/* Ambient glow */}
@@ -63,19 +63,19 @@ export function CanonicalDesktopSimulator({ locale }: CanonicalDesktopSimulatorP
       {/* ── Section Header ── */}
       <div className="relative z-10 max-w-7xl mx-auto mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 font-mono text-[10px] tracking-[0.18em] text-emerald-400 uppercase mb-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 font-mono text-[10px] tracking-[0.18em] text-emerald-600 dark:text-emerald-400 uppercase mb-3 font-bold">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 motion-safe:animate-ping" />
             {isAr ? "SECTION 03 / المحاكي" : "SECTION 03 / DESKTOP SANDBOX"}
           </div>
-          <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-bold text-content-primary tracking-tight">
             {isAr ? "بيئة التشغيل الأصيلة المباشرة" : "Live Native Execution Sandbox"}
           </h2>
-          <p className="text-slate-400 text-sm mt-1 font-mono">
+          <p className="text-content-muted text-sm mt-1 font-mono">
             {isAr ? "محاكاة نافذة نظام التشغيل الكاملة — تفاعل مع التبويبات والمقاييس" : "MetaAlgorithm Lab v2.4 — full OS window simulation with interactive runtime panels"}
           </p>
         </div>
-        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 font-mono text-xs text-emerald-400">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-secondary border border-hairline font-mono text-xs text-emerald-600 dark:text-emerald-400">
+          <span className="w-2 h-2 rounded-full bg-emerald-400 motion-safe:animate-ping" />
           WASM ENGINE ONLINE
         </div>
       </div>
@@ -96,7 +96,7 @@ export function CanonicalDesktopSimulator({ locale }: CanonicalDesktopSimulatorP
           <div className="flex items-center gap-3">
             <span className="text-[11px] font-mono text-zinc-500 hidden sm:block">RENDER v3.1</span>
             <div className="flex items-center gap-2">
-              <div className="w-7 h-7 rounded-full border border-[#00FF9D]/35 overflow-hidden relative">
+              <div className="w-7 h-7 rounded-full border border-emerald-400/35 overflow-hidden relative">
                 <Image
                   src="/images/profile/abdulghani-profile-thumb.webp"
                   alt="Abdulghani Al-Shibami"
@@ -122,14 +122,14 @@ export function CanonicalDesktopSimulator({ locale }: CanonicalDesktopSimulatorP
             <div className="font-mono text-[11px] font-semibold text-zinc-300">
               MetaAlgorithm Lab v2.4 — Live Native Execution Sandbox
             </div>
-            <div className="font-mono text-[10px] text-[#00FF9D]">● 60 FPS</div>
+            <div className="font-mono text-[10px] text-emerald-400">● 60 FPS</div>
           </div>
 
           {/* Status ticker */}
           <div className="bg-[#070A10] px-4 py-1.5 border-b border-zinc-800 font-mono text-[10px] text-zinc-500 flex flex-wrap items-center justify-between gap-2">
             <span>[USER: Abdulghani Al-Shibami]</span>
             <span>[ENV: RENDER v3.1]</span>
-            <span className="text-[#00FF9D] font-bold">[STATUS: ACTIVE RUNTIME]</span>
+            <span className="text-emerald-400 font-bold">[STATUS: ACTIVE RUNTIME]</span>
             <span>[ENGINE: WASM / C# CORE]</span>
           </div>
 
@@ -139,7 +139,7 @@ export function CanonicalDesktopSimulator({ locale }: CanonicalDesktopSimulatorP
             {/* Left sidebar: Tabs */}
             <div className="md:col-span-1 bg-[#070A10] border-r border-zinc-800 flex md:flex-col items-center justify-between p-3 py-5">
               <div className="flex md:flex-col items-center gap-5">
-                <span className="w-8 h-8 rounded-lg bg-[#00FF9D]/15 border border-[#00FF9D]/35 flex items-center justify-center text-[#00FF9D] text-sm font-bold shadow-[0_0_10px_rgba(0,255,157,0.2)]">
+                <span className="w-8 h-8 rounded-lg bg-emerald-400/15 border border-emerald-400/35 flex items-center justify-center text-emerald-400 text-sm font-bold shadow-[0_0_10px_rgba(16,185,129,0.2)]">
                   ⚡
                 </span>
                 {TABS.map((item) => (
@@ -148,7 +148,7 @@ export function CanonicalDesktopSimulator({ locale }: CanonicalDesktopSimulatorP
                     onClick={() => setActiveTab(item.name)}
                     className={`flex flex-col items-center gap-1 text-[10px] font-mono transition-all duration-200 cursor-pointer p-1.5 rounded-lg ${
                       activeTab === item.name
-                        ? "text-[#00FF9D] bg-[#00FF9D]/10 border border-[#00FF9D]/30 shadow-[0_0_12px_rgba(0,255,157,0.15)]"
+                        ? "text-emerald-400 bg-emerald-400/10 border border-emerald-400/30 shadow-[0_0_12px_rgba(16,185,129,0.15)]"
                         : "text-zinc-500 hover:text-zinc-300 hover:bg-zinc-800/40"
                     }`}
                     title={isAr ? item.labelAr : item.name}
@@ -171,7 +171,7 @@ export function CanonicalDesktopSimulator({ locale }: CanonicalDesktopSimulatorP
                   <div className="bg-[#070A10] rounded-xl border border-zinc-800 p-3.5 flex flex-col justify-between">
                     <div className="flex items-center justify-between pb-2 border-b border-zinc-800">
                       <span className="font-mono text-xs font-semibold text-white">Merge Sort</span>
-                      <span className="text-[#00FF9D] text-[10px] font-mono">O(n log n)</span>
+                      <span className="text-emerald-400 text-[10px] font-mono">O(n log n)</span>
                     </div>
                     <div className="py-3 flex items-end gap-0.5 h-20">
                       {sortBars.map((h, i) => (
@@ -180,9 +180,9 @@ export function CanonicalDesktopSimulator({ locale }: CanonicalDesktopSimulatorP
                           className="flex-1 rounded-t transition-all duration-500"
                           style={{
                             height: `${h}%`,
-                            backgroundColor: i < sortBars.length * (sortProgress / 100) ? "#00FF9D" : "#1f2937",
+                            backgroundColor: i < sortBars.length * (sortProgress / 100) ? "#10B981" : "#1f2937",
                             opacity: 0.7 + i * 0.02,
-                            boxShadow: i < sortBars.length * (sortProgress / 100) ? "0 0 6px rgba(0,255,157,0.4)" : "none",
+                            boxShadow: i < sortBars.length * (sortProgress / 100) ? "0 0 6px rgba(16,185,129,0.4)" : "none",
                           }}
                         />
                       ))}
@@ -190,7 +190,7 @@ export function CanonicalDesktopSimulator({ locale }: CanonicalDesktopSimulatorP
                     <div>
                       <div className="w-full bg-zinc-900 rounded-full h-1.5 overflow-hidden">
                         <div
-                          className="bg-[#00FF9D] h-full rounded-full transition-all duration-500 shadow-[0_0_8px_#00FF9D]"
+                          className="bg-emerald-400 h-full rounded-full transition-all duration-500 shadow-[0_0_8px_#10B981]"
                           style={{ width: `${sortProgress}%` }}
                         />
                       </div>
@@ -216,7 +216,7 @@ export function CanonicalDesktopSimulator({ locale }: CanonicalDesktopSimulatorP
                                 key={val}
                                 className={`px-3 py-1 rounded text-xs font-mono transition-all duration-300 ${
                                   val === activeNode
-                                    ? "bg-[#00FF9D] text-black font-bold shadow-[0_0_12px_#00FF9D]"
+                                    ? "bg-emerald-400 text-black font-bold shadow-[0_0_12px_#10B981]"
                                     : "bg-zinc-900 border border-zinc-700 text-zinc-300"
                                 }`}
                               >
@@ -227,7 +227,7 @@ export function CanonicalDesktopSimulator({ locale }: CanonicalDesktopSimulatorP
                         ))}
                       </div>
                     </div>
-                    <div className="text-center text-[10px] font-mono text-[#00FF9D]">
+                    <div className="text-center text-[10px] font-mono text-emerald-400">
                       ● Active: Node_{activeNode}
                     </div>
                   </div>
@@ -240,14 +240,14 @@ export function CanonicalDesktopSimulator({ locale }: CanonicalDesktopSimulatorP
                     </div>
                     <div className="relative w-full h-28 bg-[#030508] border border-zinc-800 rounded-lg overflow-hidden">
                       <svg className="w-full h-full" viewBox="0 0 160 100" fill="none">
-                        <path d="M 20 0 V 100 M 40 0 V 100 M 60 0 V 100 M 80 0 V 100 M 100 0 V 100 M 120 0 V 100 M 140 0 V 100" stroke="rgba(0,255,157,0.08)" strokeWidth="0.5" />
-                        <path d="M 0 20 H 160 M 0 40 H 160 M 0 60 H 160 M 0 80 H 160" stroke="rgba(0,255,157,0.08)" strokeWidth="0.5" />
-                        <path d="M 20 80 L 50 65 L 70 85 L 100 50 L 130 65 L 145 20" stroke="#00FF9D" strokeWidth="1.5" />
+                        <path d="M 20 0 V 100 M 40 0 V 100 M 60 0 V 100 M 80 0 V 100 M 100 0 V 100 M 120 0 V 100 M 140 0 V 100" stroke="rgba(16,185,129,0.08)" strokeWidth="0.5" />
+                        <path d="M 0 20 H 160 M 0 40 H 160 M 0 60 H 160 M 0 80 H 160" stroke="rgba(16,185,129,0.08)" strokeWidth="0.5" />
+                        <path d="M 20 80 L 50 65 L 70 85 L 100 50 L 130 65 L 145 20" stroke="#10B981" strokeWidth="1.5" />
                         {/* Explored cells */}
                         <rect x="15" y="75" width="10" height="10" fill="rgba(0,240,255,0.12)" />
                         <rect x="35" y="60" width="10" height="10" fill="rgba(0,240,255,0.12)" />
                         <rect x="55" y="80" width="10" height="10" fill="rgba(0,240,255,0.12)" />
-                        <circle cx="20" cy="80" r="3.5" fill="#00FF9D" />
+                        <circle cx="20" cy="80" r="3.5" fill="#10B981" />
                         <circle cx="50" cy="65" r="2.5" fill="#00F0FF" />
                         <circle cx="70" cy="85" r="2.5" fill="#00F0FF" />
                         <circle cx="100" cy="50" r="2.5" fill="#00F0FF" />
@@ -257,7 +257,7 @@ export function CanonicalDesktopSimulator({ locale }: CanonicalDesktopSimulatorP
                     </div>
                     <div className="flex justify-between text-[9px] font-mono text-zinc-500 pt-1">
                       <span>Start (0,0)</span>
-                      <span className="text-[#00FF9D]">Optimal Path Found ✓</span>
+                      <span className="text-emerald-400">Optimal Path Found ✓</span>
                     </div>
                   </div>
 
@@ -276,10 +276,10 @@ export function CanonicalDesktopSimulator({ locale }: CanonicalDesktopSimulatorP
                       <div className="text-[#00F0FF]">[DB] Connected to DB_CLUSTER_ALPHA</div>
                       <div className="text-yellow-400">[SORT] A* on Graph (250 nodes)</div>
                       <div className="text-zinc-400">[MEM] Usage: 14.8MB / 64MB</div>
-                      <div className="text-[#00FF9D] font-bold">[BENCH] Sort time: 3.14ms ✓</div>
-                      <div className="flex items-center text-[#00FF9D]">
+                      <div className="text-emerald-400 font-bold">[BENCH] Sort time: 3.14ms ✓</div>
+                      <div className="flex items-center text-emerald-400">
                         <span>&gt; _</span>
-                        <span className="w-1.5 h-3 bg-[#00FF9D] type-cursor ml-1" />
+                        <span className="w-1.5 h-3 bg-emerald-400 type-cursor ml-1" />
                       </div>
                     </div>
                   </div>
@@ -294,7 +294,7 @@ export function CanonicalDesktopSimulator({ locale }: CanonicalDesktopSimulatorP
                     <div>
                       <div className="flex items-center gap-2">
                         <span className="text-white font-bold text-sm">MetaAlgorithm.Wasm.UnitTests</span>
-                        <span className="px-2 py-0.5 rounded text-[9px] bg-[#00FF9D]/10 text-[#00FF9D] border border-[#00FF9D]/30">
+                        <span className="px-2 py-0.5 rounded text-[9px] bg-emerald-400/10 text-emerald-400 border border-emerald-400/30">
                           xUnit / .NET 8
                         </span>
                       </div>
@@ -305,7 +305,7 @@ export function CanonicalDesktopSimulator({ locale }: CanonicalDesktopSimulatorP
                     <button
                       onClick={handleRunTests}
                       disabled={isRunningTests}
-                      className="px-3 py-1.5 rounded-lg bg-[#00FF9D]/15 hover:bg-[#00FF9D]/25 border border-[#00FF9D]/40 text-[#00FF9D] text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
+                      className="px-3 py-1.5 rounded-lg bg-emerald-400/15 hover:bg-emerald-400/25 border border-emerald-400/40 text-emerald-400 text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
                     >
                       <span className={isRunningTests ? "animate-spin" : ""}>↺</span>
                       <span>{isRunningTests ? "Running Suite..." : "Re-run Test Suite"}</span>
@@ -360,7 +360,7 @@ export function CanonicalDesktopSimulator({ locale }: CanonicalDesktopSimulatorP
                         }`}
                       >
                         <div className="flex items-center gap-2.5 min-w-0">
-                          <span className="text-[#00FF9D] font-bold">✓</span>
+                          <span className="text-emerald-400 font-bold">✓</span>
                           <div className="truncate">
                             <span className="text-zinc-200 font-semibold">{t.name}</span>
                             <div className="text-[10px] text-zinc-500 font-mono truncate">{t.assert}</div>
@@ -368,7 +368,7 @@ export function CanonicalDesktopSimulator({ locale }: CanonicalDesktopSimulatorP
                         </div>
                         <div className="flex items-center gap-2 shrink-0">
                           <span className="text-zinc-400 text-[10px]">{t.time}</span>
-                          <span className="px-1.5 py-0.5 rounded bg-emerald-500/10 text-[#00FF9D] text-[9px] font-bold">
+                          <span className="px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 text-[9px] font-bold">
                             PASSED
                           </span>
                         </div>
@@ -379,7 +379,7 @@ export function CanonicalDesktopSimulator({ locale }: CanonicalDesktopSimulatorP
                   {/* Test Telemetry Summary */}
                   <div className="pt-2 border-t border-zinc-800 flex flex-wrap items-center justify-between text-[10px] text-zinc-400 gap-2">
                     <div className="flex items-center gap-3">
-                      <span className="text-[#00FF9D] font-bold">● 7 Passed</span>
+                      <span className="text-emerald-400 font-bold">● 7 Passed</span>
                       <span>0 Failed</span>
                       <span className="text-zinc-500">12.63ms execution</span>
                     </div>
@@ -416,23 +416,23 @@ export function CanonicalDesktopSimulator({ locale }: CanonicalDesktopSimulatorP
                         <tbody className="divide-y divide-zinc-800/60 text-zinc-300">
                           <tr>
                             <td className="py-1.5 px-2 font-bold text-white">Merge Sort</td>
-                            <td className="py-1.5 px-2 text-[#00FF9D]">Ω(n log n)</td>
+                            <td className="py-1.5 px-2 text-emerald-400">Ω(n log n)</td>
                             <td className="py-1.5 px-2">Θ(n log n)</td>
                             <td className="py-1.5 px-2 text-[#FFBD2E]">O(n log n)</td>
                             <td className="py-1.5 px-2">O(n)</td>
-                            <td className="py-1.5 px-2 text-[#00FF9D]">Cache-Aligned</td>
+                            <td className="py-1.5 px-2 text-emerald-400">Cache-Aligned</td>
                           </tr>
                           <tr>
                             <td className="py-1.5 px-2 font-bold text-white">HeapSort</td>
-                            <td className="py-1.5 px-2 text-[#00FF9D]">Ω(n log n)</td>
+                            <td className="py-1.5 px-2 text-emerald-400">Ω(n log n)</td>
                             <td className="py-1.5 px-2">Θ(n log n)</td>
                             <td className="py-1.5 px-2 text-[#FFBD2E]">O(n log n)</td>
-                            <td className="py-1.5 px-2 text-[#00FF9D]">O(1) [In-place]</td>
+                            <td className="py-1.5 px-2 text-emerald-400">O(1) [In-place]</td>
                             <td className="py-1.5 px-2 text-[#00F0FF]">SIMD128</td>
                           </tr>
                           <tr>
                             <td className="py-1.5 px-2 font-bold text-white">QuickSort</td>
-                            <td className="py-1.5 px-2 text-[#00FF9D]">Ω(n log n)</td>
+                            <td className="py-1.5 px-2 text-emerald-400">Ω(n log n)</td>
                             <td className="py-1.5 px-2">Θ(n log n)</td>
                             <td className="py-1.5 px-2 text-[#FF5F56]">O(n²)</td>
                             <td className="py-1.5 px-2">O(log n)</td>
@@ -440,7 +440,7 @@ export function CanonicalDesktopSimulator({ locale }: CanonicalDesktopSimulatorP
                           </tr>
                           <tr>
                             <td className="py-1.5 px-2 font-bold text-white">A* Search</td>
-                            <td className="py-1.5 px-2 text-[#00FF9D]">Ω(1)</td>
+                            <td className="py-1.5 px-2 text-emerald-400">Ω(1)</td>
                             <td className="py-1.5 px-2">Θ(b^d)</td>
                             <td className="py-1.5 px-2">O(b^d)</td>
                             <td className="py-1.5 px-2">O(b^d)</td>
@@ -454,7 +454,7 @@ export function CanonicalDesktopSimulator({ locale }: CanonicalDesktopSimulatorP
                     <div className="mt-4 pt-3 border-t border-zinc-800 space-y-2">
                       <span className="text-[11px] font-bold text-zinc-300">Throughput Benchmark (ops / sec):</span>
                       {[
-                        { name: "SIMD Vector Sort (AVX2)", ops: "4.82 M", percent: 96, color: "#00FF9D" },
+                        { name: "SIMD Vector Sort (AVX2)", ops: "4.82 M", percent: 96, color: "#10B981" },
                         { name: "QuickSort (Median-of-3)", ops: "2.91 M", percent: 65, color: "#00F0FF" },
                         { name: "MergeSort (Memory-Bound)", ops: "2.10 M", percent: 48, color: "#FFBD2E" },
                         { name: "A* Pathfinding Search", ops: "520 K", percent: 32, color: "#a855f7" },
@@ -477,7 +477,7 @@ export function CanonicalDesktopSimulator({ locale }: CanonicalDesktopSimulatorP
 
                   {/* Cache Efficiency Metric */}
                   <div className="pt-2 border-t border-zinc-800 flex justify-between text-[10px] text-zinc-500">
-                    <span>L1/L2 Cache Hit Ratio: <strong className="text-[#00FF9D]">99.2%</strong></span>
+                    <span>L1/L2 Cache Hit Ratio: <strong className="text-emerald-400">99.2%</strong></span>
                     <span>Branch Prediction: <strong className="text-[#00F0FF]">98.7%</strong></span>
                   </div>
                 </div>
@@ -489,7 +489,7 @@ export function CanonicalDesktopSimulator({ locale }: CanonicalDesktopSimulatorP
                   <div>
                     <div className="flex items-center justify-between pb-2 border-b border-zinc-800">
                       <span className="text-white font-bold">WASM Execution & Sandbox Configuration</span>
-                      <span className="text-[10px] text-[#00FF9D]">ACTIVE PROFILE</span>
+                      <span className="text-[10px] text-emerald-400">ACTIVE PROFILE</span>
                     </div>
 
                     <div className="mt-4 space-y-4 text-[11px]">
@@ -505,7 +505,7 @@ export function CanonicalDesktopSimulator({ locale }: CanonicalDesktopSimulatorP
                           onClick={() => setSimdEnabled(!simdEnabled)}
                           className={`px-3 py-1 rounded-md text-[10px] font-bold transition-all cursor-pointer ${
                             simdEnabled
-                              ? "bg-[#00FF9D] text-black shadow-[0_0_10px_rgba(0,255,157,0.4)]"
+                              ? "bg-emerald-400 text-black shadow-[0_0_10px_rgba(16,185,129,0.4)]"
                               : "bg-zinc-800 text-zinc-400 border border-zinc-700"
                           }`}
                         >
@@ -569,7 +569,7 @@ export function CanonicalDesktopSimulator({ locale }: CanonicalDesktopSimulatorP
                               onClick={() => setTelemetryRate(rate)}
                               className={`px-2 py-0.5 rounded text-[10px] border transition-all cursor-pointer ${
                                 telemetryRate === rate
-                                  ? "bg-[#00FF9D]/15 border-[#00FF9D] text-[#00FF9D]"
+                                  ? "bg-emerald-400/15 border-emerald-400 text-emerald-400"
                                   : "bg-zinc-900 border-zinc-800 text-zinc-500"
                               }`}
                             >
@@ -582,14 +582,14 @@ export function CanonicalDesktopSimulator({ locale }: CanonicalDesktopSimulatorP
                   </div>
 
                   {/* Live Simulation Impact Card */}
-                  <div className="p-3 rounded-lg bg-[#00FF9D]/06 border border-[#00FF9D]/25 mt-3 flex items-center justify-between">
+                  <div className="p-3 rounded-lg bg-emerald-400/06 border border-emerald-400/25 mt-3 flex items-center justify-between">
                     <div>
-                      <div className="text-[10px] font-bold text-[#00FF9D]">ESTIMATED SYSTEM THROUGHPUT</div>
+                      <div className="text-[10px] font-bold text-emerald-400">ESTIMATED SYSTEM THROUGHPUT</div>
                       <div className="text-[9px] text-zinc-400">
                         Threads: {wasmThreads} · SIMD: {simdEnabled ? "Active" : "Off"} · GC: {gcMode}
                       </div>
                     </div>
-                    <div className="text-base font-black font-mono text-[#00FF9D]">
+                    <div className="text-base font-black font-mono text-emerald-400">
                       {(wasmThreads * (simdEnabled ? 1.45 : 1.0) * 1.8).toFixed(1)} M ops/s
                     </div>
                   </div>
@@ -606,7 +606,7 @@ export function CanonicalDesktopSimulator({ locale }: CanonicalDesktopSimulatorP
                   <span className="text-zinc-600">•••</span>
                 </div>
                 <div className="py-2 space-y-1.5 text-[10px] text-zinc-400">
-                  <div>Array1[250] <span className="text-[#00FF9D]">[1, 250, 36…]</span></div>
+                  <div>Array1[250] <span className="text-emerald-400">[1, 250, 36…]</span></div>
                   <div>currentNode <span className="text-[#00F0FF]">[{activeNode}]</span></div>
                   <div>simd_accel <span className="text-white font-bold">{simdEnabled ? "true" : "false"}</span></div>
                   <div>sortProgress <span className="text-[#FFBD2E]">{sortProgress}%</span></div>
@@ -645,7 +645,7 @@ export function CanonicalDesktopSimulator({ locale }: CanonicalDesktopSimulatorP
                 <div className="grid grid-cols-3 gap-2 pt-3 text-center">
                   <div>
                     <div className="text-[9px] text-zinc-500 uppercase">CPU</div>
-                    <div className="text-sm font-bold text-[#00FF9D]">{cpuVal}%</div>
+                    <div className="text-sm font-bold text-emerald-400">{cpuVal}%</div>
                   </div>
                   <div>
                     <div className="text-[9px] text-zinc-500 uppercase">MEM</div>
@@ -659,7 +659,7 @@ export function CanonicalDesktopSimulator({ locale }: CanonicalDesktopSimulatorP
                 {/* Mini telemetry bars */}
                 <div className="mt-3 space-y-1.5">
                   {[
-                    { label: "CPU", val: cpuVal, max: 100, color: "#00FF9D" },
+                    { label: "CPU", val: cpuVal, max: 100, color: "#10B981" },
                     { label: "MEM", val: memVal, max: 100, color: "#00F0FF" },
                     { label: "NET", val: (netVal / 2) * 100, max: 100, color: "#FFBD2E" },
                   ].map((bar) => (
