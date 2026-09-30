@@ -11,7 +11,7 @@ export function HeroSection({ locale }: { locale: Locale }) {
   return (
     <section className="relative w-full bg-[#FAF8F5] dark:bg-[#0B0B0C] text-[#0B0B0C] dark:text-white pt-8 sm:pt-12 pb-0 lg:pb-0 overflow-hidden border-b border-black/5 dark:border-white/5 transition-colors">
       {/* Background Architectural Grid Linework */}
-      <div className="absolute inset-0 pointer-events-none opacity-20 dark:opacity-10">
+      <div className="absolute inset-0 pointer-events-none opacity-20 dark:opacity-10 z-0">
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <pattern id="heroCircuitGrid" width="64" height="64" patternUnits="userSpaceOnUse">
@@ -26,12 +26,13 @@ export function HeroSection({ locale }: { locale: Locale }) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 items-center">
           
           {/* ═══════════════════════════════════════════════════════════════════════
-              LEFT COLUMN (lg:col-span-7): Copy + Far-Left Circuit Spine + Middle Bridge
+              LEFT / PRIMARY COLUMN (lg:col-span-7): Copy + Outer Circuit Spine + Middle Bridge
              ═══════════════════════════════════════════════════════════════════════ */}
-          <div className="lg:col-span-7 relative flex flex-col justify-center py-6 sm:py-10 ps-6 sm:ps-8 lg:ps-10">
+          <div className="lg:col-span-7 relative flex flex-col justify-center py-6 sm:py-10 ps-7 sm:ps-9 lg:ps-12">
             
-            {/* ─── ZONE 1: FAR-LEFT VERTICAL CIRCUIT SPINE (Region 1 in s1.png) ─── */}
-            <div className="absolute start-0 sm:start-1 lg:start-2 top-3 sm:top-5 bottom-8 w-7 sm:w-8 pointer-events-none select-none z-20">
+            {/* ─── ZONE 1: OUTER VERTICAL CIRCUIT SPINE (Region 1 in s1.png) ─── */}
+            {/* Sits on the outer edge, top branch points inward towards the greeting */}
+            <div className={`absolute start-0 sm:start-1 lg:start-2 top-3 sm:top-5 bottom-8 w-7 sm:w-8 pointer-events-none select-none z-10 ${isRtl ? "-scale-x-100" : ""}`}>
               <svg
                 viewBox="0 0 32 380"
                 fill="none"
@@ -56,8 +57,8 @@ export function HeroSection({ locale }: { locale: Locale }) {
             </div>
 
             {/* ─── ZONE 3: MIDDLE CIRCUIT SCHEMATIC (Region 2 in s1.png) ─── */}
-            {/* Sits right in the open gap between the copy and Abdulghani's shoulder */}
-            <div className="hidden lg:block absolute end-0 top-1/2 -translate-y-1/2 w-48 xl:w-56 h-[400px] pointer-events-none select-none z-10 translate-x-6 xl:translate-x-10">
+            {/* Strictly positioned BEHIND portrait at z-2, in the gap between copy and shoulder */}
+            <div className={`hidden lg:block absolute end-0 top-1/2 -translate-y-1/2 w-48 xl:w-56 h-[400px] pointer-events-none select-none z-2 translate-x-4 xl:translate-x-8 ${isRtl ? "-scale-x-100 -translate-x-4 xl:-translate-x-8" : ""}`}>
               <svg
                 viewBox="0 0 220 400"
                 fill="none"
@@ -179,24 +180,24 @@ export function HeroSection({ locale }: { locale: Locale }) {
           </div>
 
           {/* ═══════════════════════════════════════════════════════════════════════
-              RIGHT COLUMN (lg:col-span-5): Portrait + Right Flank (Region 3 in s1.png)
+              RIGHT / SECONDARY COLUMN (lg:col-span-5): Portrait (z-10) + Flank Artwork (z-2)
              ═══════════════════════════════════════════════════════════════════════ */}
-          <div className="lg:col-span-5 relative flex items-end justify-start min-h-[460px] sm:min-h-[520px] lg:min-h-[560px]">
+          <div className="lg:col-span-5 relative flex items-end justify-center lg:justify-start min-h-[480px] sm:min-h-[540px] lg:min-h-[580px]">
             {/* Ambient Radial Rim Backlight */}
-            <div className="absolute top-1/2 start-1/3 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[400px] h-[460px] rounded-full bg-radial from-[#D4AF37]/20 via-[#D4AF37]/5 to-transparent pointer-events-none blur-3xl dark:block hidden -z-1" />
-            <div className="absolute top-1/2 start-1/3 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[400px] h-[460px] rounded-full bg-radial from-[#F5EFE3]/80 via-[#FAF8F5]/30 to-transparent pointer-events-none blur-2xl dark:hidden -z-1" />
+            <div className="absolute top-1/2 start-1/3 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[400px] h-[460px] rounded-full bg-radial from-[#D4AF37]/20 via-[#D4AF37]/5 to-transparent pointer-events-none blur-3xl dark:block hidden z-1" />
+            <div className="absolute top-1/2 start-1/3 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[400px] h-[460px] rounded-full bg-radial from-[#F5EFE3]/80 via-[#FAF8F5]/30 to-transparent pointer-events-none blur-2xl dark:hidden z-1" />
 
-            {/* ─── Top-Right Horizontal Ruler Notch Accent (Matching s1.png) ─── */}
-            <div className="absolute top-2 end-2 sm:end-4 w-32 sm:w-44 h-4 pointer-events-none select-none z-20">
+            {/* ─── Top Horizontal Ruler Notch Accent (Matching s1.png) ─── */}
+            <div className={`absolute top-2 sm:top-3 end-2 sm:end-4 w-32 sm:w-44 h-4 pointer-events-none select-none z-2 ${isRtl ? "-scale-x-100" : ""}`}>
               <svg viewBox="0 0 160 16" fill="none" className="w-full h-full">
                 <line x1="0" y1="8" x2="148" y2="8" stroke="#C59B27" strokeWidth="1" strokeOpacity="0.5" className="dark:stroke-[#D4AF37]" />
                 <rect x="148" y="5" width="10" height="6" fill="#C59B27" fillOpacity="0.75" className="dark:fill-[#D4AF37]" />
               </svg>
             </div>
 
-            {/* ─── Technical Words beside Hair (Exactly matching s1.png) ─── */}
-            <div className="absolute top-12 sm:top-14 end-4 sm:end-8 lg:end-4 xl:end-8 z-20 pointer-events-none select-none text-end">
-              <div className="flex flex-col space-y-1.5 font-mono text-[11px] xl:text-[12px] font-semibold tracking-[0.22em] text-[#7C6E59] dark:text-[#C5A562] uppercase">
+            {/* ─── Technical Words beside Hair (Strictly LTR so dot stays on left, matching s1.png) ─── */}
+            <div className="absolute top-10 sm:top-12 end-4 sm:end-8 lg:end-2 xl:end-6 z-20 pointer-events-none select-none text-end">
+              <div dir="ltr" className="flex flex-col space-y-1.5 font-mono text-[11px] xl:text-[12px] font-semibold tracking-[0.22em] text-[#7C6E59] dark:text-[#C5A562] uppercase">
                 <div className="flex items-center justify-end gap-2">
                   <span className="text-[#C59B27] dark:text-[#D4AF37] font-bold text-sm">·</span>
                   <span>CODE</span>
@@ -216,9 +217,10 @@ export function HeroSection({ locale }: { locale: Locale }) {
               </div>
             </div>
 
-            {/* ─── Technical AI Frame & Diagonal Bus Traces (Clear of coat, matching s1.png) ─── */}
-            <div className="absolute top-[165px] sm:top-[175px] end-0 sm:end-2 lg:-end-2 xl:end-2 w-44 sm:w-52 h-[330px] pointer-events-none select-none z-20">
-              <svg viewBox="0 0 200 330" fill="none" className="w-full h-full">
+            {/* ─── Technical AI Frame & Diagonal Bus Traces ─── */}
+            {/* Positioned at shoulder level (top-[255px]) and z-2 BEHIND Abdulghani (z-10), NEVER covering head/ear! */}
+            <div className={`absolute top-[230px] sm:top-[245px] lg:top-[255px] xl:top-[260px] end-0 sm:end-1 lg:-end-3 xl:end-1 w-44 sm:w-50 h-[300px] pointer-events-none select-none z-2 ${isRtl ? "-scale-x-100" : ""}`}>
+              <svg viewBox="0 0 200 300" fill="none" className="w-full h-full">
                 <defs>
                   <linearGradient id="goldTraceGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stopColor="#FBF0B9" />
@@ -254,7 +256,20 @@ export function HeroSection({ locale }: { locale: Locale }) {
 
                   {/* Center AI Node */}
                   <circle cx="62" cy="59" r="15" stroke="url(#goldTraceGrad)" strokeWidth="1.5" fill="#FAF8F5" className="dark:fill-[#0E0E10]" />
-                  <text x="62" y="64" textAnchor="middle" fill="#997A15" className="dark:fill-[#E2C366]" fontSize="11" fontFamily="monospace" fontWeight="bold" letterSpacing="0.05em">AI</text>
+                  <text
+                    x={isRtl ? "-62" : "62"}
+                    y="64"
+                    transform={isRtl ? "scale(-1, 1)" : undefined}
+                    textAnchor="middle"
+                    fill="#997A15"
+                    className="dark:fill-[#E2C366]"
+                    fontSize="11"
+                    fontFamily="monospace"
+                    fontWeight="bold"
+                    letterSpacing="0.05em"
+                  >
+                    AI
+                  </text>
 
                   {/* Spoke Lines to Central AI Node */}
                   <line x1="28" y1="30" x2="50" y2="50" stroke="#C59B27" strokeWidth="1" strokeOpacity="0.6" className="dark:stroke-[#D4AF37]" />
@@ -268,30 +283,27 @@ export function HeroSection({ locale }: { locale: Locale }) {
                 <path d="M 134 40 L 155 40 L 170 55 L 185 55" stroke="#C59B27" strokeWidth="1" strokeOpacity="0.5" className="dark:stroke-[#D4AF37]" />
                 <circle cx="155" cy="40" r="2" fill="#C59B27" className="dark:fill-[#D4AF37]" />
 
-                {/* 3 Parallel 45-degree Diagonal Bus Lines Streaming to Bottom-Right */}
-                {/* Bus Line 1 */}
+                {/* 3 Parallel 45-degree Diagonal Bus Lines Streaming to Outer Bottom Corner */}
                 <path d="M 25 130 L 25 155 L 65 195 L 140 195 L 185 240" stroke="#C59B27" strokeWidth="1.2" strokeOpacity="0.55" className="dark:stroke-[#D4AF37]" />
                 <circle cx="140" cy="195" r="2" fill="#C59B27" className="dark:fill-[#D4AF37]" />
                 <circle cx="185" cy="240" r="2.5" fill="#FAF8F5" stroke="#C59B27" strokeWidth="1.2" className="dark:fill-[#0B0B0C] dark:stroke-[#D4AF37]" />
 
-                {/* Bus Line 2 */}
                 <path d="M 45 130 L 45 145 L 80 180 L 155 180 L 195 220" stroke="#C59B27" strokeWidth="1" strokeOpacity="0.45" className="dark:stroke-[#D4AF37]" />
                 <circle cx="195" cy="220" r="2" fill="#C59B27" className="dark:fill-[#D4AF37]" />
 
-                {/* Bus Line 3 */}
                 <path d="M 75 130 L 95 150 L 170 150 L 198 178" stroke="#C59B27" strokeWidth="0.9" strokeOpacity="0.35" className="dark:stroke-[#D4AF37]" />
               </svg>
             </div>
 
-            {/* Transparent Cutout Portrait - Resting naturally on the section baseline with room for flank elements */}
-            <div className="relative w-full max-w-[290px] sm:max-w-[340px] lg:max-w-[370px] xl:max-w-[410px] aspect-[4/5] z-10 flex items-end justify-center pe-12 sm:pe-16 lg:pe-14 xl:pe-16">
+            {/* ─── Cutout Portrait: HERO LAYER (z-10 - Strictly in FRONT of all background graphics) ─── */}
+            <div className="relative w-full max-w-[280px] sm:max-w-[330px] lg:max-w-[360px] xl:max-w-[390px] aspect-[4/5] z-10 flex items-end justify-center select-none pointer-events-none">
               <Image
                 src="/images/profile/abdulghani-portrait.webp"
                 alt="Abdulghani Al-Shibami — AI Engineer & Software Developer"
                 fill
                 priority
                 className="object-contain object-bottom select-none pointer-events-none filter drop-shadow-2xl"
-                sizes="(max-width: 768px) 300px, (max-width: 1200px) 370px, 410px"
+                sizes="(max-width: 768px) 280px, (max-width: 1200px) 360px, 390px"
               />
             </div>
           </div>
@@ -300,4 +312,5 @@ export function HeroSection({ locale }: { locale: Locale }) {
     </section>
   );
 }
+
 
