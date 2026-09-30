@@ -6,20 +6,16 @@ import { Locale } from "@/lib/i18n/dictionaries";
 import {
   VERIFIED_CERTIFICATES,
   VerifiedCertificate,
-  CredentialCategory,
 } from "@/lib/data/credentials";
 import { CertificateCard } from "./CertificateCard";
 import { CertificateModal } from "./CertificateModal";
 import {
-  Award,
   ShieldCheck,
-  Sparkles,
   ArrowLeft,
   ArrowRight,
   Filter,
   FileText,
   Download,
-  CheckCircle2,
 } from "lucide-react";
 
 interface CredentialsCatalogViewProps {
@@ -58,20 +54,20 @@ export function CredentialsCatalogView({ locale }: CredentialsCatalogViewProps) 
         <div className="flex items-center gap-2 text-xs text-content-muted">
           <Link
             href={`/${locale}`}
-            className="hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors flex items-center gap-1"
+            className="hover:text-gold-dark dark:hover:text-gold-light transition-colors flex items-center gap-1"
           >
             {isAr ? "الرئيسية" : "Home"}
           </Link>
           <span>/</span>
-          <span className="text-indigo-600 dark:text-cyan-400 font-semibold">
+          <span className="text-gold-dark dark:text-gold-light font-semibold">
             {isAr ? "الشهادات والاعتمادات" : "Credentials"}
           </span>
         </div>
 
         {/* ── Page Hero Header ── */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-hairline pb-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-black/10 dark:border-white/10 pb-8">
           <div className="space-y-3 max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-xs text-indigo-600 dark:text-cyan-400 uppercase tracking-widest font-bold">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-primary/10 border border-gold-primary/30 text-xs text-gold-dark dark:text-gold-light uppercase tracking-widest font-bold">
               <ShieldCheck className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
               <span>{isAr ? "أرشيف الوثائق المعتمدة" : "AUTHENTIC CREDENTIAL ARCHIVE"}</span>
             </div>
@@ -80,14 +76,14 @@ export function CredentialsCatalogView({ locale }: CredentialsCatalogViewProps) 
               {isAr ? (
                 <>
                   الشهادات والاعتمادات{" "}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 dark:from-indigo-400 via-cyan-500 dark:via-cyan-400 to-emerald-500 dark:to-emerald-400">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#F3E5AB] to-[#997A15]">
                     المهنية والأكاديمية
                   </span>
                 </>
               ) : (
                 <>
                   Professional Certifications &{" "}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 dark:from-indigo-400 via-cyan-500 dark:via-cyan-400 to-emerald-500 dark:to-emerald-400">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#F3E5AB] to-[#997A15]">
                     Academic Honors
                   </span>
                 </>
@@ -107,15 +103,15 @@ export function CredentialsCatalogView({ locale }: CredentialsCatalogViewProps) 
               href="/docs/Abdulghani_Al-Shibami_CV.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2.5 rounded-xl bg-surface-secondary border border-hairline hover:border-indigo-500/40 text-content-secondary hover:text-content-primary text-xs font-semibold flex items-center gap-2 transition-all cursor-pointer shadow-sm active:scale-95"
+              className="px-4 py-2.5 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-gold-primary/50 text-content-secondary hover:text-content-primary text-xs font-semibold flex items-center gap-2 transition-all cursor-pointer shadow-sm active:scale-95"
             >
-              <FileText className="w-4 h-4 text-indigo-600 dark:text-cyan-400" />
+              <FileText className="w-4 h-4 text-gold-dark dark:text-gold-light" />
               <span>{isAr ? "معاينة السيرة الذاتية" : "View CV"}</span>
             </a>
             <a
               href="/docs/Abdulghani_Al-Shibami_CV.pdf"
               download="Abdulghani_Al-Shibami_CV.pdf"
-              className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-indigo-500 to-cyan-500 hover:from-indigo-600 hover:to-cyan-600 text-white text-xs font-bold flex items-center gap-2 shadow-[0_0_20px_rgba(99,102,241,0.35)] transition-all cursor-pointer active:scale-95"
+              className="px-4 py-2.5 rounded-xl bg-gold-primary hover:bg-gold-light text-black text-xs font-bold flex items-center gap-2 shadow-sm transition-all cursor-pointer active:scale-95"
             >
               <Download className="w-4 h-4" />
               <span>{isAr ? "تحميل السيرة الذاتية" : "Download CV"}</span>
@@ -135,8 +131,8 @@ export function CredentialsCatalogView({ locale }: CredentialsCatalogViewProps) 
                 onClick={() => setSelectedCategory(cat.id)}
                 className={`px-3.5 py-1.5 rounded-xl text-xs whitespace-nowrap transition-all cursor-pointer border ${
                   isActive
-                    ? "bg-indigo-600 text-white border-indigo-400 shadow-[0_0_15px_rgba(99,102,241,0.4)] font-bold"
-                    : "bg-surface-secondary text-content-muted border-hairline hover:border-indigo-500/30 hover:text-content-primary"
+                    ? "bg-gold-primary text-black border-gold-primary font-bold shadow-sm"
+                    : "bg-black/5 dark:bg-white/5 text-content-muted border-black/10 dark:border-white/10 hover:border-gold-primary/40 hover:text-content-primary"
                 }`}
               >
                 {cat.label}
@@ -158,10 +154,10 @@ export function CredentialsCatalogView({ locale }: CredentialsCatalogViewProps) 
         </div>
 
         {/* ── Back to Home Link ── */}
-        <div className="pt-8 border-t border-hairline flex items-center justify-between">
+        <div className="pt-8 border-t border-black/10 dark:border-white/10 flex items-center justify-between">
           <Link
             href={`/${locale}`}
-            className="text-xs text-content-muted hover:text-indigo-600 dark:hover:text-cyan-400 flex items-center gap-2 transition-colors group"
+            className="text-xs text-content-muted hover:text-gold-dark dark:hover:text-gold-light flex items-center gap-2 transition-colors group"
           >
             {isAr ? (
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

@@ -67,7 +67,7 @@ export const DemoCalloutBanner: React.FC<DemoCalloutBannerProps> = ({
   const demoUrl = project.demoUrl ? `/${locale}${project.demoUrl}` : `/${locale}/projects/${project.slug}/demo`;
 
   return (
-    <div className="rounded-2xl border border-slate-200 dark:border-indigo-500/30 bg-white dark:bg-gradient-to-r dark:from-[#0F172A] dark:via-[#0B1120] dark:to-[#090D16] p-6 sm:p-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 transition-all hover:border-indigo-500/60 shadow-md dark:shadow-[0_15px_40px_rgba(2,6,23,0.8),0_0_25px_rgba(99,102,241,0.15)]">
+    <div className="rounded-2xl border border-black/10 dark:border-gold-primary/30 bg-white dark:bg-[#121214] p-6 sm:p-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 transition-all hover:border-gold-primary/60 shadow-md dark:shadow-2xl">
       <div className="space-y-3 max-w-2xl font-mono">
         <div className="flex items-center gap-3">
           <span className="px-2.5 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 flex items-center gap-1.5">
@@ -78,20 +78,20 @@ export const DemoCalloutBanner: React.FC<DemoCalloutBannerProps> = ({
                   ? "تطبيق تشغيلي مباشر"
                   : "LIVE PRODUCTION SYSTEM"
                 : isRtl
-                ? "محاكي سطح المكتب الحي"
-                : "WORKSTATION SANDBOX"}
+                ? "محاكي تفاعلي حي"
+                : "INTERACTIVE SIMULATION"}
             </span>
           </span>
-          <span className="text-xs text-slate-500 dark:text-slate-400 hidden sm:inline">
+          <span className="text-xs text-gold-dark dark:text-gold-light hidden sm:inline font-bold">
             {"// "}{isRtl ? "بيئة التشغيل جاهزة" : "ACTIVE RUNTIME READY"}
           </span>
         </div>
 
-        <h3 className="font-serif text-2xl sm:text-3xl font-normal text-slate-900 dark:text-white">
+        <h3 className="font-serif text-2xl sm:text-3xl font-normal text-zinc-900 dark:text-white">
           {bannerTitle}
         </h3>
 
-        <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+        <p className="text-zinc-600 dark:text-zinc-300 text-xs sm:text-sm leading-relaxed font-sans">
           {bannerDesc}
         </p>
       </div>
@@ -99,7 +99,7 @@ export const DemoCalloutBanner: React.FC<DemoCalloutBannerProps> = ({
       <div className="shrink-0 w-full lg:w-auto">
         <Link
           href={demoUrl}
-          className="w-full lg:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-cyan-500 hover:from-indigo-600 hover:to-cyan-600 text-white font-mono font-bold text-sm shadow-[0_0_20px_rgba(99,102,241,0.35)] transition-all active:scale-95"
+          className="w-full lg:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gold-primary hover:bg-gold-light text-black font-mono font-bold text-sm shadow-md transition-all active:scale-95"
         >
           <span>
             {project.demoType === "real_live"
@@ -107,8 +107,8 @@ export const DemoCalloutBanner: React.FC<DemoCalloutBannerProps> = ({
                 ? "فتح التطبيق المباشر"
                 : "Launch Live App"
               : isRtl
-              ? "تشغيل محاكي سطح المكتب"
-              : "Launch Workstation Demo"}
+              ? "تشغيل المحاكي التفاعلي"
+              : "Launch Interactive Demo"}
           </span>
           <span>⚡</span>
         </Link>

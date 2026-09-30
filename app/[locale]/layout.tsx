@@ -42,6 +42,47 @@ export default async function LocaleLayout({
   const currentLocale = locale as Locale;
   const dict = dictionaries[currentLocale];
   const isRtl = currentLocale === "ar";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://abdulghani.dev";
+
+  const personJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Abdulghani Al-Shibami",
+    alternateName: "عبدالغني الشبامي",
+    jobTitle: currentLocale === "ar" ? "مهندس ذكاء اصطناعي ومطور برمجيات" : "AI Engineer & Software Developer",
+    url: `${siteUrl}/${currentLocale}`,
+    image: `${siteUrl}/images/profile/abdulghani-portrait.webp`,
+    alumniOf: {
+      "@type": "CollegeOrUniversity",
+      name: "University of Modern Sciences",
+      alternateName: "جامعة العلوم الحديثة",
+    },
+    sameAs: [
+      "https://github.com/Abdulghani780",
+      "https://linkedin.com/in/abdulghani-alshibami",
+    ],
+    knowsAbout: [
+      "Artificial Intelligence",
+      "Machine Learning",
+      "Kotlin",
+      "Jetpack Compose",
+      "TensorFlow Lite",
+      "MediaPipe",
+      "C# .NET",
+      "Oracle Database",
+      "Next.js",
+      "TypeScript",
+      "Python",
+    ],
+  };
+
+  const profilePageJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    dateCreated: "2024-01-01T00:00:00Z",
+    dateModified: new Date().toISOString(),
+    mainEntity: personJsonLd,
+  };
 
   return (
     <div
@@ -49,6 +90,10 @@ export default async function LocaleLayout({
       lang={currentLocale}
       className="flex flex-col min-h-screen bg-canvas text-content-primary transition-colors duration-200"
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageJsonLd) }}
+      />
       <script
         dangerouslySetInnerHTML={{
           __html: `document.documentElement.lang="${currentLocale}";document.documentElement.dir="${isRtl ? "rtl" : "ltr"}";`,

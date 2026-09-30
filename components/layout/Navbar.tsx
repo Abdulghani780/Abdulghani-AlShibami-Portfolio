@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Locale, Dictionary } from "@/lib/i18n/dictionaries";
 import { ThemeToggle } from "./ThemeToggle";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { AsLogo } from "@/components/ui/AsLogo";
 import { cn } from "@/lib/utils";
 
 export function Navbar({
@@ -27,99 +28,95 @@ export function Navbar({
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const isRtl = locale === "ar";
+
   const isHomePage =
     pathname === `/${locale}` ||
     pathname === `/${locale}/` ||
     pathname === "/" ||
     pathname === "";
 
-  const isRtl = locale === "ar";
-
-  const navLinks = isHomePage
-    ? [
-        { href: "#projects", label: isRtl ? "المشاريع" : "Projects" },
-        { href: "#sandbox", label: isRtl ? "المحاكي" : "Sandbox" },
-        { href: `/${locale}/showcase`, label: isRtl ? "استوديو العروض" : "Demo Studio" },
-        { href: "#credentials", label: isRtl ? "الشهادات" : "Credentials" },
-        { href: "#contact", label: isRtl ? "تواصل" : "Contact" },
-      ]
-    : [
-        { href: `/${locale}`, label: isRtl ? "الرئيسية" : "Home" },
-        { href: `/${locale}/projects`, label: dict.nav.projects },
-        { href: `/${locale}/showcase`, label: isRtl ? "استوديو الديمو" : "Demo Studio" },
-        { href: `/${locale}/credentials`, label: isRtl ? "الشهادات" : "Credentials" },
-        { href: `/${locale}#contact`, label: dict.nav.contact },
-      ];
+  const navLinks = [
+    {
+      href: isHomePage ? "#about" : `/${locale}#about`,
+      label: isRtl ? "من أنا" : "ABOUT",
+    },
+    {
+      href: isHomePage ? "#ai-lab" : `/${locale}#ai-lab`,
+      label: isRtl ? "مختبر الذكاء" : "AI LAB",
+    },
+    {
+      href: isHomePage ? "#projects" : `/${locale}#projects`,
+      label: isRtl ? "المشاريع" : "PROJECTS",
+    },
+    {
+      href: isHomePage ? "#engineering" : `/${locale}#engineering`,
+      label: isRtl ? "الهندسة العامة" : "ENGINEERING",
+    },
+    {
+      href: isHomePage ? "#certifications" : `/${locale}#certifications`,
+      label: isRtl ? "الشهادات" : "CERTIFICATIONS",
+    },
+    {
+      href: isHomePage ? "#contact" : `/${locale}#contact`,
+      label: isRtl ? "تواصل معي" : "CONTACT",
+    },
+  ];
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 pt-3 sm:pt-4 px-3 sm:px-6 pointer-events-none transition-all duration-500 opacity-100 translate-y-0">
-      <div
-        className={cn(
-          "w-full max-w-5xl mx-auto rounded-2xl pointer-events-auto transition-all duration-300",
-          "border px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between backdrop-blur-xl",
-          isScrolled
-            ? "bg-canvas/95 border-indigo-500/30 shadow-[0_10px_35px_rgba(2,6,23,0.8),0_0_20px_rgba(99,102,241,0.15)]"
-            : "bg-canvas/90 border-slate-300/80 dark:border-slate-700/40 shadow-md dark:shadow-lg"
-        )}
-      >
-        {/* Brand Identity & Monogram */}
-        <Link
-          href={`/${locale}`}
-          className="flex items-center gap-3 group focus:outline-none"
-        >
-          <span className="w-8 h-8 rounded-lg border border-indigo-500/50 bg-indigo-500/10 flex items-center justify-center font-mono text-sm text-indigo-500 dark:text-indigo-400 font-black transition-all duration-200 group-hover:bg-indigo-500/20 group-hover:border-cyan-400 group-hover:shadow-[0_0_12px_rgba(99,102,241,0.4)] shrink-0">
-            AS
-          </span>
-          <div className="flex flex-col">
-            <span className="font-mono text-xs tracking-wider text-content-primary font-bold group-hover:text-indigo-600 dark:group-hover:text-indigo-300 transition-colors uppercase">
-              {isRtl ? "عبدالغني الشبامي" : "Abdulghani Al-Shibami"}
-            </span>
-            <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">
-              {"// "}{isRtl ? "أنظمة وذكاء اصطناعي" : "AI & SYSTEMS"}
-            </span>
-          </div>
-        </Link>
+    <header
+      className={cn(
+        "sticky top-0 inset-x-0 z-50 w-full transition-all duration-300",
+        isScrolled
+          ? "bg-white/95 dark:bg-[#0B0B0C]/95 backdrop-blur-md border-b border-black/10 dark:border-white/10 shadow-sm"
+          : "bg-white dark:bg-[#0B0B0C] border-b border-black/5 dark:border-white/5"
+      )}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between">
+        {/* Left: Brand Monogram & Wordmark */}
+        <AsLogo locale={locale} showWordmark={true} />
 
-        {/* Center Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-6 text-xs font-mono tracking-wider uppercase">
+        {/* Center: Desktop Navigation Links */}
+        <nav
+          className="hidden lg:flex items-center gap-7 xl:gap-9 text-[12px] font-sans font-bold tracking-[0.16em] uppercase text-zinc-800 dark:text-zinc-200"
+          aria-label="Main Navigation"
+        >
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors relative py-1 hover:drop-shadow-[0_0_8px_rgba(6,182,212,0.4)] font-medium"
+              className="hover:text-gold-dark dark:hover:text-gold-light transition-colors duration-200 py-1"
             >
               {link.label}
             </Link>
           ))}
         </nav>
 
-        {/* Right Action Cluster */}
-        <div className="flex items-center gap-2 sm:gap-2.5">
+        {/* Right: Language Switcher, Theme Toggle & CTA */}
+        <div className="flex items-center gap-3 sm:gap-4">
           <LanguageSwitcher currentLocale={locale} />
           <ThemeToggle />
 
-          {/* Desktop Primary Action */}
-          <div className="hidden sm:block">
-            <Link
-              href={`/${locale}/projects`}
-              className="px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-indigo-500 to-cyan-500 hover:from-indigo-600 hover:to-cyan-600 text-white font-mono font-bold text-xs shadow-[0_0_15px_rgba(99,102,241,0.3)] transition-all active:scale-95"
-            >
-              {isRtl ? "المشاريع الحية" : "Live Projects"}
-            </Link>
-          </div>
+          {/* Desktop Primary CTA Button */}
+          <Link
+            href={isHomePage ? "#contact" : `/${locale}#contact`}
+            className="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-[#C59B27] hover:bg-[#B38A1F] text-white text-[12px] font-bold tracking-[0.12em] uppercase shadow-sm transition-all duration-200 active:scale-95"
+          >
+            {isRtl ? "لنبدأ البناء" : "LET'S BUILD"}
+          </Link>
 
           {/* Mobile Hamburger Toggle */}
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden inline-flex items-center justify-center w-8 h-8 rounded-lg border border-slate-300 dark:border-slate-700/60 bg-slate-100 dark:bg-slate-800/40 text-slate-700 dark:text-slate-200 hover:border-indigo-400 transition-colors cursor-pointer"
+            className="lg:hidden inline-flex items-center justify-center w-9 h-9 rounded-lg border border-black/10 dark:border-white/15 bg-black/5 dark:bg-white/5 text-zinc-900 dark:text-white transition-colors"
             aria-label={mobileMenuOpen ? dict.nav.menuClose : dict.nav.menuOpen}
           >
             {mobileMenuOpen ? (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="15"
-                height="15"
+                width="18"
+                height="18"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -133,8 +130,8 @@ export function Navbar({
             ) : (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="15"
-                height="15"
+                width="18"
+                height="18"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -151,29 +148,28 @@ export function Navbar({
         </div>
       </div>
 
-      {/* Mobile Dropdown Menu */}
+      {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden w-full max-w-5xl mx-auto mt-2 rounded-2xl border border-indigo-500/20 bg-canvas/95 backdrop-blur-2xl p-5 space-y-4 shadow-2xl pointer-events-auto animate-in slide-in-from-top-2 duration-200">
-          <nav className="flex flex-col space-y-2 font-mono text-xs uppercase tracking-wider">
-            {navLinks.map((link, idx) => (
+        <div className="lg:hidden border-b border-black/10 dark:border-white/10 bg-white dark:bg-[#0B0B0C] px-5 py-6 space-y-4 animate-in slide-in-from-top-2 duration-200 shadow-xl">
+          <nav className="flex flex-col space-y-3 text-sm font-bold tracking-[0.14em] uppercase text-zinc-800 dark:text-zinc-200">
+            {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between text-content-secondary hover:text-cyan-400 py-2 border-b border-hairline transition-colors"
+                className="py-2 border-b border-black/5 dark:border-white/5 hover:text-gold-dark dark:hover:text-gold-light transition-colors"
               >
-                <span>{link.label}</span>
-                <span className="text-[10px] text-cyan-400 font-mono">0{idx + 1}</span>
+                {link.label}
               </Link>
             ))}
           </nav>
           <div className="pt-2">
             <Link
-              href={`/${locale}/projects`}
+              href={isHomePage ? "#contact" : `/${locale}#contact`}
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full block py-2.5 rounded-lg text-center bg-gradient-to-r from-indigo-500 to-cyan-500 text-white font-mono font-bold text-xs shadow-md active:scale-95 transition-transform"
+              className="w-full inline-flex items-center justify-center py-3 rounded-lg bg-[#C59B27] hover:bg-[#B38A1F] text-white text-xs font-bold tracking-widest uppercase shadow-md"
             >
-              {isRtl ? "المشاريع الحية" : "Live Projects"}
+              {isRtl ? "لنبدأ البناء" : "LET'S BUILD"}
             </Link>
           </div>
         </div>

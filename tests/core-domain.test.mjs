@@ -125,6 +125,21 @@ test("Canonical Project Data Integrity", async (t) => {
     assert.match(content, /subsystems:/);
     assert.match(content, /challenges:/);
   });
+
+  await t.test("strictly excludes forbidden/unapproved project records", () => {
+    const forbidden = ["yusra", "auraledger", "nexora-tech"];
+    for (const f of forbidden) {
+      assert.doesNotMatch(content, new RegExp(`slug:\\s*["']${f}["']`));
+    }
+  });
+
+  await t.test("verifies all GitHub repositories belong to owner", () => {
+    const githubMatches = content.match(/githubUrl:\s*["']([^"']+)["']/g) || [];
+    assert.equal(githubMatches.length >= 5, true, "All 5 projects must have githubUrl");
+    for (const m of githubMatches) {
+      assert.match(m, /https:\/\/github\.com\/Abdulghani780\//);
+    }
+  });
 });
 
 test("Verified Profile & Identity Consistency", async (t) => {

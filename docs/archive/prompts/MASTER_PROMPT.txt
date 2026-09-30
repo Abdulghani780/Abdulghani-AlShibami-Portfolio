@@ -1,0 +1,1549 @@
+# MASTER PROMPT
+
+## FULL WEBSITE REDESIGN, ENGINEERING UPGRADE & PRODUCTION HARDENING
+
+### ABDULGHANI AL-SHIBAMI
+
+**AI Engineer · Software Developer · Systems Thinker**
+
+---
+
+# 0. CORE MISSION
+
+You are responsible for transforming the EXISTING Abdulghani Al-Shibami personal portfolio into a real, polished, production-ready implementation of the ATTACHED VISUAL REFERENCE.
+
+The attached visual reference is the **PRIMARY AND AUTHORITATIVE DESIGN SOURCE**.
+
+Your task is NOT to invent a new website.
+
+Your task is NOT to create a different visual concept.
+
+Your task is to take the existing project and make it look and behave as close as practically possible to the attached reference.
+
+### THE RULE IS SIMPLE
+
+**ATTACHED REFERENCE = EXACT VISUAL TARGET**
+
+**EXISTING PROJECT = TECHNICAL FOUNDATION**
+
+**REAL DATA = SOURCE OF TRUTH**
+
+Everything must serve these three principles.
+
+---
+
+# 1. ABSOLUTE VISUAL FIDELITY
+
+Study the attached visual reference carefully before touching the code.
+
+Analyze:
+
+* overall composition
+* page structure
+* section order
+* spacing
+* typography
+* colors
+* card proportions
+* borders
+* corner radius
+* buttons
+* navigation
+* image treatment
+* portrait composition
+* logo
+* technical graphics
+* dark/light balance
+* visual density
+* whitespace
+* section transitions
+* footer
+* overall luxury feeling
+
+Then reproduce that design language in the real website.
+
+### IMPORTANT
+
+Do NOT creatively redesign the reference.
+
+Do NOT replace it with your own interpretation.
+
+Do NOT introduce a new design system.
+
+Do NOT add random visual effects.
+
+Do NOT add unrelated sections.
+
+Do NOT change the overall composition simply because another layout seems better.
+
+The final result should look like:
+
+> **The attached visual concept was transformed into a real, fully functional website.**
+
+Technical improvements are allowed.
+
+Visual deviation is not.
+
+---
+
+# 2. FIRST STEP — AUDIT
+
+Before writing new code, inspect the entire existing project.
+
+Understand:
+
+* framework
+* routing
+* components
+* layouts
+* styling
+* fonts
+* assets
+* images
+* icons
+* animations
+* API integrations
+* database
+* Supabase
+* GitHub
+* Vercel
+* environment variables
+* dependencies
+* build configuration
+* deployment configuration
+* i18n
+* Arabic RTL support
+* existing project data
+* existing case studies
+* CV
+* social links
+
+Identify:
+
+* working functionality
+* broken functionality
+* reusable components
+* duplicated code
+* obsolete code
+* incomplete features
+* hardcoded content
+* broken links
+* missing routes
+* console errors
+* runtime errors
+* responsive issues
+* accessibility issues
+* performance issues
+* security issues
+* SEO issues
+
+Do not modify anything major until you understand it.
+
+---
+
+# 3. DO NOT DESTROY EXISTING FUNCTIONALITY
+
+This is a redesign and engineering upgrade.
+
+It is NOT a destructive rewrite.
+
+Preserve:
+
+* real data
+* working features
+* real links
+* project information
+* existing integrations
+* existing backend logic
+* useful components
+* database data
+* deployment infrastructure
+
+Improve:
+
+* UI
+* UX
+* architecture
+* responsiveness
+* performance
+* accessibility
+* SEO
+* maintainability
+* code quality
+* interaction design
+
+Replace only what is genuinely broken, obsolete, insecure, or incompatible with the reference.
+
+---
+
+# 4. PERSONAL BRAND
+
+The website represents:
+
+# ABDULGHANI AL-SHIBAMI
+
+Professional identity:
+
+**AI ENGINEER · SOFTWARE DEVELOPER · SYSTEMS THINKER**
+
+The brand should communicate:
+
+**INTELLIGENCE + ENGINEERING + LUXURY + PERSONALITY**
+
+It must NOT feel like:
+
+* generic portfolio
+* SaaS template
+* university project
+* cyberpunk website
+* generic AI landing page
+
+---
+
+# 5. AS LOGO
+
+Create a unique personal identity based on:
+
+**A + S**
+
+for Abdulghani + Shibami.
+
+The AS monogram should subtly combine:
+
+* geometric structure
+* intelligent-system geometry
+* neural nodes
+* restrained circuit paths
+
+The logo must be:
+
+* minimal
+* geometric
+* recognizable
+* premium
+* scalable
+* professional
+
+Create:
+
+1. AS Monogram
+2. Full Wordmark
+3. Compact Mark
+4. Favicon
+
+Wordmark:
+
+**ABDULGHANI AL-SHIBAMI**
+
+Sub-label:
+
+**AI • SOFTWARE • SYSTEMS**
+
+### NEVER use
+
+* generic AI brain
+* robot icon
+* infinity symbol
+* generic circuit-board logo
+* template logo
+* overly complicated symbol
+
+Use ONE consistent logo system throughout the entire website.
+
+---
+
+# 6. DESIGN SYSTEM
+
+Follow the attached reference exactly.
+
+Core colors:
+
+**Obsidian — #0B0B0C**
+
+**Deep Black — #141416**
+
+**Royal Gold — #D4AF37**
+
+**Light Gold — #F3E5AB**
+
+**White — #FFFFFF**
+
+Maintain the reference balance between:
+
+* elegant light sections
+* premium dark sections
+* gold accents
+* black typography
+* subtle technical details
+
+Avoid:
+
+* neon
+* excessive gradients
+* excessive glow
+* excessive glassmorphism
+* gaming aesthetics
+* visual noise
+* excessive futuristic effects
+
+The feeling should be:
+
+**Luxury Editorial + Advanced Engineering**
+
+---
+
+# 7. TYPOGRAPHY
+
+Use premium modern typography matching the reference.
+
+Maintain a clear hierarchy for:
+
+* display headings
+* section headings
+* body text
+* labels
+* metadata
+* buttons
+* navigation
+
+Arabic typography must feel equally premium.
+
+Do not use excessive bold text.
+
+---
+
+# 8. GLOBAL LAYOUT
+
+The entire website must follow the attached reference.
+
+Maintain:
+
+* same visual rhythm
+* same hierarchy
+* same spacing philosophy
+* same card geometry
+* same section proportions
+* same alignment
+* same border language
+* same visual density
+* same light/dark balance
+
+Every section must feel like it belongs to the same website.
+
+---
+
+# 9. NAVIGATION
+
+Implement the navigation shown in the reference.
+
+Use:
+
+**[ AS LOGO ]**
+
+**ABOUT**
+
+**AI LAB**
+
+**PROJECTS**
+
+**ENGINEERING**
+
+**CERTIFICATIONS**
+
+**CONTACT**
+
+Language:
+
+**AR | EN**
+
+CTA:
+
+**LET'S BUILD**
+
+Make it:
+
+* sticky
+* responsive
+* keyboard accessible
+* smooth
+* visually identical to the reference
+
+Do not make it oversized.
+
+---
+
+# 10. HERO
+
+Reproduce the Hero from the reference.
+
+Identity:
+
+**ABDULGHANI AL-SHIBAMI**
+
+Label:
+
+**AI ENGINEER · SOFTWARE DEVELOPER · SYSTEMS THINKER**
+
+Main copy:
+
+**I build intelligent software, practical AI solutions, and systems designed to solve real problems.**
+
+Buttons:
+
+**EXPLORE MY WORK**
+
+**ABOUT ME**
+
+**GITHUB**
+
+The Hero must use Abdulghani's real portrait if available.
+
+---
+
+# 11. PERSONAL PHOTO — CRITICAL
+
+If Abdulghani's real photo exists in the project, KEEP THE SAME PERSON.
+
+Do NOT generate another person.
+
+Do NOT change his identity.
+
+Do NOT alter recognizable facial characteristics.
+
+Only improve the presentation.
+
+You MAY change:
+
+* clothes
+* background
+* lighting
+* crop
+* composition
+* framing
+* color grading
+* environment
+
+The result must match the attached visual reference.
+
+---
+
+# 12. PERSONAL PHOTO ART DIRECTION
+
+Change the clothing and environment to match the reference.
+
+Preferred clothing:
+
+**Black tailored suit**
+
+**Clean white shirt**
+
+Optional:
+
+**Minimal dark tie or no tie**
+
+The visual environment should feel like:
+
+**Luxury AI Engineering Studio**
+
+Use the reference's atmosphere.
+
+Possible background elements:
+
+* elegant architecture
+* premium studio
+* refined technology environment
+* subtle engineering structures
+* minimal grid
+* restrained technical lines
+* subtle gold details
+
+The portrait remains the main focus.
+
+Do NOT make the image look like an AI-generated stock photograph.
+
+Use natural skin tones and realistic lighting.
+
+---
+
+# 13. ABOUT
+
+Implement the About section according to the reference.
+
+Title:
+
+**WHO IS ABDULGHANI?**
+
+Subtitle:
+
+**IT Student → Software Builder → AI Practitioner**
+
+Visual progression:
+
+**IT STUDENT**
+
+↓
+
+**SOFTWARE ENGINEERING**
+
+↓
+
+**AI & AUTOMATION**
+
+↓
+
+**AI ENGINEERING**
+
+Highlight:
+
+* Information Technology
+* Software Development
+* Artificial Intelligence
+* Prompt Engineering
+* Systems Thinking
+* Technical Training
+
+Keep it personal.
+
+---
+
+# 14. AI LAB
+
+Implement the AI Lab exactly in the reference visual language.
+
+Title:
+
+**AI LAB**
+
+Subtitle:
+
+**Experiments, intelligent systems, and practical AI applications.**
+
+Create:
+
+01 — Prompt Engineering
+
+02 — AI-Powered Applications
+
+03 — Computer Vision
+
+04 — OCR
+
+05 — Speech & Language
+
+06 — AI Automation
+
+Use elegant technical visualizations.
+
+Do NOT use generic AI brain illustrations.
+
+---
+
+# 15. FEATURED PROJECTS
+
+Implement the project section according to the reference.
+
+### YUSRA | يُسرى
+
+Assistive AI technology
+
+Kotlin · Jetpack Compose · Firebase · TFLite · MediaPipe
+
+### CAMPUS IT INFRASTRUCTURE TRACKER
+
+Smart IT infrastructure management
+
+C# · WinForms · Oracle · RBAC
+
+### METAALGORITHM LAB
+
+Interactive algorithm learning platform
+
+Algorithms · Big-O · Clean Architecture · REST
+
+### NEXORA TECH
+
+Next-generation PC hardware platform
+
+Next.js · PostgreSQL · Search · PC Builder
+
+Each project should support:
+
+* title
+* description
+* technology
+* preview
+* architecture
+* status
+* case study
+* GitHub if real
+* Live Demo if real
+
+Never fabricate metrics.
+
+---
+
+# 16. CASE STUDIES
+
+Create a reusable project case-study architecture:
+
+**PROBLEM**
+
+↓
+
+**SOLUTION**
+
+↓
+
+**ARCHITECTURE**
+
+↓
+
+**IMPLEMENTATION**
+
+↓
+
+**OUTCOME**
+
+Use elegant diagrams for:
+
+* frontend
+* backend
+* database
+* APIs
+* authentication
+* AI
+* data flow
+* infrastructure
+
+Keep the visual style identical to the reference.
+
+---
+
+# 17. TECHNICAL ARSENAL
+
+Title:
+
+**TECHNICAL ARSENAL**
+
+### LANGUAGES
+
+Python
+C#
+Java
+Kotlin
+JavaScript
+PHP
+
+### AI / COMPUTER VISION
+
+TensorFlow Lite
+MediaPipe
+OCR
+Computer Vision
+
+### MOBILE
+
+Kotlin
+Jetpack Compose
+Flutter
+
+### DATABASES
+
+Oracle
+SQL
+Firebase
+PostgreSQL
+
+### ENGINEERING
+
+UML
+ERD
+DFD
+System Architecture
+Git
+GitHub
+
+Do not use generic percentage bars.
+
+Use the reference's visual system.
+
+---
+
+# 18. THE ABDULGHANI METHOD
+
+Title:
+
+# THE ABDULGHANI METHOD
+
+Process:
+
+**PROBLEM → UNDERSTAND → PROMPT → BUILD → EVALUATE → REFINE → SOLUTION**
+
+Supporting statement:
+
+**AI is not just a code generator. It is a thinking partner.**
+
+Make this visually memorable while following the reference exactly.
+
+---
+
+# 19. EDUCATION
+
+Title:
+
+**EDUCATION**
+
+Content:
+
+**Bachelor's Student — Information Technology**
+
+Only use verified information from the existing project.
+
+Do not invent academic achievements.
+
+---
+
+# 20. CERTIFICATIONS & TRAINING
+
+Title:
+
+**CERTIFICATIONS & TRAINING**
+
+Display real:
+
+* certificates
+* workshops
+* AI training
+* programming training
+* technical training
+
+Only show:
+
+* real issuer
+* real date
+* real credential
+* real verification link
+
+---
+
+# 21. GITHUB — REAL DATA
+
+GitHub is part of the real production ecosystem.
+
+Inspect the existing GitHub integration.
+
+Use REAL data whenever available.
+
+Possible data:
+
+* repositories
+* descriptions
+* languages
+* updated dates
+* stars
+* contribution activity
+
+Never fabricate GitHub statistics.
+
+If API access is unavailable, use verified repository data already available.
+
+Every GitHub CTA must point to a real destination.
+
+---
+
+# 22. VERCEL — REAL DEPLOYMENT
+
+The website is deployed using Vercel.
+
+Inspect the current Vercel configuration.
+
+Preserve the existing Vercel project.
+
+Check:
+
+* build configuration
+* environment variables
+* framework
+* redirects
+* rewrites
+* headers
+* runtime
+* caching
+
+Do not create a new Vercel project unless absolutely necessary.
+
+If deployment tools are available:
+
+1. Build.
+2. Fix errors.
+3. Deploy/update the existing Vercel project.
+4. Verify production.
+5. Verify routes.
+6. Verify assets.
+7. Verify integrations.
+8. Verify AR/EN.
+9. Verify mobile.
+
+---
+
+# 23. SUPABASE — REAL DATABASE
+
+Inspect the existing Supabase integration.
+
+Check:
+
+* schema
+* tables
+* relationships
+* queries
+* RLS
+* storage
+* authentication
+* migrations
+* API
+* environment variables
+
+Preserve existing data.
+
+DO NOT:
+
+* reset database
+* delete existing data
+* duplicate tables
+* fabricate database content
+
+Only introduce new database structures when genuinely necessary.
+
+---
+
+# 24. GITHUB → VERCEL → WEBSITE → SUPABASE
+
+Treat the production ecosystem as one connected system:
+
+**GitHub**
+
+↓
+
+**Vercel**
+
+↓
+
+**Production Website**
+
+↓
+
+**Supabase**
+
+Understand the current architecture before changing anything.
+
+Do not create parallel infrastructure.
+
+Do not break existing deployment.
+
+Do not create duplicate databases.
+
+---
+
+# 25. ENVIRONMENT VARIABLES
+
+Audit all environment variables.
+
+Never expose:
+
+* API secrets
+* Supabase service-role keys
+* private tokens
+* deployment credentials
+* private keys
+
+Never hardcode secrets.
+
+Never invent missing values.
+
+---
+
+# 26. REAL DATA ONLY
+
+Never fabricate:
+
+* clients
+* users
+* downloads
+* revenue
+* awards
+* testimonials
+* project metrics
+* GitHub activity
+* certifications
+* achievements
+* credentials
+
+If data is unavailable:
+
+use a clean placeholder or omit it.
+
+Credibility comes before decoration.
+
+---
+
+# 27. CONTACT
+
+Title:
+
+**LET'S BUILD SOMETHING INTELLIGENT.**
+
+Supporting text:
+
+**Have an idea, technical problem, or system to build?**
+
+Buttons:
+
+**CONTACT ME**
+
+**VIEW GITHUB**
+
+**DOWNLOAD CV**
+
+If an existing contact backend exists:
+
+preserve it.
+
+Implement:
+
+* validation
+* loading
+* success
+* error
+* accessibility
+
+---
+
+# 28. FOOTER
+
+Follow the reference.
+
+Include:
+
+**AS MONOGRAM**
+
+**ABDULGHANI AL-SHIBAMI**
+
+**AI • SOFTWARE • SYSTEMS**
+
+GitHub · LinkedIn · Email · CV
+
+Arabic | English
+
+**Designed & Engineered by Abdulghani Al-Shibami**
+
+---
+
+# 29. ARABIC / ENGLISH
+
+Implement:
+
+**AR | EN**
+
+Arabic must use:
+
+* RTL
+* correct typography
+* correct alignment
+* correct navigation
+* correct spacing
+* correct icons
+* correct animation direction
+* correct mobile layout
+
+English must use:
+
+* LTR
+* correct typography
+* correct spacing
+
+Do not simply translate text.
+
+Both versions must preserve the reference design.
+
+---
+
+# 30. RESPONSIVE
+
+The attached reference defines the desktop visual target.
+
+Make the implementation fully responsive for:
+
+* desktop
+* laptop
+* tablet
+* mobile
+* small mobile
+
+Do not simply scale the desktop.
+
+Reflow intelligently while preserving the same design language.
+
+---
+
+# 31. INTERACTIONS
+
+Use restrained interactions matching the reference.
+
+Allowed:
+
+* smooth scrolling
+* subtle hover
+* elegant transitions
+* card elevation
+* image reveal
+* section entrance
+* navigation transition
+* project preview transition
+
+Avoid:
+
+* excessive particles
+* excessive parallax
+* excessive 3D
+* excessive glow
+* random animation
+
+---
+
+# 32. PERFORMANCE
+
+Optimize:
+
+* images
+* fonts
+* loading
+* bundle
+* code splitting
+* rendering
+* network requests
+* animations
+* caching
+
+Do not sacrifice performance for visual effects.
+
+---
+
+# 33. ACCESSIBILITY
+
+Implement:
+
+* semantic HTML
+* heading hierarchy
+* keyboard navigation
+* focus states
+* accessible contrast
+* alt text
+* form labels
+* correct button semantics
+* reduced-motion support
+
+---
+
+# 34. SEO
+
+Implement:
+
+* title
+* description
+* Open Graph
+* social preview
+* canonical URL
+* structured data where appropriate
+* sitemap where appropriate
+* robots configuration
+* semantic HTML
+
+Primary identity:
+
+**Abdulghani Al-Shibami — AI Engineer · Software Developer · Systems Thinker**
+
+---
+
+# 35. CODE QUALITY
+
+Use:
+
+* reusable components
+* clean architecture
+* clear naming
+* centralized design tokens
+* structured content
+* separation of concerns
+
+Avoid:
+
+* giant components
+* duplicate code
+* dead code
+* unused imports
+* unnecessary abstractions
+* temporary hacks
+
+---
+
+# 36. REAL LINKS
+
+Every button must perform a real action.
+
+Possible destinations:
+
+* GitHub
+* LinkedIn
+* Email
+* CV
+* Live Demo
+* Case Study
+* Documentation
+* Vercel
+
+Never use fake `#` links.
+
+If a destination does not exist:
+
+hide the button or provide a truthful fallback.
+
+---
+
+# 37. IMAGE ASSETS
+
+Use existing real assets whenever available.
+
+Do not replace real personal/project images with random images.
+
+Optimize images.
+
+Maintain consistent:
+
+* crop
+* aspect ratio
+* framing
+* borders
+* color treatment
+
+The personal portrait must remain Abdulghani.
+
+---
+
+# 38. FINAL VISUAL COMPARISON
+
+Before declaring completion, compare the implemented website directly against the attached visual reference.
+
+Check:
+
+* logo
+* Hero
+* portrait
+* typography
+* colors
+* spacing
+* section order
+* card proportions
+* project layout
+* technical diagrams
+* buttons
+* dark/light balance
+* footer
+* overall composition
+
+If something differs unnecessarily:
+
+**FIX IT.**
+
+Do not settle for "similar".
+
+Make it as visually faithful to the reference as practically possible.
+
+---
+
+# 39. QA
+
+Test:
+
+### FUNCTIONAL
+
+* navigation
+* buttons
+* projects
+* case studies
+* GitHub
+* LinkedIn
+* CV
+* contact
+* mobile menu
+* language switch
+* external links
+
+### VISUAL
+
+* desktop
+* laptop
+* tablet
+* mobile
+* Arabic
+* English
+
+### TECHNICAL
+
+* lint
+* type checking
+* tests where available
+* production build
+* dependency checks
+
+Fix discovered errors.
+
+---
+
+# 40. CONSOLE
+
+Final target:
+
+**ZERO AVOIDABLE CONSOLE ERRORS**
+
+Investigate:
+
+* React errors
+* hydration errors
+* failed requests
+* missing assets
+* broken imports
+* accessibility warnings
+* deprecated APIs
+
+---
+
+# 41. LOADING / ERROR / EMPTY STATES
+
+Dynamic features must have:
+
+* loading
+* success
+* error
+* empty
+
+Examples:
+
+* GitHub unavailable
+* no repositories
+* Supabase unavailable
+* contact failure
+* project loading
+
+Never leave unexplained blank areas.
+
+---
+
+# 42. PRODUCTION VERIFICATION
+
+Before completion verify:
+
+### GITHUB
+
+Repository is clean and buildable.
+
+### SUPABASE
+
+Database integration works.
+
+### VERCEL
+
+Production build/deployment works.
+
+### WEBSITE
+
+Production website loads correctly.
+
+### ROUTES
+
+All important routes work.
+
+### DATA
+
+Real data displays correctly.
+
+### IMAGES
+
+Assets load correctly.
+
+### LINKS
+
+All real links work.
+
+### LANGUAGE
+
+AR/EN work.
+
+### MOBILE
+
+Responsive behavior works.
+
+### SECURITY
+
+No secrets exposed.
+
+### QUALITY
+
+No major console errors.
+
+---
+
+# 43. EXECUTION ORDER
+
+Follow this order:
+
+**PHASE 1 — AUDIT**
+
+Inspect everything.
+
+**PHASE 2 — BASELINE**
+
+Run and test the current website.
+
+**PHASE 3 — INFRASTRUCTURE**
+
+Understand GitHub + Vercel + Supabase.
+
+**PHASE 4 — REFERENCE ANALYSIS**
+
+Analyze the attached visual reference.
+
+**PHASE 5 — BRAND**
+
+Implement AS logo and identity.
+
+**PHASE 6 — GLOBAL UI**
+
+Implement reference navigation and global layout.
+
+**PHASE 7 — HERO**
+
+Implement reference Hero and real Abdulghani portrait.
+
+**PHASE 8 — ABOUT**
+
+Implement reference About.
+
+**PHASE 9 — AI LAB**
+
+Implement reference AI Lab.
+
+**PHASE 10 — PROJECTS**
+
+Implement Featured Projects.
+
+**PHASE 11 — CASE STUDIES**
+
+Implement reusable case-study system.
+
+**PHASE 12 — TECHNICAL ARSENAL**
+
+Implement technical skills.
+
+**PHASE 13 — ABDULGHANI METHOD**
+
+Implement signature method.
+
+**PHASE 14 — EDUCATION**
+
+Implement Education.
+
+**PHASE 15 — CERTIFICATIONS**
+
+Implement Certifications.
+
+**PHASE 16 — GITHUB**
+
+Connect real GitHub data.
+
+**PHASE 17 — CONTACT**
+
+Implement functional Contact.
+
+**PHASE 18 — FOOTER**
+
+Implement reference footer.
+
+**PHASE 19 — AR/EN**
+
+Implement RTL/LTR.
+
+**PHASE 20 — RESPONSIVE**
+
+Optimize all breakpoints.
+
+**PHASE 21 — PERFORMANCE**
+
+Optimize production.
+
+**PHASE 22 — ACCESSIBILITY**
+
+Review accessibility.
+
+**PHASE 23 — SEO**
+
+Implement SEO.
+
+**PHASE 24 — SECURITY**
+
+Audit security.
+
+**PHASE 25 — QA**
+
+Test everything.
+
+**PHASE 26 — PRODUCTION**
+
+Build and deploy/verify.
+
+**PHASE 27 — VISUAL COMPARISON**
+
+Compare against the attached reference.
+
+**PHASE 28 — FINAL POLISH**
+
+Fix every unnecessary discrepancy.
+
+---
+
+# 44. ABSOLUTE RESTRICTIONS
+
+Do NOT:
+
+* invent a different design
+* change the reference composition
+* introduce unrelated sections
+* change the brand colors
+* create a generic AI design
+* create cyberpunk aesthetics
+* add random 3D objects
+* add excessive glow
+* add excessive particles
+* fabricate data
+* fabricate achievements
+* fabricate metrics
+* fabricate GitHub statistics
+* fabricate project results
+* fabricate certifications
+* fabricate clients
+* replace Abdulghani with another person
+* expose secrets
+* break GitHub
+* break Vercel
+* break Supabase
+* reset the database
+* create unnecessary infrastructure
+* remove working functionality
+
+---
+
+# 45. DEFINITION OF DONE
+
+The task is complete ONLY when:
+
+* The website closely matches the attached visual reference.
+* The reference is clearly recognizable in the final implementation.
+* The AS logo is implemented consistently.
+* Abdulghani's real identity is preserved.
+* His portrait has been visually adapted to the reference.
+* The existing functionality is preserved or improved.
+* GitHub integration is real where available.
+* Vercel deployment remains functional.
+* Supabase remains functional where used.
+* Real data is preserved.
+* No fabricated information exists.
+* Navigation works.
+* Projects work.
+* Case studies work.
+* Contact works.
+* CV works.
+* External links work.
+* AR/EN works.
+* RTL/LTR works.
+* Mobile works.
+* Production build succeeds.
+* Accessibility has been reviewed.
+* SEO has been implemented.
+* Security has been reviewed.
+* Performance has been reviewed.
+* Console errors have been resolved.
+* Code has been cleaned.
+* Final visual comparison has been completed.
+
+---
+
+# 46. FINAL DIRECTIVE
+
+## START BY INSPECTING THE EXISTING PROJECT
+
+Do NOT start by writing new code.
+
+Do NOT start by inventing a new design.
+
+Do NOT create an alternative concept.
+
+Do NOT creatively reinterpret the reference.
+
+FIRST understand the existing system.
+
+THEN implement the attached visual reference.
+
+Use the reference as the visual source of truth.
+
+Use the existing project as the technical foundation.
+
+Use real GitHub, Vercel, and Supabase infrastructure.
+
+Use real project data.
+
+Use Abdulghani's real identity and real portrait.
+
+Create and consistently implement the AS brand.
+
+Test everything.
+
+Fix everything.
+
+Compare everything against the reference.
+
+Then polish the implementation until it is as close as practically possible to the attached visual design.
+
+---
+
+# FINAL GOAL
+
+**THE ATTACHED IMAGE IS WHAT THE WEBSITE SHOULD LOOK LIKE.**
+
+**THE EXISTING PROJECT IS WHAT THE WEBSITE SHOULD BUILD UPON.**
+
+**GITHUB + VERCEL + SUPABASE ARE THE REAL PRODUCTION ECOSYSTEM.**
+
+**ABDULGHANI AL-SHIBAMI IS THE REAL PERSON AND BRAND.**
+
+Do not confuse these roles.
+
+### REFERENCE
+
+**= DESIGN TRUTH**
+
+### EXISTING CODE
+
+**= TECHNICAL FOUNDATION**
+
+### REAL DATA
+
+**= CONTENT TRUTH**
+
+### GITHUB / VERCEL / SUPABASE
+
+**= PRODUCTION ECOSYSTEM**
+
+### FINAL RESULT
+
+**= A REAL, FUNCTIONAL, PRODUCTION-READY VERSION OF THE ATTACHED VISUAL REFERENCE**
+
+# END

@@ -1,12 +1,10 @@
 import React from "react";
 import type { Metadata } from "next";
-import { dictionaries, Locale } from "@/lib/i18n/dictionaries";
+import Link from "next/link";
+import { Locale } from "@/lib/i18n/dictionaries";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { LiveDemoStudio } from "@/components/features/demos/LiveDemoStudio";
-import { Card } from "@/components/ui/Card";
-import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
 import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
 
@@ -70,32 +68,32 @@ export default async function ShowcasePage({
       <Container>
         {/* Dossier Breadcrumb & Top Navigation */}
         <div className="flex flex-wrap items-center justify-between gap-4 font-mono text-xs mb-8">
-          <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400">
-            <a
+          <div className="flex items-center gap-2 text-zinc-500 dark:text-zinc-400">
+            <Link
               href={`/${locale}`}
-              className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+              className="hover:text-gold-dark dark:hover:text-gold-light transition-colors"
             >
               {isRtl ? "الرئيسية" : "Home"}
-            </a>
+            </Link>
             <span>/</span>
-            <a
+            <Link
               href={`/${locale}/projects`}
-              className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+              className="hover:text-gold-dark dark:hover:text-gold-light transition-colors"
             >
               {isRtl ? "المشاريع" : "Projects"}
-            </a>
+            </Link>
             <span>/</span>
-            <span className="text-indigo-600 dark:text-cyan-400 font-bold">
+            <span className="text-gold-dark dark:text-gold-light font-bold">
               {isRtl ? "استوديو العروض التفاعلية" : "Showcase"}
             </span>
           </div>
 
-          <a
+          <Link
             href={`/${locale}/projects`}
-            className="text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 hover:underline uppercase tracking-wider font-bold text-[11px]"
+            className="text-gold-dark dark:text-gold-light hover:underline uppercase tracking-wider font-bold text-[11px]"
           >
             {isRtl ? "← العودة لدليل المشاريع" : "← Systems Catalog"}
-          </a>
+          </Link>
         </div>
 
         {/* Semantic h1 for accessibility and SEO — visually hidden */}
@@ -113,51 +111,51 @@ export default async function ShowcasePage({
           }
         />
 
-        {/* Live Demo Studio (Reference 2) */}
+        {/* Live Demo Studio */}
         <div className="pt-2 pb-10">
           <LiveDemoStudio locale={currentLocale} />
         </div>
 
         {/* Design System & Foundational UI Showcase */}
-        <div className="border-t border-slate-200 dark:border-white/[0.08] pt-10 space-y-8">
-          <div className="font-mono text-xs text-indigo-600 dark:text-cyan-400 tracking-widest uppercase font-bold">
+        <div className="border-t border-black/10 dark:border-white/10 pt-10 space-y-8">
+          <div className="font-mono text-xs text-gold-dark dark:text-gold-light tracking-widest uppercase font-bold">
             {"// DESIGN TOKENS & SYSTEM AFFORDANCES"}
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Theme & Controls */}
-            <div className="p-5 rounded-2xl border border-slate-200 dark:border-white/[0.08] bg-white dark:bg-surface-dark space-y-4 font-mono text-xs shadow-xs">
-              <div className="text-slate-800 dark:text-white/60 font-semibold border-b border-slate-100 dark:border-white/[0.06] pb-2">
+            <div className="p-5 rounded-2xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#121214] space-y-4 font-mono text-xs shadow-sm dark:shadow-xl">
+              <div className="text-zinc-800 dark:text-zinc-200 font-semibold border-b border-black/5 dark:border-white/5 pb-2">
                 01 // Controls & Language
               </div>
               <div className="flex flex-wrap items-center gap-4">
                 <div className="flex items-center gap-2">
-                  <span className="text-slate-500 dark:text-white/50">Theme:</span>
+                  <span className="text-zinc-500 dark:text-zinc-400">Theme:</span>
                   <ThemeToggle />
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-slate-500 dark:text-white/50">Locale:</span>
+                  <span className="text-zinc-500 dark:text-zinc-400">Locale:</span>
                   <LanguageSwitcher currentLocale={currentLocale} />
                 </div>
-                <span className="px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/30">
+                <span className="px-2 py-0.5 rounded bg-gold-primary/10 text-gold-dark dark:text-gold-light border border-gold-primary/30">
                   {isRtl ? "Arabic RTL Active" : "English LTR Active"}
                 </span>
               </div>
             </div>
 
             {/* Buttons Matrix */}
-            <div className="p-5 rounded-2xl border border-slate-200 dark:border-white/[0.08] bg-white dark:bg-surface-dark space-y-4 font-mono text-xs shadow-xs">
-              <div className="text-slate-800 dark:text-white/60 font-semibold border-b border-slate-100 dark:border-white/[0.06] pb-2">
+            <div className="p-5 rounded-2xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#121214] space-y-4 font-mono text-xs shadow-sm dark:shadow-xl">
+              <div className="text-zinc-800 dark:text-zinc-200 font-semibold border-b border-black/5 dark:border-white/5 pb-2">
                 02 // Button Matrix
               </div>
               <div className="flex flex-wrap items-center gap-2.5">
-                <button className="px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-indigo-500 to-cyan-500 text-white font-bold text-xs shadow-[0_0_15px_rgba(99,102,241,0.35)]">
-                  Primary Action
+                <button className="px-3.5 py-1.5 rounded-lg bg-gold-primary hover:bg-gold-light text-black font-bold text-xs shadow-sm transition-all cursor-pointer">
+                  Primary Gold Action
                 </button>
-                <button className="px-3.5 py-1.5 rounded-lg bg-slate-100 dark:bg-white/[0.04] border border-slate-300 dark:border-white/[0.1] text-slate-800 dark:text-white text-xs hover:border-indigo-500/40">
-                  Secondary Slate
+                <button className="px-3.5 py-1.5 rounded-lg bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-zinc-800 dark:text-zinc-200 text-xs hover:border-gold-primary/40 transition-all cursor-pointer">
+                  Secondary Surface
                 </button>
-                <button className="px-3.5 py-1.5 rounded-lg bg-indigo-500/10 border border-indigo-500/40 text-indigo-700 dark:text-indigo-300 text-xs font-bold">
+                <button className="px-3.5 py-1.5 rounded-lg bg-gold-primary/10 border border-gold-primary/30 text-gold-dark dark:text-gold-light text-xs font-bold transition-all cursor-pointer">
                   Workstation Action
                 </button>
               </div>

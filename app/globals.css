@@ -4,33 +4,41 @@
 
 @layer base {
   :root {
-    /* ─── TITANIUM SLATE & ELECTRIC INDIGO — Light Mode ─── */
-    --canvas-bg: #F8FAFC;
+    /* ─── CANONICAL DESIGN SYSTEM — Light Mode (Porcelain & Royal Gold) ─── */
+    --canvas-bg: #FAF9F6;
     --surface-elevated: #FFFFFF;
     --surface-overlay: #F1F5F9;
     --surface-interactive: #E2E8F0;
-    --surface-low: #F8FAFC;
+    --surface-low: #FAF9F6;
     --surface-card: #FFFFFF;
-    --surface-secondary: #F1F5F9;
+    --surface-secondary: #F8FAFC;
     --surface-dark: #0F172A;
 
     --border-hairline: rgba(15, 23, 42, 0.08);
     --border-color: rgba(15, 23, 42, 0.12);
-    --border-gold: rgba(99, 102, 241, 0.35);
+    --border-gold: rgba(184, 142, 31, 0.35);
 
-    --gold-primary: #6366F1;
-    --gold-secondary: #06B6D4;
-    --gold-light: #818CF8;
-    --gold-soft: #A5B4FC;
-    --gold-dark: #4F46E5;
-    --gold-muted: rgba(99, 102, 241, 0.09);
-    --gold-glow: rgba(99, 102, 241, 0.18);
+    /* Royal Gold Brand Tokens (WCAG AA High Contrast on Light Surfaces) */
+    --gold-primary: #B88E1F;
+    --gold-secondary: #D4AF37;
+    --gold-light: #C59B27;
+    --gold-soft: #F3E5AB;
+    --gold-dark: #8C6A12;
+    --gold-muted: rgba(184, 142, 31, 0.10);
+    --gold-glow: rgba(184, 142, 31, 0.20);
+
+    /* Modern Electric & Accent Tokens */
+    --electric-indigo: #6366F1;
+    --electric-cyan: #06B6D4;
+    --electric-emerald: #10B981;
+    --electric-amber: #F59E0B;
+    --electric-violet: #8B5CF6;
 
     --glass-subtle: rgba(255, 255, 255, 0.85);
     --glass-medium: rgba(255, 255, 255, 0.92);
     --glass-strong: rgba(255, 255, 255, 0.98);
     --glass-border: rgba(15, 23, 42, 0.08);
-    --glass-gold-border: rgba(99, 102, 241, 0.28);
+    --glass-gold-border: rgba(184, 142, 31, 0.28);
 
     --text-primary: #0F172A;
     --text-secondary: #334155;
@@ -48,33 +56,41 @@
   }
 
   .dark {
-    /* ─── TITANIUM SLATE & ELECTRIC INDIGO — Dark Mode (PRIMARY HERO EXPERIENCE) ─── */
-    --canvas-bg: #0B1120;
-    --surface-elevated: #0F172A;
+    /* ─── CANONICAL DESIGN SYSTEM — Dark Mode (Obsidian & Royal Gold — Primary Hero Experience) ─── */
+    --canvas-bg: #0B0B0C;
+    --surface-elevated: #121214;
     --surface-overlay: #1E293B;
     --surface-interactive: #1E293B;
-    --surface-low: #080D1A;
-    --surface-card: #0F172A;
-    --surface-secondary: #162032;
+    --surface-low: #070B14;
+    --surface-card: #121214;
+    --surface-secondary: #0F172A;
     --surface-dark: #070B14;
 
-    --border-hairline: rgba(99, 102, 241, 0.12);
-    --border-color: rgba(99, 102, 241, 0.20);
-    --border-gold: rgba(99, 102, 241, 0.40);
+    --border-hairline: rgba(255, 255, 255, 0.08);
+    --border-color: rgba(255, 255, 255, 0.14);
+    --border-gold: rgba(212, 175, 55, 0.40);
 
-    --gold-primary: #6366F1;
-    --gold-secondary: #06B6D4;
-    --gold-light: #818CF8;
-    --gold-soft: #A5B4FC;
-    --gold-dark: #4F46E5;
-    --gold-muted: rgba(99, 102, 241, 0.12);
-    --gold-glow: rgba(99, 102, 241, 0.25);
+    /* Royal Gold Brand Tokens (Luminous Metallic on Obsidian) */
+    --gold-primary: #D4AF37;
+    --gold-secondary: #F3E5AB;
+    --gold-light: #E2C366;
+    --gold-soft: #FBF4D8;
+    --gold-dark: #997A15;
+    --gold-muted: rgba(212, 175, 55, 0.12);
+    --gold-glow: rgba(212, 175, 55, 0.28);
 
-    --glass-subtle: rgba(15, 23, 42, 0.75);
-    --glass-medium: rgba(15, 23, 42, 0.88);
-    --glass-strong: rgba(15, 23, 42, 0.95);
+    /* Modern Electric & Accent Tokens */
+    --electric-indigo: #6366F1;
+    --electric-cyan: #06B6D4;
+    --electric-emerald: #10B981;
+    --electric-amber: #F59E0B;
+    --electric-violet: #8B5CF6;
+
+    --glass-subtle: rgba(18, 18, 20, 0.75);
+    --glass-medium: rgba(18, 18, 20, 0.88);
+    --glass-strong: rgba(18, 18, 20, 0.95);
     --glass-border: rgba(255, 255, 255, 0.08);
-    --glass-gold-border: rgba(99, 102, 241, 0.30);
+    --glass-gold-border: rgba(212, 175, 55, 0.30);
 
     --text-primary: #F8FAFC;
     --text-secondary: #CBD5E1;

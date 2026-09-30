@@ -17,7 +17,7 @@ export function LanguageSwitcher({ currentLocale }: { currentLocale: Locale }) {
   return (
     <Link
       href={targetPath}
-      className="inline-flex items-center gap-1.5 h-8 px-2.5 rounded-lg border border-slate-300/80 dark:border-slate-700/60 bg-slate-100 dark:bg-slate-800/40 hover:border-indigo-400 dark:hover:border-indigo-500/60 text-slate-700 dark:text-slate-300 font-mono text-[11px] font-medium tracking-wider transition-all duration-200"
+      className="inline-flex items-center gap-1.5 h-8 px-2.5 rounded-lg border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 hover:border-gold-primary/50 text-zinc-700 dark:text-zinc-300 font-mono text-[11px] font-medium tracking-wider transition-all duration-200"
       aria-label={`Switch language to ${targetLocale === "en" ? "English" : "Arabic"}`}
       title={currentLocale === "en" ? "التحويل إلى اللغة العربية" : "Switch to English"}
     >
@@ -31,7 +31,7 @@ export function LanguageSwitcher({ currentLocale }: { currentLocale: Locale }) {
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="text-indigo-500 dark:text-indigo-400 shrink-0"
+        className="text-gold-dark dark:text-gold-light shrink-0"
       >
         <circle cx="12" cy="12" r="10" />
         <line x1="2" x2="22" y1="12" y2="12" />
@@ -41,18 +41,18 @@ export function LanguageSwitcher({ currentLocale }: { currentLocale: Locale }) {
         <span
           className={
             currentLocale === "en"
-              ? "font-bold text-indigo-600 dark:text-cyan-400"
-              : "text-slate-400 dark:text-slate-500"
+              ? "font-bold text-gold-dark dark:text-gold-light"
+              : "text-zinc-400 dark:text-zinc-500"
           }
         >
           EN
         </span>
-        <span className="text-slate-300 dark:text-slate-600 text-[9px]">/</span>
+        <span className="text-zinc-300 dark:text-zinc-600 text-[9px]">/</span>
         <span
           className={
             currentLocale === "ar"
-              ? "font-bold text-indigo-600 dark:text-cyan-400 font-sans"
-              : "text-slate-400 dark:text-slate-500 font-sans"
+              ? "font-bold text-gold-dark dark:text-gold-light font-sans"
+              : "text-zinc-400 dark:text-zinc-500 font-sans"
           }
         >
           عربي

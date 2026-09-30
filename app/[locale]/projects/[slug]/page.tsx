@@ -73,9 +73,35 @@ export default async function ProjectDetailPage({
   const categoryName = category?.name[typedLocale] || project.categorySlug;
   const isRtl = typedLocale === "ar";
   const dict = dictionaries[typedLocale];
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://abdulghani.dev";
+
+  const softwareJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: project.title[typedLocale],
+    description: project.shortDescription[typedLocale],
+    applicationCategory: categoryName,
+    operatingSystem: "Web, Windows, Android",
+    url: `${siteUrl}/${typedLocale}/projects/${project.slug}`,
+    author: {
+      "@type": "Person",
+      name: "Abdulghani Al-Shibami",
+      alternateName: "عبدالغني الشبامي",
+      url: `${siteUrl}/${typedLocale}`,
+    },
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
+  };
 
   return (
     <div className="space-y-12 sm:space-y-16 pb-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareJsonLd) }}
+      />
       {/* 1. Dossier Hero Deck */}
       <CaseStudyHero
         project={project}

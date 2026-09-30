@@ -82,14 +82,14 @@ export const ProjectCatalogView: React.FC<ProjectCatalogViewProps> = ({
         </div>
       ) : (
         /* Empty State */
-        <div className="rounded-2xl border border-slate-800 bg-slate-900/70 backdrop-blur-md p-12 text-center space-y-4 shadow-[0_10px_30px_rgba(2,6,23,0.8)] font-mono">
-          <div className="text-xs text-cyan-400 uppercase tracking-widest font-bold">
+        <div className="rounded-2xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#121214] p-12 text-center space-y-4 shadow-sm dark:shadow-2xl font-mono">
+          <div className="text-xs text-gold-dark dark:text-gold-light uppercase tracking-widest font-bold">
             {isRtl ? "// لا توجد أنظمة مطابقة" : "// 0 SYSTEMS MATCHED"}
           </div>
-          <h4 className="font-serif text-2xl font-normal text-white">
+          <h4 className="font-serif text-2xl font-normal text-zinc-900 dark:text-white">
             {isRtl ? "لم يتم العثور على أنظمة مطابقة" : "No Matching Systems Found"}
           </h4>
-          <p className="text-slate-300 text-sm max-w-md mx-auto">
+          <p className="text-zinc-600 dark:text-zinc-400 text-sm max-w-md mx-auto font-sans">
             {isRtl
               ? "جرّب تغيير التصنيف أو مسح عبارة البحث للعثور على الأنظمة المطلوبة."
               : "Try adjusting your category selection or clearing the search filter."}

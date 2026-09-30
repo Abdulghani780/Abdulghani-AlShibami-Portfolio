@@ -30,26 +30,26 @@ export const CaseStudyHero: React.FC<CaseStudyHeroProps> = ({
   const conceptImg = PROJECT_CONCEPT_IMAGES[project.slug];
 
   return (
-    <div className="border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0B1120] py-10 sm:py-16 transition-colors">
+    <div className="border-b border-black/10 dark:border-white/10 bg-white dark:bg-[#0E0E10] py-10 sm:py-16 transition-colors">
       <Container className="space-y-8">
         {/* Dossier Breadcrumb & Top Navigation */}
         <div className="flex flex-wrap items-center justify-between gap-4 font-mono text-xs">
-          <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400">
+          <div className="flex items-center gap-2 text-zinc-500 dark:text-zinc-400">
             <Link
               href={`/${locale}/projects`}
-              className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+              className="hover:text-gold-dark dark:hover:text-gold-light transition-colors"
             >
               {isRtl ? "المشاريع" : "Projects"}
             </Link>
             <span>/</span>
-            <span className="text-slate-700 dark:text-slate-300">{categoryName}</span>
+            <span className="text-zinc-700 dark:text-zinc-300">{categoryName}</span>
             <span>/</span>
-            <span className="text-indigo-600 dark:text-indigo-400 font-bold">{project.slug}</span>
+            <span className="text-gold-dark dark:text-gold-light font-bold">{project.slug}</span>
           </div>
 
           <Link
             href={`/${locale}/projects`}
-            className="text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 hover:underline uppercase tracking-wider font-bold text-[11px]"
+            className="text-gold-dark dark:text-gold-light hover:underline uppercase tracking-wider font-bold text-[11px]"
           >
             {isRtl ? "← العودة لدليل المشاريع" : "← Systems Catalog"}
           </Link>
@@ -137,7 +137,7 @@ export const CaseStudyHero: React.FC<CaseStudyHeroProps> = ({
           {/* Right: 3D Concept Architecture Preview Card */}
           {conceptImg && (
             <div className="lg:col-span-5">
-              <div className="relative w-full h-64 sm:h-80 rounded-2xl overflow-hidden border border-indigo-500/30 shadow-[0_10px_40px_rgba(0,0,0,0.5)] bg-[#0F172A] group">
+              <div className="relative w-full h-64 sm:h-80 rounded-2xl overflow-hidden border border-black/10 dark:border-gold-primary/30 shadow-md dark:shadow-2xl bg-zinc-950 dark:bg-[#121214] group">
                 <Image
                   src={conceptImg}
                   alt={title}
@@ -145,9 +145,9 @@ export const CaseStudyHero: React.FC<CaseStudyHeroProps> = ({
                   className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-transparent to-transparent opacity-50" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
                 <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between pointer-events-none" dir="ltr">
-                  <span className="px-2.5 py-1 rounded-md bg-slate-950/85 backdrop-blur-md border border-indigo-500/40 text-[10px] font-mono text-indigo-300">
+                  <span className="px-2.5 py-1 rounded-md bg-black/80 backdrop-blur-md border border-gold-primary/30 text-[10px] font-mono text-gold-light">
                     3D System Architecture Render
                   </span>
                   <span className="px-2 py-1 rounded-md bg-emerald-950/80 border border-emerald-500/40 text-[10px] font-mono text-emerald-400">

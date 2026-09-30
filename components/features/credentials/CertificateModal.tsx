@@ -96,24 +96,24 @@ export function CertificateModal({
       aria-modal="true"
       aria-label={title}
       onClick={onClose}
-      className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 bg-slate-950/80 backdrop-blur-md animate-in fade-in duration-200 font-mono"
+      className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 bg-black/80 backdrop-blur-md animate-in fade-in duration-200 font-mono"
       dir={isAr ? "rtl" : "ltr"}
     >
       <div
-        className="relative w-full max-w-5xl max-h-[94vh] bg-white dark:bg-[#0A0E18] border border-slate-200 dark:border-indigo-500/40 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.15)] dark:shadow-[0_0_60px_rgba(99,102,241,0.35)] flex flex-col overflow-hidden text-slate-800 dark:text-slate-100 transition-colors"
+        className="relative w-full max-w-5xl max-h-[94vh] bg-white dark:bg-[#121214] border border-black/10 dark:border-gold-primary/30 rounded-2xl shadow-xl dark:shadow-2xl flex flex-col overflow-hidden text-zinc-800 dark:text-zinc-100 transition-colors"
         onClick={(e) => e.stopPropagation()}
       >
         {/* ── Top Header Toolbar ── */}
-        <div className="bg-slate-50 dark:bg-[#111624] px-4 py-3 flex items-center justify-between border-b border-slate-200 dark:border-slate-800 gap-2 shrink-0">
+        <div className="bg-black/5 dark:bg-[#18181B] px-4 py-3 flex items-center justify-between border-b border-black/10 dark:border-white/10 gap-2 shrink-0">
           <div className="flex items-center gap-2.5 min-w-0">
-            <span className="p-1 rounded-md bg-indigo-500/10 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 shrink-0">
+            <span className="p-1 rounded-md bg-gold-primary/10 text-gold-dark dark:text-gold-light shrink-0">
               <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
             </span>
             <div className="truncate">
-              <span className="text-xs font-bold text-slate-900 dark:text-white tracking-wide block truncate">
+              <span className="text-xs font-bold text-zinc-900 dark:text-white tracking-wide block truncate font-sans">
                 {title}
               </span>
-              <span className="text-[10px] text-indigo-600 dark:text-cyan-400 font-sans block truncate">
+              <span className="text-[10px] text-gold-dark dark:text-gold-light font-sans block truncate">
                 {issuer} {collaborator && `• ${collaborator}`}
               </span>
             </div>
@@ -210,21 +210,21 @@ export function CertificateModal({
             >
               -
             </button>
-            <span className="text-[10px] font-mono text-indigo-600 dark:text-cyan-400">
+            <span className="text-[10px] font-mono text-gold-dark dark:text-gold-light">
               {Math.round(zoomLevel * 100)}%
             </span>
             <button
               type="button"
               onClick={handleZoomIn}
               disabled={zoomLevel >= 2.5}
-              className="px-2 py-0.5 text-slate-700 dark:text-slate-300 active:text-slate-900 dark:active:text-white"
+              className="px-2 py-0.5 text-zinc-700 dark:text-zinc-300 active:text-zinc-900 dark:active:text-white"
             >
               +
             </button>
             <button
               type="button"
               onClick={handleResetZoom}
-              className="ps-2 text-[10px] text-slate-400 border-s border-slate-800"
+              className="ps-2 text-[10px] text-zinc-400 border-s border-black/10 dark:border-white/10"
             >
               {isAr ? "إعادة" : "Reset"}
             </button>
@@ -232,45 +232,45 @@ export function CertificateModal({
         </div>
 
         {/* ── Detailed Metadata Panel ── */}
-        <div className="bg-slate-50 dark:bg-[#0D121F] border-t border-slate-200 dark:border-slate-800 p-4 sm:p-5 overflow-y-auto max-h-[30vh] shrink-0 transition-colors">
+        <div className="bg-black/5 dark:bg-[#121214] border-t border-black/10 dark:border-white/10 p-4 sm:p-5 overflow-y-auto max-h-[30vh] shrink-0 transition-colors">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
             {/* Recipient & Category */}
-            <div className="p-3 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 space-y-1 shadow-sm">
-              <div className="text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-                <UserCheck className="w-3.5 h-3.5 text-indigo-600 dark:text-cyan-400" />
+            <div className="p-3 rounded-xl bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 space-y-1 shadow-sm">
+              <div className="text-[10px] text-zinc-500 dark:text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
+                <UserCheck className="w-3.5 h-3.5 text-gold-dark dark:text-gold-light" />
                 <span>{isAr ? "المستلم والصفة" : "Recipient & Category"}</span>
               </div>
-              <div className="text-slate-900 dark:text-white font-semibold text-[11px] truncate">
+              <div className="text-zinc-900 dark:text-white font-semibold text-[11px] truncate">
                 {recipient}
               </div>
-              <div className="inline-block text-[10px] text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-500/15 px-2 py-0.5 rounded border border-indigo-200 dark:border-indigo-500/30">
+              <div className="inline-block text-[10px] text-gold-dark dark:text-gold-light bg-gold-primary/10 px-2 py-0.5 rounded border border-gold-primary/30">
                 {categoryLabel}
               </div>
             </div>
 
             {/* Issuing Authority */}
-            <div className="p-3 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 space-y-1 shadow-sm">
-              <div className="text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-                <Award className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
+            <div className="p-3 rounded-xl bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 space-y-1 shadow-sm">
+              <div className="text-[10px] text-zinc-500 dark:text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
+                <Award className="w-3.5 h-3.5 text-gold-dark dark:text-gold-light" />
                 <span>{isAr ? "الجهة المانحة" : "Issuing Body"}</span>
               </div>
-              <div className="text-slate-900 dark:text-white font-semibold text-[11px]">
+              <div className="text-zinc-900 dark:text-white font-semibold text-[11px]">
                 {issuer}
               </div>
               {collaborator && (
-                <div className="text-[10px] text-indigo-600 dark:text-cyan-400 font-sans truncate">
+                <div className="text-[10px] text-gold-dark dark:text-gold-light font-sans truncate">
                   {collaborator}
                 </div>
               )}
             </div>
 
             {/* Date & Verification */}
-            <div className="p-3 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 space-y-1 shadow-sm">
-              <div className="text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
+            <div className="p-3 rounded-xl bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 space-y-1 shadow-sm">
+              <div className="text-[10px] text-zinc-500 dark:text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
                 <Calendar className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                 <span>{isAr ? "التاريخ والاعتماد" : "Date & Status"}</span>
               </div>
-              <div className="text-slate-900 dark:text-white font-semibold text-[11px]">
+              <div className="text-zinc-900 dark:text-white font-semibold text-[11px]">
                 {dateDisplay}
               </div>
               <div className="flex items-center gap-2 text-[10px]">
@@ -281,7 +281,7 @@ export function CertificateModal({
                   </span>
                 )}
                 {hasQrCode && (
-                  <span className="text-indigo-600 dark:text-cyan-400 flex items-center gap-1">
+                  <span className="text-gold-dark dark:text-gold-light flex items-center gap-1">
                     <QrCode className="w-3 h-3" />
                     <span>{isAr ? "رمز QR" : "QR Verify"}</span>
                   </span>
@@ -290,21 +290,21 @@ export function CertificateModal({
             </div>
 
             {/* Signatories & Raw Asset Link */}
-            <div className="p-3 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 flex flex-col justify-between shadow-sm">
+            <div className="p-3 rounded-xl bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 flex flex-col justify-between shadow-sm">
               <div>
-                <div className="text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
+                <div className="text-[10px] text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-1">
                   {isAr ? "الموقعون الرسميون" : "Official Signatories"}
                 </div>
                 {signatories.length > 0 ? (
                   <div className="space-y-0.5">
                     {signatories.map((sig, idx) => (
-                      <div key={idx} className="text-[11px] text-slate-700 dark:text-slate-200">
+                      <div key={idx} className="text-[11px] text-zinc-700 dark:text-zinc-200">
                         • {sig.name}
                       </div>
                     ))}
                   </div>
                 ) : (
-                  <div className="text-[11px] text-slate-500 dark:text-slate-400">
+                  <div className="text-[11px] text-zinc-500 dark:text-zinc-400">
                     {isAr ? "أختام واعتماد معهد يالي وسفارة الولايات المتحدة" : "Official Seal & Executive Manager"}
                   </div>
                 )}
@@ -314,7 +314,7 @@ export function CertificateModal({
                 href={imagePath}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-2 text-[11px] text-indigo-600 dark:text-cyan-400 hover:text-indigo-500 dark:hover:text-cyan-300 inline-flex items-center gap-1 hover:underline"
+                className="mt-2 text-[11px] text-gold-dark dark:text-gold-light hover:underline inline-flex items-center gap-1"
               >
                 <span>{isAr ? "فتح بصيغة أصلية كاملة" : "Open Original Document"}</span>
                 <ExternalLink className="w-3 h-3" />
@@ -324,15 +324,15 @@ export function CertificateModal({
 
           {/* Topics & Competencies Chips */}
           {skills.length > 0 && (
-            <div className="mt-3 pt-3 border-t border-slate-200 dark:border-slate-800/80 flex items-center gap-2 flex-wrap">
-              <span className="text-[10px] text-slate-500 dark:text-slate-400 flex items-center gap-1 uppercase tracking-wider">
-                <Tag className="w-3 h-3 text-indigo-600 dark:text-indigo-400" />
+            <div className="mt-3 pt-3 border-t border-black/10 dark:border-white/10 flex items-center gap-2 flex-wrap">
+              <span className="text-[10px] text-zinc-500 dark:text-zinc-400 flex items-center gap-1 uppercase tracking-wider">
+                <Tag className="w-3 h-3 text-gold-dark dark:text-gold-light" />
                 <span>{isAr ? "المحاور والمجالات:" : "Core Competencies:"}</span>
               </span>
               {skills.map((skill, idx) => (
                 <span
                   key={idx}
-                  className="px-2 py-0.5 rounded text-[10px] bg-slate-200/70 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-slate-700 dark:text-slate-300 font-sans"
+                  className="px-2 py-0.5 rounded text-[10px] bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-zinc-700 dark:text-zinc-300 font-sans"
                 >
                   {skill}
                 </span>
@@ -342,7 +342,7 @@ export function CertificateModal({
         </div>
 
         {/* ── Footer Bar ── */}
-        <div className="bg-slate-100 dark:bg-[#0A0E18] px-4 py-2.5 border-t border-slate-200 dark:border-slate-800 text-[11px] text-slate-500 dark:text-slate-400 flex items-center justify-between transition-colors">
+        <div className="bg-black/5 dark:bg-[#0E0E10] px-4 py-2.5 border-t border-black/10 dark:border-white/10 text-[11px] text-zinc-500 dark:text-zinc-400 flex items-center justify-between transition-colors">
           <span className="text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 motion-safe:animate-pulse" />
             <span>{isAr ? "وثيقة أصلية موثقة ومعتمدة" : "ORIGINAL AUTHENTICATED CREDENTIAL"}</span>
@@ -350,7 +350,7 @@ export function CertificateModal({
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-1 rounded bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-800 dark:text-white text-xs transition-colors cursor-pointer"
+            className="px-4 py-1 rounded bg-black/5 dark:bg-white/10 hover:bg-gold-primary hover:text-black text-zinc-800 dark:text-white text-xs transition-colors cursor-pointer"
           >
             {isAr ? "إغلاق" : "Dismiss"}
           </button>

@@ -1,97 +1,78 @@
 "use client";
 
 import React from "react";
-import { usePathname } from "next/navigation";
+import Link from "next/link";
 import { Dictionary } from "@/lib/i18n/dictionaries";
+import { AsMonogram } from "@/components/ui/AsLogo";
 
-export function Footer({ dict }: { dict: Dictionary }) {
-  const pathname = usePathname();
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  const isHomePage =
-    pathname === "/en" ||
-    pathname === "/ar" ||
-    pathname === "/en/" ||
-    pathname === "/ar/" ||
-    pathname === "/" ||
-    pathname === "";
-
-  if (isHomePage) {
-    return null;
-  }
-
+export function Footer({ dict }: { dict?: Dictionary }) {
   return (
-    <footer className="border-t border-hairline bg-canvas/95 backdrop-blur-md pt-14 pb-10 transition-colors duration-300">
-      <div className="w-full max-w-arch mx-auto px-6 sm:px-8 md:px-12 lg:px-16">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-10 border-b border-hairline">
-          {/* Brand & Philosophy */}
-          <div className="md:col-span-6 space-y-4">
-            <div className="flex items-center gap-3">
-              <span className="w-8 h-8 rounded-lg border border-indigo-500/50 bg-indigo-500/10 flex items-center justify-center font-mono text-xs text-indigo-500 dark:text-indigo-400 font-black shadow-[0_0_12px_rgba(99,102,241,0.3)]">
-                AS
-              </span>
-              <span className="font-mono text-sm tracking-wide font-bold text-content-primary uppercase">
-                {dict.nav.brand}
-              </span>
-            </div>
-            <p className="text-content-muted text-sm leading-relaxed max-w-md">
-              {dict.footer.philosophy}
-            </p>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-hairline bg-surface-secondary text-xs font-mono text-content-muted">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span>{dict.footer.safetyNotice}</span>
-            </div>
-          </div>
-
-          {/* Social & Verification Anchors */}
-          <div className="md:col-span-3 space-y-3 font-mono text-xs">
-            <div className="text-indigo-600 dark:text-cyan-400 tracking-[0.16em] uppercase text-[11px] font-bold">
-              {dict.footer.directLinks}
-            </div>
-            <ul className="space-y-2.5 text-content-secondary">
-              <li>
-                <a
-                  href="https://github.com/Abdulghani780"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors inline-flex items-center gap-1.5 group"
-                >
-                  <span>{dict.footer.githubLabel}</span>
-                  <span className="text-[10px] text-content-muted group-hover:text-indigo-600 dark:group-hover:text-cyan-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform rtl:rotate-[-90deg]">↗</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://linkedin.com/in/abdulghani-al-shibami-94b4a3204"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors inline-flex items-center gap-1.5 group"
-                >
-                  <span>{dict.footer.linkedinLabel}</span>
-                  <span className="text-[10px] text-content-muted group-hover:text-indigo-600 dark:group-hover:text-cyan-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform rtl:rotate-[-90deg]">↗</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Navigation & Back to Top */}
-          <div className="md:col-span-3 flex flex-col justify-between items-start md:items-end space-y-4">
-            <button
-              onClick={scrollToTop}
-              className="inline-flex items-center gap-2 h-10 px-4 rounded-lg border border-hairline bg-surface-secondary hover:border-indigo-500/40 text-content-primary hover:text-indigo-600 dark:hover:text-indigo-300 text-xs font-mono tracking-wider transition-all duration-200 cursor-pointer shadow-sm active:scale-[0.98]"
+    <footer className="w-full bg-[#F8FAFC] dark:bg-[#0B0B0C] text-[#0F172A] dark:text-white py-12 sm:py-16 border-t border-black/10 dark:border-white/10 transition-colors">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center text-center md:text-start border-b border-black/10 dark:border-white/10 pb-10">
+          {/* Left: Direct Social and Document Links */}
+          <div className="flex flex-wrap items-center justify-center md:justify-start gap-5 sm:gap-6 text-xs font-mono tracking-wider text-zinc-600 dark:text-zinc-400">
+            <a
+              href="https://github.com/Abdulghani780"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-gold-dark dark:hover:text-gold-light transition-colors"
             >
-              <span>{dict.footer.backToTop}</span>
-              <span className="text-xs">↑</span>
-            </button>
+              GitHub
+            </a>
+            <a
+              href="https://linkedin.com/in/abdulghani-al-shibami-94b4a3204"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-gold-dark dark:hover:text-gold-light transition-colors"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="mailto:samyemen987@gmail.com"
+              className="hover:text-gold-dark dark:hover:text-gold-light transition-colors"
+            >
+              Email
+            </a>
+            <a
+              href="/docs/Abdulghani_Al-Shibami_CV.pdf"
+              download
+              className="hover:text-gold-dark dark:hover:text-gold-light transition-colors"
+            >
+              CV
+            </a>
+          </div>
+
+          {/* Center: Brand Monogram & Wordmark */}
+          <div className="flex flex-col items-center justify-center">
+            <AsMonogram size={42} colorScheme="pure-gold" className="mb-2" />
+            <span className="font-sans font-black text-sm tracking-[0.16em] uppercase text-zinc-900 dark:text-white leading-tight">
+              ABDULGHANI AL-SHIBAMI
+            </span>
+            <span className="font-sans text-[10px] tracking-[0.24em] font-semibold text-gold-dark dark:text-gold-light/85 uppercase leading-tight mt-0.5">
+              AI • SOFTWARE • SYSTEMS
+            </span>
+          </div>
+
+          {/* Right: Language switch & Attribution */}
+          <div className="flex flex-col items-center md:items-end gap-2 text-xs font-mono text-zinc-600 dark:text-zinc-400">
+            <div className="flex items-center gap-2">
+              <Link href="/ar" className="hover:text-gold-dark dark:hover:text-gold-light transition-colors font-sans">
+                العربية
+              </Link>
+              <span className="text-zinc-300 dark:text-zinc-700">|</span>
+              <Link href="/en" className="hover:text-gold-dark dark:hover:text-gold-light transition-colors">
+                English
+              </Link>
+            </div>
           </div>
         </div>
 
         {/* Bottom Colophon Bar */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-content-muted">
-          <div>{dict.footer.rights}</div>
-          <div className="text-[11px] opacity-75">Next.js 15 • React • TypeScript • Workstation Sandbox</div>
+        <div className="pt-8 text-center">
+          <p className="text-xs font-sans tracking-wide text-zinc-500">
+            Designed & Engineered by <span className="text-zinc-900 dark:text-zinc-300 font-semibold">Abdulghani Al-Shibami</span>
+          </p>
         </div>
       </div>
     </footer>

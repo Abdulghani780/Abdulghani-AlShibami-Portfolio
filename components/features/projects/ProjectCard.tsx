@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import { Project, Locale } from "@/types/project";
-import { Badge } from "@/components/ui/Badge";
 import { TechnologyBadge } from "./TechnologyBadge";
 import { ProjectPreviewGraphic } from "./ProjectPreviewGraphic";
 import { cn } from "@/lib/utils";
@@ -32,16 +31,16 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
       className={cn(
         "rounded-2xl border transition-all duration-300 group flex flex-col justify-between overflow-hidden relative",
         isFeaturedHero
-          ? "border-slate-200 dark:border-indigo-500/40 bg-white dark:bg-gradient-to-b dark:from-[#0F172A] dark:via-[#0B1120] dark:to-[#090D16] p-6 sm:p-8 md:p-10 shadow-sm dark:shadow-[0_10px_35px_rgba(2,6,23,0.8),0_0_25px_rgba(99,102,241,0.2)] hover:border-indigo-400"
-          : "border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/70 backdrop-blur-md p-5 sm:p-6 shadow-xs hover:border-indigo-400 dark:hover:border-indigo-500/50 hover:shadow-md dark:hover:shadow-[0_10px_30px_rgba(2,6,23,0.8),0_0_20px_rgba(99,102,241,0.12)]",
+          ? "border-gold-primary/30 bg-white dark:bg-[#141417] p-6 sm:p-8 md:p-10 shadow-md dark:shadow-2xl hover:border-gold-primary"
+          : "border-black/10 dark:border-white/10 bg-white dark:bg-[#121214] p-5 sm:p-6 shadow-sm dark:shadow-xl hover:border-gold-primary/50 hover:shadow-md",
         className
       )}
     >
       <div className="space-y-4">
         {/* Card Header: Category Kicker, Status, & Year */}
-        <div className="flex items-center justify-between gap-3 border-b border-slate-200 dark:border-slate-800/70 pb-3">
+        <div className="flex items-center justify-between gap-3 border-b border-black/10 dark:border-white/10 pb-3">
           <div className="flex items-center gap-2">
-            <span className="font-mono text-[11px] text-indigo-600 dark:text-cyan-400 uppercase tracking-wider font-semibold">
+            <span className="font-mono text-[11px] text-gold-dark dark:text-gold-light uppercase tracking-wider font-semibold">
               {"// "}{categoryName || project.categorySlug}
             </span>
           </div>
@@ -51,7 +50,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 motion-safe:animate-ping" />
               <span>LIVE INSTANCE</span>
             </span>
-            <span className="text-[11px] font-mono text-slate-500 dark:text-slate-400">
+            <span className="text-[11px] font-mono text-zinc-500 dark:text-zinc-400">
               {project.year}
             </span>
           </div>
@@ -62,7 +61,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           <Link href={detailUrl} className="group/title block">
             <h3
               className={cn(
-                "font-serif font-normal text-slate-900 dark:text-white group-hover/title:text-indigo-600 dark:group-hover/title:text-indigo-300 transition-colors tracking-tight",
+                "font-serif font-normal text-zinc-900 dark:text-white group-hover/title:text-gold-dark dark:group-hover/title:text-gold-light transition-colors tracking-tight",
                 isFeaturedHero ? "text-2xl sm:text-3xl lg:text-4xl" : "text-xl sm:text-2xl"
               )}
             >
@@ -77,7 +76,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         </div>
 
         {/* Project Description */}
-        <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed line-clamp-3">
+        <p className="text-zinc-600 dark:text-zinc-300 text-xs sm:text-sm leading-relaxed line-clamp-3 font-sans">
           {desc}
         </p>
 
@@ -87,7 +86,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             <TechnologyBadge key={tech.id} technology={tech} size="xs" />
           ))}
           {project.technologies.length > (isFeaturedHero ? 6 : 4) && (
-            <span className="font-mono text-[10px] text-slate-400 self-center px-1">
+            <span className="font-mono text-[10px] text-zinc-400 self-center px-1">
               +{project.technologies.length - (isFeaturedHero ? 6 : 4)}
             </span>
           )}
@@ -95,10 +94,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
       </div>
 
       {/* Card Actions Footer */}
-      <div className="pt-5 mt-5 border-t border-slate-200 dark:border-slate-800/70 flex flex-wrap items-center justify-between gap-3">
+      <div className="pt-5 mt-5 border-t border-black/10 dark:border-white/10 flex flex-wrap items-center justify-between gap-3">
         <Link
           href={detailUrl}
-          className="text-xs font-mono text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white px-3 py-1.5 rounded bg-slate-100 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60 hover:border-slate-400 dark:hover:border-slate-500 transition-all flex items-center gap-1.5"
+          className="text-xs font-mono text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white px-3 py-1.5 rounded-lg bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-gold-primary/40 transition-all flex items-center gap-1.5"
         >
           <span>{isRtl ? "الدراسة المعمارية" : "Case Study"}</span>
           <span className={cn("text-xs transition-transform group-hover:translate-x-1", isRtl && "rotate-180")}>
@@ -109,9 +108,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         {project.demoType !== "none" && (
           <Link
             href={demoUrl}
-            className="text-xs font-mono font-bold text-indigo-700 dark:text-indigo-300 hover:bg-gradient-to-r hover:from-indigo-500 hover:to-cyan-500 hover:text-white px-3.5 py-1.5 rounded bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-200 dark:border-indigo-500/40 transition-all flex items-center gap-1.5 shadow-sm dark:shadow-[0_0_12px_rgba(99,102,241,0.15)] active:scale-95"
+            className="text-xs font-mono font-bold text-gold-dark dark:text-gold-light hover:bg-gold-primary hover:text-black px-3.5 py-1.5 rounded-lg bg-gold-primary/10 border border-gold-primary/30 transition-all flex items-center gap-1.5 shadow-sm active:scale-95"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 dark:bg-indigo-400 motion-safe:animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-gold-primary motion-safe:animate-pulse" />
             <span>
               {project.demoType === "real_live"
                 ? isRtl

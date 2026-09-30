@@ -10,6 +10,104 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.2.0] - 2026-09-30 — Full Autonomous OS v2.0 Production Release & Hardening
+
+### Added
+- **OpenGraph 1200x630 Social Banner (`public/images/og-cover.png`):**
+  - Generated high-resolution social cover asset adhering to the Obsidian Black and Royal Gold visual identity.
+  - Features the official AS Monogram, full legal and bilingual title, role badges, and canonical project references.
+  - Wired into `app/[locale]/page.tsx` as primary OpenGraph and Twitter card image.
+- **Content-Security-Policy (CSP) Security Hardening:**
+  - Implemented strict CSP in `next.config.ts` restricting script execution, styles, frame ancestors, and object sources.
+  - Full suite of security headers verified: HSTS with preload, X-Content-Type-Options: nosniff, Referrer-Policy, Permissions-Policy.
+- **Production Maintenance & Operations Guide (`docs/deployment/MAINTENANCE_GUIDE.md`):**
+  - Authored comprehensive operations runbook covering daily/weekly/monthly routines, Supabase cloud backup/restore SOPs, Gemini AI rate limiting, and emergency incident triage.
+- **Automated SEO & Security Test Suite (`tests/seo-security-routes.test.mjs`):**
+  - Expanded native automated test suite from 65 to 74 tests with 100% passing rate.
+  - Verifies asset dimensions, CSP headers, robots.txt, sitemap.xml, JSON-LD schemas, and maintenance documentation integrity.
+
+### Changed & Fixed
+- **Resolved All Dependency Vulnerabilities (`pnpm audit`):**
+  - Added pnpm override for `postcss` (`^8.5.28`), resolving all 4 subdependency vulnerabilities. `pnpm audit` now reports zero known vulnerabilities.
+- **Completed OS v2.0 State Machine:**
+  - Completed and verified Phases 09 through 18 in `ROADMAP.md` and `PROGRESS.md`.
+  - Prerendered all 36 static pages cleanly in Next.js production build (`pnpm build`).
+
+---
+
+## [2.1.0] - 2026-09-28 — Astra 6 Master Autonomous Rebuild & Subpage Harmonization
+
+### Added
+- **YUSRA | يُسرى Flagship Project Integration:**
+  - Registered Project 0 (`yusra`) into `lib/data/projectsData.ts` with comprehensive 5-phase case study (Problem, Solution, Architecture, Subsystems, Results).
+  - Built interactive simulator `demos/simulations/YusraSimulation.tsx` (MediaPipe 21 hand landmarks, Arabic Sign Language, OCR, phoneme speech coaching).
+  - Registered simulation in `demos/registry/index.ts` and enabled SSG routes `/[locale]/projects/yusra` and `/[locale]/projects/yusra/demo`.
+  - Added `yusra` to automated domain tests in `tests/core-domain.test.mjs` (38/38 passing).
+- **Production-Grade `next.config.ts` Security & Performance:**
+  - Strict Content Security Policy (CSP), HTTP Strict Transport Security (HSTS), X-Content-Type-Options: nosniff, and frame-ancestors headers.
+  - Image optimization configured for AVIF and WebP with strict quality profiles.
+- **Modernized Google Fonts Architecture:**
+  - Integrated `next/font/google` (`Inter`, `Outfit`, `Cairo`, `JetBrains_Mono`) into `app/layout.tsx`.
+  - Purged external `<link rel="stylesheet">` Google font tags, eliminating render blocking.
+- **Rich Structured Data / JSON-LD:**
+  - Added Schema.org `Person` and `ProfilePage` JSON-LD in `app/[locale]/layout.tsx`.
+  - Added Schema.org `SoftwareApplication` JSON-LD in `app/[locale]/projects/[slug]/page.tsx`.
+
+### Changed & Modernized
+- **Subpage & Component Color Harmonization:**
+  - Purged 100% of legacy `indigo-500` and `cyan-400` classes across all subpages (`/projects`, `/projects/[slug]`, `/credentials`, `/showcase`).
+  - Completely restyled: `ProjectCard`, `ProjectFilters`, `ProjectPreviewGraphic`, `TechnologyBadge`, `CaseStudyHero`, `DemoCalloutBanner`, `CredentialsCatalogView`, `CertificateCard`, `CertificateModal`, `LiveDemoStudio`, `ContactForm`, `ContactToolbar`, `AbdulghaniAIModal`, `LanguageSwitcher`.
+  - Aligned all components with the luxury Obsidian Black (`#0B0B0C`, `#121214`) and Royal Gold (`#D4AF37`, `#F3E5AB`) palette.
+- **Interactive Demos Multi-Workstation Suite:**
+  - Enhanced `LiveDemoStudio.tsx` to include `YusraSimulation` alongside `CampusITTrackerSimulation` and `MetaAlgorithmLabSimulation`.
+- **Dead Code Purge:**
+  - Removed 107 KB of unimported code in `components/canonical/` (`CanonicalHero`, `CanonicalProjectsBento`, `CanonicalDemoStudio`, `CanonicalDesktopSimulator`, `CanonicalFooter`).
+  - Removed superseded `AcademicProfileSection.tsx`.
+
+### Verified
+- Zero TypeScript errors (`pnpm typecheck`).
+- Zero ESLint errors or warnings (`pnpm lint`).
+- 38/38 automated unit tests passing (`pnpm test`).
+- 40/40 static SSG routes cleanly generated (`pnpm build`).
+
+---
+
+## [2.0.0] - 2026-09-28 — Full Authoritative Visual Redesign, Monogram AS Brand & Production Hardening
+
+### Added
+- **Authoritative Visual Target Implementation (`new_design.png`):**
+  - Completely redesigned homepage conforming strictly to the master reference visual design.
+  - Implemented 10 authoritative components under `components/features/home/`:
+    - `HeroSection.tsx`: Command center featuring greeting kicker, display title, dot-separated role hierarchy, CTA trio, and real Abdulghani portrait with technical circuit line art.
+    - `AboutSection.tsx`: "Who is Abdulghani?" narrative, 6 circular capability badges, 4-step vertical progression timeline, and Shibam skyline quote callout.
+    - `AILabSection.tsx`: 6 gold-bordered AI experiment modules (Prompt Engineering, AI-Powered Applications, Computer Vision, OCR, Speech & Language, AI Automation).
+    - `FeaturedProjectsSection.tsx`: 4 flagship projects with BUILT badges (Yusra, Campus IT Tracker, MetaAlgorithm Lab, Nexora Tech).
+    - `YusraCaseStudySection.tsx`: Deep-dive 5-stage case study (Problem, Solution, Architecture, Implementation, Outcome) + 5 mobile app screen previews, key features, and system flow pipeline.
+    - `TechnicalArsenalSection.tsx`: 5 category cards (Languages, AI / Computer Vision, Mobile, Databases, Engineering) with authentic tech tags.
+    - `AbdulghaniMethodSection.tsx`: 7 connected circular gold nodes + signature quote: "AI is not just a code generator. It is a thinking partner."
+    - `EducationCertificationsSection.tsx`: Split card with Bachelor's Student in IT and 4 verified course credentials.
+    - `EngineeringInPublicSection.tsx`: GitHub commit activity heatmap, pinned repositories, live activity feed, and syntax-highlighted code editor window.
+    - `ContactCtaSection.tsx`: "Let's Build Something Intelligent" banner with Shibam architectural graphic, action buttons, value propositions, and direct inquiry form.
+- **AS Monogram & Wordmark System (`components/ui/AsLogo.tsx`):**
+  - Scalable vector AS monogram with geometric circuit paths and terminal nodes, consistent across header and footer.
+- **Authentic Portrait & Asset Pipeline:**
+  - Integrated high-resolution portrait from `abdulghani.png` into responsive WebP variants.
+  - Processed and integrated genuine card screenshots and architectural artwork.
+
+### Enhanced & Standardized
+- **Design Tokens & Palette Harmonization:**
+  - Aligned `tailwind.config.ts` and `app/globals.css` with authoritative Obsidian Black (`#0B0B0C`, `#141416`) and Royal Gold (`#D4AF37`, `#F3E5AB`).
+  - Balanced alternating rhythm of light editorial sections and dark engineering sections.
+- **Navigation & Footer:**
+  - Modernized `Navbar.tsx` with AS logo, 6 main navigation items, `AR | EN` switch, and `LET'S BUILD` gold button.
+  - Aligned `Footer.tsx` with AS monogram, brand wordmark, social links, and dual-language selector.
+- **Bi-Directional Internationalization (i18n):**
+  - Full LTR (English) and RTL (Arabic) parity with mirrored layouts, typography, and directional cues.
+- **Zero Console Errors & Verified Production Build:**
+  - Full TypeScript typecheck (`tsc --noEmit`), 37/37 unit tests passing, static export build verified (36/36 static pages generated).
+
+---
+
 ## [1.9.0] - 2026-09-21 — Autonomous Production Engineering, Deep Audit, Automated Test Suite & Release Gate
 
 ### Added
