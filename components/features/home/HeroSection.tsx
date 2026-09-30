@@ -35,11 +35,11 @@ export function HeroSection({ locale }: { locale: Locale }) {
             </div>
 
             {/* Display Heading */}
-            <h1 className="font-serif font-black text-3xl sm:text-4xl md:text-5xl lg:text-[46px] xl:text-[56px] 2xl:text-[62px] tracking-tight text-[#0B0B0C] dark:text-white uppercase leading-[1.08] mb-4">
+            <h1 className="font-serif font-black text-2xl sm:text-3xl md:text-4xl lg:text-[38px] xl:text-[46px] 2xl:text-[54px] tracking-tight text-[#0B0B0C] dark:text-white uppercase leading-[1.1] mb-4">
               {isRtl ? (
                 "عبدالغني الشبامي"
               ) : (
-                <span className="inline-block whitespace-normal">
+                <span className="inline-block sm:whitespace-nowrap">
                   ABDULGHANI AL-SHIBAMI
                 </span>
               )}
