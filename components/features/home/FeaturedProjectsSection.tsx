@@ -10,43 +10,43 @@ export function FeaturedProjectsSection({ locale }: { locale: Locale }) {
 
   const projects = [
     {
+      id: "yusra",
+      title: isRtl ? "يُسرى | YUSRA" : "YUSRA | يُسرى",
+      subtitle: isRtl ? "تقنية ذكاء اصطناعي مساندة لحياة مستقلة" : "Assistive AI technology",
+      tech: "Kotlin · Jetpack Compose · Firebase · TFLite · MediaPipe",
+      image: "/images/projects/yusra-card.png",
+      href: `/${locale}/projects/yusra`,
+    },
+    {
       id: "campus-it-tracker",
       title: isRtl ? "نظام تتبع البنية التحتية الجامعية" : "CAMPUS IT INFRASTRUCTURE TRACKER",
-      subtitle: isRtl ? "إدارة ذكية لأصول وشبكات الحرم الجامعي" : "Smart campus IT & network asset management",
-      tech: "C# · WinForms · Oracle Database · RBAC · ITIL",
+      subtitle: isRtl ? "إدارة ذكية لأصول وشبكات الحرم الجامعي" : "Smart IT infrastructure management",
+      tech: "C# · WinForms · Oracle · RBAC",
       image: "/images/projects/campus-card.png",
       href: `/${locale}/projects/campus-it-tracker`,
     },
     {
       id: "metaalgorithm-lab",
       title: isRtl ? "مختبر الخوارزميات التفاعلي" : "METAALGORITHM LAB",
-      subtitle: isRtl ? "منصة تفاعلية لدراسة وتعقيد الخوارزميات" : "Interactive algorithm learning & benchmark suite",
-      tech: "Python · PyQt6 · Scientific Benchmarks · Big-O",
+      subtitle: isRtl ? "منصة تفاعلية لدراسة وتعقيد الخوارزميات" : "Interactive algorithm learning platform",
+      tech: "Algorithms · Big-O · Clean Architecture · REST",
       image: "/images/projects/meta-card.png",
       href: `/${locale}/projects/metaalgorithm-lab`,
     },
     {
-      id: "novatech",
-      title: isRtl ? "نوفا تيك" : "NOVA TECH STOREFRONT",
-      subtitle: isRtl ? "متجر إلكتروني ذكي للأجهزة والحلول التقنية" : "Modern cyber gadgets & hardware platform",
-      tech: "Vanilla JS · Modern CSS3 · Cart Engine · Tax Simulation",
-      image: "/images/projects/novatech/01-storefront-hero.jpg",
+      id: "nexora-tech",
+      title: isRtl ? "نوفا تيك | نكسورا للأجهزة الذكية" : "NEXORA TECH",
+      subtitle: isRtl ? "متجر إلكتروني ذكي للأجهزة والحلول التقنية" : "Next-generation PC hardware platform",
+      tech: "Next.js · PostgreSQL · Search · PC Builder",
+      image: "/images/projects/nexora-card.png",
       href: `/${locale}/projects/novatech`,
-    },
-    {
-      id: "cafena",
-      title: isRtl ? "كافينا للقهوة المختصة" : "CAFENA SPECIALTY COFFEE",
-      subtitle: isRtl ? "منصة عصرية لتجربة القهوة المختصة" : "Artisanal coffee experience & e-commerce portal",
-      tech: "HTML5 · CSS3 Grid · Client-side Cart · Search Engine",
-      image: "/images/projects/cafena/01-storefront-hero.jpg",
-      href: `/${locale}/projects/cafena`,
     },
   ];
 
   return (
     <section
       id="projects"
-      className="relative w-full bg-[#FAF9F6] dark:bg-[#0E0E10] py-20 lg:py-28 border-b border-black/5 dark:border-white/5 transition-colors"
+      className="relative w-full bg-white dark:bg-[#0B0B0C] py-20 lg:py-28 border-b border-black/5 dark:border-white/5 transition-colors"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading & View All Link */}
@@ -64,7 +64,7 @@ export function FeaturedProjectsSection({ locale }: { locale: Locale }) {
 
           <Link
             href={`/${locale}/projects`}
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold tracking-wider uppercase text-gold-dark dark:text-gold-light hover:text-gold-primary transition-colors group"
+            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold tracking-wider uppercase text-[#B88E1F] dark:text-[#E2C366] hover:text-[#C59B27] transition-colors group"
           >
             <span>{isRtl ? "عرض جميع المشاريع" : "VIEW ALL PROJECTS"}</span>
             <span className="transition-transform duration-200 group-hover:translate-x-1 rtl:group-hover:-translate-x-1">→</span>
@@ -76,16 +76,16 @@ export function FeaturedProjectsSection({ locale }: { locale: Locale }) {
           {projects.map((proj) => (
             <div
               key={proj.id}
-              className="flex flex-col justify-between rounded-2xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#121214] p-5 shadow-sm hover:shadow-xl hover:border-gold-primary/50 transition-all duration-300 group hover:-translate-y-1"
+              className="flex flex-col justify-between rounded-2xl border border-black/10 dark:border-white/10 bg-[#FAF9F6] dark:bg-[#121214] p-5 shadow-sm hover:shadow-xl hover:border-[#C59B27]/50 transition-all duration-300 group hover:-translate-y-1"
             >
               <div>
                 {/* Built Badge */}
-                <div className="inline-flex items-center px-2.5 py-0.5 rounded-full bg-gold-primary/15 border border-gold-primary/30 text-gold-dark dark:text-gold-light font-mono text-[10px] font-bold tracking-wider uppercase mb-3">
+                <div className="inline-flex items-center px-2.5 py-0.5 rounded-full bg-[#C59B27]/15 border border-[#C59B27]/30 text-[#B88E1F] dark:text-[#E2C366] font-mono text-[10px] font-bold tracking-wider uppercase mb-3">
                   BUILT
                 </div>
 
                 {/* Title */}
-                <h3 className="font-sans font-black text-base text-zinc-900 dark:text-white uppercase leading-snug group-hover:text-gold-dark dark:group-hover:text-gold-light transition-colors line-clamp-2 min-h-[44px]">
+                <h3 className="font-sans font-black text-base text-zinc-900 dark:text-white uppercase leading-snug group-hover:text-[#B88E1F] dark:group-hover:text-[#E2C366] transition-colors line-clamp-2 min-h-[44px]">
                   {proj.title}
                 </h3>
 
@@ -115,7 +115,7 @@ export function FeaturedProjectsSection({ locale }: { locale: Locale }) {
               <div className="pt-5 border-t border-black/5 dark:border-white/5 mt-4">
                 <Link
                   href={proj.href}
-                  className="inline-flex items-center gap-1.5 text-xs font-bold tracking-wider uppercase text-zinc-800 dark:text-zinc-200 group-hover:text-gold-dark dark:group-hover:text-gold-light transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold tracking-wider uppercase text-zinc-800 dark:text-zinc-200 group-hover:text-[#B88E1F] dark:group-hover:text-[#E2C366] transition-colors"
                 >
                   <span>{isRtl ? "عرض دراسة الحالة" : "VIEW CASE STUDY"}</span>
                   <span className="transition-transform duration-200 group-hover:translate-x-1 rtl:group-hover:-translate-x-1">→</span>

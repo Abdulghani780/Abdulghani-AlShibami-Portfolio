@@ -125,8 +125,8 @@
   }
 
   ::selection {
-    background-color: rgba(99, 102, 241, 0.28);
-    color: #818CF8;
+    background-color: rgba(212, 175, 55, 0.28);
+    color: #D4AF37;
   }
 
   :focus-visible {
@@ -159,7 +159,7 @@
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border: 1px solid var(--glass-gold-border);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(99, 102, 241, 0.12);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(212, 175, 55, 0.2);
 }
 
 /* ─── Titanium Slate & Electric Grids ─── */
@@ -230,6 +230,6 @@
 /* ─── Custom Scrollbars ─── */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(99, 102, 241, 0.25); border-radius: 9999px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(99, 102, 241, 0.5); }
+::-webkit-scrollbar-thumb { background: rgba(212, 175, 55, 0.35); border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(212, 175, 55, 0.65); }
 

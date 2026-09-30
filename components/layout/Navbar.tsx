@@ -100,7 +100,7 @@ export function Navbar({
           {/* Desktop Primary CTA Button */}
           <Link
             href={isHomePage ? "#contact" : `/${locale}#contact`}
-            className="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-[#C59B27] hover:bg-[#B38A1F] text-white text-[12px] font-bold tracking-[0.12em] uppercase shadow-sm transition-all duration-200 active:scale-95"
+            className="hidden sm:inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-[#C59B27] hover:bg-[#B38A1F] text-black font-extrabold text-[12px] tracking-[0.14em] uppercase shadow-md transition-all duration-200 active:scale-95 cursor-pointer"
           >
             {isRtl ? "لنبدأ البناء" : "LET'S BUILD"}
           </Link>
@@ -109,14 +109,14 @@ export function Navbar({
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden inline-flex items-center justify-center w-9 h-9 rounded-lg border border-black/10 dark:border-white/15 bg-black/5 dark:bg-white/5 text-zinc-900 dark:text-white transition-colors"
+            className="lg:hidden inline-flex items-center justify-center w-11 h-11 rounded-xl border border-black/10 dark:border-white/15 bg-black/5 dark:bg-white/5 text-zinc-900 dark:text-white transition-colors cursor-pointer"
             aria-label={mobileMenuOpen ? dict.nav.menuClose : dict.nav.menuOpen}
           >
             {mobileMenuOpen ? (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="18"
-                height="18"
+                width="20"
+                height="20"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -130,8 +130,8 @@ export function Navbar({
             ) : (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="18"
-                height="18"
+                width="20"
+                height="20"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -167,7 +167,7 @@ export function Navbar({
             <Link
               href={isHomePage ? "#contact" : `/${locale}#contact`}
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full inline-flex items-center justify-center py-3 rounded-lg bg-[#C59B27] hover:bg-[#B38A1F] text-white text-xs font-bold tracking-widest uppercase shadow-md"
+              className="w-full inline-flex items-center justify-center py-3 rounded-full bg-[#C59B27] hover:bg-[#B38A1F] text-black text-xs font-extrabold tracking-widest uppercase shadow-md cursor-pointer"
             >
               {isRtl ? "لنبدأ البناء" : "LET'S BUILD"}
             </Link>

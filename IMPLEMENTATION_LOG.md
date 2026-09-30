@@ -769,5 +769,51 @@
   - `pnpm build`: 36/36 static pages compiled cleanly.
 - **Status:** COMPLETED & VERIFIED.
 
+---
+
+## [2026-09-30] Entry 027 — Full Layout & Aesthetic Parity with new_design.png and Authentic Portrait
+- **Phase:** PHASE 28 — Authoritative Blueprint Alignment & Authentic Portrait Integration
+- **Task:** TSK-215 (Full Layout & Aesthetic Parity with new_design.png)
+- **Branch:** `main`
+- **Objective:**
+  1. Process authentic portrait `abdulghani.png` into transparent alpha 4-channel WebP `public/images/profile/abdulghani-portrait.webp` using background flood-fill and edge feathering.
+  2. Redesign `HeroSection.tsx` with authentic portrait cutout, technical circuit lines, glowing circular [AI] node, terminal annotations (`> CODE > ANALYZE > BUILD > IMPROVE`), and 3 rounded pill action buttons (`EXPLORE MY WORK →`, `ABOUT ME`, `GITHUB`).
+  3. Update `FeaturedProjectsSection.tsx` to 4 canonical projects with gold `BUILT` badges (`Yusra`, `Campus IT Tracker`, `MetaAlgorithm Lab`, `Nexora Tech`).
+  4. Redesign `FlagshipCaseStudySection.tsx` with 5 numbered lifecycle stages, architecture pipeline graphic (`/images/projects/yusra-arch.png`), 5 mobile mockup screens (`/images/projects/yusra-screens.png`), and simulator preview banner.
+  5. Modernize `TechnicalArsenalSection.tsx` with authentic color-coded technology badges across 5 categories (`Py`, `C#`, `Java`, `Kt`, `JS`, `PHP`, `TF`, `MP`, `OCR`, `CV`, etc.).
+  6. Rebuild `AbdulghaniMethodSection.tsx` with 7 circular connected nodes and directional arrows over subtle gold contour wave lines.
+  7. Style `AILabSection.tsx` and `EngineeringInPublicSection.tsx` with deep luxury obsidian `#0B0B0D` styling, gold borders, and GitHub contributions matrix.
+  8. Update automated test suites to 100% passing (74/74) and execute Next.js static production build across all 40 routes.
+- **Files Modified / Created:**
+  - `public/images/profile/abdulghani-portrait.webp`
+  - `public/images/profile/abdulghani-hero.png`
+  - `public/images/profile/abdulghani-original.png`
+  - `demos/simulations/YusraSimulation.tsx`
+  - `demos/registry/index.ts`
+  - `lib/data/projectsData.ts`
+  - `app/globals.css`
+  - `components/features/home/HeroSection.tsx`
+  - `components/features/home/FeaturedProjectsSection.tsx`
+  - `components/features/home/FlagshipCaseStudySection.tsx`
+  - `components/features/home/TechnicalArsenalSection.tsx`
+  - `components/features/home/AbdulghaniMethodSection.tsx`
+  - `components/features/home/AILabSection.tsx`
+  - `components/features/home/EngineeringInPublicSection.tsx`
+  - `components/features/home/ContactCtaSection.tsx`
+  - `components/layout/Navbar.tsx`
+  - `tests/core-domain.test.mjs`
+  - `tests/demo-system.test.mjs`
+  - `tests/design-system.test.mjs`
+  - `tests/visual-ux.test.mjs`
+  - `TASKS.md`
+  - `PROGRESS.md`
+  - `CHANGELOG.md`
+- **Verification Results:**
+  - `pnpm tsc --noEmit`: 0 compiler errors.
+  - `pnpm test`: 74/74 tests passed (0 failures).
+  - `pnpm build`: 40/40 static SSG routes compiled with exit code 0.
+- **Status:** COMPLETED & VERIFIED.
+
+
 
 

@@ -38,7 +38,6 @@ export function AILabSection({ locale }: { locale: Locale }) {
         <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
           <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
           <circle cx="12" cy="12" r="3" />
-          {/* Target bracket corners */}
           <path d="M3 3h4M3 3v4M21 3h-4M21 3v4M3 21h4M3 21v-4M21 21h-4M21 21v-4" strokeWidth="1.5" />
         </svg>
       ),
@@ -87,67 +86,63 @@ export function AILabSection({ locale }: { locale: Locale }) {
   return (
     <section
       id="ai-lab"
-      className="relative w-full bg-[#FAF9F6] dark:bg-[#0B0B0C] text-[#0B0B0C] dark:text-white py-20 lg:py-28 border-b border-black/5 dark:border-white/5 transition-colors overflow-hidden"
+      className="relative w-full bg-[#0B0B0D] dark:bg-[#0B0B0D] text-white py-20 lg:py-28 border-b border-white/10 overflow-hidden"
     >
       {/* Background Subtle Tech Ambient */}
       <div className="absolute inset-0 pointer-events-none opacity-20">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gold-primary/10 blur-[140px] rounded-full" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#D4AF37]/10 blur-[140px] rounded-full" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header with Title and "EXPLORE MORE →" CTA */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 sm:mb-16 gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 sm:mb-16 gap-4 border-b border-white/10 pb-6">
           <div>
-            <h2 className="font-sans font-black text-3xl sm:text-4xl uppercase tracking-tight text-[#0B0B0C] dark:text-white">
+            <h2 className="font-serif font-bold text-3xl sm:text-4xl uppercase tracking-tight text-white">
               {isRtl ? "مختبر الذكاء الاصطناعي" : "AI LAB"}
             </h2>
-            <p className="mt-2 text-sm sm:text-base text-zinc-600 dark:text-zinc-400 font-sans">
+            <p className="mt-2 text-sm sm:text-base text-zinc-400 font-sans">
               {isRtl
-                ? "تجارب، نظم ذكية، وتطبيقات عملية للذكاء الاصطناعي."
+                ? "تجارب، أنظمة ذكية، وتطبيقات عملية مدعومة بأحدث النماذج."
                 : "Experiments, intelligent systems, and practical AI applications."}
             </p>
           </div>
 
           <Link
-            href={`/${locale}/showcase`}
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold tracking-wider uppercase text-gold-dark dark:text-gold-light hover:text-gold-primary transition-colors group"
+            href={`/${locale}/projects`}
+            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold tracking-wider uppercase text-[#D4AF37] hover:text-[#F3E5AB] transition-colors group"
           >
             <span>{isRtl ? "استكشف المزيد" : "EXPLORE MORE"}</span>
             <span className="transition-transform duration-200 group-hover:translate-x-1 rtl:group-hover:-translate-x-1">→</span>
           </Link>
         </div>
 
-        {/* 6 High-Fidelity Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 sm:gap-5">
-          {aiModules.map((item, idx) => (
+        {/* 6 AI Module Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-5">
+          {aiModules.map((mod, idx) => (
             <div
               key={idx}
-              className="flex flex-col justify-between p-5 rounded-2xl border border-black/10 dark:border-gold-primary/25 bg-white dark:bg-[#121214] hover:bg-[#FAF9F6] dark:hover:bg-[#18181C] hover:border-gold-primary/60 transition-all duration-300 group hover:-translate-y-1 shadow-sm dark:shadow-lg"
+              className="flex flex-col justify-between p-6 rounded-2xl border border-white/10 hover:border-[#D4AF37]/60 bg-[#141418] hover:bg-[#18181E] transition-all duration-300 group hover:-translate-y-1 shadow-lg"
             >
               <div>
-                {/* Module Number & Icon */}
-                <div className="w-12 h-12 rounded-xl border border-gold-primary/30 bg-gold-primary/10 flex items-center justify-center text-gold-dark dark:text-gold-light group-hover:scale-110 transition-transform mb-5">
-                  {item.icon}
+                {/* Icon in gold outline */}
+                <div className="w-12 h-12 rounded-xl border border-[#D4AF37]/40 bg-[#D4AF37]/10 flex items-center justify-center text-[#D4AF37] mb-6 group-hover:bg-[#D4AF37] group-hover:text-black transition-colors">
+                  {mod.icon}
                 </div>
 
-                <div className="text-[10px] font-mono tracking-widest text-gold-dark/80 dark:text-gold-light/60 uppercase mb-1 font-bold">
-                  {item.num}
-                </div>
-
-                <h3 className="font-sans font-bold text-sm sm:text-base text-zinc-900 dark:text-white group-hover:text-gold-dark dark:group-hover:text-gold-light transition-colors leading-snug mb-2">
-                  {item.title}
+                {/* Title */}
+                <h3 className="font-sans font-bold text-sm tracking-wide text-white group-hover:text-[#D4AF37] transition-colors leading-snug mb-2">
+                  {mod.title}
                 </h3>
 
-                <p className="text-xs text-zinc-600 dark:text-zinc-400 font-sans leading-relaxed">
-                  {item.desc}
+                {/* Subtitle / Micro-tagline */}
+                <p className="text-xs text-zinc-400 leading-relaxed font-sans mb-4">
+                  {mod.desc}
                 </p>
               </div>
 
-              {/* Arrow Action */}
-              <div className="pt-6 flex justify-end">
-                <span className="text-gold-dark dark:text-gold-primary text-base font-bold group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform">
-                  →
-                </span>
+              {/* Bottom directional arrow */}
+              <div className="text-[#D4AF37] text-xs font-bold transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1 pt-2">
+                →
               </div>
             </div>
           ))}

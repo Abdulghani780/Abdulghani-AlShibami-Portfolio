@@ -10,6 +10,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.3.0] - 2026-09-30 — Full Layout & Aesthetic Parity with new_design.png & Authentic Portrait
+
+### Added
+- **Authentic Portrait Alpha Cutout (`public/images/profile/abdulghani-portrait.webp`):**
+  - Processed user-provided portrait `abdulghani.png` with edge-feathered alpha matte into high-efficiency 4-channel WebP.
+  - Sits directly in `HeroSection.tsx` with drop shadow and circuit linework overlay.
+- **Hero Section Circuit Linework & Technical Nodes:**
+  - Added golden vector circuit paths, [AI] circular node with pulsing hexagonal accents, and `> CODE > ANALYZE > BUILD > IMPROVE` terminal annotations.
+  - Implemented 3 rounded pill action buttons: `EXPLORE MY WORK →`, `ABOUT ME`, and `GITHUB`.
+- **YUSRA Flagship Case Study Interactive Sandbox:**
+  - Integrated 5-phase lifecycle (Problem, Solution, Architecture, Implementation, Outcome).
+  - Wired mobile screen mockups (`/images/projects/yusra-screens.png`), architecture graphic (`/images/projects/yusra-arch.png`), key features, and system flow.
+  - Simulator preview banner with direct access to interactive demo sandbox (`YusraSimulation.tsx`).
+- **Authentic Technology Chips in Technical Arsenal:**
+  - Added authentic color-coded badges (`Py`, `C#`, `Java`, `Kt`, `JS`, `PHP`, `TF`, `MP`, `OCR`, `CV`, etc.) across 5 distinct categories.
+- **The Abdulghani Method 7-Stage Circular Pipeline:**
+  - Added 7 golden circular nodes connected by directional arrows over subtle gold contour wave lines.
+
+### Changed & Modernized
+- **AI Lab & Engineering in Public Aesthetic Refinement:**
+  - Shifted backgrounds to deep luxury obsidian `#0B0B0D` with gold border highlights.
+  - Integrated GitHub matrix, pinned repositories, live commits log, and syntax-highlighted code editor.
+- **Automated Test Suite (74/74 Passing):**
+  - Updated test assertions across `tests/core-domain.test.mjs`, `tests/design-system.test.mjs`, and `tests/visual-ux.test.mjs`.
+
+---
+
 ## [2.2.0] - 2026-09-30 — Full Autonomous OS v2.0 Production Release & Hardening
 
 ### Added

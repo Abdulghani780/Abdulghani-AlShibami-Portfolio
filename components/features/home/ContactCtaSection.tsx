@@ -74,10 +74,10 @@ export function ContactCtaSection({ locale }: { locale: Locale }) {
               <button
                 type="button"
                 onClick={() => setShowDirectForm(!showDirectForm)}
-                className="inline-flex items-center gap-2 px-6 sm:px-7 py-3 rounded-full bg-[#C59B27] hover:bg-[#B38A1F] text-white text-xs sm:text-sm font-bold tracking-wider uppercase shadow-md transition-all active:scale-95 cursor-pointer"
+                className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-[#C59B27] hover:bg-[#B38A1F] text-black font-extrabold text-xs sm:text-sm tracking-wider uppercase shadow-md transition-all active:scale-95 cursor-pointer"
               >
                 <span>{isRtl ? "تواصل معي" : "CONTACT ME"}</span>
-                <span>→</span>
+                <span className="rtl:rotate-180">→</span>
               </button>
 
               {/* View GitHub */}

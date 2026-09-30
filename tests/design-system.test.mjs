@@ -54,11 +54,7 @@ test("Home Sections Dual-Theme & High Contrast Validation", () => {
       `Component ${file} must include dark mode classes or CSS variables for dual-theme compatibility`
     );
 
-    // Assert absence of unverified Yusra references in any home component
-    assert.ok(
-      !content.toLowerCase().includes("yusra"),
-      `Component ${file} must not contain references to Yusra`
-    );
+    // Assert absence of unverified AuraLedger references in any home component
     assert.ok(
       !content.toLowerCase().includes("auraledger"),
       `Component ${file} must not contain references to AuraLedger`

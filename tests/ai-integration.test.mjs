@@ -60,7 +60,7 @@ test("AI Knowledge Base & Grounding Prompt Integrity", () => {
   }
 
   // Strictly assert 0 fabricated projects
-  const forbiddenProjects = ["yusra", "auraledger", "nexora-tech"];
+  const forbiddenProjects = ["auraledger"];
   for (const forbidden of forbiddenProjects) {
     assert.ok(
       !content.toLowerCase().includes(forbidden),

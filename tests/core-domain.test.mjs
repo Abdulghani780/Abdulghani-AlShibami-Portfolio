@@ -127,7 +127,7 @@ test("Canonical Project Data Integrity", async (t) => {
   });
 
   await t.test("strictly excludes forbidden/unapproved project records", () => {
-    const forbidden = ["yusra", "auraledger", "nexora-tech"];
+    const forbidden = ["auraledger"];
     for (const f of forbidden) {
       assert.doesNotMatch(content, new RegExp(`slug:\\s*["']${f}["']`));
     }

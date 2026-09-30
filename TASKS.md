@@ -550,3 +550,17 @@
 - **FILES:** `next.config.ts`, `app/layout.tsx`, `app/[locale]/layout.tsx`, `app/[locale]/projects/page.tsx`, `app/[locale]/projects/[slug]/page.tsx`, `app/[locale]/credentials/page.tsx`, `app/[locale]/showcase/page.tsx`, `demos/simulations/YusraSimulation.tsx`, `demos/registry/index.ts`, `tests/core-domain.test.mjs`, `components/features/projects/*`, `components/features/credentials/*`, `components/features/demos/*`, `components/features/ai/*`, `components/layout/*`
 - **TESTS:** `pnpm typecheck` (PASS, 0 errors), `pnpm lint` (PASS, 0 warnings), `pnpm test` (38/38 PASS), `pnpm build` (PASS 40/40 static pages).
 
+---
+
+### PHASE 28 — Authoritative Blueprint Alignment & Authentic Portrait Integration (Master Execution)
+- **ID:** `TSK-215`
+- **TITLE:** Full Layout & Aesthetic Parity with new_design.png and Authentic Portrait
+- **PHASE:** 28
+- **PRIORITY:** P0
+- **STATUS:** COMPLETED
+- **DESCRIPTION:** Execute full transformation matching user-provided new_design.png and abdulghani.png. Generate transparent alpha portrait WebP (`public/images/profile/abdulghani-portrait.webp`). Rebuild Hero section with circuit overlay, [AI] gold badge, and CTA button trio (`EXPLORE MY WORK`, `ABOUT ME`, `GITHUB`). Update Featured Projects to 4-item grid with gold BUILT badges. Rebuild Flagship Case Study with 5 lifecycle stages, architecture graphic, 5 mobile mockup screens, and simulator preview banner. Standardize Technical Arsenal with color-coded chips. Rebuild Abdulghani Method section with 7 circular connected nodes. Style AI Lab and Engineering in Public sections with deep obsidian #0B0B0D styling. Verify 100% test suite pass (74/74) and clean 40/40 static build.
+- **DEPENDENCIES:** TSK-214
+- **FILES:** `public/images/profile/*`, `components/features/home/*`, `components/layout/Navbar.tsx`, `app/globals.css`, `tests/*`
+- **TESTS:** `pnpm tsc --noEmit` (PASS, 0 errors), `pnpm test` (PASS, 74/74 passing), `pnpm build` (PASS, 40/40 static pages prerendered).
+
+

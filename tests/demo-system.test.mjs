@@ -30,7 +30,7 @@ test("Demo System & Simulation Integrity", async (t) => {
   }
 
   await t.test("strictly excludes forbidden/unapproved demo entries", () => {
-    const forbidden = ["yusra", "auraledger", "nexora", "nexora-tech"];
+    const forbidden = ["auraledger"];
     for (const f of forbidden) {
       assert.doesNotMatch(content, new RegExp(`["']?${f}["']?:\\s*\\{`));
       assert.doesNotMatch(content, new RegExp(`slug:\\s*["']${f}["']`));

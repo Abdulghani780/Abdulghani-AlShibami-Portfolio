@@ -73,7 +73,7 @@ export function AbdulghaniMethodSection({ locale }: { locale: Locale }) {
   ];
 
   return (
-    <section className="relative w-full bg-[#FAF9F6] dark:bg-[#0B0B0C] text-[#0B0B0C] dark:text-white py-20 lg:py-28 border-b border-black/5 dark:border-white/5 overflow-hidden transition-colors">
+    <section className="relative w-full bg-[#0B0B0D] dark:bg-[#0B0B0D] text-white py-20 lg:py-28 border-b border-white/10 overflow-hidden">
       {/* Subtle Golden Wavy Wave / Contour Lines Background */}
       <div className="absolute inset-0 pointer-events-none opacity-20">
         <svg className="w-full h-full" viewBox="0 0 1440 400" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -93,32 +93,40 @@ export function AbdulghaniMethodSection({ locale }: { locale: Locale }) {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-        {/* Title */}
-        <h2 className="font-sans font-black text-2xl sm:text-3xl lg:text-4xl uppercase tracking-widest text-gold-dark dark:text-gold-light mb-3">
+        {/* Title in Gold */}
+        <h2 className="font-serif font-bold text-2xl sm:text-3xl lg:text-4xl uppercase tracking-widest text-[#D4AF37] mb-3">
           {isRtl ? "منهجية عبدالغني" : "THE ABDULGHANI METHOD"}
         </h2>
 
-        {/* Philosophy statement */}
-        <p className="font-serif italic text-base sm:text-lg text-zinc-700 dark:text-zinc-300 max-w-2xl mx-auto mb-14 sm:mb-18 font-normal">
+        {/* Subtitle */}
+        <p className="text-sm sm:text-base text-zinc-400 max-w-xl mx-auto font-sans mb-14 sm:mb-20">
           {isRtl
-            ? "الذكاء الاصطناعي ليس مجرد مولد للكود، بل شريك تفكير واستنباط معماري."
+            ? "الذكاء الاصطناعي ليس مجرد أداة لتوليد الأكواد، بل هو شريك في التفكير والتصميم."
             : "AI is not just a code generator. It is a thinking partner."}
         </p>
 
-        {/* 7 Horizontal Connected Nodes */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-6 sm:gap-4 items-center justify-center">
-          {steps.map((st, idx) => (
+        {/* 7 Connected Golden Circles Horizontal Pipeline */}
+        <div className="flex items-center justify-center gap-2 sm:gap-4 lg:gap-6 flex-wrap md:flex-nowrap">
+          {steps.map((step, idx) => (
             <React.Fragment key={idx}>
-              <div className="flex flex-col items-center group">
-                {/* Gold Circle Icon */}
-                <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-full border-2 border-gold-primary/60 bg-white dark:bg-[#141418] flex items-center justify-center text-gold-dark dark:text-gold-light group-hover:border-gold-primary group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] transition-all duration-300 mb-3 shadow-sm">
-                  {st.icon}
+              <div className="flex flex-col items-center group cursor-pointer my-2">
+                {/* Node Circle */}
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border-2 border-[#D4AF37] bg-[#141418] group-hover:bg-[#D4AF37] group-hover:text-black text-[#D4AF37] flex items-center justify-center transition-all duration-300 shadow-md group-hover:scale-110 mb-3">
+                  {step.icon}
                 </div>
 
-                <span className="font-sans font-bold text-xs sm:text-[13px] tracking-wider uppercase text-zinc-800 dark:text-zinc-200 group-hover:text-gold-dark dark:group-hover:text-gold-light transition-colors">
-                  {st.title}
+                {/* Step Label */}
+                <span className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-wider text-zinc-300 group-hover:text-[#D4AF37] transition-colors whitespace-nowrap">
+                  {step.title}
                 </span>
               </div>
+
+              {/* Connecting Arrow */}
+              {idx < steps.length - 1 && (
+                <div className="hidden md:flex items-center text-[#D4AF37]/60 text-lg mb-7 rtl:rotate-180">
+                  →
+                </div>
+              )}
             </React.Fragment>
           ))}
         </div>
