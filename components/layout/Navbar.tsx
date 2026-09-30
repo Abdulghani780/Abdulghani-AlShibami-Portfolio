@@ -78,29 +78,32 @@ export function Navbar({
 
         {/* Center: Desktop Navigation Links */}
         <nav
-          className="hidden lg:flex items-center gap-7 xl:gap-9 text-[12px] font-sans font-bold tracking-[0.16em] uppercase text-zinc-800 dark:text-zinc-200"
+          className="hidden lg:flex items-center gap-5 xl:gap-7 text-[12px] font-sans font-bold tracking-[0.14em] uppercase text-zinc-800 dark:text-zinc-200"
           aria-label="Main Navigation"
         >
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="hover:text-gold-dark dark:hover:text-gold-light transition-colors duration-200 py-1"
+              className="hover:text-gold-dark dark:hover:text-gold-light transition-colors duration-200 py-1 whitespace-nowrap"
             >
               {link.label}
             </Link>
           ))}
         </nav>
 
+        {/* Divider between Nav and Actions */}
+        <div className="hidden lg:block w-[1px] h-5 bg-black/15 dark:bg-white/15 mx-2 xl:mx-3 shrink-0" />
+
         {/* Right: Language Switcher, Theme Toggle & CTA */}
-        <div className="flex items-center gap-3 sm:gap-4">
+        <div className="flex items-center gap-2.5 sm:gap-3.5 shrink-0">
           <LanguageSwitcher currentLocale={locale} />
           <ThemeToggle />
 
           {/* Desktop Primary CTA Button */}
           <Link
             href={isHomePage ? "#contact" : `/${locale}#contact`}
-            className="hidden sm:inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-[#C59B27] hover:bg-[#B38A1F] text-black font-extrabold text-[12px] tracking-[0.14em] uppercase shadow-md transition-all duration-200 active:scale-95 cursor-pointer"
+            className="hidden sm:inline-flex items-center justify-center px-5 sm:px-6 h-10 rounded-full bg-[#C59B27] hover:bg-[#B38A1F] text-black font-extrabold text-[12px] tracking-[0.14em] uppercase shadow-md hover:shadow-lg transition-all duration-200 active:scale-95 cursor-pointer whitespace-nowrap shrink-0 leading-none"
           >
             {isRtl ? "لنبدأ البناء" : "LET'S BUILD"}
           </Link>

@@ -35,8 +35,14 @@ export function HeroSection({ locale }: { locale: Locale }) {
             </div>
 
             {/* Display Heading */}
-            <h1 className="font-serif font-black text-4xl sm:text-5xl md:text-6xl lg:text-[64px] tracking-tight text-[#0B0B0C] dark:text-white uppercase leading-[1.05] mb-4">
-              {isRtl ? "عبدالغني الشبامي" : "ABDULGHANI AL-SHIBAMI"}
+            <h1 className="font-serif font-black text-3xl sm:text-4xl md:text-5xl lg:text-[46px] xl:text-[56px] 2xl:text-[62px] tracking-tight text-[#0B0B0C] dark:text-white uppercase leading-[1.08] mb-4">
+              {isRtl ? (
+                "عبدالغني الشبامي"
+              ) : (
+                <span className="inline-block whitespace-normal">
+                  ABDULGHANI AL-SHIBAMI
+                </span>
+              )}
             </h1>
 
             {/* Role / Subtitle with dot separators */}
@@ -90,7 +96,24 @@ export function HeroSection({ locale }: { locale: Locale }) {
           </div>
 
           {/* Right Column: Authentic Cutout Portrait with Technical Circuit Linework */}
-          <div className="lg:col-span-5 relative flex justify-center lg:justify-end items-end min-h-[440px] sm:min-h-[500px]">
+          <div className="lg:col-span-5 relative flex justify-center lg:justify-end items-end min-h-[460px] sm:min-h-[520px]">
+            {/* Studio High-Contrast White Backdrop for Portrait (Guarantees black coat & hair pop sharply in Dark Mode) */}
+            <div className="absolute inset-x-2 sm:inset-x-5 bottom-0 top-12 rounded-3xl bg-gradient-to-b from-[#FFFFFF] via-[#FAF9F6] to-[#ECE7DE] dark:from-[#FFFFFF] dark:via-[#F6F4EE] dark:to-[#DFDAD0] shadow-2xl border border-white/60 dark:border-[#D4AF37]/35 overflow-hidden -z-1">
+              {/* Subtle Gold Circuit Grid Ambient Pattern */}
+              <div className="absolute inset-0 opacity-15 pointer-events-none">
+                <svg className="w-full h-full" viewBox="0 0 400 500" fill="none">
+                  <defs>
+                    <pattern id="cardGrid" width="32" height="32" patternUnits="userSpaceOnUse">
+                      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#B88E1F" strokeWidth="0.5" />
+                    </pattern>
+                  </defs>
+                  <rect width="100%" height="100%" fill="url(#cardGrid)" />
+                </svg>
+              </div>
+              {/* Luminous studio radial soft light */}
+              <div className="absolute top-0 inset-x-0 h-36 bg-gradient-to-b from-white via-white/80 to-transparent pointer-events-none" />
+            </div>
+
             {/* Technical Circuit Lines & Node Graph Background */}
             <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
               <svg className="w-full h-full max-w-[500px] overflow-visible" viewBox="0 0 500 500" fill="none">
@@ -100,18 +123,18 @@ export function HeroSection({ locale }: { locale: Locale }) {
                 <path d="M 400 320 L 450 320 L 480 370" stroke="#D4AF37" strokeWidth="1" strokeOpacity="0.35" />
                 
                 {/* Golden AI Circular Node */}
-                <g transform="translate(420, 80)">
-                  <circle cx="20" cy="20" r="28" stroke="#D4AF37" strokeWidth="1.2" strokeOpacity="0.6" strokeDasharray="4 3" />
-                  <circle cx="20" cy="20" r="22" stroke="#D4AF37" strokeWidth="1.5" fill="#FAF8F5" fillOpacity="0.8" className="dark:fill-[#0E0E10]" />
-                  <polygon points="20,4 34,12 34,28 20,36 6,28 6,12" stroke="#D4AF37" strokeWidth="0.8" strokeOpacity="0.4" fill="none" />
-                  <text x="20" y="24" textAnchor="middle" fill="#B88E1F" fontSize="11" fontFamily="monospace" fontWeight="bold">AI</text>
+                <g transform="translate(430, 60)">
+                  <circle cx="20" cy="20" r="26" stroke="#D4AF37" strokeWidth="1.2" strokeOpacity="0.6" strokeDasharray="4 3" />
+                  <circle cx="20" cy="20" r="20" stroke="#D4AF37" strokeWidth="1.5" fill="#FAF8F5" fillOpacity="0.9" className="dark:fill-[#FFFFFF]" />
+                  <polygon points="20,5 33,13 33,27 20,35 7,27 7,13" stroke="#D4AF37" strokeWidth="0.8" strokeOpacity="0.5" fill="none" />
+                  <text x="20" y="24" textAnchor="middle" fill="#997A15" fontSize="11" fontFamily="monospace" fontWeight="bold">AI</text>
                 </g>
               </svg>
             </div>
 
             {/* Technical Annotations on Right */}
-            <div className="absolute top-4 end-4 z-20 pointer-events-none text-end">
-              <div className="text-[10px] font-mono tracking-widest uppercase text-zinc-500 dark:text-zinc-400 space-y-1 bg-white/70 dark:bg-black/60 backdrop-blur-xs p-2 rounded-lg border border-black/5 dark:border-white/5">
+            <div className="absolute top-1 end-4 z-20 pointer-events-none text-end">
+              <div className="text-[10px] font-mono tracking-widest uppercase text-zinc-600 dark:text-zinc-300 space-y-1 bg-white/90 dark:bg-[#121214]/90 backdrop-blur-xs p-2 rounded-lg border border-black/10 dark:border-white/10 shadow-sm">
                 <div>&gt; CODE</div>
                 <div>&gt; ANALYZE</div>
                 <div>&gt; BUILD</div>
@@ -121,9 +144,9 @@ export function HeroSection({ locale }: { locale: Locale }) {
 
             {/* Technical Overlay Badge */}
             <div className="absolute bottom-6 start-4 z-20 pointer-events-none">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/85 dark:bg-[#121214]/90 backdrop-blur-xs border border-[#D4AF37]/40 shadow-lg text-[10px] sm:text-xs font-mono font-bold text-zinc-900 dark:text-[#D4AF37]">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 dark:bg-[#121214]/95 backdrop-blur-xs border border-[#D4AF37]/50 shadow-lg text-[10px] sm:text-xs font-mono font-bold text-zinc-900 dark:text-[#D4AF37]">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span>AI &amp; SYSTEMS ARCHITECT</span>
+                <span>{isRtl ? "مهندس ذكاء اصطناعي" : "AI ENGINEER"}</span>
               </div>
             </div>
 

@@ -10,7 +10,7 @@ interface AsLogoProps {
 }
 
 export function AsMonogram({
-  size = 36,
+  size = 40,
   className,
   colorScheme = "gold-black",
 }: {
@@ -29,57 +29,68 @@ export function AsMonogram({
       aria-label="AS Monogram - Abdulghani Al-Shibami"
     >
       <defs>
-        <linearGradient id="asGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#F5D061" />
-          <stop offset="50%" stopColor="#D4AF37" />
-          <stop offset="100%" stopColor="#AA820A" />
+        {/* Luxury Royal Gold Gradient */}
+        <linearGradient id="luxuryGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#FBF0B9" />
+          <stop offset="35%" stopColor="#E2C366" />
+          <stop offset="70%" stopColor="#C59B27" />
+          <stop offset="100%" stopColor="#8C6B10" />
         </linearGradient>
-        <linearGradient id="asDarkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#2A2A2E" />
-          <stop offset="100%" stopColor="#0B0B0C" />
-        </linearGradient>
+
+        {/* Subtle Inner Glow Gradient */}
+        <radialGradient id="asGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#D4AF37" stopOpacity="0.25" />
+          <stop offset="100%" stopColor="#D4AF37" stopOpacity="0" />
+        </radialGradient>
       </defs>
 
-      {/* Outer subtle circuit trace */}
-      <path
-        d="M 15 45 L 15 15 L 45 15"
-        stroke="#D4AF37"
+      {/* Ambient Radial Core */}
+      <circle cx="60" cy="60" r="48" fill="url(#asGlow)" />
+
+      {/* Outer Hexagonal Tech Crest Frame */}
+      <polygon
+        points="60,10 102,34 102,86 60,110 18,86 18,34"
+        stroke="url(#luxuryGoldGrad)"
         strokeWidth="2.5"
-        strokeLinecap="round"
-        opacity="0.7"
+        strokeLinejoin="round"
+        fill="#0E0E12"
+        fillOpacity="0.85"
       />
-      <circle cx="45" cy="15" r="2.5" fill="#D4AF37" />
 
+      {/* Inner Corner Accent Brackets */}
       <path
-        d="M 105 75 L 105 105 L 75 105"
+        d="M 60 18 L 94 38 L 94 82 L 60 102 L 26 82 L 26 38 Z"
         stroke="#D4AF37"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-        opacity="0.7"
+        strokeWidth="1"
+        strokeOpacity="0.3"
+        strokeDasharray="4 3"
       />
-      <circle cx="75" cy="105" r="2.5" fill="#D4AF37" />
 
-      {/* Letter 'A' — Architectural & Sharp */}
+      {/* Circuit Nodes on Crest Vertices */}
+      <circle cx="60" cy="10" r="2.5" fill="#FBF0B9" />
+      <circle cx="102" cy="34" r="2.5" fill="#E2C366" />
+      <circle cx="102" cy="86" r="2.5" fill="#C59B27" />
+      <circle cx="60" cy="110" r="2.5" fill="#E2C366" />
+      <circle cx="18" cy="86" r="2.5" fill="#C59B27" />
+      <circle cx="18" cy="34" r="2.5" fill="#E2C366" />
+
+      {/* Letter 'A' — Architectural Geometric Apex */}
       <path
-        d="M 22 94 L 46 24 L 56 24 L 80 94 L 66 94 L 60.5 76 L 39.5 76 L 35 94 Z M 43 64 L 57 64 L 50 41 Z"
-        fill={colorScheme === "pure-gold" ? "url(#asGoldGrad)" : "url(#asDarkGrad)"}
-        className="dark:fill-white transition-colors"
+        d="M 60 26 L 38 88 L 49 88 L 54.5 73 L 65.5 73 L 71 88 L 82 88 Z M 60 44 L 64 63 L 56 63 Z"
+        fill="url(#luxuryGoldGrad)"
       />
 
-      {/* Letter 'S' — Flowing Gold with circuit nodes */}
+      {/* Letter 'S' — Interlocking Fluid Cybernetic Flow */}
       <path
-        d="M 64 36 C 72 32 84 33 91 38 C 96 42 98 48 95 53 C 92 59 84 63 76 67 C 68 71 63 75 64 81 C 65 87 72 91 80 90 C 87 89 95 84 99 78 L 105 87 C 99 96 89 101 77 100 C 65 99 55 91 54 80 C 53 69 61 62 70 57 C 78 52 86 49 85 43 C 84 38 78 35 71 36 C 65 37 59 40 55 45 Z"
-        fill="url(#asGoldGrad)"
+        d="M 69 46 C 76 43 85 45 88 51 C 90 56 86 61 78 64 L 66 69 C 58 72 55 76 56 81 C 57 87 64 90 73 89 C 81 88 88 83 91 78 L 97 85 C 92 92 83 97 72 96 C 58 95 49 87 48 77 C 47 67 55 61 64 57 L 76 52 C 82 49 83 45 81 42 C 79 38 73 37 66 39 C 61 40 56 43 53 47 L 46 41 C 51 34 60 30 69 32 Z"
+        fill="#FFFFFF"
+        className="dark:fill-white"
+        opacity="0.95"
       />
 
-      {/* Circuit Nodes on S */}
-      <circle cx="99" cy="39" r="3.5" fill="#D4AF37" />
-      <path d="M 99 39 L 112 39" stroke="#D4AF37" strokeWidth="2" strokeLinecap="round" />
-      <circle cx="112" cy="39" r="2.5" fill="#F3E5AB" />
-
-      <circle cx="56" cy="94" r="3.5" fill="#D4AF37" />
-      <path d="M 56 94 L 48 94" stroke="#D4AF37" strokeWidth="2" strokeLinecap="round" />
-      <circle cx="48" cy="94" r="2.5" fill="#F3E5AB" />
+      {/* Golden Micro Circuit Dots on 'S' */}
+      <circle cx="94" cy="51" r="2" fill="#FBF0B9" />
+      <circle cx="49" cy="77" r="2" fill="#C59B27" />
     </svg>
   );
 }
@@ -95,16 +106,16 @@ export function AsLogo({
   return (
     <Link
       href={`/${locale}`}
-      className={cn("flex items-center gap-3 group focus:outline-none", className)}
+      className={cn("flex items-center gap-2.5 sm:gap-3.5 group focus:outline-none shrink-0", className)}
       aria-label="Abdulghani Al-Shibami — Home"
     >
-      <AsMonogram size={38} className="group-hover:scale-105 transition-transform duration-300" />
+      <AsMonogram size={42} className="group-hover:scale-105 transition-transform duration-300 shrink-0" />
 
       {showWordmark && (
-        <div className="flex flex-col select-none">
+        <div className="flex items-center gap-2 sm:gap-2.5 select-none whitespace-nowrap">
           <span
             className={cn(
-              "font-sans font-extrabold text-[13px] sm:text-[14px] tracking-[0.14em] uppercase transition-colors leading-tight",
+              "font-sans font-black text-[13px] sm:text-[15px] tracking-[0.12em] uppercase transition-colors leading-none",
               theme === "dark"
                 ? "text-white group-hover:text-gold-secondary"
                 : "text-zinc-950 dark:text-white group-hover:text-gold-dark dark:group-hover:text-gold-secondary"
@@ -112,13 +123,16 @@ export function AsLogo({
           >
             {isRtl ? "عبدالغني الشبامي" : "ABDULGHANI AL-SHIBAMI"}
           </span>
+          <span className="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-[#C59B27]" />
           <span
             className={cn(
-              "text-[9px] sm:text-[10px] tracking-[0.22em] font-semibold uppercase transition-colors leading-tight mt-0.5",
-              theme === "dark" ? "text-gold-light/80" : "text-zinc-500 dark:text-zinc-400 group-hover:text-gold-dark dark:group-hover:text-gold-light"
+              "hidden sm:inline-block text-[10px] sm:text-[11px] font-mono tracking-widest uppercase font-bold transition-colors leading-none",
+              theme === "dark"
+                ? "text-gold-light/90"
+                : "text-[#B88E1F] dark:text-[#E2C366] group-hover:text-gold-dark dark:group-hover:text-gold-light"
             )}
           >
-            {isRtl ? "ذكاء اصطناعي • برمجيات • نظم" : "AI • SOFTWARE • SYSTEMS"}
+            {isRtl ? "مهندس ذكاء اصطناعي" : "AI ENGINEER"}
           </span>
         </div>
       )}
