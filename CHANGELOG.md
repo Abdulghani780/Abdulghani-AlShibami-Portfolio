@@ -10,6 +10,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.4.0] - 2026-09-30 — 3D Gold Logo Branding, Yusra Purge, Campus IT Tracker Flagship & HD Visuals
+
+### Added
+- **Official 3D Royal Gold Monogram Emblem (`public/images/brand/as-logo-3d.png`):**
+  - High-resolution 3D titanium and 18k royal gold monogram emblem for "AS" (Abdulghani Al-Shibami).
+  - Integrated into `AsMonogram` (`components/ui/AsLogo.tsx`), Navbar brand, and Footer centerpiece.
+- **Refined Luxury Footer Layout (`components/layout/Footer.tsx`):**
+  - Left: Interactive icon link pills (`GitHub`, `LinkedIn`, `Email`, `CV`) with hover gold glow.
+  - Center: 3D AS Monogram with balanced typography and tracking.
+  - Right: Segmented interactive language switcher pill with globe icon.
+- **Campus IT Tracker Flagship Case Study (`components/features/home/FlagshipCaseStudySection.tsx`):**
+  - Transformed flagship case study into **Campus IT Infrastructure Tracker** (C# WinForms, Oracle 10g DB, ITIL Service Desk, RBAC).
+  - 5 authentic stages (Problem, Solution, Architecture, Implementation, Outcome).
+  - High-resolution desktop workstation screenshot and interactive simulator banner (`CAMPUS_TRACKER_SIMULATOR // READY`).
+  - Key features (Interactive Campus Map, ITIL Service Desk Kanban, Asset Custody Transfer, Oracle DB) and system flow.
+
+### Changed & Purged
+- **Total Elimination of YUSRA Project:**
+  - Fully removed `yusra` project record from `lib/data/projectsData.ts`.
+  - Removed `yusra` from demo registry (`demos/registry/index.ts`) and deleted `demos/simulations/YusraSimulation.tsx`.
+  - Removed `yusra-app` from pinned repositories and commit logs in `EngineeringInPublicSection.tsx`.
+- **High-Definition Featured Project Cards (`FeaturedProjectsSection.tsx`):**
+  - Upgraded project cards to crystal-clear 600KB+ authentic screenshots: `Campus IT Tracker`, `MetaAlgorithm Lab`, `NovaTech`, and `Cafena Roasters`.
+- **Test Suite Verification:**
+  - All 74 unit, integration, and security tests pass with 100% success rate.
+  - Verified clean Next.js static build across all 36 application routes.
+
+---
+
 ## [2.3.0] - 2026-09-30 — Full Layout & Aesthetic Parity with new_design.png & Authentic Portrait
 
 ### Added

@@ -10,36 +10,36 @@ export function FeaturedProjectsSection({ locale }: { locale: Locale }) {
 
   const projects = [
     {
-      id: "yusra",
-      title: isRtl ? "يُسرى | YUSRA" : "YUSRA | يُسرى",
-      subtitle: isRtl ? "تقنية ذكاء اصطناعي مساندة لحياة مستقلة" : "Assistive AI technology",
-      tech: "Kotlin · Jetpack Compose · Firebase · TFLite · MediaPipe",
-      image: "/images/projects/yusra-card.png",
-      href: `/${locale}/projects/yusra`,
-    },
-    {
       id: "campus-it-tracker",
       title: isRtl ? "نظام تتبع البنية التحتية الجامعية" : "CAMPUS IT INFRASTRUCTURE TRACKER",
       subtitle: isRtl ? "إدارة ذكية لأصول وشبكات الحرم الجامعي" : "Smart IT infrastructure management",
       tech: "C# · WinForms · Oracle · RBAC",
-      image: "/images/projects/campus-card.png",
+      image: "/images/projects/campus-it-tracker/01-dashboard-modern.jpg",
       href: `/${locale}/projects/campus-it-tracker`,
     },
     {
       id: "metaalgorithm-lab",
       title: isRtl ? "مختبر الخوارزميات التفاعلي" : "METAALGORITHM LAB",
       subtitle: isRtl ? "منصة تفاعلية لدراسة وتعقيد الخوارزميات" : "Interactive algorithm learning platform",
-      tech: "Algorithms · Big-O · Clean Architecture · REST",
-      image: "/images/projects/meta-card.png",
+      tech: "Python · PyQt6 · SciPy · LaTeX",
+      image: "/images/projects/metaalgorithm-lab/01-dashboard.jpg",
       href: `/${locale}/projects/metaalgorithm-lab`,
     },
     {
-      id: "nexora-tech",
-      title: isRtl ? "نوفا تيك | نكسورا للأجهزة الذكية" : "NEXORA TECH",
-      subtitle: isRtl ? "متجر إلكتروني ذكي للأجهزة والحلول التقنية" : "Next-generation PC hardware platform",
-      tech: "Next.js · PostgreSQL · Search · PC Builder",
-      image: "/images/projects/nexora-card.png",
+      id: "novatech",
+      title: isRtl ? "نوفا تيك | متجر الأجهزة الذكية" : "NOVA TECH",
+      subtitle: isRtl ? "منصة تجارة إلكترونية للأجهزة والحلول التقنية" : "Next-generation PC hardware platform",
+      tech: "HTML5 · CSS3 · ES6 JS · REST",
+      image: "/images/projects/novatech/01-storefront-hero.jpg",
       href: `/${locale}/projects/novatech`,
+    },
+    {
+      id: "cafena",
+      title: isRtl ? "كافينا للقهوة المختصة" : "CAFENA ROASTERS",
+      subtitle: isRtl ? "منصة تجارة إلكترونية عربية فاخرة للقهوة" : "Specialty coffee e-commerce portal",
+      tech: "Vanilla JS · Modern CSS3 · RTL Arabic",
+      image: "/images/projects/cafena/01-storefront-hero.jpg",
+      href: `/${locale}/projects/cafena`,
     },
   ];
 

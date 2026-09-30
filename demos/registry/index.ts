@@ -5,7 +5,6 @@ import { MetaAlgorithmLabSimulation } from "@/demos/simulations/MetaAlgorithmLab
 import { CafenaSimulation } from "@/demos/simulations/CafenaSimulation";
 import { GpSimulation } from "@/demos/simulations/GpSimulation";
 import { NovaTechSimulation } from "@/demos/simulations/NovaTechSimulation";
-import { YusraSimulation } from "@/demos/simulations/YusraSimulation";
 
 export interface DemoProps {
   locale: "en" | "ar";
@@ -35,24 +34,6 @@ export interface DemoDefinition {
 }
 
 export const DEMO_REGISTRY: Record<string, DemoDefinition> = {
-  yusra: {
-    slug: "yusra",
-    demoType: "interactive_simulation",
-    repoUrl: "https://github.com/Abdulghani780/yusra-app",
-    title: {
-      en: "YUSRA — Assistive AI Mobile Simulation",
-      ar: "يُسرى — محاكي تطبيق الذكاء الاصطناعي المساند",
-    },
-    subtitle: {
-      en: "Interactive simulation of computer vision, sign language, and voice navigation.",
-      ar: "محاكاة تفاعلية للرؤية الحاسوبية ولغة الإشارة والتوجيه الصوتي على الموبايل.",
-    },
-    disclaimer: {
-      en: "This is a browser-based interactive simulation of the Kotlin/Compose mobile app running on-device edge ML pipelines.",
-      ar: "هذه محاكاة تفاعلية داخل المتصفح لتطبيق الهاتف المكتوب بـ Kotlin/Compose مع نماذج الذكاء الاصطناعي المدمجة.",
-    },
-    component: YusraSimulation,
-  },
   "campus-it-tracker": {
     slug: "campus-it-tracker",
     demoType: "interactive_simulation",

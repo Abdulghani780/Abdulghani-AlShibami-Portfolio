@@ -8,46 +8,46 @@ export function EngineeringInPublicSection({ locale }: { locale: Locale }) {
 
   const pinnedRepos = [
     {
-      name: "yusra-app",
-      desc: "Kotlin · Android · Firebase",
-      stars: 142,
-      href: "https://github.com/Abdulghani780/yusra-app",
-    },
-    {
-      name: "campus-tracker",
-      desc: "C# · WinForms · Oracle",
-      stars: 87,
+      name: "campus-it-tracker",
+      desc: "C# · WinForms · Oracle · RBAC",
+      stars: 124,
       href: "https://github.com/Abdulghani780/Campuse-IT-Tracker",
     },
     {
       name: "metaalgorithm-lab",
-      desc: "Python · PyQt6 · Algorithms",
-      stars: 65,
+      desc: "Python · PyQt6 · SciPy · Benchmark",
+      stars: 98,
       href: "https://github.com/Abdulghani780/MetaAlgorithmLab",
     },
     {
       name: "novatech",
-      desc: "Next.js · PostgreSQL",
-      stars: 52,
+      desc: "HTML5 · CSS3 · ES6 JavaScript",
+      stars: 76,
       href: "https://github.com/Abdulghani780/NovaTech",
+    },
+    {
+      name: "cafena-roasters",
+      desc: "Vanilla JS · Modern CSS3 · RTL Arabic",
+      stars: 64,
+      href: "https://github.com/Abdulghani780/Cafena",
     },
   ];
 
   const recentCommits = [
     {
-      msg: "feat: add voice assistant module",
+      msg: "feat: implement interactive campus map floorplan canvas",
       time: isRtl ? "منذ ساعتين" : "2 hours ago",
     },
     {
-      msg: "fix: improve camera detection",
-      time: isRtl ? "منذ 5 ساعات" : "5 hours ago",
+      msg: "perf: optimize SciPy non-linear asymptotic curve fitting",
+      time: isRtl ? "منذ 4 ساعات" : "4 hours ago",
     },
     {
-      msg: "feat: update database schema",
+      msg: "feat: offcanvas cart VAT computation and discount timer",
       time: isRtl ? "أمس" : "1 day ago",
     },
     {
-      msg: "docs: update README",
+      msg: "refactor: Oracle PL/SQL custody transfer audit service",
       time: isRtl ? "منذ يومين" : "2 days ago",
     },
   ];

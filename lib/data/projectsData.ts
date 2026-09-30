@@ -2,22 +2,13 @@ import { Project, ProjectCategory, Technology } from "@/types/project";
 
 export const PROJECT_CATEGORIES: ProjectCategory[] = [
   {
-    id: "cat-0",
-    slug: "assistive-ai",
-    name: {
-      en: "Assistive AI & Computer Vision",
-      ar: "الذكاء الاصطناعي المساند والرؤية الحاسوبية",
-    },
-    displayOrder: 0,
-  },
-  {
     id: "cat-1",
     slug: "desktop-systems",
     name: {
       en: "Enterprise Desktop & ITIL",
       ar: "أنظمة سطح المكتب وITIL",
     },
-    displayOrder: 1,
+    displayOrder: 0,
   },
   {
     id: "cat-2",
@@ -26,7 +17,7 @@ export const PROJECT_CATEGORIES: ProjectCategory[] = [
       en: "Algorithmic Systems & Complexity",
       ar: "الحوسبة الخوارزمية والتعقيد الحسابي",
     },
-    displayOrder: 2,
+    displayOrder: 1,
   },
   {
     id: "cat-3",
@@ -35,7 +26,7 @@ export const PROJECT_CATEGORIES: ProjectCategory[] = [
       en: "Modern Web Platforms & E-Commerce",
       ar: "منصات الويب والتجارة الإلكترونية",
     },
-    displayOrder: 3,
+    displayOrder: 2,
   },
   {
     id: "cat-4",
@@ -44,17 +35,11 @@ export const PROJECT_CATEGORIES: ProjectCategory[] = [
       en: "Academic & Proposal Portals",
       ar: "المنصات الأكاديمية والجامعية",
     },
-    displayOrder: 4,
+    displayOrder: 3,
   },
 ];
 
 export const TECHNOLOGIES: Record<string, Technology> = {
-  kotlin: { id: "tech-kotlin", name: "Kotlin", category: "Language" },
-  jetpackcompose: { id: "tech-compose", name: "Jetpack Compose", category: "Framework" },
-  firebase: { id: "tech-firebase", name: "Firebase (Auth, Firestore)", category: "Database" },
-  tflite: { id: "tech-tflite", name: "TensorFlow Lite", category: "Tool" },
-  mediapipe: { id: "tech-mediapipe", name: "MediaPipe (Vision)", category: "Tool" },
-  cleanarch: { id: "tech-cleanarch", name: "Clean Architecture & MVVM", category: "Protocol" },
   csharp: { id: "tech-csharp", name: "C# .NET 4.8", category: "Language" },
   winforms: { id: "tech-winforms", name: "Windows Forms", category: "Framework" },
   oracle: { id: "tech-oracle", name: "Oracle 10g", category: "Database" },
@@ -74,129 +59,6 @@ export const TECHNOLOGIES: Record<string, Technology> = {
 };
 
 export const PROJECTS: Project[] = [
-  // ─────────────────────────────────────────────────────────────────────────────
-  // 0. YUSRA (Mobile Assistive AI / Kotlin / Jetpack Compose / TFLite / MediaPipe)
-  // ─────────────────────────────────────────────────────────────────────────────
-  {
-    id: "proj-00",
-    slug: "yusra",
-    categorySlug: "assistive-ai",
-    title: {
-      en: "YUSRA | يُسرى — Assistive AI Mobile Application",
-      ar: "يُسرى | تطبيق ذكاء اصطناعي مساند ومستقل",
-    },
-    shortDescription: {
-      en: "AI-powered assistive mobile application integrating on-device TensorFlow Lite, MediaPipe computer vision, Arabic Sign Language recognition, voice guidance, and Firebase cloud sync.",
-      ar: "تطبيق ذكي للأجهزة المحمولة يوظف نماذج الذكاء الاصطناعي المدمجة والرؤية الحاسوبية لتقديم حلول مساندة لذوي الإعاقة مع واجهات سهلة الوصول وتزامن سحابي.",
-    },
-    year: 2025,
-    status: "Completed",
-    verificationStatus: "VERIFIED_OWNER_DATA",
-    featured: true,
-    demoType: "interactive_simulation",
-    demoUrl: "/projects/yusra/demo",
-    githubUrl: "https://github.com/Abdulghani780/yusra-app",
-    technologies: [
-      TECHNOLOGIES.kotlin,
-      TECHNOLOGIES.jetpackcompose,
-      TECHNOLOGIES.firebase,
-      TECHNOLOGIES.tflite,
-      TECHNOLOGIES.mediapipe,
-      TECHNOLOGIES.cleanarch,
-    ],
-    caseStudy: {
-      problem: {
-        en: "People with visual or physical limitations face daily challenges accessing information and using mobile services independently without assistive intervention.",
-        ar: "يواجه الأشخاص ذوو التحديات البصرية أو الحركية صعوبات يومية في الوصول إلى المعلومات واستخدام الخدمات الرقمية باستقلالية دون مساعدة خارجية.",
-      },
-      solution: {
-        en: "Engineered an AI-powered native mobile application using Kotlin and Jetpack Compose featuring on-device TensorFlow Lite models, MediaPipe gesture recognition, speech-to-text navigation, and accessible high-contrast UI design.",
-        ar: "تطوير تطبيق محمول أصيل باستخدام Kotlin وJetpack Compose يوظف نماذج TensorFlow Lite المدمجة ومكتبة MediaPipe للتعرف على الإيماءات، مع توجيه صوتي وواجهات عالية التباين وسهلة الوصول.",
-      },
-      architectureFlow: [
-        {
-          step: "01",
-          name: { en: "Voice & Speech Engine", ar: "محرك التوجيه الصوتي" },
-          desc: { en: "Bi-directional voice interface enabling speech recognition and conversational text-to-speech feedback.", ar: "واجهة صوتية ثنائية الاتجاه تتيح تحويل الصوت إلى أوامر وتحويل النصوص إلى توجيه صوتي واضح." },
-        },
-        {
-          step: "02",
-          name: { en: "On-Device ML & Vision", ar: "الرؤية الحاسوبية والنماذج المدمجة" },
-          desc: { en: "TensorFlow Lite and MediaPipe pipeline executing real-time object detection and sign language recognition offline.", ar: "خط معالجة مباشر بواسطة TFLite وMediaPipe ينفذ التعرف البصري على الأشياء والإيماءات محلياً دون إنترنت." },
-        },
-        {
-          step: "03",
-          name: { en: "Firebase Cloud Sync & Auth", ar: "التزامن السحابي وقاعدة البيانات" },
-          desc: { en: "Secure cloud state management and preferences sync across devices with offline SQLite caching.", ar: "إدارة آمنة للهوية وتفضيلات المستخدم والمزامنة السحابية مع حفظ البيانات محلياً للعمل دون اتصال." },
-        },
-      ],
-      subsystems: [
-        {
-          id: "sub-1",
-          title: { en: "MediaPipe Vision Pipeline", ar: "نظام الرؤية الحاسوبية MediaPipe" },
-          desc: { en: "21-landmark hand tracking and object contour detection running at 60 FPS on edge mobile hardware.", ar: "تتبع دقيق لـ 21 نقطة يد والتعرف على حدود الأشياء بمعدل 60 إطاراً في الثانية." },
-          tag: "VISION_AI",
-        },
-        {
-          id: "sub-2",
-          title: { en: "Accessible Jetpack Compose UI", ar: "واجهات Jetpack Compose سهلة الوصول" },
-          desc: { en: "WCAG AAA accessible UI with dynamic font scaling, screen-reader focus, and tactile haptic feedback.", ar: "واجهات مريحة تدعم تكبير الخطوط وتوافق تام مع قارئات الشاشة والاهتزاز اللمسي." },
-          tag: "A11Y_COMPOSE",
-        },
-        {
-          id: "sub-3",
-          title: { en: "Offline-First Sync Engine", ar: "محرك المزامنة دون اتصال" },
-          desc: { en: "Local room database with Firebase Firestore conflict-free replication when connectivity restores.", ar: "قاعدة بيانات محلية تعمل دون شبكة مع مزامنة تلقائية عند عودة الاتصال." },
-          tag: "OFFLINE_SYNC",
-        },
-      ],
-      challenges: {
-        en: [
-          "Optimizing deep learning inference on resource-constrained mobile devices without thermal throttling or battery drain.",
-          "Designing high-contrast, clutter-free interfaces conforming strictly to WCAG 2.2 accessibility criteria.",
-        ],
-        ar: [
-          "تحسين زمن استجابة نماذج التعلم العميق على الأجهزة المحمولة دون استنزاف البطارية أو رفع حرارة المعالج.",
-          "تصميم واجهات مستخدم فائقة الوضوح والتباين تتطابق بدقة مع أعلى معايير سهولة الوصول WCAG 2.2.",
-        ],
-      },
-      results: {
-        en: [
-          "Delivered end-to-end accessible mobile experience empowering users with independent environmental interaction.",
-          "Achieved sub-50ms inference latency for on-device gesture and text recognition.",
-          "Architected clean MVVM codebase with full test coverage and offline resilience.",
-        ],
-        ar: [
-          "تقديم تجربة مستخدم مساندة وشاملة تمكن المستخدمين من التفاعل مع محيطهم باستقلالية تامة.",
-          "تحقيق زمن معالجة أقل من 50 ميلي ثانية لنماذج الذكاء الاصطناعي والرؤية الحاسوبية على الهاتف.",
-          "بناء معمارية برمجية نقية بنمط MVVM مع تغطية اختبارات كاملة واستقرار تام دون اتصال.",
-        ],
-      },
-      metrics: [
-        {
-          label: { en: "Inference Speed", ar: "سرعة الاستدلال" },
-          value: "< 50ms",
-          description: { en: "On-device TFLite model latency", ar: "زمن استجابة النموذج على الهاتف" },
-        },
-        {
-          label: { en: "Architecture", ar: "المعمارية البرمجية" },
-          value: "Clean MVVM",
-          description: { en: "Kotlin + Jetpack Compose", ar: "بنية مستقلة الطبقات وقابلة للتوسع" },
-        },
-        {
-          label: { en: "Accessibility", ar: "إمكانية الوصول" },
-          value: "WCAG AAA",
-          description: { en: "Full screen reader & voice control", ar: "دعم شامل لقارئات الشاشة والتوجيه الصوتي" },
-        },
-        {
-          label: { en: "Verification Status", ar: "حالة التحقق" },
-          value: "Verified",
-          description: { en: "Authoritative design flagship", ar: "مشروع رائد معتمد في التصميم الرسمي" },
-        },
-      ],
-    },
-  },
-
   // ─────────────────────────────────────────────────────────────────────────────
   // 1. CAMPUS IT TRACKER (Windows Desktop / C# WinForms / Oracle)
   // ─────────────────────────────────────────────────────────────────────────────
