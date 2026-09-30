@@ -112,29 +112,16 @@ export function AsLogo({
       <AsMonogram size={42} className="group-hover:scale-105 transition-transform duration-300 shrink-0" />
 
       {showWordmark && (
-        <div className="flex items-center gap-2 sm:gap-2.5 select-none whitespace-nowrap">
-          <span
-            className={cn(
-              "font-sans font-black text-[13px] sm:text-[15px] tracking-[0.12em] uppercase transition-colors leading-none",
-              theme === "dark"
-                ? "text-white group-hover:text-gold-secondary"
-                : "text-zinc-950 dark:text-white group-hover:text-gold-dark dark:group-hover:text-gold-secondary"
-            )}
-          >
-            {isRtl ? "عبدالغني الشبامي" : "ABDULGHANI AL-SHIBAMI"}
-          </span>
-          <span className="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-[#C59B27]" />
-          <span
-            className={cn(
-              "hidden sm:inline-block text-[10px] sm:text-[11px] font-mono tracking-widest uppercase font-bold transition-colors leading-none",
-              theme === "dark"
-                ? "text-gold-light/90"
-                : "text-[#B88E1F] dark:text-[#E2C366] group-hover:text-gold-dark dark:group-hover:text-gold-light"
-            )}
-          >
-            {isRtl ? "مهندس ذكاء اصطناعي" : "AI ENGINEER"}
-          </span>
-        </div>
+        <span
+          className={cn(
+            "font-sans font-black text-[13px] sm:text-[14px] xl:text-[15px] tracking-[0.14em] uppercase transition-colors leading-none select-none whitespace-nowrap",
+            theme === "dark"
+              ? "text-white group-hover:text-gold-secondary"
+              : "text-zinc-950 dark:text-white group-hover:text-gold-dark dark:group-hover:text-gold-secondary"
+          )}
+        >
+          {isRtl ? "عبدالغني الشبامي" : "ABDULGHANI AL-SHIBAMI"}
+        </span>
       )}
     </Link>
   );
