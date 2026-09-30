@@ -72,13 +72,13 @@ export function Navbar({
           : "bg-white dark:bg-[#0B0B0C] border-b border-black/5 dark:border-white/5"
       )}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between gap-4 xl:gap-8">
         {/* Left: Brand Monogram & Wordmark */}
-        <AsLogo locale={locale} showWordmark={true} />
+        <AsLogo locale={locale} showWordmark={true} className="me-4 xl:me-8" />
 
         {/* Center: Desktop Navigation Links */}
         <nav
-          className="hidden lg:flex items-center gap-5 xl:gap-7 text-[12px] font-sans font-bold tracking-[0.14em] uppercase text-zinc-800 dark:text-zinc-200"
+          className="hidden lg:flex items-center gap-4 xl:gap-6 text-[12px] font-sans font-bold tracking-[0.14em] uppercase text-zinc-800 dark:text-zinc-200"
           aria-label="Main Navigation"
         >
           {navLinks.map((link) => (
