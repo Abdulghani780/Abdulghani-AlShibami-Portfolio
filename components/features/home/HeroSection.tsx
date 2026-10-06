@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Locale } from "@/lib/i18n/dictionaries";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { Hero3DCanvas } from "@/components/ui/Hero3DCanvas";
 
 export function HeroSection({ locale }: { locale: Locale }) {
   const isRtl = locale === "ar";
@@ -22,6 +23,9 @@ export function HeroSection({ locale }: { locale: Locale }) {
           <rect width="100%" height="100%" fill="url(#heroCircuitGrid)" />
         </svg>
       </div>
+
+      {/* Interactive 3D Quantum Gyroscope & Particle Canvas */}
+      <Hero3DCanvas />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 items-center">

@@ -82,9 +82,30 @@ export function AbdulghaniAIModal({ locale = "en" }: AbdulghaniAIModalProps) {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen]);
 
+  const playLuxuryClick = () => {
+    try {
+      const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      if (!AudioCtx) return;
+      const ctx = new AudioCtx();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(1400, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(320, ctx.currentTime + 0.035);
+      gain.gain.setValueAtTime(0.04, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.035);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.035);
+    } catch {}
+  };
+
   const handleSendMessage = async (textToSend?: string) => {
     const query = (textToSend || inputMessage).trim();
     if (!query || isLoading) return;
+
+    playLuxuryClick();
 
     const userMsg: ChatMessage = {
       id: `user-${Date.now()}`,
@@ -151,21 +172,24 @@ export function AbdulghaniAIModal({ locale = "en" }: AbdulghaniAIModalProps) {
 
   return (
     <>
-      {/* ── Floating Launcher Trigger Button ── */}
+      {/* ── Floating Holographic 3D Launcher Trigger Button ── */}
       {!isOpen && (
         <div className="fixed bottom-6 end-6 z-40 animate-in fade-in slide-in-from-bottom-4 duration-300">
           <button
             type="button"
             onClick={() => {
+              playLuxuryClick();
               setIsOpen(true);
               setIsMinimized(false);
             }}
             aria-label={isAr ? "فتح المساعد الذكي" : "Open Abdulghani AI"}
-            className="group relative flex items-center gap-2.5 px-4 py-3 rounded-full bg-[#121214] hover:bg-[#18181B] border border-gold-primary/40 hover:border-gold-primary text-white shadow-xl hover:shadow-2xl hover:shadow-gold-primary/20 transition-all duration-300 cursor-pointer active:scale-95 font-mono text-xs gold-glow-pulse"
+            className="group relative flex items-center gap-3 px-4 py-3 rounded-full bg-[#121214] hover:bg-[#18181B] border border-gold-primary/50 hover:border-gold-primary text-white shadow-2xl hover:shadow-[0_0_25px_rgba(212,175,55,0.4)] transition-all duration-300 cursor-pointer active:scale-95 font-mono text-xs gold-glow-pulse"
           >
-            <span className="relative flex h-3 w-3">
-              <span className="motion-safe:animate-ping absolute inline-flex h-full w-full rounded-full bg-gold-primary opacity-75" />
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-gold-primary" />
+            {/* 3D Holographic Concentric Orbital Rings */}
+            <span className="relative flex h-4 w-4 items-center justify-center">
+              <span className="motion-safe:animate-ping absolute inline-flex h-full w-full rounded-full bg-gold-primary opacity-60" />
+              <span className="absolute h-3 w-3 rounded-full border border-gold-primary/80 animate-[spin_4s_linear_infinite]" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#F3E5AB] shadow-[0_0_8px_#D4AF37]" />
             </span>
             <Sparkles className="w-4 h-4 text-gold-light group-hover:rotate-12 transition-transform" />
             <span className="font-bold tracking-wide">
@@ -195,6 +219,14 @@ export function AbdulghaniAIModal({ locale = "en" }: AbdulghaniAIModalProps) {
                   <span className="px-1.5 py-0.2 rounded text-[9px] bg-emerald-500/10 dark:bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30">
                     Online
                   </span>
+                  {isLoading && (
+                    <div className="flex items-center gap-0.5 ms-1 px-1 py-0.5 rounded bg-black/40 border border-gold-primary/30" title="Processing Neural Stream">
+                      <span className="w-0.5 h-2 bg-gold-primary rounded-full animate-pulse" />
+                      <span className="w-0.5 h-3 bg-[#F3E5AB] rounded-full animate-pulse" />
+                      <span className="w-0.5 h-1.5 bg-gold-primary rounded-full animate-pulse" />
+                      <span className="w-0.5 h-2.5 bg-[#F3E5AB] rounded-full animate-pulse" />
+                    </div>
+                  )}
                 </div>
                 <div className="text-[10px] text-zinc-500 dark:text-zinc-400 font-sans">
                   {isAr ? "المساعد الرقمي المعتمد" : "Verified Concierge"}

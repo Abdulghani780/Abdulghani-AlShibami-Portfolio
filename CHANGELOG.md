@@ -10,6 +10,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.6.0] - 2026-10-06 — Ultra-Luxury 3D Kinetic Elevation & Volumetric System
+
+### Added
+- **Lenis Smooth Momentum Inertia Scrolling (`components/ui/SmoothScrollProvider.tsx`):**
+  - Integrated zero-overhead `Lenis` engine (1.3.26) for buttery 120Hz smooth scrolling across the entire application shell.
+  - Automatically respects `(prefers-reduced-motion: reduce)` system settings.
+- **Custom Magnetic Fluid Cursor & Specular Spotlight (`components/ui/MagneticCursor.tsx`):**
+  - Dual-layer cursor featuring a razor-sharp gold core node, trailing spring-damped liquid ring, and large ambient radial studio flashlight aura following mouse movement across obsidian backdrops.
+  - Interactive magnetic expansion on buttons/links and contextual morphing into gold badges (`EXPLORE`, `RUN DEMO`).
+  - Seamless desktop activation with zero footprint on touch/mobile devices (`pointer: fine` gate).
+- **Interactive 3D Hero Core (`components/ui/Hero3DCanvas.tsx`):**
+  - High-performance HTML5 canvas rendering a 3D orbital gyroscope with 3 concentric rotating rings (gold, champagne, titanium) with real-time perspective projection.
+  - 70-particle 3D quantum stardust field connected with dynamic laser filaments that gravitate toward user cursor coordinates with physics damping.
+- **Hyper-Realistic 3D Bento Cards (`components/ui/TiltCard.tsx`):**
+  - Upgraded with real-time conic specular edge reflections tracking cursor angles (`Math.atan2`).
+  - Added radial glint, specular glass sheen, and `transform-style: preserve-3d` stage depth.
+- **Holographic 3D AI Concierge & Audio Synthesis (`components/features/ai/AbdulghaniAIModal.tsx`):**
+  - Rebuilt launcher into a 3D holographic concentric orbital orb with spinning gold halos.
+  - Integrated Web Audio API synthesized tactile metallic clicks on clicks and query submissions.
+  - Added real-time neural audio frequency visualizer wave ribbons during model inference.
+
+### Verified
+- 74 / 74 unit, integration, and security tests pass with 100% success rate.
+- 0 TypeScript compilation errors (`tsc --noEmit`).
+- Clean static production build across all 36 routes (`pnpm build`).
+
+---
+
 ## [2.5.0] - 2026-10-06 — Master Luxury Animation & Micro-Interactions Elevation
 
 ### Added

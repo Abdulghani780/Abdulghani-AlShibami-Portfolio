@@ -239,7 +239,7 @@ export function FlagshipCaseStudySection({ locale }: { locale: Locale }) {
           {/* Left: Desktop Station Mockup */}
           <div className="lg:col-span-6 relative flex justify-center">
             <ScrollReveal direction={isRtl ? "right" : "left"} distance={25} isRtl={isRtl} className="w-full max-w-[560px]">
-              <TiltCard maxTilt={6}>
+              <TiltCard maxTilt={6} cursorText={isRtl ? "المحاكي" : "RUN DEMO"}>
                 <Link
                   href={`/${locale}/projects/campus-it-tracker/demo`}
                   className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 bg-black/40 shadow-2xl p-2 group hover:border-[#D4AF37]/50 transition-all block"

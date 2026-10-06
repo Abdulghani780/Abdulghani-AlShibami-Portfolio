@@ -6,6 +6,8 @@ import { Footer } from "@/components/layout/Footer";
 import { LocaleHtmlSync } from "@/components/layout/LocaleHtmlSync";
 import { MainWrapper } from "@/components/layout/MainWrapper";
 import { AbdulghaniAIModal } from "@/components/features/ai/AbdulghaniAIModal";
+import { SmoothScrollProvider } from "@/components/ui/SmoothScrollProvider";
+import { MagneticCursor } from "@/components/ui/MagneticCursor";
 
 export async function generateStaticParams() {
   return [{ locale: "en" }, { locale: "ar" }];
@@ -85,25 +87,28 @@ export default async function LocaleLayout({
   };
 
   return (
-    <div
-      dir={isRtl ? "rtl" : "ltr"}
-      lang={currentLocale}
-      className="flex flex-col min-h-screen bg-canvas text-content-primary transition-colors duration-200"
-    >
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageJsonLd) }}
-      />
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `document.documentElement.lang="${currentLocale}";document.documentElement.dir="${isRtl ? "rtl" : "ltr"}";`,
-        }}
-      />
-      <LocaleHtmlSync locale={currentLocale} />
-      <Navbar locale={currentLocale} dict={dict} />
-      <MainWrapper locale={currentLocale}>{children}</MainWrapper>
-      <Footer dict={dict} />
-      <AbdulghaniAIModal locale={currentLocale} />
-    </div>
+    <SmoothScrollProvider>
+      <div
+        dir={isRtl ? "rtl" : "ltr"}
+        lang={currentLocale}
+        className="flex flex-col min-h-screen bg-canvas text-content-primary transition-colors duration-200"
+      >
+        <MagneticCursor />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageJsonLd) }}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `document.documentElement.lang="${currentLocale}";document.documentElement.dir="${isRtl ? "rtl" : "ltr"}";`,
+          }}
+        />
+        <LocaleHtmlSync locale={currentLocale} />
+        <Navbar locale={currentLocale} dict={dict} />
+        <MainWrapper locale={currentLocale}>{children}</MainWrapper>
+        <Footer dict={dict} />
+        <AbdulghaniAIModal locale={currentLocale} />
+      </div>
+    </SmoothScrollProvider>
   );
 }

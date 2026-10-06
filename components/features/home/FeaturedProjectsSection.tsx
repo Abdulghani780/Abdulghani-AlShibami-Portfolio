@@ -79,7 +79,11 @@ export function FeaturedProjectsSection({ locale }: { locale: Locale }) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {projects.map((proj, idx) => (
             <ScrollReveal key={proj.id} delay={idx * 100} isRtl={isRtl} direction="up" className="h-full">
-              <TiltCard className="h-full rounded-2xl border border-black/10 dark:border-white/10 bg-[#FAF9F6] dark:bg-[#121214] p-5 shadow-sm hover:shadow-xl hover:border-[#C59B27]/50 transition-all duration-300 group hover:-translate-y-1 flex flex-col justify-between">
+              <TiltCard
+                cursorText={isRtl ? "استكشاف" : "EXPLORE"}
+                maxTilt={6}
+                className="h-full rounded-2xl border border-black/10 dark:border-white/10 bg-[#FAF9F6] dark:bg-[#121214] p-5 shadow-sm hover:shadow-2xl hover:border-[#C59B27]/50 transition-all duration-300 group hover:-translate-y-1 flex flex-col justify-between"
+              >
                 <div>
                   {/* Built Badge */}
                   <div className="inline-flex items-center px-2.5 py-0.5 rounded-full bg-[#C59B27]/15 border border-[#C59B27]/30 text-[#B88E1F] dark:text-[#E2C366] font-mono text-[10px] font-bold tracking-wider uppercase mb-3">
