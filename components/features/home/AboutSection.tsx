@@ -3,6 +3,8 @@
 import React from "react";
 import Image from "next/image";
 import { Locale } from "@/lib/i18n/dictionaries";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { TiltCard } from "@/components/ui/TiltCard";
 
 export function AboutSection({ locale }: { locale: Locale }) {
   const isRtl = locale === "ar";
@@ -96,40 +98,43 @@ export function AboutSection({ locale }: { locale: Locale }) {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
-        <div className="mb-12 sm:mb-16">
-          <h2 className="font-sans font-black text-3xl sm:text-4xl uppercase tracking-tight text-[#0B0B0C] dark:text-white">
-            {isRtl ? "من هو عبدالغني؟" : "WHO IS ABDULGHANI?"}
-          </h2>
-          <p className="mt-2 text-sm sm:text-base font-semibold tracking-wider text-[#B88E1F] dark:text-[#E2C366] uppercase">
-            {isRtl
-              ? "طالب تقنية معلومات ← صانع برمجيات ← ممارس ذكاء اصطناعي"
-              : "IT Student → Software Builder → AI Practitioner"}
-          </p>
-        </div>
+        <ScrollReveal isRtl={isRtl} direction="up">
+          <div className="mb-12 sm:mb-16">
+            <h2 className="font-sans font-black text-3xl sm:text-4xl uppercase tracking-tight text-[#0B0B0C] dark:text-white">
+              {isRtl ? "من هو عبدالغني؟" : "WHO IS ABDULGHANI?"}
+            </h2>
+            <p className="mt-2 text-sm sm:text-base font-semibold tracking-wider text-[#B88E1F] dark:text-[#E2C366] uppercase">
+              {isRtl
+                ? "طالب تقنية معلومات ← صانع برمجيات ← ممارس ذكاء اصطناعي"
+                : "IT Student → Software Builder → AI Practitioner"}
+            </p>
+          </div>
+        </ScrollReveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start">
           {/* Left Column: Personal Narrative & 6 Circular Badges */}
           <div className="lg:col-span-7 space-y-8">
-            <p className="text-base sm:text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed font-sans">
-              {isRtl
-                ? "أنا عبدالغني الشبامي، طالب تقنية معلومات من اليمن، شغوف بالتكنولوجيا والذكاء الاصطناعي وبناء الأنظمة النافعة. أؤمن بالتعلم المستمر، وحل المشكلات الحقيقية، وتحويل الأفكار إلى حلول برمجية عملية قابلة للتطوير."
-                : "I'm Abdulghani Al-Shibami, an IT student from Yemen, passionate about technology, artificial intelligence, and building useful systems. I believe in continuous learning, solving real problems, and turning ideas into practical solutions."}
-            </p>
+            <ScrollReveal isRtl={isRtl} direction="up">
+              <p className="text-base sm:text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed font-sans">
+                {isRtl
+                  ? "أنا عبدالغني الشبامي، طالب تقنية معلومات من اليمن، شغوف بالتكنولوجيا والذكاء الاصطناعي وبناء الأنظمة النافعة. أؤمن بالتعلم المستمر، وحل المشكلات الحقيقية، وتحويل الأفكار إلى حلول برمجية عملية قابلة للتطوير."
+                  : "I'm Abdulghani Al-Shibami, an IT student from Yemen, passionate about technology, artificial intelligence, and building useful systems. I believe in continuous learning, solving real problems, and turning ideas into practical solutions."}
+              </p>
+            </ScrollReveal>
 
             {/* 6 Circular Outline Badges */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4">
               {corePillars.map((pillar, idx) => (
-                <div
-                  key={idx}
-                  className="flex flex-col items-center text-center p-4 rounded-xl border border-black/10 dark:border-white/10 hover:border-gold-primary/60 bg-[#FAF9F6] dark:bg-[#121214] transition-all hover:scale-[1.02] group"
-                >
-                  <div className="w-12 h-12 rounded-full border border-gold-primary/40 bg-gold-primary/10 flex items-center justify-center text-gold-dark dark:text-gold-light mb-3 group-hover:bg-gold-primary group-hover:text-white transition-colors">
-                    {pillar.icon}
-                  </div>
-                  <span className="text-xs font-bold text-zinc-800 dark:text-zinc-200 uppercase tracking-wider leading-snug">
-                    {pillar.title}
-                  </span>
-                </div>
+                <ScrollReveal key={idx} delay={idx * 60} isRtl={isRtl} direction="up">
+                  <TiltCard className="flex flex-col items-center text-center p-4 rounded-xl border border-black/10 dark:border-white/10 hover:border-gold-primary/60 bg-[#FAF9F6] dark:bg-[#121214] transition-all hover:scale-[1.02] group">
+                    <div className="w-12 h-12 rounded-full border border-gold-primary/40 bg-gold-primary/10 flex items-center justify-center text-gold-dark dark:text-gold-light mb-3 group-hover:bg-gold-primary group-hover:text-white transition-colors">
+                      {pillar.icon}
+                    </div>
+                    <span className="text-xs font-bold text-zinc-800 dark:text-zinc-200 uppercase tracking-wider leading-snug">
+                      {pillar.title}
+                    </span>
+                  </TiltCard>
+                </ScrollReveal>
               ))}
             </div>
           </div>
@@ -139,45 +144,49 @@ export function AboutSection({ locale }: { locale: Locale }) {
             {/* Timeline Milestones */}
             <div className="relative ps-6 space-y-6 before:absolute before:start-2 before:top-2 before:bottom-2 before:w-[2px] before:bg-gold-primary/30">
               {milestones.map((m, idx) => (
-                <div key={idx} className="relative group">
-                  {/* Node Dot */}
-                  <span className="absolute -start-[27px] top-1.5 w-3.5 h-3.5 rounded-full border-2 border-gold-primary bg-white dark:bg-[#0B0B0C] group-hover:bg-gold-primary transition-colors" />
+                <ScrollReveal key={idx} delay={idx * 80 + 100} isRtl={isRtl} direction="up">
+                  <div className="relative group">
+                    {/* Node Dot */}
+                    <span className="absolute -start-[27px] top-1.5 w-3.5 h-3.5 rounded-full border-2 border-gold-primary bg-white dark:bg-[#0B0B0C] group-hover:bg-gold-primary transition-colors" />
 
-                  <div className="bg-[#FAF9F6] dark:bg-[#121214] p-4 rounded-xl border border-black/5 dark:border-white/10 hover:border-gold-primary/50 transition-colors">
-                    <span className="text-[11px] font-mono font-bold text-gold-dark dark:text-gold-light uppercase tracking-wider">
-                      {m.step} • {m.role}
-                    </span>
-                    <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 font-medium mt-0.5">
-                      {m.desc}
-                    </p>
+                    <div className="bg-[#FAF9F6] dark:bg-[#121214] p-4 rounded-xl border border-black/5 dark:border-white/10 hover:border-gold-primary/50 transition-colors">
+                      <span className="text-[11px] font-mono font-bold text-gold-dark dark:text-gold-light uppercase tracking-wider">
+                        {m.step} • {m.role}
+                      </span>
+                      <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 font-medium mt-0.5">
+                        {m.desc}
+                      </p>
+                    </div>
                   </div>
-                </div>
+                </ScrollReveal>
               ))}
             </div>
 
             {/* Quote Callout with Shibam Architectural Silhouette */}
-            <div className="relative p-6 rounded-2xl border border-gold-primary/30 bg-gradient-to-br from-[#FAF9F6] to-white dark:from-[#121214] dark:to-[#0B0B0C] overflow-hidden shadow-sm">
-              {/* Shibam Ancient City Watermark */}
-              <div className="absolute end-0 bottom-0 opacity-15 dark:opacity-20 pointer-events-none w-36 h-24">
-                <Image
-                  src="/images/showcase/shibam-skyline.png"
-                  alt="Shibam Skyline"
-                  width={144}
-                  height={96}
-                  className="object-contain"
-                />
-              </div>
-
-              <div className="relative z-10">
-                <span className="font-serif text-3xl sm:text-4xl text-gold-primary leading-none block mb-1">“</span>
-                <p className="font-serif italic text-base sm:text-lg text-zinc-800 dark:text-zinc-100 font-medium leading-relaxed">
-                  {isRtl ? "أنظمة أفضل من أجل غدٍ أذكى." : "Better systems for a smarter tomorrow."}
-                </p>
-                <div className="mt-3 text-xs font-mono tracking-widest uppercase text-gold-dark dark:text-gold-light">
-                  — Abdulghani Al-Shibami
+            <ScrollReveal delay={300} isRtl={isRtl} direction="up">
+              <TiltCard className="relative p-6 rounded-2xl border border-gold-primary/30 bg-gradient-to-br from-[#FAF9F6] to-white dark:from-[#121214] dark:to-[#0B0B0C] overflow-hidden shadow-sm">
+                {/* Shibam Ancient City Watermark */}
+                <div className="absolute end-0 bottom-0 opacity-15 dark:opacity-20 pointer-events-none w-36 h-24">
+                  <Image
+                    src="/images/showcase/shibam-skyline.png"
+                    alt="Shibam Skyline"
+                    width={144}
+                    height={96}
+                    className="object-contain"
+                  />
                 </div>
-              </div>
-            </div>
+
+                <div className="relative z-10">
+                  <span className="font-serif text-3xl sm:text-4xl text-gold-primary leading-none block mb-1">“</span>
+                  <p className="font-serif italic text-base sm:text-lg text-zinc-800 dark:text-zinc-100 font-medium leading-relaxed">
+                    {isRtl ? "أنظمة أفضل من أجل غدٍ أذكى." : "Better systems for a smarter tomorrow."}
+                  </p>
+                  <div className="mt-3 text-xs font-mono tracking-widest uppercase text-gold-dark dark:text-gold-light">
+                    — Abdulghani Al-Shibami
+                  </div>
+                </div>
+              </TiltCard>
+            </ScrollReveal>
           </div>
         </div>
       </div>

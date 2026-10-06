@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Locale } from "@/lib/i18n/dictionaries";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 export function HeroSection({ locale }: { locale: Locale }) {
   const isRtl = locale === "ar";
@@ -43,6 +44,7 @@ export function HeroSection({ locale }: { locale: Locale }) {
                 {/* Top Angled Branch with Circle Node */}
                 <circle cx="22" cy="12" r="2.5" fill="#FAF8F5" stroke="#C59B27" strokeWidth="1.5" className="dark:fill-[#0B0B0C] dark:stroke-[#D4AF37]" />
                 <path d="M 22 12 L 8 26 L 8 160" stroke="#C59B27" strokeWidth="1.2" strokeOpacity="0.65" className="dark:stroke-[#D4AF37]" />
+                <path d="M 22 12 L 8 26 L 8 160" stroke="#D4AF37" strokeWidth="1.6" className="gold-flow-animate pointer-events-none" />
                 
                 {/* Midpoint Double Solder Dots (Colon ':') */}
                 <circle cx="8" cy="172" r="1.5" fill="#C59B27" className="dark:fill-[#D4AF37]" />
@@ -50,6 +52,7 @@ export function HeroSection({ locale }: { locale: Locale }) {
                 
                 {/* Lower Vertical Stem */}
                 <path d="M 8 194 L 8 360" stroke="#C59B27" strokeWidth="1.2" strokeOpacity="0.65" className="dark:stroke-[#D4AF37]" />
+                <path d="M 8 194 L 8 360" stroke="#D4AF37" strokeWidth="1.6" className="gold-flow-animate pointer-events-none" />
                 
                 {/* Bottom Terminal Node */}
                 <circle cx="8" cy="368" r="2.5" fill="#FAF8F5" stroke="#C59B27" strokeWidth="1.5" className="dark:fill-[#0B0B0C] dark:stroke-[#D4AF37]" />
@@ -80,11 +83,13 @@ export function HeroSection({ locale }: { locale: Locale }) {
                 {/* Primary Circuit Trace 1: Top Node -> Down -> 90° Right -> 45° Down-Right -> Node */}
                 <circle cx="105" cy="30" r="3" fill="#FAF8F5" stroke="#C59B27" strokeWidth="1.5" className="dark:fill-[#0B0B0C] dark:stroke-[#D4AF37]" />
                 <path d="M 105 30 L 105 75 L 140 75 L 180 115" stroke="#C59B27" strokeWidth="1.2" strokeOpacity="0.65" className="dark:stroke-[#D4AF37]" />
+                <path d="M 105 30 L 105 75 L 140 75 L 180 115" stroke="#D4AF37" strokeWidth="1.6" className="gold-flow-animate pointer-events-none" />
                 <circle cx="180" cy="115" r="2.5" fill="#C59B27" className="dark:fill-[#D4AF37]" />
 
                 {/* Primary Circuit Trace 2: Top Node -> Down -> 90° Right -> Down -> Terminal Node */}
                 <circle cx="65" cy="60" r="2.5" fill="#FAF8F5" stroke="#C59B27" strokeWidth="1.2" className="dark:fill-[#0B0B0C] dark:stroke-[#D4AF37]" />
                 <path d="M 65 60 L 65 135 L 120 135 L 120 180 L 145 205" stroke="#C59B27" strokeWidth="1.2" strokeOpacity="0.6" className="dark:stroke-[#D4AF37]" />
+                <path d="M 65 60 L 65 135 L 120 135 L 120 180 L 145 205" stroke="#D4AF37" strokeWidth="1.6" className="gold-flow-animate pointer-events-none" />
                 <circle cx="145" cy="205" r="2.5" fill="#C59B27" className="dark:fill-[#D4AF37]" />
 
                 {/* Branching Horizontal Line with Terminal Dot */}
@@ -104,76 +109,87 @@ export function HeroSection({ locale }: { locale: Locale }) {
             </div>
 
             {/* Kicker Greeting */}
-            <div className="inline-flex items-center gap-2 mb-2">
-              <span className="font-serif italic text-base sm:text-lg text-zinc-600 dark:text-zinc-400">
-                {isRtl ? "مرحباً، أنا" : "Hello, I'm"}
-              </span>
-              <span className="w-6 h-[1px] bg-[#B88E1F]/60 inline-block" />
-            </div>
+            <ScrollReveal delay={100} isRtl={isRtl} direction="up">
+              <div className="inline-flex items-center gap-2 mb-2">
+                <span className="font-serif italic text-base sm:text-lg text-zinc-600 dark:text-zinc-400">
+                  {isRtl ? "مرحباً، أنا" : "Hello, I'm"}
+                </span>
+                <span className="w-6 h-[1px] bg-[#B88E1F]/60 inline-block" />
+              </div>
+            </ScrollReveal>
 
             {/* Display Heading - Two-line Editorial Layout matching s1.png */}
-            <h1 className="font-serif font-black text-3xl sm:text-4xl md:text-5xl lg:text-[44px] xl:text-[52px] 2xl:text-[60px] tracking-tight text-[#0B0B0C] dark:text-white uppercase leading-[0.98] mb-4">
-              {isRtl ? (
-                <>
-                  <span className="block">عبدالغني</span>
-                  <span className="block">الشبامي</span>
-                </>
-              ) : (
-                <>
-                  <span className="block">ABDULGHANI</span>
-                  <span className="block">AL-SHIBAMI</span>
-                </>
-              )}
-            </h1>
+            <ScrollReveal delay={200} isRtl={isRtl} direction="up">
+              <h1 className="font-serif font-black text-3xl sm:text-4xl md:text-5xl lg:text-[44px] xl:text-[52px] 2xl:text-[60px] tracking-tight text-[#0B0B0C] dark:text-white uppercase leading-[0.98] mb-4">
+                {isRtl ? (
+                  <>
+                    <span className="block">عبدالغني</span>
+                    <span className="block">الشبامي</span>
+                  </>
+                ) : (
+                  <>
+                    <span className="block">ABDULGHANI</span>
+                    <span className="block">AL-SHIBAMI</span>
+                  </>
+                )}
+              </h1>
+            </ScrollReveal>
 
             {/* Role / Subtitle with dot separators */}
-            <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 text-xs sm:text-sm font-bold tracking-[0.16em] uppercase text-[#B88E1F] dark:text-[#E2C366] mb-5">
-              <span>{isRtl ? "مهندس ذكاء اصطناعي" : "AI ENGINEER"}</span>
-              <span className="text-zinc-400">•</span>
-              <span>{isRtl ? "مطور برمجيات" : "SOFTWARE DEVELOPER"}</span>
-              <span className="text-zinc-400">•</span>
-              <span>{isRtl ? "مفكر أنظمة" : "SYSTEMS THINKER"}</span>
-            </div>
+            <ScrollReveal delay={300} isRtl={isRtl} direction="up">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 text-xs sm:text-sm font-bold tracking-[0.16em] uppercase text-[#B88E1F] dark:text-[#E2C366] mb-5">
+                <span>{isRtl ? "مهندس ذكاء اصطناعي" : "AI ENGINEER"}</span>
+                <span className="text-zinc-400">•</span>
+                <span>{isRtl ? "مطور برمجيات" : "SOFTWARE DEVELOPER"}</span>
+                <span className="text-zinc-400">•</span>
+                <span>{isRtl ? "مفكر أنظمة" : "SYSTEMS THINKER"}</span>
+              </div>
+            </ScrollReveal>
 
             {/* Bio Narrative */}
-            <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-300 max-w-md xl:max-w-lg leading-relaxed mb-8 sm:mb-9 font-sans">
-              {isRtl
-                ? "أبني برمجيات ذكية، حلول ذكاء اصطناعي عملية، وأنظمة مصممة لحل مشكلات واقعية بكفاءة عالية."
-                : "I build intelligent software, practical AI solutions, and systems designed to solve real problems."}
-            </p>
+            <ScrollReveal delay={400} isRtl={isRtl} direction="up">
+              <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-300 max-w-md xl:max-w-lg leading-relaxed mb-8 sm:mb-9 font-sans">
+                {isRtl
+                  ? "أبني برمجيات ذكية، حلول ذكاء اصطناعي عملية، وأنظمة مصممة لحل مشكلات واقعية بكفاءة عالية."
+                  : "I build intelligent software, practical AI solutions, and systems designed to solve real problems."}
+              </p>
+            </ScrollReveal>
 
             {/* CTA Button Trio (Matching s1.png) */}
-            <div className="flex flex-wrap items-center gap-3 sm:gap-4 relative z-20">
-              {/* Primary: Explore My Work */}
-              <Link
-                href="#projects"
-                className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-[#C59B27] hover:bg-[#B38A1F] text-black font-extrabold text-xs sm:text-sm tracking-wider uppercase shadow-md hover:shadow-lg transition-all active:scale-95 group cursor-pointer"
-              >
-                <span>{isRtl ? "استكشف أعمالي" : "EXPLORE MY WORK"}</span>
-                <span className="transition-transform duration-200 group-hover:translate-x-1 rtl:group-hover:-translate-x-1">→</span>
-              </Link>
+            <ScrollReveal delay={500} isRtl={isRtl} direction="up">
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4 relative z-20">
+                {/* Primary: Explore My Work */}
+                <Link
+                  href="#projects"
+                  className="relative overflow-hidden inline-flex items-center gap-2 px-7 py-3 rounded-full bg-[#C59B27] hover:bg-[#B38A1F] text-black font-extrabold text-xs sm:text-sm tracking-wider uppercase shadow-md hover:shadow-lg transition-all duration-300 active:scale-95 group cursor-pointer"
+                >
+                  <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none" />
+                  <span>{isRtl ? "استكشف أعمالي" : "EXPLORE MY WORK"}</span>
+                  <span className="transition-transform duration-300 group-hover:translate-x-1.5 rtl:group-hover:-translate-x-1.5">→</span>
+                </Link>
 
-              {/* Secondary: About Me */}
-              <Link
-                href="#about"
-                className="inline-flex items-center px-7 py-3 rounded-full border border-black/15 dark:border-white/20 bg-white/70 dark:bg-transparent hover:bg-black/5 dark:hover:bg-white/5 text-zinc-800 dark:text-zinc-200 text-xs sm:text-sm font-bold tracking-wider uppercase transition-all active:scale-95 cursor-pointer"
-              >
-                {isRtl ? "نبذة عني" : "ABOUT ME"}
-              </Link>
+                {/* Secondary: About Me */}
+                <Link
+                  href="#about"
+                  className="inline-flex items-center px-7 py-3 rounded-full border border-black/15 dark:border-white/20 bg-white/70 dark:bg-transparent hover:bg-black/5 dark:hover:bg-white/5 hover:border-[#C59B27]/60 dark:hover:border-[#D4AF37]/60 text-zinc-800 dark:text-zinc-200 text-xs sm:text-sm font-bold tracking-wider uppercase transition-all duration-300 active:scale-95 cursor-pointer"
+                >
+                  {isRtl ? "نبذة عني" : "ABOUT ME"}
+                </Link>
 
-              {/* Tertiary: GitHub */}
-              <a
-                href="https://github.com/Abdulghani780"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-zinc-800 dark:border-zinc-700 bg-zinc-900 dark:bg-zinc-800/80 hover:bg-zinc-800 text-white text-xs sm:text-sm font-bold tracking-wider uppercase shadow-sm transition-all active:scale-95 cursor-pointer"
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-                </svg>
-                <span>GITHUB</span>
-              </a>
-            </div>
+                {/* Tertiary: GitHub */}
+                <a
+                  href="https://github.com/Abdulghani780"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-zinc-800 dark:border-zinc-700 bg-zinc-900 dark:bg-zinc-800/80 hover:bg-zinc-800 dark:hover:border-zinc-500 text-white text-xs sm:text-sm font-bold tracking-wider uppercase shadow-sm transition-all duration-300 active:scale-95 cursor-pointer"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                  </svg>
+                  <span>GITHUB</span>
+                </a>
+              </div>
+            </ScrollReveal>
 
             {/* Test Compatibility Anchor */}
             <div className="start-4 hidden" />
@@ -184,8 +200,8 @@ export function HeroSection({ locale }: { locale: Locale }) {
              ═══════════════════════════════════════════════════════════════════════ */}
           <div className="lg:col-span-5 relative flex items-end justify-center lg:justify-start min-h-[480px] sm:min-h-[540px] lg:min-h-[580px]">
             {/* Ambient Radial Rim Backlight */}
-            <div className="absolute top-1/2 start-1/3 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[400px] h-[460px] rounded-full bg-radial from-[#D4AF37]/20 via-[#D4AF37]/5 to-transparent pointer-events-none blur-3xl dark:block hidden z-1" />
-            <div className="absolute top-1/2 start-1/3 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[400px] h-[460px] rounded-full bg-radial from-[#F5EFE3]/80 via-[#FAF8F5]/30 to-transparent pointer-events-none blur-2xl dark:hidden z-1" />
+            <div className="absolute top-1/2 start-1/3 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[400px] h-[460px] rounded-full bg-radial from-[#D4AF37]/20 via-[#D4AF37]/5 to-transparent pointer-events-none blur-3xl dark:block hidden z-1 aura-breathe-anim" />
+            <div className="absolute top-1/2 start-1/3 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[400px] h-[460px] rounded-full bg-radial from-[#F5EFE3]/80 via-[#FAF8F5]/30 to-transparent pointer-events-none blur-2xl dark:hidden z-1 aura-breathe-anim" />
 
             {/* ─── Top Horizontal Ruler Notch Accent (Matching s1.png) ─── */}
             <div className={`absolute top-2 sm:top-3 end-2 sm:end-4 w-32 sm:w-44 h-4 pointer-events-none select-none z-2 ${isRtl ? "-scale-x-100" : ""}`}>
@@ -255,7 +271,7 @@ export function HeroSection({ locale }: { locale: Locale }) {
                   <line x1="24" y1="84" x2="28" y2="30" stroke="#C59B27" strokeWidth="1" strokeOpacity="0.5" className="dark:stroke-[#D4AF37]" />
 
                   {/* Center AI Node */}
-                  <circle cx="62" cy="59" r="15" stroke="url(#goldTraceGrad)" strokeWidth="1.5" fill="#FAF8F5" className="dark:fill-[#0E0E10]" />
+                  <circle cx="62" cy="59" r="15" stroke="url(#goldTraceGrad)" strokeWidth="1.5" fill="#FAF8F5" className="dark:fill-[#0E0E10] gold-glow-pulse" />
                   <text
                     x={isRtl ? "-62" : "62"}
                     y="64"
@@ -285,10 +301,11 @@ export function HeroSection({ locale }: { locale: Locale }) {
 
                 {/* 3 Parallel 45-degree Diagonal Bus Lines Streaming to Outer Bottom Corner */}
                 <path d="M 25 130 L 25 155 L 65 195 L 140 195 L 185 240" stroke="#C59B27" strokeWidth="1.2" strokeOpacity="0.55" className="dark:stroke-[#D4AF37]" />
+                <path d="M 25 130 L 25 155 L 65 195 L 140 195 L 185 240" stroke="#D4AF37" strokeWidth="1.6" className="gold-flow-animate pointer-events-none" />
                 <circle cx="140" cy="195" r="2" fill="#C59B27" className="dark:fill-[#D4AF37]" />
                 <circle cx="185" cy="240" r="2.5" fill="#FAF8F5" stroke="#C59B27" strokeWidth="1.2" className="dark:fill-[#0B0B0C] dark:stroke-[#D4AF37]" />
 
-                <path d="M 45 130 L 45 145 L 80 180 L 155 180 L 195 220" stroke="#C59B27" strokeWidth="1" strokeOpacity="0.45" className="dark:stroke-[#D4AF37]" />
+                <path d="M 45 130 L 45 145 L 80 180 L 155 180 L 195 220" stroke="#C59B27" strokeWidth="1.2" strokeOpacity="0.45" className="dark:stroke-[#D4AF37]" />
                 <circle cx="195" cy="220" r="2" fill="#C59B27" className="dark:fill-[#D4AF37]" />
 
                 <path d="M 75 130 L 95 150 L 170 150 L 198 178" stroke="#C59B27" strokeWidth="0.9" strokeOpacity="0.35" className="dark:stroke-[#D4AF37]" />
@@ -296,7 +313,7 @@ export function HeroSection({ locale }: { locale: Locale }) {
             </div>
 
             {/* ─── Cutout Portrait: HERO LAYER (z-10 - Strictly in FRONT of all background graphics) ─── */}
-            <div className="relative w-full max-w-[280px] sm:max-w-[330px] lg:max-w-[360px] xl:max-w-[390px] aspect-[4/5] z-10 flex items-end justify-center select-none pointer-events-none">
+            <div className="relative w-full max-w-[280px] sm:max-w-[330px] lg:max-w-[360px] xl:max-w-[390px] aspect-[4/5] z-10 flex items-end justify-center select-none pointer-events-none float-gentle-anim">
               <Image
                 src="/images/profile/abdulghani-portrait.webp"
                 alt="Abdulghani Al-Shibami — AI Engineer & Software Developer"

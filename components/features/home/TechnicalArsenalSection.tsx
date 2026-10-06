@@ -3,6 +3,8 @@
 import React from "react";
 import Link from "next/link";
 import { Locale } from "@/lib/i18n/dictionaries";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { TiltCard } from "@/components/ui/TiltCard";
 
 export function TechnicalArsenalSection({ locale }: { locale: Locale }) {
   const isRtl = locale === "ar";
@@ -69,61 +71,62 @@ export function TechnicalArsenalSection({ locale }: { locale: Locale }) {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header & Link */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 sm:mb-16 gap-4">
-          <div>
-            <h2 className="font-sans font-black text-3xl sm:text-4xl uppercase tracking-tight text-[#0B0B0C] dark:text-white">
-              {isRtl ? "الترسانة التقنية" : "TECHNICAL ARSENAL"}
-            </h2>
-            <p className="mt-2 text-sm sm:text-base text-zinc-600 dark:text-zinc-400 font-sans">
-              {isRtl
-                ? "الأدوات واللغات والبيئات الهندسية المعتمدة في المشاريع الحقيقية."
-                : "Verified production languages, frameworks, and architecture patterns."}
-            </p>
-          </div>
+        <ScrollReveal isRtl={isRtl} direction="up">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 sm:mb-16 gap-4">
+            <div>
+              <h2 className="font-sans font-black text-3xl sm:text-4xl uppercase tracking-tight text-[#0B0B0C] dark:text-white">
+                {isRtl ? "الترسانة التقنية" : "TECHNICAL ARSENAL"}
+              </h2>
+              <p className="mt-2 text-sm sm:text-base text-zinc-600 dark:text-zinc-400 font-sans">
+                {isRtl
+                  ? "الأدوات واللغات والبيئات الهندسية المعتمدة في المشاريع الحقيقية."
+                  : "Verified production languages, frameworks, and architecture patterns."}
+              </p>
+            </div>
 
-          <Link
-            href={`/${locale}/projects`}
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold tracking-wider uppercase text-[#B88E1F] dark:text-[#E2C366] hover:text-[#C59B27] transition-colors group"
-          >
-            <span>{isRtl ? "الأدوات والتقنيات" : "MY TOOLS & TECHNOLOGIES"}</span>
-            <span className="transition-transform duration-200 group-hover:translate-x-1 rtl:group-hover:-translate-x-1">→</span>
-          </Link>
-        </div>
+            <Link
+              href={`/${locale}/projects`}
+              className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold tracking-wider uppercase text-[#B88E1F] dark:text-[#E2C366] hover:text-[#C59B27] transition-colors group"
+            >
+              <span>{isRtl ? "الأدوات والتقنيات" : "MY TOOLS & TECHNOLOGIES"}</span>
+              <span className="transition-transform duration-200 group-hover:translate-x-1 rtl:group-hover:-translate-x-1">→</span>
+            </Link>
+          </div>
+        </ScrollReveal>
 
         {/* 5 Category Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
           {categories.map((cat, idx) => (
-            <div
-              key={idx}
-              className="flex flex-col justify-between p-6 rounded-2xl border border-black/10 dark:border-white/10 bg-[#FAF9F6] dark:bg-[#121214] hover:border-[#C59B27]/50 transition-all duration-300 group hover:-translate-y-1 shadow-sm"
-            >
-              <div>
-                <h3 className="font-sans font-black text-xs sm:text-sm tracking-wider uppercase text-zinc-900 dark:text-white group-hover:text-[#B88E1F] dark:group-hover:text-[#E2C366] transition-colors mb-3">
-                  {cat.title}
-                </h3>
-                <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed font-sans mb-6">
-                  {cat.techs}
-                </p>
-              </div>
+            <ScrollReveal key={idx} delay={idx * 80} isRtl={isRtl} direction="up" className="h-full">
+              <TiltCard className="h-full flex flex-col justify-between p-6 rounded-2xl border border-black/10 dark:border-white/10 bg-[#FAF9F6] dark:bg-[#121214] hover:border-[#C59B27]/50 transition-all duration-300 group hover:-translate-y-1 shadow-sm">
+                <div>
+                  <h3 className="font-sans font-black text-xs sm:text-sm tracking-wider uppercase text-zinc-900 dark:text-white group-hover:text-[#B88E1F] dark:group-hover:text-[#E2C366] transition-colors mb-3">
+                    {cat.title}
+                  </h3>
+                  <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed font-sans mb-6">
+                    {cat.techs}
+                  </p>
+                </div>
 
-              {/* Colorful Tech Logo Chips */}
-              <div className="flex flex-wrap gap-1.5 pt-4 border-t border-black/5 dark:border-white/5">
-                {cat.logos.map((logo, lIdx) => (
-                  <span
-                    key={lIdx}
-                    title={logo.name}
-                    className="inline-flex items-center justify-center px-2 py-1 rounded-md text-[10px] font-mono font-bold border transition-transform hover:scale-105"
-                    style={{
-                      borderColor: `${logo.color}35`,
-                      backgroundColor: logo.bg,
-                      color: logo.color,
-                    }}
-                  >
-                    {logo.text}
-                  </span>
-                ))}
-              </div>
-            </div>
+                {/* Colorful Tech Logo Chips */}
+                <div className="flex flex-wrap gap-1.5 pt-4 border-t border-black/5 dark:border-white/5">
+                  {cat.logos.map((logo, lIdx) => (
+                    <span
+                      key={lIdx}
+                      title={logo.name}
+                      className="inline-flex items-center justify-center px-2 py-1 rounded-md text-[10px] font-mono font-bold border transition-transform hover:scale-105"
+                      style={{
+                        borderColor: `${logo.color}35`,
+                        backgroundColor: logo.bg,
+                        color: logo.color,
+                      }}
+                    >
+                      {logo.text}
+                    </span>
+                  ))}
+                </div>
+              </TiltCard>
+            </ScrollReveal>
           ))}
         </div>
       </div>

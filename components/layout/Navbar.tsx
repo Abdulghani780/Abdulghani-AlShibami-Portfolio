@@ -19,10 +19,16 @@ export function Navbar({
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      if (height > 0) {
+        setScrollProgress((winScroll / height) * 100);
+      }
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -177,6 +183,19 @@ export function Navbar({
           </div>
         </div>
       )}
+
+      {/* Reading Progress Indicator */}
+      <div
+        className="absolute bottom-0 inset-x-0 h-[2px] bg-transparent pointer-events-none overflow-hidden"
+        aria-hidden="true"
+      >
+        <div
+          className="h-full bg-gradient-to-r from-[#D4AF37] via-[#F3E5AB] to-[#D4AF37] shadow-[0_0_8px_rgba(212,175,55,0.7)] transition-all duration-75 ease-out"
+          style={{
+            width: `${scrollProgress}%`,
+          }}
+        />
+      </div>
     </header>
   );
 }

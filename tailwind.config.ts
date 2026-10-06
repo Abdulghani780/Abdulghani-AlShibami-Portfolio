@@ -115,7 +115,13 @@ const config: Config = {
         glass: "0 8px 32px 0 rgba(0, 0, 0, 0.45), inset 0 1px 0 0 rgba(255, 255, 255, 0.08)",
         "glass-light": "0 8px 32px 0 rgba(15, 23, 42, 0.06), inset 0 1px 0 0 rgba(255, 255, 255, 0.8)",
         porcelain: "0 4px 20px -2px rgba(15, 23, 42, 0.04), 0 1px 3px 0 rgba(15, 23, 42, 0.02)",
-        "porcelain-lift": "0 20px 35px -8px rgba(15, 23, 42, 0.06), 0 1px 4px 0 rgba(99, 102, 241, 0.08)",
+        "gold-luminous": "0 0 30px rgba(212, 175, 55, 0.35)",
+        "gold-border-glow": "0 0 0 1px rgba(212, 175, 55, 0.5), 0 8px 24px -4px rgba(212, 175, 55, 0.25)",
+      },
+      transitionTimingFunction: {
+        luxury: "cubic-bezier(0.16, 1, 0.3, 1)",
+        snappy: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+        smooth: "cubic-bezier(0.22, 1, 0.36, 1)",
       },
       maxWidth: {
         arch: "1440px",

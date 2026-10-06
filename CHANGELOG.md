@@ -10,6 +10,42 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.5.0] - 2026-10-06 — Master Luxury Animation & Micro-Interactions Elevation
+
+### Added
+- **Motion Primitives & Zero-Runtime Animation Engine:**
+  - `lib/hooks/useReducedMotion.ts`: Media query listener for `(prefers-reduced-motion: reduce)` guaranteeing WCAG AA accessibility compliance.
+  - `lib/hooks/useInView.ts`: SSR-safe `IntersectionObserver` hook triggering scroll reveals with zero hydration mismatch.
+  - `components/ui/ScrollReveal.tsx`: Viewport entry reveal primitive with 4 directions (`up`, `down`, `left`, `right`), configurable delays and distances, and automatic RTL axis mirroring.
+  - `components/ui/CountUp.tsx`: 60 FPS numeric counter with cubic ease-out interpolation for telemetry, stats, and star metrics.
+  - `components/ui/TiltCard.tsx`: 3D perspective mouse tilt with cursor-following radial gold spotlight (bypassed on touch devices and reduced-motion).
+- **Design Tokens & Keyframe Animations (`app/globals.css`, `tailwind.config.ts`):**
+  - Added keyframes: `gold-pulse`, `gold-flow`, `aura-breathe`, `shimmer-sweep`, `beacon-ping`, and `float-gentle`.
+  - Added utility classes: `.gold-glow-pulse`, `.gold-flow-animate`, `.aura-breathe-anim`, `.shimmer-active`, `.beacon-ping-anim`, `.float-gentle-anim`.
+  - Added custom luxury easing curves (`luxury`, `snappy`, `smooth`) and luminous gold shadows (`gold-luminous`, `gold-border-glow`).
+- **Comprehensive Homepage Motion Elevation:**
+  - `HeroSection.tsx`: Photon pulse along SVG circuit linework, staggered text entry, shimmer sweep on `EXPLORE MY WORK`, floating portrait, and pulsing AI beacon.
+  - `FeaturedProjectsSection.tsx`: 3D tilt cards with cursor-following radial gold spotlights.
+  - `TechnicalArsenalSection.tsx`: 3D tilt category cards, micro-scale hover on technology chips.
+  - `AbdulghaniMethodSection.tsx`: Staggered 7-node pipeline reveal, hover gold glow, pulsating arrows.
+  - `AILabSection.tsx`: 3D card tilt and viewport reveals across all 6 AI modules.
+  - `EngineeringInPublicSection.tsx`: 60 FPS numeric counter on GitHub contributions (679) and stars.
+  - `EducationCertificationsSection.tsx`: 3D tilt on academic degree card and 4 verified certificate cards.
+  - `AboutSection.tsx`: Staggered timeline milestone and pillar card reveals with 3D perspective tilt.
+  - `ContactCtaSection.tsx`: Shimmer button sweep, floating skyline image, and 3D tilt value cards.
+  - `FlagshipCaseStudySection.tsx`: Staggered reveals on 5 lifecycle stages, 3D tilt desktop station mockup, and feature/flow reveals.
+- **Global Layout Motion Polish:**
+  - `Navbar.tsx`: Live luxury gold reading scroll-progress indicator line tracking scroll percentage across all routes.
+  - `AbdulghaniAIModal.tsx`: Smooth spring entry scale transition, gold glow pulse launcher, and typing stream cursor.
+
+### Verified
+- Zero Layout Shifts (CLS = 0).
+- 100% automated test pass rate (74/74 unit, integration, and security tests).
+- 0 TypeScript compilation errors (`tsc --noEmit`).
+- Clean static production build across all 36 application routes.
+
+---
+
 ## [2.4.0] - 2026-09-30 — 3D Gold Logo Branding, Yusra Purge, Campus IT Tracker Flagship & HD Visuals
 
 ### Added

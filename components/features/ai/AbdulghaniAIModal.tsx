@@ -153,7 +153,7 @@ export function AbdulghaniAIModal({ locale = "en" }: AbdulghaniAIModalProps) {
     <>
       {/* ── Floating Launcher Trigger Button ── */}
       {!isOpen && (
-        <div className="fixed bottom-6 end-6 z-40">
+        <div className="fixed bottom-6 end-6 z-40 animate-in fade-in slide-in-from-bottom-4 duration-300">
           <button
             type="button"
             onClick={() => {
@@ -161,7 +161,7 @@ export function AbdulghaniAIModal({ locale = "en" }: AbdulghaniAIModalProps) {
               setIsMinimized(false);
             }}
             aria-label={isAr ? "فتح المساعد الذكي" : "Open Abdulghani AI"}
-            className="group relative flex items-center gap-2.5 px-4 py-3 rounded-full bg-[#121214] hover:bg-[#18181B] border border-gold-primary/40 hover:border-gold-primary text-white shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer active:scale-95 font-mono text-xs"
+            className="group relative flex items-center gap-2.5 px-4 py-3 rounded-full bg-[#121214] hover:bg-[#18181B] border border-gold-primary/40 hover:border-gold-primary text-white shadow-xl hover:shadow-2xl hover:shadow-gold-primary/20 transition-all duration-300 cursor-pointer active:scale-95 font-mono text-xs gold-glow-pulse"
           >
             <span className="relative flex h-3 w-3">
               <span className="motion-safe:animate-ping absolute inline-flex h-full w-full rounded-full bg-gold-primary opacity-75" />
@@ -178,7 +178,7 @@ export function AbdulghaniAIModal({ locale = "en" }: AbdulghaniAIModalProps) {
       {/* ── Chat Modal / Window ── */}
       {isOpen && (
         <div
-          className={`fixed end-4 sm:end-6 bottom-4 sm:bottom-6 z-50 w-[calc(100vw-2rem)] sm:w-[420px] transition-all duration-300 font-mono shadow-2xl rounded-2xl overflow-hidden border border-black/10 dark:border-gold-primary/30 bg-white dark:bg-[#121214] flex flex-col text-zinc-800 dark:text-zinc-100 ${
+          className={`fixed end-4 sm:end-6 bottom-4 sm:bottom-6 z-50 w-[calc(100vw-2rem)] sm:w-[420px] transition-all duration-300 font-mono shadow-2xl rounded-2xl overflow-hidden border border-black/10 dark:border-gold-primary/30 bg-white dark:bg-[#121214] flex flex-col text-zinc-800 dark:text-zinc-100 animate-in fade-in zoom-in-95 duration-250 ease-out ${
             isMinimized ? "h-14" : "h-[540px] max-h-[85vh]"
           }`}
           dir={isAr ? "rtl" : "ltr"}
@@ -275,7 +275,7 @@ export function AbdulghaniAIModal({ locale = "en" }: AbdulghaniAIModalProps) {
                 ))}
 
                 {isLoading && (
-                  <div className="flex items-start gap-2.5">
+                  <div className="flex items-start gap-2.5 animate-in fade-in duration-200">
                     <span className="w-6 h-6 rounded-md bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-gold-dark dark:text-gold-light flex items-center justify-center shrink-0">
                       <Bot className="w-3.5 h-3.5" />
                     </span>
@@ -284,6 +284,7 @@ export function AbdulghaniAIModal({ locale = "en" }: AbdulghaniAIModalProps) {
                       <span className="text-[11px] font-mono text-zinc-500 dark:text-zinc-400">
                         {isAr ? "جاري الاستدلال بالبيانات المعتمدة…" : "Querying verified portfolio data…"}
                       </span>
+                      <span className="inline-block w-1.5 h-3 bg-gold-primary animate-pulse" />
                     </div>
                   </div>
                 )}

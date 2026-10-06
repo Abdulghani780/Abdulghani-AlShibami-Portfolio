@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Locale } from "@/lib/i18n/dictionaries";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 export function AbdulghaniMethodSection({ locale }: { locale: Locale }) {
   const isRtl = locale === "ar";
@@ -94,36 +95,40 @@ export function AbdulghaniMethodSection({ locale }: { locale: Locale }) {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         {/* Title in Gold */}
-        <h2 className="font-serif font-bold text-2xl sm:text-3xl lg:text-4xl uppercase tracking-widest text-[#D4AF37] mb-3">
-          {isRtl ? "منهجية عبدالغني" : "THE ABDULGHANI METHOD"}
-        </h2>
+        <ScrollReveal isRtl={isRtl} direction="up">
+          <h2 className="font-serif font-bold text-2xl sm:text-3xl lg:text-4xl uppercase tracking-widest text-[#D4AF37] mb-3">
+            {isRtl ? "منهجية عبدالغني" : "THE ABDULGHANI METHOD"}
+          </h2>
 
-        {/* Subtitle */}
-        <p className="text-sm sm:text-base text-zinc-400 max-w-xl mx-auto font-sans mb-14 sm:mb-20">
-          {isRtl
-            ? "الذكاء الاصطناعي ليس مجرد أداة لتوليد الأكواد، بل هو شريك في التفكير والتصميم."
-            : "AI is not just a code generator. It is a thinking partner."}
-        </p>
+          {/* Subtitle */}
+          <p className="text-sm sm:text-base text-zinc-400 max-w-xl mx-auto font-sans mb-14 sm:mb-20">
+            {isRtl
+              ? "الذكاء الاصطناعي ليس مجرد أداة لتوليد الأكواد، بل هو شريك في التفكير والتصميم."
+              : "AI is not just a code generator. It is a thinking partner."}
+          </p>
+        </ScrollReveal>
 
         {/* 7 Connected Golden Circles Horizontal Pipeline */}
         <div className="flex items-center justify-center gap-2 sm:gap-4 lg:gap-6 flex-wrap md:flex-nowrap">
           {steps.map((step, idx) => (
             <React.Fragment key={idx}>
-              <div className="flex flex-col items-center group cursor-pointer my-2">
-                {/* Node Circle */}
-                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border-2 border-[#D4AF37] bg-[#141418] group-hover:bg-[#D4AF37] group-hover:text-black text-[#D4AF37] flex items-center justify-center transition-all duration-300 shadow-md group-hover:scale-110 mb-3">
-                  {step.icon}
-                </div>
+              <ScrollReveal delay={idx * 70} isRtl={isRtl} direction="up">
+                <div className="flex flex-col items-center group cursor-pointer my-2">
+                  {/* Node Circle */}
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border-2 border-[#D4AF37] bg-[#141418] group-hover:bg-[#D4AF37] group-hover:text-black text-[#D4AF37] flex items-center justify-center transition-all duration-300 shadow-md group-hover:shadow-[0_0_25px_rgba(212,175,55,0.4)] group-hover:scale-110 mb-3">
+                    {step.icon}
+                  </div>
 
-                {/* Step Label */}
-                <span className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-wider text-zinc-300 group-hover:text-[#D4AF37] transition-colors whitespace-nowrap">
-                  {step.title}
-                </span>
-              </div>
+                  {/* Step Label */}
+                  <span className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-wider text-zinc-300 group-hover:text-[#D4AF37] transition-colors whitespace-nowrap">
+                    {step.title}
+                  </span>
+                </div>
+              </ScrollReveal>
 
               {/* Connecting Arrow */}
               {idx < steps.length - 1 && (
-                <div className="hidden md:flex items-center text-[#D4AF37]/60 text-lg mb-7 rtl:rotate-180">
+                <div className="hidden md:flex items-center text-[#D4AF37]/60 animate-pulse text-lg mb-7 rtl:rotate-180">
                   →
                 </div>
               )}

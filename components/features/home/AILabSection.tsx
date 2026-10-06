@@ -3,6 +3,8 @@
 import React from "react";
 import Link from "next/link";
 import { Locale } from "@/lib/i18n/dictionaries";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { TiltCard } from "@/components/ui/TiltCard";
 
 export function AILabSection({ locale }: { locale: Locale }) {
   const isRtl = locale === "ar";
@@ -95,56 +97,57 @@ export function AILabSection({ locale }: { locale: Locale }) {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header with Title and "EXPLORE MORE →" CTA */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 sm:mb-16 gap-4 border-b border-white/10 pb-6">
-          <div>
-            <h2 className="font-serif font-bold text-3xl sm:text-4xl uppercase tracking-tight text-white">
-              {isRtl ? "مختبر الذكاء الاصطناعي" : "AI LAB"}
-            </h2>
-            <p className="mt-2 text-sm sm:text-base text-zinc-400 font-sans">
-              {isRtl
-                ? "تجارب، أنظمة ذكية، وتطبيقات عملية مدعومة بأحدث النماذج."
-                : "Experiments, intelligent systems, and practical AI applications."}
-            </p>
-          </div>
+        <ScrollReveal isRtl={isRtl} direction="up">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 sm:mb-16 gap-4 border-b border-white/10 pb-6">
+            <div>
+              <h2 className="font-serif font-bold text-3xl sm:text-4xl uppercase tracking-tight text-white">
+                {isRtl ? "مختبر الذكاء الاصطناعي" : "AI LAB"}
+              </h2>
+              <p className="mt-2 text-sm sm:text-base text-zinc-400 font-sans">
+                {isRtl
+                  ? "تجارب، أنظمة ذكية، وتطبيقات عملية مدعومة بأحدث النماذج."
+                  : "Experiments, intelligent systems, and practical AI applications."}
+              </p>
+            </div>
 
-          <Link
-            href={`/${locale}/projects`}
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold tracking-wider uppercase text-[#D4AF37] hover:text-[#F3E5AB] transition-colors group"
-          >
-            <span>{isRtl ? "استكشف المزيد" : "EXPLORE MORE"}</span>
-            <span className="transition-transform duration-200 group-hover:translate-x-1 rtl:group-hover:-translate-x-1">→</span>
-          </Link>
-        </div>
+            <Link
+              href={`/${locale}/projects`}
+              className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold tracking-wider uppercase text-[#D4AF37] hover:text-[#F3E5AB] transition-colors group"
+            >
+              <span>{isRtl ? "استكشف المزيد" : "EXPLORE MORE"}</span>
+              <span className="transition-transform duration-200 group-hover:translate-x-1 rtl:group-hover:-translate-x-1">→</span>
+            </Link>
+          </div>
+        </ScrollReveal>
 
         {/* 6 AI Module Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-5">
           {aiModules.map((mod, idx) => (
-            <div
-              key={idx}
-              className="flex flex-col justify-between p-6 rounded-2xl border border-white/10 hover:border-[#D4AF37]/60 bg-[#141418] hover:bg-[#18181E] transition-all duration-300 group hover:-translate-y-1 shadow-lg"
-            >
-              <div>
-                {/* Icon in gold outline */}
-                <div className="w-12 h-12 rounded-xl border border-[#D4AF37]/40 bg-[#D4AF37]/10 flex items-center justify-center text-[#D4AF37] mb-6 group-hover:bg-[#D4AF37] group-hover:text-black transition-colors">
-                  {mod.icon}
+            <ScrollReveal key={idx} delay={idx * 70} isRtl={isRtl} direction="up" className="h-full">
+              <TiltCard className="h-full flex flex-col justify-between p-6 rounded-2xl border border-white/10 hover:border-[#D4AF37]/60 bg-[#141418] hover:bg-[#18181E] transition-all duration-300 group hover:-translate-y-1 shadow-lg">
+                <div>
+                  {/* Icon in gold outline */}
+                  <div className="w-12 h-12 rounded-xl border border-[#D4AF37]/40 bg-[#D4AF37]/10 flex items-center justify-center text-[#D4AF37] mb-6 group-hover:bg-[#D4AF37] group-hover:text-black transition-colors">
+                    {mod.icon}
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="font-sans font-bold text-sm tracking-wide text-white group-hover:text-[#D4AF37] transition-colors leading-snug mb-2">
+                    {mod.title}
+                  </h3>
+
+                  {/* Subtitle / Micro-tagline */}
+                  <p className="text-xs text-zinc-400 leading-relaxed font-sans mb-4">
+                    {mod.desc}
+                  </p>
                 </div>
 
-                {/* Title */}
-                <h3 className="font-sans font-bold text-sm tracking-wide text-white group-hover:text-[#D4AF37] transition-colors leading-snug mb-2">
-                  {mod.title}
-                </h3>
-
-                {/* Subtitle / Micro-tagline */}
-                <p className="text-xs text-zinc-400 leading-relaxed font-sans mb-4">
-                  {mod.desc}
-                </p>
-              </div>
-
-              {/* Bottom directional arrow */}
-              <div className="text-[#D4AF37] text-xs font-bold transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1 pt-2">
-                →
-              </div>
-            </div>
+                {/* Bottom directional arrow */}
+                <div className="text-[#D4AF37] text-xs font-bold transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1 pt-2">
+                  →
+                </div>
+              </TiltCard>
+            </ScrollReveal>
           ))}
         </div>
       </div>
