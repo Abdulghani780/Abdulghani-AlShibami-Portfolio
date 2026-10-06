@@ -10,6 +10,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.7.0] - 2026-10-06 — Architectural Portrait Portal & Executive Motion Refinement
+
+### Enhanced & Refined (ui-ux-pro-max)
+- **Executive Architectural Studio Portal & Pedestal (`components/features/home/HeroSection.tsx`):**
+  - Eliminated the unnatural "floating torso" loop (`float-gentle-anim`), anchoring `abdulghani-portrait.webp` inside a luxury arched architectural studio portal (`rounded-t-[140px] sm:rounded-t-[170px] rounded-b-2xl`).
+  - Implemented dual-mode adaptive ambient lighting:
+    - **Dark Mode:** Deep obsidian crystal gradient (`#161619` to `#08080A`) with royal gold hairline border (`border-[#D4AF37]/30`) and soft ambient radial rim halo.
+    - **Light Mode:** Warm satin champagne porcelain backing (`#F5EFE6` to `#FAF8F5`) with champagne gold border (`border-[#B88E1F]/25`) and soft studio ambient shadow, completely eliminating the harsh black sticker contrast.
+  - Applied feathered gradient base mask (`mask-image: linear-gradient(to bottom, black 82%, transparent 100%)`) dissolving the lower torso seamlessly into the pedestal base with zero abrupt waistline cuts.
+  - Subdued and recalibrated technical blueprint background linework into a quiet, prestigious architectural backdrop.
+- **Executive Motion De-Noising & Physics Calibration (`app/globals.css`):**
+  - Reduced continuous visual noise: slowed down `aura-breathe-anim` (from 5s to 8s), softened `gold-pulse` (from 3s to 5s), and decelerated `gold-flow-animate` (from 4.5s to 7s).
+  - Reduced scroll reveal entrance displacement from 40px to 16-18px for silky, confident, and stable executive presence.
+- **Ambient Ethereal 3D Gold Dust (`components/ui/Hero3DCanvas.tsx`):**
+  - Calibrated particle density from 70 to 42 stardust particles with soft gold alpha tones.
+  - Softened orbit rings to hairline opacities (`0.07` - `0.11`) and slowed rotation speed to prevent visual interference with typography.
+
+### Verified
+- 74 / 74 automated unit, integration, and security tests pass (`node --test tests/**/*.test.mjs`).
+- 0 TypeScript compilation errors (`pnpm tsc --noEmit`).
+- 36 / 36 static SSG routes compiled with exit code 0 (`pnpm build`).
+
+---
+
 ## [2.6.0] - 2026-10-06 — Ultra-Luxury 3D Kinetic Elevation & Volumetric System
 
 ### Added

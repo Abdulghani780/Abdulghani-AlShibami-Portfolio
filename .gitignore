@@ -54,3 +54,4 @@ Thumbs.db
 /s*.png
 
 supabase/.temp/
+.env*

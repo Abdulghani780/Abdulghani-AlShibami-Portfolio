@@ -602,5 +602,18 @@
 - **FILES:** `package.json`, `components/ui/SmoothScrollProvider.tsx`, `components/ui/MagneticCursor.tsx`, `components/ui/Hero3DCanvas.tsx`, `components/ui/TiltCard.tsx`, `components/features/ai/AbdulghaniAIModal.tsx`, `components/features/home/HeroSection.tsx`, `components/features/home/FeaturedProjectsSection.tsx`, `components/features/home/FlagshipCaseStudySection.tsx`, `app/[locale]/layout.tsx`
 - **TESTS:** `pnpm test` (PASS, 74/74 passing), `pnpm tsc --noEmit` (PASS, 0 errors), `pnpm build` (PASS, 36/36 static pages prerendered).
 
+---
+
+### PHASE 32 — Architectural Portrait Portal & Executive Motion Refinement
+- **ID:** `TSK-219`
+- **TITLE:** Architectural Portrait Portal & Executive Motion Refinement (ui-ux-pro-max)
+- **PHASE:** 32
+- **PRIORITY:** P0
+- **STATUS:** COMPLETED
+- **DESCRIPTION:** Fix floating torso and harsh portrait contrast in both Dark and Light modes using ui-ux-pro-max intelligence. Created an Executive Architectural Studio Portal & Pedestal (`components/features/home/HeroSection.tsx`) with dual-mode adaptive ambient lighting (deep obsidian crystal in Dark mode, warm satin champagne porcelain in Light mode). Applied feathered gradient base mask to dissolve the lower torso into the pedestal floor. De-noised animation system: eliminated floating portrait loops, decelerated continuous pulses, refined entrance reveal travel, and calibrated ambient ethereal 3D gold dust in `Hero3DCanvas.tsx`.
+- **DEPENDENCIES:** TSK-218
+- **FILES:** `components/features/home/HeroSection.tsx`, `components/ui/Hero3DCanvas.tsx`, `app/globals.css`, `PROGRESS.md`, `TASKS.md`, `CHANGELOG.md`, `IMPLEMENTATION_LOG.md`
+- **TESTS:** `node --test tests/**/*.test.mjs` (PASS, 74/74 passing), `pnpm tsc --noEmit` (PASS, 0 errors), `pnpm build` (PASS, 36/36 static pages prerendered).
+
 
 

@@ -204,20 +204,20 @@ export function HeroSection({ locale }: { locale: Locale }) {
              ═══════════════════════════════════════════════════════════════════════ */}
           <div className="lg:col-span-5 relative flex items-end justify-center lg:justify-start min-h-[480px] sm:min-h-[540px] lg:min-h-[580px]">
             {/* Ambient Radial Rim Backlight */}
-            <div className="absolute top-1/2 start-1/3 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[400px] h-[460px] rounded-full bg-radial from-[#D4AF37]/20 via-[#D4AF37]/5 to-transparent pointer-events-none blur-3xl dark:block hidden z-1 aura-breathe-anim" />
-            <div className="absolute top-1/2 start-1/3 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[400px] h-[460px] rounded-full bg-radial from-[#F5EFE3]/80 via-[#FAF8F5]/30 to-transparent pointer-events-none blur-2xl dark:hidden z-1 aura-breathe-anim" />
+            <div className="absolute top-1/2 start-1/3 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[400px] h-[460px] rounded-full bg-radial from-[#D4AF37]/15 via-[#D4AF37]/5 to-transparent pointer-events-none blur-3xl dark:block hidden z-1 aura-breathe-anim" />
+            <div className="absolute top-1/2 start-1/3 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[400px] h-[460px] rounded-full bg-radial from-[#F5EFE3]/60 via-[#FAF8F5]/20 to-transparent pointer-events-none blur-2xl dark:hidden z-1 aura-breathe-anim" />
 
             {/* ─── Top Horizontal Ruler Notch Accent (Matching s1.png) ─── */}
             <div className={`absolute top-2 sm:top-3 end-2 sm:end-4 w-32 sm:w-44 h-4 pointer-events-none select-none z-2 ${isRtl ? "-scale-x-100" : ""}`}>
               <svg viewBox="0 0 160 16" fill="none" className="w-full h-full">
-                <line x1="0" y1="8" x2="148" y2="8" stroke="#C59B27" strokeWidth="1" strokeOpacity="0.5" className="dark:stroke-[#D4AF37]" />
-                <rect x="148" y="5" width="10" height="6" fill="#C59B27" fillOpacity="0.75" className="dark:fill-[#D4AF37]" />
+                <line x1="0" y1="8" x2="148" y2="8" stroke="#C59B27" strokeWidth="1" strokeOpacity="0.4" className="dark:stroke-[#D4AF37]" />
+                <rect x="148" y="5" width="10" height="6" fill="#C59B27" fillOpacity="0.65" className="dark:fill-[#D4AF37]" />
               </svg>
             </div>
 
             {/* ─── Technical Words beside Hair (Strictly LTR so dot stays on left, matching s1.png) ─── */}
             <div className="absolute top-10 sm:top-12 end-4 sm:end-8 lg:end-2 xl:end-6 z-20 pointer-events-none select-none text-end">
-              <div dir="ltr" className="flex flex-col space-y-1.5 font-mono text-[11px] xl:text-[12px] font-semibold tracking-[0.22em] text-[#7C6E59] dark:text-[#C5A562] uppercase">
+              <div dir="ltr" className="flex flex-col space-y-1.5 font-mono text-[11px] xl:text-[12px] font-semibold tracking-[0.22em] text-[#7C6E59]/80 dark:text-[#C5A562]/80 uppercase">
                 <div className="flex items-center justify-end gap-2">
                   <span className="text-[#C59B27] dark:text-[#D4AF37] font-bold text-sm">·</span>
                   <span>CODE</span>
@@ -237,10 +237,9 @@ export function HeroSection({ locale }: { locale: Locale }) {
               </div>
             </div>
 
-            {/* ─── Technical AI Frame & Diagonal Bus Traces ─── */}
-            {/* Positioned at shoulder level (top-[255px]) and z-2 BEHIND Abdulghani (z-10), NEVER covering head/ear! */}
+            {/* ─── Technical AI Frame & Diagonal Bus Traces (Refined Blueprint Layer) ─── */}
             <div className={`absolute top-[230px] sm:top-[245px] lg:top-[255px] xl:top-[260px] end-0 sm:end-1 lg:-end-3 xl:end-1 w-44 sm:w-50 h-[300px] pointer-events-none select-none z-2 ${isRtl ? "-scale-x-100" : ""}`}>
-              <svg viewBox="0 0 200 300" fill="none" className="w-full h-full">
+              <svg viewBox="0 0 200 300" fill="none" className="w-full h-full opacity-60 dark:opacity-75">
                 <defs>
                   <linearGradient id="goldTraceGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stopColor="#FBF0B9" />
@@ -252,38 +251,38 @@ export function HeroSection({ locale }: { locale: Locale }) {
 
                 {/* Outer Technical Box with corner notches */}
                 <g transform="translate(10, 10)">
-                  <rect x="0" y="0" width="124" height="114" rx="2" stroke="#C59B27" strokeWidth="1" strokeOpacity="0.55" fill="none" className="dark:stroke-[#D4AF37]" />
+                  <rect x="0" y="0" width="124" height="114" rx="2" stroke="#C59B27" strokeWidth="1" strokeOpacity="0.45" fill="none" className="dark:stroke-[#D4AF37]" />
                   
                   {/* Corner Accent Brackets */}
-                  <path d="M 0 12 L 0 0 L 12 0" stroke="#C59B27" strokeWidth="2" strokeOpacity="0.85" fill="none" className="dark:stroke-[#D4AF37]" />
-                  <path d="M 112 0 L 124 0 L 124 12" stroke="#C59B27" strokeWidth="2" strokeOpacity="0.85" fill="none" className="dark:stroke-[#D4AF37]" />
-                  <path d="M 124 102 L 124 114 L 112 114" stroke="#C59B27" strokeWidth="2" strokeOpacity="0.85" fill="none" className="dark:stroke-[#D4AF37]" />
-                  <path d="M 12 114 L 0 114 L 0 102" stroke="#C59B27" strokeWidth="2" strokeOpacity="0.85" fill="none" className="dark:stroke-[#D4AF37]" />
+                  <path d="M 0 12 L 0 0 L 12 0" stroke="#C59B27" strokeWidth="1.5" strokeOpacity="0.75" fill="none" className="dark:stroke-[#D4AF37]" />
+                  <path d="M 112 0 L 124 0 L 124 12" stroke="#C59B27" strokeWidth="1.5" strokeOpacity="0.75" fill="none" className="dark:stroke-[#D4AF37]" />
+                  <path d="M 124 102 L 124 114 L 112 114" stroke="#C59B27" strokeWidth="1.5" strokeOpacity="0.75" fill="none" className="dark:stroke-[#D4AF37]" />
+                  <path d="M 12 114 L 0 114 L 0 102" stroke="#C59B27" strokeWidth="1.5" strokeOpacity="0.75" fill="none" className="dark:stroke-[#D4AF37]" />
 
                   {/* Network Graph Vertices */}
-                  <circle cx="28" cy="30" r="3.5" stroke="#C59B27" strokeWidth="1.5" fill="#FAF8F5" className="dark:fill-[#0B0B0C] dark:stroke-[#D4AF37]" />
-                  <circle cx="96" cy="24" r="3.5" stroke="#C59B27" strokeWidth="1.5" fill="#FAF8F5" className="dark:fill-[#0B0B0C] dark:stroke-[#D4AF37]" />
-                  <circle cx="106" cy="72" r="3.5" stroke="#C59B27" strokeWidth="1.5" fill="#FAF8F5" className="dark:fill-[#0B0B0C] dark:stroke-[#D4AF37]" />
-                  <circle cx="78" cy="98" r="3.5" stroke="#C59B27" strokeWidth="1.5" fill="#FAF8F5" className="dark:fill-[#0B0B0C] dark:stroke-[#D4AF37]" />
-                  <circle cx="24" cy="84" r="3.5" stroke="#C59B27" strokeWidth="1.5" fill="#FAF8F5" className="dark:fill-[#0B0B0C] dark:stroke-[#D4AF37]" />
+                  <circle cx="28" cy="30" r="3" stroke="#C59B27" strokeWidth="1.2" fill="#FAF8F5" className="dark:fill-[#0B0B0C] dark:stroke-[#D4AF37]" />
+                  <circle cx="96" cy="24" r="3" stroke="#C59B27" strokeWidth="1.2" fill="#FAF8F5" className="dark:fill-[#0B0B0C] dark:stroke-[#D4AF37]" />
+                  <circle cx="106" cy="72" r="3" stroke="#C59B27" strokeWidth="1.2" fill="#FAF8F5" className="dark:fill-[#0B0B0C] dark:stroke-[#D4AF37]" />
+                  <circle cx="78" cy="98" r="3" stroke="#C59B27" strokeWidth="1.2" fill="#FAF8F5" className="dark:fill-[#0B0B0C] dark:stroke-[#D4AF37]" />
+                  <circle cx="24" cy="84" r="3" stroke="#C59B27" strokeWidth="1.2" fill="#FAF8F5" className="dark:fill-[#0B0B0C] dark:stroke-[#D4AF37]" />
 
                   {/* Outer Polygon Lines */}
-                  <line x1="28" y1="30" x2="96" y2="24" stroke="#C59B27" strokeWidth="1" strokeOpacity="0.5" className="dark:stroke-[#D4AF37]" />
-                  <line x1="96" y1="24" x2="106" y2="72" stroke="#C59B27" strokeWidth="1" strokeOpacity="0.5" className="dark:stroke-[#D4AF37]" />
-                  <line x1="106" y1="72" x2="78" y2="98" stroke="#C59B27" strokeWidth="1" strokeOpacity="0.5" className="dark:stroke-[#D4AF37]" />
-                  <line x1="78" y1="98" x2="24" y2="84" stroke="#C59B27" strokeWidth="1" strokeOpacity="0.5" className="dark:stroke-[#D4AF37]" />
-                  <line x1="24" y1="84" x2="28" y2="30" stroke="#C59B27" strokeWidth="1" strokeOpacity="0.5" className="dark:stroke-[#D4AF37]" />
+                  <line x1="28" y1="30" x2="96" y2="24" stroke="#C59B27" strokeWidth="1" strokeOpacity="0.4" className="dark:stroke-[#D4AF37]" />
+                  <line x1="96" y1="24" x2="106" y2="72" stroke="#C59B27" strokeWidth="1" strokeOpacity="0.4" className="dark:stroke-[#D4AF37]" />
+                  <line x1="106" y1="72" x2="78" y2="98" stroke="#C59B27" strokeWidth="1" strokeOpacity="0.4" className="dark:stroke-[#D4AF37]" />
+                  <line x1="78" y1="98" x2="24" y2="84" stroke="#C59B27" strokeWidth="1" strokeOpacity="0.4" className="dark:stroke-[#D4AF37]" />
+                  <line x1="24" y1="84" x2="28" y2="30" stroke="#C59B27" strokeWidth="1" strokeOpacity="0.4" className="dark:stroke-[#D4AF37]" />
 
                   {/* Center AI Node */}
-                  <circle cx="62" cy="59" r="15" stroke="url(#goldTraceGrad)" strokeWidth="1.5" fill="#FAF8F5" className="dark:fill-[#0E0E10] gold-glow-pulse" />
+                  <circle cx="62" cy="59" r="14" stroke="url(#goldTraceGrad)" strokeWidth="1.2" fill="#FAF8F5" className="dark:fill-[#0E0E10]" />
                   <text
                     x={isRtl ? "-62" : "62"}
-                    y="64"
+                    y="63"
                     transform={isRtl ? "scale(-1, 1)" : undefined}
                     textAnchor="middle"
                     fill="#997A15"
                     className="dark:fill-[#E2C366]"
-                    fontSize="11"
+                    fontSize="10"
                     fontFamily="monospace"
                     fontWeight="bold"
                     letterSpacing="0.05em"
@@ -292,40 +291,65 @@ export function HeroSection({ locale }: { locale: Locale }) {
                   </text>
 
                   {/* Spoke Lines to Central AI Node */}
-                  <line x1="28" y1="30" x2="50" y2="50" stroke="#C59B27" strokeWidth="1" strokeOpacity="0.6" className="dark:stroke-[#D4AF37]" />
-                  <line x1="96" y1="24" x2="74" y2="49" stroke="#C59B27" strokeWidth="1" strokeOpacity="0.6" className="dark:stroke-[#D4AF37]" />
-                  <line x1="106" y1="72" x2="77" y2="62" stroke="#C59B27" strokeWidth="1" strokeOpacity="0.6" className="dark:stroke-[#D4AF37]" />
-                  <line x1="78" y1="98" x2="68" y2="74" stroke="#C59B27" strokeWidth="1" strokeOpacity="0.6" className="dark:stroke-[#D4AF37]" />
-                  <line x1="24" y1="84" x2="48" y2="67" stroke="#C59B27" strokeWidth="1" strokeOpacity="0.6" className="dark:stroke-[#D4AF37]" />
+                  <line x1="28" y1="30" x2="50" y2="50" stroke="#C59B27" strokeWidth="1" strokeOpacity="0.45" className="dark:stroke-[#D4AF37]" />
+                  <line x1="96" y1="24" x2="74" y2="49" stroke="#C59B27" strokeWidth="1" strokeOpacity="0.45" className="dark:stroke-[#D4AF37]" />
+                  <line x1="106" y1="72" x2="77" y2="62" stroke="#C59B27" strokeWidth="1" strokeOpacity="0.45" className="dark:stroke-[#D4AF37]" />
+                  <line x1="78" y1="98" x2="68" y2="74" stroke="#C59B27" strokeWidth="1" strokeOpacity="0.45" className="dark:stroke-[#D4AF37]" />
+                  <line x1="24" y1="84" x2="48" y2="67" stroke="#C59B27" strokeWidth="1" strokeOpacity="0.45" className="dark:stroke-[#D4AF37]" />
                 </g>
 
                 {/* Right margin trace lines */}
-                <path d="M 134 40 L 155 40 L 170 55 L 185 55" stroke="#C59B27" strokeWidth="1" strokeOpacity="0.5" className="dark:stroke-[#D4AF37]" />
-                <circle cx="155" cy="40" r="2" fill="#C59B27" className="dark:fill-[#D4AF37]" />
+                <path d="M 134 40 L 155 40 L 170 55 L 185 55" stroke="#C59B27" strokeWidth="1" strokeOpacity="0.4" className="dark:stroke-[#D4AF37]" />
+                <circle cx="155" cy="40" r="1.8" fill="#C59B27" className="dark:fill-[#D4AF37]" />
 
                 {/* 3 Parallel 45-degree Diagonal Bus Lines Streaming to Outer Bottom Corner */}
-                <path d="M 25 130 L 25 155 L 65 195 L 140 195 L 185 240" stroke="#C59B27" strokeWidth="1.2" strokeOpacity="0.55" className="dark:stroke-[#D4AF37]" />
-                <path d="M 25 130 L 25 155 L 65 195 L 140 195 L 185 240" stroke="#D4AF37" strokeWidth="1.6" className="gold-flow-animate pointer-events-none" />
-                <circle cx="140" cy="195" r="2" fill="#C59B27" className="dark:fill-[#D4AF37]" />
-                <circle cx="185" cy="240" r="2.5" fill="#FAF8F5" stroke="#C59B27" strokeWidth="1.2" className="dark:fill-[#0B0B0C] dark:stroke-[#D4AF37]" />
+                <path d="M 25 130 L 25 155 L 65 195 L 140 195 L 185 240" stroke="#C59B27" strokeWidth="1" strokeOpacity="0.45" className="dark:stroke-[#D4AF37]" />
+                <path d="M 25 130 L 25 155 L 65 195 L 140 195 L 185 240" stroke="#D4AF37" strokeWidth="1.2" className="gold-flow-animate pointer-events-none opacity-60" />
+                <circle cx="140" cy="195" r="1.8" fill="#C59B27" className="dark:fill-[#D4AF37]" />
+                <circle cx="185" cy="240" r="2.2" fill="#FAF8F5" stroke="#C59B27" strokeWidth="1" className="dark:fill-[#0B0B0C] dark:stroke-[#D4AF37]" />
 
-                <path d="M 45 130 L 45 145 L 80 180 L 155 180 L 195 220" stroke="#C59B27" strokeWidth="1.2" strokeOpacity="0.45" className="dark:stroke-[#D4AF37]" />
-                <circle cx="195" cy="220" r="2" fill="#C59B27" className="dark:fill-[#D4AF37]" />
+                <path d="M 45 130 L 45 145 L 80 180 L 155 180 L 195 220" stroke="#C59B27" strokeWidth="1" strokeOpacity="0.35" className="dark:stroke-[#D4AF37]" />
+                <circle cx="195" cy="220" r="1.8" fill="#C59B27" className="dark:fill-[#D4AF37]" />
 
-                <path d="M 75 130 L 95 150 L 170 150 L 198 178" stroke="#C59B27" strokeWidth="0.9" strokeOpacity="0.35" className="dark:stroke-[#D4AF37]" />
+                <path d="M 75 130 L 95 150 L 170 150 L 198 178" stroke="#C59B27" strokeWidth="0.8" strokeOpacity="0.25" className="dark:stroke-[#D4AF37]" />
               </svg>
             </div>
 
-            {/* ─── Cutout Portrait: HERO LAYER (z-10 - Strictly in FRONT of all background graphics) ─── */}
-            <div className="relative w-full max-w-[280px] sm:max-w-[330px] lg:max-w-[360px] xl:max-w-[390px] aspect-[4/5] z-10 flex items-end justify-center select-none pointer-events-none float-gentle-anim">
-              <Image
-                src="/images/profile/abdulghani-portrait.webp"
-                alt="Abdulghani Al-Shibami — AI Engineer & Software Developer"
-                fill
-                priority
-                className="object-contain object-bottom select-none pointer-events-none filter drop-shadow-2xl"
-                sizes="(max-width: 768px) 280px, (max-width: 1200px) 360px, 390px"
-              />
+            {/* ─── Executive Architectural Studio Portal & Pedestal (z-10) ─── */}
+            <div className="relative w-full max-w-[280px] sm:max-w-[330px] lg:max-w-[360px] xl:max-w-[390px] aspect-[4/5] z-10 flex items-end justify-center select-none group">
+              {/* Architectural Arched Pedestal Backplate */}
+              <div 
+                className="absolute inset-x-2 sm:inset-x-3 bottom-0 top-6 sm:top-8 rounded-t-[140px] sm:rounded-t-[170px] rounded-b-2xl overflow-hidden pointer-events-none transition-all duration-700 border border-[#B88E1F]/25 dark:border-[#D4AF37]/30 shadow-[0_20px_50px_-10px_rgba(184,142,31,0.12)] dark:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9),0_0_35px_rgba(212,175,55,0.06)] bg-gradient-to-b from-[#F5EFE6] via-[#EFE7D8] to-[#FAF8F5] dark:from-[#161619] dark:via-[#0F0F12] dark:to-[#08080A]"
+                aria-hidden="true"
+              >
+                {/* Inner Ambient Glow (Light: Warm Champagne Satin / Dark: Royal Obsidian Gold) */}
+                <div className="absolute inset-x-4 top-8 bottom-0 rounded-t-full bg-radial from-[#FAF1DC]/90 via-[#F3E7CA]/40 to-transparent blur-xl dark:hidden pointer-events-none" />
+                <div className="absolute inset-x-4 top-8 bottom-0 rounded-t-full bg-radial from-[#D4AF37]/20 via-[#C59B27]/5 to-transparent blur-2xl hidden dark:block pointer-events-none" />
+                
+                {/* Precision Geometric Blueprint Micro-Grid inside portal */}
+                <div className="absolute inset-0 opacity-15 dark:opacity-10 pointer-events-none bg-[radial-gradient(#C59B27_1px,transparent_1px)] [background-size:16px_16px]" />
+                
+                {/* Pedestal Bottom Base Glow Line */}
+                <div className="absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-transparent via-[#C59B27]/60 dark:via-[#D4AF37]/70 to-transparent" />
+              </div>
+
+              {/* ─── Cutout Portrait: HERO LAYER with Feathered Gradient Base Mask (Eliminates Floating & Hard Waist Cut) ─── */}
+              <div 
+                className="relative w-full h-full z-10 flex items-end justify-center select-none pointer-events-none"
+                style={{
+                  maskImage: "linear-gradient(to bottom, black 82%, transparent 100%)",
+                  WebkitMaskImage: "linear-gradient(to bottom, black 82%, transparent 100%)",
+                }}
+              >
+                <Image
+                  src="/images/profile/abdulghani-portrait.webp"
+                  alt="Abdulghani Al-Shibami — AI Engineer & Software Developer"
+                  fill
+                  priority
+                  className="object-contain object-bottom select-none pointer-events-none filter drop-shadow-[0_12px_24px_rgba(0,0,0,0.16)] dark:drop-shadow-[0_16px_32px_rgba(0,0,0,0.7)] transition-all duration-300"
+                  sizes="(max-width: 768px) 280px, (max-width: 1200px) 360px, 390px"
+                />
+              </div>
             </div>
           </div>
         </div>

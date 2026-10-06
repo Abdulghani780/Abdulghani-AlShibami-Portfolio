@@ -59,15 +59,21 @@ export function Hero3DCanvas({ className = "" }: { className?: string }) {
     window.addEventListener("resize", handleResize);
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
 
-    // Generate 3D Particle Cloud
-    const particleCount = 70;
+    // Generate 3D Particle Cloud - Ambient Ethereal Gold Dust
+    const particleCount = 42;
     const particles: Particle[] = [];
-    const goldTones = ["#D4AF37", "#F3E5AB", "#AA771C", "#FFFFFF", "#C59B27"];
+    const goldTones = [
+      "rgba(212, 175, 55, 0.75)",
+      "rgba(243, 229, 171, 0.65)",
+      "rgba(170, 119, 28, 0.60)",
+      "rgba(255, 255, 255, 0.70)",
+      "rgba(197, 155, 39, 0.70)",
+    ];
 
     for (let i = 0; i < particleCount; i++) {
       const theta = Math.random() * Math.PI * 2;
       const phi = Math.acos(Math.random() * 2 - 1);
-      const radius = 120 + Math.random() * 260;
+      const radius = 130 + Math.random() * 240;
 
       const x = radius * Math.sin(phi) * Math.cos(theta);
       const y = radius * Math.sin(phi) * Math.sin(theta);
@@ -80,10 +86,10 @@ export function Hero3DCanvas({ className = "" }: { className?: string }) {
         baseX: x,
         baseY: y,
         baseZ: z,
-        vx: (Math.random() - 0.5) * 0.2,
-        vy: (Math.random() - 0.5) * 0.2,
-        vz: (Math.random() - 0.5) * 0.2,
-        size: Math.random() * 2 + 0.8,
+        vx: (Math.random() - 0.5) * 0.12,
+        vy: (Math.random() - 0.5) * 0.12,
+        vz: (Math.random() - 0.5) * 0.12,
+        size: Math.random() * 1.8 + 0.6,
         color: goldTones[Math.floor(Math.random() * goldTones.length)],
       });
     }
@@ -96,19 +102,19 @@ export function Hero3DCanvas({ className = "" }: { className?: string }) {
 
       // Smooth damping toward mouse rotation
       if (!prefersReducedMotion) {
-        rotX += (targetRotX - rotX) * 0.05;
-        rotY += (targetRotY - rotY) * 0.05;
-        angle += 0.003;
+        rotX += (targetRotX - rotX) * 0.04;
+        rotY += (targetRotY - rotY) * 0.04;
+        angle += 0.0012;
       }
 
       const centerX = width * 0.72; // Anchored gracefully behind the portrait zone
       const centerY = height * 0.46;
 
-      // Draw 3D Concentric Orbit Rings
+      // Draw 3D Concentric Orbit Rings (Ultra-Subtle Hairline Aesthetics)
       const rings = [
-        { r: 180, tiltX: 1.1 + rotX, tiltY: angle + rotY, color: "rgba(212, 175, 55, 0.22)", dash: [4, 6] },
-        { r: 230, tiltX: 0.6 + rotX, tiltY: -angle * 0.8 + rotY, color: "rgba(243, 229, 171, 0.16)", dash: [8, 12] },
-        { r: 280, tiltX: -0.8 + rotX, tiltY: angle * 0.6 + rotY, color: "rgba(170, 119, 28, 0.18)", dash: [3, 8] },
+        { r: 180, tiltX: 1.1 + rotX, tiltY: angle + rotY, color: "rgba(212, 175, 55, 0.11)", dash: [4, 8] },
+        { r: 230, tiltX: 0.6 + rotX, tiltY: -angle * 0.8 + rotY, color: "rgba(243, 229, 171, 0.07)", dash: [8, 14] },
+        { r: 280, tiltX: -0.8 + rotX, tiltY: angle * 0.6 + rotY, color: "rgba(170, 119, 28, 0.08)", dash: [3, 10] },
       ];
 
       rings.forEach((ring) => {
@@ -198,8 +204,8 @@ export function Hero3DCanvas({ className = "" }: { className?: string }) {
           const dy = projectedPoints[i].y - projectedPoints[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < 75) {
-            ctx.strokeStyle = `rgba(212, 175, 55, ${0.15 * (1 - dist / 75)})`;
+          if (dist < 60) {
+            ctx.strokeStyle = `rgba(212, 175, 55, ${0.08 * (1 - dist / 60)})`;
             ctx.beginPath();
             ctx.moveTo(projectedPoints[i].x, projectedPoints[i].y);
             ctx.lineTo(projectedPoints[j].x, projectedPoints[j].y);

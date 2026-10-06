@@ -889,6 +889,28 @@
   - `pnpm build`: 36/36 static SSG routes compiled with exit code 0.
 - **Status:** COMPLETED & VERIFIED.
 
+---
 
-
-
+## [2026-10-06] Entry 030 — Architectural Portrait Portal & Executive Motion Refinement (ui-ux-pro-max)
+- **Phase:** PHASE 32 — Architectural Portrait Portal & Executive Motion Refinement
+- **Task:** TSK-219 (Portrait Architectural Pedestal & Motion De-noising)
+- **Branch:** `main`
+- **Objective:**
+  1. Resolve the "floating torso" and awkward portrait integration in both Dark and Light modes identified via `/ui-ux-pro-max`.
+  2. Build an Executive Architectural Studio Portal & Pedestal frame around `abdulghani-portrait.webp` with mode-adaptive ambient lighting (Obsidian Gold aura in Dark mode, Satin Champagne Porcelain in Light mode).
+  3. Implement feathered gradient base mask (`mask-image: linear-gradient(to bottom, black 82%, transparent 100%)`) to softly melt the lower torso into the pedestal floor with zero abrupt waistline cuts.
+  4. De-noise animation hyper-activity: eliminate `float-gentle-anim` from the portrait, slow down and soften continuous loops (`aura-breathe-anim` from 5s to 8s, `gold-pulse` from 3s to 5s, `gold-flow-animate` from 4.5s to 7s).
+  5. Recalibrate `Hero3DCanvas.tsx` to project subtle ambient ethereal gold dust (reduced from 70 to 42 particles, softened orbit rings to 0.07-0.11 opacity) to prevent visual competition with foreground copy.
+- **Files Modified:**
+  - `components/features/home/HeroSection.tsx`
+  - `components/ui/Hero3DCanvas.tsx`
+  - `app/globals.css`
+  - `PROGRESS.md`
+  - `TASKS.md`
+  - `CHANGELOG.md`
+  - `IMPLEMENTATION_LOG.md`
+- **Verification Results:**
+  - `node --test tests/**/*.test.mjs`: 74/74 unit, integration, and security tests passed (0 failures).
+  - `pnpm tsc --noEmit`: 0 compiler errors.
+  - `pnpm build`: 36/36 static SSG routes compiled with exit code 0.
+- **Status:** COMPLETED & VERIFIED.
