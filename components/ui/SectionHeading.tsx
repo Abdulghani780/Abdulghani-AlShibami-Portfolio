@@ -39,6 +39,15 @@ export function SectionHeading({
       <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-normal tracking-tight text-content-primary leading-[1.12]">
         {title}
       </h2>
+      <span
+        aria-hidden="true"
+        className={cn(
+          "block mt-5 h-px w-20",
+          align === "center"
+            ? "mx-auto bg-gradient-to-r from-transparent via-[#D4AF37]/70 to-transparent"
+            : "bg-gradient-to-r from-[#D4AF37]/80 via-[#D4AF37]/30 to-transparent"
+        )}
+      />
       {subtitle && (
         <p className="text-content-secondary text-base sm:text-lg leading-relaxed max-w-2xl font-normal">
           {subtitle}

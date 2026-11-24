@@ -92,9 +92,10 @@ export function Navbar({
             <Link
               key={link.href}
               href={link.href}
-              className="hover:text-gold-dark dark:hover:text-gold-light transition-colors duration-200 py-1 whitespace-nowrap"
+              className="relative hover:text-gold-dark dark:hover:text-gold-light transition-colors duration-200 py-1 whitespace-nowrap group"
             >
               {link.label}
+              <span className="absolute bottom-0 start-0 h-px w-full origin-center scale-x-0 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent transition-transform duration-300 ease-out group-hover:scale-x-100" />
             </Link>
           ))}
         </nav>

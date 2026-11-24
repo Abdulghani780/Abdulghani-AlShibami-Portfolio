@@ -168,6 +168,7 @@ export function HeroSection({ locale }: { locale: Locale }) {
                 {/* Primary: Explore My Work */}
                 <Link
                   href="#projects"
+                  data-cursor-text={isRtl ? "استكشف" : "EXPLORE"}
                   className="relative overflow-hidden inline-flex items-center gap-2 px-7 py-3 rounded-full bg-[#C59B27] hover:bg-[#B38A1F] text-black font-extrabold text-xs sm:text-sm tracking-wider uppercase shadow-md hover:shadow-lg transition-all duration-300 active:scale-95 group cursor-pointer"
                 >
                   <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none" />

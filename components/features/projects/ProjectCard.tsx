@@ -97,6 +97,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
       <div className="pt-5 mt-5 border-t border-black/10 dark:border-white/10 flex flex-wrap items-center justify-between gap-3">
         <Link
           href={detailUrl}
+          data-cursor-text={isRtl ? "قراءة" : "READ"}
           className="text-xs font-mono text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white px-3 py-1.5 rounded-lg bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-gold-primary/40 transition-all flex items-center gap-1.5"
         >
           <span>{isRtl ? "الدراسة المعمارية" : "Case Study"}</span>
@@ -108,6 +109,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         {project.demoType !== "none" && (
           <Link
             href={demoUrl}
+            data-cursor-text={isRtl ? "تشغيل" : "RUN"}
             className="text-xs font-mono font-bold text-gold-dark dark:text-gold-light hover:bg-gold-primary hover:text-black px-3.5 py-1.5 rounded-lg bg-gold-primary/10 border border-gold-primary/30 transition-all flex items-center gap-1.5 shadow-sm active:scale-95"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-gold-primary motion-safe:animate-pulse" />
