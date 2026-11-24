@@ -24,7 +24,9 @@ export function MainWrapper({
         isHomePage ? "p-0" : "pt-20 sm:pt-24"
       }`}
     >
-      {children}
+      <div key={pathname} className="page-enter h-full">
+        {children}
+      </div>
     </main>
   );
 }

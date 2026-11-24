@@ -5,6 +5,7 @@ import { Locale } from "@/lib/i18n/dictionaries";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { LiveDemoStudio } from "@/components/features/demos/LiveDemoStudio";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
 import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
 
@@ -67,6 +68,7 @@ export default async function ShowcasePage({
     <div className="py-10 space-y-12">
       <Container>
         {/* Dossier Breadcrumb & Top Navigation */}
+        <ScrollReveal isRtl={isRtl} direction="up">
         <div className="flex flex-wrap items-center justify-between gap-4 font-mono text-xs mb-8">
           <div className="flex items-center gap-2 text-zinc-500 dark:text-zinc-400">
             <Link
@@ -95,12 +97,14 @@ export default async function ShowcasePage({
             {isRtl ? "← العودة لدليل المشاريع" : "← Systems Catalog"}
           </Link>
         </div>
+        </ScrollReveal>
 
         {/* Semantic h1 for accessibility and SEO — visually hidden */}
         <h1 className="sr-only">
           {isRtl ? "استوديو العروض التفاعلية" : "Live Interactive Demo Studio"}
         </h1>
         {/* Visual Section Heading */}
+        <ScrollReveal isRtl={isRtl} direction="up" delay={80}>
         <SectionHeading
           kicker="// LIVE DEMO STUDIO & WORKSTATION SANDBOX"
           title={isRtl ? "استوديو المحاكاة الحية ومعمل العتاد" : "Live Interactive Demo Studio"}
@@ -110,11 +114,14 @@ export default async function ShowcasePage({
               : "Synchronous multi-workstation sandbox simulating authentic desktop runtime execution with real-time telemetry gauges and streaming terminal console."
           }
         />
+        </ScrollReveal>
 
         {/* Live Demo Studio */}
+        <ScrollReveal isRtl={isRtl} direction="up" delay={140}>
         <div className="pt-2 pb-10">
           <LiveDemoStudio locale={currentLocale} />
         </div>
+        </ScrollReveal>
 
         {/* Design System & Foundational UI Showcase */}
         <div className="border-t border-black/10 dark:border-white/10 pt-10 space-y-8">
@@ -124,6 +131,7 @@ export default async function ShowcasePage({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Theme & Controls */}
+            <ScrollReveal isRtl={isRtl} direction="up" delay={200} className="h-full">
             <div className="p-5 rounded-2xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#121214] space-y-4 font-mono text-xs shadow-sm dark:shadow-xl">
               <div className="text-zinc-800 dark:text-zinc-200 font-semibold border-b border-black/5 dark:border-white/5 pb-2">
                 01 // Controls & Language
@@ -142,8 +150,10 @@ export default async function ShowcasePage({
                 </span>
               </div>
             </div>
+            </ScrollReveal>
 
             {/* Buttons Matrix */}
+            <ScrollReveal isRtl={isRtl} direction="up" delay={280} className="h-full">
             <div className="p-5 rounded-2xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#121214] space-y-4 font-mono text-xs shadow-sm dark:shadow-xl">
               <div className="text-zinc-800 dark:text-zinc-200 font-semibold border-b border-black/5 dark:border-white/5 pb-2">
                 02 // Button Matrix
@@ -160,6 +170,7 @@ export default async function ShowcasePage({
                 </button>
               </div>
             </div>
+            </ScrollReveal>
           </div>
         </div>
       </Container>

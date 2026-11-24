@@ -4,11 +4,14 @@ import React from "react";
 import Link from "next/link";
 import { Dictionary } from "@/lib/i18n/dictionaries";
 import { AsMonogram } from "@/components/ui/AsLogo";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { Github, Linkedin, Mail, FileText, Globe } from "lucide-react";
 
 export function Footer({ dict }: { dict?: Dictionary }) {
   return (
     <footer className="w-full bg-[#F8FAFC] dark:bg-[#0B0B0C] text-[#0F172A] dark:text-white py-14 sm:py-18 border-t border-black/10 dark:border-white/10 transition-colors">
+      <div className="h-px bg-gradient-to-r from-transparent via-[#D4AF37]/40 to-transparent" aria-hidden="true" />
+      <ScrollReveal direction="up" threshold={0.1}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center text-center md:text-start border-b border-black/10 dark:border-white/10 pb-12">
           {/* Left: Direct Social and Document Link Pills with Icons */}
@@ -87,6 +90,7 @@ export function Footer({ dict }: { dict?: Dictionary }) {
           </p>
         </div>
       </div>
+      </ScrollReveal>
     </footer>
   );
 }
