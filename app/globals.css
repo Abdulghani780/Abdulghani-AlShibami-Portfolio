@@ -58,16 +58,16 @@
   .dark {
     /* ─── CANONICAL DESIGN SYSTEM — Dark Mode (Obsidian & Royal Gold — Primary Hero Experience) ─── */
     --canvas-bg: #0B0B0C;
-    --surface-elevated: #121214;
+    --surface-elevated: #16161B;
     --surface-overlay: #1E293B;
     --surface-interactive: #1E293B;
     --surface-low: #070B14;
-    --surface-card: #121214;
+    --surface-card: #17171C;
     --surface-secondary: #0F172A;
     --surface-dark: #070B14;
 
-    --border-hairline: rgba(255, 255, 255, 0.08);
-    --border-color: rgba(255, 255, 255, 0.14);
+    --border-hairline: rgba(255, 255, 255, 0.10);
+    --border-color: rgba(255, 255, 255, 0.16);
     --border-gold: rgba(212, 175, 55, 0.40);
 
     /* Royal Gold Brand Tokens (Luminous Metallic on Obsidian) */
@@ -258,6 +258,57 @@
 .type-cursor         { animation: type-cursor 1s step-end infinite; }
 .slide-in-up         { animation: slide-in-up 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 .cinematic-reveal    { animation: cinematic-reveal 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+/* ─── Luxury Motion Utilities ─── */
+@keyframes gold-shimmer-sweep {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.gold-shimmer-text {
+  background-image: linear-gradient(110deg,
+    var(--text-primary) 35%,
+    var(--gold-secondary) 50%,
+    var(--text-primary) 65%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gold-shimmer-sweep 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.2s 1 both;
+}
+
+@keyframes page-enter {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page-enter { animation: page-enter 0.55s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+@keyframes grain-shift {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-3%, 2%); }
+  40% { transform: translate(2%, -3%); }
+  60% { transform: translate(-2%, -2%); }
+  80% { transform: translate(3%, 3%); }
+}
+.grain-overlay {
+  position: absolute; inset: -50%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  opacity: 0.035;
+  pointer-events: none;
+  animation: grain-shift 9s steps(6) infinite;
+}
+
+@keyframes gold-edge-flow {
+  0%   { background-position: 0% 0; }
+  100% { background-position: 200% 0; }
+}
+.gold-edge-flow {
+  position: absolute; top: 0; inset-inline: 0; height: 1px;
+  background: linear-gradient(90deg,
+    transparent, var(--gold-secondary) 30%, var(--gold-light) 50%, var(--gold-secondary) 70%, transparent);
+  background-size: 200% 100%;
+  animation: gold-edge-flow 4s linear infinite;
+  opacity: 0.7;
+}
 
 /* ─── Workstation Traffic Lights ─── */
 .traffic-btn-red    { background-color: #EF4444; }
