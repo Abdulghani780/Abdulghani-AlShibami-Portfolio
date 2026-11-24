@@ -13,6 +13,7 @@ import { ArchitectureTopology } from "@/components/features/projects/case-study/
 import { SubsystemsGrid } from "@/components/features/projects/case-study/SubsystemsGrid";
 import { ChallengesResultsSection } from "@/components/features/projects/case-study/ChallengesResultsSection";
 import { DemoCalloutBanner } from "@/components/features/projects/case-study/DemoCalloutBanner";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { dictionaries } from "@/lib/i18n/dictionaries";
 
 interface ProjectDetailPageProps {
@@ -112,34 +113,42 @@ export default async function ProjectDetailPage({
       {/* 2. Key Empirical Telemetry Metrics */}
       {project.caseStudy.metrics && project.caseStudy.metrics.length > 0 && (
         <Container>
-          <CaseStudyMetrics
-            metrics={project.caseStudy.metrics}
-            locale={typedLocale}
-          />
+          <ScrollReveal isRtl={isRtl} direction="up">
+            <CaseStudyMetrics
+              metrics={project.caseStudy.metrics}
+              locale={typedLocale}
+            />
+          </ScrollReveal>
         </Container>
       )}
 
       {/* 3. Problem vs Solution Split Architecture */}
       <Container>
-        <ProblemSolutionSection
-          caseStudy={project.caseStudy}
-          locale={typedLocale}
-        />
+        <ScrollReveal isRtl={isRtl} direction="up" delay={60}>
+          <ProblemSolutionSection
+            caseStudy={project.caseStudy}
+            locale={typedLocale}
+          />
+        </ScrollReveal>
       </Container>
 
       {/* 4. Interactive Simulation Banner Trigger (if simulation exists) */}
       <Container>
-        <DemoCalloutBanner project={project} locale={typedLocale} />
+        <ScrollReveal isRtl={isRtl} direction="up" delay={120}>
+          <DemoCalloutBanner project={project} locale={typedLocale} />
+        </ScrollReveal>
       </Container>
 
       {/* 5. System Topology & Pipeline Flow */}
       {project.caseStudy.architectureFlow &&
         project.caseStudy.architectureFlow.length > 0 && (
           <Container>
-            <ArchitectureTopology
-              stages={project.caseStudy.architectureFlow}
-              locale={typedLocale}
-            />
+            <ScrollReveal isRtl={isRtl} direction="up" delay={180}>
+              <ArchitectureTopology
+                stages={project.caseStudy.architectureFlow}
+                locale={typedLocale}
+              />
+            </ScrollReveal>
           </Container>
         )}
 
@@ -147,23 +156,28 @@ export default async function ProjectDetailPage({
       {project.caseStudy.subsystems &&
         project.caseStudy.subsystems.length > 0 && (
           <Container>
-            <SubsystemsGrid
-              subsystems={project.caseStudy.subsystems}
-              locale={typedLocale}
-            />
+            <ScrollReveal isRtl={isRtl} direction="up" delay={240}>
+              <SubsystemsGrid
+                subsystems={project.caseStudy.subsystems}
+                locale={typedLocale}
+              />
+            </ScrollReveal>
           </Container>
         )}
 
       {/* 7. Constraints Overcome & Empirical Benchmarks */}
       <Container>
-        <ChallengesResultsSection
-          caseStudy={project.caseStudy}
-          locale={typedLocale}
-        />
+        <ScrollReveal isRtl={isRtl} direction="up" delay={300}>
+          <ChallengesResultsSection
+            caseStudy={project.caseStudy}
+            locale={typedLocale}
+          />
+        </ScrollReveal>
       </Container>
 
       {/* 8. Bottom Navigation Anchor */}
       <Container>
+        <ScrollReveal isRtl={isRtl} direction="up" delay={360}>
         <div className="border border-hairline bg-surface p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="space-y-1 text-center sm:text-start">
             <div className="font-mono text-[10px] text-gold uppercase tracking-wider">
@@ -182,6 +196,7 @@ export default async function ProjectDetailPage({
             </Button>
           </Link>
         </div>
+        </ScrollReveal>
       </Container>
     </div>
   );
