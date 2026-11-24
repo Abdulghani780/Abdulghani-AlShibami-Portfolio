@@ -29,6 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.7.0] - 2026-10-06 — Architectural Portrait Portal & Executive Motion Refinement
 
 ### Enhanced & Refined (ui-ux-pro-max)
+
 - **Executive Architectural Studio Portal & Pedestal (`components/features/home/HeroSection.tsx`):**
   - Eliminated the unnatural "floating torso" loop (`float-gentle-anim`), anchoring `abdulghani-portrait.webp` inside a luxury arched architectural studio portal (`rounded-t-[140px] sm:rounded-t-[170px] rounded-b-2xl`).
   - Implemented dual-mode adaptive ambient lighting:
@@ -44,6 +45,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Softened orbit rings to hairline opacities (`0.07` - `0.11`) and slowed rotation speed to prevent visual interference with typography.
 
 ### Verified
+
 - 74 / 74 automated unit, integration, and security tests pass (`node --test tests/**/*.test.mjs`).
 - 0 TypeScript compilation errors (`pnpm tsc --noEmit`).
 - 36 / 36 static SSG routes compiled with exit code 0 (`pnpm build`).
@@ -53,6 +55,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.6.0] - 2026-10-06 — Ultra-Luxury 3D Kinetic Elevation & Volumetric System
 
 ### Added
+
 - **Lenis Smooth Momentum Inertia Scrolling (`components/ui/SmoothScrollProvider.tsx`):**
   - Integrated zero-overhead `Lenis` engine (1.3.26) for buttery 120Hz smooth scrolling across the entire application shell.
   - Automatically respects `(prefers-reduced-motion: reduce)` system settings.
@@ -72,6 +75,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Added real-time neural audio frequency visualizer wave ribbons during model inference.
 
 ### Verified
+
 - 74 / 74 unit, integration, and security tests pass with 100% success rate.
 - 0 TypeScript compilation errors (`tsc --noEmit`).
 - Clean static production build across all 36 routes (`pnpm build`).
@@ -81,6 +85,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.5.0] - 2026-10-06 — Master Luxury Animation & Micro-Interactions Elevation
 
 ### Added
+
 - **Motion Primitives & Zero-Runtime Animation Engine:**
   - `lib/hooks/useReducedMotion.ts`: Media query listener for `(prefers-reduced-motion: reduce)` guaranteeing WCAG AA accessibility compliance.
   - `lib/hooks/useInView.ts`: SSR-safe `IntersectionObserver` hook triggering scroll reveals with zero hydration mismatch.
@@ -107,6 +112,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `AbdulghaniAIModal.tsx`: Smooth spring entry scale transition, gold glow pulse launcher, and typing stream cursor.
 
 ### Verified
+
 - Zero Layout Shifts (CLS = 0).
 - 100% automated test pass rate (74/74 unit, integration, and security tests).
 - 0 TypeScript compilation errors (`tsc --noEmit`).
@@ -117,6 +123,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.4.0] - 2026-09-30 — 3D Gold Logo Branding, Yusra Purge, Campus IT Tracker Flagship & HD Visuals
 
 ### Added
+
 - **Official 3D Royal Gold Monogram Emblem (`public/images/brand/as-logo-3d.png`):**
   - High-resolution 3D titanium and 18k royal gold monogram emblem for "AS" (Abdulghani Al-Shibami).
   - Integrated into `AsMonogram` (`components/ui/AsLogo.tsx`), Navbar brand, and Footer centerpiece.
@@ -131,6 +138,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Key features (Interactive Campus Map, ITIL Service Desk Kanban, Asset Custody Transfer, Oracle DB) and system flow.
 
 ### Changed & Purged
+
 - **Total Elimination of YUSRA Project:**
   - Fully removed `yusra` project record from `lib/data/projectsData.ts`.
   - Removed `yusra` from demo registry (`demos/registry/index.ts`) and deleted `demos/simulations/YusraSimulation.tsx`.
@@ -146,6 +154,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.3.0] - 2026-09-30 — Full Layout & Aesthetic Parity with new_design.png & Authentic Portrait
 
 ### Added
+
 - **Authentic Portrait Alpha Cutout (`public/images/profile/abdulghani-portrait.webp`):**
   - Processed user-provided portrait `abdulghani.png` with edge-feathered alpha matte into high-efficiency 4-channel WebP.
   - Sits directly in `HeroSection.tsx` with drop shadow and circuit linework overlay.
@@ -162,6 +171,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Added 7 golden circular nodes connected by directional arrows over subtle gold contour wave lines.
 
 ### Changed & Modernized
+
 - **AI Lab & Engineering in Public Aesthetic Refinement:**
   - Shifted backgrounds to deep luxury obsidian `#0B0B0D` with gold border highlights.
   - Integrated GitHub matrix, pinned repositories, live commits log, and syntax-highlighted code editor.
@@ -173,6 +183,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.2.0] - 2026-09-30 — Full Autonomous OS v2.0 Production Release & Hardening
 
 ### Added
+
 - **OpenGraph 1200x630 Social Banner (`public/images/og-cover.png`):**
   - Generated high-resolution social cover asset adhering to the Obsidian Black and Royal Gold visual identity.
   - Features the official AS Monogram, full legal and bilingual title, role badges, and canonical project references.
@@ -187,6 +198,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Verifies asset dimensions, CSP headers, robots.txt, sitemap.xml, JSON-LD schemas, and maintenance documentation integrity.
 
 ### Changed & Fixed
+
 - **Resolved All Dependency Vulnerabilities (`pnpm audit`):**
   - Added pnpm override for `postcss` (`^8.5.28`), resolving all 4 subdependency vulnerabilities. `pnpm audit` now reports zero known vulnerabilities.
 - **Completed OS v2.0 State Machine:**
@@ -198,6 +210,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.1.0] - 2026-09-28 — Astra 6 Master Autonomous Rebuild & Subpage Harmonization
 
 ### Added
+
 - **YUSRA | يُسرى Flagship Project Integration:**
   - Registered Project 0 (`yusra`) into `lib/data/projectsData.ts` with comprehensive 5-phase case study (Problem, Solution, Architecture, Subsystems, Results).
   - Built interactive simulator `demos/simulations/YusraSimulation.tsx` (MediaPipe 21 hand landmarks, Arabic Sign Language, OCR, phoneme speech coaching).
@@ -214,6 +227,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Added Schema.org `SoftwareApplication` JSON-LD in `app/[locale]/projects/[slug]/page.tsx`.
 
 ### Changed & Modernized
+
 - **Subpage & Component Color Harmonization:**
   - Purged 100% of legacy `indigo-500` and `cyan-400` classes across all subpages (`/projects`, `/projects/[slug]`, `/credentials`, `/showcase`).
   - Completely restyled: `ProjectCard`, `ProjectFilters`, `ProjectPreviewGraphic`, `TechnologyBadge`, `CaseStudyHero`, `DemoCalloutBanner`, `CredentialsCatalogView`, `CertificateCard`, `CertificateModal`, `LiveDemoStudio`, `ContactForm`, `ContactToolbar`, `AbdulghaniAIModal`, `LanguageSwitcher`.
@@ -225,6 +239,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Removed superseded `AcademicProfileSection.tsx`.
 
 ### Verified
+
 - Zero TypeScript errors (`pnpm typecheck`).
 - Zero ESLint errors or warnings (`pnpm lint`).
 - 38/38 automated unit tests passing (`pnpm test`).
@@ -235,6 +250,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.0.0] - 2026-09-28 — Full Authoritative Visual Redesign, Monogram AS Brand & Production Hardening
 
 ### Added
+
 - **Authoritative Visual Target Implementation (`new_design.png`):**
   - Completely redesigned homepage conforming strictly to the master reference visual design.
   - Implemented 10 authoritative components under `components/features/home/`:
@@ -255,6 +271,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Processed and integrated genuine card screenshots and architectural artwork.
 
 ### Enhanced & Standardized
+
 - **Design Tokens & Palette Harmonization:**
   - Aligned `tailwind.config.ts` and `app/globals.css` with authoritative Obsidian Black (`#0B0B0C`, `#141416`) and Royal Gold (`#D4AF37`, `#F3E5AB`).
   - Balanced alternating rhythm of light editorial sections and dark engineering sections.
@@ -271,6 +288,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.9.0] - 2026-09-21 — Autonomous Production Engineering, Deep Audit, Automated Test Suite & Release Gate
 
 ### Added
+
 - **Automated Unit & Integration Test Suites (`tests/core-domain.test.mjs`, `tests/offline-ai.test.mjs`):**
   - Native `node:test` execution covering Contact Form Zod validation, authentic credential physical image assets, canonical projects integrity, verified identity consistency, dictionary parity, and offline AI deterministic response branches.
   - Added `"test": "node --test tests/**/*.test.mjs"` to `package.json` scripts (37/37 tests passing).
@@ -281,6 +299,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `docs/qa/FINAL_PRODUCTION_READINESS_REPORT.md`: 25-section release audit confirming PRODUCTION STATUS: READY.
 
 ### Fixed & Enhanced
+
 - **Dual-Theme Harmonization:**
   - Refactored `AcademicProfileSection.tsx` (Section 05) and `DemoCalloutBanner.tsx` to eliminate hardcoded dark gradients, providing clean light mode porcelain surfaces.
   - Wrapped pulsing animations in `motion-safe:` to respect user accessibility preferences.
@@ -298,6 +317,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.8.0] - 2026-09-21 — Comprehensive Audit Remediation, Dual-Theme Harmonization & Polish
 
 ### Added
+
 - **Genuine Dual-Theme Light Mode System:**
   - Implemented semantic design tokens in CSS and Tailwind configuration for porcelain light surfaces (`#F8FAFC`, `#FFFFFF`) with crisp dark slate typography (`#0F172A`, `#334155`) meeting WCAG AA contrast standards.
   - Full dual-theme styling across `CertificateModal`, `AbdulghaniAIModal`, `CaseStudyHero`, `ProjectCard`, `ProjectPreviewGraphic`, `LiveDemoStudio`, and `CredentialsCatalogView`.
@@ -315,6 +335,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Comprehensive documentation covering all 22 required evaluation criteria.
 
 ### Fixed & Enhanced
+
 - **Obsolete Token Purge:** Purged 37 residual instances of `#00FF9D` (Concept D neon mint), aligning them with `#10B981` (emerald) and Electric Indigo theme tokens.
 - **Reduced Motion Compliance:** Wrapped all pulsing beacons and indicator lights in `motion-safe:animate-ping` and `motion-safe:animate-pulse`.
 - **Sitemap Canonical Slugs:** Verified `app/sitemap.ts` contains strictly canonical `metaalgorithm-lab` slugs for both English and Arabic.
@@ -325,6 +346,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.7.0] - 2026-09-20 — Authentic Credentials & Certifications Integration
 
 ### Added
+
 - **5 Authentic Verified Certificates Integration:**
   - `tot-ibct-novice`: Train-The-Trainer Program: The Novice Trainer Level (IBCT & Edraak, Sept 12, 2026) with official stamp, QR code, and Dr. Ahmed Metwally signature.
   - `yemen-ai-summit-2026`: Certificate of Participation — Yemen AI Summit 2026 (Modern Specialized University & AI Approach, July 1, 2026 / 16 Muharram 1448 AH) with university seal and Prof. Dr. Mujahid Al-Jabr signature.
@@ -347,6 +369,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Grounded AI assistant knowledge base (`lib/ai/knowledge.ts`) and offline fallback in all 5 verified certificates with zero hallucination.
 
 ### Enhanced
+
 - **Homepage Section 05 (`AcademicProfileSection.tsx`):**
   - Rendered all 5 certificates in a responsive grid with isolated modal triggers and direct link to the credentials catalog.
 - **Sitemap (`app/sitemap.ts`):**
@@ -357,6 +380,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.6.1] - 2026-09-20 — Hostile QA Remediation & Zero-Defect Hardening
 
 ### Fixed & Enhanced
+
 - **Section Badges Alignment:** Corrected section numbering inversion between Section 05 (`AcademicProfileSection.tsx`) and Section 06 (`CanonicalFooter.tsx`).
 - **Certificate Lightbox UX:** Added backdrop `onClick={onClose}` to `CertificateModal.tsx` allowing one-click dismissal.
 - **AI Modal Keyboard Accessibility:** Added `Escape` keydown handler to `AbdulghaniAIModal.tsx` to ensure keyboard accessible closing.
@@ -368,6 +392,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.6.0] - 2026-09-20 — Functional Bug Fixes, Authentic Academic Profile & Gemini AI Integration
 
 ### Added
+
 - **Academic Credentials & Honors Showcase (`AcademicProfileSection.tsx`):**
   - Section 05 embedded into homepage showcasing 3rd-Year Information Technology standing at University of Modern Sciences, Sana'a.
   - Second Place Award: Innovation & Entrepreneurship Competition (UMS IT Dept, 2026/1).
@@ -386,6 +411,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Added static `public/favicon.ico` (1.8 KB), dynamic `app/robots.ts`, and dynamic `app/sitemap.ts` (34 entries).
 
 ### Fixed
+
 - Fixed contact data drift in `CanonicalFooter.tsx` and `Footer.tsx`.
 - Purged residual mint `#00FF9D` hexes from Section 04 Demo Studio and `/showcase` page in favor of Azure Cyan design tokens.
 - Fixed untranslated Arabic string leaks in Section 04 Demo Studio.
@@ -395,6 +421,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.5.1] - 2026-09-19 — Global Design Token Harmonization & Catalog 3D Bento Integration
 
 ### Added & Enhanced
+
 - **Global Titanium Slate & Electric Palette Harmonization:**
   - Upgraded `Navbar.tsx` and `Footer.tsx` with Titanium Slate surfaces (`#0B1120`), Electric Indigo borders, and Cyan interactive states.
   - Upgraded `CanonicalFooter.tsx` and `ContactForm.tsx` with Electric Indigo/Cyan glowing CTAs, dark slate input fields, and emerald transmission confirmation badges.
@@ -413,6 +440,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.5.0] - 2026-09-19 — Titanium Slate & Electric Palette Visual Redesign with 3D Concept Renders
 
 ### Added & Enhanced
+
 - **Modern Titanium Slate Design System (Option 1):**
   - Replaced terminal pitch black background with deep Titanium Slate (`#0B1120`, `#0F172A`).
   - Implemented modern Linear/Vercel-inspired electric color palette: Electric Indigo (`#6366F1`), Azure Cyan (`#06B6D4`), Emerald (`#10B981`), and Warm Amber (`#F59E0B`).
@@ -436,6 +464,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.4.0] - 2026-09-19 — Frontend UI/UX Overhaul & Functional Ergonomics
 
 ### Added & Enhanced
+
 - **Floating Sticky Navigation on Homepage (`Navbar.tsx`):**
   - Replaced early return on homepage with a glassmorphic floating pill navbar that glides into view on scroll (`scrollY > 20px`).
   - Added contextual section links for the homepage (`#projects`, `#sandbox`, `Demo Studio`, `#contact`) alongside full global navigation for subpages.
@@ -461,6 +490,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Added custom `:focus-visible` focus ring styles.
 
 ### Added & Enhanced
+
 - **Direct Homepage Canonical Architecture:**
   - `CanonicalHero.tsx`: Bioluminescent emerald glows, cinematic display headline, real portrait with radiating cybernetic SVG grid, live metrics HUD bar, and interactive terminal console with command evaluation (`help`, `projects`, `whoami`, `status`, `clear`).
   - `CanonicalProjectsBento.tsx`: Asymmetric bento grid showcasing all 5 verified projects (`Campus IT Tracker`, `MetaAlgorithm Lab`, `Cafena Coffee Suite`, `NovaTech Cloud`, `GP Platform`) with genuine image assets (`campus-it-tracker/01-dashboard.webp`, `cafena/01-storefront-hero.webp`), live sorting wave visualizer, accuracy/WASM gauges, and direct demo buttons.
@@ -482,6 +512,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.2.0] - 2026-09-19 — Canonical Reference Frontend Replacement
 
 ### Added
+
 - **Canonical Visual References Implementation (4/4 Approved Concepts):**
   - **Reference 1 (`portfolio_hero_concept.jpg`):** Futuristic Hero Command Center with Neon Mint (`#00FF9D`), Electric Cyan (`#00F0FF`), and Deep Space Obsidian (`#05080E`), featuring live HUD telemetry, monospace terminal outputs, active green status beacons, and authentic developer profile portrait (`abdulghani-profile-hero.webp`).
   - **Reference 2 (`live_demo_studio.jpg`):** Multi-workstation interactive demonstration suite (`LiveDemoStudio.tsx` on `/[locale]/showcase`) allowing interactive split-screen or tabbed live simulation across all 5 authentic projects with hardware dials.
@@ -509,6 +540,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.1.0] - 2026-09-19 — Reference-Faithful Dual-Column Command Center Rebuild
 
 ### Added
+
 - **Reference-Faithful Dual-Column Desktop Command Center (1536x1024 Blueprint):**
   - Completely rebuilt the homepage presentation around the 1536x1024 dual-column technical editorial reference image.
   - Implemented balanced split-screen layout (`~49%` Left Column, `~49%` Right Column) with a narrow controlled gutter (`24px`) on an elevated `#050709` Obsidian canvas with subtle dot-matrix atmospheric grid.
@@ -529,11 +561,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Core Shell & Internationalization Parity:**
   - Added `MainWrapper.tsx` to automatically adjust top clearance between homepage (zero top padding) and subpages (`pt-20 sm:pt-24`).
   - Conditioned `Navbar.tsx` and `Footer.tsx` to hide on the homepage so the self-contained command center stands pristine, while preserving the standard navigation shell across `/projects`, `/showcase`, and demo routes.
-  - Sanitized `ContactForm.tsx` to remove generic placeholder names ("Alex Vance", "architect@enterprise.com") per prompt specification.
+  - Sanitized `ContactForm.tsx` to remove generic placeholder names ("Alex Vance", "<architect@enterprise.com>") per prompt specification.
   - Full bidirectional parity: 100% Arabic RTL mirroring and typography.
   - Verified Light Mode luxury porcelain interpretation (`#F4F5F7` canvas, `#FFFFFF` panels, `#E2E8F0` borders).
 
 ### Added
+
 - **Obsidian + Liquid Glass + Royal Gold Visual System:**
   - Implemented bespoke luxury color palette in `tailwind.config.ts`: Obsidian (`#050505`, `#0A0A0C`, `#0E0E11`, `#121216`), Royal Gold (`#C9A227`, `#D4AF37`, `#E6C866`), and Porcelain Sovereign (`#FBFBFC`) light theme.
   - Engineered `GlassPanel.tsx` reusable translucent glass primitive with controlled blur (`16px`/`24px`), border reflections, and ambient gold hover glow.
@@ -558,6 +591,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Fixed Windows case-insensitive `.gitignore` bug by anchoring `/Projects/` to the repository root.
 
 ### Added
+
 - **Supabase Production Client & Zero-Failure Fallback:**
   - Installed `@supabase/supabase-js` (`v2.116.0`).
   - Implemented `lib/supabase/client.ts` and `lib/supabase/server.ts` with graceful credential inspection.
@@ -574,6 +608,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.9.0] - 2026-09-19
 
 ### Added
+
 - **Production Multi-Repository Preparation & Staging:**
   - Prepared, sanitized, and initialized 5 independent standalone Git repositories in `c:\my projects\Staging_Repos/`:
     1. `Cafena`: Added standard `.gitignore`, MIT License, comprehensive bilingual README, clean commit on `main`.
@@ -600,6 +635,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Authored `docs/PRODUCTION_READY.md` certifying readiness for production release.
 
 ### Added
+
 - **Authentic Interactive Project Demos (Real Project Demo Implementation):**
   - **Cafena Simulation (`CafenaSimulation.tsx`)**: Artisanal specialty coffee e-commerce portal with authentic menu catalog, real-time query search, offcanvas cart with 15% VAT and SAR calculations, table reservation form, and simulated receipt preview.
   - **Campus IT Tracker Simulation (`CampusITTrackerSimulation.tsx`)**: High-fidelity reproduction of C# WinForms / Oracle enterprise workstation featuring Overview Dashboard, interactive campus room map, ITIL Kanban desk (New, Triaged, In Progress, Resolved), hardware inventory table, and asset custody transfer workflow.
@@ -610,9 +646,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - **Unified DEMO_REGISTRY:** Standardized all 5 verified projects to `demoType: "interactive_simulation"` with localized titles, subtitles, and Technical Integrity Disclosures.
 
 ### Removed
+
 - Deleted lingering unverified mock simulation files: `AuraLedgerSimulation.tsx` and `YusraSimulation.tsx`.
 
 ### Verified
+
 - **TypeScript:** 0 errors (`pnpm typecheck`).
 - **ESLint:** 0 warnings or errors (`pnpm lint`).
 - **Production Static Prerendering:** All 10 demo paths (`/[locale]/projects/[slug]/demo` for 5 projects across `en` and `ar`) compiling cleanly.
@@ -622,6 +660,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.7.0] - 2026-09-18
 
 ### Added
+
 - **Owner Project Catalog Harmonization (Phase 10.1):**
   - Synchronized portfolio catalog strictly with the 5 authentic projects verified in `Projects/`:
     1. **Campus IT Tracker** (`campus-it-tracker`): C# .NET 4.8 WinForms & Oracle 10g enterprise ITIL system.
@@ -639,12 +678,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Telemetry Realigned:** Telemetry section now reflects genuine verified metrics (5 Verified Projects, 2 Platforms, 3 Domains, 100% Bilingual Parity).
 
 ### Removed
+
 - **Unverified & Legacy Records Purged:**
   - `yusra` removed from catalog, navigation, routing, and demo registries.
   - `auraledger` permanently deleted from catalog.
   - `nexora-tech` permanently deleted from catalog (replaced by authentic `novatech`).
 
 ### Verified
+
 - **TypeScript:** 0 errors (`pnpm typecheck`).
 - **ESLint:** 0 warnings or errors (`pnpm lint`).
 - **Production Build:** All 30 static pages prerendered cleanly (`pnpm build`).
@@ -652,6 +693,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ---
 
 ### Added
+
 - **Internationalization & Theming Final Polish (Phase 10):**
   - Complete bi-directional parity between English (`en`) and Arabic (`ar`) with zero text leaks in kickers, badges, or empty states.
   - Document-level synchronization of `<html lang="..." dir="...">` via `LocaleHtmlSync` and inline script for zero-flash hydration.
@@ -660,11 +702,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Created `docs/PHASE_10_I18N_THEME_QA.md` documenting full 8-way matrix verification.
 
 ### Changed & Sanitized
+
 - **Fabricated Metadata Cleaned:** Permanently removed GPS coordinates (`LAT: 24.7136° N, LON: 46.6753° E`), arbitrary hardware tags (`SYS_REV: v2.4.0 // ARCH: x64_AVX512`), and arbitrary revision marks (`ARCH_INDEX: SYS-2025-V2`).
 - **Verified Flagship Demonstration:** Verified YUSRA C# WinForms enterprise ledger as genuine owner project before connecting to primary homepage CTA.
 - **Footer Cleaned:** Replaced pseudo-technical version tags with clean colophon (`Next.js 15 // Tailwind CSS`).
 
 ### Verified
+
 - **TypeScript:** 0 errors (`pnpm typecheck`).
 - **ESLint:** 0 warnings or errors (`pnpm lint`).
 - **Production Build:** 30/30 static pages prerendered (`pnpm build`).
@@ -675,6 +719,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.5.0] - 2026-09-18
 
 ### Added
+
 - **Data Integrity Gate Completed:** Audited and classified all project data into canonical tiers (`VERIFIED_OWNER_DATA`, `USER_PROVIDED_PLACEHOLDER`, `UNVERIFIED_AI_GENERATED_CONTENT`). Created `docs/PROJECT_DATA_AUDIT.md`.
 - **Verified Owner Projects:** Realigned primary catalog around genuine owner systems: **YUSRA** (C# WinForms / SQL Server enterprise ledger), **Campus IT Infrastructure Tracker**, **MetaAlgorithm Lab**, and **Nexora Tech**.
 - **Fabricated Metrics Neutralization:** Permanently neutralized unverified claims (`145k tx/s`, `0.8ms p99`, `99.999% SLA`, `500,000 txns`), reframing them as honest demonstration targets and `[VERIFIED METRIC REQUIRED]`.
@@ -691,13 +736,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Security Audit:** Created `docs/DEMO_SECURITY_REVIEW.md` and `docs/DEMO_COVERAGE_MATRIX.md`.
 
 ### Verified
+
 - TypeScript compilation: 0 errors (`pnpm typecheck`).
 - ESLint: 0 warnings or errors (`pnpm lint`).
 - Static Generation: 30/30 static pages prerendered (`pnpm build`).
 - Full Visual Browser QA: Verified YUSRA (Dark, Light, Arabic RTL, Mobile 393px), Campus IT Tracker, MetaAlgorithm Lab, and AuraLedger via Chrome DevTools subagent with recorded WebP session artifact (`demo_system_qa_1789680017131.webp`).
 
-
 ### Added
+
 - **Security & Data Sanitization:** Permanently removed fabricated PGP fingerprint (`0x8F94D29E`) and geographic coordinates (`LAT: 24.7136° N, LON: 46.6753° E`). Replaced with safe system versioning tags (`SYS_REV: v2.4.0`, `ASPECT_RATIO: 1:1`).
 - **Decoupled Data Access Layer:** Built `ProjectRepository` in `lib/services/projectRepository.ts` supporting 6 normalized engineering systems across 5 technical categories with local fallback.
 - **Unified Homepage Feed:** Connected Homepage Featured Projects directly to `projectRepository.getFeaturedProjects()`.
@@ -706,6 +752,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Component Documentation:** Documented all 11 new project and case study components in `docs/10_COMPONENT_ARCHITECTURE.md`.
 
 ### Verified
+
 - TypeScript compilation: 0 errors (`pnpm typecheck`).
 - ESLint: 0 warnings or errors (`pnpm lint`).
 - Static Generation: 24/24 static pages prerendered (`pnpm build`).
@@ -716,6 +763,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.3.0] - 2026-09-17
 
 ### Added
+
 - **Design System Implementation:** Configured exact design tokens in `tailwind.config.ts` and `app/globals.css` with deep Obsidian canvas, surface elevations, Royal Gold accents, and CSS logical properties.
 - **Zero-Flash Theming Engine:** Built `ThemeProvider.tsx` supporting Dark and Light modes with localStorage persistence and inline hydration guard.
 - **Bilingual i18n & RTL Foundation:** Built English and Arabic dictionaries with automatic layout direction switching (`dir="rtl"` / `dir="ltr"`).
@@ -727,6 +775,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Component Architecture Catalog:** Created `docs/10_COMPONENT_ARCHITECTURE.md`.
 
 ### Verified
+
 - Zero TypeScript errors (`pnpm typecheck`).
 - Zero ESLint errors or warnings (`pnpm lint`).
 - 100% successful static production build (`pnpm build` prerendered all 10 routes).
@@ -737,6 +786,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.2.0] - 2026-09-17
 
 ### Added
+
 - **Visual Design Reference System:** Completed urgent design gate by generating exactly 12 primary visual references via StitchMCP project `1524242436626085687`.
 - Stored all 12 reference screenshots, HTML code blueprints, and metadata in `design-references/01` through `12`.
 - Created `docs/VISUAL_DESIGN_REFERENCE.md` with complete technical documentation for all 12 references.
@@ -749,6 +799,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.0] - 2026-09-17
 
 ### Added
+
 - Initialized local Git repository for the portfolio platform.
 - Created `DISCOVERY_REPORT.md` documenting host OS, Node.js v24.15.0, PNPM 10.33.3, Git 2.54.0, and MCP availability.
 - Created `AGENTS.md` specifying autonomous engineering principles, code conventions, security protocols, and 10-step operational loop.
@@ -761,13 +812,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Created `IMPLEMENTATION_LOG.md` for historical append-only engineering records.
 
 ### Changed
+
 - None (Initial greenfield setup).
 
 ### Fixed
+
 - None.
 
 ### Security
+
 - Enforced strict secret prevention guidelines in `AGENTS.md` and `DISCOVERY_REPORT.md` prohibiting commit of `.env`, service role keys, and private credentials.
 
 ### Database
+
 - Schema design initiated (Phase 05 scheduled).
