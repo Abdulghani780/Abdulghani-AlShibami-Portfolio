@@ -5,6 +5,7 @@ import { Project, ProjectCategory, Locale } from "@/types/project";
 import { ProjectFilters } from "./ProjectFilters";
 import { ProjectCard } from "./ProjectCard";
 import { Button } from "@/components/ui/Button";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 interface ProjectCatalogViewProps {
   initialProjects: Project[];
@@ -52,36 +53,46 @@ export const ProjectCatalogView: React.FC<ProjectCatalogViewProps> = ({
   return (
     <div className="space-y-8">
       {/* Dynamic Filters Bar */}
-      <ProjectFilters
-        categories={categories}
-        activeCategory={activeCategory}
-        onSelectCategory={setActiveCategory}
-        searchQuery={searchQuery}
-        onSearchChange={setSearchQuery}
-        locale={locale}
-        totalCount={initialProjects.length}
-      />
+      <ScrollReveal isRtl={isRtl} direction="up" duration={500}>
+        <ProjectFilters
+          categories={categories}
+          activeCategory={activeCategory}
+          onSelectCategory={setActiveCategory}
+          searchQuery={searchQuery}
+          onSearchChange={setSearchQuery}
+          locale={locale}
+          totalCount={initialProjects.length}
+        />
+      </ScrollReveal>
 
       {/* Projects Catalog Grid */}
       {filteredProjects.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProjects.map((project, idx) => (
-            <ProjectCard
+            <ScrollReveal
               key={project.id}
-              project={project}
-              locale={locale}
-              categoryName={categoryMap.get(project.categorySlug)}
-              isFeaturedHero={activeCategory === "all" && !searchQuery.trim() && idx === 0}
+              delay={Math.min(idx, 8) * 70}
+              isRtl={isRtl}
+              direction="up"
               className={
                 activeCategory === "all" && !searchQuery.trim() && idx === 0
-                  ? "md:col-span-2 lg:col-span-3"
-                  : undefined
+                  ? "h-full md:col-span-2 lg:col-span-3"
+                  : "h-full"
               }
-            />
+            >
+              <ProjectCard
+                project={project}
+                locale={locale}
+                categoryName={categoryMap.get(project.categorySlug)}
+                isFeaturedHero={activeCategory === "all" && !searchQuery.trim() && idx === 0}
+                className="h-full"
+              />
+            </ScrollReveal>
           ))}
         </div>
       ) : (
         /* Empty State */
+        <ScrollReveal isRtl={isRtl}>
         <div className="rounded-2xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#121214] p-12 text-center space-y-4 shadow-sm dark:shadow-2xl font-mono">
           <div className="text-xs text-gold-dark dark:text-gold-light uppercase tracking-widest font-bold">
             {isRtl ? "// لا توجد أنظمة مطابقة" : "// 0 SYSTEMS MATCHED"}
@@ -105,6 +116,7 @@ export const ProjectCatalogView: React.FC<ProjectCatalogViewProps> = ({
             {isRtl ? "إعادة ضبط التصفية" : "Reset Active Filters"}
           </Button>
         </div>
+        </ScrollReveal>
       )}
     </div>
   );
