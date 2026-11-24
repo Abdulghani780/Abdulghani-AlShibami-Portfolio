@@ -108,7 +108,7 @@ export function Navbar({
           <ThemeToggle />
 
           {/* Desktop Primary CTA Button */}
-          <Magnetic strength={0.3}>
+          <Magnetic strength={0.3} className="hidden sm:inline-flex">
             <Link
               href={isHomePage ? "#contact" : `/${locale}#contact`}
               className="hidden sm:inline-flex items-center justify-center px-5 sm:px-6 h-10 rounded-full bg-[#C59B27] hover:bg-[#B38A1F] text-black font-extrabold text-[12px] tracking-[0.14em] uppercase shadow-md hover:shadow-lg transition-all duration-200 active:scale-95 cursor-pointer whitespace-nowrap shrink-0 leading-none"

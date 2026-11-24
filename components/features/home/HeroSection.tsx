@@ -28,7 +28,7 @@ export function HeroSection({ locale }: { locale: Locale }) {
       <Hero3DCanvas />
 
       {/* Film grain texture overlay */}
-      <div className="grain-overlay absolute inset-0 z-[5] pointer-events-none" aria-hidden="true" />
+      <div className="grain-overlay z-[5]" aria-hidden="true" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 items-center">

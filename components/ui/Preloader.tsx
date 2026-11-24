@@ -6,7 +6,6 @@ import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
 
 const STORAGE_KEY = "as-preloader-seen";
 const VISIBLE_MS = 900;
-const EXIT_MS = 700;
 const FAILSAFE_MS = 2500;
 
 export function Preloader() {
@@ -14,7 +13,12 @@ export function Preloader() {
   const [phase, setPhase] = useState<"checking" | "visible" | "exiting" | "done">("checking");
 
   useEffect(() => {
-    if (reducedMotion) {
+    // Synchronous matchMedia check — the hook's state lags one render
+    // and could flash the overlay for reduced-motion users.
+    const prefersReduced =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced || reducedMotion) {
       try {
         sessionStorage.setItem(STORAGE_KEY, "1");
       } catch {
@@ -46,14 +50,12 @@ export function Preloader() {
       setPhase("exiting");
     }, VISIBLE_MS);
 
+    // Failsafe: force-unmount if the exit transition never completes
     const failsafe = setTimeout(() => setPhase("done"), FAILSAFE_MS);
-
-    const unmountTimer = setTimeout(() => setPhase("done"), VISIBLE_MS + EXIT_MS + 100);
 
     return () => {
       clearTimeout(exitTimer);
       clearTimeout(failsafe);
-      clearTimeout(unmountTimer);
     };
   }, [reducedMotion]);
 

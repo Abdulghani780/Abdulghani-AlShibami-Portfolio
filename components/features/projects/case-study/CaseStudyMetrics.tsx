@@ -14,11 +14,13 @@ interface CaseStudyMetricsProps {
 function renderMetricValue(value: string) {
   const match = value.match(/^[\d.,]+/);
   if (!match) return value;
-  const numeric = parseFloat(match[0].replace(",", ""));
+  const numeric = parseFloat(match[0].replace(/,/g, ""));
   if (Number.isNaN(numeric)) return value;
+  const decimals = (match[0].split(".")[1] || "").replace(/,/g, "").length;
   return (
     <CountUp
       end={numeric}
+      decimals={decimals}
       suffix={value.slice(match[0].length)}
       duration={1400}
     />

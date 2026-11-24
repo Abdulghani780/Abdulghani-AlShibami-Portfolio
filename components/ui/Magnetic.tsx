@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState, MouseEvent } from "react";
+import React, { useEffect, useRef, useState, MouseEvent } from "react";
 import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
 
 export interface MagneticProps {
@@ -17,26 +17,47 @@ export function Magnetic({ children, strength = 0.35, className = "" }: Magnetic
   const [hovering, setHovering] = useState(false);
   const reducedMotion = useReducedMotion();
 
+  // Latest pointer position + rAF throttle so we setState at most once per frame
+  const pointer = useRef<{ x: number; y: number } | null>(null);
+  const rafId = useRef<number | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (rafId.current !== null) cancelAnimationFrame(rafId.current);
+    };
+  }, []);
+
   if (reducedMotion) {
     return <span className={className}>{children}</span>;
   }
 
-  const handleMouseMove = (e: MouseEvent<HTMLSpanElement>) => {
+  const flush = () => {
+    rafId.current = null;
     const el = ref.current;
-    if (!el) return;
+    const pos = pointer.current;
+    if (!el || !pos) return;
     const rect = el.getBoundingClientRect();
     const cx = rect.left + rect.width / 2;
     const cy = rect.top + rect.height / 2;
-    const dx = (e.clientX - cx) * strength;
-    const dy = (e.clientY - cy) * strength;
-    setOffset({
-      x: Math.max(-MAX_OFFSET, Math.min(MAX_OFFSET, dx)),
-      y: Math.max(-MAX_OFFSET, Math.min(MAX_OFFSET, dy)),
-    });
+    const rawX = Math.max(-MAX_OFFSET, Math.min(MAX_OFFSET, pos.x - cx));
+    const rawY = Math.max(-MAX_OFFSET, Math.min(MAX_OFFSET, pos.y - cy));
+    setOffset({ x: rawX * strength, y: rawY * strength });
+  };
+
+  const handleMouseMove = (e: MouseEvent<HTMLSpanElement>) => {
+    pointer.current = { x: e.clientX, y: e.clientY };
+    if (rafId.current === null) {
+      rafId.current = requestAnimationFrame(flush);
+    }
     setHovering(true);
   };
 
   const handleMouseLeave = () => {
+    pointer.current = null;
+    if (rafId.current !== null) {
+      cancelAnimationFrame(rafId.current);
+      rafId.current = null;
+    }
     setOffset({ x: 0, y: 0 });
     setHovering(false);
   };
@@ -47,7 +68,7 @@ export function Magnetic({ children, strength = 0.35, className = "" }: Magnetic
       data-magnetic=""
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`inline-flex will-change-transform ${className}`}
+      className={`inline-block will-change-transform ${className}`}
       style={{
         transform: `translate3d(${offset.x}px, ${offset.y}px, 0)`,
         transition: hovering
