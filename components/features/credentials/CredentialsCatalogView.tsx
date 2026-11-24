@@ -9,6 +9,7 @@ import {
 } from "@/lib/data/credentials";
 import { CertificateCard } from "./CertificateCard";
 import { CertificateModal } from "./CertificateModal";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import {
   ShieldCheck,
   ArrowLeft,
@@ -65,6 +66,7 @@ export function CredentialsCatalogView({ locale }: CredentialsCatalogViewProps) 
         </div>
 
         {/* ── Page Hero Header ── */}
+        <ScrollReveal isRtl={isAr} direction="up">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-black/10 dark:border-white/10 pb-8">
           <div className="space-y-3 max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-primary/10 border border-gold-primary/30 text-xs text-gold-dark dark:text-gold-light uppercase tracking-widest font-bold">
@@ -118,8 +120,10 @@ export function CredentialsCatalogView({ locale }: CredentialsCatalogViewProps) 
             </a>
           </div>
         </div>
+        </ScrollReveal>
 
         {/* ── Category Filter Pills ── */}
+        <ScrollReveal isRtl={isAr} delay={80}>
         <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
           <Filter className="w-4 h-4 text-content-muted shrink-0 me-1" />
           {filterCategories.map((cat) => {
@@ -140,20 +144,29 @@ export function CredentialsCatalogView({ locale }: CredentialsCatalogViewProps) 
             );
           })}
         </div>
+        </ScrollReveal>
 
         {/* ── Credentials Grid ── */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredCertificates.map((cert) => (
-            <CertificateCard
+          {filteredCertificates.map((cert, idx) => (
+            <ScrollReveal
               key={cert.id}
-              certificate={cert}
-              locale={locale}
-              onView={(c) => setSelectedCert(c)}
-            />
+              delay={Math.min(idx, 8) * 60}
+              isRtl={isAr}
+              direction="up"
+              className="h-full"
+            >
+              <CertificateCard
+                certificate={cert}
+                locale={locale}
+                onView={(c) => setSelectedCert(c)}
+              />
+            </ScrollReveal>
           ))}
         </div>
 
         {/* ── Back to Home Link ── */}
+        <ScrollReveal isRtl={isAr} delay={120}>
         <div className="pt-8 border-t border-black/10 dark:border-white/10 flex items-center justify-between">
           <Link
             href={`/${locale}`}
@@ -171,6 +184,7 @@ export function CredentialsCatalogView({ locale }: CredentialsCatalogViewProps) 
             {isAr ? "جميع الوثائق محمية بحقوق الملكية وموثقة رسمياً" : "All credentials authenticated & verified"}
           </span>
         </div>
+        </ScrollReveal>
       </div>
 
       {/* ── Fullscreen Interactive Modal Viewer with Zoom ── */}
