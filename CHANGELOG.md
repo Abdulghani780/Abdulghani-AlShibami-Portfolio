@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+
 - **Motion & Luxury Consistency Pass (site-wide):**
   - Session-gated gold monogram **Preloader** with curtain-wipe exit (shows once per session, 2.5s failsafe, reduced-motion safe).
   - **Magnetic pull** on primary CTAs (Navbar "LET'S BUILD", Contact "CONTACT ME", Case Study demo launch) via new `components/ui/Magnetic.tsx`.
@@ -18,7 +19,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - **Route-change page transitions** (`page-enter`) and a gold hairline accent on the footer.
 - **Clearer Dark Mode:** raised dark surface elevation (`#16161B`/`#17171C`) and stronger hairline borders for better card legibility while preserving the Obsidian & Royal Gold identity.
 
-### Verified
+### Verification Results
+
 - 74 / 74 automated tests pass (`pnpm test`).
 - 0 TypeScript errors, 0 ESLint warnings, 36 / 36 static routes (`pnpm build`).
 
