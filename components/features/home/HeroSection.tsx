@@ -27,6 +27,9 @@ export function HeroSection({ locale }: { locale: Locale }) {
       {/* Interactive 3D Quantum Gyroscope & Particle Canvas */}
       <Hero3DCanvas />
 
+      {/* Film grain texture overlay */}
+      <div className="grain-overlay absolute inset-0 z-[5] pointer-events-none" aria-hidden="true" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 items-center">
           
@@ -124,7 +127,7 @@ export function HeroSection({ locale }: { locale: Locale }) {
 
             {/* Display Heading - Two-line Editorial Layout matching s1.png */}
             <ScrollReveal delay={200} isRtl={isRtl} direction="up">
-              <h1 className="font-serif font-black text-3xl sm:text-4xl md:text-5xl lg:text-[44px] xl:text-[52px] 2xl:text-[60px] tracking-tight text-[#0B0B0C] dark:text-white uppercase leading-[0.98] mb-4">
+              <h1 className="font-serif font-black text-3xl sm:text-4xl md:text-5xl lg:text-[44px] xl:text-[52px] 2xl:text-[60px] tracking-tight text-[#0B0B0C] dark:text-white uppercase leading-[0.98] mb-4 gold-shimmer-text">
                 {isRtl ? (
                   <>
                     <span className="block">عبدالغني</span>
