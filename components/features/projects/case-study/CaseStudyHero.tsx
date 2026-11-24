@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Project, Locale } from "@/types/project";
 import { Container } from "@/components/ui/Container";
 import { TechnologyBadge } from "../TechnologyBadge";
+import { Magnetic } from "@/components/ui/Magnetic";
 
 interface CaseStudyHeroProps {
   project: Project;
@@ -95,21 +96,23 @@ export const CaseStudyHero: React.FC<CaseStudyHeroProps> = ({
             {/* Action Button Strip */}
             <div className="flex flex-wrap items-center gap-4 pt-4 font-mono text-xs">
               {project.demoType !== "none" && (
-                <Link
-                  href={`/${locale}/projects/${project.slug}/demo`}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 dark:bg-emerald-500 dark:hover:bg-emerald-400 text-white dark:text-slate-950 font-bold shadow-md dark:shadow-[0_0_20px_rgba(16,185,129,0.35)] transition-all active:scale-95"
-                >
-                  <span>⚡</span>
-                  <span>
-                    {project.demoType === "real_live"
-                      ? isRtl
-                        ? "فتح التطبيق المباشر"
-                        : "Open Live Demo"
-                      : isRtl
-                      ? "تشغيل محاكي سطح المكتب"
-                      : "Launch Workstation Demo"}
-                  </span>
-                </Link>
+                <Magnetic strength={0.3}>
+                  <Link
+                    href={`/${locale}/projects/${project.slug}/demo`}
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 dark:bg-emerald-500 dark:hover:bg-emerald-400 text-white dark:text-slate-950 font-bold shadow-md dark:shadow-[0_0_20px_rgba(16,185,129,0.35)] transition-all active:scale-95"
+                  >
+                    <span>⚡</span>
+                    <span>
+                      {project.demoType === "real_live"
+                        ? isRtl
+                          ? "فتح التطبيق المباشر"
+                          : "Open Live Demo"
+                        : isRtl
+                        ? "تشغيل محاكي سطح المكتب"
+                        : "Launch Workstation Demo"}
+                    </span>
+                  </Link>
+                </Magnetic>
               )}
 
               {project.githubUrl && (

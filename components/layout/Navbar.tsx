@@ -7,6 +7,7 @@ import { Locale, Dictionary } from "@/lib/i18n/dictionaries";
 import { ThemeToggle } from "./ThemeToggle";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { AsLogo } from "@/components/ui/AsLogo";
+import { Magnetic } from "@/components/ui/Magnetic";
 import { cn } from "@/lib/utils";
 
 export function Navbar({
@@ -107,12 +108,14 @@ export function Navbar({
           <ThemeToggle />
 
           {/* Desktop Primary CTA Button */}
-          <Link
-            href={isHomePage ? "#contact" : `/${locale}#contact`}
-            className="hidden sm:inline-flex items-center justify-center px-5 sm:px-6 h-10 rounded-full bg-[#C59B27] hover:bg-[#B38A1F] text-black font-extrabold text-[12px] tracking-[0.14em] uppercase shadow-md hover:shadow-lg transition-all duration-200 active:scale-95 cursor-pointer whitespace-nowrap shrink-0 leading-none"
-          >
-            {isRtl ? "لنبدأ البناء" : "LET'S BUILD"}
-          </Link>
+          <Magnetic strength={0.3}>
+            <Link
+              href={isHomePage ? "#contact" : `/${locale}#contact`}
+              className="hidden sm:inline-flex items-center justify-center px-5 sm:px-6 h-10 rounded-full bg-[#C59B27] hover:bg-[#B38A1F] text-black font-extrabold text-[12px] tracking-[0.14em] uppercase shadow-md hover:shadow-lg transition-all duration-200 active:scale-95 cursor-pointer whitespace-nowrap shrink-0 leading-none"
+            >
+              {isRtl ? "لنبدأ البناء" : "LET'S BUILD"}
+            </Link>
+          </Magnetic>
 
           {/* Mobile Hamburger Toggle */}
           <button

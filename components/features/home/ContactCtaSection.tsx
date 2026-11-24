@@ -6,6 +6,7 @@ import { Locale } from "@/lib/i18n/dictionaries";
 import { ContactForm } from "@/components/features/ContactForm";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { TiltCard } from "@/components/ui/TiltCard";
+import { Magnetic } from "@/components/ui/Magnetic";
 
 export function ContactCtaSection({ locale }: { locale: Locale }) {
   const isRtl = locale === "ar";
@@ -76,15 +77,17 @@ export function ContactCtaSection({ locale }: { locale: Locale }) {
 
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 pt-4">
                 {/* Contact Me CTA Button */}
-                <button
-                  type="button"
-                  onClick={() => setShowDirectForm(!showDirectForm)}
-                  className="relative overflow-hidden inline-flex items-center gap-2 px-7 py-3 rounded-full bg-[#C59B27] hover:bg-[#B38A1F] text-black font-extrabold text-xs sm:text-sm tracking-wider uppercase shadow-md hover:shadow-lg transition-all duration-300 active:scale-95 group cursor-pointer"
-                >
-                  <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none" />
-                  <span>{isRtl ? "تواصل معي" : "CONTACT ME"}</span>
-                  <span className="transition-transform duration-300 group-hover:translate-x-1.5 rtl:group-hover:-translate-x-1.5">→</span>
-                </button>
+                <Magnetic strength={0.35}>
+                  <button
+                    type="button"
+                    onClick={() => setShowDirectForm(!showDirectForm)}
+                    className="relative overflow-hidden inline-flex items-center gap-2 px-7 py-3 rounded-full bg-[#C59B27] hover:bg-[#B38A1F] text-black font-extrabold text-xs sm:text-sm tracking-wider uppercase shadow-md hover:shadow-lg transition-all duration-300 active:scale-95 group cursor-pointer"
+                  >
+                    <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none" />
+                    <span>{isRtl ? "تواصل معي" : "CONTACT ME"}</span>
+                    <span className="transition-transform duration-300 group-hover:translate-x-1.5 rtl:group-hover:-translate-x-1.5">→</span>
+                  </button>
+                </Magnetic>
 
                 {/* View GitHub */}
                 <a
