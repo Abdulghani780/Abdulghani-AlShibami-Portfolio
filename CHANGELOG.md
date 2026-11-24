@@ -18,6 +18,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - **Count-up metrics** on case-study telemetry cards and animated **gold flow lines** on architecture topology stages.
   - **Route-change page transitions** (`page-enter`) and a gold hairline accent on the footer.
 - **Clearer Dark Mode:** raised dark surface elevation (`#16161B`/`#17171C`) and stronger hairline borders for better card legibility while preserving the Obsidian & Royal Gold identity.
+- **Cursor, Portrait & Motion Polish:**
+  - Hero portrait mask now feathers side edges (~3%) and starts the bottom fade earlier (~78%), fixing the silhouette reading as a hard crop against the dark backplate.
+  - `MagneticCursor` refined: slimmer ring, lighter 200px aura, and the native OS cursor is now hidden while the custom cursor is active (no more double cursor).
+  - `page-enter` route transition is faster and more responsive (0.38s, `cubic-bezier(0.22,1,0.36,1)`, subtle scale).
+  - `color-scheme` set per theme (dark scrollbars/form controls) and Firefox scrollbar styling added.
 
 ### Verification Results
 

@@ -340,8 +340,12 @@ export function HeroSection({ locale }: { locale: Locale }) {
               <div 
                 className="relative w-full h-full z-10 flex items-end justify-center select-none pointer-events-none"
                 style={{
-                  maskImage: "linear-gradient(to bottom, black 82%, transparent 100%)",
-                  WebkitMaskImage: "linear-gradient(to bottom, black 82%, transparent 100%)",
+                  maskImage:
+                    "linear-gradient(to bottom, black 78%, transparent 100%), linear-gradient(to right, transparent 0%, black 3%, black 97%, transparent 100%)",
+                  maskComposite: "intersect",
+                  WebkitMaskImage:
+                    "linear-gradient(to bottom, black 78%, transparent 100%), linear-gradient(to right, transparent 0%, black 3%, black 97%, transparent 100%)",
+                  WebkitMaskComposite: "source-in",
                 }}
               >
                 <Image

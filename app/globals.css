@@ -278,10 +278,23 @@
 }
 
 @keyframes page-enter {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(14px) scale(0.985); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
 }
-.page-enter { animation: page-enter 0.55s cubic-bezier(0.16, 1, 0.3, 1) backwards; }
+.page-enter { animation: page-enter 0.38s cubic-bezier(0.22, 1, 0.36, 1) backwards; }
+
+/* Hide the native cursor while the custom MagneticCursor is active (fine pointers only) */
+@media (pointer: fine) {
+  html.custom-cursor-active,
+  html.custom-cursor-active * {
+    cursor: none !important;
+  }
+  html.custom-cursor-active input,
+  html.custom-cursor-active textarea,
+  html.custom-cursor-active [contenteditable] {
+    cursor: text !important;
+  }
+}
 
 @keyframes grain-shift {
   0%, 100% { transform: translate(0, 0); }
@@ -317,6 +330,16 @@
 .traffic-btn-green  { background-color: #10B981; box-shadow: 0 0 8px rgba(16, 185, 129, 0.6); }
 
 /* ─── Custom Scrollbars ─── */
+:root { color-scheme: light; }
+.dark { color-scheme: dark; }
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(212, 175, 55, 0.35) transparent;
+}
+.dark {
+  scrollbar-color: rgba(212, 175, 55, 0.45) transparent;
+}
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: rgba(212, 175, 55, 0.35); border-radius: 9999px; }

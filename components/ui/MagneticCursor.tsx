@@ -34,8 +34,20 @@ export function MagneticCursor() {
     return () => media.removeEventListener("change", handleMediaChange);
   }, []);
 
+  const cursorActive = mounted && isPointerDevice && !prefersReducedMotion;
+
   useEffect(() => {
-    if (!mounted || !isPointerDevice || prefersReducedMotion) return;
+    const root = document.documentElement;
+    if (cursorActive) {
+      root.classList.add("custom-cursor-active");
+    } else {
+      root.classList.remove("custom-cursor-active");
+    }
+    return () => root.classList.remove("custom-cursor-active");
+  }, [cursorActive]);
+
+  useEffect(() => {
+    if (!cursorActive) return;
 
     let animFrame: number;
 
@@ -102,9 +114,9 @@ export function MagneticCursor() {
       document.removeEventListener("mouseleave", onMouseLeave);
       document.removeEventListener("mouseenter", onMouseEnter);
     };
-  }, [mounted, isPointerDevice, prefersReducedMotion, isVisible]);
+  }, [cursorActive, isVisible]);
 
-  if (!mounted || !isPointerDevice || prefersReducedMotion) {
+  if (!cursorActive) {
     return null;
   }
 
@@ -118,20 +130,20 @@ export function MagneticCursor() {
       {/* Ambient Large Gold Studio Flashlight Aura */}
       <div
         ref={auraRef}
-        className="absolute -top-[200px] -left-[200px] w-[400px] h-[400px] rounded-full bg-[radial-gradient(circle,rgba(212,175,55,0.06)_0%,rgba(212,175,55,0.01)_50%,transparent_70%)] blur-2xl pointer-events-none will-change-transform"
+        className="absolute -top-[100px] -left-[100px] w-[200px] h-[200px] rounded-full bg-[radial-gradient(circle,rgba(212,175,55,0.05)_0%,rgba(212,175,55,0.015)_50%,transparent_70%)] blur-xl pointer-events-none will-change-transform"
       />
 
       {/* Trailing Fluid Luxury Ring */}
       <div
         ref={ringRef}
-        className={`absolute -top-5 -left-5 w-10 h-10 rounded-full border transition-[border-color,background-color,width,height,transform-origin] duration-200 pointer-events-none flex items-center justify-center will-change-transform ${
+        className={`absolute -top-4 -left-4 w-8 h-8 rounded-full border transition-[border-color,background-color,width,height,transform-origin] duration-200 pointer-events-none flex items-center justify-center will-change-transform ${
           cursorText
             ? "w-24 h-8 -top-4 -left-12 rounded-full border-[#D4AF37] bg-black/85 backdrop-blur-md shadow-[0_0_20px_rgba(212,175,55,0.4)]"
             : isHovered
-            ? "w-14 h-14 -top-7 -left-7 border-[#F3E5AB] bg-[#D4AF37]/10 shadow-[0_0_15px_rgba(212,175,55,0.3)]"
+            ? "w-12 h-12 -top-6 -left-6 border-[#F3E5AB]/80 bg-[#D4AF37]/10 shadow-[0_0_15px_rgba(212,175,55,0.3)]"
             : isClicked
-            ? "w-8 h-8 -top-4 -left-4 border-[#D4AF37] bg-[#D4AF37]/20 scale-90"
-            : "border-[#D4AF37]/40 bg-transparent"
+            ? "w-7 h-7 -top-[14px] -left-[14px] border-[#D4AF37] bg-[#D4AF37]/20 scale-90"
+            : "border-[#D4AF37]/30 bg-transparent"
         }`}
       >
         {cursorText && (
