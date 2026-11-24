@@ -20,7 +20,7 @@ test("Design System Token Integrity in app/globals.css", () => {
   // Check dark mode tokens
   assert.ok(css.includes("--canvas-bg: #0B0B0C;"), "Dark mode canvas background should be Deep Obsidian (#0B0B0C)");
   assert.ok(css.includes("--gold-primary: #D4AF37;"), "Dark mode gold-primary should be Royal Gold (#D4AF37)");
-  assert.ok(css.includes("--surface-elevated: #121214;"), "Dark mode surface-elevated should be Elevated Obsidian (#121214)");
+  assert.ok(css.includes("--surface-elevated: #16161B;"), "Dark mode surface-elevated should be Elevated Obsidian (#16161B)");
 
   // Verify --gold-primary is NOT mapped to indigo/purple (#6366F1)
   assert.ok(!css.match(/--gold-primary:\s*#6366F1/i), "Conflicting alias --gold-primary -> #6366F1 must be eliminated");

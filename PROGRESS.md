@@ -1,7 +1,7 @@
 # PROJECT PROGRESS
 
 **Overall Progress:** 100%  
-**Project State:** `PHASE 28 — ARCHITECTURAL PORTRAIT PORTAL & EXECUTIVE MOTION REFINEMENT (COMPLETED)`  
+**Project State:** `PHASE 33 — MOTION & LUXURY CONSISTENCY PASS (COMPLETED)`  
 **Design Reference Authority:** Primary Visual Reference (`new_design.png`), Authentic Portrait (`abdulghani.png`), and Official 3D Monogram Emblem (`public/images/brand/as-logo-3d.png`)  
 **Current Branch:** `main`  
 **Canonical Phases Completed:**
@@ -29,10 +29,18 @@
 - Phase 26 — Master Animation, Micro-Interactions & Luxury Motion Elevation (Milestone 26)
 - Phase 27 — Ultra-Luxury 3D Kinetic Elevation & Volumetric System (Milestone 27)
 - Phase 28 — Architectural Portrait Portal & Executive Motion Refinement (Milestone 28)
+- Phase 33 — Motion & Luxury Consistency Pass (Site-Wide)
 
 ---
 
 ## COMPLETED
+- [x] **PHASE 33 — MOTION & LUXURY CONSISTENCY PASS:**
+  - [x] Dark-mode clarity tokens (`--surface-elevated #16161B`, `--surface-card #17171C`, stronger hairlines) + new utilities `.gold-shimmer-text`, `.page-enter`, `.grain-overlay`, `.gold-edge-flow`.
+  - [x] `Magnetic.tsx` cursor-pull wrapper on primary CTAs (Navbar, Contact, Case Study demo).
+  - [x] Session-gated gold `Preloader` with curtain exit + failsafe.
+  - [x] Hero gold shimmer title + film grain overlay.
+  - [x] Staggered `ScrollReveal` on projects catalog, all 8 case-study sections, credentials, showcase, footer; `CountUp` metrics; route transitions.
+  - [x] Verified: 74/74 tests, 0 type errors, 0 lint warnings, 36/36 SSG routes.
 - [x] **PHASE 09 — INTERACTIVE DEMO SYSTEM & DATA INTEGRITY GATE:**
   - [x] Completed `PROJECT_DATA_AUDIT.md`, `DEMO_COVERAGE_MATRIX.md`, and `DEMO_SECURITY_REVIEW.md`.
   - [x] Implemented YUSRA desktop ledger simulation, Campus IT topology monitor, MetaAlgorithm Lab benchmark runner, and AuraLedger sandbox.

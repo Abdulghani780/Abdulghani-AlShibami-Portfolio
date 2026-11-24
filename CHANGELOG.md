@@ -8,6 +8,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **Motion & Luxury Consistency Pass (site-wide):**
+  - Session-gated gold monogram **Preloader** with curtain-wipe exit (shows once per session, 2.5s failsafe, reduced-motion safe).
+  - **Magnetic pull** on primary CTAs (Navbar "LET'S BUILD", Contact "CONTACT ME", Case Study demo launch) via new `components/ui/Magnetic.tsx`.
+  - **Gold shimmer sweep** on the hero display title and subtle **film grain** overlay.
+  - **Staggered scroll reveals** now cover the projects catalog, every case-study section, the credentials catalog, the showcase page, and the footer.
+  - **Count-up metrics** on case-study telemetry cards and animated **gold flow lines** on architecture topology stages.
+  - **Route-change page transitions** (`page-enter`) and a gold hairline accent on the footer.
+- **Clearer Dark Mode:** raised dark surface elevation (`#16161B`/`#17171C`) and stronger hairline borders for better card legibility while preserving the Obsidian & Royal Gold identity.
+
+### Verified
+- 74 / 74 automated tests pass (`pnpm test`).
+- 0 TypeScript errors, 0 ESLint warnings, 36 / 36 static routes (`pnpm build`).
+
 ---
 
 ## [2.7.0] - 2026-10-06 — Architectural Portrait Portal & Executive Motion Refinement
