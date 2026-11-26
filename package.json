@@ -38,5 +38,24 @@
     "overrides": {
       "postcss": "^8.5.28"
     }
-  }
+  },
+  "description": "> **عبدالغني الشبامي | Abdulghani Al-Shibami**  \r > Computer Systems Engineer | AI Solutions Architect | Full-Stack Developer  \r > Luxury Black & Royal Gold Visual Identity | Bilingual Arabic & English (RTL/LTR) | Production-Grade Platform  \r > **Repository:** [https://github.com/Abdulghani780/Abdulghani-AlShibami-Portfolio](https://github.com/Abdulghani780/Abdulghani-AlShibami-Portfolio)",
+  "main": "check-site.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib",
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Abdulghani780/Abdulghani-AlShibami-Portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Abdulghani780/Abdulghani-AlShibami-Portfolio/issues"
+  },
+  "homepage": "https://github.com/Abdulghani780/Abdulghani-AlShibami-Portfolio#readme"
 }

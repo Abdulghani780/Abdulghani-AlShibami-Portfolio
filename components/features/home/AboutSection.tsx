@@ -30,162 +30,173 @@ export function AboutSection({ locale }: { locale: Locale }) {
       ),
     },
     {
-      title: isRtl ? "الذكاء الاصطناعي" : "Artificial Intelligence",
+      title: isRtl ? "هندسة الذكاء الاصطناعي" : "AI Engineering",
       icon: (
         <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-          <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83" />
+          <path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-2.26c-1.81-1.27-3-3.36-3-5.74a7 7 0 0 1 7-7z" />
+          <path d="M12 9v4" />
+          <path d="M12 17h.01" />
         </svg>
       ),
     },
     {
-      title: isRtl ? "هندسة الأوامر" : "Prompt Engineering",
+      title: isRtl ? "البنية التحتية" : "Infrastructure",
       icon: (
         <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-          <polyline points="4 17 10 11 4 5" />
-          <line x1="12" y1="19" x2="20" y2="19" />
-        </svg>
-      ),
-    },
-    {
-      title: isRtl ? "التفكير المنظومي" : "Systems Thinking",
-      icon: (
-        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-          <circle cx="12" cy="12" r="3" />
-          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
-        </svg>
-      ),
-    },
-    {
-      title: isRtl ? "التدريب التقني" : "Technical Training",
-      icon: (
-        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-          <circle cx="9" cy="7" r="4" />
-          <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-          <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+          <rect x="2" y="5" width="20" height="14" rx="2" />
+          <path d="M6 12h12M12 5v7M12 19v2" />
         </svg>
       ),
     },
   ];
 
-  const milestones = [
+  const journey = [
     {
-      step: "01",
-      role: isRtl ? "طالب تقنية معلومات" : "IT STUDENT",
-      desc: isRtl ? "بناء الأساس الأكاديمي والتقني" : "Learning the foundation",
+      year: "2020",
+      title: isRtl ? "البداية" : "BEGINNING",
+      desc: isRtl ? "بدء رحلة تطوير البرمجيات والتعلم الذاتي" : "Started software development journey, self-taught foundations",
     },
     {
-      step: "02",
-      role: isRtl ? "هندسة البرمجيات" : "SOFTWARE ENGINEERING",
-      desc: isRtl ? "بناء وتطوير تطبيقات واقعية" : "Building real applications",
+      year: "2022",
+      title: isRtl ? "الجامعة" : "UNIVERSITY",
+      desc: isRtl ? "بكالوريوس تكنولوجيا المعلومات — جامعة العلوم الحديثة" : "Bachelor's IT — University of Modern Sciences",
     },
     {
-      step: "03",
-      role: isRtl ? "الذكاء الاصطناعي والأتمتة" : "AI & AUTOMATION",
-      desc: isRtl ? "استكشاف الأنظمة الذكية والنماذج التطبيقية" : "Exploring intelligent systems",
+      year: "2023",
+      title: isRtl ? "المشروع الأول" : "FIRST PROJECT",
+      desc: isRtl ? "نظام تتبع البنية التحتية الجامعية (Campus IT Tracker)" : "Campus IT Infrastructure Tracker — flagship project",
     },
     {
-      step: "04",
-      role: isRtl ? "هندسة نظم الذكاء الاصطناعي" : "AI ENGINEERING",
-      desc: isRtl ? "صناعة المستقبل بالحلول المتقدمة" : "Creating the future",
+      year: "2024",
+      title: isRtl ? "الذكاء الاصطناعي" : "AI ENGINEERING",
+      desc: isRtl ? "تخصص في هندسة الأوامر، الرؤية الحاسوبية، والأتمتة" : "Specialized in Prompt Engineering, Computer Vision, Automation",
+    },
+    {
+      year: "2025",
+      title: isRtl ? "الآن" : "NOW",
+      desc: isRtl ? "بناء حلول ذكية، مشاركة المعرفة، هندسة على الملأ" : "Building intelligent solutions, sharing knowledge, engineering in public",
     },
   ];
 
   return (
     <section
       id="about"
-      className="relative w-full bg-white dark:bg-[#0B0B0C] py-20 lg:py-28 border-b border-black/5 dark:border-white/5 transition-colors"
+      className="relative w-full bg-background dark:bg-background text-foreground dark:text-foreground py-20 lg:py-28 border-b border-border/5 dark:border-border/5 transition-colors"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Heading */}
-        <ScrollReveal isRtl={isRtl} direction="up">
-          <div className="mb-12 sm:mb-16">
-            <h2 className="font-sans font-black text-3xl sm:text-4xl uppercase tracking-tight text-[#0B0B0C] dark:text-white">
-              {isRtl ? "من هو عبدالغني؟" : "WHO IS ABDULGHANI?"}
-            </h2>
-            <p className="mt-2 text-sm sm:text-base font-semibold tracking-wider text-[#B88E1F] dark:text-[#E2C366] uppercase">
-              {isRtl
-                ? "طالب تقنية معلومات ← صانع برمجيات ← ممارس ذكاء اصطناعي"
-                : "IT Student → Software Builder → AI Practitioner"}
-            </p>
-          </div>
-        </ScrollReveal>
-
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start">
-          {/* Left Column: Personal Narrative & 6 Circular Badges */}
-          <div className="lg:col-span-7 space-y-8">
-            <ScrollReveal isRtl={isRtl} direction="up">
-              <p className="text-base sm:text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed font-sans">
-                {isRtl
-                  ? "أنا عبدالغني الشبامي، طالب تقنية معلومات من اليمن، شغوف بالتكنولوجيا والذكاء الاصطناعي وبناء الأنظمة النافعة. أؤمن بالتعلم المستمر، وحل المشكلات الحقيقية، وتحويل الأفكار إلى حلول برمجية عملية قابلة للتطوير."
-                  : "I'm Abdulghani Al-Shibami, an IT student from Yemen, passionate about technology, artificial intelligence, and building useful systems. I believe in continuous learning, solving real problems, and turning ideas into practical solutions."}
-              </p>
-            </ScrollReveal>
-
-            {/* 6 Circular Outline Badges */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4">
-              {corePillars.map((pillar, idx) => (
-                <ScrollReveal key={idx} delay={idx * 60} isRtl={isRtl} direction="up">
-                  <TiltCard className="flex flex-col items-center text-center p-4 rounded-xl border border-black/10 dark:border-white/10 hover:border-gold-primary/60 bg-[#FAF9F6] dark:bg-[#121214] transition-all hover:scale-[1.02] group">
-                    <div className="w-12 h-12 rounded-full border border-gold-primary/40 bg-gold-primary/10 flex items-center justify-center text-gold-dark dark:text-gold-light mb-3 group-hover:bg-gold-primary group-hover:text-white transition-colors">
-                      {pillar.icon}
-                    </div>
-                    <span className="text-xs font-bold text-zinc-800 dark:text-zinc-200 uppercase tracking-wider leading-snug">
-                      {pillar.title}
-                    </span>
-                  </TiltCard>
-                </ScrollReveal>
-              ))}
-            </div>
-          </div>
-
-          {/* Right Column: Vertical Progression + Shibam Quote */}
-          <div className="lg:col-span-5 flex flex-col justify-between h-full space-y-8">
-            {/* Timeline Milestones */}
-            <div className="relative ps-6 space-y-6 before:absolute before:start-2 before:top-2 before:bottom-2 before:w-[2px] before:bg-gold-primary/30">
-              {milestones.map((m, idx) => (
-                <ScrollReveal key={idx} delay={idx * 80 + 100} isRtl={isRtl} direction="up">
-                  <div className="relative group">
-                    {/* Node Dot */}
-                    <span className="absolute -start-[27px] top-1.5 w-3.5 h-3.5 rounded-full border-2 border-gold-primary bg-white dark:bg-[#0B0B0C] group-hover:bg-gold-primary transition-colors" />
-
-                    <div className="bg-[#FAF9F6] dark:bg-[#121214] p-4 rounded-xl border border-black/5 dark:border-white/10 hover:border-gold-primary/50 transition-colors">
-                      <span className="text-[11px] font-mono font-bold text-gold-dark dark:text-gold-light uppercase tracking-wider">
-                        {m.step} • {m.role}
-                      </span>
-                      <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 font-medium mt-0.5">
-                        {m.desc}
-                      </p>
-                    </div>
-                  </div>
-                </ScrollReveal>
-              ))}
-            </div>
-
-            {/* Quote Callout with Shibam Architectural Silhouette */}
-            <ScrollReveal delay={300} isRtl={isRtl} direction="up">
-              <TiltCard className="relative p-6 rounded-2xl border border-gold-primary/30 bg-gradient-to-br from-[#FAF9F6] to-white dark:from-[#121214] dark:to-[#0B0B0C] overflow-hidden shadow-sm">
-                {/* Shibam Ancient City Watermark */}
-                <div className="absolute end-0 bottom-0 opacity-15 dark:opacity-20 pointer-events-none w-36 h-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+          {/* Left Column: Portrait + Core Pillars */}
+          <div className="lg:col-span-5 space-y-8">
+            {/* Portrait Card */}
+            <ScrollReveal isRtl={isRtl} direction="right">
+              <TiltCard className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-border dark:border-border bg-surface dark:bg-surfaceElevated group hover:border-brand/50 transition-all">
+                {/* Shibam Skyline Watermark */}
+                <div className="absolute inset-0 opacity-10 dark:opacity-5 pointer-events-none flex items-end justify-center pb-4">
                   <Image
                     src="/images/showcase/shibam-skyline.png"
                     alt="Shibam Skyline"
-                    width={144}
-                    height={96}
+                    width={200}
+                    height={130}
                     className="object-contain"
                   />
                 </div>
 
-                <div className="relative z-10">
-                  <span className="font-serif text-3xl sm:text-4xl text-gold-primary leading-none block mb-1">“</span>
-                  <p className="font-serif italic text-base sm:text-lg text-zinc-800 dark:text-zinc-100 font-medium leading-relaxed">
-                    {isRtl ? "أنظمة أفضل من أجل غدٍ أذكى." : "Better systems for a smarter tomorrow."}
-                  </p>
-                  <div className="mt-3 text-xs font-mono tracking-widest uppercase text-gold-dark dark:text-gold-light">
-                    — Abdulghani Al-Shibami
-                  </div>
-                </div>
+                {/* Portrait Image */}
+                <Image
+                  src="/images/profile/abdulghani-portrait.webp"
+                  alt="Abdulghani Al-Shibami — AI Engineer & Software Developer"
+                  fill
+                  priority
+                  className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                />
+
+                {/* Gold Accent Bar */}
+                <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-brand to-transparent dark:via-brand-light" />
               </TiltCard>
+            </ScrollReveal>
+
+            {/* Core Pillars */}
+            <ScrollReveal delay={100} isRtl={isRtl} direction="right">
+              <div className="grid grid-cols-2 gap-4">
+                {corePillars.map((pillar, idx) => (
+                  <TiltCard key={idx} className="p-5 rounded-xl border border-border dark:border-border bg-surface dark:bg-surfaceElevated hover:border-brand/50 transition-all flex flex-col items-center text-center group">
+                    <div className="w-10 h-10 rounded-lg bg-brand/10 dark:bg-brandLight/20 flex items-center justify-center text-brand dark:text-brand-light mb-3 group-hover:bg-brand group-hover:text-background dark:group-hover:bg-brandLight dark:group-hover:text-background transition-colors">
+                      {pillar.icon}
+                    </div>
+                    <span className="text-sm font-semibold text-foreground dark:text-foreground leading-snug">
+                      {pillar.title}
+                    </span>
+                  </TiltCard>
+                ))}
+              </div>
+            </ScrollReveal>
+          </div>
+
+          {/* Right Column: Bio + Journey Timeline */}
+          <div className="lg:col-span-7 space-y-10">
+            {/* Header */}
+            <ScrollReveal isRtl={isRtl} direction="left">
+              <div className="mb-6">
+                <span className="font-mono text-xs font-bold uppercase tracking-widest text-brand dark:text-brand-light">
+                  {isRtl ? "من أنا" : "WHO IS ABDULGHANI"}
+                </span>
+                <h2 className="font-serif font-bold text-3xl sm:text-4xl lg:text-5xl uppercase tracking-tight text-foreground dark:text-foreground mt-2 leading-tight">
+                  {isRtl ? "مهندس ذكاء اصطناعي<br />و مطور أنظمة ذكية" : "AI ENGINEER &<br />INTELLIGENT SYSTEMS DEVELOPER"}
+                </h2>
+              </div>
+            </ScrollReveal>
+
+            {/* Bio Paragraphs */}
+            <ScrollReveal delay={100} isRtl={isRtl} direction="left">
+              <div className="space-y-4 text-base sm:text-lg text-muted-foreground dark:text-muted-foreground leading-relaxed font-sans">
+                <p>
+                  {isRtl
+                    ? "أنا عبدالغني الشبامي، مهندس ذكاء اصطناعي ومطور برمجيات شغوف ببناء حلول ذكية تحل مشكلات حقيقية. أجمع بين الخبرة في تطوير البرمجيات التقليدية وهندسة الذكاء الاصطناعي الحديثة لإنشاء أنظمة عملية وقابلة للتوسع."
+                    : "I'm Abdulghani Al-Shibami, an AI Engineer and Software Developer passionate about building intelligent solutions that solve real problems. I bridge traditional software engineering with modern AI to create practical, scalable systems."}
+                </p>
+                <p>
+                  {isRtl
+                    ? "مشاريعي الرائدة تشمل: نظام تتبع البنية التحتية الجامعية (Campus IT Tracker) — نظام شامل لإدارة أصول وشبكات الحرم الجامعي بتقنيات C# و Oracle، ومختبر الخوارزميات التفاعلي (MetaAlgorithm Lab) — منصة تعليمية لتصور وتحليل تعقيد الخوارزميات."
+                    : "My flagship projects include: Campus IT Infrastructure Tracker — a comprehensive campus asset and network management system built with C# and Oracle, and MetaAlgorithm Lab — an interactive platform for algorithm complexity visualization and analysis."}
+                </p>
+                <p>
+                  {isRtl
+                    ? "أؤمن بـ 'الهندسة على الملأ' — بناء الكود في العلن، مشاركة المعرفة، والنمو مع المجتمع التقني العالمي."
+                    : "I believe in 'Engineering in Public' — building in the open, sharing knowledge, and growing with the global tech community."}
+                </p>
+              </div>
+            </ScrollReveal>
+
+            {/* Journey Timeline */}
+            <ScrollReveal delay={200} isRtl={isRtl} direction="left">
+              <div className="relative">
+                {/* Vertical Line */}
+                <div className="absolute start-3 top-0 bottom-0 w-0.5 bg-brand/20 dark:bg-brandLight/20" aria-hidden="true" />
+                
+                <div className="space-y-8 ps-10">
+                  {journey.map((item, idx) => (
+                    <div key={idx} className="relative group">
+                      {/* Timeline Dot */}
+                      <div className="absolute start-3 -translate-x-1/2 w-3 h-3 rounded-full bg-background dark:bg-background border-2 border-brand dark:border-brandLight transition-all duration-300 group-hover:scale-125 group-hover:border-brandLight dark:group-hover:border-brand z-10" />
+                      
+                      <div className="space-y-1">
+                        <div className="flex items-baseline gap-3">
+                          <span className="font-mono text-sm font-bold text-brand dark:text-brandLight whitespace-nowrap">
+                            {item.year}
+                          </span>
+                          <span className="font-sans font-bold text-sm uppercase tracking-wider text-foreground dark:text-foreground">
+                            {item.title}
+                          </span>
+                        </div>
+                        <p className="text-sm text-muted-foreground dark:text-muted-foreground font-sans leading-relaxed">
+                          {item.desc}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </ScrollReveal>
           </div>
         </div>

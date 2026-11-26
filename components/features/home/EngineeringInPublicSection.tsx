@@ -56,15 +56,17 @@ export function EngineeringInPublicSection({ locale }: { locale: Locale }) {
   ];
 
   return (
-    <section className="relative w-full bg-[#0B0B0D] dark:bg-[#0B0B0D] text-white py-20 lg:py-28 border-b border-white/10 overflow-hidden">
+    <section
+      className="relative w-full bg-background dark:bg-background text-foreground dark:text-foreground py-20 lg:py-28 border-b border-border/10 dark:border-border/10 overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <ScrollReveal isRtl={isRtl} direction="up">
           <div className="mb-12 sm:mb-16">
-            <h2 className="font-serif font-bold text-2xl sm:text-3xl uppercase tracking-wider text-white">
+            <h2 className="font-serif font-bold text-2xl sm:text-3xl uppercase tracking-wider text-foreground dark:text-foreground">
               {isRtl ? "الهندسة على الملأ" : "ENGINEERING IN PUBLIC"}
             </h2>
-            <p className="mt-1 text-xs sm:text-sm font-mono tracking-widest text-[#D4AF37] uppercase font-bold">
+            <p className="mt-1 text-xs sm:text-sm font-mono tracking-widest text-brand dark:text-brandLight uppercase font-bold">
               {isRtl ? "كود. بناء. مشاركة. نمو." : "Code. Build. Share. Grow."}
             </p>
           </div>
@@ -74,45 +76,45 @@ export function EngineeringInPublicSection({ locale }: { locale: Locale }) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Column 1: GitHub Contribution Heatmap */}
           <ScrollReveal delay={0} isRtl={isRtl} direction="up" className="h-full">
-            <TiltCard className="h-full p-5 rounded-2xl border border-white/10 bg-[#141418] flex flex-col justify-between shadow-sm hover:border-[#D4AF37]/40 transition-colors">
+            <TiltCard className="h-full p-5 rounded-2xl border border-border/10 dark:border-border/10 bg-surfaceOverlay dark:bg-surfaceOverlay flex flex-col justify-between shadow-sm hover:border-brand/40 transition-colors">
               <div>
-                <span className="font-mono text-xs font-bold text-zinc-400 uppercase tracking-wider block mb-4">
+                <span className="font-mono text-xs font-bold text-muted-foreground dark:text-muted-foreground uppercase tracking-wider block mb-4">
                   {isRtl ? "نشاط المساهمات" : "CONTRIBUTION ACTIVITY"}
                 </span>
 
                 {/* 52-Week Simulated Matrix Heatmap */}
-                <div className="grid grid-cols-12 gap-1.5 p-3 rounded-xl bg-black/60 border border-white/5">
+                <div className="grid grid-cols-12 gap-1.5 p-3 rounded-xl bg-background/60 dark:bg-background/60 border border-border/10 dark:border-border/10">
                   {Array.from({ length: 48 }).map((_, i) => {
                     const level = (i * 7 + 3) % 5;
                     const color =
                       level === 0
-                        ? "bg-zinc-800"
+                        ? "bg-muted/30"
                         : level === 1
-                        ? "bg-emerald-950"
+                        ? "bg-emerald-950/50"
                         : level === 2
-                        ? "bg-emerald-800"
+                        ? "bg-emerald-800/50"
                         : level === 3
-                        ? "bg-emerald-600"
-                        : "bg-emerald-400";
+                        ? "bg-emerald-600/50"
+                        : "bg-emerald-400/50";
                     return <div key={i} className={`w-full aspect-square rounded-[2px] ${color} transition-transform hover:scale-125`} />;
                   })}
                 </div>
 
-                <div className="flex justify-between items-center text-[10px] font-mono text-zinc-500 mt-2 px-1">
+                <div className="flex justify-between items-center text-[10px] font-mono text-muted-foreground dark:text-muted-foreground mt-2 px-1">
                   <span>Jan</span>
                   <span>Jun</span>
                   <span>Dec</span>
                 </div>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-white/5 font-mono text-[11px] text-zinc-400">
+              <div className="mt-4 pt-3 border-t border-border/10 dark:border-border/10 font-mono text-[11px] text-muted-foreground dark:text-muted-foreground">
                 {isRtl ? (
                   <span>
-                    <CountUp end={679} duration={1400} className="text-[#D4AF37] font-bold" /> مساهمة في العام الماضي
+                    <CountUp end={679} duration={1400} className="text-brand dark:text-brandLight font-bold" /> مساهمة في العام الماضي
                   </span>
                 ) : (
                   <span>
-                    <CountUp end={679} duration={1400} className="text-[#D4AF37] font-bold" /> contributions in the last year
+                    <CountUp end={679} duration={1400} className="text-brand dark:text-brandLight font-bold" /> contributions in the last year
                   </span>
                 )}
               </div>
@@ -121,9 +123,9 @@ export function EngineeringInPublicSection({ locale }: { locale: Locale }) {
 
           {/* Column 2: Pinned Repositories */}
           <ScrollReveal delay={100} isRtl={isRtl} direction="up" className="h-full">
-            <TiltCard className="h-full p-5 rounded-2xl border border-white/10 bg-[#141418] flex flex-col justify-between shadow-sm hover:border-[#D4AF37]/40 transition-colors">
+            <TiltCard className="h-full p-5 rounded-2xl border border-border/10 dark:border-border/10 bg-surfaceOverlay dark:bg-surfaceOverlay flex flex-col justify-between shadow-sm hover:border-brand/40 transition-colors">
               <div>
-                <span className="font-mono text-xs font-bold text-zinc-400 uppercase tracking-wider block mb-4">
+                <span className="font-mono text-xs font-bold text-muted-foreground dark:text-muted-foreground uppercase tracking-wider block mb-4">
                   {isRtl ? "المستودعات المثبتة" : "PINNED REPOSITORIES"}
                 </span>
 
@@ -134,17 +136,17 @@ export function EngineeringInPublicSection({ locale }: { locale: Locale }) {
                       href={repo.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2.5 rounded-xl border border-white/5 bg-white/5 hover:border-[#D4AF37]/40 block transition-all hover:bg-white/10 group"
+                      className="p-2.5 rounded-xl border border-border/5 dark:border-border/5 bg-background/5 dark:bg-background/5 hover:border-brand/40 block transition-all hover:bg-background/10 dark:hover:bg-background/10 group"
                     >
                       <div className="flex items-center justify-between">
-                        <span className="font-mono text-xs font-bold text-zinc-200 group-hover:text-[#D4AF37] transition-colors">
+                        <span className="font-mono text-xs font-bold text-foreground dark:text-foreground group-hover:text-brand dark:group-hover:text-brandLight transition-colors">
                           {repo.name}
                         </span>
-                        <span className="font-mono text-[10px] text-zinc-400 flex items-center gap-1">
+                        <span className="font-mono text-[10px] text-muted-foreground dark:text-muted-foreground flex items-center gap-1">
                           ★ <CountUp end={repo.stars} duration={1200} />
                         </span>
                       </div>
-                      <span className="text-[10px] text-zinc-500 font-mono block mt-0.5">
+                      <span className="text-[10px] text-muted-foreground dark:text-muted-foreground font-mono block mt-0.5">
                         {repo.desc}
                       </span>
                     </a>
@@ -152,7 +154,7 @@ export function EngineeringInPublicSection({ locale }: { locale: Locale }) {
                 </div>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-white/5 font-mono text-[10px] text-zinc-500">
+              <div className="mt-4 pt-3 border-t border-border/10 dark:border-border/10 font-mono text-[10px] text-muted-foreground dark:text-muted-foreground">
                 GIT_HOST // GITHUB_VERIFIED
               </div>
             </TiltCard>
@@ -160,21 +162,21 @@ export function EngineeringInPublicSection({ locale }: { locale: Locale }) {
 
           {/* Column 3: Recent Activity (Commits Timeline) */}
           <ScrollReveal delay={200} isRtl={isRtl} direction="up" className="h-full">
-            <TiltCard className="h-full p-5 rounded-2xl border border-white/10 bg-[#141418] flex flex-col justify-between shadow-sm hover:border-[#D4AF37]/40 transition-colors">
+            <TiltCard className="h-full p-5 rounded-2xl border border-border/10 dark:border-border/10 bg-surfaceOverlay dark:bg-surfaceOverlay flex flex-col justify-between shadow-sm hover:border-brand/40 transition-colors">
               <div>
-                <span className="font-mono text-xs font-bold text-zinc-400 uppercase tracking-wider block mb-4">
+                <span className="font-mono text-xs font-bold text-muted-foreground dark:text-muted-foreground uppercase tracking-wider block mb-4">
                   {isRtl ? "النشاط البرمجي الأخير" : "RECENT ACTIVITY"}
                 </span>
 
                 <div className="space-y-3">
                   {recentCommits.map((c, idx) => (
                     <div key={idx} className="flex items-start gap-2.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] mt-1.5 shrink-0 animate-pulse" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-brand dark:bg-brandLight mt-1.5 shrink-0 animate-pulse" />
                       <div>
-                        <p className="text-xs font-mono text-zinc-300 leading-snug">
+                        <p className="text-xs font-mono text-foreground dark:text-foreground leading-snug">
                           {c.msg}
                         </p>
-                        <span className="text-[10px] font-mono text-zinc-500">
+                        <span className="text-[10px] font-mono text-muted-foreground dark:text-muted-foreground">
                           {c.time}
                         </span>
                       </div>
@@ -183,7 +185,7 @@ export function EngineeringInPublicSection({ locale }: { locale: Locale }) {
                 </div>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-white/5 font-mono text-[10px] text-zinc-500">
+              <div className="mt-4 pt-3 border-t border-border/10 dark:border-border/10 font-mono text-[10px] text-muted-foreground dark:text-muted-foreground">
                 BRANCH // MAIN
               </div>
             </TiltCard>
@@ -191,10 +193,10 @@ export function EngineeringInPublicSection({ locale }: { locale: Locale }) {
 
           {/* Column 4: Syntax-Highlighted Code Editor */}
           <ScrollReveal delay={300} isRtl={isRtl} direction="up" className="h-full">
-            <TiltCard className="h-full p-5 rounded-2xl border border-white/10 bg-[#141418] flex flex-col justify-between shadow-sm hover:border-[#D4AF37]/40 transition-colors">
+            <TiltCard className="h-full p-5 rounded-2xl border border-border/10 dark:border-border/10 bg-surfaceOverlay dark:bg-surfaceOverlay flex flex-col justify-between shadow-sm hover:border-brand/40 transition-colors">
               <div>
-                <div className="flex items-center justify-between mb-3 border-b border-white/5 pb-2">
-                  <span className="font-mono text-[10px] text-zinc-400">Recent Code</span>
+                <div className="flex items-center justify-between mb-3 border-b border-border/10 dark:border-border/10 pb-2">
+                  <span className="font-mono text-[10px] text-muted-foreground dark:text-muted-foreground">Recent Code</span>
                   <div className="flex gap-1.5">
                     <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
                     <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
@@ -202,7 +204,7 @@ export function EngineeringInPublicSection({ locale }: { locale: Locale }) {
                   </div>
                 </div>
 
-                <pre className="font-mono text-[11px] leading-relaxed text-zinc-300 overflow-x-auto p-2 rounded-lg bg-black/60">
+                <pre className="font-mono text-[11px] leading-relaxed text-foreground dark:text-foreground overflow-x-auto p-2 rounded-lg bg-background/60 dark:bg-background/60">
                   <code>
                     <span className="text-purple-400">class</span>{" "}
                     <span className="text-emerald-400">Solution</span> {"{\n"}
@@ -215,7 +217,7 @@ export function EngineeringInPublicSection({ locale }: { locale: Locale }) {
                 </pre>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-white/5 font-mono text-[10px] text-zinc-500 flex justify-between">
+              <div className="mt-4 pt-3 border-t border-border/10 dark:border-border/10 font-mono text-[10px] text-muted-foreground dark:text-muted-foreground flex justify-between">
                 <span>C#</span>
                 <span>UTF-8</span>
               </div>

@@ -74,19 +74,21 @@ export function AbdulghaniMethodSection({ locale }: { locale: Locale }) {
   ];
 
   return (
-    <section className="relative w-full bg-[#0B0B0D] dark:bg-[#0B0B0D] text-white py-20 lg:py-28 border-b border-white/10 overflow-hidden">
+    <section
+      className="relative w-full bg-background dark:bg-background text-foreground dark:text-foreground py-20 lg:py-28 border-b border-border/10 dark:border-border/10 overflow-hidden"
+    >
       {/* Subtle Golden Wavy Wave / Contour Lines Background */}
       <div className="absolute inset-0 pointer-events-none opacity-20">
         <svg className="w-full h-full" viewBox="0 0 1440 400" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M -100 200 C 300 100, 600 300, 1000 180 C 1200 120, 1400 250, 1600 200"
-            stroke="#D4AF37"
+            stroke="var(--color-brand)"
             strokeWidth="1.5"
             strokeDasharray="4 6"
           />
           <path
             d="M -100 240 C 250 150, 650 340, 950 220 C 1150 160, 1350 290, 1600 240"
-            stroke="#D4AF37"
+            stroke="var(--color-brand)"
             strokeWidth="1"
             strokeOpacity="0.6"
           />
@@ -96,12 +98,12 @@ export function AbdulghaniMethodSection({ locale }: { locale: Locale }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         {/* Title in Gold */}
         <ScrollReveal isRtl={isRtl} direction="up">
-          <h2 className="font-serif font-bold text-2xl sm:text-3xl lg:text-4xl uppercase tracking-widest text-[#D4AF37] mb-3">
+          <h2 className="font-serif font-bold text-2xl sm:text-3xl lg:text-4xl uppercase tracking-widest text-brand dark:text-brandLight mb-3">
             {isRtl ? "منهجية عبدالغني" : "THE ABDULGHANI METHOD"}
           </h2>
 
           {/* Subtitle */}
-          <p className="text-sm sm:text-base text-zinc-400 max-w-xl mx-auto font-sans mb-14 sm:mb-20">
+          <p className="text-sm sm:text-base text-muted-foreground dark:text-muted-foreground max-w-xl mx-auto font-sans mb-14 sm:mb-20">
             {isRtl
               ? "الذكاء الاصطناعي ليس مجرد أداة لتوليد الأكواد، بل هو شريك في التفكير والتصميم."
               : "AI is not just a code generator. It is a thinking partner."}
@@ -115,12 +117,12 @@ export function AbdulghaniMethodSection({ locale }: { locale: Locale }) {
               <ScrollReveal delay={idx * 70} isRtl={isRtl} direction="up">
                 <div className="flex flex-col items-center group cursor-pointer my-2">
                   {/* Node Circle */}
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border-2 border-[#D4AF37] bg-[#141418] group-hover:bg-[#D4AF37] group-hover:text-black text-[#D4AF37] flex items-center justify-center transition-all duration-300 shadow-md group-hover:shadow-[0_0_25px_rgba(212,175,55,0.4)] group-hover:scale-110 mb-3">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border-2 border-brand dark:border-brandLight bg-surfaceOverlay dark:bg-surfaceOverlay group-hover:bg-brand group-hover:text-background dark:group-hover:bg-brandLight dark:group-hover:text-background text-brand dark:text-brandLight flex items-center justify-center transition-all duration-300 shadow-md group-hover:shadow-[0_0_25px_rgba(212,175,55,0.4)] group-hover:scale-110 mb-3">
                     {step.icon}
                   </div>
 
                   {/* Step Label */}
-                  <span className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-wider text-zinc-300 group-hover:text-[#D4AF37] transition-colors whitespace-nowrap">
+                  <span className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-wider text-muted-foreground dark:text-muted-foreground group-hover:text-brand dark:group-hover:text-brandLight transition-colors whitespace-nowrap">
                     {step.title}
                   </span>
                 </div>
@@ -128,7 +130,7 @@ export function AbdulghaniMethodSection({ locale }: { locale: Locale }) {
 
               {/* Connecting Arrow */}
               {idx < steps.length - 1 && (
-                <div className="hidden md:flex items-center text-[#D4AF37]/60 animate-pulse text-lg mb-7 rtl:rotate-180">
+                <div className="hidden md:flex items-center text-brand/60 dark:text-brandLight/60 animate-pulse text-lg mb-7 rtl:rotate-180">
                   →
                 </div>
               )}

@@ -88,22 +88,22 @@ export function AILabSection({ locale }: { locale: Locale }) {
   return (
     <section
       id="ai-lab"
-      className="relative w-full bg-[#0B0B0D] dark:bg-[#0B0B0D] text-white py-20 lg:py-28 border-b border-white/10 overflow-hidden"
+      className="relative w-full bg-background dark:bg-background text-foreground dark:text-foreground py-20 lg:py-28 border-b border-border/10 dark:border-border/10 overflow-hidden"
     >
       {/* Background Subtle Tech Ambient */}
       <div className="absolute inset-0 pointer-events-none opacity-20">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#D4AF37]/10 blur-[140px] rounded-full" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-brand/10 blur-[140px] rounded-full" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header with Title and "EXPLORE MORE →" CTA */}
         <ScrollReveal isRtl={isRtl} direction="up">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 sm:mb-16 gap-4 border-b border-white/10 pb-6">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 sm:mb-16 gap-4 border-b border-border/10 dark:border-border/10 pb-6">
             <div>
-              <h2 className="font-serif font-bold text-3xl sm:text-4xl uppercase tracking-tight text-white">
+              <h2 className="font-serif font-bold text-2xl sm:text-3xl lg:text-4xl uppercase tracking-tight text-foreground dark:text-foreground">
                 {isRtl ? "مختبر الذكاء الاصطناعي" : "AI LAB"}
               </h2>
-              <p className="mt-2 text-sm sm:text-base text-zinc-400 font-sans">
+              <p className="mt-2 text-sm sm:text-base text-muted-foreground dark:text-muted-foreground font-sans">
                 {isRtl
                   ? "تجارب، أنظمة ذكية، وتطبيقات عملية مدعومة بأحدث النماذج."
                   : "Experiments, intelligent systems, and practical AI applications."}
@@ -112,7 +112,7 @@ export function AILabSection({ locale }: { locale: Locale }) {
 
             <Link
               href={`/${locale}/projects`}
-              className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold tracking-wider uppercase text-[#D4AF37] hover:text-[#F3E5AB] transition-colors group"
+              className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold tracking-wider uppercase text-brand dark:text-brandLight hover:text-brandHover dark:hover:text-brandHover transition-colors group"
             >
               <span>{isRtl ? "استكشف المزيد" : "EXPLORE MORE"}</span>
               <span className="transition-transform duration-200 group-hover:translate-x-1 rtl:group-hover:-translate-x-1">→</span>
@@ -124,26 +124,26 @@ export function AILabSection({ locale }: { locale: Locale }) {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-5">
           {aiModules.map((mod, idx) => (
             <ScrollReveal key={idx} delay={idx * 70} isRtl={isRtl} direction="up" className="h-full">
-              <TiltCard className="h-full flex flex-col justify-between p-6 rounded-2xl border border-white/10 hover:border-[#D4AF37]/60 bg-[#141418] hover:bg-[#18181E] transition-all duration-300 group hover:-translate-y-1 shadow-lg">
+              <TiltCard className="h-full flex flex-col justify-between p-6 rounded-2xl border border-border/10 dark:border-border/10 hover:border-brand/60 bg-surfaceOverlay dark:bg-surfaceOverlay hover:bg-surfaceOverlay/80 dark:hover:bg-surfaceOverlay/80 transition-all duration-300 group hover:-translate-y-1 shadow-lg">
                 <div>
                   {/* Icon in gold outline */}
-                  <div className="w-12 h-12 rounded-xl border border-[#D4AF37]/40 bg-[#D4AF37]/10 flex items-center justify-center text-[#D4AF37] mb-6 group-hover:bg-[#D4AF37] group-hover:text-black transition-colors">
+                  <div className="w-12 h-12 rounded-xl border border-brand/40 dark:border-brand/40 bg-brand/10 dark:bg-brandLight/20 flex items-center justify-center text-brand dark:text-brandLight mb-6 group-hover:bg-brand group-hover:text-background dark:group-hover:bg-brandLight dark:group-hover:text-background transition-colors">
                     {mod.icon}
                   </div>
 
                   {/* Title */}
-                  <h3 className="font-sans font-bold text-sm tracking-wide text-white group-hover:text-[#D4AF37] transition-colors leading-snug mb-2">
+                  <h3 className="font-sans font-bold text-sm tracking-wide text-foreground dark:text-foreground group-hover:text-brand dark:group-hover:text-brandLight transition-colors leading-snug mb-2">
                     {mod.title}
                   </h3>
 
                   {/* Subtitle / Micro-tagline */}
-                  <p className="text-xs text-zinc-400 leading-relaxed font-sans mb-4">
+                  <p className="text-xs text-muted-foreground dark:text-muted-foreground leading-relaxed font-sans mb-4">
                     {mod.desc}
                   </p>
                 </div>
 
                 {/* Bottom directional arrow */}
-                <div className="text-[#D4AF37] text-xs font-bold transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1 pt-2">
+                <div className="text-brand dark:text-brandLight text-xs font-bold transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1 pt-2">
                   →
                 </div>
               </TiltCard>
