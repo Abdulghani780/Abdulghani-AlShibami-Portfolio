@@ -18,7 +18,7 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
       {/* Problem Column */}
       <div className="rounded-2xl border border-glass-border bg-obsidian-card/70 backdrop-blur-md p-8 sm:p-10 space-y-5 shadow-glass">
         <div className="flex items-center justify-between gap-2 border-b border-glass-border pb-4">
-          <Badge variant="danger" dot dotColor="rose">
+          <Badge variant="error" dot dotColor="rose">
             {isRtl ? "الإشكالية والقيود التشغيلية" : "ARCHITECTURAL BOTTLENECK"}
           </Badge>
           <span className="font-mono text-xs text-status-rose/80">
@@ -38,7 +38,7 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
       {/* Solution Column */}
       <div className="rounded-2xl border border-gold/40 bg-gradient-to-b from-gold/10 via-obsidian-card/80 to-obsidian-card/70 backdrop-blur-md p-8 sm:p-10 space-y-5 shadow-gold-ambient">
         <div className="flex items-center justify-between gap-2 border-b border-gold/20 pb-4">
-          <Badge variant="gold" dot dotColor="emerald">
+          <Badge variant="brand" dot dotColor="emerald">
             {isRtl ? "الحل المعماري والتنفيذ" : "ENGINEERED RESOLUTION"}
           </Badge>
           <span className="font-mono text-xs text-gold">

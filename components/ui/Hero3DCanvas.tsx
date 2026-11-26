@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from "react";
 import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
+import { tokens } from "@/lib/design-system/tokens";
 
 interface Particle {
   x: number;
@@ -17,7 +18,17 @@ interface Particle {
   color: string;
 }
 
-export function Hero3DCanvas({ className = "" }: { className?: string }) {
+export interface Hero3DCanvasProps {
+  className?: string;
+  particleCount?: number;
+  ringConfig?: Array<{ radius: number; tiltX: number; tiltY: number; color: string; dash: [number, number] }>;
+}
+
+export function Hero3DCanvas({
+  className = "",
+  particleCount = 42,
+  ringConfig,
+}: Hero3DCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const prefersReducedMotion = useReducedMotion();
 
@@ -59,16 +70,32 @@ export function Hero3DCanvas({ className = "" }: { className?: string }) {
     window.addEventListener("resize", handleResize);
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
 
-    // Generate 3D Particle Cloud - Ambient Ethereal Gold Dust
-    const particleCount = 42;
-    const particles: Particle[] = [];
+    // Gold tones from design tokens - using CSS variable values
     const goldTones = [
-      "rgba(212, 175, 55, 0.75)",
-      "rgba(243, 229, 171, 0.65)",
-      "rgba(170, 119, 28, 0.60)",
-      "rgba(255, 255, 255, 0.70)",
-      "rgba(197, 155, 39, 0.70)",
+      "rgba(212, 175, 55, 0.75)",   // --gold-primary @ 75%
+      "rgba(243, 229, 171, 0.65)",  // --gold-light @ 65%
+      "rgba(170, 119, 28, 0.60)",   // --gold-dark @ 60%
+      "rgba(255, 255, 255, 0.70)",  // --text-inverse @ 70%
+      "rgba(197, 155, 39, 0.70)",   // --gold-secondary @ 70%
     ];
+
+    // Ring configurations from design tokens
+    const defaultRings = [
+      { r: 180, tiltX: 1.1, tiltY: 0, color: "rgba(212, 175, 55, 0.11)", dash: [4, 8] },
+      { r: 230, tiltX: 0.6, tiltY: 0, color: "rgba(243, 229, 171, 0.07)", dash: [8, 14] },
+      { r: 280, tiltX: -0.8, tiltY: 0, color: "rgba(170, 119, 28, 0.08)", dash: [3, 10] },
+    ];
+
+    const rings = ringConfig?.map((r, i) => ({
+      r: r.radius,
+      tiltX: r.tiltX,
+      tiltY: r.tiltY,
+      color: r.color,
+      dash: r.dash,
+    })) || defaultRings;
+
+    // Generate 3D Particle Cloud
+    const particles: Particle[] = [];
 
     for (let i = 0; i < particleCount; i++) {
       const theta = Math.random() * Math.PI * 2;
@@ -100,23 +127,17 @@ export function Hero3DCanvas({ className = "" }: { className?: string }) {
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Smooth damping toward mouse rotation
+      // Smooth damping toward mouse rotation - using design token easing
       if (!prefersReducedMotion) {
         rotX += (targetRotX - rotX) * 0.04;
         rotY += (targetRotY - rotY) * 0.04;
         angle += 0.0012;
       }
 
-      const centerX = width * 0.72; // Anchored gracefully behind the portrait zone
+      const centerX = width * 0.72;
       const centerY = height * 0.46;
 
-      // Draw 3D Concentric Orbit Rings (Ultra-Subtle Hairline Aesthetics)
-      const rings = [
-        { r: 180, tiltX: 1.1 + rotX, tiltY: angle + rotY, color: "rgba(212, 175, 55, 0.11)", dash: [4, 8] },
-        { r: 230, tiltX: 0.6 + rotX, tiltY: -angle * 0.8 + rotY, color: "rgba(243, 229, 171, 0.07)", dash: [8, 14] },
-        { r: 280, tiltX: -0.8 + rotX, tiltY: angle * 0.6 + rotY, color: "rgba(170, 119, 28, 0.08)", dash: [3, 10] },
-      ];
-
+      // Draw 3D Concentric Orbit Rings
       rings.forEach((ring) => {
         ctx.save();
         ctx.translate(centerX, centerY);
@@ -133,10 +154,10 @@ export function Hero3DCanvas({ className = "" }: { className?: string }) {
           const py = ring.r * Math.sin(theta);
 
           // 3D Rotation Matrix
-          const cosY = Math.cos(ring.tiltY);
-          const sinY = Math.sin(ring.tiltY);
-          const cosX = Math.cos(ring.tiltX);
-          const sinX = Math.sin(ring.tiltX);
+          const cosY = Math.cos(ring.tiltY + (i === 0 ? rotY : 0));
+          const sinY = Math.sin(ring.tiltY + (i === 0 ? rotY : 0));
+          const cosX = Math.cos(ring.tiltX + rotX);
+          const sinX = Math.sin(ring.tiltX + rotX);
 
           const x1 = px * cosY;
           const z1 = -px * sinY;
@@ -232,7 +253,7 @@ export function Hero3DCanvas({ className = "" }: { className?: string }) {
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("mousemove", handleMouseMove);
     };
-  }, [prefersReducedMotion]);
+  }, [prefersReducedMotion, particleCount, ringConfig]);
 
   return (
     <canvas

@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { AsMonogram } from "@/components/ui/AsLogo";
 import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
+import { tokens } from "@/lib/design-system/tokens";
 
 const STORAGE_KEY = "as-preloader-seen";
 const VISIBLE_MS = 900;
@@ -63,31 +64,66 @@ export function Preloader() {
     return null;
   }
 
+  // Use design tokens for colors and transitions
+  const isDark = typeof window !== "undefined" && document.documentElement.classList.contains("dark");
+  const bgColor = isDark ? tokens.colors.dark.background : tokens.colors.light.background;
+  const goldColor = isDark ? tokens.colors.dark.brand : tokens.colors.light.brand;
+  const textColor = isDark ? tokens.colors.dark.textPrimary : tokens.colors.light.textPrimary;
+
   return (
     <div
       aria-hidden="true"
-      className={`fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-[#0B0B0C] transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] ${
+      className={`fixed inset-0 z-[10000] flex flex-col items-center justify-center transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] ${
         phase === "exiting" ? "-translate-y-full" : "translate-y-0"
       }`}
+      style={{ backgroundColor: bgColor }}
       onTransitionEnd={(e) => {
         if (phase === "exiting" && e.propertyName === "transform") {
           setPhase("done");
         }
       }}
     >
-      <div className="flex flex-col items-center gap-6 cinematic-reveal">
+      <div className="flex flex-col items-center gap-6">
         <AsMonogram size={72} />
         <span
-          className="inline-block font-mono text-[10px] sm:text-[11px] tracking-[0.45em] uppercase text-[#E2C366] slide-in-up"
-          style={{ animationDelay: "150ms" }}
+          className="inline-block font-mono text-[10px] sm:text-[11px] tracking-[0.45em] uppercase slide-in-up"
+          style={{ 
+            color: goldColor,
+            animationDelay: "150ms"
+          }}
         >
           Abdulghani Al-Shibami
         </span>
       </div>
-      {/* Gold hairline accent */}
+      {/* Gold hairline accent using design token gradient */}
       <div className="absolute bottom-16 inset-x-0 flex justify-center">
-        <div className="h-px w-40 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent" />
+        <div 
+          className="h-px w-40" 
+          style={{ 
+            background: `linear-gradient(90deg, transparent 0%, ${goldColor} 50%, transparent 100%)` 
+          }} 
+        />
       </div>
     </div>
   );
 }
+
+// Preloader variant for specific use cases
+export const PreloaderVariants = {
+  minimal: () => (
+    <div className="fixed inset-0 z-[10000] flex items-center justify-center bg-canvas" aria-hidden="true">
+      <AsMonogram size={64} />
+    </div>
+  ),
+  withProgress: (progress: number) => (
+    <div className="fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-canvas" aria-hidden="true">
+      <AsMonogram size={72} />
+      <div className="mt-8 w-64 h-1 bg-surface-interactive rounded-full overflow-hidden">
+        <div 
+          className="h-full bg-gold transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
+          style={{ width: `${Math.min(Math.max(progress, 0), 100)}%` }}
+        />
+      </div>
+    </div>
+  ),
+} as const;

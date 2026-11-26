@@ -55,7 +55,7 @@ export function DemoViewer({ project, locale }: DemoViewerProps) {
           </div>
 
           <div>
-            <Badge variant="gold" className="mb-2">
+            <Badge variant="brand" className="mb-2">
               {locale === "ar" ? "تطبيق تشغيلي مباشر" : "LIVE PRODUCTION SYSTEM"}
             </Badge>
             <h1 className="text-xl sm:text-2xl font-bold text-text-primary">

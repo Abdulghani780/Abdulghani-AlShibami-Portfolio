@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useRef, useState, MouseEvent } from "react";
+import React, { useRef, useState, MouseEvent, CSSProperties } from "react";
 import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
+import { cn } from "@/lib/utils";
 
 export interface TiltCardProps {
   children: React.ReactNode;
@@ -9,6 +10,8 @@ export interface TiltCardProps {
   maxTilt?: number;
   glowColor?: string;
   cursorText?: string;
+  scale?: number;
+  perspective?: number;
 }
 
 export function TiltCard({
@@ -17,9 +20,13 @@ export function TiltCard({
   maxTilt = 5,
   glowColor = "rgba(212, 175, 55, 0.16)",
   cursorText,
+  scale = 1.02,
+  perspective = 1000,
 }: TiltCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
-  const [transform, setTransform] = useState("perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)");
+  const [transform, setTransform] = useState<CSSProperties["transform"]>(
+    `perspective(${perspective}px) rotateX(0deg) rotateY(0deg) translateZ(0px)`
+  );
   const [spotlight, setSpotlight] = useState({ x: 50, y: 50, opacity: 0, angle: 0 });
   const reducedMotion = useReducedMotion();
 
@@ -37,7 +44,9 @@ export function TiltCard({
     const rotateY = ((x - centerX) / centerX) * maxTilt;
     const angle = Math.atan2(y - centerY, x - centerX) * (180 / Math.PI) + 90;
 
-    setTransform(`perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateZ(8px)`);
+    setTransform(
+      `perspective(${perspective}px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateZ(8px) scale(${scale})`
+    );
     setSpotlight({
       x: Math.round((x / rect.width) * 100),
       y: Math.round((y / rect.height) * 100),
@@ -47,9 +56,16 @@ export function TiltCard({
   };
 
   const handleMouseLeave = () => {
-    setTransform("perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)");
+    setTransform(`perspective(${perspective}px) rotateX(0deg) rotateY(0deg) translateZ(0px) scale(1)`);
     setSpotlight((prev) => ({ ...prev, opacity: 0 }));
   };
+
+  const baseStyles = cn(
+    "relative overflow-hidden group [transform-style:preserve-3d]",
+    "bg-surface-card border border-border rounded-2xl",
+    "transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
+    className
+  );
 
   return (
     <div
@@ -60,9 +76,9 @@ export function TiltCard({
       style={{
         transform: reducedMotion ? "none" : transform,
         transformStyle: "preserve-3d",
-        transition: "transform 280ms cubic-bezier(0.16, 1, 0.3, 1)",
+        transition: reducedMotion ? "none" : `transform 280ms cubic-bezier(0.16, 1, 0.3, 1)`,
       }}
-      className={`relative overflow-hidden group [transform-style:preserve-3d] ${className}`}
+      className={baseStyles}
     >
       {/* Dynamic Conic Specular Border Light */}
       <div
