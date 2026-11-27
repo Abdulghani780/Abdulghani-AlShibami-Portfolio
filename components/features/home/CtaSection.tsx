@@ -96,7 +96,7 @@ export function CtaSection({ locale }: CtaSectionProps) {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: "url('/assets/yemen-cta.webp')",
+            backgroundImage: "url('/images/optimized/showcase/shibam-skyline-800w.webp')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             opacity: theme === "dark" ? 0.15 : 0.1,

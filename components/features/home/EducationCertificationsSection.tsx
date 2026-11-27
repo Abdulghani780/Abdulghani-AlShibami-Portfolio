@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 interface EducationCertificationsSectionProps {
@@ -35,106 +36,113 @@ export function EducationCertificationsSection({ locale }: EducationCertificatio
     return () => observer.disconnect();
   }, []);
 
+  const certImages: Record<string, string> = {
+    "ums-innovation": "/images/certificates/ums-innovation-award.jpg",
+    "yemen-ai-summit": "/images/certificates/yemen-ai-summit-2026.png",
+    "tot-ibct": "/images/certificates/tot-ibct-novice-trainer.png",
+    "ums-web-dev": "/images/certificates/ums-web-dev-ai-workshop.jpg",
+  };
+
   const content = {
     en: {
-      headline: "EDUCATION & CERTIFICATIONS",
-      subheadline: "Formal education, verified certifications, and continuous learning. Every credential is independently verifiable.",
+      headline: "EDUCATION & CREDENTIALS",
+      subheadline: "Academic foundation at University of Modern Sciences, verified professional credentials, and honors.",
       education: {
-        degree: "B.Sc. Computer Science & Information Systems",
-        institution: "University of Science & Technology, Sana'a",
-        period: "2012 — 2016",
-        honors: "Graduated with Distinction (3.87/4.0)",
-        focus: "Distributed Systems, Artificial Intelligence, Software Engineering, Database Systems",
-        thesis: "Optimizing State Machine Replication for Low-Latency Consensus in Geo-Distributed Clusters",
-        imageAlt: "University of Science & Technology Campus, Sana'a",
+        degree: "Bachelor of Information Technology (IT)",
+        institution: "University of Modern Sciences (UMS), Sana'a",
+        period: "2021 — 2025",
+        honors: "First Class Honors · Outstanding Academic Achievement",
+        focus: "Artificial Intelligence, Distributed Systems, Software Engineering, Autonomous Multi-Agent Frameworks",
+        thesis: "Design & Implementation of Intelligent Decision Support Architecture (Yusra Clinical Engine)",
+        imageAlt: "University of Modern Sciences, Sana'a",
       },
       certifications: [
         {
-          id: "azure-architect",
-          title: "Azure Solutions Architect Expert",
-          provider: "Microsoft",
+          id: "ums-innovation",
+          title: "UMS Innovation & Excellence Award",
+          provider: "University of Modern Sciences",
           date: "2024",
-          badge: "AZ-305 + AZ-104",
-          description: "Designing infrastructure, security, data, and governance solutions on Microsoft Azure.",
-          verificationUrl: "https://learn.microsoft.com/api/credentials/share/en-us/AbdulghaniAlShibami-1234/ABCDEF123456",
+          badge: "INNOVATION-UMS",
+          description: "Awarded for exceptional innovation in developing AI-driven systems and academic software solutions.",
+          imageKey: "ums-innovation",
         },
         {
-          id: "kubernetes-admin",
-          title: "Certified Kubernetes Administrator (CKA)",
-          provider: "CNCF / Linux Foundation",
-          date: "2023",
-          badge: "CKA-2023-004521",
-          description: "Kubernetes cluster administration, troubleshooting, security, and networking.",
-          verificationUrl: "https://www.credly.com/badges/abdulghani-alshibami-cka",
+          id: "yemen-ai-summit",
+          title: "Yemen AI Summit Certificate of Honor",
+          provider: "Yemen AI Summit 2026",
+          date: "2026",
+          badge: "AI-SUMMIT-2026",
+          description: "Honored for technical contributions and active role in advancing artificial intelligence in Yemen.",
+          imageKey: "yemen-ai-summit",
         },
         {
-          id: "aws-architect",
-          title: "AWS Certified Solutions Architect — Professional",
-          provider: "Amazon Web Services",
-          date: "2023",
-          badge: "SAP-C02",
-          description: "Advanced architectural patterns, migration strategies, cost optimization, and security on AWS.",
-          verificationUrl: "https://www.credly.com/badges/abdulghani-alshibami-aws-sap",
-        },
-        {
-          id: "ml-specialty",
-          title: "Machine Learning Specialty",
-          provider: "AWS",
+          id: "tot-ibct",
+          title: "Certified Professional Trainer (TOT)",
+          provider: "IBCT — International Board of Certified Trainers",
           date: "2024",
-          badge: "MLS-C01",
-          description: "Building, training, tuning, and deploying ML models on AWS. SageMaker, MLOps, and model governance.",
-          verificationUrl: "https://www.credly.com/badges/abdulghani-alshibami-aws-ml",
+          badge: "IBCT-TOT-NOVICE",
+          description: "Certified trainer for engineering workshops, modern software development, and technical mentorship.",
+          imageKey: "tot-ibct",
+        },
+        {
+          id: "ums-web-dev",
+          title: "Web Development & AI Engineering Workshop",
+          provider: "University of Modern Sciences",
+          date: "2024",
+          badge: "UMS-DEV-AI",
+          description: "Advanced hands-on workshop covering intelligent web platforms, Next.js architecture, and modern full-stack workflows.",
+          imageKey: "ums-web-dev",
         },
       ],
     },
     ar: {
       headline: "التعليم والشهادات",
-      subheadline: "تعليم رسمي، شهادات موثقة، وتعلم مستمر. كل اعتماد قابل للتحقق المستقل.",
+      subheadline: "الأساس الأكاديمي في جامعة العلوم الحديثة، اعتمادات مهنية موثقة، وجوائز تميز.",
       education: {
-        degree: "بكالوريوس علوم الحاسوب ونظم المعلومات",
-        institution: "جامعة العلوم والتكنولوجيا، صنعاء",
-        period: "٢٠١٢ — ٢٠١٦",
-        honors: "تخرج بامتياز (٣.٨٧/٤.٠)",
-        focus: "الأنظمة الموزعة، الذكاء الاصطناعي، هندسة البرمجيات، نظم قواعد البيانات",
-        thesis: "تحسين تكرار آلة الحالة لتوافق منخفض الكمون في عناقيد موزعة جغرافيًا",
-        imageAlt: "حرم جامعة العلوم والتكنولوجيا، صنعاء",
+        degree: "بكالوريوس تكنولوجيا المعلومات (IT)",
+        institution: "جامعة العلوم الحديثة (UMS)، صنعاء",
+        period: "٢٠٢١ — ٢٠٢٥",
+        honors: "مرتبة الشرف الأولى · تميز أكاديمي مستمر",
+        focus: "الذكاء الاصطناعي، الأنظمة الموزعة، هندسة البرمجيات، أطر عمل الوكلاء الأذكياء",
+        thesis: "تصميم وتنفيذ معمارية دعم القرار السريري الذكي (محرك يسرى السريري)",
+        imageAlt: "جامعة العلوم الحديثة، صنعاء",
       },
       certifications: [
         {
-          id: "azure-architect",
-          title: "خبير معماري حلول Azure",
-          provider: "Microsoft",
+          id: "ums-innovation",
+          title: "جائزة الابتكار والتميز الأكاديمي",
+          provider: "جامعة العلوم الحديثة",
           date: "٢٠٢٤",
-          badge: "AZ-305 + AZ-104",
-          description: "تصميم حلول البنية التحتية، الأمان، البيانات، والحوكمة على Microsoft Azure.",
-          verificationUrl: "https://learn.microsoft.com/api/credentials/share/en-us/AbdulghaniAlShibami-1234/ABCDEF123456",
+          badge: "INNOVATION-UMS",
+          description: "مُنحت للابتكار المتميز في تطوير أنظمة الذكاء الاصطناعي والحلول البرمجية الأكاديمية.",
+          imageKey: "ums-innovation",
         },
         {
-          id: "kubernetes-admin",
-          title: "مسؤول Kubernetes معتمد (CKA)",
-          provider: "CNCF / Linux Foundation",
-          date: "٢٠٢٣",
-          badge: "CKA-2023-004521",
-          description: "إدارة عناقيد Kubernetes، استكشاف الأخطاء، الأمان، والشبكات.",
-          verificationUrl: "https://www.credly.com/badges/abdulghani-alshibami-cka",
+          id: "yemen-ai-summit",
+          title: "شهادة شرف قمة اليمن للذكاء الاصطناعي",
+          provider: "قمة اليمن للذكاء الاصطناعي ٢٠٢٦",
+          date: "٢٠٢٦",
+          badge: "AI-SUMMIT-2026",
+          description: "تكريم للمساهمات التقنية والدور الفعال في تطوير الذكاء الاصطناعي في اليمن.",
+          imageKey: "yemen-ai-summit",
         },
         {
-          id: "aws-architect",
-          title: "مصمم حلول AWS معتمد — محترف",
-          provider: "Amazon Web Services",
-          date: "٢٠٢٣",
-          badge: "SAP-C02",
-          description: "أنماط معمارية متقدمة، استراتيجيات هجرة، تحسين التكلفة، والأمان على AWS.",
-          verificationUrl: "https://www.credly.com/badges/abdulghani-alshibami-aws-sap",
-        },
-        {
-          id: "ml-specialty",
-          title: "تخصص التعلم الآلي",
-          provider: "AWS",
+          id: "tot-ibct",
+          title: "مدرب محترف معتمد (TOT)",
+          provider: "IBCT — البورد الدولي للمدربين المعتمدين",
           date: "٢٠٢٤",
-          badge: "MLS-C01",
-          description: "بناء، تدريب، ضبط، ونشر نماذج ML على AWS. SageMaker، MLOps، وحوكمة النماذج.",
-          verificationUrl: "https://www.credly.com/badges/abdulghani-alshibami-aws-ml",
+          badge: "IBCT-TOT-NOVICE",
+          description: "شهادة تدريب معتمدة لتقديم ورش العمل الهندسية وتطوير البرمجيات الحديثة.",
+          imageKey: "tot-ibct",
+        },
+        {
+          id: "ums-web-dev",
+          title: "ورشة عمل تطوير الويب وهندسة الذكاء الاصطناعي",
+          provider: "جامعة العلوم الحديثة",
+          date: "٢٠٢٤",
+          badge: "UMS-DEV-AI",
+          description: "ورشة عمل عملية متقدمة في المنصات الذكية، معمارية Next.js، وبناء التطبيقات الحديثة.",
+          imageKey: "ums-web-dev",
         },
       ],
     },
@@ -275,24 +283,21 @@ export function EducationCertificationsSection({ locale }: EducationCertificatio
                   </div>
                 </div>
 
-                {/* University Image Placeholder with Mask */}
+                {/* University Image with Mask */}
                 <div className="relative mt-6" style={{ aspectRatio: "16/9", borderRadius: "8px", overflow: "hidden" }}>
                   <div className="absolute inset-0" style={{
                     maskImage: "linear-gradient(to bottom, black 80%, transparent 100%)",
                     WebkitMaskImage: "linear-gradient(to bottom, black 80%, transparent 100%)",
-                    background: `linear-gradient(145deg, ${theme === "dark" ? "#1A1A1C" : "#E8E4DD"} 0%, ${theme === "dark" ? "#121213" : "#FAF8F3"} 100%)`,
                     border: `1px solid ${lineColor}`,
-                  }} />
-                  <div className="absolute inset-0 flex items-center justify-center" style={{ opacity: 0.2 }}>
-                    <svg className="w-24 h-24" viewBox="0 0 48 48" fill="none" stroke={goldColor} strokeWidth="1.5" aria-hidden="true">
-                      <path d="M24 6L6 14v20l18 8 18-8V14L24 6z" />
-                      <path d="M6 14l18 8 18-8" strokeWidth="1" strokeDasharray="4 4" />
-                      <path d="M24 14v20" strokeWidth="1" strokeDasharray="4 4" />
-                    </svg>
+                  }}>
+                    <Image
+                      src="/images/optimized/showcase/as-header-brand-800w.webp"
+                      alt={content.education.imageAlt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 500px"
+                      className="object-cover filter contrast-[1.05]"
+                    />
                   </div>
-                  <p className="absolute bottom-4 left-1/2 -translate-x-1/2 font-mono text-xs text-muted" style={{ opacity: 0.5 }}>
-                    {content.education.imageAlt}
-                  </p>
                   {/* Gold corners */}
                   <div className="absolute top-0 left-0 w-12 h-12 pointer-events-none" style={{ borderTop: `2px solid ${goldColor}`, borderLeft: `2px solid ${goldColor}`, opacity: 0.4 }} />
                   <div className="absolute bottom-0 right-0 w-12 h-12 pointer-events-none" style={{ borderBottom: `2px solid ${goldColor}`, borderRight: `2px solid ${goldColor}`, opacity: 0.3 }} />
@@ -318,13 +323,17 @@ export function EducationCertificationsSection({ locale }: EducationCertificatio
                 <div className="absolute top-0 left-0 w-1 h-full" style={{ background: `linear-gradient(to bottom, ${lineGold} 0%, ${lineColor} 50%, ${lineGold} 100%)`, opacity: 0.6 }} aria-hidden="true" />
 
                 <div className="p-5 flex items-center gap-4">
-                  {/* Cert Icon */}
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-300" style={{ backgroundColor: `rgba(190, 148, 63, 0.1)`, border: `1px solid ${lineGold}` }}>
-                    <svg className="w-6 h-6" viewBox="0 0 48 48" fill="none" stroke={goldColor} strokeWidth="1.5" aria-hidden="true">
-                      <path d="M24 6L6 14v20l18 8 18-8V14L24 6z" />
-                      <path d="M24 18v12M18 24h12" strokeWidth="1.5" />
-                    </svg>
-                  </div>
+                  {/* Cert Image */}
+                  {cert.imageKey && certImages[cert.imageKey] && (
+                    <Image
+                      src={certImages[cert.imageKey]}
+                      alt={cert.title}
+                      width={48}
+                      height={48}
+                      className="w-12 h-12 rounded-xl object-cover flex-shrink-0 transition-all duration-300"
+                      style={{ border: `1px solid ${lineGold}` }}
+                    />
+                  )}
 
                   {/* Cert Info */}
                   <div className="flex-1 min-w-0">
@@ -340,21 +349,21 @@ export function EducationCertificationsSection({ locale }: EducationCertificatio
                     </div>
                   </div>
 
-                  {/* Verify Link */}
+                  {/* Verify Link / View Certificate */}
                   <a
-                    href={cert.verificationUrl}
+                    href={cert.imageKey && certImages[cert.imageKey] ? certImages[cert.imageKey] : "/credentials"}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-1 font-mono text-xs text-muted hover:text-gold transition-colors opacity-0 group-hover:opacity-100"
                     style={{ color: textMuted }}
-                    aria-label={`${locale === "en" ? "Verify" : "تحقق"} ${cert.title}`}
+                    aria-label={`${locale === "en" ? "View" : "عرض"} ${cert.title}`}
                   >
                     <svg className="w-4 h-4 rtl-flip" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                       <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
                       <polyline points="15 3 21 3 21 9" />
                       <line x1="10" y1="14" x2="21" y2="3" />
                     </svg>
-                    <span>{locale === "en" ? "Verify" : "تحقق"}</span>
+                    <span>{locale === "en" ? "View" : "عرض"}</span>
                   </a>
                 </div>
 

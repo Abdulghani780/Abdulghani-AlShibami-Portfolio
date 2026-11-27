@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 interface FeaturedProjectsSectionProps {
@@ -34,6 +35,13 @@ export function FeaturedProjectsSection({ locale }: FeaturedProjectsSectionProps
     if (el) observer.observe(el);
     return () => observer.disconnect();
   }, []);
+
+  const projectImages: Record<string, string> = {
+    yusra: "/images/optimized/projects/yusra-card-800w.webp",
+    campus: "/images/optimized/projects/campus-card-800w.webp",
+    metaalgorithm: "/images/optimized/projects/meta-card-800w.webp",
+    nexora: "/images/optimized/projects/nexora-card-800w.webp",
+  };
 
   const content = {
     en: {
@@ -231,19 +239,20 @@ export function FeaturedProjectsSection({ locale }: FeaturedProjectsSectionProps
                 aria-hidden="true"
               />
 
-              {/* Image Placeholder */}
+              {/* Project Image */}
               <div
                 className="relative aspect-video rounded-t-lg overflow-hidden"
                 style={{
                   background: `linear-gradient(145deg, ${theme === "dark" ? "#1A1A1C" : "#E8E4DD"} 0%, ${theme === "dark" ? "#121213" : "#FAF8F3"} 100%)`,
                 }}
               >
-                <div className="absolute inset-0 flex items-center justify-center" style={{ opacity: 0.15 }}>
-                  <svg className="w-16 h-16" viewBox="0 0 48 48" fill="none" stroke={goldColor} strokeWidth="1.5" aria-hidden="true">
-                    <rect x="4" y="4" width="40" height="40" rx="4" />
-                    <path d="M14 18h20M14 24h20M14 30h12" />
-                  </svg>
-                </div>
+                <Image
+                  src={projectImages[project.id] || "/images/optimized/projects/yusra-card-800w.webp"}
+                  alt={`${project.name} project screenshot`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover filter contrast-[1.05] group-hover:scale-[1.02] transition-transform duration-300"
+                />
                 {/* Featured badge */}
                 {project.featured && (
                   <div className="absolute top-4 right-4" style={{ transform: isRtl ? "none" : "none" }}>

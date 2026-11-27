@@ -386,26 +386,25 @@ export function AboutSection({ locale }: AboutSectionProps) {
                 style={{
                   maskImage: "linear-gradient(to bottom, black 70%, transparent 100%)",
                   WebkitMaskImage: "linear-gradient(to bottom, black 70%, transparent 100%)",
+                  border: `1px solid ${lineColor}`,
                 }}
                 aria-hidden="true"
               >
-                <div className="absolute inset-0 rounded-xl" style={{
-                  background: `linear-gradient(145deg, ${theme === "dark" ? "#1A1A1C" : "#E8E4DD"} 0%, ${theme === "dark" ? "#121213" : "#FAF8F3"} 100%)`,
-                  border: `1px solid ${lineColor}`,
-                }} />
+                <Image
+                  src="/images/optimized/showcase/shibam-skyline-800w.webp"
+                  alt={content.yemenImageAlt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 400px"
+                  className="object-cover filter contrast-[1.05]"
+                />
                 
-                {/* Placeholder for yemen-about.webp */}
-                <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gold-subtle to-transparent" style={{ opacity: 0.3 }}>
-                  <div className="text-center p-8">
-                    <AsLogoWithWordmark locale={locale} size="large" />
-                    <p className="mt-4 font-mono text-xs text-muted" style={{ letterSpacing: "0.1em" }}>
-                      {locale === "en" ? "YEMEN-ABOUT.WEBP PLACEHOLDER" : "عنصر نائب لصورة اليمن"}
-                    </p>
-                    <p className="mt-2 font-sans text-sm text-muted">
-                      {content.yemenImageAlt}
-                    </p>
-                  </div>
-                </div>
+                {/* Subtle gold overlay tint */}
+                <div 
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background: `linear-gradient(135deg, ${goldColor}15 0%, transparent 60%)`,
+                  }}
+                />
 
                 {/* Gold accent corners */}
                 <div className="absolute -top-1 -left-1 w-20 h-20 pointer-events-none" style={{

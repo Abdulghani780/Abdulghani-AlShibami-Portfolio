@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 interface CaseStudyYusraSectionProps {
@@ -412,24 +413,13 @@ export function CaseStudyYusraSection({ locale }: CaseStudyYusraSectionProps) {
 
               {/* Screen Display */}
               <div className="relative mb-6" style={{ aspectRatio: "16/10", borderRadius: "8px", overflow: "hidden" }}>
-                <div className="absolute inset-0" style={{
-                  background: `linear-gradient(145deg, ${theme === "dark" ? "#1A1A1C" : "#E8E4DD"} 0%, ${theme === "dark" ? "#121213" : "#FAF8F3"} 100%)`,
-                  border: `1px solid ${lineColor}`,
-                }} />
-                
-                {/* Screen content placeholder */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center" style={{ opacity: 0.3 }}>
-                  <svg className="w-20 h-20 mb-4" viewBox="0 0 48 48" fill="none" stroke={goldColor} strokeWidth="1.5" aria-hidden="true">
-                    <rect x="4" y="4" width="40" height="30" rx="3" />
-                    <path d="M12 14h24M12 20h18M12 26h24" strokeWidth="1" />
-                  </svg>
-                  <p className="font-mono text-xs text-muted mb-1">
-                    {content.screens[activeScreen].image}
-                  </p>
-                  <p className="font-display font-semibold text-lg" style={{ color: textPrimary }}>
-                    {content.screens[activeScreen].title}
-                  </p>
-                </div>
+                <Image
+                  src={`/images/optimized/projects/yusra-screens-800w.webp`}
+                  alt={content.screens[activeScreen].title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 400px"
+                  className="object-cover filter contrast-[1.05]"
+                />
 
                 {/* Gold corner accents */}
                 <div className="absolute top-0 left-0 w-12 h-12 pointer-events-none" style={{ borderTop: `2px solid ${goldColor}`, borderLeft: `2px solid ${goldColor}`, opacity: 0.4 }} />

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useEffect, useState } from "react";
+import Image from "next/image";
 import { AsLogoWithWordmark } from "@/components/ui/AsLogo";
 import { cn } from "@/lib/utils";
 
@@ -397,7 +398,7 @@ export function HeroSection({ locale }: HeroSectionProps) {
                   aria-hidden="true"
                 />
                 
-                {/* Profile Image Placeholder */}
+                {/* Profile Image with Real Photo */}
                 <div
                   className="relative aspect-[4/5] rounded-xl overflow-hidden"
                   style={{
@@ -408,10 +409,14 @@ export function HeroSection({ locale }: HeroSectionProps) {
                       : "0 25px 50px rgba(26, 26, 28, 0.12), 0 0 0 1px rgba(190, 148, 63, 0.1)",
                   }}
                 >
-                  {/* Placeholder content */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <AsLogoWithWordmark locale={locale} size="large" />
-                  </div>
+                  <Image
+                    src="/images/profile/abdulghani-hero-studio-v2.png"
+                    alt={locale === "ar" ? "عبدالغني الشبامي — مهندس ذكاء اصطناعي ومطور برمجيات" : "Abdulghani Al-Shibami — AI Engineer & Software Developer"}
+                    fill
+                    priority
+                    sizes="(max-width: 768px) 100vw, 500px"
+                    className="object-cover object-top filter brightness-[1.02] contrast-[1.05]"
+                  />
                   
                   {/* Gold accent corner */}
                   <div
