@@ -106,9 +106,9 @@ export default async function LocaleLayout({
           }}
         />
         <LocaleHtmlSync locale={currentLocale} />
-        <Navbar locale={currentLocale} dict={dict} />
+        <Navbar locale={currentLocale} />
         <MainWrapper locale={currentLocale}>{children}</MainWrapper>
-        <Footer dict={dict} />
+        <Footer locale={currentLocale} />
         <AbdulghaniAIModal locale={currentLocale} />
       </div>
     </SmoothScrollProvider>

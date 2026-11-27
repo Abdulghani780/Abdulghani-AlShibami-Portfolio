@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+  <defs>
+    <linearGradient id="metaBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0A0A0B"/>
+      <stop offset="100%" style="stop-color:#121213"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="600" height="400" fill="url(#metaBg)"/>
+  <rect x="10" y="10" width="580" height="380" fill="none" stroke="#BE943F" stroke-width="1" rx="8" opacity="0.3"/>
+  
+  <!-- Terminal/IDE mockup -->
+  <g fill="#1A1A1C" stroke="#2A2A2C" stroke-width="1">
+    <rect x="40" y="40" width="520" height="320" rx="8"/>
+    <rect x="40" y="40" width="520" height="40" rx="8" fill="#161B22"/>
+    <circle cx="60" cy="60" r="8" fill="#FF5F57"/>
+    <circle cx="85" cy="60" r="8" fill="#FFBD2E"/>
+    <circle cx="110" cy="60" r="8" fill="#28CA42"/>
+  </g>
+  
+  <!-- Code editor -->
+  <rect x="40" y="100" width="520" height="240" fill="#0D1117" rx="4" stroke="#2A2A2C" stroke-width="1"/>
+  <g font-family="JetBrains Mono, monospace" font-size="11" fill="#E6EDF3">
+    <text x="60" y="130"><tspan fill="#BE943F">public class</tspan> <tspan fill="#D2A8FF">DistributedStateMachine</tspan> {</text>
+    <text x="80" y="155"><tspan fill="#79C0FF">private</tspan> <tspan fill="#D2A8FF">State</tspan> currentState;</text>
+    <text x="80" y="180"><tspan fill="#79C0FF">private</tspan> <tspan fill="#D2A8FF">List<Transition></tspan> transitions;</text>
+    <text x="60" y="205"></text>
+    <text x="60" y="230"><tspan fill="#FF7B72">@Override</tspan></text>
+    <text x="60" y="255"><tspan fill="#79C0FF">public synchronized void</tspan> <tspan fill="#D2A8FF">transition</tspan>(Event e) {</text>
+    <text x="80" y="280"><tspan fill="#BE943F">// Lock-free state transition logic</tspan></text>
+    <text x="80" y="305">currentState = resolveNextState(e);</text>
+    <text x="60" y="330">}</text>
+    <text x="40" y="355">}</text>
+  </g>
+  
+  <!-- Gold accent line -->
+  <line x1="40" y1="100" x2="560" y2="100" stroke="#BE943F" stroke-width="3"/>
+  
+  <text x="300" y="370" font-family="Georgia, serif" font-size="16" font-weight="600" fill="#BE943F" text-anchor="middle" letter-spacing="0.1em">METAALGORITHM</text>
+  <text x="300" y="390" font-family="monospace" font-size="10" fill="#9A9893" text-anchor="middle">PLACEHOLDER — 600×400px • metaalgorithm.webp</text>
+</svg>

@@ -9,7 +9,8 @@ import { Button } from "@/components/ui/Button";
 import { CaseStudyHero } from "@/components/features/projects/case-study/CaseStudyHero";
 import { CaseStudyMetrics } from "@/components/features/projects/case-study/CaseStudyMetrics";
 import { ProblemSolutionSection } from "@/components/features/projects/case-study/ProblemSolutionSection";
-import { ArchitectureTopology } from "@/components/features/projects/case-study/ArchitectureTopology";
+// Lazy-loaded heavy component
+import { LazySection, LazyArchitectureTopology } from "@/components/ui/LazySection";
 import { SubsystemsGrid } from "@/components/features/projects/case-study/SubsystemsGrid";
 import { ChallengesResultsSection } from "@/components/features/projects/case-study/ChallengesResultsSection";
 import { DemoCalloutBanner } from "@/components/features/projects/case-study/DemoCalloutBanner";
@@ -139,16 +140,18 @@ export default async function ProjectDetailPage({
         </ScrollReveal>
       </Container>
 
-      {/* 5. System Topology & Pipeline Flow */}
+      {/* 5. System Topology & Pipeline Flow (Lazy Loaded) */}
       {project.caseStudy.architectureFlow &&
         project.caseStudy.architectureFlow.length > 0 && (
           <Container>
-            <ScrollReveal isRtl={isRtl} direction="up" delay={180}>
-              <ArchitectureTopology
-                stages={project.caseStudy.architectureFlow}
-                locale={typedLocale}
-              />
-            </ScrollReveal>
+            <LazySection threshold={0.1} rootMargin="200px">
+              <ScrollReveal isRtl={isRtl} direction="up" delay={180}>
+                <LazyArchitectureTopology
+                  stages={project.caseStudy.architectureFlow}
+                  locale={typedLocale}
+                />
+              </ScrollReveal>
+            </LazySection>
           </Container>
         )}
 

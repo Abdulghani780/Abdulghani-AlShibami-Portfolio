@@ -54,5 +54,5 @@ export { CountUp, type CountUpProps } from "./CountUp";
 // Specialized
 export { Hero3DCanvas, type Hero3DCanvasProps } from "./Hero3DCanvas";
 export { Preloader } from "./Preloader";
-export { AsLogo, AsMonogram, AsWordmark, type AsLogoProps } from "./AsLogo";
+export { AsMonogram, AsLogoWithWordmark, type AsLogoProps } from "./AsLogo";
 export { SmoothScrollProvider } from "./SmoothScrollProvider";

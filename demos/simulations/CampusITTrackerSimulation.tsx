@@ -248,6 +248,37 @@ export function CampusITTrackerSimulation({ locale = "en", isRtl = false }: Demo
     setActiveTab("dashboard");
   };
 
+  // Design token helpers for semantic colors
+  const getStatusBadge = (status: CampusAsset["status"]) => {
+    switch (status) {
+      case "In Service":
+        return "bg-status-success/10 text-status-success border border-status-success/20";
+      case "Maintenance":
+        return "bg-status-error/10 text-status-error border border-status-error/20";
+      case "Available":
+        return "bg-status-info/10 text-status-info border border-status-info/20";
+    }
+  };
+
+  const getSeverityBadge = (severity: ITILTicket["severity"]) => {
+    switch (severity) {
+      case "Critical":
+        return "bg-status-error/20 text-status-error border border-status-error/30";
+      case "High":
+        return "bg-status-warning/20 text-status-warning border border-status-warning/30";
+      case "Medium":
+        return "bg-status-info/20 text-status-info border border-status-info/30";
+      case "Low":
+        return "bg-status-success/20 text-status-success border border-status-success/30";
+    }
+  };
+
+  const getStageBadge = (stage: ITILTicket["stage"]) => {
+    return stage === "Resolved"
+      ? "bg-status-success/15 text-status-success border border-status-success/20"
+      : "bg-status-warning/15 text-status-warning border border-status-warning/20";
+  };
+
   const filteredAssets = assets.filter(
     (a) =>
       searchAsset.trim() === "" ||
@@ -290,9 +321,9 @@ export function CampusITTrackerSimulation({ locale = "en", isRtl = false }: Demo
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id as any)}
-                  className={`px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-all text-xs ${
+                  className={`px-4 py-2.5 rounded-lg flex items-center gap-1.5 transition-all text-xs min-h-[44px] ${
                     activeTab === tab.id
-                      ? "bg-brand-gold text-surface-dark font-bold shadow"
+                      ? "bg-gold text-inverse font-bold shadow-gold-md"
                       : "bg-surface-secondary/70 border border-border text-text-muted hover:text-text-primary"
                   }`}
                 >
@@ -304,7 +335,7 @@ export function CampusITTrackerSimulation({ locale = "en", isRtl = false }: Demo
           </div>
 
           <div className="text-[11px] font-mono text-text-dim flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span className="w-2 h-2 rounded-full bg-status-success animate-pulse"></span>
             <span>{isArabic ? "قاعدة بيانات أوراكل: متصلة محلياً" : "ORACLE_XE // LOCAL_MOCK"}</span>
           </div>
         </div>
@@ -317,25 +348,25 @@ export function CampusITTrackerSimulation({ locale = "en", isRtl = false }: Demo
               <div className="p-3.5 bg-surface-secondary/40 border border-border rounded-xl">
                 <div className="text-[10px] text-text-dim">{isArabic ? "إجمالي الأجهزة" : "TOTAL ASSETS"}</div>
                 <div className="text-xl sm:text-2xl font-bold text-text-primary mt-1">{assets.length}</div>
-                <div className="text-[10px] text-emerald-400 mt-1">100% AUDITED</div>
+                <div className="text-[10px] text-status-success mt-1">100% AUDITED</div>
               </div>
               <div className="p-3.5 bg-surface-secondary/40 border border-border rounded-xl">
                 <div className="text-[10px] text-text-dim">{isArabic ? "في الخدمة النشطة" : "IN SERVICE"}</div>
-                <div className="text-xl sm:text-2xl font-bold text-emerald-400 mt-1">
+                <div className="text-xl sm:text-2xl font-bold text-status-success mt-1">
                   {assets.filter((a) => a.status === "In Service").length}
                 </div>
                 <div className="text-[10px] text-text-dim mt-1">OPERATIONAL</div>
               </div>
               <div className="p-3.5 bg-surface-secondary/40 border border-border rounded-xl">
                 <div className="text-[10px] text-text-dim">{isArabic ? "بلاغات ITIL النشطة" : "ACTIVE INCIDENTS"}</div>
-                <div className="text-xl sm:text-2xl font-bold text-amber-400 mt-1">
+                <div className="text-xl sm:text-2xl font-bold text-status-warning mt-1">
                   {tickets.filter((t) => t.stage !== "Resolved").length}
                 </div>
                 <div className="text-[10px] text-text-dim mt-1">UNDER TRIAGE</div>
               </div>
               <div className="p-3.5 bg-surface-secondary/40 border border-border rounded-xl">
                 <div className="text-[10px] text-text-dim">{isArabic ? "في الصيانة" : "IN MAINTENANCE"}</div>
-                <div className="text-xl sm:text-2xl font-bold text-rose-400 mt-1">
+                <div className="text-xl sm:text-2xl font-bold text-status-error mt-1">
                   {assets.filter((a) => a.status === "Maintenance").length}
                 </div>
                 <div className="text-[10px] text-text-dim mt-1">REPAIR QUEUE</div>
@@ -349,7 +380,7 @@ export function CampusITTrackerSimulation({ locale = "en", isRtl = false }: Demo
                   <span>{isArabic ? "أحدث تذاكر الدعم الفني الطارئة" : "HIGH-PRIORITY INCIDENT QUEUE"}</span>
                   <button
                     onClick={() => setActiveTab("kanban")}
-                    className="text-brand-gold hover:underline text-[11px]"
+                    className="text-gold hover:underline text-[11px]"
                   >
                     {isArabic ? "عرض لوحة كانبان" : "Open Kanban"}
                   </button>
@@ -362,7 +393,7 @@ export function CampusITTrackerSimulation({ locale = "en", isRtl = false }: Demo
                     >
                       <div>
                         <div className="flex items-center gap-2">
-                          <span className="font-mono text-brand-gold text-[10px]">{ticket.id}</span>
+                          <span className="font-mono text-gold text-[10px]">{ticket.id}</span>
                           <span className="font-bold text-text-primary">
                             {isArabic ? ticket.titleAr : ticket.titleEn}
                           </span>
@@ -371,13 +402,7 @@ export function CampusITTrackerSimulation({ locale = "en", isRtl = false }: Demo
                           {isArabic ? ticket.roomAr : ticket.roomEn} • {ticket.assignee}
                         </div>
                       </div>
-                      <span
-                        className={`text-[9px] font-mono font-bold px-1.5 py-0.5 rounded ${
-                          ticket.stage === "Resolved"
-                            ? "bg-emerald-500/15 text-emerald-400"
-                            : "bg-amber-500/15 text-amber-400"
-                        }`}
-                      >
+                      <span className={`text-[9px] font-mono font-bold px-3 py-1.5 rounded border ${getStageBadge(ticket.stage)} min-h-[44px] min-w-[44px] flex items-center justify-center`}>
                         {ticket.stage}
                       </span>
                     </div>
@@ -388,7 +413,7 @@ export function CampusITTrackerSimulation({ locale = "en", isRtl = false }: Demo
               <div className="p-4 bg-surface-secondary/30 border border-border rounded-xl space-y-3">
                 <div className="text-xs font-mono font-bold text-text-primary flex items-center justify-between">
                   <span>{isArabic ? "حالة الخوادم وغرف البيانات" : "SERVER ROOM RACK TELEMETRY"}</span>
-                  <span className="text-[10px] text-emerald-400 flex items-center gap-1 font-mono">
+                  <span className="text-[10px] text-status-success flex items-center gap-1 font-mono">
                     <Activity className="w-3 h-3" /> NORMAL
                   </span>
                 </div>
@@ -399,7 +424,7 @@ export function CampusITTrackerSimulation({ locale = "en", isRtl = false }: Demo
                       <div className="text-[10px] text-text-dim">Rack B1 • IP 10.0.0.5</div>
                     </div>
                     <div className="text-right">
-                      <div className="text-emerald-400 font-bold">UPTIME 99.98%</div>
+                      <div className="text-status-success font-bold">UPTIME 99.98%</div>
                       <div className="text-[10px] text-text-dim">CPU: 18% | RAM: 42%</div>
                     </div>
                   </div>
@@ -409,7 +434,7 @@ export function CampusITTrackerSimulation({ locale = "en", isRtl = false }: Demo
                       <div className="text-[10px] text-text-dim">Rack A2 • IP 10.0.0.1</div>
                     </div>
                     <div className="text-right">
-                      <div className="text-emerald-400 font-bold">1.2 ms PING</div>
+                      <div className="text-status-success font-bold">1.2 ms PING</div>
                       <div className="text-[10px] text-text-dim">Ports 48/48 OK</div>
                     </div>
                   </div>
@@ -447,13 +472,13 @@ export function CampusITTrackerSimulation({ locale = "en", isRtl = false }: Demo
                     onClick={() => setSelectedRoom(zone.id)}
                     className={`p-3.5 rounded-xl border text-left rtl:text-right transition-all flex flex-col justify-between h-28 ${
                       isSelected
-                        ? "bg-brand-gold/15 border-brand-gold shadow-md"
-                        : "bg-surface-secondary/40 border-border hover:border-brand-gold/40"
+                        ? "bg-gold/10 border-gold/50 shadow-md"
+                        : "bg-surface-secondary/40 border-border hover:border-gold/40"
                     }`}
                   >
                     <div className="flex justify-between items-start">
-                      <Icon className={`w-5 h-5 ${isSelected ? "text-brand-gold" : "text-text-dim"}`} />
-                      <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-surface border border-border text-text-muted">
+                      <Icon className={`w-5 h-5 ${isSelected ? "text-gold" : "text-text-dim"}`} />
+                      <span className="text-[10px] font-mono px-3 py-1.5 rounded bg-surface border border-border text-text-muted min-h-[44px] min-w-[44px] flex items-center justify-center">
                         {zone.count} {isArabic ? "أجهزة" : "Devices"}
                       </span>
                     </div>
@@ -470,7 +495,7 @@ export function CampusITTrackerSimulation({ locale = "en", isRtl = false }: Demo
 
             {/* Devices in Selected Room */}
             <div className="bg-surface-secondary/30 border border-border rounded-xl p-4 space-y-3">
-              <div className="text-xs font-mono font-bold text-brand-gold flex items-center gap-2">
+              <div className="text-xs font-mono font-bold text-gold flex items-center gap-2">
                 <MapPin className="w-3.5 h-3.5" />
                 <span>
                   {isArabic ? `الأجهزة المسجلة في القاعة: ${selectedRoom}` : `EQUIPMENT DEPLOYED IN: ${selectedRoom}`}
@@ -486,7 +511,7 @@ export function CampusITTrackerSimulation({ locale = "en", isRtl = false }: Demo
                     >
                       <div>
                         <div className="flex items-center gap-2">
-                          <span className="font-mono text-[10px] font-bold text-brand-gold">{asset.id}</span>
+                          <span className="font-mono text-[10px] font-bold text-gold">{asset.id}</span>
                           <span className="font-bold text-text-primary">{asset.name}</span>
                         </div>
                         <div className="text-[11px] text-text-dim font-mono mt-1">{asset.specs}</div>
@@ -494,13 +519,7 @@ export function CampusITTrackerSimulation({ locale = "en", isRtl = false }: Demo
                           {isArabic ? "المستلم:" : "Assigned to:"} {asset.assignedTo}
                         </div>
                       </div>
-                      <span
-                        className={`text-[9px] font-mono px-2 py-0.5 rounded font-bold ${
-                          asset.status === "In Service"
-                            ? "bg-emerald-500/15 text-emerald-400"
-                            : "bg-amber-500/15 text-amber-400"
-                        }`}
-                      >
+                      <span className={`text-[9px] font-mono px-3 py-1.5 rounded font-bold border ${getStatusBadge(asset.status)} min-h-[44px] min-w-[44px] flex items-center justify-center`}>
                         {asset.status}
                       </span>
                     </div>
@@ -535,7 +554,7 @@ export function CampusITTrackerSimulation({ locale = "en", isRtl = false }: Demo
                       <span className="font-mono text-xs font-bold text-text-primary uppercase tracking-wider">
                         {stage}
                       </span>
-                      <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-surface border border-border text-brand-gold font-bold">
+                      <span className="text-[10px] font-mono px-3 py-1.5 rounded bg-surface border border-border text-gold font-bold min-h-[44px] min-w-[44px] flex items-center justify-center">
                         {stageTickets.length}
                       </span>
                     </div>
@@ -544,20 +563,12 @@ export function CampusITTrackerSimulation({ locale = "en", isRtl = false }: Demo
                       {stageTickets.map((ticket) => (
                         <div
                           key={ticket.id}
-                          className="p-3 bg-surface border border-border/90 hover:border-brand-gold/50 rounded-lg text-xs flex flex-col justify-between gap-2 shadow-xs transition-colors"
+                          className="p-3 bg-surface border border-border/90 hover:border-gold/50 rounded-lg text-xs flex flex-col justify-between gap-2 shadow-xs transition-colors"
                         >
                           <div>
                             <div className="flex items-center justify-between mb-1">
-                              <span className="font-mono text-[10px] text-brand-gold font-bold">{ticket.id}</span>
-                              <span
-                                className={`text-[9px] font-mono px-1 py-0.2 rounded font-bold ${
-                                  ticket.severity === "Critical"
-                                    ? "bg-rose-500/20 text-rose-400"
-                                    : ticket.severity === "High"
-                                    ? "bg-amber-500/20 text-amber-400"
-                                    : "bg-sky-500/20 text-sky-400"
-                                }`}
-                              >
+                              <span className="font-mono text-[10px] text-gold font-bold">{ticket.id}</span>
+                              <span className={`text-[9px] font-mono px-1 py-0.2 rounded font-bold border ${getSeverityBadge(ticket.severity)}`}>
                                 {ticket.severity}
                               </span>
                             </div>
@@ -575,7 +586,7 @@ export function CampusITTrackerSimulation({ locale = "en", isRtl = false }: Demo
                             <button
                               onClick={() => regressTicket(ticket.id)}
                               disabled={stage === "New"}
-                              className="px-2 py-0.5 rounded bg-surface-secondary border border-border hover:text-text-primary disabled:opacity-30 disabled:pointer-events-none"
+                              className="px-3 py-1.5 rounded bg-surface-secondary border border-border hover:text-text-primary disabled:opacity-30 disabled:pointer-events-none min-w-[44px] min-h-[44px] flex items-center justify-center"
                             >
                               ◀
                             </button>
@@ -583,7 +594,7 @@ export function CampusITTrackerSimulation({ locale = "en", isRtl = false }: Demo
                             <button
                               onClick={() => progressTicket(ticket.id)}
                               disabled={stage === "Resolved"}
-                              className="px-2 py-0.5 rounded bg-brand-gold text-surface-dark font-bold hover:brightness-110 disabled:opacity-30 disabled:pointer-events-none"
+                              className="px-3 py-1.5 rounded bg-gold text-inverse font-bold hover:brightness-110 disabled:opacity-30 disabled:pointer-events-none min-w-[44px] min-h-[44px] flex items-center justify-center"
                             >
                               ▶
                             </button>
@@ -615,7 +626,7 @@ export function CampusITTrackerSimulation({ locale = "en", isRtl = false }: Demo
                   value={searchAsset}
                   onChange={(e) => setSearchAsset(e.target.value)}
                   placeholder={isArabic ? "بحث برقم العهدة أو الاسم أو الموظف..." : "Filter assets by ID, name, custodian..."}
-                  className="w-full bg-surface-secondary border border-border rounded-lg pl-8 pr-3 rtl:pl-3 rtl:pr-8 py-1.5 text-xs text-text-primary focus:outline-none focus:border-brand-gold"
+                  className="w-full bg-surface-secondary border border-border rounded-lg pl-8 pr-3 rtl:pl-3 rtl:pr-8 py-1.5 text-xs text-text-primary focus:outline-none focus:border-gold"
                 />
               </div>
               <span className="text-xs font-mono text-text-dim">
@@ -637,7 +648,7 @@ export function CampusITTrackerSimulation({ locale = "en", isRtl = false }: Demo
                 <tbody className="divide-y divide-border">
                   {filteredAssets.map((asset) => (
                     <tr key={asset.id} className="hover:bg-surface-secondary/30 transition-colors">
-                      <td className="p-3 font-bold text-brand-gold">{asset.id}</td>
+                      <td className="p-3 font-bold text-gold">{asset.id}</td>
                       <td className="p-3">
                         <div className="font-bold text-text-primary font-sans">{asset.name}</div>
                         <div className="text-[10px] text-text-dim">{asset.specs}</div>
@@ -645,15 +656,7 @@ export function CampusITTrackerSimulation({ locale = "en", isRtl = false }: Demo
                       <td className="p-3 text-text-muted">{isArabic ? asset.roomAr : asset.roomEn}</td>
                       <td className="p-3 text-text-primary">{asset.assignedTo}</td>
                       <td className="p-3">
-                        <span
-                          className={`text-[9px] px-2 py-0.5 rounded font-bold ${
-                            asset.status === "In Service"
-                              ? "bg-emerald-500/15 text-emerald-400"
-                              : asset.status === "Maintenance"
-                              ? "bg-rose-500/15 text-rose-400"
-                              : "bg-sky-500/15 text-sky-400"
-                          }`}
-                        >
+                        <span className={`text-[9px] px-3 py-1.5 rounded font-bold border ${getStatusBadge(asset.status)} min-h-[44px] min-w-[44px] flex items-center justify-center`}>
                           {asset.status}
                         </span>
                       </td>
@@ -669,7 +672,7 @@ export function CampusITTrackerSimulation({ locale = "en", isRtl = false }: Demo
         {activeTab === "transfer" && (
           <div className="max-w-xl mx-auto py-2 w-full space-y-4">
             <div className="bg-surface-secondary/40 border border-border rounded-xl p-5 space-y-4">
-              <div className="flex items-center gap-2 text-brand-gold font-mono text-xs font-bold">
+              <div className="flex items-center gap-2 text-gold font-mono text-xs font-bold">
                 <FileCheck2 className="w-4 h-4" />
                 <span>{isArabic ? "سير عمل نقل العهدة والتسليم الرقمي" : "ASSET CUSTODY TRANSFER & SIGN-OFF FORM"}</span>
               </div>
@@ -680,7 +683,7 @@ export function CampusITTrackerSimulation({ locale = "en", isRtl = false }: Demo
               </p>
 
               {transferSuccess ? (
-                <div className="p-4 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs flex flex-col gap-2">
+                <div className="p-4 rounded-lg bg-status-success/10 border border-status-success/30 text-status-success text-xs flex flex-col gap-2">
                   <div className="flex items-center gap-2 font-bold font-mono">
                     <CheckCircle2 className="w-4 h-4" />
                     <span>{isArabic ? "تم نقل العهدة وتحديث السجل بنجاح" : "CUSTODY RECORD UPDATED"}</span>
@@ -691,7 +694,7 @@ export function CampusITTrackerSimulation({ locale = "en", isRtl = false }: Demo
                       setTransferSuccess(null);
                       setActiveTab("inventory");
                     }}
-                    className="self-start mt-2 px-3 py-1 bg-emerald-500 text-surface-dark font-bold text-[10px] rounded font-mono"
+                    className="self-start mt-2 px-3 py-1 bg-status-success text-inverse font-bold text-[10px] rounded font-mono"
                   >
                     {isArabic ? "عرض سجل الأجهزة المحدث" : "View Updated Inventory"}
                   </button>
@@ -705,7 +708,7 @@ export function CampusITTrackerSimulation({ locale = "en", isRtl = false }: Demo
                     <select
                       value={transferAssetId}
                       onChange={(e) => setTransferAssetId(e.target.value)}
-                      className="w-full bg-surface border border-border rounded-lg px-3 py-2 text-text-primary focus:outline-none focus:border-brand-gold font-mono text-xs"
+                      className="w-full bg-surface border border-border rounded-lg px-3 py-2 text-text-primary focus:outline-none focus:border-gold font-mono text-xs"
                     >
                       {assets.map((a) => (
                         <option key={a.id} value={a.id}>
@@ -723,18 +726,18 @@ export function CampusITTrackerSimulation({ locale = "en", isRtl = false }: Demo
                       required
                       value={transferRecipient}
                       onChange={(e) => setTransferRecipient(e.target.value)}
-                      className="w-full bg-surface border border-border rounded-lg px-3 py-2 text-text-primary focus:outline-none focus:border-brand-gold"
+                      className="w-full bg-surface border border-border rounded-lg px-3 py-2 text-text-primary focus:outline-none focus:border-gold"
                     />
                   </div>
 
                   <div className="p-3 bg-surface border border-border/80 rounded-lg text-[11px] text-text-dim flex items-center gap-2 font-mono">
-                    <ShieldCheck className="w-4 h-4 text-brand-gold shrink-0" />
+                    <ShieldCheck className="w-4 h-4 text-gold shrink-0" />
                     <span>ORACLE_TX: BEGIN TRANSACTION // CUSTODY_AUDIT_LOG // SIGN_OK</span>
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full py-2.5 bg-brand-gold text-surface-dark font-bold rounded-lg hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2 shadow font-mono"
+                    className="w-full py-2.5 bg-gold text-inverse font-bold rounded-lg hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2 shadow-gold-md font-mono"
                   >
                     <FileCheck2 className="w-4 h-4" />
                     <span>{isArabic ? "توقيع واعتماد نقل العهدة" : "Authorize & Sign Transfer"}</span>

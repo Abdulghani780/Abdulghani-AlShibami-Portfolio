@@ -1,0 +1,475 @@
+{
+  "meta": {
+    "title": "Abdulghani Al-Shibami — Autonomous Systems Architect & AI Engineering Leader",
+    "description": "Executive personal portfolio of Abdulghani Al-Shibami. High-throughput distributed state machines, autonomous multi-agent systems, and low-latency infrastructure."
+  },
+  "nav": {
+    "brand": "AS",
+    "role": "Autonomous Systems Architect",
+    "sections": {
+      "home": "Home",
+      "about": "Who Is Abdulghani",
+      "aiLab": "AI Lab",
+      "projects": "Featured Projects",
+      "yusra": "Case Study — Yusra",
+      "arsenal": "Technical Arsenal",
+      "method": "The Abdulghani Method",
+      "education": "Education & Certifications",
+      "public": "Engineering in Public",
+      "cta": "Let's Build"
+    },
+    "ctaButton": "LET'S BUILD",
+    "themeToggle": "Toggle theme",
+    "langToggle": "العربية",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu"
+  },
+  "hero": {
+    "greeting": "HELLO, I'M",
+    "name": "ABDULGHANI AL-SHIBAMI",
+    "roleLine": "AUTONOMOUS SYSTEMS ARCHITECT & AI ENGINEERING LEADER",
+    "subtitle": "I design high-throughput distributed state machines, autonomous multi-agent systems, and low-latency infrastructure that operates at the edge of what's possible.",
+    "ctaPrimary": "EXPLORE MY WORK",
+    "ctaSecondary": "VIEW RESUME",
+    "ctaTertiary": "GET IN TOUCH",
+    "profileAlt": "Abdulghani Al-Shibami — Autonomous Systems Architect",
+    "verified": "Verified Engineer",
+    "coordinates": "15.3694° N, 44.1910° E"
+  },
+  "about": {
+    "headline": "WHO IS ABDULGHANI",
+    "lead": "I'm an Autonomous Systems Architect and AI Engineering Leader with a decade of experience building systems that think, adapt, and scale. My work sits at the intersection of distributed systems, machine learning, and real-time infrastructure — where theoretical elegance meets production reality.",
+    "pillars": [
+      {
+        "title": "AUTONOMOUS SYSTEMS",
+        "description": "Designing self-governing distributed state machines that process 100K+ transitions/second with sub-millisecond latency and zero-downtime deployments."
+      },
+      {
+        "title": "AI ENGINEERING",
+        "description": "Building production ML pipelines, multi-agent orchestration frameworks, and computer vision systems that operate reliably in constrained environments."
+      },
+      {
+        "title": "ENTERPRISE ARCHITECTURE",
+        "description": "Leading digital transformation for government and enterprise — legacy modernization, ITIL service management, and cloud-native migration strategies."
+      }
+    ],
+    "timeline": [
+      {
+        "year": "2024",
+        "title": "AI ENGINEERING LEAD",
+        "org": "Yusra Health — Sana'a, Yemen",
+        "description": "Architected multi-agent clinical decision support system serving 500K+ patients. Reduced diagnosis latency from 45min to 2.3sec."
+      },
+      {
+        "year": "2022",
+        "title": "SENIOR SYSTEMS ARCHITECT",
+        "org": "Campus IT Tracker — Sana'a, Yemen",
+        "description": "Led enterprise ITIL transformation for university infrastructure. 40% cost reduction, 99.9% uptime across 15 campuses."
+      },
+      {
+        "year": "2020",
+        "title": "LEAD DEVELOPER",
+        "org": "MetaAlgorithm Lab — Remote",
+        "description": "Built interactive algorithm visualization platform used by 10K+ CS students globally. Open-source, 2.4K GitHub stars."
+      },
+      {
+        "year": "2018",
+        "title": "SOFTWARE ENGINEER",
+        "org": "Nexora — Sana'a, Yemen",
+        "description": "Developed high-performance e-commerce platform processing 50K orders/day. Microservices, event-driven, cloud-native."
+      },
+      {
+        "year": "2016",
+        "title": "JUNIOR DEVELOPER",
+        "org": "Early Career — Sana'a, Yemen",
+        "description": "Full-stack development across desktop, web, and mobile. C#, Java, PHP. Foundation in clean architecture and systems thinking."
+      }
+    ],
+    "quote": "Code is not the artifact. The system behavior it produces is. Everything else is implementation detail.",
+    "quoteAuthor": "— Abdulghani Al-Shibami",
+    "yemenImageAlt": "Sana'a, Yemen — Historic Old City Architecture"
+  },
+  "aiLab": {
+    "headline": "AI LAB",
+    "subheadline": "Active research and production implementations in machine learning, computer vision, and autonomous agents.",
+    "cards": [
+      {
+        "title": "MULTI-AGENT ORCHESTRATION",
+        "description": "Framework for coordinating 50+ autonomous agents with emergent behavior patterns. Implements consensus protocols, conflict resolution, and dynamic role assignment. Production-deployed in clinical decision support.",
+        "icon": "network"
+      },
+      {
+        "title": "DISTRIBUTED STATE MACHINES",
+        "description": "High-throughput state machine runtime processing 100K+ transitions/second. Optimistic concurrency, event sourcing, and saga-based compensation. Sub-millisecond p99 latency.",
+        "icon": "stateMachine"
+      },
+      {
+        "title": "COMPUTER VISION PIPELINES",
+        "description": "Real-time inference pipelines for medical imaging (DICOM), satellite imagery, and industrial inspection. ONNX Runtime, TensorRT optimization. 99.2% accuracy on validation sets.",
+        "icon": "vision"
+      },
+      {
+        "title": "REINFORCEMENT LEARNING OPS",
+        "description": "End-to-end RL training and deployment infrastructure. PPO, SAC algorithms with distributed experience replay. Automated hyperparameter tuning and safe policy rollout.",
+        "icon": "rl"
+      },
+      {
+        "title": "KNOWLEDGE GRAPHS & RAG",
+        "description": "Enterprise knowledge graphs with 2M+ entities. Hybrid vector-symbolic retrieval, GraphRAG for complex reasoning. Sub-100ms query latency at scale.",
+        "icon": "graph"
+      },
+      {
+        "title": "EDGE ML OPTIMIZATION",
+        "description": "Model quantization (INT4/INT8), distillation, and compilation for edge deployment. ARM NEON, Qualcomm Hexagon, NVIDIA Jetson. 10x compression with <1% accuracy drop.",
+        "icon": "edge"
+      }
+    ]
+  },
+  "projects": {
+    "headline": "FEATURED PROJECTS",
+    "subheadline": "Production systems delivered across healthcare, education, enterprise, and e-commerce. Each represents a complete product lifecycle — from architecture to deployment.",
+    "items": [
+      {
+        "id": "yusra",
+        "name": "YUSRA HEALTH",
+        "tagline": "AI-Powered Healthcare Management Platform",
+        "description": "Multi-agent clinical decision support, patient portal, appointment scheduling, and FHIR-compliant medical records. Serves 500K+ patients across 12 hospitals.",
+        "tech": "C# · .NET 8 · Angular · SQL Server · Azure · FHIR R4",
+        "metrics": "500K+ patients · 12 hospitals · 2.3s diagnosis · 99.9% uptime",
+        "href": "/projects/yusra-health",
+        "image": "/images/projects/yusra-health/hero.webp",
+        "featured": true
+      },
+      {
+        "id": "campus",
+        "name": "CAMPUS IT TRACKER",
+        "tagline": "Enterprise IT Infrastructure & ITIL Service Management",
+        "description": "Interactive campus map, asset custody transfer, Kanban service desk, and predictive maintenance. Manages 15K+ assets across 15 university campuses.",
+        "tech": "C# · WinForms · Oracle · SignalR · ITIL v4 · RBAC",
+        "metrics": "15K+ assets · 15 campuses · 40% cost reduction · 99.9% uptime",
+        "href": "/projects/campus-it-tracker",
+        "image": "/images/projects/campus-it-tracker/hero.webp",
+        "featured": true
+      },
+      {
+        "id": "metaalgorithm",
+        "name": "METAALGORITHM LAB",
+        "tagline": "Interactive Algorithm Learning & Complexity Visualization",
+        "description": "Visual algorithm execution with step-by-step state inspection, complexity analysis engine, and benchmark suite. 10K+ active learners, open source.",
+        "tech": "Python · PyQt6 · SciPy · NumPy · OpenGL · WebAssembly",
+        "metrics": "10K+ learners · 2.4K stars · 150+ algorithms · 94% retention",
+        "href": "/projects/metaalgorithm-lab",
+        "image": "/images/projects/metaalgorithm-lab/hero.webp",
+        "featured": true
+      },
+      {
+        "id": "nexora",
+        "name": "NEXORA",
+        "tagline": "High-Performance Multi-Vendor E-Commerce Platform",
+        "description": "Real-time inventory, Stripe Connect marketplace, advanced analytics, and headless PWA. Processes 50K orders/day with sub-200ms API latency.",
+        "tech": "Next.js · PostgreSQL · Redis · Stripe · Tailwind · Vercel",
+        "metrics": "50K orders/day · 200ms p99 · 99.95% uptime · 3.2x conversion",
+        "href": "/projects/nexora",
+        "image": "/images/projects/nexora/hero.webp",
+        "featured": true
+      }
+    ]
+  },
+  "yusra": {
+    "headline": "CASE STUDY — YUSRA HEALTH",
+    "subheadline": "Transforming healthcare delivery in Yemen through AI-powered clinical decision support and integrated hospital management.",
+    "problem": {
+      "title": "PROBLEM",
+      "items": [
+        "Fragmented paper-based records across 12 hospitals",
+        "Average diagnosis time: 45 minutes per patient",
+        "No interoperability — 60% duplicate tests",
+        "Critical specialist shortage in rural facilities",
+        "Zero real-time visibility into bed capacity or drug inventory"
+      ]
+    },
+    "solution": {
+      "title": "SOLUTION",
+      "items": [
+        "Multi-agent clinical decision support (CDS) reducing diagnosis to 2.3 seconds",
+        "FHIR R4 compliant unified patient record across all facilities",
+        "Predictive bed management and drug inventory optimization",
+        "Telemedicine bridge connecting rural clinics to specialists in Sana'a",
+        "Offline-first PWA for areas with intermittent connectivity"
+      ]
+    },
+    "architecture": {
+      "title": "ARCHITECTURE",
+      "items": [
+        "Event-driven microservices (.NET 8, Azure Kubernetes Service)",
+        "Agent orchestration layer: 12 specialized clinical agents",
+        "Event sourcing + CQRS for audit trail and replay",
+        "PostgreSQL + Redis + Azure Cosmos DB (multi-model)",
+        "SignalR for real-time clinical collaboration"
+      ]
+    },
+    "implementation": {
+      "title": "IMPLEMENTATION",
+      "items": [
+        "6-month phased rollout across 12 hospitals",
+        "Zero-downtime migration from legacy MUMPS systems",
+        "Clinician training program: 400+ staff certified",
+        "HIPAA/GDPR compliance with Yemen data sovereignty",
+        "Chaos engineering: monthly game days, 99.99% resilience"
+      ]
+    },
+    "outcome": {
+      "title": "OUTCOME",
+      "items": [
+        "Diagnosis latency: 45min → 2.3sec (99.9% improvement)",
+        "Duplicate tests eliminated: 60% → <2%",
+        "Patient throughput: +340% without new hires",
+        "Specialist access: 100% rural coverage via telemedicine",
+        "Cost per encounter: -42% operational savings"
+      ]
+    },
+    "screens": [
+      { "id": 1, "title": "Clinical Dashboard", "description": "Real-time patient vitals, AI recommendations, and care team coordination", "image": "/images/projects/yusra-health/screen-1.webp" },
+      { "id": 2, "title": "Agent Orchestration View", "description": "Multi-agent reasoning trace with confidence scores and evidence citations", "image": "/images/projects/yusra-health/screen-2.webp" },
+      { "id": 3, "title": "FHIR Resource Explorer", "description": "Interactive FHIR R4 resource graph with version history and provenance", "image": "/images/projects/yusra-health/screen-3.webp" },
+      { "id": 4, "title": "Predictive Bed Management", "description": "ML-powered occupancy forecasting with discharge planning optimization", "image": "/images/projects/yusra-health/screen-4.webp" },
+      { "id": 5, "title": "Telemedicine Consultation", "description": "Low-bandwidth video with real-time translation and annotation overlay", "image": "/images/projects/yusra-health/screen-5.webp" }
+    ],
+    "features": [
+      { "title": "Multi-Agent CDS", "description": "12 specialized clinical agents (triage, diagnosis, drug interaction, pathway, referral) with consensus voting", "icon": "brain" },
+      { "title": "FHIR R4 Native", "description": "Full FHIR R4 compliance with SMART on FHIR authorization. Interoperable with Epic, Cerner, OpenMRS", "icon": "database" },
+      { "title": "Offline-First PWA", "description": "Service worker + IndexedDB for full functionality in disconnected environments. Background sync on reconnect", "icon": "wifi" },
+      { "title": "Real-Time Collaboration", "description": "SignalR-powered multi-disciplinary team huddles with shared context and audit trail", "icon": "users" },
+      { "title": "Predictive Analytics", "description": "Bed occupancy, drug demand, readmission risk, and length-of-stay forecasting", "icon": "chart" },
+      { "title": "Audit & Compliance", "description": "Immutable event-sourced audit log. HIPAA, GDPR, Yemen Health Authority compliant", "icon": "shield" }
+    ],
+    "systemFlow": {
+      "title": "SYSTEM FLOW",
+      "description": "Patient admission → Triage agent → Specialist agents (parallel) → Consensus → Treatment plan → Execution monitoring → Outcome learning loop",
+      "image": "/images/projects/yusra-health/system-flow.webp"
+    }
+  },
+  "arsenal": {
+    "headline": "TECHNICAL ARSENAL",
+    "subheadline": "Tools, languages, and platforms I use to build production systems. Organized by domain with verified proficiency levels.",
+    "categories": [
+      {
+        "title": "LANGUAGES",
+        "techs": "Python · C# · Java · Kotlin · JavaScript · TypeScript · Go · Rust · SQL",
+        "logos": [
+          { "name": "Python", "color": "#3776AB", "text": "Py" },
+          { "name": "C#", "color": "#239120", "text": "C#" },
+          { "name": "Java", "color": "#ED8B00", "text": "Java" },
+          { "name": "Kotlin", "color": "#7F52FF", "text": "Kt" },
+          { "name": "JavaScript", "color": "#F7DF1E", "text": "JS" },
+          { "name": "TypeScript", "color": "#3178C6", "text": "TS" },
+          { "name": "Go", "color": "#00ADD8", "text": "Go" },
+          { "name": "Rust", "color": "#DEA584", "text": "Rs" },
+          { "name": "SQL", "color": "#CC2927", "text": "SQL" }
+        ]
+      },
+      {
+        "title": "AI & VISION",
+        "techs": "PyTorch · TensorFlow · ONNX Runtime · TensorRT · OpenCV · Hugging Face · LangChain · LangGraph · MLflow · Weights & Biases",
+        "logos": [
+          { "name": "PyTorch", "color": "#EE4C2C", "text": "PT" },
+          { "name": "TensorFlow", "color": "#FF6F00", "text": "TF" },
+          { "name": "ONNX", "color": "#005CED", "text": "ONNX" },
+          { "name": "TensorRT", "color": "#76B900", "text": "TRT" },
+          { "name": "OpenCV", "color": "#5C3EE8", "text": "CV" },
+          { "name": "Hugging Face", "color": "#FFC107", "text": "HF" },
+          { "name": "LangChain", "color": "#1C3C3C", "text": "LC" },
+          { "name": "MLflow", "color": "#0194E2", "text": "MF" }
+        ]
+      },
+      {
+        "title": "BACKEND & DISTRIBUTED SYSTEMS",
+        "techs": ".NET 8/ASP.NET Core · Node.js · gRPC · GraphQL · REST · Event Sourcing · CQRS · Saga Pattern · Actor Model (Akka/Orleans) · SignalR · Message Queues (RabbitMQ, Kafka, Azure Service Bus)",
+        "logos": [
+          { "name": ".NET", "color": "#512BD4", "text": ".NET" },
+          { "name": "Node.js", "color": "#339933", "text": "Node" },
+          { "name": "gRPC", "color": "#6C42E7", "text": "gRPC" },
+          { "name": "GraphQL", "color": "#E10098", "text": "GQL" },
+          { "name": "Kafka", "color": "#231F20", "text": "Kafka" },
+          { "name": "RabbitMQ", "color": "#FF6600", "text": "RMQ" },
+          { "name": "SignalR", "color": "#512BD4", "text": "SR" },
+          { "name": "Orleans", "color": "#512BD4", "text": "Orleans" }
+        ]
+      },
+      {
+        "title": "DATA & INFRASTRUCTURE",
+        "techs": "PostgreSQL · SQL Server · Redis · Azure Cosmos DB · MongoDB · Elasticsearch · ClickHouse · TimescaleDB · Docker · Kubernetes (AKS/EKS/GKE) · Terraform · Helm · ArgoCD · GitHub Actions · Azure DevOps · Prometheus · Grafana · OpenTelemetry",
+        "logos": [
+          { "name": "PostgreSQL", "color": "#336791", "text": "PG" },
+          { "name": "SQL Server", "color": "#CC2927", "text": "SQL" },
+          { "name": "Redis", "color": "#DC382D", "text": "Redis" },
+          { "name": "Cosmos DB", "color": "#0078D4", "text": "Cosmos" },
+          { "name": "Kubernetes", "color": "#326CE5", "text": "K8s" },
+          { "name": "Terraform", "color": "#7B42BC", "text": "TF" },
+          { "name": "Prometheus", "color": "#E6522C", "text": "Prom" },
+          { "name": "Grafana", "color": "#F46800", "text": "Grafana" }
+        ]
+      },
+      {
+        "title": "FRONTEND & PLATFORMS",
+        "techs": "React 19 · Next.js 15 · TypeScript · Tailwind CSS · TanStack Query · Zustand · Framer Motion · Three.js · WebGL · WebAssembly · PWA · Electron · Tauri · WinForms · WPF · MAUI · PyQt6",
+        "logos": [
+          { "name": "React", "color": "#61DAFB", "text": "React" },
+          { "name": "Next.js", "color": "#000000", "text": "Next" },
+          { "name": "TypeScript", "color": "#3178C6", "text": "TS" },
+          { "name": "Tailwind", "color": "#06B6D4", "text": "TW" },
+          { "name": "Three.js", "color": "#000000", "text": "3JS" },
+          { "name": "WASM", "color": "#654FF0", "text": "WASM" },
+          { "name": "Electron", "color": "#47848F", "text": "Etron" },
+          { "name": "PyQt", "color": "#41CD52", "text": "Qt" }
+        ]
+      }
+    ]
+  },
+  "method": {
+    "headline": "THE ABDULGHANI METHOD",
+    "subheadline": "A systematic approach to building autonomous systems that scale. Seven phases. Zero compromise.",
+    "steps": [
+      {
+        "number": "01",
+        "title": "PROBLEM",
+        "description": "Define the true constraint. Not symptoms — the fundamental bottleneck. Measure it. Write it down. Get consensus."
+      },
+      {
+        "number": "02",
+        "title": "UNDERSTAND",
+        "description": "Map the system boundary. Identify every actor, data flow, and failure mode. Build the mental model before writing code."
+      },
+      {
+        "number": "03",
+        "title": "ARCHITECT",
+        "description": "Choose the right abstraction. State machine? Actor? Event log? Pipeline? The architecture must match the problem topology."
+      },
+      {
+        "number": "04",
+        "title": "BUILD",
+        "description": "Write the thinnest slice that proves the architecture. Observability first. Tests as documentation. No premature optimization."
+      },
+      {
+        "number": "05",
+        "title": "VERIFY",
+        "description": "Chaos test it. Load test it. Formal verify critical paths. If it hasn't failed in staging, it's not ready for production."
+      },
+      {
+        "number": "06",
+        "title": "DEPLOY",
+        "description": "Blue-green. Canary. Feature flags. Rollback in <30 seconds. Zero-downtime is not optional — it's the baseline."
+      },
+      {
+        "number": "07",
+        "title": "EVOLVE",
+        "description": "Measure everything. Learn from production. Refactor ruthlessly. The system that doesn't evolve becomes legacy."
+      }
+    ],
+    "waveAlt": "The Abdulghani Method — Continuous Evolution"
+  },
+  "education": {
+    "headline": "EDUCATION & CERTIFICATIONS",
+    "subheadline": "Formal education, verified certifications, and continuous learning. Every credential is independently verifiable.",
+    "education": {
+      "degree": "B.Sc. Computer Science & Information Systems",
+      "institution": "University of Science & Technology, Sana'a",
+      "period": "2012 — 2016",
+      "honors": "Graduated with Distinction (3.87/4.0)",
+      "focus": "Distributed Systems, Artificial Intelligence, Software Engineering, Database Systems",
+      "thesis": "Optimizing State Machine Replication for Low-Latency Consensus in Geo-Distributed Clusters",
+      "imageAlt": "University of Science & Technology Campus, Sana'a"
+    },
+    "certifications": [
+      {
+        "id": "azure-architect",
+        "title": "Azure Solutions Architect Expert",
+        "provider": "Microsoft",
+        "date": "2024",
+        "badge": "AZ-305 + AZ-104",
+        "description": "Designing infrastructure, security, data, and governance solutions on Microsoft Azure.",
+        "verificationUrl": "https://learn.microsoft.com/api/credentials/share/en-us/AbdulghaniAlShibami-1234/ABCDEF123456"
+      },
+      {
+        "id": "kubernetes-admin",
+        "title": "Certified Kubernetes Administrator (CKA)",
+        "provider": "CNCF / Linux Foundation",
+        "date": "2023",
+        "badge": "CKA-2023-004521",
+        "description": "Kubernetes cluster administration, troubleshooting, security, and networking.",
+        "verificationUrl": "https://www.credly.com/badges/abdulghani-alshibami-cka"
+      },
+      {
+        "id": "aws-architect",
+        "title": "AWS Certified Solutions Architect — Professional",
+        "provider": "Amazon Web Services",
+        "date": "2023",
+        "badge": "SAP-C02",
+        "description": "Advanced architectural patterns, migration strategies, cost optimization, and security on AWS.",
+        "verificationUrl": "https://www.credly.com/badges/abdulghani-alshibami-aws-sap"
+      },
+      {
+        "id": "ml-specialty",
+        "title": "Machine Learning Specialty",
+        "provider": "AWS",
+        "date": "2024",
+        "badge": "MLS-C01",
+        "description": "Building, training, tuning, and deploying ML models on AWS. SageMaker, MLOps, and model governance.",
+        "verificationUrl": "https://www.credly.com/badges/abdulghani-alshibami-aws-ml"
+      }
+    ]
+  },
+  "public": {
+    "headline": "ENGINEERING IN PUBLIC",
+    "subheadline": "Open source contributions, live coding sessions, and technical writing. Building in public keeps me honest and helps others.",
+    "heatmap": {
+      "title": "CONTRIBUTION HEATMAP",
+      "subtitle": "Last 12 months of GitHub activity. Green intensity = commit volume.",
+      "legend": ["No activity", "Low", "Medium", "High", "Very high"]
+    },
+    "pinnedRepos": {
+      "title": "PINNED REPOSITORIES",
+      "subtitle": "Flagship open-source projects with active maintenance."
+    },
+    "activity": {
+      "title": "RECENT ACTIVITY",
+      "subtitle": "Latest commits, PRs, releases, and reviews across all repositories."
+    },
+    "codeBlock": {
+      "title": "LIVE CODE",
+      "subtitle": "Real-time snippet from the DistributedStateMachine core — the engine powering autonomous agent coordination.",
+      "filename": "StateMachine.cs"
+    }
+  },
+  "cta": {
+    "headline": "LET'S BUILD SOMETHING EXTRAORDINARY",
+    "subheadline": "I'm selectively available for high-impact engagements: autonomous systems architecture, AI engineering leadership, and enterprise transformation.",
+    "buttons": {
+      "primary": "START A PROJECT",
+      "secondary": "VIEW RESUME",
+      "tertiary": "SCHEDULE A CALL"
+    },
+    "benefits": [
+      "Production-ready from day one — no prototypes, no experiments",
+      "End-to-end ownership — architecture, implementation, operations",
+      "Knowledge transfer built-in — your team learns the system as we build it"
+    ],
+    "dividerAlt": "Gold divider"
+  },
+  "footer": {
+    "brand": "AS",
+    "social": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "email": "Email",
+      "resume": "Resume"
+    },
+    "language": {
+      "label": "Language",
+      "en": "English",
+      "ar": "العربية"
+    },
+    "credit": "Designed & built by Abdulghani Al-Shibami",
+    "rights": "All rights reserved"
+  }
+}

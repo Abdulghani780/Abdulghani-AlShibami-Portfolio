@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Locale } from "@/lib/i18n/dictionaries";
 import { MapPin, CheckSquare, ShieldCheck, Database, Users, Monitor, Cpu, Server, Layers, ArrowRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { TiltCard } from "@/components/ui/TiltCard";
 
@@ -71,14 +72,14 @@ export function FlagshipCaseStudySection({ locale }: { locale: Locale }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <ScrollReveal isRtl={isRtl} direction="up">
-          <div className="mb-12 sm:mb-16">
+          <div className="mb-12 sm:mb-16 font-arabic">
             <span className="font-mono text-xs font-bold uppercase tracking-widest text-brand dark:text-brandLight block mb-3">
               {isRtl ? "دراسة حالة رائدة" : "FLAGSHIP CASE STUDY"}
             </span>
-            <h2 className="font-serif font-bold text-2xl sm:text-3xl lg:text-4xl uppercase tracking-tight text-foreground dark:text-foreground">
+            <h2 className="font-arabic-display text-arabic-section text-foreground dark:text-foreground">
               {isRtl ? "نظام تتبع البنية التحتية الجامعية" : "CAMPUS IT INFRASTRUCTURE TRACKER"}
             </h2>
-            <p className="mt-3 text-base sm:text-lg text-muted-foreground dark:text-muted-foreground max-w-2xl font-sans leading-relaxed">
+            <p className="mt-3 text-arabic-body text-muted-foreground dark:text-muted-foreground max-w-2xl">
               {isRtl
                 ? "نظام مؤسسي شامل لإدارة أصول وشبكات وخدمات الحرم الجامعي — مبني بهندسة نظيفة، قابلية توسع، وموثوقية عالية."
                 : "A comprehensive enterprise system for managing campus assets, networks, and services — built with clean architecture, scalability, and high reliability."}
@@ -98,6 +99,8 @@ export function FlagshipCaseStudySection({ locale }: { locale: Locale }) {
                   alt="Campus IT Tracker — Modern Dashboard"
                   fill
                   priority
+                  placeholder="blur"
+                  blurDataURL="/images/projects/campus-it-tracker/01-dashboard.webp"
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
@@ -132,7 +135,7 @@ export function FlagshipCaseStudySection({ locale }: { locale: Locale }) {
           <div className="lg:col-span-6 space-y-8">
             {/* Key Features */}
             <ScrollReveal isRtl={isRtl} direction="left">
-              <h3 className="font-sans font-bold text-lg uppercase tracking-wider text-foreground dark:text-foreground mb-5 flex items-center gap-2">
+              <h3 className={cn("font-bold text-lg uppercase tracking-wider text-foreground dark:text-foreground mb-5 flex items-center gap-2", isRtl ? "font-arabic" : "font-sans")}>
                 <span className="w-6 h-6 rounded-lg bg-brand/10 dark:bg-brandLight/20 flex items-center justify-center text-brand dark:text-brandLight">
                   <CheckSquare className="w-4 h-4" />
                 </span>
@@ -144,7 +147,7 @@ export function FlagshipCaseStudySection({ locale }: { locale: Locale }) {
                     <div className="w-10 h-10 rounded-lg bg-brand/10 dark:bg-brandLight/20 flex items-center justify-center shrink-0 group-hover:bg-brand group-hover:text-background dark:group-hover:bg-brandLight dark:group-hover:text-background transition-colors">
                       {feature.icon}
                     </div>
-                    <span className="text-sm font-medium text-foreground dark:text-foreground leading-snug pt-0.5">
+                    <span className={cn("text-sm font-medium text-foreground dark:text-foreground leading-snug pt-0.5", isRtl ? "font-arabic" : "")}>
                       {feature.title}
                     </span>
                   </TiltCard>
@@ -154,7 +157,7 @@ export function FlagshipCaseStudySection({ locale }: { locale: Locale }) {
 
             {/* Tech Stack */}
             <ScrollReveal delay={100} isRtl={isRtl} direction="left">
-              <h3 className="font-sans font-bold text-lg uppercase tracking-wider text-foreground dark:text-foreground mb-5 flex items-center gap-2">
+              <h3 className={cn("font-bold text-lg uppercase tracking-wider text-foreground dark:text-foreground mb-5 flex items-center gap-2", isRtl ? "font-arabic" : "font-sans")}>
                 <span className="w-6 h-6 rounded-lg bg-brand/10 dark:bg-brandLight/20 flex items-center justify-center text-brand dark:text-brandLight">
                   <Cpu className="w-4 h-4" />
                 </span>
@@ -181,10 +184,10 @@ export function FlagshipCaseStudySection({ locale }: { locale: Locale }) {
             <ScrollReveal delay={200} isRtl={isRtl} direction="left">
               <Link
                 href={`/${locale}/projects/campus-it-tracker`}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-hover hover:bg-brand text-background font-bold text-sm tracking-wider uppercase shadow-md hover:shadow-lg transition-all duration-300 active:scale-95 group cursor-pointer"
+                className={cn("inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-hover hover:bg-brand text-background font-bold text-sm tracking-wider uppercase shadow-md hover:shadow-lg transition-all duration-300 active:scale-95 group cursor-pointer", isRtl ? "font-arabic" : "")}
               >
                 <span>{isRtl ? "دراسة الحالة الكاملة" : "FULL CASE STUDY"}</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
+                <ArrowRight className={cn("w-4 h-4 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1", isRtl && "rtl-flip")} />
               </Link>
             </ScrollReveal>
           </div>

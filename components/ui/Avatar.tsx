@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 export interface AvatarProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -102,11 +103,13 @@ export function Avatar({
       {...props}
     >
       {src ? (
-        <img
+        <Image
           src={src}
           alt={alt || name || "Avatar"}
+          fill
           className="h-full w-full object-cover"
           loading="lazy"
+          sizes="64px"
         />
       ) : (
         <div

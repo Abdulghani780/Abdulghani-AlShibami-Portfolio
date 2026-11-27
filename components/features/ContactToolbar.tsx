@@ -3,6 +3,7 @@
 import React from "react";
 import { VERIFIED_PROFILE } from "@/lib/data/profile";
 import { Phone, Mail, MessageSquare, Linkedin, Github, ExternalLink } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export function ContactToolbar({ locale = "en" }: { locale?: "en" | "ar" }) {
   const isAr = locale === "ar";
@@ -60,7 +61,7 @@ export function ContactToolbar({ locale = "en" }: { locale?: "en" | "ar" }) {
   ];
 
   return (
-    <div className="w-full font-mono text-xs" dir={isAr ? "rtl" : "ltr"}>
+    <div className={cn("w-full text-xs", isAr ? "font-arabic" : "font-mono")} dir={isAr ? "rtl" : "ltr"}>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
         {actions.map((act) => {
           const Icon = act.icon;
@@ -81,10 +82,10 @@ export function ContactToolbar({ locale = "en" }: { locale?: "en" | "ar" }) {
                 )}
               </div>
               <div>
-                <div className="text-[10px] text-slate-400 uppercase tracking-wider">
+                <div className={cn("text-[10px] text-slate-400 uppercase tracking-wider", isAr ? "font-arabic" : "")}>
                   {act.label}
                 </div>
-                <div className="text-white font-semibold text-[11px] truncate mt-0.5">
+                <div className={cn("text-white font-semibold text-[11px] truncate mt-0.5", isAr ? "font-arabic" : "")}>
                   {act.value}
                 </div>
               </div>

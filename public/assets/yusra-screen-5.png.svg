@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="712" viewBox="0 0 400 712">
+  <defs>
+    <linearGradient id="screenBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0D1117"/>
+      <stop offset="100%" style="stop-color:#161B22"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="400" height="712" fill="url(#screenBg)"/>
+  <rect x="8" y="8" width="384" height="696" fill="none" stroke="#BE943F" stroke-width="1" rx="12" opacity="0.3"/>
+  <rect x="16" y="16" width="368" height="680" fill="#0D1117" rx="8" stroke="#2A2A2C" stroke-width="1"/>
+  <text x="200" y="40" font-family="monospace" font-size="10" fill="#8B949E" text-anchor="middle">9:41 AM  📶  🔋 100%</text>
+  <rect x="16" y="48" width="368" height="60" fill="#161B22"/>
+  <text x="200" y="85" font-family="Georgia, serif" font-size="18" font-weight="600" fill="#BE943F" text-anchor="middle">YUSRA</text>
+  <text x="200" y="102" font-family="monospace" font-size="9" fill="#8B949E" text-anchor="middle" letter-spacing="0.08em">Settings & Integrations</text>
+  
+  <!-- Settings sections -->
+  <g fill="#1C2128" stroke="#30363D" stroke-width="1">
+    <rect x="24" y="130" width="352" height="140" rx="8"/>
+    <rect x="24" y="290" width="352" height="140" rx="8"/>
+    <rect x="24" y="450" width="352" height="140" rx="8"/>
+    <rect x="24" y="610" width="352" height="60" rx="8"/>
+  </g>
+  
+  <g fill="#E6EDF3">
+    <!-- Integrations -->
+    <text x="40" y="160" font-family="monospace" font-size="12" font-weight="600">Integrations</text>
+    <text x="40" y="185" font-family="monospace" font-size="10" fill="#8B949E">Connected services & APIs</text>
+    
+    <g fill="#30363D" stroke="#30363D">
+      <rect x="40" y="210" width="150" height="36" rx="6"/>
+      <rect x="210" y="210" width="150" height="36" rx="6"/>
+      <rect x="40" y="255" width="150" height="36" rx="6"/>
+      <rect x="210" y="255" width="150" height="36" rx="6"/>
+    </g>
+    <text x="60" y="234" font-family="monospace" font-size="10" font-weight="500">GitHub ✓</text>
+    <text x="230" y="234" font-family="monospace" font-size="10" font-weight="500">Slack ✓</text>
+    <text x="60" y="279" font-family="monospace" font-size="10" fill="#8B949E">Jira ○</text>
+    <text x="230" y="279" font-family="monospace" font-size="10" fill="#8B949E">Notion ○</text>
+    
+    <!-- Team -->
+    <text x="40" y="320" font-family="monospace" font-size="12" font-weight="600">Team Members</text>
+    <text x="40" y="345" font-family="monospace" font-size="10" fill="#8B949E">Manage access & roles</text>
+    
+    <g fill="#30363D" stroke="#30363D">
+      <rect x="40" y="370" width="320" height="40" rx="6"/>
+      <rect x="40" y="415" width="320" height="40" rx="6"/>
+    </g>
+    <text x="60" y="395" font-family="monospace" font-size="10" font-weight="500">Ahmed Hassan • Owner</text>
+    <text x="60" y="440" font-family="monospace" font-size="10" font-weight="500">Sara Rahman • Admin</text>
+    
+    <!-- Security -->
+    <text x="40" y="480" font-family="monospace" font-size="12" font-weight="600">Security</text>
+    <text x="40" y="505" font-family="monospace" font-size="10" fill="#8B949E">2FA • Audit logs • Sessions</text>
+    
+    <g fill="#30363D" stroke="#30363D">
+      <rect x="40" y="530" width="150" height="36" rx="6"/>
+      <rect x="210" y="530" width="150" height="36" rx="6"/>
+    </g>
+    <text x="60" y="554" font-family="monospace" font-size="10" font-weight="500" fill="#3FB950">2FA Enabled ✓</text>
+    <text x="230" y="554" font-family="monospace" font-size="10" font-weight="500" fill="#BE943F">View Logs</text>
+    
+    <!-- Danger zone -->
+    <text x="40" y="645" font-family="monospace" font-size="10" fill="#F85149">Danger Zone: Delete Workspace</text>
+    <text x="320" y="645" font-family="monospace" font-size="10" fill="#F85149" text-anchor="end">ACTION REQUIRED</text>
+  </g>
+  
+  <text x="200" y="720" font-family="monospace" font-size="9" fill="#6B6B6E" text-anchor="middle">PLACEHOLDER — 400×712px</text>
+  <text x="200" y="735" font-family="monospace" font-size="9" fill="#6B6B6E" text-anchor="middle">yusra-screen-5.png</text>
+</svg>

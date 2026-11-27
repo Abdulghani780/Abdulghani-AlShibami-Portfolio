@@ -16,21 +16,31 @@ export const TechnologyBadge: React.FC<TechnologyBadgeProps> = ({
   const name = typeof technology === "string" ? technology : technology.name;
   const category = typeof technology === "string" ? "Tool" : technology.category;
 
-  const categoryBorder = {
-    Language: "border-gold-primary/30 text-gold-dark dark:text-gold-light bg-gold-primary/10",
-    Framework: "border-black/15 dark:border-white/15 text-zinc-800 dark:text-zinc-200 bg-black/5 dark:bg-white/5",
-    Protocol: "border-emerald-500/30 text-emerald-700 dark:text-emerald-400 bg-emerald-500/10",
-    Database: "border-gold-dark/30 text-gold-dark dark:text-gold-light bg-gold-dark/10",
-    Tool: "border-black/10 dark:border-white/10 text-zinc-700 dark:text-zinc-300 bg-black/5 dark:bg-white/5",
-    Cloud: "border-gold-primary/20 text-zinc-800 dark:text-zinc-200 bg-black/5 dark:bg-white/5",
-  }[category] || "border-black/10 dark:border-white/10 text-zinc-700 dark:text-zinc-300 bg-black/5 dark:bg-white/5";
+  const categoryStyles = {
+    Language: "border-brand/30 text-brand dark:text-brandLight bg-brand/10 dark:bg-brandLight/20",
+    Framework: "border-border/20 text-foreground dark:text-foreground bg-surface dark:bg-surfaceElevated",
+    Protocol: "border-status-success/30 text-status-success dark:text-status-success bg-status-successBg dark:bg-status-successBg",
+    Database: "border-brand/30 text-brand dark:text-brandLight bg-brand/10 dark:bg-brandLight/20",
+    Tool: "border-border/15 text-muted-foreground dark:text-muted-foreground bg-surface dark:bg-surfaceElevated",
+    Cloud: "border-status-info/30 text-status-info dark:text-status-info bg-status-infoBg dark:bg-status-infoBg",
+    Platform: "border-status-warning/30 text-status-warning dark:text-status-warning bg-status-warningBg dark:bg-status-warningBg",
+    Library: "border-violet-500/30 text-violet-700 dark:text-violet-400 bg-violet-500/10 dark:bg-violet-900/30",
+    Default: "border-border/15 text-muted-foreground dark:text-muted-foreground bg-surface dark:bg-surfaceElevated",
+  };
+
+  const styleKey = categoryStyles[category as keyof typeof categoryStyles] ? category : "Default";
+
+  const sizeStyles = {
+    xs: "px-3 py-1.5 text-[10px] min-h-[44px] min-w-[44px]",
+    sm: "px-3 py-2 text-xs min-h-[44px] min-w-[44px]",
+  };
 
   return (
     <span
       className={cn(
-        "inline-flex items-center font-mono border rounded uppercase tracking-wider transition-colors select-none",
-        size === "xs" ? "text-[10px] px-2 py-0.5" : "text-xs px-2.5 py-1",
-        categoryBorder,
+        "inline-flex items-center font-mono font-medium uppercase tracking-wider rounded-full border transition-colors",
+        categoryStyles[styleKey],
+        sizeStyles[size],
         className
       )}
     >

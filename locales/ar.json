@@ -1,0 +1,475 @@
+{
+  "meta": {
+    "title": "عبدالغني الشبامي — مصمم الأنظمة المستقلة وقائد هندسة الذكاء الاصطناعي",
+    "description": "محفظة شخصية تنفيذية لعبدالغني الشبامي. آلات حالة موزعة عالية الإنتاجية، وأنظمة متعددة الوكلاء مستقلة، وبنية تحتية منخفضة الكمون."
+  },
+  "nav": {
+    "brand": "أس",
+    "role": "مصمم الأنظمة المستقلة",
+    "sections": {
+      "home": "الرئيسية",
+      "about": "من هو عبدالغني",
+      "aiLab": "مختبر الذكاء الاصطناعي",
+      "projects": "المشاريع المميزة",
+      "yusra": "دراسة حالة — يسرى",
+      "arsenal": "الترسانة التقنية",
+      "method": "منهجية عبدالغني",
+      "education": "التعليم والشهادات",
+      "public": "الهندسة في العلن",
+      "cta": "لنبني معاً"
+    },
+    "ctaButton": "لِنَبْنِ",
+    "themeToggle": "تبديل السمة",
+    "langToggle": "English",
+    "menuOpen": "فتح القائمة",
+    "menuClose": "إغلاق القائمة"
+  },
+  "hero": {
+    "greeting": "مرحباً، أنا",
+    "name": "عَبْدُالْغَنِيُّ الْشَّبَامِي",
+    "roleLine": "مُصَمِّمُ الْأَنْظِمَةِ الْمُسْتَقِلَّةِ وَقَائِدُ هَنْدَسَةِ الذَّكَاءِ الْاِصْطِنَاعِي",
+    "subtitle": "أصمم آلات الحالة الموزعة عالية الإنتاجية، والأنظمة متعددة الوكلاء المستقلة، والبنية التحتية منخفضة الكمون التي تعمل عند حدود الممكن.",
+    "ctaPrimary": "استكشاف أعمالي",
+    "ctaSecondary": "عرض السيرة الذاتية",
+    "ctaTertiary": "تواصل معي",
+    "profileAlt": "عبدالغني الشبامي — مصمم الأنظمة المستقلة",
+    "verified": "مهندس معتمد",
+    "coordinates": "١٥.٣٦٩٤° ش، ٤٤.١٩١٠° ق"
+  },
+  "about": {
+    "headline": "مَنْ هُوَ عَبْدُالْغَنِي",
+    "lead": "أنا مصمم أنظمة مستقل وقائد هندسة ذكاء اصطناعي مع عقد من الخبرة في بناء أنظمة تفكر، وتتكيف، وتتحمل. عملي يقع عند تقاطع الأنظمة الموزعة، والتعلم الآلي، والبنية التحتية في الوقت الفعلي — حيث تلتقي الأناقة النظرية بواقع الإنتاج.",
+    "pillars": [
+      {
+        "title": "الأنظمة المستقلة",
+        "description": "تصميم آلات حالة موزعة ذاتية الحكم تعالج ١٠٠ ألف انتقال/ثانية مع كمون دون الميلي ثانية ونشر دون توقف."
+      },
+      {
+        "title": "هندسة الذكاء الاصطناعي",
+        "description": "بناء خطوط أنابيب تعلم آلي إنتاجية، وأطر تنسيق متعددة الوكلاء، وأنظمة رؤية حاسوبية تعمل بشكل موثوق في بيئات مقيدة."
+      },
+      {
+        "title": "معمارية المؤسسات",
+        "description": "قيادة التحول الرقمي للحكومات والمؤسسات — تحديث الأنظمة القديمة، وإدارة خدمات ITIL، واستراتيجيات الهجرة السحابية الأصلية."
+      }
+    ],
+    "timeline": [
+      {
+        "year": "٢٠٢٤",
+        "title": "قائد هندسة الذكاء الاصطناعي",
+        "org": "صحة يسرى — صنعاء، اليمن",
+        "description": "صمم نظام دعم قراري سريري متعدد الوكلاء يخدم ٥٠٠ ألف مريض. قلل زمن التشخيص من ٤٥ دقيقة إلى ٢.٣ ثانية."
+      },
+      {
+        "year": "٢٠٢٢",
+        "title": "مصمم أنظمة أول",
+        "org": "نظام تتبع الحرم الجامعي — صنعاء، اليمن",
+        "description": "قاد تحول ITIL المؤسسي لبنية الجامعة التحتية. تقليل التكلفة ٤٠٪، توفر ٩٩.٩٪ عبر ١٥ حرمًا جامعيًا."
+      },
+      {
+        "year": "٢٠٢٠",
+        "title": "مطور رئيسي",
+        "org": "مختبر ميتاألغوريثم — عن بعد",
+        "description": "بنى منصة تفاعلية لتصور الخوارزميات يستخدمها ١٠ آلاف+ طالب علوم حاسوب عالميًا. مفتوح المصدر، ٢.٤ ألف نجمة على GitHub."
+      },
+      {
+        "year": "٢٠١٨",
+        "title": "مهندس برمجيات",
+        "org": "نكسورا — صنعاء، اليمن",
+        "description": "طور منصة تجارة إلكترونية عالية الأداء تعالج ٥٠ ألف طلب/يوم. خدمات صغرى، موجهة بالأحداث، سحابية أصلية."
+      },
+      {
+        "year": "٢٠١٦",
+        "title": "مطور مبتدئ",
+        "org": "بداية المسار — صنعاء، اليمن",
+        "description": "تطوير كامل الطيف عبر سطح المكتب، الويب، والجوال. C#، Java، PHP. أساس في المعمارية النظيفة والتفكير النظمي."
+      }
+    ],
+    "quote": "الكود ليس المُنتج. سلوك النظام الذي ينتجه هو. كل شيء آخر تفصيل تنفيذي.",
+    "quoteAuthor": "— عبدالغني الشبامي",
+    "yemenImageAlt": "صنعاء، اليمن — عمارة المدينة القديمة التاريخية"
+  },
+  "aiLab": {
+    "headline": "مختبر الذكاء الاصطناعي",
+    "subheadline": "أبحاث نشطة وتنفيذات إنتاجية في التعلم الآلي، والرؤية الحاسوبية، والوكلاء المستقلين.",
+    "cards": [
+      {
+        "title": "تنسيق متعدد الوكلاء",
+        "description": "إطار لتنسيق ٥٠+ وكيل مستقل مع أنماط سلوك ناشئة. يطبق بروتوكولات الإجماع، حل النزاعات، وتوزيع الأدوار الديناميكي. منتشر إنتاجيًا في دعم القرار السريري.",
+        "icon": "network"
+      },
+      {
+        "title": "آلات الحالة الموزعة",
+        "description": "بيئة تشغيل آلة حالة عالية الإنتاجية تعالج ١٠٠ ألف+ انتقال/ثانية. تزامن تفاؤلي، مصادر أحداث، وتعويض قائم على ساجا. كمون p99 دون الميلي ثانية.",
+        "icon": "stateMachine"
+      },
+      {
+        "title": "خطوط أنابيب الرؤية الحاسوبية",
+        "description": "خطوط استنتاج فورية للتصوير الطبي (DICOM)، والصور الفضائية، والفحص الصناعي. ONNX Runtime، تحسين TensorRT. دقة ٩٩.٢٪ على مجموعات التحقق.",
+        "icon": "vision"
+      },
+      {
+        "title": "عمليات التعلم المعزز",
+        "description": "بنية تحتية شاملة لتدريب ونشر التعلم المعزز. خوارزميات PPO، SAC مع إعادة تجربة خبرة موزعة. ضبط فائق المعاملات آلي ونشر سياسة آمن.",
+        "icon": "rl"
+      },
+      {
+        "title": "مخططات المعرفة و RAG",
+        "description": "مخططات معرفة مؤسسية مع ٢ مليون+ كيان. استرجاع هجين متجه-رمزي، GraphRAG للاستدلال المعقد. كمون استعلام دون ١٠٠ ميلي ثانية عند المقياس.",
+        "icon": "graph"
+      },
+      {
+        "title": "تحسين التعلم الآلي للحافة",
+        "description": "كمية النموذج (INT4/INT8)، التقطير، والتجميع للنشر على الحافة. ARM NEON، Qualcomm Hexagon، NVIDIA Jetson. ضغط ١٠ أضعاف مع انخفاض دقة <١٪.",
+        "icon": "edge"
+      }
+    ]
+  },
+  "projects": {
+    "headline": "المشاريع المميزة",
+    "subheadline": "أنظمة إنتاجية سُلمت عبر الرعاية الصحية، التعليم، المؤسسات، والتجارة الإلكترونية. كل منها يمثل دورة حياة منتج كاملة — من المعمارية إلى النشر.",
+    "items": [
+      {
+        "id": "yusra",
+        "name": "صحة يسرى",
+        "tagline": "منصة إدارة رعاية صحية مدعومة بالذكاء الاصطناعي",
+        "description": "دعم قراري سريري متعدد الوكلاء، بوابة مرضى، جدولة مواعيد، وسجلات طبية متوافقة مع FHIR. تخدم ٥٠٠ ألف+ مريض عبر ١٢ مستشفى.",
+        "tech": "C# · .NET 8 · Angular · SQL Server · Azure · FHIR R4",
+        "metrics": "٥٠٠ ألف+ مريض · ١٢ مستشفى · ٢.٣ث تشخيص · ٩٩.٩٪ توفر",
+        "href": "/projects/yusra-health",
+        "image": "/images/projects/yusra-health/hero.webp",
+        "featured": true
+      },
+      {
+        "id": "campus",
+        "name": "نظام تتبع الحرم الجامعي",
+        "tagline": "بنية تحتية تقنية مؤسسية وإدارة خدمات ITIL",
+        "description": "خريطة حرم تفاعلية، نقل عهد الأصول، كانبان مكتب خدمات، وصيانة تنبؤية. يدير ١٥ ألف+ أصل عبر ١٥ حرمًا جامعيًا.",
+        "tech": "C# · WinForms · Oracle · SignalR · ITIL v4 · RBAC",
+        "metrics": "١٥ ألف+ أصل · ١٥ حرمًا · تقليل تكلفة ٤٠٪ · ٩٩.٩٪ توفر",
+        "href": "/projects/campus-it-tracker",
+        "image": "/images/projects/campus-it-tracker/hero.webp",
+        "featured": true
+      },
+      {
+        "id": "metaalgorithm",
+        "name": "مختبر ميتاألغوريثم",
+        "tagline": "منصة تعلم خوارزميات تفاعلية وتصور التعقيد",
+        "description": "تنفيذ خوارزمي مرئي مع فحص حالة خطوة بخطوة، محرك تحليل تعقيد، ومجموعة معايير أداء. ١٠ آلاف+ متعلم نشط، مفتوح المصدر.",
+        "tech": "Python · PyQt6 · SciPy · NumPy · OpenGL · WebAssembly",
+        "metrics": "١٠ آلاف+ متعلم · ٢.٤ ألف نجمة · ١٥٠+ خوارزمية · ٩٤٪ احتفاظ",
+        "href": "/projects/metaalgorithm-lab",
+        "image": "/images/projects/metaalgorithm-lab/hero.webp",
+        "featured": true
+      },
+      {
+        "id": "nexora",
+        "name": "نكسورا",
+        "tagline": "منصة تجارة إلكترونية متعددة البائعين عالية الأداء",
+        "description": "مخزون فوري، سوق Stripe Connect، تحليلات متقدمة، و PWA بدون رأس. يعالج ٥٠ ألف طلب/يوم مع كمون API دون ٢٠٠ ميلي ثانية.",
+        "tech": "Next.js · PostgreSQL · Redis · Stripe · Tailwind · Vercel",
+        "metrics": "٥٠ ألف طلب/يوم · ٢٠٠مي p99 · ٩٩.٩٥٪ توفر · ٣.٢x تحويل",
+        "href": "/projects/nexora",
+        "image": "/images/projects/nexora/hero.webp",
+        "featured": true
+      }
+    ]
+  },
+  "yusra": {
+    "headline": "دراسة حالة — صحة يسرى",
+    "subheadline": "تحويل تقديم الرعاية الصحية في اليمن من خلال دعم قراري سريري مدعوم بالذكاء الاصطناعي وإدارة مستشفيات متكاملة.",
+    "problem": {
+      "title": "المشكلة",
+      "items": [
+        "سجلات ورقية مجزأة عبر ١٢ مستشفى",
+        "متوسط وقت التشخيص: ٤٥ دقيقة لكل مريض",
+        "لا توجد قابلية تشغيل متبادل — ٦٠٪ فحوصات مكررة",
+        "نقص حاد في الأخصائيين في المرافق الريفية",
+        "صفر رؤية فورية لسعة الأسرة أو مخزون الأدوية"
+      ]
+    },
+    "solution": {
+      "title": "الحل",
+      "items": [
+        "دعم قراري سريري متعدد الوكلاء يقلل التشخيص إلى ٢.٣ ثانية",
+        "سجل مريض موحد متوافق مع FHIR R4 عبر جميع المرافق",
+        "إدارة أسرة تنبؤية وتحسين مخزون الأدوية",
+        "جسر طب عن بعد يربط العيادات الريفية بأخصائيين في صنعاء",
+        "PWA يعمل دون اتصال أولاً للمناطق ذات الاتصال المتقطع"
+      ]
+    },
+    "architecture": {
+      "title": "المعمارية",
+      "items": [
+        "خدمات صغرى موجهة بالأحداث (.NET 8، Azure Kubernetes Service)",
+        "طبقة تنسيق الوكلاء: ١٢ وكيل سريري متخصص",
+        "مصادر أحداث + CQRS لمسار تدقيق وإعادة تشغيل",
+        "PostgreSQL + Redis + Azure Cosmos DB (متعدد النماذج)",
+        "SignalR للتعاون السريري الفوري"
+      ]
+    },
+    "implementation": {
+      "title": "التنفيذ",
+      "items": [
+        "نشر مرحلي لمدة ٦ أشهر عبر ١٢ مستشفى",
+        "هجرة دون توقف من أنظمة MUMPS القديمة",
+        "برنامج تدريب أطباء: ٤٠٠+ موظف معتمد",
+        "امتثال HIPAA/GDPR مع سيادة بيانات اليمن",
+        "هندسة الفوضى: أيام لعب شهرية، مرونة ٩٩.٩٩٪"
+      ]
+    },
+    "outcome": {
+      "title": "النتيجة",
+      "items": [
+        "كمون التشخيص: ٤٥د → ٢.٣ث (تحسين ٩٩.٩٪)",
+        "الفحوصات المكررة مُلغاة: ٦٠٪ → <٢٪",
+        "إنتاجية المرضى: +٣٤٠٪ دون موظفين جدد",
+        "وصول الأخصائيين: ١٠٠٪ تغطية ريفية عبر الطب عن بعد",
+        "تكلفة كل مقابلة: -٤٢٪ توفير تشغيلي"
+      ]
+    },
+    "screens": [
+      { "id": 1, "title": "لوحة التحكم السريرية", "description": "علامات حيوية فورية، توصيات الذكاء الاصطناعي، وتنسيق فريق الرعاية", "image": "/images/projects/yusra-health/screen-1.webp" },
+      { "id": 2, "title": "عرض تنسيق الوكلاء", "description": "تتبع استدلال متعدد الوكلاء مع درجات ثقة واستشهادات أدلة", "image": "/images/projects/yusra-health/screen-2.webp" },
+      { "id": 3, "title": "مستكشف موارد FHIR", "description": "مخطط موارد FHIR R4 تفاعلي مع تاريخ إصدارات وأصل", "image": "/images/projects/yusra-health/screen-3.webp" },
+      { "id": 4, "title": "إدارة الأسرة التنبؤية", "description": "تنبؤ إشغال مدعوم بـ ML مع تحسين تخطيط الخروج", "image": "/images/projects/yusra-health/screen-4.webp" },
+      { "id": 5, "title": "استشارة طب عن بعد", "description": "فيديو منخفض النطاق مع ترجمة فورية وتراكب تعليقات", "image": "/images/projects/yusra-health/screen-5.webp" }
+    ],
+    "features": [
+      { "title": "دعم قراري سريري متعدد الوكلاء", "description": "١٢ وكيل سريري متخصص (فرز، تشخيص، تفاعل دوائي، مسار، إحالة) مع تصويت إجماع", "icon": "brain" },
+      { "title": "FHIR R4 أصلي", "description": "امتثال كامل لـ FHIR R4 مع تفويض SMART on FHIR. قابل للتشغيل المتبادل مع Epic، Cerner، OpenMRS", "icon": "database" },
+      { "title": "PWA يعمل دون اتصال أولاً", "description": "عامل خدمة + IndexedDB لوظيفة كاملة في بيئات منفصلة. مزامنة خلفية عند إعادة الاتصال", "icon": "wifi" },
+      { "title": "تعاون فوري", "description": "اجتماعات فريق متعدد التخصصات مدعومة بـ SignalR مع سياق مشترك ومسار تدقيق", "icon": "users" },
+      { "title": "تحليلات تنبؤية", "description": "تنبؤ إشغال الأسرة، طلب الأدوية، خطر إعادة الدخول، ومدة الإقامة", "icon": "chart" },
+      { "title": "تدقيق وامتثال", "description": "سجل تدقيق مبني على مصادر أحداث غير قابل للتغيير. متوافق مع HIPAA، GDPR، هيئة الصحة اليمنية", "icon": "shield" }
+    ],
+    "systemFlow": {
+      "title": "تدفق النظام",
+      "description": "قبول المريض → وكيل الفرز → الوكلاء الأخصائيون (متوازي) → إجماع → خطة علاج → مراقبة التنفيذ → حلقة تعلم النتائج",
+      "image": "/images/projects/yusra-health/system-flow.webp"
+    }
+  },
+  "arsenal": {
+    "headline": "الترسانة التقنية",
+    "subheadline": "أدوات، لغات، ومنصات أستخدمها لبناء أنظمة إنتاجية. منظمة حسب المجال مع مستويات إتقان موثقة.",
+    "categories": [
+      {
+        "title": "اللغات",
+        "techs": "Python · C# · Java · Kotlin · JavaScript · TypeScript · Go · Rust · SQL",
+        "logos": [
+          { "name": "Python", "color": "#3776AB", "text": "Py" },
+          { "name": "C#", "color": "#239120", "text": "C#" },
+          { "name": "Java", "color": "#ED8B00", "text": "Java" },
+          { "name": "Kotlin", "color": "#7F52FF", "text": "Kt" },
+          { "name": "JavaScript", "color": "#F7DF1E", "text": "JS" },
+          { "name": "TypeScript", "color": "#3178C6", "text": "TS" },
+          { "name": "Go", "color": "#00ADD8", "text": "Go" },
+          { "name": "Rust", "color": "#DEA584", "text": "Rs" },
+          { "name": "SQL", "color": "#CC2927", "text": "SQL" }
+        ]
+      },
+      {
+        "title": "الذكاء الاصطناعي والرؤية",
+        "techs": "PyTorch · TensorFlow · ONNX Runtime · TensorRT · OpenCV · Hugging Face · LangChain · LangGraph · MLflow · Weights & Biases",
+        "logos": [
+          { "name": "PyTorch", "color": "#EE4C2C", "text": "PT" },
+          { "name": "TensorFlow", "color": "#FF6F00", "text": "TF" },
+          { "name": "ONNX", "color": "#005CED", "text": "ONNX" },
+          { "name": "TensorRT", "color": "#76B900", "text": "TRT" },
+          { "name": "OpenCV", "color": "#5C3EE8", "text": "CV" },
+          { "name": "Hugging Face", "color": "#FFC107", "text": "HF" },
+          { "name": "LangChain", "color": "#1C3C3C", "text": "LC" },
+          { "name": "MLflow", "color": "#0194E2", "text": "MF" }
+        ]
+      },
+      {
+        "title": "الخلفية والأنظمة الموزعة",
+        "techs": ".NET 8/ASP.NET Core · Node.js · gRPC · GraphQL · REST · مصادر أحداث · CQRS · نمط ساجا · نموذج الممثل (Akka/Orleans) · SignalR · طوابير رسائل (RabbitMQ, Kafka, Azure Service Bus)",
+        "logos": [
+          { "name": ".NET", "color": "#512BD4", "text": ".NET" },
+          { "name": "Node.js", "color": "#339933", "text": "Node" },
+          { "name": "gRPC", "color": "#6C42E7", "text": "gRPC" },
+          { "name": "GraphQL", "color": "#E10098", "text": "GQL" },
+          { "name": "Kafka", "color": "#231F20", "text": "Kafka" },
+          { "name": "RabbitMQ", "color": "#FF6600", "text": "RMQ" },
+          { "name": "SignalR", "color": "#512BD4", "text": "SR" },
+          { "name": "Orleans", "color": "#512BD4", "text": "Orleans" }
+        ]
+      },
+      {
+        "title": "البيانات والبنية التحتية",
+        "techs": "PostgreSQL · SQL Server · Redis · Azure Cosmos DB · MongoDB · Elasticsearch · ClickHouse · TimescaleDB · Docker · Kubernetes (AKS/EKS/GKE) · Terraform · Helm · ArgoCD · GitHub Actions · Azure DevOps · Prometheus · Grafana · OpenTelemetry",
+        "logos": [
+          { "name": "PostgreSQL", "color": "#336791", "text": "PG" },
+          { "name": "SQL Server", "color": "#CC2927", "text": "SQL" },
+          { "name": "Redis", "color": "#DC382D", "text": "Redis" },
+          { "name": "Cosmos DB", "color": "#0078D4", "text": "Cosmos" },
+          { "name": "Kubernetes", "color": "#326CE5", "text": "K8s" },
+          { "name": "Terraform", "color": "#7B42BC", "text": "TF" },
+          { "name": "Prometheus", "color": "#E6522C", "text": "Prom" },
+          { "name": "Grafana", "color": "#F46800", "text": "Grafana" }
+        ]
+      },
+      {
+        "title": "الواجهة الأمامية والمنصات",
+        "techs": "React 19 · Next.js 15 · TypeScript · Tailwind CSS · TanStack Query · Zustand · Framer Motion · Three.js · WebGL · WebAssembly · PWA · Electron · Tauri · WinForms · WPF · MAUI · PyQt6",
+        "logos": [
+          { "name": "React", "color": "#61DAFB", "text": "React" },
+          { "name": "Next.js", "color": "#000000", "text": "Next" },
+          { "name": "TypeScript", "color": "#3178C6", "text": "TS" },
+          { "name": "Tailwind", "color": "#06B6D4", "text": "TW" },
+          { "name": "Three.js", "color": "#000000", "text": "3JS" },
+          { "name": "WASM", "color": "#654FF0", "text": "WASM" },
+          { "name": "Electron", "color": "#47848F", "text": "Etron" },
+          { "name": "PyQt", "color": "#41CD52", "text": "Qt" }
+        ]
+      }
+    ]
+  },
+  "method": {
+    "headline": "منهجية عبدالغني",
+    "subheadline": "نهج منهجي لبناء أنظمة مستقلة تتحمل. سبع مراحل. صفر مساومة.",
+    "steps": [
+      {
+        "number": "٠١",
+        "title": "المشكلة",
+        "description": "حدد القيد الحقيقي. ليس الأعراض — عنق الزجاجة الأساسي. قِسْه. اكتبه. احصل على إجماع."
+      },
+      {
+        "number": "٠٢",
+        "title": "الفهم",
+        "description": "ارسم حدود النظام. حدد كل ممثل، تدفق بيانات، ووضع فشل. ابنِ النموذج الذهني قبل كتابة الكود."
+      },
+      {
+        "number": "٠٣",
+        "title": "المعمارية",
+        "description": "اختر التجريد الصحيح. آلة حالة؟ ممثل؟ سجل أحداث؟ خط أنابيب؟ يجب أن تطابق المعمارية طوبولوجيا المشكلة."
+      },
+      {
+        "number": "٠٤",
+        "title": "البناء",
+        "description": "اكتب أنحف شريحة تثبت المعمارية. قابلية المراقبة أولاً. الاختبارات كتوثيق. لا تحسين مبكر."
+      },
+      {
+        "number": "٠٥",
+        "title": "التحقق",
+        "description": "اختبره بالفوضى. اختبره بالحمل. تحقق رسمي من المسارات الحرجة. إذا لم يفشل في التدريج، فهو غير جاهز للإنتاج."
+      },
+      {
+        "number": "٠٦",
+        "title": "النشر",
+        "description": "أزرق-أخضر. كناري. أعلام ميزات. تراجع في <٣٠ ثانية. صفر توقف ليس اختياريًا — هو خط الأساس."
+      },
+      {
+        "number": "٠٧",
+        "title": "التطور",
+        "description": "قِسْ كل شيء. تعلَّم من الإنتاج. أعد هيكلة بلا رحمة. النظام الذي لا يتطور يصبح إرثًا."
+      }
+    ],
+    "waveAlt": "منهجية عبدالغني — التطور المستمر"
+  },
+  "education": {
+    "headline": "التعليم والشهادات",
+    "subheadline": "تعليم رسمي، شهادات موثقة، وتعلم مستمر. كل اعتماد قابل للتحقق المستقل.",
+    "education": {
+      "degree": "بكالوريوس علوم الحاسوب ونظم المعلومات",
+      "institution": "جامعة العلوم والتكنولوجيا، صنعاء",
+      "period": "٢٠١٢ — ٢٠١٦",
+      "honors": "تخرج بامتياز (٣.٨٧/٤.٠)",
+      "focus": "الأنظمة الموزعة، الذكاء الاصطناعي، هندسة البرمجيات، نظم قواعد البيانات",
+      "thesis": "تحسين تكرار آلة الحالة لتوافق منخفض الكمون في عناقيد موزعة جغرافيًا",
+      "imageAlt": "حرم جامعة العلوم والتكنولوجيا، صنعاء"
+    },
+    "certifications": [
+      {
+        "id": "azure-architect",
+        "title": "خبير معماري حلول Azure",
+        "provider": "Microsoft",
+        "date": "٢٠٢٤",
+        "badge": "AZ-305 + AZ-104",
+        "description": "تصميم حلول البنية التحتية، الأمان، البيانات، والحوكمة على Microsoft Azure.",
+        "verificationUrl": "https://learn.microsoft.com/api/credentials/share/en-us/AbdulghaniAlShibami-1234/ABCDEF123456"
+      },
+      {
+        "id": "kubernetes-admin",
+        "title": "مسؤول Kubernetes معتمد (CKA)",
+        "provider": "CNCF / Linux Foundation",
+        "date": "٢٠٢٣",
+        "badge": "CKA-2023-004521",
+        "description": "إدارة عناقيد Kubernetes، استكشاف الأخطاء، الأمان، والشبكات.",
+        "verificationUrl": "https://www.credly.com/badges/abdulghani-alshibami-cka"
+      },
+      {
+        "id": "aws-architect",
+        "title": "مصمم حلول AWS معتمد — محترف",
+        "provider": "Amazon Web Services",
+        "date": "٢٠٢٣",
+        "badge": "SAP-C02",
+        "description": "أنماط معمارية متقدمة، استراتيجيات هجرة، تحسين التكلفة، والأمان على AWS.",
+        "verificationUrl": "https://www.credly.com/badges/abdulghani-alshibami-aws-sap"
+      },
+      {
+        "id": "ml-specialty",
+        "title": "تخصص التعلم الآلي",
+        "provider": "AWS",
+        "date": "٢٠٢٤",
+        "badge": "MLS-C01",
+        "description": "بناء، تدريب، ضبط، ونشر نماذج ML على AWS. SageMaker، MLOps، وحوكمة النماذج.",
+        "verificationUrl": "https://www.credly.com/badges/abdulghani-alshibami-aws-ml"
+      }
+    ]
+  },
+  "public": {
+    "headline": "الهندسة في العلن",
+    "subheadline": "مساهمات مفتوحة المصدر، جلسات ترميز مباشرة، وكتابة تقنية. البناء في العلن يبقيني صادقًا ويساعد الآخرين.",
+    "heatmap": {
+      "title": "خريطة حرارية للمساهمات",
+      "subtitle": "آخر ١٢ شهرًا من نشاط GitHub. شدة اللون الأخضر = حجم الالتزامات.",
+      "legend": ["لا نشاط", "منخفض", "متوسط", "عالي", "عالٍ جداً"]
+    },
+    "pinnedRepos": {
+      "title": "المستودعات المثبتة",
+      "subtitle": "مشاريع مفتوحة المصدر رائدة مع صيانة نشطة."
+    },
+    "activity": {
+      "title": "النشاط الأخير",
+      "subtitle": "أحدث الالتزامات، طلبات سحب، إصدارات، ومراجعات عبر جميع المستودعات."
+    },
+    "codeBlock": {
+      "title": "كود مباشر",
+      "subtitle": "مقتطف فوري من نواة DistributedStateMachine — المحرك الذي يدعم تنسيق الوكلاء المستقلين.",
+      "filename": "StateMachine.cs"
+    }
+  },
+  "cta": {
+    "headline": "لِنَبْنِ شَيْئًا غَيْرَ عَادِي",
+    "subheadline": "متاح بشكل انتقاعي لمشاريع عالية التأثير: معمارية أنظمة مستقلة، قيادة هندسة ذكاء اصطناعي، وتحول مؤسساتي.",
+    "buttons": {
+      "primary": "بدء مشروع",
+      "secondary": "عرض السيرة الذاتية",
+      "tertiary": "جدولة مكالمة"
+    },
+    "benefits": [
+      "جاهز للإنتاج من اليوم الأول — لا نماذج أولية، لا تجارب",
+      "ملكية شاملة — المعمارية، التنفيذ، العمليات",
+      "نقل المعرفة مدمج — فريقك يتعلم النظام بينما نبنيه"
+    ],
+    "dividerAlt": "فاصل ذهبي"
+  },
+  "footer": {
+    "brand": "أس",
+    "social": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "email": "البريد الإلكتروني",
+      "resume": "السيرة الذاتية"
+    },
+    "language": {
+      "label": "اللغة",
+      "en": "English",
+      "ar": "العربية"
+    },
+    "credit": "تم التصميم والبناء بواسطة عبدالغني الشبامي",
+    "rights": "جميع الحقوق محفوظة"
+  }
+}

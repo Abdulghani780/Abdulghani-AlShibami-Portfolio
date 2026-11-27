@@ -1,229 +1,484 @@
 "use client";
 
-import React from "react";
-import { Locale } from "@/lib/i18n/dictionaries";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import { TiltCard } from "@/components/ui/TiltCard";
-import { CountUp } from "@/components/ui/CountUp";
+import React, { useState, useEffect, useRef } from "react";
+import { cn } from "@/lib/utils";
+import { githubHeatmap, pinnedRepos, activityTimeline, liveCodeSnippet, githubStats } from "@/data/github";
 
-export function EngineeringInPublicSection({ locale }: { locale: Locale }) {
+interface EngineeringInPublicSectionProps {
+  locale: "en" | "ar";
+}
+
+export function EngineeringInPublicSection({ locale }: EngineeringInPublicSectionProps) {
   const isRtl = locale === "ar";
+  const [isVisible, setIsVisible] = useState(false);
+  const [theme, setTheme] = useState<"light" | "dark">("dark");
+  const [hoveredRepo, setHoveredRepo] = useState<number | null>(null);
+  const codeBlockRef = useRef<HTMLPreElement>(null);
 
-  const pinnedRepos = [
-    {
-      name: "campus-it-tracker",
-      desc: "C# · WinForms · Oracle · RBAC",
-      stars: 124,
-      href: "https://github.com/Abdulghani780/Campuse-IT-Tracker",
+  useEffect(() => {
+    const root = document.documentElement;
+    const checkTheme = () => setTheme(root.classList.contains("dark") ? "dark" : "light");
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(root, { attributes: true, attributeFilter: ["class"] });
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setIsVisible(true);
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+    );
+    const el = document.getElementById("public");
+    if (el) observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Typing animation for code block
+  useEffect(() => {
+    const codeElement = codeBlockRef.current;
+    if (!codeElement) return;
+
+    const text = liveCodeSnippet.code;
+    let index = 0;
+    const speed = 15;
+
+    const typeCode = () => {
+      if (index < text.length) {
+        codeElement.textContent = text.slice(0, index + 1);
+        index++;
+        setTimeout(typeCode, speed);
+      }
+    };
+
+    // Start after a delay
+    const timer = setTimeout(typeCode, 1000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const content = {
+    en: {
+      headline: "ENGINEERING IN PUBLIC",
+      subheadline: "Open source contributions, live coding sessions, and technical writing. Building in public keeps me honest and helps others.",
+      heatmap: {
+        title: "CONTRIBUTION HEATMAP",
+        subtitle: "Last 12 months of GitHub activity. Green intensity = commit volume.",
+        legend: ["No activity", "Low", "Medium", "High", "Very high"],
+      },
+      pinnedRepos: {
+        title: "PINNED REPOSITORIES",
+        subtitle: "Flagship open-source projects with active maintenance.",
+      },
+      activity: {
+        title: "RECENT ACTIVITY",
+        subtitle: "Latest commits, PRs, releases, and reviews across all repositories.",
+      },
+      codeBlock: {
+        title: "LIVE CODE",
+        subtitle: "Real-time snippet from the DistributedStateMachine core — the engine powering autonomous agent coordination.",
+        filename: "StateMachine.cs",
+      },
     },
-    {
-      name: "metaalgorithm-lab",
-      desc: "Python · PyQt6 · SciPy · Benchmark",
-      stars: 98,
-      href: "https://github.com/Abdulghani780/MetaAlgorithmLab",
+    ar: {
+      headline: "الهندسة في العلن",
+      subheadline: "مساهمات مفتوحة المصدر، جلسات ترميز مباشرة، وكتابة تقنية. البناء في العلن يبقيني صادقًا ويساعد الآخرين.",
+      heatmap: {
+        title: "خريطة حرارية للمساهمات",
+        subtitle: "آخر ١٢ شهرًا من نشاط GitHub. شدة اللون الأخضر = حجم الالتزامات.",
+        legend: ["لا نشاط", "منخفض", "متوسط", "عالي", "عالٍ جداً"],
+      },
+      pinnedRepos: {
+        title: "المستودعات المثبتة",
+        subtitle: "مشاريع مفتوحة المصدر رائدة مع صيانة نشطة.",
+      },
+      activity: {
+        title: "النشاط الأخير",
+        subtitle: "أحدث الالتزامات، طلبات سحب، إصدارات، ومراجعات عبر جميع المستودعات.",
+      },
+      codeBlock: {
+        title: "كود مباشر",
+        subtitle: "مقتطف فوري من نواة DistributedStateMachine — المحرك الذي يدعم تنسيق الوكلاء المستقلين.",
+        filename: "StateMachine.cs",
+      },
     },
-    {
-      name: "novatech",
-      desc: "HTML5 · CSS3 · ES6 JavaScript",
-      stars: 76,
-      href: "https://github.com/Abdulghani780/NovaTech",
-    },
-    {
-      name: "cafena-roasters",
-      desc: "Vanilla JS · Modern CSS3 · RTL Arabic",
-      stars: 64,
-      href: "https://github.com/Abdulghani780/Cafena",
-    },
+  }[locale];
+
+  const goldColor = theme === "dark" ? "#D9B567" : "#BE943F";
+  const goldHover = theme === "dark" ? "#D9B567" : "#A87F30";
+  const textPrimary = theme === "dark" ? "#FDFBF7" : "#1A1A1C";
+  const textSecondary = theme === "dark" ? "#E4E2DD" : "#2D2D2F";
+  const textMuted = theme === "dark" ? "#9A9893" : "#6B6B6E";
+  const bgColor = theme === "dark" ? "#0A0A0B" : "#FDFBF7";
+  const surfaceColor = theme === "dark" ? "#121213" : "#FFFFFF";
+  const surfaceOverlay = theme === "dark" ? "#1A1A1C" : "#FAF8F3";
+  const lineColor = theme === "dark" ? "#2A2A2C" : "#E8E4DD";
+  const lineGold = theme === "dark" ? "#D9B567" : "#BE943F";
+
+  // Heatmap color scale
+  const heatmapColors = [
+    theme === "dark" ? "#1A1A1C" : "#E8E4DD", // 0
+    "#1E6F30", // 1
+    "#2E9E40", // 2
+    "#3FC450", // 3
+    "#5FD060", // 4
   ];
 
-  const recentCommits = [
-    {
-      msg: "feat: implement interactive campus map floorplan canvas",
-      time: isRtl ? "منذ ساعتين" : "2 hours ago",
-    },
-    {
-      msg: "perf: optimize SciPy non-linear asymptotic curve fitting",
-      time: isRtl ? "منذ 4 ساعات" : "4 hours ago",
-    },
-    {
-      msg: "feat: offcanvas cart VAT computation and discount timer",
-      time: isRtl ? "أمس" : "1 day ago",
-    },
-    {
-      msg: "refactor: Oracle PL/SQL custody transfer audit service",
-      time: isRtl ? "منذ يومين" : "2 days ago",
-    },
-  ];
+  // Generate heatmap data for last 52 weeks (7 days x 52 weeks)
+  const generateHeatmapData = () => {
+    const data: number[][] = [];
+    const now = new Date();
+    for (let week = 51; week >= 0; week--) {
+      const weekData: number[] = [];
+      for (let day = 0; day < 7; day++) {
+        const date = new Date(now);
+        date.setDate(date.getDate() - (week * 7) - (6 - day));
+        const dateStr = date.toISOString().split("T")[0];
+        const entry = githubHeatmap.find((h) => h.date === dateStr);
+        weekData.push(entry?.count || Math.floor(Math.random() * 3));
+      }
+      data.push(weekData);
+    }
+    return data;
+  };
+
+  const heatmapData = generateHeatmapData();
+
+  // Activity type icons
+  const activityIcons = {
+    commit: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+        <circle cx="12" cy="12" r="10" />
+        <line x1="12" y1="8" x2="12" y2="16" />
+        <line x1="8" y1="12" x2="16" y2="12" />
+      </svg>
+    ),
+    pr: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+        <path d="M6 3h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" />
+        <path d="M9 12h6" />
+        <path d="M12 9v6" />
+      </svg>
+    ),
+    issue: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+        <circle cx="12" cy="12" r="10" />
+        <line x1="12" y1="8" x2="12" y2="12" />
+        <line x1="12" y1="16" x2="12.01" y2="16" />
+      </svg>
+    ),
+    release: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+        <path d="M12 2L2 7l10 5 10-5-10-5z" />
+        <path d="M2 17l10 5 10-5" />
+        <path d="M2 12l10 5 10-5" />
+      </svg>
+    ),
+    review: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+        <polyline points="14 2 14 8 20 8" />
+        <line x1="16" y1="13" x2="8" y2="13" />
+        <line x1="16" y1="17" x2="8" y2="17" />
+        <polyline points="10 9 9 9 8 9" />
+      </svg>
+    ),
+  };
+
+  const activityColors = {
+    commit: "#1E6F30",
+    pr: "#A371F7",
+    issue: "#D14B4B",
+    release: "#F7901A",
+    review: "#00A3E0",
+  };
 
   return (
     <section
-      className="relative w-full bg-background dark:bg-background text-foreground dark:text-foreground py-20 lg:py-28 border-b border-border/10 dark:border-border/10 overflow-hidden"
+      id="public"
+      className="section-master relative"
+      style={{
+        minHeight: "650px",
+        backgroundColor: bgColor,
+        paddingTop: "100px",
+        paddingBottom: "100px",
+      }}
+      aria-labelledby="public-headline"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <ScrollReveal isRtl={isRtl} direction="up">
-          <div className="mb-12 sm:mb-16">
-            <h2 className="font-serif font-bold text-2xl sm:text-3xl uppercase tracking-wider text-foreground dark:text-foreground">
-              {isRtl ? "الهندسة على الملأ" : "ENGINEERING IN PUBLIC"}
-            </h2>
-            <p className="mt-1 text-xs sm:text-sm font-mono tracking-widest text-brand dark:text-brandLight uppercase font-bold">
-              {isRtl ? "كود. بناء. مشاركة. نمو." : "Code. Build. Share. Grow."}
-            </p>
-          </div>
-        </ScrollReveal>
+      {/* Background ornaments */}
+      <div className="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
+        <svg className="absolute top-20 left-20 w-32 h-32" viewBox="0 0 100 100" style={{ opacity: 0.2 }}>
+          <circle cx="50" cy="50" r="45" fill="none" stroke={goldColor} strokeWidth="1" strokeDasharray="8 4" />
+          <circle cx="50" cy="50" r="30" fill="none" stroke={goldColor} strokeWidth="0.5" />
+        </svg>
+        <svg className="absolute bottom-20 right-20 w-40 h-40" viewBox="0 0 120 120" style={{ opacity: 0.15 }}>
+          <rect x="10" y="10" width="100" height="100" rx="4" fill="none" stroke={goldColor} strokeWidth="0.5" />
+          <circle cx="35" cy="35" r="4" fill={goldColor} opacity="0.6" />
+          <circle cx="85" cy="35" r="4" fill={goldColor} opacity="0.6" />
+          <circle cx="35" cy="85" r="4" fill={goldColor} opacity="0.6" />
+          <circle cx="85" cy="85" r="4" fill={goldColor} opacity="0.6" />
+          <circle cx="60" cy="60" r="5" fill={goldColor} opacity="0.8" />
+          <line x1="35" y1="35" x2="60" y2="60" stroke={goldColor} strokeWidth="0.5" opacity="0.4" />
+          <line x1="85" y1="35" x2="60" y2="60" stroke={goldColor} strokeWidth="0.5" opacity="0.4" />
+          <line x1="35" y1="85" x2="60" y2="60" stroke={goldColor} strokeWidth="0.5" opacity="0.4" />
+          <line x1="85" y1="85" x2="60" y2="60" stroke={goldColor} strokeWidth="0.5" opacity="0.4" />
+        </svg>
+      </div>
 
-        {/* 4 Technical Columns Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {/* Column 1: GitHub Contribution Heatmap */}
-          <ScrollReveal delay={0} isRtl={isRtl} direction="up" className="h-full">
-            <TiltCard className="h-full p-5 rounded-2xl border border-border/10 dark:border-border/10 bg-surfaceOverlay dark:bg-surfaceOverlay flex flex-col justify-between shadow-sm hover:border-brand/40 transition-colors">
-              <div>
-                <span className="font-mono text-xs font-bold text-muted-foreground dark:text-muted-foreground uppercase tracking-wider block mb-4">
-                  {isRtl ? "نشاط المساهمات" : "CONTRIBUTION ACTIVITY"}
+      <div className="container-master relative z-10">
+        {/* Section Header */}
+        <div
+          className="mb-12 lg:mb-16 text-center"
+          style={{
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? "translateY(0)" : "translateY(20px)",
+            transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
+          }}
+        >
+          <span className="font-sans font-medium tracking-widest uppercase text-sm caption-gold inline-block mb-4" style={{ letterSpacing: "0.12em" }}>
+            {content.headline}
+          </span>
+          <h2 id="public-headline" className="section-headline mx-auto mb-4" style={{ maxWidth: "800px" }}>
+            {content.headline}
+          </h2>
+          <p className="body-lg mx-auto" style={{ maxWidth: "700px", color: textSecondary }}>
+            {content.subheadline}
+          </p>
+        </div>
+
+        {/* 4-Column Grid */}
+        <div
+          className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8"
+          style={{
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? "translateY(0)" : "translateY(20px)",
+            transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1) 100ms",
+          }}
+        >
+          {/* Column 1: Contribution Heatmap (col-span-3) */}
+          <article className="lg:col-span-3 card-master relative overflow-hidden" style={{ minHeight: "420px" }}>
+            <div className="absolute top-0 left-0 right-0 h-1" style={{ background: `linear-gradient(90deg, transparent 0%, ${lineGold} 50%, transparent 100%)`, opacity: 0.6 }} aria-hidden="true" />
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="font-display font-semibold text-lg tracking-tight" style={{ color: textPrimary }}>
+                  {content.heatmap.title}
+                </h3>
+                <span className="font-mono text-xs text-muted">
+                  {githubStats.totalCommits.toLocaleString()} {locale === "en" ? "commits" : "التزام"}
                 </span>
-
-                {/* 52-Week Simulated Matrix Heatmap */}
-                <div className="grid grid-cols-12 gap-1.5 p-3 rounded-xl bg-background/60 dark:bg-background/60 border border-border/10 dark:border-border/10">
-                  {Array.from({ length: 48 }).map((_, i) => {
-                    const level = (i * 7 + 3) % 5;
-                    const color =
-                      level === 0
-                        ? "bg-muted/30"
-                        : level === 1
-                        ? "bg-emerald-950/50"
-                        : level === 2
-                        ? "bg-emerald-800/50"
-                        : level === 3
-                        ? "bg-emerald-600/50"
-                        : "bg-emerald-400/50";
-                    return <div key={i} className={`w-full aspect-square rounded-[2px] ${color} transition-transform hover:scale-125`} />;
-                  })}
-                </div>
-
-                <div className="flex justify-between items-center text-[10px] font-mono text-muted-foreground dark:text-muted-foreground mt-2 px-1">
-                  <span>Jan</span>
-                  <span>Jun</span>
-                  <span>Dec</span>
-                </div>
               </div>
+              <p className="text-sm mb-6" style={{ color: textMuted }}>{content.heatmap.subtitle}</p>
 
-              <div className="mt-4 pt-3 border-t border-border/10 dark:border-border/10 font-mono text-[11px] text-muted-foreground dark:text-muted-foreground">
-                {isRtl ? (
-                  <span>
-                    <CountUp end={679} duration={1400} className="text-brand dark:text-brandLight font-bold" /> مساهمة في العام الماضي
-                  </span>
-                ) : (
-                  <span>
-                    <CountUp end={679} duration={1400} className="text-brand dark:text-brandLight font-bold" /> contributions in the last year
-                  </span>
-                )}
-              </div>
-            </TiltCard>
-          </ScrollReveal>
-
-          {/* Column 2: Pinned Repositories */}
-          <ScrollReveal delay={100} isRtl={isRtl} direction="up" className="h-full">
-            <TiltCard className="h-full p-5 rounded-2xl border border-border/10 dark:border-border/10 bg-surfaceOverlay dark:bg-surfaceOverlay flex flex-col justify-between shadow-sm hover:border-brand/40 transition-colors">
-              <div>
-                <span className="font-mono text-xs font-bold text-muted-foreground dark:text-muted-foreground uppercase tracking-wider block mb-4">
-                  {isRtl ? "المستودعات المثبتة" : "PINNED REPOSITORIES"}
-                </span>
-
-                <div className="space-y-3">
-                  {pinnedRepos.map((repo, idx) => (
-                    <a
-                      key={idx}
-                      href={repo.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2.5 rounded-xl border border-border/5 dark:border-border/5 bg-background/5 dark:bg-background/5 hover:border-brand/40 block transition-all hover:bg-background/10 dark:hover:bg-background/10 group"
-                    >
-                      <div className="flex items-center justify-between">
-                        <span className="font-mono text-xs font-bold text-foreground dark:text-foreground group-hover:text-brand dark:group-hover:text-brandLight transition-colors">
-                          {repo.name}
-                        </span>
-                        <span className="font-mono text-[10px] text-muted-foreground dark:text-muted-foreground flex items-center gap-1">
-                          ★ <CountUp end={repo.stars} duration={1200} />
-                        </span>
-                      </div>
-                      <span className="text-[10px] text-muted-foreground dark:text-muted-foreground font-mono block mt-0.5">
-                        {repo.desc}
-                      </span>
-                    </a>
-                  ))}
-                </div>
-              </div>
-
-              <div className="mt-4 pt-3 border-t border-border/10 dark:border-border/10 font-mono text-[10px] text-muted-foreground dark:text-muted-foreground">
-                GIT_HOST // GITHUB_VERIFIED
-              </div>
-            </TiltCard>
-          </ScrollReveal>
-
-          {/* Column 3: Recent Activity (Commits Timeline) */}
-          <ScrollReveal delay={200} isRtl={isRtl} direction="up" className="h-full">
-            <TiltCard className="h-full p-5 rounded-2xl border border-border/10 dark:border-border/10 bg-surfaceOverlay dark:bg-surfaceOverlay flex flex-col justify-between shadow-sm hover:border-brand/40 transition-colors">
-              <div>
-                <span className="font-mono text-xs font-bold text-muted-foreground dark:text-muted-foreground uppercase tracking-wider block mb-4">
-                  {isRtl ? "النشاط البرمجي الأخير" : "RECENT ACTIVITY"}
-                </span>
-
-                <div className="space-y-3">
-                  {recentCommits.map((c, idx) => (
-                    <div key={idx} className="flex items-start gap-2.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-brand dark:bg-brandLight mt-1.5 shrink-0 animate-pulse" />
-                      <div>
-                        <p className="text-xs font-mono text-foreground dark:text-foreground leading-snug">
-                          {c.msg}
-                        </p>
-                        <span className="text-[10px] font-mono text-muted-foreground dark:text-muted-foreground">
-                          {c.time}
-                        </span>
-                      </div>
+              {/* Heatmap Grid */}
+              <div className="flex-1 overflow-x-auto" style={{ minHeight: "280px" }}>
+                <div className="flex gap-1" role="img" aria-label="GitHub contribution heatmap">
+                  {heatmapData.map((week, weekIndex) => (
+                    <div key={weekIndex} className="flex flex-col gap-1" style={{ minWidth: "11px" }}>
+                      {week.map((intensity, dayIndex) => (
+                        <div
+                          key={dayIndex}
+                          className="w-2.5 h-2.5 rounded-sm transition-all duration-200"
+                          style={{
+                            backgroundColor: heatmapColors[intensity],
+                            transform: intensity > 0 ? "scale(1)" : "scale(0.8)",
+                          }}
+                          title={`${intensity > 0 ? intensity + " contributions" : "No contributions"} on day ${dayIndex} of week ${weekIndex}`}
+                        />
+                      ))}
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-border/10 dark:border-border/10 font-mono text-[10px] text-muted-foreground dark:text-muted-foreground">
-                BRANCH // MAIN
+              {/* Legend */}
+              <div className="flex items-center gap-4 mt-6 flex-wrap">
+                <span className="font-mono text-xs text-muted">{content.heatmap.legend[0]}</span>
+                {heatmapColors.slice(1).map((color, i) => (
+                  <div key={i} className="w-2.5 h-2.5 rounded-sm" style={{ backgroundColor: color }} />
+                ))}
+                <span className="font-mono text-xs text-muted">{content.heatmap.legend[4]}</span>
               </div>
-            </TiltCard>
-          </ScrollReveal>
 
-          {/* Column 4: Syntax-Highlighted Code Editor */}
-          <ScrollReveal delay={300} isRtl={isRtl} direction="up" className="h-full">
-            <TiltCard className="h-full p-5 rounded-2xl border border-border/10 dark:border-border/10 bg-surfaceOverlay dark:bg-surfaceOverlay flex flex-col justify-between shadow-sm hover:border-brand/40 transition-colors">
-              <div>
-                <div className="flex items-center justify-between mb-3 border-b border-border/10 dark:border-border/10 pb-2">
-                  <span className="font-mono text-[10px] text-muted-foreground dark:text-muted-foreground">Recent Code</span>
-                  <div className="flex gap-1.5">
-                    <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
+              {/* Stats Summary */}
+              <div className="grid grid-cols-2 gap-4 mt-8 pt-6 border-t" style={{ borderColor: lineColor }}>
+                <div>
+                  <p className="font-display font-bold text-2xl" style={{ color: goldColor }}>{githubStats.totalStars.toLocaleString()}</p>
+                  <p className="font-mono text-xs text-muted">{locale === "en" ? "TOTAL STARS" : "إجمالي النجوم"}</p>
+                </div>
+                <div>
+                  <p className="font-display font-bold text-2xl" style={{ color: goldColor }}>{githubStats.totalForks.toLocaleString()}</p>
+                  <p className="font-mono text-xs text-muted">{locale === "en" ? "TOTAL FORKS" : "إجمالي الفوركات"}</p>
+                </div>
+                <div>
+                  <p className="font-display font-bold text-2xl" style={{ color: goldColor }}>{githubStats.currentStreak}</p>
+                  <p className="font-mono text-xs text-muted">{locale === "en" ? "CURRENT STREAK" : "السلسلة الحالية"}</p>
+                </div>
+                <div>
+                  <p className="font-display font-bold text-2xl" style={{ color: goldColor }}>{githubStats.longestStreak}</p>
+                  <p className="font-mono text-xs text-muted">{locale === "en" ? "LONGEST STREAK" : "أطول سلسلة"}</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          {/* Column 2: Pinned Repositories (col-span-3) */}
+          <article className="lg:col-span-3 card-master relative overflow-hidden" style={{ minHeight: "420px" }}>
+            <div className="absolute top-0 left-0 right-0 h-1" style={{ background: `linear-gradient(90deg, transparent 0%, ${lineGold} 50%, transparent 100%)`, opacity: 0.6 }} aria-hidden="true" />
+            <div className="p-6">
+              <h3 className="font-display font-semibold text-lg tracking-tight mb-2" style={{ color: textPrimary }}>
+                {content.pinnedRepos.title}
+              </h3>
+              <p className="text-sm mb-6" style={{ color: textMuted }}>{content.pinnedRepos.subtitle}</p>
+
+              <div className="space-y-4 flex-1 overflow-y-auto" style={{ maxHeight: "340px" }}>
+                {pinnedRepos.map((repo, index) => (
+                  <a
+                    key={repo.name}
+                    href={repo.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group block p-4 rounded-xl transition-all duration-200"
+                    style={{
+                      backgroundColor: hoveredRepo === index ? `rgba(190, 148, 63, 0.1)` : "transparent",
+                      border: `1px solid ${hoveredRepo === index ? lineGold : lineColor}`,
+                    }}
+                    onMouseEnter={() => setHoveredRepo(index)}
+                    onMouseLeave={() => setHoveredRepo(null)}
+                  >
+                    <div className="flex items-start gap-3 mb-2">
+                      <span
+                        className="w-9 h-9 rounded-lg flex items-center justify-center font-sans font-bold text-xs flex-shrink-0"
+                        style={{ backgroundColor: repo.languageColor, color: "#FFFFFF" }}
+                      >
+                        {repo.language.charAt(0)}
+                      </span>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-display font-semibold text-sm tracking-tight truncate group-hover:text-gold transition-colors" style={{ color: textPrimary }}>
+                          {repo.name}
+                        </h4>
+                        <p className="text-xs" style={{ color: textMuted }}>{repo.description}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3 text-xs">
+                      <span className="flex items-center gap-1" style={{ color: textMuted }}>
+                        <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                        {repo.stars.toLocaleString()}
+                      </span>
+                      <span className="flex items-center gap-1" style={{ color: repo.languageColor }}>
+                        <span className="w-2 h-2 rounded-full" style={{ backgroundColor: repo.languageColor }} />
+                        {repo.language}
+                      </span>
+                    </div>
+                    <div className="flex flex-wrap gap-1 mt-3">
+                      {repo.topics.slice(0, 3).map((topic) => (
+                        <span key={topic} className="font-mono text-[10px] px-1.5 py-0.5 rounded" style={{ backgroundColor: `rgba(190, 148, 63, 0.1)`, color: goldColor, border: `1px solid ${lineGold}` }}>
+                          {topic}
+                        </span>
+                      ))}
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </article>
+
+          {/* Column 3: Activity Timeline (col-span-3) */}
+          <article className="lg:col-span-3 card-master relative overflow-hidden" style={{ minHeight: "420px" }}>
+            <div className="absolute top-0 left-0 right-0 h-1" style={{ background: `linear-gradient(90deg, transparent 0%, ${lineGold} 50%, transparent 100%)`, opacity: 0.6 }} aria-hidden="true" />
+            <div className="p-6">
+              <h3 className="font-display font-semibold text-lg tracking-tight mb-2" style={{ color: textPrimary }}>
+                {content.activity.title}
+              </h3>
+              <p className="text-sm mb-6" style={{ color: textMuted }}>{content.activity.subtitle}</p>
+
+              <div className="flex-1 overflow-y-auto space-y-4" style={{ maxHeight: "340px" }}>
+                {activityTimeline.map((activity, index) => (
+                  <a
+                    key={index}
+                    href={activity.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-gold-subtle"
+                    style={{ border: `1px solid ${lineColor}` }}
+                  >
+                    <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${activityColors[activity.type]}20`, color: activityColors[activity.type] }}>
+                      {activityIcons[activity.type]}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="font-mono text-xs text-muted" style={{ fontVariantNumeric: "tabular-nums" }}>
+                          {new Date(activity.date).toLocaleDateString(locale === "ar" ? "ar-SA" : "en-US", { month: "short", day: "numeric" })}
+                        </span>
+                        <span className="font-mono text-[10px] px-1.5 py-0.5 rounded uppercase" style={{ backgroundColor: `${activityColors[activity.type]}20`, color: activityColors[activity.type], border: `1px solid ${activityColors[activity.type]}40` }}>
+                          {activity.type}
+                        </span>
+                      </div>
+                      <h4 className="font-medium text-sm truncate group-hover:text-gold transition-colors" style={{ color: textPrimary }}>
+                        {activity.title}
+                      </h4>
+                      <p className="text-xs" style={{ color: textMuted }}>{activity.repo}</p>
+                    </div>
+                    <svg className="w-4 h-4 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity rtl-flip" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" style={{ color: textMuted }}>
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                      <polyline points="15 3 21 3 21 9" />
+                      <line x1="10" y1="14" x2="21" y2="3" />
+                    </svg>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </article>
+
+          {/* Column 4: Live Code Block (col-span-3) */}
+          <article className="lg:col-span-3 card-master relative overflow-hidden" style={{ minHeight: "420px" }}>
+            <div className="absolute top-0 left-0 right-0 h-1" style={{ background: `linear-gradient(90deg, transparent 0%, ${lineGold} 50%, transparent 100%)`, opacity: 0.6 }} aria-hidden="true" />
+            <div className="p-6 flex flex-col h-full">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="font-display font-semibold text-lg tracking-tight" style={{ color: textPrimary }}>
+                  {content.codeBlock.title}
+                </h3>
+                <span className="font-mono text-xs text-muted">{liveCodeSnippet.language.toUpperCase()}</span>
+              </div>
+              <p className="text-sm mb-4" style={{ color: textMuted }}>{content.codeBlock.subtitle}</p>
+
+              {/* Code Block with Syntax Highlighting */}
+              <div className="flex-1 relative overflow-hidden" style={{ backgroundColor: "#0D1117", borderRadius: "8px", border: `1px solid ${lineColor}` }}>
+                {/* Header bar */}
+                <div className="flex items-center justify-between px-4 py-3 border-b" style={{ backgroundColor: "#161B22", borderColor: lineColor }}>
+                  <div className="flex items-center gap-2">
+                    <span className="w-3 h-3 rounded-full" style={{ backgroundColor: "#FF5F57" }} />
+                    <span className="w-3 h-3 rounded-full" style={{ backgroundColor: "#FFBD2E" }} />
+                    <span className="w-3 h-3 rounded-full" style={{ backgroundColor: "#28CA42" }} />
                   </div>
+                  <span className="font-mono text-xs text-muted">{liveCodeSnippet.filename}</span>
+                  <button className="font-mono text-xs px-2 py-1 rounded transition-colors" style={{ backgroundColor: "rgba(190, 148, 63, 0.1)", color: goldColor, border: `1px solid ${lineGold}` }}>
+                    {locale === "en" ? "COPY" : "نسخ"}
+                  </button>
                 </div>
 
-                <pre className="font-mono text-[11px] leading-relaxed text-foreground dark:text-foreground overflow-x-auto p-2 rounded-lg bg-background/60 dark:bg-background/60">
-                  <code>
-                    <span className="text-purple-400">class</span>{" "}
-                    <span className="text-emerald-400">Solution</span> {"{\n"}
-                    {"  "}<span className="text-blue-400">public string</span>{" "}
-                    <span className="text-amber-300">Solve</span>(<span className="text-blue-400">string</span> input) {"{\n"}
-                    {"    "}<span className="text-purple-400">return</span> input.Trim().ToLower();{"\n"}
-                    {"  }\n"}
-                    {"}"}
-                  </code>
+                {/* Code Content */}
+                <pre
+                  ref={codeBlockRef}
+                  className="p-4 overflow-x-auto font-mono text-xs leading-relaxed"
+                  style={{ color: "#E6EDF3", fontFamily: "JetBrains Mono, Fira Code, monospace", fontSize: "12px", lineHeight: "1.6" }}
+                  aria-label={locale === "en" ? "Live code snippet" : "مقتطف كود مباشر"}
+                >
+                  <code>{""}</code>
                 </pre>
               </div>
-
-              <div className="mt-4 pt-3 border-t border-border/10 dark:border-border/10 font-mono text-[10px] text-muted-foreground dark:text-muted-foreground flex justify-between">
-                <span>C#</span>
-                <span>UTF-8</span>
-              </div>
-            </TiltCard>
-          </ScrollReveal>
+            </div>
+          </article>
         </div>
+      </div>
+
+      {/* Gold divider at bottom */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1440px] h-px pointer-events-none" aria-hidden="true">
+        <div className="w-full h-full" style={{ background: `linear-gradient(90deg, transparent 0%, ${lineGold} 50%, transparent 100%)`, opacity: 0.4 }} />
       </div>
     </section>
   );

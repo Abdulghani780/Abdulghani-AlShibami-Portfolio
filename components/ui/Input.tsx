@@ -38,7 +38,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     const helperId = helperText && !error ? `${inputId}-helper` : undefined;
 
     const sizeStyles = {
-      sm: "h-9 px-3 text-sm",
+      sm: "h-11 px-3 text-sm",
       md: "h-11 px-4 text-base",
       lg: "h-13 px-5 text-lg",
     };
@@ -260,7 +260,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
     const helperId = helperText && !error ? `${selectId}-helper` : undefined;
 
     const sizeStyles = {
-      sm: "h-9 px-3 text-sm",
+      sm: "h-11 px-3 text-sm",
       md: "h-11 px-4 text-base",
       lg: "h-13 px-5 text-lg",
     };

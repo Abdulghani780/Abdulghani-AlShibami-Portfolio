@@ -41,6 +41,37 @@ interface GpProject {
   year: string;
 }
 
+// Design token helpers for semantic colors
+const getStatusBadge = (status: GpProject["status"]) => {
+  switch (status) {
+    case "Approved":
+      return "bg-status-success/15 text-status-success border border-status-success/20";
+    case "Revision Needed":
+      return "bg-status-error/15 text-status-error border border-status-error/20";
+    case "Under Review":
+      return "bg-status-warning/15 text-status-warning border border-status-warning/20";
+  }
+};
+
+const getAdminStatusBadge = (status: GpProject["status"]) => {
+  switch (status) {
+    case "Approved":
+      return "bg-status-success/15 text-status-success border border-status-success/20";
+    case "Revision Needed":
+      return "bg-status-error/15 text-status-error border border-status-error/20";
+    case "Under Review":
+      return "bg-status-warning/15 text-status-warning border border-status-warning/20";
+  }
+};
+
+const getRevisionButton = () => "bg-surface border border-status-error/40 text-status-error hover:bg-status-error/10 transition-colors";
+
+const getApproveButton = () => "bg-status-success text-inverse font-bold hover:brightness-110 transition-all shadow";
+
+const getSuccessFeedback = () => "bg-status-success/10 border border-status-success/30 text-status-success";
+
+const getSuccessButton = () => "bg-status-success text-inverse font-bold text-[10px] rounded font-mono";
+
 export function GpSimulation({ locale = "en", isRtl = false }: DemoProps) {
   const isArabic = locale === "ar";
 
@@ -221,9 +252,9 @@ export function GpSimulation({ locale = "en", isRtl = false }: DemoProps) {
               setActiveRole("student");
               if (activeView === "admin_queue") setActiveView("directory");
             }}
-            className={`px-2.5 py-1 rounded transition-colors flex items-center gap-1.5 cursor-pointer focus-visible:ring-2 focus-visible:ring-brand-gold/50 focus-visible:outline-none ${
+            className={`px-2.5 py-1 rounded transition-colors flex items-center gap-1.5 cursor-pointer focus-visible:ring-2 focus-visible:ring-gold-primary/50 focus-visible:outline-none ${
               activeRole === "student"
-                ? "bg-brand-gold text-surface-dark font-bold shadow-sm"
+                ? "bg-gold-primary text-inverse font-bold shadow-sm"
                 : "text-text-muted hover:text-text-primary"
             }`}
           >
@@ -235,9 +266,9 @@ export function GpSimulation({ locale = "en", isRtl = false }: DemoProps) {
               setActiveRole("admin");
               setActiveView("admin_queue");
             }}
-            className={`px-2.5 py-1 rounded transition-colors flex items-center gap-1.5 cursor-pointer focus-visible:ring-2 focus-visible:ring-brand-gold/50 focus-visible:outline-none ${
+            className={`px-2.5 py-1 rounded transition-colors flex items-center gap-1.5 cursor-pointer focus-visible:ring-2 focus-visible:ring-gold-primary/50 focus-visible:outline-none ${
               activeRole === "admin"
-                ? "bg-brand-gold text-surface-dark font-bold shadow-sm"
+                ? "bg-gold-primary text-inverse font-bold shadow-sm"
                 : "text-text-muted hover:text-text-primary"
             }`}
           >
@@ -255,7 +286,7 @@ export function GpSimulation({ locale = "en", isRtl = false }: DemoProps) {
               onClick={() => setActiveView("directory")}
               className={`px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-all ${
                 activeView === "directory"
-                  ? "bg-brand-gold text-surface-dark font-bold shadow"
+                  ? "bg-gold-primary text-inverse font-bold shadow-gold-md"
                   : "bg-surface-secondary border border-border text-text-muted hover:text-text-primary"
               }`}
             >
@@ -268,7 +299,7 @@ export function GpSimulation({ locale = "en", isRtl = false }: DemoProps) {
                 onClick={() => setActiveView("submit")}
                 className={`px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-all ${
                   activeView === "submit"
-                    ? "bg-brand-gold text-surface-dark font-bold shadow"
+                    ? "bg-gold-primary text-inverse font-bold shadow-gold-md"
                     : "bg-surface-secondary border border-border text-text-muted hover:text-text-primary"
                 }`}
               >
@@ -282,7 +313,7 @@ export function GpSimulation({ locale = "en", isRtl = false }: DemoProps) {
                 onClick={() => setActiveView("admin_queue")}
                 className={`px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-all ${
                   activeView === "admin_queue"
-                    ? "bg-brand-gold text-surface-dark font-bold shadow"
+                    ? "bg-gold-primary text-inverse font-bold shadow-gold-md"
                     : "bg-surface-secondary border border-border text-text-muted hover:text-text-primary"
                 }`}
               >
@@ -317,7 +348,7 @@ export function GpSimulation({ locale = "en", isRtl = false }: DemoProps) {
                     onClick={() => setSelectedCategory(cat.id)}
                     className={`px-2.5 py-1 rounded-lg whitespace-nowrap transition-colors ${
                       selectedCategory === cat.id
-                        ? "bg-brand-gold/20 text-brand-gold border border-brand-gold/40 font-bold"
+                        ? "bg-gold-primary/20 text-gold-primary border border-gold-primary/40 font-bold"
                         : "bg-surface border border-border text-text-muted hover:text-text-primary"
                     }`}
                   >
@@ -333,7 +364,7 @@ export function GpSimulation({ locale = "en", isRtl = false }: DemoProps) {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder={isArabic ? "بحث في المشاريع..." : "Search project index..."}
-                  className="w-full bg-surface border border-border rounded-lg pl-8 pr-3 rtl:pl-3 rtl:pr-8 py-1.5 text-xs text-text-primary focus:outline-none focus:border-brand-gold"
+                  className="w-full bg-surface border border-border rounded-lg pl-8 pr-3 rtl:pl-3 rtl:pr-8 py-1.5 text-xs text-text-primary focus:outline-none focus:border-gold-primary"
                 />
               </div>
             </div>
@@ -343,22 +374,14 @@ export function GpSimulation({ locale = "en", isRtl = false }: DemoProps) {
               {filteredProjects.map((project) => (
                 <div
                   key={project.id}
-                  className="p-4 bg-surface-secondary/30 border border-border hover:border-brand-gold/40 rounded-xl flex flex-col justify-between gap-3 transition-colors"
+                  className="p-4 bg-surface-secondary/30 border border-border hover:border-gold-primary/40 rounded-xl flex flex-col justify-between gap-3 transition-colors"
                 >
                   <div>
                     <div className="flex items-start justify-between gap-2 mb-2">
-                      <span className="font-mono text-[10px] font-bold text-brand-gold bg-brand-gold/10 px-2 py-0.5 rounded border border-brand-gold/30">
+                      <span className="font-mono text-[10px] font-bold text-gold-primary bg-gold-primary/10 px-3 py-1.5 rounded border border-gold-primary/30 min-h-[44px] min-w-[44px] flex items-center justify-center">
                         {project.id} // {project.year}
                       </span>
-                      <span
-                        className={`text-[9px] font-mono px-2 py-0.5 rounded font-bold ${
-                          project.status === "Approved"
-                            ? "bg-emerald-500/15 text-emerald-400"
-                            : project.status === "Revision Needed"
-                            ? "bg-rose-500/15 text-rose-400"
-                            : "bg-amber-500/15 text-amber-400"
-                        }`}
-                      >
+                      <span className={`text-[9px] font-mono px-3 py-1.5 rounded font-bold border ${getStatusBadge(project.status)} min-h-[44px] min-w-[44px] flex items-center justify-center`}>
                         {project.status}
                       </span>
                     </div>
@@ -378,9 +401,9 @@ export function GpSimulation({ locale = "en", isRtl = false }: DemoProps) {
                     </div>
                     <button
                       onClick={() => setSelectedProject(project)}
-                      className="px-2.5 py-1 rounded bg-surface border border-border hover:border-brand-gold/50 text-brand-gold text-[10px] font-mono flex items-center gap-1"
+                      className="px-3.5 py-2 rounded bg-surface border border-border hover:border-gold-primary/50 text-gold-primary text-[10px] font-mono flex items-center gap-1 min-h-[44px]"
                     >
-                      <Eye className="w-3 h-3" />
+                      <Eye className="w-3.5 h-3.5" />
                       <span>{isArabic ? "التفاصيل" : "Abstract"}</span>
                     </button>
                   </div>
@@ -400,7 +423,7 @@ export function GpSimulation({ locale = "en", isRtl = false }: DemoProps) {
         {activeView === "submit" && (
           <div className="max-w-xl mx-auto py-2 w-full space-y-4">
             <div className="bg-surface-secondary/40 border border-border rounded-xl p-5 space-y-4">
-              <div className="flex items-center gap-2 text-brand-gold font-mono text-xs font-bold">
+              <div className="flex items-center gap-2 text-gold-primary font-mono text-xs font-bold">
                 <GraduationCap className="w-4 h-4" />
                 <span>{isArabic ? "نموذج تقديم مقترح مشروع التخرج" : "SUBMIT GRADUATION PROJECT PROPOSAL"}</span>
               </div>
@@ -411,7 +434,7 @@ export function GpSimulation({ locale = "en", isRtl = false }: DemoProps) {
               </p>
 
               {submitFeedback ? (
-                <div className="p-4 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs flex flex-col gap-2">
+                <div className={`p-4 rounded-lg ${getSuccessFeedback()} text-xs flex flex-col gap-2`}>
                   <div className="flex items-center gap-2 font-bold font-mono">
                     <CheckCircle2 className="w-4 h-4" />
                     <span>{isArabic ? "تم استلام المقترح بنجاح" : "SUBMISSION CONFIRMED"}</span>
@@ -422,7 +445,7 @@ export function GpSimulation({ locale = "en", isRtl = false }: DemoProps) {
                       setSubmitFeedback(null);
                       setActiveView("directory");
                     }}
-                    className="self-start mt-2 px-3 py-1 bg-emerald-500 text-surface-dark font-bold text-[10px] rounded font-mono"
+                    className={`self-start mt-2 px-3 py-1 ${getSuccessButton()}`}
                   >
                     {isArabic ? "العودة لدليل المشاريع" : "Return to Directory"}
                   </button>
@@ -438,7 +461,7 @@ export function GpSimulation({ locale = "en", isRtl = false }: DemoProps) {
                       value={formTitle}
                       onChange={(e) => setFormTitle(e.target.value)}
                       placeholder={isArabic ? "مثال: نظام ذكي للرصد البيئي..." : "e.g., Deep Learning for Autonomous Systems"}
-                      className="w-full bg-surface border border-border rounded-lg px-3 py-2 text-text-primary focus:outline-none focus:border-brand-gold"
+                      className="w-full bg-surface border border-border rounded-lg px-3 py-2 text-text-primary focus:outline-none focus:border-gold-primary"
                     />
                   </div>
 
@@ -450,7 +473,7 @@ export function GpSimulation({ locale = "en", isRtl = false }: DemoProps) {
                       <select
                         value={formCategory}
                         onChange={(e) => setFormCategory(e.target.value as any)}
-                        className="w-full bg-surface border border-border rounded-lg px-3 py-2 text-text-primary focus:outline-none focus:border-brand-gold font-mono text-xs"
+                        className="w-full bg-surface border border-border rounded-lg px-3 py-2 text-text-primary focus:outline-none focus:border-gold-primary font-mono text-xs"
                       >
                         <option value="ai">AI & Data Science</option>
                         <option value="systems">IoT & Systems</option>
@@ -466,7 +489,7 @@ export function GpSimulation({ locale = "en", isRtl = false }: DemoProps) {
                       <select
                         value={formSupervisor}
                         onChange={(e) => setFormSupervisor(e.target.value)}
-                        className="w-full bg-surface border border-border rounded-lg px-3 py-2 text-text-primary focus:outline-none focus:border-brand-gold font-mono text-xs"
+                        className="w-full bg-surface border border-border rounded-lg px-3 py-2 text-text-primary focus:outline-none focus:border-gold-primary font-mono text-xs"
                       >
                         <option value="Dr. Adel Al-Ghamdi">Dr. Adel Al-Ghamdi</option>
                         <option value="Dr. Tariq Al-Amri">Dr. Tariq Al-Amri</option>
@@ -484,7 +507,7 @@ export function GpSimulation({ locale = "en", isRtl = false }: DemoProps) {
                       value={formTeam}
                       onChange={(e) => setFormTeam(e.target.value)}
                       placeholder={isArabic ? "عبدالغني الشبامي، أحمد المنصور" : "Abdulghani Al-Shibami, Ahmad Mansoor"}
-                      className="w-full bg-surface border border-border rounded-lg px-3 py-2 text-text-primary focus:outline-none focus:border-brand-gold"
+                      className="w-full bg-surface border border-border rounded-lg px-3 py-2 text-text-primary focus:outline-none focus:border-gold-primary"
                     />
                   </div>
 
@@ -498,13 +521,13 @@ export function GpSimulation({ locale = "en", isRtl = false }: DemoProps) {
                       value={formAbstract}
                       onChange={(e) => setFormAbstract(e.target.value)}
                       placeholder={isArabic ? "اشرح المشكلة والحل المقترح والتقنيات..." : "Describe problem statement and expected deliverables..."}
-                      className="w-full bg-surface border border-border rounded-lg px-3 py-2 text-text-primary focus:outline-none focus:border-brand-gold"
+                      className="w-full bg-surface border border-border rounded-lg px-3 py-2 text-text-primary focus:outline-none focus:border-gold-primary"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full py-2.5 bg-brand-gold text-surface-dark font-bold rounded-lg hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2 shadow font-mono"
+                    className="w-full py-2.5 bg-gold-primary text-inverse font-bold rounded-lg hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2 shadow-gold-md font-mono"
                   >
                     <Send className="w-3.5 h-3.5" />
                     <span>{isArabic ? "رفع المقترح للجنة الأكاديمية" : "Submit to Department Committee"}</span>
@@ -536,7 +559,7 @@ export function GpSimulation({ locale = "en", isRtl = false }: DemoProps) {
                   <div className="flex items-start justify-between gap-3">
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="font-mono text-[10px] text-brand-gold font-bold">{proposal.id}</span>
+                        <span className="font-mono text-[10px] text-gold-primary font-bold">{proposal.id}</span>
                         <span className="font-bold text-xs sm:text-sm text-text-primary">
                           {isArabic ? proposal.titleAr : proposal.titleEn}
                         </span>
@@ -546,7 +569,7 @@ export function GpSimulation({ locale = "en", isRtl = false }: DemoProps) {
                         {isArabic ? "الفريق:" : "Team:"} {proposal.team.join(", ")}
                       </div>
                     </div>
-                    <span className="text-[9px] font-mono px-2 py-0.5 rounded bg-amber-500/15 text-amber-400 font-bold shrink-0">
+                    <span className={`text-[9px] font-mono px-3 py-1.5 rounded font-bold border ${getAdminStatusBadge(proposal.status)} shrink-0 min-h-[44px] min-w-[44px] flex items-center justify-center`}>
                       {proposal.status}
                     </span>
                   </div>
@@ -558,14 +581,14 @@ export function GpSimulation({ locale = "en", isRtl = false }: DemoProps) {
                   <div className="flex items-center justify-end gap-2 text-xs font-mono pt-1">
                     <button
                       onClick={() => handleRequestRevision(proposal.id)}
-                      className="px-3 py-1.5 rounded-lg bg-surface border border-rose-500/40 text-rose-400 hover:bg-rose-500/10 transition-colors flex items-center gap-1.5"
+                      className={`px-3.5 py-2 rounded-lg ${getRevisionButton()} flex items-center gap-1.5 min-h-[44px]`}
                     >
                       <XCircle className="w-3.5 h-3.5" />
                       <span>{isArabic ? "طلب تعديلات" : "Request Revision"}</span>
                     </button>
                     <button
                       onClick={() => handleApprove(proposal.id)}
-                      className="px-3 py-1.5 rounded-lg bg-emerald-500 text-surface-dark font-bold hover:brightness-110 transition-all flex items-center gap-1.5 shadow"
+                      className={`px-3.5 py-2 rounded-lg ${getApproveButton()} flex items-center gap-1.5 min-h-[44px]`}
                     >
                       <CheckCircle2 className="w-3.5 h-3.5" />
                       <span>{isArabic ? "اعتماد المشروع" : "Approve Proposal"}</span>
@@ -588,10 +611,10 @@ export function GpSimulation({ locale = "en", isRtl = false }: DemoProps) {
         {/* MODAL: PROJECT DETAIL / ABSTRACT */}
         {selectedProject && (
           <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4">
-            <div className="w-full max-w-lg bg-surface border border-brand-gold/40 rounded-xl p-5 shadow-2xl space-y-4 font-sans">
+            <div className="w-full max-w-lg bg-surface border border-gold-primary/40 rounded-xl p-5 shadow-2xl space-y-4 font-sans">
               <div className="flex items-start justify-between border-b border-border pb-3">
                 <div>
-                  <div className="font-mono text-[10px] text-brand-gold font-bold">{selectedProject.id}</div>
+                  <div className="font-mono text-[10px] text-gold-primary font-bold">{selectedProject.id}</div>
                   <h3 className="font-bold text-sm text-text-primary mt-0.5">
                     {isArabic ? selectedProject.titleAr : selectedProject.titleEn}
                   </h3>
@@ -624,7 +647,7 @@ export function GpSimulation({ locale = "en", isRtl = false }: DemoProps) {
                   </div>
                   <div className="p-2.5 rounded bg-surface-secondary/40 border border-border">
                     <span className="text-text-dim block text-[10px]">{isArabic ? "حالة الاعتماد" : "APPROVAL STATUS"}</span>
-                    <span className="font-bold text-emerald-400">{selectedProject.status}</span>
+                    <span className="font-bold text-status-success">{selectedProject.status}</span>
                   </div>
                 </div>
 
@@ -632,7 +655,7 @@ export function GpSimulation({ locale = "en", isRtl = false }: DemoProps) {
                   <span className="text-text-dim block text-[10px] mb-1">{isArabic ? "فريق العمل الطلابي" : "STUDENT TEAM"}</span>
                   <div className="flex flex-wrap gap-1.5">
                     {selectedProject.team.map((member, i) => (
-                      <span key={i} className="px-2 py-0.5 rounded bg-surface border border-border text-text-primary">
+                      <span key={i} className="px-3 py-1.5 rounded bg-surface border border-border text-text-primary min-h-[44px] min-w-[44px] flex items-center justify-center">
                         {member}
                       </span>
                     ))}
@@ -642,7 +665,7 @@ export function GpSimulation({ locale = "en", isRtl = false }: DemoProps) {
 
               <button
                 onClick={() => setSelectedProject(null)}
-                className="w-full py-2 bg-surface-secondary hover:bg-brand-gold hover:text-surface-dark font-bold text-xs rounded-lg transition-colors font-mono"
+                className="w-full py-2 bg-surface-secondary hover:bg-gold-primary hover:text-inverse font-bold text-xs rounded-lg transition-colors font-mono"
               >
                 {isArabic ? "إغلاق" : "Close Details"}
               </button>

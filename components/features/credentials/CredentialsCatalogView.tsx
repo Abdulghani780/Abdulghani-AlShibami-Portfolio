@@ -18,6 +18,7 @@ import {
   FileText,
   Download,
 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface CredentialsCatalogViewProps {
   locale: Locale;
@@ -47,7 +48,7 @@ export function CredentialsCatalogView({ locale }: CredentialsCatalogViewProps) 
 
   return (
     <div
-      className="relative min-h-screen bg-canvas text-content-primary pt-24 pb-20 px-4 sm:px-8 lg:px-16 font-mono transition-colors duration-300"
+      className={cn("relative min-h-screen bg-canvas text-content-primary pt-24 pb-20 px-4 sm:px-8 lg:px-16 transition-colors duration-300", isAr ? "font-arabic" : "font-mono")}
       dir={isAr ? "rtl" : "ltr"}
     >
       <div className="max-w-7xl mx-auto space-y-10">
@@ -69,12 +70,12 @@ export function CredentialsCatalogView({ locale }: CredentialsCatalogViewProps) 
         <ScrollReveal isRtl={isAr} direction="up">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-black/10 dark:border-white/10 pb-8">
           <div className="space-y-3 max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-primary/10 border border-gold-primary/30 text-xs text-gold-dark dark:text-gold-light uppercase tracking-widest font-bold">
+            <div className={cn("inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-primary/10 border border-gold-primary/30 text-xs text-gold-dark dark:text-gold-light uppercase tracking-widest font-bold", isAr ? "font-arabic" : "")}>
               <ShieldCheck className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
               <span>{isAr ? "أرشيف الوثائق المعتمدة" : "AUTHENTIC CREDENTIAL ARCHIVE"}</span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-content-primary font-serif leading-tight">
+            <h1 className={cn("text-3xl sm:text-4xl lg:text-5xl font-extrabold text-content-primary leading-tight", isAr ? "font-arabic-display text-arabic-section" : "font-serif")}>
               {isAr ? (
                 <>
                   الشهادات والاعتمادات{" "}
@@ -92,7 +93,7 @@ export function CredentialsCatalogView({ locale }: CredentialsCatalogViewProps) 
               )}
             </h1>
 
-            <p className="text-content-secondary text-sm font-sans leading-relaxed">
+            <p className={cn("text-content-secondary text-sm leading-relaxed", isAr ? "font-arabic text-arabic-body" : "font-sans")}>
               {isAr
                 ? "سجل رسمي يضم كافة الشهادات والوثائق الأصلية المعتمدة التي حصل عليها المهندس عبدالغني الشبامي من جهات محلية ودولية مرموقة. انقر على أي وثيقة لمعاينتها بدقة عالية واستعراض بيانات الاعتماد."
                 : "Official archive of verified academic, international, and technical credentials earned by Abdulghani Al-Shibami. Click any credential to inspect the high-resolution original document, verification seals, and competencies."}
@@ -124,7 +125,7 @@ export function CredentialsCatalogView({ locale }: CredentialsCatalogViewProps) 
 
         {/* ── Category Filter Pills ── */}
         <ScrollReveal isRtl={isAr} delay={80}>
-        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+        <div className={cn("flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none", isAr ? "font-arabic" : "")}>
           <Filter className="w-4 h-4 text-content-muted shrink-0 me-1" />
           {filterCategories.map((cat) => {
             const isActive = selectedCategory === cat.id;
@@ -167,20 +168,20 @@ export function CredentialsCatalogView({ locale }: CredentialsCatalogViewProps) 
 
         {/* ── Back to Home Link ── */}
         <ScrollReveal isRtl={isAr} delay={120}>
-        <div className="pt-8 border-t border-black/10 dark:border-white/10 flex items-center justify-between">
+        <div className={cn("pt-8 border-t border-black/10 dark:border-white/10 flex items-center justify-between", isAr ? "font-arabic" : "font-mono")}>
           <Link
             href={`/${locale}`}
-            className="text-xs text-content-muted hover:text-gold-dark dark:hover:text-gold-light flex items-center gap-2 transition-colors group"
+            className={cn("text-xs text-content-muted hover:text-gold-dark dark:hover:text-gold-light flex items-center gap-2 transition-colors group", isAr ? "font-arabic" : "font-mono")}
           >
             {isAr ? (
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform rtl-flip" />
             ) : (
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             )}
             <span>{isAr ? "العودة إلى الصفحة الرئيسية" : "Return to Homepage"}</span>
           </Link>
 
-          <span className="text-[11px] text-content-muted font-mono">
+          <span className={cn("text-[11px] text-content-muted", isAr ? "font-arabic" : "font-mono")}>
             {isAr ? "جميع الوثائق محمية بحقوق الملكية وموثقة رسمياً" : "All credentials authenticated & verified"}
           </span>
         </div>

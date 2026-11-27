@@ -10,6 +10,7 @@ export interface SectionHeadingProps extends React.HTMLAttributes<HTMLDivElement
   align?: "left" | "center" | "right";
   titleTag?: "h1" | "h2" | "h3" | "h4";
   goldShimmer?: boolean;
+  locale?: "en" | "ar";
 }
 
 export function SectionHeading({
@@ -19,16 +20,19 @@ export function SectionHeading({
   align = "left",
   titleTag = "h2",
   goldShimmer = false,
+  locale = "en",
   className,
   ...props
 }: SectionHeadingProps) {
   const TitleTag = titleTag;
+  const isAr = locale === "ar";
+  const isRtlAlign = align === "right" || (isAr && align !== "left");
 
   return (
     <div
       className={cn(
         "space-y-4 mb-12 sm:mb-16",
-        align === "center" ? "text-center mx-auto max-w-3xl" : align === "right" ? "text-right max-w-3xl" : "max-w-3xl",
+        isRtlAlign ? "text-right max-w-3xl" : align === "center" ? "text-center mx-auto max-w-3xl" : "max-w-3xl",
         className
       )}
       {...props}
@@ -37,8 +41,8 @@ export function SectionHeading({
         <div
           className={cn(
             "font-mono text-caption text-gold flex items-center gap-2.5",
+            isRtlAlign && "justify-end",
             align === "center" && "justify-center",
-            align === "right" && "justify-end",
             goldShimmer && "gold-shimmer-text"
           )}
         >
@@ -47,9 +51,10 @@ export function SectionHeading({
         </div>
       )}
       <TitleTag className={cn(
-        "font-display text-section-headline tracking-tight text-text-primary leading-tight",
+        isAr ? "font-arabic-display text-arabic-section tracking-normal" : "font-display text-section-headline tracking-tight",
+        "text-text-primary leading-snug",
         goldShimmer && "gold-shimmer-text",
-        align === "center" ? "mx-auto" : align === "right" ? "mr-auto" : ""
+        align === "center" ? "mx-auto" : isRtlAlign ? "mr-auto" : ""
       )}>
         {title}
       </TitleTag>
@@ -59,16 +64,17 @@ export function SectionHeading({
           "block mt-5 h-px w-20",
           align === "center"
             ? "mx-auto bg-gradient-to-r from-transparent via-gold/70 to-transparent"
-            : align === "right"
-            ? "ml-auto bg-gradient-to-l from-gold/80 via-gold/30 to-transparent"
+            : isRtlAlign
+            ? "mr-auto bg-gradient-to-l from-gold/80 via-gold/30 to-transparent"
             : "bg-gradient-to-r from-gold/80 via-gold/30 to-transparent"
         )}
       />
       {subtitle && (
         <p className={cn(
-          "text-body text-text-secondary leading-relaxed max-w-2xl font-normal",
+          isAr ? "text-arabic-body text-text-secondary leading-loose" : "text-body text-text-secondary leading-relaxed",
+          "max-w-2xl font-normal",
           align === "center" && "mx-auto",
-          align === "right" && "mr-auto"
+          isRtlAlign && "mr-auto"
         )}>
           {subtitle}
         </p>
@@ -77,7 +83,7 @@ export function SectionHeading({
   );
 }
 
-// Arabic variant - now unified with SectionHeading using align="right"
+// Deprecated - use SectionHeading with locale="ar" instead
 export interface ArabicSectionHeadingProps extends React.HTMLAttributes<HTMLDivElement> {
   kicker?: string;
   title: string;
@@ -86,6 +92,7 @@ export interface ArabicSectionHeadingProps extends React.HTMLAttributes<HTMLDivE
   titleTag?: "h1" | "h2" | "h3" | "h4";
 }
 
+/** @deprecated Use SectionHeading with locale="ar" */
 export function ArabicSectionHeading({
   kicker,
   title,

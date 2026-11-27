@@ -39,6 +39,13 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       lg: "h-6 w-6",
     };
 
+    // Touch target wrapper sizes (44px minimum)
+    const touchTargetStyles = {
+      sm: "min-h-[44px] min-w-[44px]",
+      md: "min-h-[44px] min-w-[44px]",
+      lg: "min-h-[44px] min-w-[44px]",
+    };
+
     const baseStyles = cn(
       "rounded-md border-2 flex-shrink-0",
       "transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)]",
@@ -49,6 +56,12 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       "hover:not(:disabled):border-gold/50",
       sizeStyles[checkboxSize],
       className
+    );
+
+    const wrapperStyles = cn(
+      "relative flex items-center justify-center",
+      touchTargetStyles[checkboxSize],
+      "rounded-md"
     );
 
     const labelStyles = "ml-3 text-body text-text-primary leading-relaxed";
@@ -67,30 +80,34 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           {...props}
         />
         <div
-          className={cn(
-            sizeStyles[checkboxSize],
-            "relative flex items-center justify-center",
-            "rounded-md border-2",
-            "transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)]",
-            "bg-surface-elevated border-border",
-            "peer-focus-visible:outline-none peer-focus-visible:ring-2 peer-focus-visible:ring-gold peer-focus-visible:ring-offset-2",
-            "peer-disabled:cursor-not-allowed peer-disabled:opacity-50 peer-disabled:bg-surface-interactive",
-            "peer-checked:bg-gold peer-checked:border-gold peer-checked:shadow-gold-sm",
-            "peer-indeterminate:bg-gold peer-indeterminate:border-gold peer-indeterminate:shadow-gold-sm",
-            "peer-hover:not(:disabled):border-gold/50",
-            className
-          )}
+          className={wrapperStyles}
           aria-hidden="true"
         >
-          {indeterminateState ? (
-            <svg className="w-full h-full text-surface-elevated" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-              <line x1="5" y1="12" x2="19" y2="12" />
-            </svg>
-          ) : (
-            <svg className="w-3/4 h-3/4 text-surface-elevated" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-              <polyline points="20 6 9 17 4 12" />
-            </svg>
-          )}
+          <div
+            className={cn(
+              sizeStyles[checkboxSize],
+              "relative flex items-center justify-center",
+              "rounded-md border-2",
+              "transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)]",
+              "bg-surface-elevated border-border",
+              "peer-focus-visible:outline-none peer-focus-visible:ring-2 peer-focus-visible:ring-gold peer-focus-visible:ring-offset-2",
+              "peer-disabled:cursor-not-allowed peer-disabled:opacity-50 peer-disabled:bg-surface-interactive",
+              "peer-checked:bg-gold peer-checked:border-gold peer-checked:shadow-gold-sm",
+              "peer-indeterminate:bg-gold peer-indeterminate:border-gold peer-indeterminate:shadow-gold-sm",
+              "peer-hover:not(:disabled):border-gold/50",
+              className
+            )}
+          >
+            {indeterminateState ? (
+              <svg className="w-full h-full text-surface-elevated" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+            ) : (
+              <svg className="w-3/4 h-3/4 text-surface-elevated" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            )}
+          </div>
         </div>
         {(label || description) && (
           <div className="flex flex-col">

@@ -6,12 +6,14 @@ import { HeroSection } from "@/components/features/home/HeroSection";
 import { AboutSection } from "@/components/features/home/AboutSection";
 import { AILabSection } from "@/components/features/home/AILabSection";
 import { FeaturedProjectsSection } from "@/components/features/home/FeaturedProjectsSection";
-import { FlagshipCaseStudySection } from "@/components/features/home/FlagshipCaseStudySection";
+import { CaseStudyYusraSection } from "@/components/features/home/CaseStudyYusraSection";
 import { TechnicalArsenalSection } from "@/components/features/home/TechnicalArsenalSection";
 import { AbdulghaniMethodSection } from "@/components/features/home/AbdulghaniMethodSection";
 import { EducationCertificationsSection } from "@/components/features/home/EducationCertificationsSection";
 import { EngineeringInPublicSection } from "@/components/features/home/EngineeringInPublicSection";
-import { ContactCtaSection } from "@/components/features/home/ContactCtaSection";
+import { CtaSection } from "@/components/features/home/CtaSection";
+// Lazy-loaded below-fold sections
+import { LazySection } from "@/components/ui/LazySection";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://abdulghani.dev";
 
@@ -95,23 +97,25 @@ export default async function HomePage({
   return (
     <div className="relative min-h-screen w-full bg-[#FAF9F6] dark:bg-[#0B0B0C] text-[#0B0B0C] dark:text-white overflow-x-hidden selection:bg-gold-primary/30 selection:text-gold-dark dark:selection:text-gold-light">
       {/* ─────────────────────────────────────────────────────────────
-          AUTHORITATIVE REFERENCE LAYOUT (NEW_DESIGN.PNG)
+          MASTER PROMPT SECTION ORDER (12 Sections):
           1. Hero Section
-          2. Who is Abdulghani? (About & Progression)
+          2. Who Is Abdulghani? (About & Progression)
           3. AI Lab (6 Modules)
-          4. Featured Projects (Campus IT, MetaAlgorithm, NovaTech, Cafena)
-          5. Flagship Case Study — Campus IT Tracker Deep Dive
+          4. Featured Projects (Yusra, Campus, MetaAlgorithm, Nexora)
+          5. Case Study — Yusra (Flagship)
           6. Technical Arsenal (5 Categories)
           7. The Abdulghani Method (7 Nodes)
           8. Education & Certifications
-          9. Engineering in Public (Heatmap, Repos, Commits, Code)
-          10. Contact / Let's Build Something Intelligent
+          9. Engineering in Public (Heatmap, Repos, Activity, Code)
+          10. CTA (Let's Build Something Extraordinary)
+          11. Footer (in layout.tsx)
+          12. Navbar (in layout.tsx)
       ───────────────────────────────────────────────────────────── */}
       <main className="w-full">
         {/* Section 1: Hero */}
         <HeroSection locale={currentLocale} />
 
-        {/* Section 2: Who is Abdulghani? */}
+        {/* Section 2: Who Is Abdulghani? */}
         <AboutSection locale={currentLocale} />
 
         {/* Section 3: AI Lab */}
@@ -120,8 +124,10 @@ export default async function HomePage({
         {/* Section 4: Featured Projects */}
         <FeaturedProjectsSection locale={currentLocale} />
 
-        {/* Section 5: Flagship Case Study — Campus IT Tracker */}
-        <FlagshipCaseStudySection locale={currentLocale} />
+        {/* Section 5: Case Study — Yusra (Flagship) - Lazy Loaded */}
+        <LazySection threshold={0.1} rootMargin="200px">
+          <CaseStudyYusraSection locale={currentLocale} />
+        </LazySection>
 
         {/* Section 6: Technical Arsenal */}
         <TechnicalArsenalSection locale={currentLocale} />
@@ -129,14 +135,18 @@ export default async function HomePage({
         {/* Section 7: The Abdulghani Method */}
         <AbdulghaniMethodSection locale={currentLocale} />
 
-        {/* Section 8: Education & Certifications */}
-        <EducationCertificationsSection locale={currentLocale} />
+        {/* Section 8: Education & Certifications - Lazy Loaded */}
+        <LazySection threshold={0.1} rootMargin="200px">
+          <EducationCertificationsSection locale={currentLocale} />
+        </LazySection>
 
-        {/* Section 9: Engineering in Public */}
-        <EngineeringInPublicSection locale={currentLocale} />
+        {/* Section 9: Engineering in Public - Lazy Loaded */}
+        <LazySection threshold={0.1} rootMargin="200px">
+          <EngineeringInPublicSection locale={currentLocale} />
+        </LazySection>
 
-        {/* Section 10: Let's Build Something Intelligent */}
-        <ContactCtaSection locale={currentLocale} />
+        {/* Section 10: CTA - Let's Build Something Extraordinary */}
+        <CtaSection locale={currentLocale} />
       </main>
     </div>
   );

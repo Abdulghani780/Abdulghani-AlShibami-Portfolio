@@ -41,7 +41,7 @@ export function Tabs({
   const tabStyles = {
     line: (active: boolean) =>
       cn(
-        "relative px-4 py-3 text-body font-medium transition-all duration-200",
+        "relative px-4 py-4 text-body font-medium transition-all duration-200 min-h-[44px]",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2",
         active
           ? "text-gold"
@@ -50,7 +50,7 @@ export function Tabs({
       ),
     enclosed: (active: boolean) =>
       cn(
-        "px-4 py-2.5 text-body font-medium rounded-lg transition-all duration-200",
+        "px-4 py-3.5 text-body font-medium rounded-lg transition-all duration-200 min-h-[44px]",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2",
         active
           ? "bg-surface-elevated text-gold shadow-sm"
@@ -58,7 +58,7 @@ export function Tabs({
       ),
     soft: (active: boolean) =>
       cn(
-        "px-4 py-3 text-body font-medium transition-all duration-200",
+        "px-4 py-4 text-body font-medium transition-all duration-200 min-h-[44px]",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2",
         active
           ? "text-gold bg-gold-subtle"
@@ -99,7 +99,7 @@ export function Tabs({
               }
             }}
             className={cn(
-              "flex items-center gap-2 whitespace-nowrap",
+              "flex items-center gap-2 whitespace-nowrap min-h-[44px] min-w-[44px]",
               fullWidth && "flex-1 justify-center",
               tabStyles[variant](activeTab === tab.id),
               tab.disabled && "opacity-50 cursor-not-allowed"

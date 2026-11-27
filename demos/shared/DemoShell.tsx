@@ -139,9 +139,9 @@ export function DemoShell({
         <div className="bg-[#090D17] px-4 py-2.5 border-b border-white/[0.08] flex items-center justify-between select-none flex-wrap gap-2">
           {/* Left: Traffic Lights Controls */}
           <div className="flex items-center gap-2">
-            <span className="w-3 h-3 rounded-full bg-[#FF5F56] hover:brightness-125 transition-all cursor-pointer shadow-sm" />
-            <span className="w-3 h-3 rounded-full bg-[#FFBD2E] hover:brightness-125 transition-all cursor-pointer shadow-sm" />
-            <span className="w-3 h-3 rounded-full bg-[#27C93F] hover:brightness-125 transition-all cursor-pointer shadow-sm shadow-[#27C93F]/40" />
+            <button className="w-4 h-4 rounded-full bg-[#FF5F56] hover:brightness-125 transition-all cursor-pointer shadow-sm min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="Close window" />
+            <button className="w-4 h-4 rounded-full bg-[#FFBD2E] hover:brightness-125 transition-all cursor-pointer shadow-sm min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="Minimize window" />
+            <button className="w-4 h-4 rounded-full bg-[#27C93F] hover:brightness-125 transition-all cursor-pointer shadow-sm shadow-[#27C93F]/40 min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="Maximize window" />
             <span className="font-mono text-[11px] text-white/50 ml-1 hidden sm:inline">
               Workstation-OS // {projectSlug}.sh
             </span>

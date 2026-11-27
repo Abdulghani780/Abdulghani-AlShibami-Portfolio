@@ -1,366 +1,518 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { Locale } from "@/lib/i18n/dictionaries";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import { Hero3DCanvas } from "@/components/ui/Hero3DCanvas";
+import React, { useRef, useEffect, useState } from "react";
+import { AsLogoWithWordmark } from "@/components/ui/AsLogo";
+import { cn } from "@/lib/utils";
 
-export function HeroSection({ locale }: { locale: Locale }) {
+interface HeroSectionProps {
+  locale: "en" | "ar";
+}
+
+export function HeroSection({ locale }: HeroSectionProps) {
   const isRtl = locale === "ar";
+  const [isVisible, setIsVisible] = useState(false);
+  const [theme, setTheme] = useState<"light" | "dark">("dark");
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const animationFrameRef = useRef<number | undefined>(undefined);
+
+  // Detect theme
+  useEffect(() => {
+    const root = document.documentElement;
+    const checkTheme = () => {
+      setTheme(root.classList.contains("dark") ? "dark" : "light");
+    };
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(root, { attributes: true, attributeFilter: ["class"] });
+    return () => observer.disconnect();
+  }, []);
+
+  // Canvas animation for background particles
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isMobile = window.innerWidth < 768;
+    const particleCount = isMobile ? 25 : prefersReducedMotion ? 0 : 60;
+
+    let particles: Array<{
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      radius: number;
+      opacity: number;
+    }> = [];
+
+    const goldColor = theme === "dark" ? "rgba(217, 181, 103, " : "rgba(190, 148, 63, ";
+
+    const resize = () => {
+      canvas.width = canvas.offsetWidth * window.devicePixelRatio;
+      canvas.height = canvas.offsetHeight * window.devicePixelRatio;
+      ctx!.scale(window.devicePixelRatio, window.devicePixelRatio);
+    };
+
+    const initParticles = () => {
+      particles = [];
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * canvas.offsetWidth,
+          y: Math.random() * canvas.offsetHeight,
+          vx: (Math.random() - 0.5) * 0.3,
+          vy: (Math.random() - 0.5) * 0.3,
+          radius: Math.random() * 1.5 + 0.5,
+          opacity: Math.random() * 0.3 + 0.1,
+        });
+      }
+    };
+
+    const animate = () => {
+      if (!ctx) return;
+      ctx.clearRect(0, 0, canvas.offsetWidth, canvas.offsetHeight);
+
+      particles.forEach((p) => {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0) p.x = canvas.offsetWidth;
+        if (p.x > canvas.offsetWidth) p.x = 0;
+        if (p.y < 0) p.y = canvas.offsetHeight;
+        if (p.y > canvas.offsetHeight) p.y = 0;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `${goldColor}${p.opacity})`;
+        ctx.fill();
+      });
+
+      // Draw connections
+      particles.forEach((p1, i) => {
+        particles.slice(i + 1).forEach((p2) => {
+          const dx = p1.x - p2.x;
+          const dy = p1.y - p2.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 120) {
+            ctx.beginPath();
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = `${goldColor}${0.05 * (1 - dist / 120)})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        });
+      });
+
+      animationFrameRef.current = requestAnimationFrame(animate);
+    };
+
+    resize();
+    initParticles();
+    if (!prefersReducedMotion) animate();
+
+    window.addEventListener("resize", resize);
+    return () => {
+      window.removeEventListener("resize", resize);
+      if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
+    };
+  }, [theme]);
+
+  // Intersection Observer for scroll reveal
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+    );
+
+    const heroElement = document.getElementById("hero");
+    if (heroElement) observer.observe(heroElement);
+    return () => observer.disconnect();
+  }, []);
+
+  // Hero content from locale
+  const content = {
+    en: {
+      greeting: "HELLO, I'M",
+      name: "ABDULGHANI AL-SHIBAMI",
+      roleLine: "AUTONOMOUS SYSTEMS ARCHITECT & AI ENGINEERING LEADER",
+      subtitle: "I design high-throughput distributed state machines, autonomous multi-agent systems, and low-latency infrastructure that operates at the edge of what's possible.",
+      ctaPrimary: "EXPLORE MY WORK",
+      ctaSecondary: "VIEW RESUME",
+      ctaTertiary: "GET IN TOUCH",
+      verified: "Verified Engineer",
+      coordinates: "15.3694° N, 44.1910° E",
+    },
+    ar: {
+      greeting: "مرحباً، أنا",
+      name: "عَبْدُالْغَنِيُّ الْشَّبَامِي",
+      roleLine: "مُصَمِّمُ الْأَنْظِمَةِ الْمُسْتَقِلَّةِ وَقَائِدُ هَنْدَسَةِ الذَّكَاءِ الْاِصْطِنَاعِي",
+      subtitle: "أصمم آلات الحالة الموزعة عالية الإنتاجية، والأنظمة متعددة الوكلاء المستقلة، والبنية التحتية منخفضة الكمون التي تعمل عند حدود الممكن.",
+      ctaPrimary: "استكشاف أعمالي",
+      ctaSecondary: "عرض السيرة الذاتية",
+      ctaTertiary: "تواصل معي",
+      verified: "مهندس معتمد",
+      coordinates: "١٥.٣٦٩٤° ش، ٤٤.١٩١٠° ق",
+    },
+  }[locale];
+
+  const goldColor = theme === "dark" ? "#D9B567" : "#BE943F";
+  const goldHover = theme === "dark" ? "#D9B567" : "#A87F30";
+  const textPrimary = theme === "dark" ? "#FDFBF7" : "#1A1A1C";
+  const textSecondary = theme === "dark" ? "#E4E2DD" : "#2D2D2F";
+  const textMuted = theme === "dark" ? "#9A9893" : "#6B6B6E";
+  const bgColor = theme === "dark" ? "#0A0A0B" : "#FDFBF7";
+  const lineColor = theme === "dark" ? "rgba(217, 181, 103, 0.3)" : "rgba(190, 148, 63, 0.3)";
+  const lineGold = theme === "dark" ? "#D9B567" : "#BE943F";
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const navbarHeight = 73;
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementPosition - navbarHeight,
+        behavior: "smooth",
+      });
+    }
+  };
 
   return (
-    <section className="relative w-full bg-background dark:bg-background text-foreground dark:text-foreground pt-8 sm:pt-12 pb-0 lg:pb-0 overflow-hidden border-b border-border/5 dark:border-border/5 transition-colors">
-      {/* Background Architectural Grid Linework */}
-      <div className="absolute inset-0 pointer-events-none opacity-20 dark:opacity-10 z-0">
-        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="heroCircuitGrid" width="64" height="64" patternUnits="userSpaceOnUse">
-              <path d="M 64 0 L 0 0 0 64" fill="none" stroke="var(--color-brand)" strokeWidth="0.5" strokeOpacity="0.25" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#heroCircuitGrid)" />
-        </svg>
+    <section
+      id="hero"
+      className="section-master relative min-h-screen flex items-center overflow-hidden"
+      style={{
+        minHeight: "900px",
+        backgroundColor: bgColor,
+      }}
+      aria-labelledby="hero-headline"
+    >
+      {/* Background Canvas */}
+      <div className="absolute inset-0 -z-10" aria-hidden="true">
+        <canvas
+          ref={canvasRef}
+          className="w-full h-full"
+          style={{ width: "100%", height: "100%" }}
+          aria-hidden="true"
+        />
+        {/* Grain overlay */}
+        <div className="grain-overlay" aria-hidden="true" />
+        {/* Radial gradient mesh */}
+        <div
+          className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[120%] h-[120%] rounded-full pointer-events-none"
+          style={{
+            background: theme === "dark"
+              ? "radial-gradient(ellipse 80% 50% at 50% -20%, rgba(217, 181, 103, 0.08), transparent)"
+              : "radial-gradient(ellipse 80% 50% at 50% -20%, rgba(190, 148, 63, 0.06), transparent)",
+          }}
+          aria-hidden="true"
+        />
       </div>
 
-      {/* Interactive 3D Quantum Gyroscope & Particle Canvas */}
-      <Hero3DCanvas />
+      {/* SVG Ornaments - Circuit Circles */}
+      <svg
+        className="absolute top-20 left-20 w-32 h-32 pointer-events-none"
+        viewBox="0 0 100 100"
+        aria-hidden="true"
+        style={{ opacity: 0.4 }}
+      >
+        <circle cx="50" cy="50" r="45" fill="none" stroke={goldColor} strokeWidth="1" strokeDasharray="8 4" />
+        <circle cx="50" cy="50" r="35" fill="none" stroke={goldColor} strokeWidth="0.5" strokeDasharray="4 8" />
+        <circle cx="50" cy="50" r="20" fill="none" stroke={goldColor} strokeWidth="0.5" />
+        <circle cx="50" cy="50" r="8" fill={goldColor} opacity="0.3" />
+      </svg>
 
-      {/* Film grain texture overlay */}
-      <div className="grain-overlay z-[5]" aria-hidden="true" />
+      {/* SVG Ornament - Vertical Line with Nodes */}
+      <svg
+        className="absolute top-1/2 left-[88px] -translate-y-1/2 w-1 h-[60%] pointer-events-none"
+        viewBox="0 0 2 600"
+        aria-hidden="true"
+        style={{ opacity: 0.5 }}
+      >
+        <line x1="1" y1="0" x2="1" y2="600" stroke={goldColor} strokeWidth="1" strokeDasharray="8 12" />
+        <circle cx="1" cy="100" r="3" fill={goldColor} opacity="0.6" />
+        <circle cx="1" cy="250" r="2" fill={goldColor} opacity="0.4" />
+        <circle cx="1" cy="400" r="3" fill={goldColor} opacity="0.6" />
+        <circle cx="1" cy="550" r="2" fill={goldColor} opacity="0.4" />
+      </svg>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 items-center">
-          
-          {/* ═══════════════════════════════════════════════════════════════════════
-              LEFT / PRIMARY COLUMN (lg:col-span-7): Copy + Outer Circuit Spine + Middle Bridge
-             ═══════════════════════════════════════════════════════════════════════ */}
-          <div className="lg:col-span-7 relative flex flex-col justify-center py-6 sm:py-10 ps-7 sm:ps-9 lg:ps-12">
-            
-            {/* ─── ZONE 1: OUTER VERTICAL CIRCUIT SPINE (Region 1 in s1.png) ─── */}
-            {/* Sits on the outer edge, top branch points inward towards the greeting */}
-            <div className={`absolute start-0 sm:start-1 lg:start-2 top-3 sm:top-5 bottom-8 w-7 sm:w-8 pointer-events-none select-none z-10 ${isRtl ? "-scale-x-100" : ""}`}>
-              <svg
-                viewBox="0 0 32 380"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-full h-full"
-                preserveAspectRatio="none"
-              >
-                {/* Top Angled Branch with Circle Node */}
-                <circle cx="22" cy="12" r="2.5" fill="var(--color-background)" stroke="var(--color-brand-hover)" strokeWidth="1.5" className="dark:fill-background dark:stroke-brand" />
-                <path d="M 22 12 L 8 26 L 8 160" stroke="var(--color-brand-hover)" strokeWidth="1.2" strokeOpacity="0.65" className="dark:stroke-brand" />
-                <path d="M 22 12 L 8 26 L 8 160" stroke="var(--color-brand)" strokeWidth="1.6" className="gold-flow-animate pointer-events-none" />
-                
-                {/* Midpoint Double Solder Dots (Colon ':') */}
-                <circle cx="8" cy="172" r="1.5" fill="var(--color-brand-hover)" className="dark:fill-brand" />
-                <circle cx="8" cy="182" r="1.5" fill="var(--color-brand-hover)" className="dark:fill-brand" />
-                
-                {/* Lower Vertical Stem */}
-                <path d="M 8 194 L 8 360" stroke="var(--color-brand-hover)" strokeWidth="1.2" strokeOpacity="0.65" className="dark:stroke-brand" />
-                <path d="M 8 194 L 8 360" stroke="var(--color-brand)" strokeWidth="1.6" className="gold-flow-animate pointer-events-none" />
-                
-                {/* Bottom Terminal Node */}
-                <circle cx="8" cy="368" r="2.5" fill="var(--color-background)" stroke="var(--color-brand-hover)" strokeWidth="1.5" className="dark:fill-background dark:stroke-brand" />
-              </svg>
-            </div>
+      {/* SVG Ornament - Neural Network Box (top right) */}
+      <svg
+        className="absolute top-24 right-24 w-40 h-40 pointer-events-none"
+        viewBox="0 0 120 120"
+        aria-hidden="true"
+        style={{ opacity: 0.3 }}
+      >
+        <rect x="10" y="10" width="100" height="100" rx="4" fill="none" stroke={goldColor} strokeWidth="1" />
+        <circle cx="35" cy="35" r="4" fill={goldColor} opacity="0.7" />
+        <circle cx="85" cy="35" r="4" fill={goldColor} opacity="0.7" />
+        <circle cx="35" cy="85" r="4" fill={goldColor} opacity="0.7" />
+        <circle cx="85" cy="85" r="4" fill={goldColor} opacity="0.7" />
+        <circle cx="60" cy="60" r="5" fill={goldColor} opacity="0.9" />
+        <line x1="35" y1="35" x2="60" y2="60" stroke={goldColor} strokeWidth="0.5" opacity="0.5" />
+        <line x1="85" y1="35" x2="60" y2="60" stroke={goldColor} strokeWidth="0.5" opacity="0.5" />
+        <line x1="35" y1="85" x2="60" y2="60" stroke={goldColor} strokeWidth="0.5" opacity="0.5" />
+        <line x1="85" y1="85" x2="60" y2="60" stroke={goldColor} strokeWidth="0.5" opacity="0.5" />
+      </svg>
 
-            {/* ─── ZONE 3: MIDDLE CIRCUIT SCHEMATIC (Region 2 in s1.png) ─── */}
-            {/* Strictly positioned BEHIND portrait at z-2, in the gap between copy and shoulder */}
-            <div className={`hidden lg:block absolute end-0 top-1/2 -translate-y-1/2 w-48 xl:w-56 h-[400px] pointer-events-none select-none z-2 translate-x-4 xl:translate-x-8 ${isRtl ? "-scale-x-100 -translate-x-4 xl:-translate-x-8" : ""}`}>
-              <svg
-                viewBox="0 0 220 400"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-full h-full"
-              >
-                {/* Micro-schematic horizontal code lines */}
-                <g transform="translate(15, 65)" stroke="var(--color-brand-hover)" strokeOpacity="0.5" strokeWidth="1" className="dark:stroke-brand">
-                  <line x1="0" y1="0" x2="48" y2="0" />
-                  <line x1="0" y1="5" x2="34" y2="5" strokeOpacity="0.35" />
-                  <line x1="0" y1="10" x2="56" y2="10" />
-                  <line x1="0" y1="15" x2="40" y2="15" strokeOpacity="0.35" />
-                  <line x1="0" y1="20" x2="52" y2="20" />
-                  <line x1="0" y1="25" x2="30" y2="25" strokeOpacity="0.3" />
-                  <line x1="0" y1="30" x2="44" y2="30" strokeOpacity="0.4" />
-                  <line x1="0" y1="35" x2="22" y2="35" strokeOpacity="0.3" />
-                </g>
-
-                {/* Primary Circuit Trace 1: Top Node -> Down -> 90° Right -> 45° Down-Right -> Node */}
-                <circle cx="105" cy="30" r="3" fill="var(--color-background)" stroke="var(--color-brand-hover)" strokeWidth="1.5" className="dark:fill-background dark:stroke-brand" />
-                <path d="M 105 30 L 105 75 L 140 75 L 180 115" stroke="var(--color-brand-hover)" strokeWidth="1.2" strokeOpacity="0.65" className="dark:stroke-brand" />
-                <path d="M 105 30 L 105 75 L 140 75 L 180 115" stroke="var(--color-brand)" strokeWidth="1.6" className="gold-flow-animate pointer-events-none" />
-                <circle cx="180" cy="115" r="2.5" fill="var(--color-brand-hover)" className="dark:fill-brand" />
-
-                {/* Primary Circuit Trace 2: Top Node -> Down -> 90° Right -> Down -> Terminal Node */}
-                <circle cx="65" cy="60" r="2.5" fill="var(--color-background)" stroke="var(--color-brand-hover)" strokeWidth="1.2" className="dark:fill-background dark:stroke-brand" />
-                <path d="M 65 60 L 65 135 L 120 135 L 120 180 L 145 205" stroke="var(--color-brand-hover)" strokeWidth="1.2" strokeOpacity="0.6" className="dark:stroke-brand" />
-                <path d="M 65 60 L 65 135 L 120 135 L 120 180 L 145 205" stroke="var(--color-brand)" strokeWidth="1.6" className="gold-flow-animate pointer-events-none" />
-                <circle cx="145" cy="205" r="2.5" fill="var(--color-brand-hover)" className="dark:fill-brand" />
-
-                {/* Branching Horizontal Line with Terminal Dot */}
-                <path d="M 25 175 L 85 175" stroke="var(--color-brand-hover)" strokeWidth="1" strokeOpacity="0.5" className="dark:stroke-brand" />
-                <circle cx="25" cy="175" r="2" fill="var(--color-background)" stroke="var(--color-brand-hover)" strokeWidth="1.2" className="dark:fill-background dark:stroke-brand" />
-                <circle cx="85" cy="175" r="2" fill="var(--color-brand-hover)" className="dark:fill-brand" />
-
-                {/* Double Solder Terminal Dots (Colon ':') near lower coat */}
-                <circle cx="100" cy="275" r="2" fill="var(--color-background)" stroke="var(--color-brand-hover)" strokeWidth="1.2" className="dark:fill-background dark:stroke-brand" />
-                <circle cx="100" cy="287" r="2" fill="var(--color-background)" stroke="var(--color-brand-hover)" strokeWidth="1.2" className="dark:fill-background dark:stroke-brand" />
-
-                {/* Faceted Diamond / Crystalline Wireframe Prism behind shoulder */}
-                <polygon points="175,20 215,85 175,150 135,85" stroke="var(--color-brand-hover)" strokeWidth="0.6" strokeOpacity="0.3" strokeDasharray="4 3" fill="none" className="dark:stroke-brand" />
-                <line x1="175" y1="20" x2="175" y2="150" stroke="var(--color-brand-hover)" strokeWidth="0.5" strokeOpacity="0.2" className="dark:stroke-brand" />
-                <line x1="135" y1="85" x2="215" y2="85" stroke="var(--color-brand-hover)" strokeWidth="0.5" strokeOpacity="0.2" className="dark:stroke-brand" />
-              </svg>
-            </div>
-
-            {/* Kicker Greeting */}
-            <ScrollReveal delay={100} isRtl={isRtl} direction="up">
-              <div className="inline-flex items-center gap-2 mb-2">
-                <span className="font-serif italic text-base sm:text-lg text-muted-foreground dark:text-muted-foreground">
-                  {isRtl ? "مرحباً، أنا" : "Hello, I'm"}
-                </span>
-                <span className="w-6 h-[1px] bg-brand/60 inline-block" />
-              </div>
-            </ScrollReveal>
-
-            {/* Display Heading - Two-line Editorial Layout matching s1.png */}
-            <ScrollReveal delay={200} isRtl={isRtl} direction="up">
-              <h1 className="font-serif font-black text-3xl sm:text-4xl md:text-5xl lg:text-[44px] xl:text-[52px] 2xl:text-[60px] tracking-tight text-foreground dark:text-foreground uppercase leading-[0.98] mb-4 gold-shimmer-text">
-                {isRtl ? (
-                  <>
-                    <span className="block">عبدالغني</span>
-                    <span className="block">الشبامي</span>
-                  </>
-                ) : (
-                  <>
-                    <span className="block">ABDULGHANI</span>
-                    <span className="block">AL-SHIBAMI</span>
-                  </>
-                )}
-              </h1>
-            </ScrollReveal>
-
-            {/* Role / Subtitle with dot separators */}
-            <ScrollReveal delay={300} isRtl={isRtl} direction="up">
-              <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 text-xs sm:text-sm font-bold tracking-[0.16em] uppercase text-brand dark:text-brand-light mb-5">
-                <span>{isRtl ? "مهندس ذكاء اصطناعي" : "AI ENGINEER"}</span>
-                <span className="text-muted-foreground">•</span>
-                <span>{isRtl ? "مطور برمجيات" : "SOFTWARE DEVELOPER"}</span>
-                <span className="text-muted-foreground">•</span>
-                <span>{isRtl ? "مفكر أنظمة" : "SYSTEMS THINKER"}</span>
-              </div>
-            </ScrollReveal>
-
-            {/* Bio Narrative */}
-            <ScrollReveal delay={400} isRtl={isRtl} direction="up">
-              <p className="text-base sm:text-lg text-muted-foreground dark:text-muted-foreground max-w-md xl:max-w-lg leading-relaxed mb-8 sm:mb-9 font-sans">
-                {isRtl
-                  ? "أبني برمجيات ذكية، حلول ذكاء اصطناعي عملية، وأنظمة مصممة لحل مشكلات واقعية بكفاءة عالية."
-                  : "I build intelligent software, practical AI solutions, and systems designed to solve real problems."}
-              </p>
-            </ScrollReveal>
-
-            {/* CTA Button Trio (Matching s1.png) */}
-            <ScrollReveal delay={500} isRtl={isRtl} direction="up">
-              <div className="flex flex-wrap items-center gap-3 sm:gap-4 relative z-20">
-                {/* Primary: Explore My Work */}
-                <Link
-                  href="#projects"
-                  data-cursor-text={isRtl ? "استكشف" : "EXPLORE"}
-                  className="relative overflow-hidden inline-flex items-center gap-2 px-7 py-3 rounded-full bg-brand-hover hover:bg-brand text-background font-extrabold text-xs sm:text-sm tracking-wider uppercase shadow-md hover:shadow-lg transition-all duration-300 active:scale-95 group cursor-pointer"
-                >
-                  <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none" />
-                  <span>{isRtl ? "استكشف أعمالي" : "EXPLORE MY WORK"}</span>
-                  <span className="transition-transform duration-300 group-hover:translate-x-1.5 rtl:group-hover:-translate-x-1.5">→</span>
-                </Link>
-
-                {/* Secondary: About Me */}
-                <Link
-                  href="#about"
-                  className="inline-flex items-center px-7 py-3 rounded-full border border-border/15 dark:border-border/20 bg-background/70 dark:bg-transparent hover:bg-foreground/5 dark:hover:bg-background/5 hover:border-brand/60 dark:hover:border-brand/60 text-foreground dark:text-foreground text-xs sm:text-sm font-bold tracking-wider uppercase transition-all duration-300 active:scale-95 cursor-pointer"
-                >
-                  {isRtl ? "نبذة عني" : "ABOUT ME"}
-                </Link>
-
-                {/* Tertiary: GitHub */}
-                <a
-                  href="https://github.com/Abdulghani780"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-foreground dark:border-muted bg-foreground dark:bg-muted/80 hover:bg-muted dark:hover:border-muted text-background dark:text-background text-xs sm:text-sm font-bold tracking-wider uppercase shadow-sm transition-all duration-300 active:scale-95 cursor-pointer"
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-                  </svg>
-                  <span>GITHUB</span>
-                </a>
-              </div>
-            </ScrollReveal>
-
-            {/* Test Compatibility Anchor */}
-            <div className="start-4 hidden" />
-          </div>
-
-          {/* ═══════════════════════════════════════════════════════════════════════
-              RIGHT / SECONDARY COLUMN (lg:col-span-5): Portrait (z-10) + Flank Artwork (z-2)
-             ═══════════════════════════════════════════════════════════════════════ */}
-          <div className="lg:col-span-5 relative flex items-end justify-center lg:justify-start min-h-[480px] sm:min-h-[540px] lg:min-h-[580px]">
-            {/* Ambient Radial Rim Backlight */}
-            <div className="absolute top-1/2 start-1/3 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[400px] h-[460px] rounded-full bg-radial from-brand/15 via-brand/5 to-transparent pointer-events-none blur-3xl dark:block hidden z-1 aura-breathe-anim" />
-            <div className="absolute top-1/2 start-1/3 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[400px] h-[460px] rounded-full bg-radial from-brand-light/60 via-brand-subtle/20 to-transparent pointer-events-none blur-2xl dark:hidden z-1 aura-breathe-anim" />
-
-            {/* ─── Top Horizontal Ruler Notch Accent (Matching s1.png) ─── */}
-            <div className={`absolute top-2 sm:top-3 end-2 sm:end-4 w-32 sm:w-44 h-4 pointer-events-none select-none z-2 ${isRtl ? "-scale-x-100" : ""}`}>
-              <svg viewBox="0 0 160 16" fill="none" className="w-full h-full">
-                <line x1="0" y1="8" x2="148" y2="8" stroke="var(--color-brand-hover)" strokeWidth="1" strokeOpacity="0.4" className="dark:stroke-brand" />
-                <rect x="148" y="5" width="10" height="6" fill="var(--color-brand-hover)" fillOpacity="0.65" className="dark:fill-brand" />
-              </svg>
-            </div>
-
-            {/* ─── Technical Words beside Hair (Strictly LTR so dot stays on left, matching s1.png) ─── */}
-            <div className="absolute top-10 sm:top-12 end-4 sm:end-8 lg:end-2 xl:end-6 z-20 pointer-events-none select-none text-end">
-              <div dir="ltr" className="flex flex-col space-y-1.5 font-mono text-[11px] xl:text-[12px] font-semibold tracking-[0.22em] text-muted-foreground/80 dark:text-brand/80 uppercase">
-                <div className="flex items-center justify-end gap-2">
-                  <span className="text-brand dark:text-brand font-bold text-sm">·</span>
-                  <span>CODE</span>
-                </div>
-                <div className="flex items-center justify-end gap-2">
-                  <span className="text-brand dark:text-brand font-bold text-sm">·</span>
-                  <span>ANALYZE</span>
-                </div>
-                <div className="flex items-center justify-end gap-2">
-                  <span className="text-brand dark:text-brand font-bold text-sm">·</span>
-                  <span>BUILD</span>
-                </div>
-                <div className="flex items-center justify-end gap-2">
-                  <span className="text-brand dark:text-brand font-bold text-sm">·</span>
-                  <span>IMPROVE</span>
-                </div>
-              </div>
-            </div>
-
-            {/* ─── Technical AI Frame & Diagonal Bus Traces (Refined Blueprint Layer) ─── */}
-            <div className={`absolute top-[230px] sm:top-[245px] lg:top-[255px] xl:top-[260px] end-0 sm:end-1 lg:-end-3 xl:end-1 w-44 sm:w-50 h-[300px] pointer-events-none select-none z-2 ${isRtl ? "-scale-x-100" : ""}`}>
-              <svg viewBox="0 0 200 300" fill="none" className="w-full h-full opacity-60 dark:opacity-75">
-                <defs>
-                  <linearGradient id="goldTraceGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="var(--color-brand-light)" />
-                    <stop offset="40%" stopColor="var(--color-brand)" />
-                    <stop offset="70%" stopColor="var(--color-brand-hover)" />
-                    <stop offset="100%" stopColor="#8C6B10" />
-                  </linearGradient>
-                </defs>
-
-                {/* Outer Technical Box with corner notches */}
-                <g transform="translate(10, 10)">
-                  <rect x="0" y="0" width="124" height="114" rx="2" stroke="var(--color-brand-hover)" strokeWidth="1" strokeOpacity="0.45" fill="none" className="dark:stroke-brand" />
-                  
-                  {/* Corner Accent Brackets */}
-                  <path d="M 0 12 L 0 0 L 12 0" stroke="var(--color-brand-hover)" strokeWidth="1.5" strokeOpacity="0.75" fill="none" className="dark:stroke-brand" />
-                  <path d="M 112 0 L 124 0 L 124 12" stroke="var(--color-brand-hover)" strokeWidth="1.5" strokeOpacity="0.75" fill="none" className="dark:stroke-brand" />
-                  <path d="M 124 102 L 124 114 L 112 114" stroke="var(--color-brand-hover)" strokeWidth="1.5" strokeOpacity="0.75" fill="none" className="dark:stroke-brand" />
-                  <path d="M 12 114 L 0 114 L 0 102" stroke="var(--color-brand-hover)" strokeWidth="1.5" strokeOpacity="0.75" fill="none" className="dark:stroke-brand" />
-
-                  {/* Network Graph Vertices */}
-                  <circle cx="28" cy="30" r="3" stroke="var(--color-brand-hover)" strokeWidth="1.2" fill="var(--color-background)" className="dark:fill-background dark:stroke-brand" />
-                  <circle cx="96" cy="24" r="3" stroke="var(--color-brand-hover)" strokeWidth="1.2" fill="var(--color-background)" className="dark:fill-background dark:stroke-brand" />
-                  <circle cx="106" cy="72" r="3" stroke="var(--color-brand-hover)" strokeWidth="1.2" fill="var(--color-background)" className="dark:fill-background dark:stroke-brand" />
-                  <circle cx="78" cy="98" r="3" stroke="var(--color-brand-hover)" strokeWidth="1.2" fill="var(--color-background)" className="dark:fill-background dark:stroke-brand" />
-                  <circle cx="24" cy="84" r="3" stroke="var(--color-brand-hover)" strokeWidth="1.2" fill="var(--color-background)" className="dark:fill-background dark:stroke-brand" />
-
-                  {/* Outer Polygon Lines */}
-                  <line x1="28" y1="30" x2="96" y2="24" stroke="var(--color-brand-hover)" strokeWidth="1" strokeOpacity="0.4" className="dark:stroke-brand" />
-                  <line x1="96" y1="24" x2="106" y2="72" stroke="var(--color-brand-hover)" strokeWidth="1" strokeOpacity="0.4" className="dark:stroke-brand" />
-                  <line x1="106" y1="72" x2="78" y2="98" stroke="var(--color-brand-hover)" strokeWidth="1" strokeOpacity="0.4" className="dark:stroke-brand" />
-                  <line x1="78" y1="98" x2="24" y2="84" stroke="var(--color-brand-hover)" strokeWidth="1" strokeOpacity="0.4" className="dark:stroke-brand" />
-                  <line x1="24" y1="84" x2="28" y2="30" stroke="var(--color-brand-hover)" strokeWidth="1" strokeOpacity="0.4" className="dark:stroke-brand" />
-
-                  {/* Center AI Node */}
-                  <circle cx="62" cy="59" r="14" stroke="url(#goldTraceGrad)" strokeWidth="1.2" fill="var(--color-background)" className="dark:fill-surfaceOverlay" />
-                  <text
-                    x={isRtl ? "-62" : "62"}
-                    y="63"
-                    transform={isRtl ? "scale(-1, 1)" : undefined}
-                    textAnchor="middle"
-                    fill="var(--color-brand-hover)"
-                    className="dark:fill-brand"
-                    fontSize="10"
-                    fontFamily="monospace"
-                    fontWeight="bold"
-                    letterSpacing="0.05em"
-                  >
-                    AI
-                  </text>
-
-                  {/* Spoke Lines to Central AI Node */}
-                  <line x1="28" y1="30" x2="50" y2="50" stroke="var(--color-brand-hover)" strokeWidth="1" strokeOpacity="0.45" className="dark:stroke-brand" />
-                  <line x1="96" y1="24" x2="74" y2="49" stroke="var(--color-brand-hover)" strokeWidth="1" strokeOpacity="0.45" className="dark:stroke-brand" />
-                  <line x1="106" y1="72" x2="77" y2="62" stroke="var(--color-brand-hover)" strokeWidth="1" strokeOpacity="0.45" className="dark:stroke-brand" />
-                  <line x1="78" y1="98" x2="68" y2="74" stroke="var(--color-brand-hover)" strokeWidth="1" strokeOpacity="0.45" className="dark:stroke-brand" />
-                  <line x1="24" y1="84" x2="48" y2="67" stroke="var(--color-brand-hover)" strokeWidth="1" strokeOpacity="0.45" className="dark:stroke-brand" />
-                </g>
-
-                {/* Right margin trace lines */}
-                <path d="M 134 40 L 155 40 L 170 55 L 185 55" stroke="var(--color-brand-hover)" strokeWidth="1" strokeOpacity="0.4" className="dark:stroke-brand" />
-                <circle cx="155" cy="40" r="1.8" fill="var(--color-brand-hover)" className="dark:fill-brand" />
-
-                {/* 3 Parallel 45-degree Diagonal Bus Lines Streaming to Outer Bottom Corner */}
-                <path d="M 25 130 L 25 155 L 65 195 L 140 195 L 185 240" stroke="var(--color-brand-hover)" strokeWidth="1" strokeOpacity="0.45" className="dark:stroke-brand" />
-                <path d="M 25 130 L 25 155 L 65 195 L 140 195 L 185 240" stroke="var(--color-brand)" strokeWidth="1.2" className="gold-flow-animate pointer-events-none opacity-60" />
-                <circle cx="140" cy="195" r="1.8" fill="var(--color-brand-hover)" className="dark:fill-brand" />
-                <circle cx="185" cy="240" r="2.2" fill="var(--color-background)" stroke="var(--color-brand-hover)" strokeWidth="1" className="dark:fill-background dark:stroke-brand" />
-
-                <path d="M 45 130 L 45 145 L 80 180 L 155 180 L 195 220" stroke="var(--color-brand-hover)" strokeWidth="1" strokeOpacity="0.35" className="dark:stroke-brand" />
-                <circle cx="195" cy="220" r="1.8" fill="var(--color-brand-hover)" className="dark:fill-brand" />
-
-                <path d="M 75 130 L 95 150 L 170 150 L 198 178" stroke="var(--color-brand-hover)" strokeWidth="0.8" strokeOpacity="0.25" className="dark:stroke-brand" />
-              </svg>
-            </div>
-
-            {/* ─── Executive Architectural Studio Portal & Pedestal (z-10) ─── */}
-            <div className="relative w-full max-w-[280px] sm:max-w-[330px] lg:max-w-[360px] xl:max-w-[390px] aspect-[4/5] z-10 flex items-end justify-center select-none group">
-              {/* Architectural Arched Pedestal Backplate */}
-              <div 
-                className="absolute inset-x-2 sm:inset-x-3 bottom-0 top-6 sm:top-8 rounded-t-[140px] sm:rounded-t-[170px] rounded-b-2xl overflow-hidden pointer-events-none transition-all duration-700 border border-brand/25 dark:border-brand/30 shadow-[0_20px_50px_-10px_rgba(184,142,31,0.12)] dark:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9),0_0_35px_rgba(212,175,55,0.06)] bg-gradient-to-b from-brand-subtle via-brand-light to-background dark:from-surfaceOverlay dark:via-surface dark:to-background"
-                aria-hidden="true"
-              >
-                {/* Inner Ambient Glow (Light: Warm Champagne Satin / Dark: Royal Obsidian Gold) */}
-                <div className="absolute inset-x-4 top-8 bottom-0 rounded-t-full bg-radial from-brand-light/90 via-brand-light/40 to-transparent blur-xl dark:hidden pointer-events-none" />
-                <div className="absolute inset-x-4 top-8 bottom-0 rounded-t-full bg-radial from-brand/20 via-brand-hover/5 to-transparent blur-2xl hidden dark:block pointer-events-none" />
-                
-                {/* Precision Geometric Blueprint Micro-Grid inside portal */}
-                <div className="absolute inset-0 opacity-15 dark:opacity-10 pointer-events-none bg-[radial-gradient(var(--color-brand-hover)_1px,transparent_1px)] [background-size:16px_16px]" />
-                
-                {/* Pedestal Bottom Base Glow Line */}
-                <div className="absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-transparent via-brand-hover/60 dark:via-brand/70 to-transparent" />
-              </div>
-
-              {/* ─── Cutout Portrait: HERO LAYER with Feathered Gradient Base Mask (Eliminates Floating & Hard Waist Cut) ─── */}
-              <div 
-                className="relative w-full h-full z-10 flex items-end justify-center select-none pointer-events-none"
+      {/* Main Content */}
+      <div className="container-master relative z-10" style={{ paddingTop: "120px", paddingBottom: "80px" }}>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          {/* Left Column: Text Content (col-span-7) */}
+          <div
+            className={cn(
+              "lg:col-span-7 space-y-8",
+              isRtl ? "text-right" : "text-left"
+            )}
+            style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s cubic-bezier(0.16, 1, 0.3, 1)" }}
+          >
+            {/* Greeting */}
+            <div className="flex items-center gap-4" style={{ justifyContent: isRtl ? "flex-end" : "flex-start" }}>
+              <span
+                className="font-sans font-medium tracking-widest uppercase text-sm"
                 style={{
-                  maskImage:
-                    "linear-gradient(to bottom, black 78%, transparent 100%), linear-gradient(to right, transparent 0%, black 3%, black 97%, transparent 100%)",
-                  maskComposite: "intersect",
-                  WebkitMaskImage:
-                    "linear-gradient(to bottom, black 78%, transparent 100%), linear-gradient(to right, transparent 0%, black 3%, black 97%, transparent 100%)",
-                  WebkitMaskComposite: "source-in",
+                  color: goldColor,
+                  letterSpacing: "0.12em",
                 }}
               >
-                <Image
-                  src="/images/profile/abdulghani-portrait.webp"
-                  alt="Abdulghani Al-Shibami — AI Engineer & Software Developer"
-                  fill
-                  priority
-                  className="object-contain object-bottom select-none pointer-events-none filter drop-shadow-[0_12px_24px_rgba(0,0,0,0.16)] dark:drop-shadow-[0_16px_32px_rgba(0,0,0,0.7)] transition-all duration-300"
-                  sizes="(max-width: 768px) 280px, (max-width: 1200px) 360px, 390px"
+                {content.greeting}
+              </span>
+              <div
+                className="w-24 h-px"
+                style={{ background: `linear-gradient(90deg, ${goldColor} 0%, transparent 100%)` }}
+              />
+            </div>
+
+            {/* Name */}
+            <h1
+              id="hero-headline"
+              className="font-display font-bold tracking-tight leading-[0.95]"
+              style={{
+                fontSize: "clamp(44px, 6vw, 72px)",
+                lineHeight: 0.95,
+                letterSpacing: "-0.02em",
+                textTransform: "uppercase",
+                color: textPrimary,
+              }}
+            >
+              {content.name}
+            </h1>
+
+            {/* Gold Role Line */}
+            <div className="gold-shimmer-text font-display font-semibold tracking-tight leading-tight" style={{ fontSize: "clamp(20px, 2.5vw, 28px)", textTransform: "uppercase" }}>
+              {content.roleLine}
+            </div>
+
+            {/* Subtitle */}
+            <p className="body-lg max-w-2xl" style={{ color: textSecondary }}>
+              {content.subtitle}
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-wrap items-center gap-4 pt-4" style={{ justifyContent: isRtl ? "flex-end" : "flex-start" }}>
+              <button
+                onClick={() => scrollToSection("projects")}
+                className="btn-primary"
+                style={{
+                  backgroundColor: goldColor,
+                  borderColor: goldColor,
+                  color: "#0A0A0B",
+                }}
+                onMouseEnter={(e) => {
+                  const target = e.currentTarget as HTMLElement;
+                  target.style.backgroundColor = goldHover;
+                  target.style.borderColor = goldHover;
+                }}
+                onMouseLeave={(e) => {
+                  const target = e.currentTarget as HTMLElement;
+                  target.style.backgroundColor = goldColor;
+                  target.style.borderColor = goldColor;
+                }}
+              >
+                {content.ctaPrimary}
+                <svg className="w-4 h-4 rtl-flip" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </button>
+
+              <button
+                onClick={() => scrollToSection("education")}
+                className="btn-secondary"
+              >
+                {content.ctaSecondary}
+              </button>
+
+              <button
+                onClick={() => scrollToSection("cta")}
+                className="btn-ghost"
+              >
+                {content.ctaTertiary}
+                <svg className="w-4 h-4 rtl-flip" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Verified Badge & Coordinates */}
+            <div className="flex flex-wrap items-center gap-6 pt-8 border-t" style={{ borderColor: lineColor }}>
+              <div className="flex items-center gap-3" style={{ justifyContent: isRtl ? "flex-end" : "flex-start" }}>
+                <div
+                  className="w-2.5 h-2.5 rounded-full flex-shrink-0"
+                  style={{ backgroundColor: goldColor, boxShadow: `0 0 8px ${goldColor}` }}
+                  aria-hidden="true"
                 />
+                <span className="font-sans font-medium text-sm" style={{ color: textMuted }}>
+                  {content.verified}
+                </span>
+              </div>
+              <div className="font-mono text-xs" style={{ color: textMuted }}>
+                {content.coordinates}
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Portrait + Ornaments (col-span-5) */}
+          <div className="lg:col-span-5 relative" aria-hidden="true">
+            {/* Portrait Container */}
+            <div className="relative" style={{ position: "sticky", top: "140px" }}>
+              {/* Portrait Image with Mask */}
+              <div className="relative" style={{ width: "100%", maxWidth: "500px", marginLeft: isRtl ? "auto" : "0" }}>
+                {/* Mask gradient overlay */}
+                <div
+                  className="absolute inset-0 pointer-events-none z-10"
+                  style={{
+                    borderRadius: "12px",
+                    maskImage: "linear-gradient(to bottom, black 60%, transparent 100%)",
+                    WebkitMaskImage: "linear-gradient(to bottom, black 60%, transparent 100%)",
+                    background: `linear-gradient(to bottom, transparent 60%, ${bgColor} 100%)`,
+                  }}
+                  aria-hidden="true"
+                />
+                
+                {/* Profile Image Placeholder */}
+                <div
+                  className="relative aspect-[4/5] rounded-xl overflow-hidden"
+                  style={{
+                    background: `linear-gradient(145deg, ${theme === "dark" ? "#1A1A1C" : "#E8E4DD"} 0%, ${theme === "dark" ? "#121213" : "#FAF8F3"} 100%)`,
+                    border: `1px solid ${lineColor}`,
+                    boxShadow: theme === "dark"
+                      ? "0 25px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(217, 181, 103, 0.1)"
+                      : "0 25px 50px rgba(26, 26, 28, 0.12), 0 0 0 1px rgba(190, 148, 63, 0.1)",
+                  }}
+                >
+                  {/* Placeholder content */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <AsLogoWithWordmark locale={locale} size="large" />
+                  </div>
+                  
+                  {/* Gold accent corner */}
+                  <div
+                    className="absolute -top-1 -right-1 w-16 h-16 pointer-events-none"
+                    style={{
+                      borderTop: `2px solid ${goldColor}`,
+                      borderRight: `2px solid ${goldColor}`,
+                      borderRadius: "0 12px 0 0",
+                      opacity: 0.6,
+                    }}
+                    aria-hidden="true"
+                  />
+                  <div
+                    className="absolute -bottom-1 -left-1 w-16 h-16 pointer-events-none"
+                    style={{
+                      borderBottom: `2px solid ${goldColor}`,
+                      borderLeft: `2px solid ${goldColor}`,
+                      borderRadius: "0 0 0 12px",
+                      opacity: 0.4,
+                    }}
+                    aria-hidden="true"
+                  />
+                </div>
+              </div>
+
+              {/* Floating Ornaments around portrait */}
+              {/* Circuit circles bottom left */}
+              <svg
+                className="absolute -bottom-10 -left-10 w-24 h-24 pointer-events-none"
+                viewBox="0 0 80 80"
+                aria-hidden="true"
+                style={{ opacity: 0.3 }}
+              >
+                <circle cx="40" cy="40" r="35" fill="none" stroke={goldColor} strokeWidth="1" strokeDasharray="6 6" />
+                <circle cx="40" cy="40" r="22" fill="none" stroke={goldColor} strokeWidth="0.5" />
+                <circle cx="40" cy="40" r="10" fill={goldColor} opacity="0.2" />
+              </svg>
+
+              {/* Neural network box bottom right */}
+              <svg
+                className="absolute -bottom-10 -right-10 w-28 h-28 pointer-events-none"
+                viewBox="0 0 100 100"
+                aria-hidden="true"
+                style={{ opacity: 0.25 }}
+              >
+                <rect x="15" y="15" width="70" height="70" rx="3" fill="none" stroke={goldColor} strokeWidth="0.5" />
+                <circle cx="35" cy="35" r="3" fill={goldColor} opacity="0.6" />
+                <circle cx="65" cy="35" r="3" fill={goldColor} opacity="0.6" />
+                <circle cx="35" cy="65" r="3" fill={goldColor} opacity="0.6" />
+                <circle cx="65" cy="65" r="3" fill={goldColor} opacity="0.6" />
+                <circle cx="50" cy="50" r="4" fill={goldColor} opacity="0.8" />
+                <line x1="35" y1="35" x2="50" y2="50" stroke={goldColor} strokeWidth="0.5" opacity="0.4" />
+                <line x1="65" y1="35" x2="50" y2="50" stroke={goldColor} strokeWidth="0.5" opacity="0.4" />
+                <line x1="35" y1="65" x2="50" y2="50" stroke={goldColor} strokeWidth="0.5" opacity="0.4" />
+                <line x1="65" y1="65" x2="50" y2="50" stroke={goldColor} strokeWidth="0.5" opacity="0.4" />
+              </svg>
+
+              {/* CODE / ANALYZE / BUILD / IMPROVE list */}
+              <div
+                className="absolute -bottom-28 left-1/2 -translate-x-1/2 w-full max-w-xs text-center pointer-events-none"
+                style={{ opacity: 0.5 }}
+              >
+                <div className="space-y-2 font-mono text-xs tracking-widest uppercase" style={{ color: textMuted }}>
+                  <div className="flex items-center justify-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: goldColor }} />
+                    <span>CODE</span>
+                  </div>
+                  <div className="flex items-center justify-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: goldColor }} />
+                    <span>ANALYZE</span>
+                  </div>
+                  <div className="flex items-center justify-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: goldColor }} />
+                    <span>BUILD</span>
+                  </div>
+                  <div className="flex items-center justify-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: goldColor }} />
+                    <span>IMPROVE</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <div
+        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none"
+        aria-hidden="true"
+        style={{ opacity: isVisible ? 0.6 : 0, transition: "opacity 0.5s ease-out 1s" }}
+      >
+        <div className="font-mono text-xs tracking-widest uppercase" style={{ color: textMuted }}>SCROLL</div>
+        <svg className="w-5 h-5 animate-bounce" viewBox="0 0 24 24" fill="none" stroke={goldColor} strokeWidth="2" style={{ opacity: 0.6 }}>
+          <path d="M12 5v14M19 12l-7 7-7-7" />
+        </svg>
+      </div>
+
+      {/* Gold Divider at bottom */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1440px] h-px pointer-events-none" aria-hidden="true">
+        <div className="w-full h-full" style={{ background: `linear-gradient(90deg, transparent 0%, ${lineGold} 50%, transparent 100%)`, opacity: 0.4 }} />
       </div>
     </section>
   );

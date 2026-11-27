@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="eduBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1A1A2E"/>
+      <stop offset="50%" style="stop-color:#16213E"/>
+      <stop offset="100%" style="stop-color:#0F3460"/>
+    </linearGradient>
+    <mask id="fadeMask">
+      <rect x="0" y="0" width="800" height="360" fill="white"/>
+      <rect x="0" y="360" width="800" height="90" fill="url(#fadeGrad)"/>
+    </defs>
+    <linearGradient id="fadeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:white"/>
+      <stop offset="100%" style="stop-color:transparent"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="450" fill="url(#eduBg)"/>
+  
+  <!-- University building silhouettes -->
+  <g fill="#0A0A0B" opacity="0.8">
+    <path d="M50,400 L50,200 Q100,150 150,200 L150,400 Z"/>
+    <path d="M150,400 L150,180 Q220,120 280,180 L280,400 Z"/>
+    <path d="M300,400 L300,220 Q370,160 440,220 L440,400 Z"/>
+    <path d="M460,400 L460,190 Q530,130 600,190 L600,400 Z"/>
+    <path d="M620,400 L620,210 Q680,170 740,210 L740,400 Z"/>
+  </g>
+  
+  <!-- Gold architectural details -->
+  <g stroke="#BE943F" stroke-width="1" fill="none" opacity="0.4">
+    <line x1="100" y1="200" x2="100" y2="380"/>
+    <line x1="200" y1="180" x2="200" y2="380"/>
+    <line x1="350" y1="220" x2="350" y2="380"/>
+    <line x1="500" y1="190" x2="500" y2="380"/>
+    <line x1="650" y1="210" x2="650" y2="380"/>
+    
+    <circle cx="400" cy="120" r="50" stroke-dasharray="8 4"/>
+    <line x1="350" y1="120" x2="450" y2="120"/>
+    <line x1="400" y1="70" x2="400" y2="170"/>
+  </g>
+  
+  <!-- Windows -->
+  <g fill="#BE943F" opacity="0.3">
+    <rect x="70" y="230" width="15" height="20" rx="1"/>
+    <rect x="70" y="270" width="15" height="20" rx="1"/>
+    <rect x="70" y="310" width="15" height="20" rx="1"/>
+    <rect x="170" y="210" width="12" height="18" rx="1"/>
+    <rect x="170" y="250" width="12" height="18" rx="1"/>
+    <rect x="370" y="240" width="14" height="22" rx="1"/>
+    <rect x="520" y="220" width="12" height="18" rx="1"/>
+    <rect x="640" y="240" width="14" height="22" rx="1"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="400" y="80" font-family="Georgia, serif" font-size="24" font-weight="600" fill="#BE943F" text-anchor="middle" letter-spacing="0.12em" opacity="0.8">UNIVERSITY OF SCIENCE & TECHNOLOGY</text>
+  <text x="400" y="110" font-family="monospace" font-size="10" fill="#D9B567" text-anchor="middle" letter-spacing="0.08em">SANA'A • 2012-2016</text>
+  <text x="400" y="410" font-family="monospace" font-size="10" fill="#9A9893" text-anchor="middle">PLACEHOLDER — 800×450px (16:9)</text>
+  <text x="400" y="430" font-family="monospace" font-size="10" fill="#6B6B6E" text-anchor="middle">yemen-edu.webp • Bottom Mask Fade</text>
+</svg>

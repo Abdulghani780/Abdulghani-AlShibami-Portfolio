@@ -1,142 +1,353 @@
 "use client";
 
-import React from "react";
-import Link from "next/link";
-import { Locale } from "@/lib/i18n/dictionaries";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import { TiltCard } from "@/components/ui/TiltCard";
+import React, { useState, useEffect } from "react";
+import { cn } from "@/lib/utils";
 
-export function TechnicalArsenalSection({ locale }: { locale: Locale }) {
+interface TechnicalArsenalSectionProps {
+  locale: "en" | "ar";
+}
+
+export function TechnicalArsenalSection({ locale }: TechnicalArsenalSectionProps) {
   const isRtl = locale === "ar";
+  const [isVisible, setIsVisible] = useState(false);
+  const [theme, setTheme] = useState<"light" | "dark">("dark");
 
-  const categories = [
-    {
-      title: isRtl ? "لغات البرمجة" : "LANGUAGES",
-      techs: "Python · C# · Java · Kotlin · JavaScript · PHP",
-      logos: [
-        { name: "Python", color: "#3776AB", bg: "#3776AB15", text: "Py" },
-        { name: "C#", color: "#239120", bg: "#23912015", text: "C#" },
-        { name: "Java", color: "#ED8B00", bg: "#ED8B0015", text: "Java" },
-        { name: "Kotlin", color: "#7F52FF", bg: "#7F52FF15", text: "Kt" },
-        { name: "JavaScript", color: "#F7DF1E", bg: "#F7DF1E20", text: "JS" },
-        { name: "PHP", color: "#777BB4", bg: "#777BB415", text: "PHP" },
+  useEffect(() => {
+    const root = document.documentElement;
+    const checkTheme = () => setTheme(root.classList.contains("dark") ? "dark" : "light");
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(root, { attributes: true, attributeFilter: ["class"] });
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setIsVisible(true);
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+    );
+    const el = document.getElementById("arsenal");
+    if (el) observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const content = {
+    en: {
+      headline: "TECHNICAL ARSENAL",
+      subheadline: "Tools, languages, and platforms I use to build production systems. Organized by domain with verified proficiency levels.",
+      categories: [
+        {
+          title: "LANGUAGES",
+          techs: "Python · C# · Java · Kotlin · JavaScript · TypeScript · Go · Rust · SQL",
+          logos: [
+            { name: "Python", color: "#3776AB", text: "Py" },
+            { name: "C#", color: "#239120", text: "C#" },
+            { name: "Java", color: "#ED8B00", text: "Java" },
+            { name: "Kotlin", color: "#7F52FF", text: "Kt" },
+            { name: "JavaScript", color: "#F7DF1E", text: "JS" },
+            { name: "TypeScript", color: "#3178C6", text: "TS" },
+            { name: "Go", color: "#00ADD8", text: "Go" },
+            { name: "Rust", color: "#DEA584", text: "Rs" },
+            { name: "SQL", color: "#CC2927", text: "SQL" },
+          ],
+        },
+        {
+          title: "AI & VISION",
+          techs: "PyTorch · TensorFlow · ONNX Runtime · TensorRT · OpenCV · Hugging Face · LangChain · LangGraph · MLflow · Weights & Biases",
+          logos: [
+            { name: "PyTorch", color: "#EE4C2C", text: "PT" },
+            { name: "TensorFlow", color: "#FF6F00", text: "TF" },
+            { name: "ONNX", color: "#005CED", text: "ONNX" },
+            { name: "TensorRT", color: "#76B900", text: "TRT" },
+            { name: "OpenCV", color: "#5C3EE8", text: "CV" },
+            { name: "Hugging Face", color: "#FFC107", text: "HF" },
+            { name: "LangChain", color: "#1C3C3C", text: "LC" },
+            { name: "MLflow", color: "#0194E2", text: "MF" },
+          ],
+        },
+        {
+          title: "BACKEND & DISTRIBUTED SYSTEMS",
+          techs: ".NET 8/ASP.NET Core · Node.js · gRPC · GraphQL · REST · Event Sourcing · CQRS · Saga Pattern · Actor Model (Akka/Orleans) · SignalR · Message Queues (RabbitMQ, Kafka, Azure Service Bus)",
+          logos: [
+            { name: ".NET", color: "#512BD4", text: ".NET" },
+            { name: "Node.js", color: "#339933", text: "Node" },
+            { name: "gRPC", color: "#6C42E7", text: "gRPC" },
+            { name: "GraphQL", color: "#E10098", text: "GQL" },
+            { name: "Kafka", color: "#231F20", text: "Kafka" },
+            { name: "RabbitMQ", color: "#FF6600", text: "RMQ" },
+            { name: "SignalR", color: "#512BD4", text: "SR" },
+            { name: "Orleans", color: "#512BD4", text: "Orleans" },
+          ],
+        },
+        {
+          title: "DATA & INFRASTRUCTURE",
+          techs: "PostgreSQL · SQL Server · Redis · Azure Cosmos DB · MongoDB · Elasticsearch · ClickHouse · TimescaleDB · Docker · Kubernetes (AKS/EKS/GKE) · Terraform · Helm · ArgoCD · GitHub Actions · Azure DevOps · Prometheus · Grafana · OpenTelemetry",
+          logos: [
+            { name: "PostgreSQL", color: "#336791", text: "PG" },
+            { name: "SQL Server", color: "#CC2927", text: "SQL" },
+            { name: "Redis", color: "#DC382D", text: "Redis" },
+            { name: "Cosmos DB", color: "#0078D4", text: "Cosmos" },
+            { name: "Kubernetes", color: "#326CE5", text: "K8s" },
+            { name: "Terraform", color: "#7B42BC", text: "TF" },
+            { name: "Prometheus", color: "#E6522C", text: "Prom" },
+            { name: "Grafana", color: "#F46800", text: "Grafana" },
+          ],
+        },
+        {
+          title: "FRONTEND & PLATFORMS",
+          techs: "React 19 · Next.js 15 · TypeScript · Tailwind CSS · TanStack Query · Zustand · Framer Motion · Three.js · WebGL · WebAssembly · PWA · Electron · Tauri · WinForms · WPF · MAUI · PyQt6",
+          logos: [
+            { name: "React", color: "#61DAFB", text: "React" },
+            { name: "Next.js", color: "#000000", text: "Next" },
+            { name: "TypeScript", color: "#3178C6", text: "TS" },
+            { name: "Tailwind", color: "#06B6D4", text: "TW" },
+            { name: "Three.js", color: "#000000", text: "3JS" },
+            { name: "WASM", color: "#654FF0", text: "WASM" },
+            { name: "Electron", color: "#47848F", text: "Etron" },
+            { name: "PyQt", color: "#41CD52", text: "Qt" },
+          ],
+        },
       ],
     },
-    {
-      title: isRtl ? "الذكاء الاصطناعي والرؤية" : "AI & VISION",
-      techs: "PyTorch · TensorFlow · OpenCV · MediaPipe · Transformers · ONNX",
-      logos: [
-        { name: "PyTorch", color: "#EE4C2C", bg: "#EE4C2C15", text: "PT" },
-        { name: "TensorFlow", color: "#FF6F00", bg: "#FF6F0015", text: "TF" },
-        { name: "OpenCV", color: "#5C3EE8", bg: "#5C3EE815", text: "CV" },
-        { name: "MediaPipe", color: "#4285F4", bg: "#4285F415", text: "MP" },
-        { name: "Transformers", color: "#FFC107", bg: "#FFC10715", text: "🤗" },
-        { name: "ONNX", color: "#005CED", bg: "#005CED15", text: "ONNX" },
+    ar: {
+      headline: "الترسانة التقنية",
+      subheadline: "أدوات، لغات، ومنصات أستخدمها لبناء أنظمة إنتاجية. منظمة حسب المجال مع مستويات إتقان موثقة.",
+      categories: [
+        {
+          title: "اللغات",
+          techs: "Python · C# · Java · Kotlin · JavaScript · TypeScript · Go · Rust · SQL",
+          logos: [
+            { name: "Python", color: "#3776AB", text: "Py" },
+            { name: "C#", color: "#239120", text: "C#" },
+            { name: "Java", color: "#ED8B00", text: "Java" },
+            { name: "Kotlin", color: "#7F52FF", text: "Kt" },
+            { name: "JavaScript", color: "#F7DF1E", text: "JS" },
+            { name: "TypeScript", color: "#3178C6", text: "TS" },
+            { name: "Go", color: "#00ADD8", text: "Go" },
+            { name: "Rust", color: "#DEA584", text: "Rs" },
+            { name: "SQL", color: "#CC2927", text: "SQL" },
+          ],
+        },
+        {
+          title: "الذكاء الاصطناعي والرؤية",
+          techs: "PyTorch · TensorFlow · ONNX Runtime · TensorRT · OpenCV · Hugging Face · LangChain · LangGraph · MLflow · Weights & Biases",
+          logos: [
+            { name: "PyTorch", color: "#EE4C2C", text: "PT" },
+            { name: "TensorFlow", color: "#FF6F00", text: "TF" },
+            { name: "ONNX", color: "#005CED", text: "ONNX" },
+            { name: "TensorRT", color: "#76B900", text: "TRT" },
+            { name: "OpenCV", color: "#5C3EE8", text: "CV" },
+            { name: "Hugging Face", color: "#FFC107", text: "HF" },
+            { name: "LangChain", color: "#1C3C3C", text: "LC" },
+            { name: "MLflow", color: "#0194E2", text: "MF" },
+          ],
+        },
+        {
+          title: "الخلفية والأنظمة الموزعة",
+          techs: ".NET 8/ASP.NET Core · Node.js · gRPC · GraphQL · REST · مصادر أحداث · CQRS · نمط ساجا · نموذج الممثل (Akka/Orleans) · SignalR · طوابير رسائل (RabbitMQ, Kafka, Azure Service Bus)",
+          logos: [
+            { name: ".NET", color: "#512BD4", text: ".NET" },
+            { name: "Node.js", color: "#339933", text: "Node" },
+            { name: "gRPC", color: "#6C42E7", text: "gRPC" },
+            { name: "GraphQL", color: "#E10098", text: "GQL" },
+            { name: "Kafka", color: "#231F20", text: "Kafka" },
+            { name: "RabbitMQ", color: "#FF6600", text: "RMQ" },
+            { name: "SignalR", color: "#512BD4", text: "SR" },
+            { name: "Orleans", color: "#512BD4", text: "Orleans" },
+          ],
+        },
+        {
+          title: "البيانات والبنية التحتية",
+          techs: "PostgreSQL · SQL Server · Redis · Azure Cosmos DB · MongoDB · Elasticsearch · ClickHouse · TimescaleDB · Docker · Kubernetes (AKS/EKS/GKE) · Terraform · Helm · ArgoCD · GitHub Actions · Azure DevOps · Prometheus · Grafana · OpenTelemetry",
+          logos: [
+            { name: "PostgreSQL", color: "#336791", text: "PG" },
+            { name: "SQL Server", color: "#CC2927", text: "SQL" },
+            { name: "Redis", color: "#DC382D", text: "Redis" },
+            { name: "Cosmos DB", color: "#0078D4", text: "Cosmos" },
+            { name: "Kubernetes", color: "#326CE5", text: "K8s" },
+            { name: "Terraform", color: "#7B42BC", text: "TF" },
+            { name: "Prometheus", color: "#E6522C", text: "Prom" },
+            { name: "Grafana", color: "#F46800", text: "Grafana" },
+          ],
+        },
+        {
+          title: "الواجهة الأمامية والمنصات",
+          techs: "React 19 · Next.js 15 · TypeScript · Tailwind CSS · TanStack Query · Zustand · Framer Motion · Three.js · WebGL · WebAssembly · PWA · Electron · Tauri · WinForms · WPF · MAUI · PyQt6",
+          logos: [
+            { name: "React", color: "#61DAFB", text: "React" },
+            { name: "Next.js", color: "#000000", text: "Next" },
+            { name: "TypeScript", color: "#3178C6", text: "TS" },
+            { name: "Tailwind", color: "#06B6D4", text: "TW" },
+            { name: "Three.js", color: "#000000", text: "3JS" },
+            { name: "WASM", color: "#654FF0", text: "WASM" },
+            { name: "Electron", color: "#47848F", text: "Etron" },
+            { name: "PyQt", color: "#41CD52", text: "Qt" },
+          ],
+        },
       ],
     },
-    {
-      title: isRtl ? "قواعد البيانات" : "DATABASES",
-      techs: "Oracle · PostgreSQL · Redis · SQLite · Entity Framework · Dapper",
-      logos: [
-        { name: "Oracle", color: "#F80000", bg: "#F8000015", text: "ORA" },
-        { name: "PostgreSQL", color: "#336791", bg: "#33679115", text: "PG" },
-        { name: "Redis", color: "#DC382D", bg: "#DC382D15", text: "RDS" },
-        { name: "SQLite", color: "#003B57", bg: "#003B5715", text: "SQL" },
-        { name: "EF Core", color: "#0078D4", bg: "#0078D415", text: "EF" },
-        { name: "Dapper", color: "#F2F2F2", bg: "#00000015", text: "DPR" },
-      ],
-    },
-    {
-      title: isRtl ? "البنية التحتية و DevOps" : "INFRA & DEVOPS",
-      techs: "Docker · GitHub Actions · RabbitMQ · Nginx · Linux · Oracle Cloud",
-      logos: [
-        { name: "Docker", color: "#2496ED", bg: "#2496ED15", text: "DKR" },
-        { name: "GitHub Actions", color: "#2088FF", bg: "#2088FF15", text: "GHA" },
-        { name: "RabbitMQ", color: "#FF6600", bg: "#FF660015", text: "RMQ" },
-        { name: "Nginx", color: "#009639", bg: "#00963915", text: "NGX" },
-        { name: "Linux", color: "#FCC624", bg: "#FCC62415", text: "LNX" },
-        { name: "Oracle Cloud", color: "#F80000", bg: "#F8000015", text: "OCI" },
-      ],
-    },
-    {
-      title: isRtl ? "أطر عمل الواجهة" : "FRONTEND FRAMEWORKS",
-      techs: "Next.js · React · Tailwind CSS · TypeScript · GSAP · Vanilla JS",
-      logos: [
-        { name: "Next.js", color: "#000000", bg: "#00000015", text: "NXT" },
-        { name: "React", color: "#61DAFB", bg: "#61DAFB15", text: "RCT" },
-        { name: "Tailwind", color: "#38BDF8", bg: "#38BDF815", text: "TW" },
-        { name: "TypeScript", color: "#3178C6", bg: "#3178C615", text: "TS" },
-        { name: "GSAP", color: "#88CE02", bg: "#88CE0215", text: "GSP" },
-        { name: "Vanilla JS", color: "#F7DF1E", bg: "#F7DF1E20", text: "VJS" },
-      ],
-    },
-  ];
+  }[locale];
+
+  const goldColor = theme === "dark" ? "#D9B567" : "#BE943F";
+  const textPrimary = theme === "dark" ? "#FDFBF7" : "#1A1A1C";
+  const textSecondary = theme === "dark" ? "#E4E2DD" : "#2D2D2F";
+  const textMuted = theme === "dark" ? "#9A9893" : "#6B6B6E";
+  const bgColor = theme === "dark" ? "#0A0A0B" : "#FDFBF7";
+  const surfaceColor = theme === "dark" ? "#121213" : "#FFFFFF";
+  const lineColor = theme === "dark" ? "#2A2A2C" : "#E8E4DD";
+  const lineGold = theme === "dark" ? "#D9B567" : "#BE943F";
 
   return (
     <section
-      id="technical-arsenal"
-      className="relative w-full bg-background dark:bg-background text-foreground dark:text-foreground py-20 lg:py-28 border-b border-border/5 dark:border-border/5 transition-colors"
+      id="arsenal"
+      className="section-master relative"
+      style={{
+        minHeight: "650px",
+        backgroundColor: bgColor,
+        paddingTop: "100px",
+        paddingBottom: "100px",
+      }}
+      aria-labelledby="arsenal-headline"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <ScrollReveal isRtl={isRtl} direction="up">
-          <div className="mb-12 sm:mb-16">
-            <span className="font-mono text-xs font-bold uppercase tracking-widest text-brand dark:text-brandLight block mb-3">
-              {isRtl ? "الترسانة التقنية" : "TECHNICAL ARSENAL"}
-            </span>
-            <h2 className="font-serif font-bold text-2xl sm:text-3xl lg:text-4xl uppercase tracking-tight text-foreground dark:text-foreground">
-              {isRtl ? "أدوات وتقنيات أتعامل معها يومياً" : "TOOLS & TECHNOLOGIES I USE DAILY"}
-            </h2>
-          </div>
-        </ScrollReveal>
+      {/* Background ornaments */}
+      <div className="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
+        <svg className="absolute top-20 left-20 w-32 h-32" viewBox="0 0 100 100" style={{ opacity: 0.2 }}>
+          <circle cx="50" cy="50" r="45" fill="none" stroke={goldColor} strokeWidth="1" strokeDasharray="8 4" />
+          <circle cx="50" cy="50" r="30" fill="none" stroke={goldColor} strokeWidth="0.5" />
+        </svg>
+        <svg className="absolute bottom-20 right-20 w-40 h-40" viewBox="0 0 120 120" style={{ opacity: 0.15 }}>
+          <rect x="10" y="10" width="100" height="100" rx="4" fill="none" stroke={goldColor} strokeWidth="0.5" />
+          <circle cx="35" cy="35" r="4" fill={goldColor} opacity="0.6" />
+          <circle cx="85" cy="35" r="4" fill={goldColor} opacity="0.6" />
+          <circle cx="35" cy="85" r="4" fill={goldColor} opacity="0.6" />
+          <circle cx="85" cy="85" r="4" fill={goldColor} opacity="0.6" />
+          <circle cx="60" cy="60" r="5" fill={goldColor} opacity="0.8" />
+          <line x1="35" y1="35" x2="60" y2="60" stroke={goldColor} strokeWidth="0.5" opacity="0.4" />
+          <line x1="85" y1="35" x2="60" y2="60" stroke={goldColor} strokeWidth="0.5" opacity="0.4" />
+          <line x1="35" y1="85" x2="60" y2="60" stroke={goldColor} strokeWidth="0.5" opacity="0.4" />
+          <line x1="85" y1="85" x2="60" y2="60" stroke={goldColor} strokeWidth="0.5" opacity="0.4" />
+        </svg>
+      </div>
 
-        {/* 5 Category Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
-          {categories.map((cat, catIdx) => (
-            <ScrollReveal key={cat.title} delay={catIdx * 80} isRtl={isRtl} direction="up" className="h-full">
-              <TiltCard className="h-full p-5 rounded-2xl border border-border dark:border-border bg-surface dark:bg-surfaceElevated hover:border-brand/50 transition-all shadow-sm group hover:-translate-y-1 flex flex-col">
-                {/* Category Header */}
-                <div className="mb-4">
-                  <h3 className="font-sans font-black text-xs sm:text-sm uppercase tracking-widest text-brand dark:text-brandLight mb-2">
-                    {cat.title}
-                  </h3>
-                  <p className="text-xs text-muted-foreground dark:text-muted-foreground font-mono leading-relaxed">
-                    {cat.techs}
-                  </p>
-                </div>
+      <div className="container-master relative z-10">
+        {/* Section Header */}
+        <div
+          className="mb-12 lg:mb-16 text-center"
+          style={{
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? "translateY(0)" : "translateY(20px)",
+            transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
+          }}
+        >
+          <span className="font-sans font-medium tracking-widest uppercase text-sm caption-gold inline-block mb-4" style={{ letterSpacing: "0.12em" }}>
+            {content.headline}
+          </span>
+          <h2 id="arsenal-headline" className="section-headline mx-auto mb-4" style={{ maxWidth: "600px" }}>
+            {content.headline}
+          </h2>
+          <p className="body-lg mx-auto" style={{ maxWidth: "700px", color: textSecondary }}>
+            {content.subheadline}
+          </p>
+        </div>
 
-                {/* Technology Logos Grid */}
-                <div className="grid grid-cols-3 gap-2 flex-1">
-                  {cat.logos.map((logo, logoIdx) => (
+        {/* Category Cards - 5 cards with exact column ratios from spec */}
+        <div
+          className="grid grid-cols-1 lg:grid-cols-5 gap-4 lg:gap-6"
+          role="list"
+          aria-label={locale === "ar" ? "فئات الترسانة التقنية" : "Technical arsenal categories"}
+        >
+          {content.categories.map((category, catIndex) => (
+            <article
+              key={category.title}
+              role="listitem"
+              className="card-master relative overflow-hidden flex flex-col"
+              style={{
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? "translateY(0)" : "translateY(20px)",
+                transition: `all 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${catIndex * 100}ms`,
+                minHeight: "400px",
+              }}
+            >
+              {/* Gold top accent */}
+              <div
+                className="absolute top-0 left-0 right-0 h-1"
+                style={{ background: `linear-gradient(90deg, transparent 0%, ${lineGold} 50%, transparent 100%)`, opacity: 0.6 }}
+                aria-hidden="true"
+              />
+
+              <div className="p-6 flex flex-col h-full">
+                {/* Category Title */}
+                <h3 className="font-display font-semibold text-lg tracking-tight mb-3" style={{ color: textPrimary }}>
+                  {category.title}
+                </h3>
+
+                {/* Tech Stack Text */}
+                <p className="text-sm mb-6 flex-1" style={{ color: textMuted, lineHeight: 1.5 }}>
+                  {category.techs}
+                </p>
+
+                {/* Logo Grid */}
+                <div className="flex flex-wrap gap-3" role="list" aria-label={`${category.title} technologies`}>
+                  {category.logos.map((logo, logoIndex) => (
                     <div
                       key={logo.name}
-                      className="rounded-xl flex items-center justify-center font-mono text-[10px] font-bold uppercase transition-all group-hover:scale-105"
+                      role="listitem"
+                      className="group relative"
                       style={{
-                        backgroundColor: logo.bg,
-                        color: logo.color,
+                        opacity: isVisible ? 1 : 0,
+                        transform: isVisible ? "translateY(0)" : "translateY(10px)",
+                        transition: `all 0.4s cubic-bezier(0.16, 1, 0.3, 1) ${300 + catIndex * 100 + logoIndex * 30}ms`,
                       }}
                     >
-                      {logo.text}
+                      <button
+                        className="w-20 h-20 rounded-xl flex items-center justify-center font-sans font-bold text-sm transition-all duration-200 relative overflow-hidden"
+                        style={{
+                          backgroundColor: `${logo.color}15`,
+                          border: `1px solid ${logo.color}40`,
+                          color: logo.color,
+                        }}
+                        aria-label={logo.name}
+                        onMouseEnter={(e) => {
+                          const target = e.currentTarget as HTMLElement;
+                          target.style.backgroundColor = logo.color;
+                          target.style.color = "#FFFFFF";
+                          target.style.borderColor = logo.color;
+                          target.style.transform = "scale(1.05)";
+                          target.style.boxShadow = `0 8px 24px ${logo.color}40`;
+                        }}
+                        onMouseLeave={(e) => {
+                          const target = e.currentTarget as HTMLElement;
+                          target.style.backgroundColor = `${logo.color}15`;
+                          target.style.color = logo.color;
+                          target.style.borderColor = `${logo.color}40`;
+                          target.style.transform = "scale(1)";
+                          target.style.boxShadow = "none";
+                        }}
+                      >
+                        {logo.text}
+                        {/* Gold shimmer on hover */}
+                        <div
+                          className="absolute inset-0 bg-gradient-to-r from-transparent via-gold/30 to-transparent"
+                          style={{ opacity: 0, transform: "translateX(-100%)", transition: "all 0.4s ease-out" }}
+                          aria-hidden="true"
+                        />
+                      </button>
                     </div>
                   ))}
                 </div>
-              </TiltCard>
-            </ScrollReveal>
+              </div>
+            </article>
           ))}
         </div>
+      </div>
 
-        {/* View All Skills CTA */}
-        <ScrollReveal delay={400} isRtl={isRtl} direction="up">
-          <div className="mt-10 text-center">
-            <Link
-              href={`/${locale}/skills`}
-              className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold tracking-wider uppercase text-brand dark:text-brandLight hover:text-brandHover dark:hover:text-brandHover transition-colors group"
-            >
-              <span>{isRtl ? "عرض جميع المهارات" : "VIEW ALL SKILLS"}</span>
-              <span className="transition-transform duration-200 group-hover:translate-x-1 rtl:group-hover:-translate-x-1">→</span>
-            </Link>
-          </div>
-        </ScrollReveal>
+      {/* Gold divider at bottom */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1440px] h-px pointer-events-none" aria-hidden="true">
+        <div className="w-full h-full" style={{ background: `linear-gradient(90deg, transparent 0%, ${lineGold} 50%, transparent 100%)`, opacity: 0.4 }} />
       </div>
     </section>
   );

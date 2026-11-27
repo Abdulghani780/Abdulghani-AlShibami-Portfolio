@@ -45,29 +45,29 @@ export const ArchitectureTopology: React.FC<ArchitectureTopologyProps> = ({
             <Card
               cornerBrackets
               hoverEffect
-              className="border-hairline bg-surface p-5 space-y-3 relative group h-full"
+              className="border-border/10 dark:border-border/10 bg-surface dark:bg-surfaceElevated p-5 space-y-3 relative group h-full"
             >
-              <div className="gold-edge-flow" aria-hidden="true" />
-              <div className="flex items-center justify-between font-mono text-xs text-gold">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-brand/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" aria-hidden="true" />
+              <div className="flex items-center justify-between font-mono text-xs text-brand dark:text-brandLight">
                 <span className="font-bold">STAGE {stage.step}</span>
-                <span className="text-content-muted flex items-center">
+                <span className="text-muted-foreground dark:text-muted-foreground flex items-center">
                   {idx < stages.length - 1 ? (
                     isRtl ? (
-                      <ArrowLeft className="w-3.5 h-3.5 text-gold/70" />
+                      <ArrowRight className="w-3.5 h-3.5 text-brand/70 dark:text-brandLight/70 rtl-flip" />
                     ) : (
-                      <ArrowRight className="w-3.5 h-3.5 text-gold/70" />
+                      <ArrowRight className="w-3.5 h-3.5 text-brand/70 dark:text-brandLight/70" />
                     )
                   ) : (
-                    <Check className="w-3.5 h-3.5 text-status-emerald" />
+                    <Check className="w-3.5 h-3.5 text-status-success" />
                   )}
                 </span>
               </div>
 
-              <h4 className="font-serif text-lg font-normal text-content-primary group-hover:text-gold transition-colors">
+              <h4 className="font-serif text-lg font-normal text-foreground dark:text-foreground group-hover:text-brand dark:group-hover:text-brandLight transition-colors">
                 {stage.name[locale]}
               </h4>
 
-              <p className="text-content-secondary text-xs leading-relaxed">
+              <p className="text-muted-foreground dark:text-muted-foreground text-xs leading-relaxed">
                 {stage.desc[locale]}
               </p>
             </Card>

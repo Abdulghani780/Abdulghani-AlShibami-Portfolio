@@ -145,7 +145,7 @@ export function ContactForm({ isRtl }: { isRtl: boolean }) {
             placeholder={isRtl ? "الاسم الكريم" : "Your Name / Organization"}
             aria-describedby={errors.name ? "cf-name-error" : undefined}
             aria-invalid={!!errors.name}
-            className="w-full h-10 px-3.5 bg-surface-card border border-hairline focus:border-gold-primary focus:ring-1 focus:ring-gold-primary/30 focus:outline-none text-content-primary text-xs transition-all rounded-lg"
+            className="w-full h-11 px-3.5 bg-surface-card border border-hairline focus:border-gold-primary focus:ring-1 focus:ring-gold-primary/30 focus:outline-none text-content-primary text-xs transition-all rounded-lg"
           />
           {errors.name && (
             <p id="cf-name-error" role="alert" className="text-[10px] text-red-400 mt-1">
@@ -169,7 +169,7 @@ export function ContactForm({ isRtl }: { isRtl: boolean }) {
             placeholder="eng@example.com"
             aria-describedby={errors.email ? "cf-email-error" : undefined}
             aria-invalid={!!errors.email}
-            className="w-full h-10 px-3.5 bg-surface-card border border-hairline focus:border-gold-primary focus:ring-1 focus:ring-gold-primary/30 focus:outline-none text-content-primary text-xs transition-all rounded-lg"
+            className="w-full h-11 px-3.5 bg-surface-card border border-hairline focus:border-gold-primary focus:ring-1 focus:ring-gold-primary/30 focus:outline-none text-content-primary text-xs transition-all rounded-lg"
           />
           {errors.email && (
             <p id="cf-email-error" role="alert" className="text-[10px] text-red-400 mt-1">
@@ -194,7 +194,7 @@ export function ContactForm({ isRtl }: { isRtl: boolean }) {
           placeholder={isRtl ? "عنوان الاستشارة أو المشروع" : "Systems Architecture / Consulting / Project Inquiry"}
           aria-describedby={errors.subject ? "cf-subject-error" : undefined}
           aria-invalid={!!errors.subject}
-          className="w-full h-10 px-3.5 bg-surface-card border border-hairline focus:border-gold-primary focus:ring-1 focus:ring-gold-primary/30 focus:outline-none text-content-primary text-xs transition-all rounded-lg"
+          className="w-full h-11 px-3.5 bg-surface-card border border-hairline focus:border-gold-primary focus:ring-1 focus:ring-gold-primary/30 focus:outline-none text-content-primary text-xs transition-all rounded-lg"
         />
         {errors.subject && (
           <p id="cf-subject-error" role="alert" className="text-[10px] text-red-400 mt-1">

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useInView } from "@/lib/hooks/useInView";
 import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
 import { tokens } from "@/lib/design-system/tokens";
+import { localizeDigits } from "@/lib/utils/numerals";
 
 export interface CountUpProps {
   end: number;
@@ -15,6 +16,7 @@ export interface CountUpProps {
   className?: string;
   easing?: keyof typeof tokens.easing;
   separator?: string;
+  locale?: "en" | "ar";
 }
 
 export function CountUp({
@@ -27,6 +29,7 @@ export function CountUp({
   className = "",
   easing = "easeOut",
   separator = ",",
+  locale = "en",
 }: CountUpProps) {
   const { ref, isInView } = useInView<HTMLSpanElement>({ threshold: 0.1, once: true });
   const reducedMotion = useReducedMotion();
@@ -82,7 +85,9 @@ export function CountUp({
 
   const formatted = decimals > 0
     ? value.toFixed(decimals)
-    : Math.round(value).toLocaleString(undefined, { useGrouping: true, minimumFractionDigits: 0 });
+    : Math.round(value).toLocaleString(locale === "ar" ? "ar-EG" : "en-US", { useGrouping: true, minimumFractionDigits: 0 });
+
+  const localizedFormatted = localizeDigits(formatted, locale);
 
   return (
     <span
@@ -92,7 +97,7 @@ export function CountUp({
       aria-atomic="true"
     >
       {prefix}
-      {formatted}
+      {localizedFormatted}
       {suffix}
     </span>
   );

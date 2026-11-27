@@ -48,15 +48,15 @@ export const CaseStudyMetrics: React.FC<CaseStudyMetricsProps> = ({
           <Card
             cornerBrackets
             hoverEffect
-            className="border-hairline bg-surface p-5 space-y-2 text-center sm:text-start h-full"
+            className="border-border/10 dark:border-border/10 bg-surface dark:bg-surfaceElevated p-5 space-y-2 text-center sm:text-start h-full"
           >
-            <div className="font-mono text-[10px] text-gold uppercase tracking-[0.16em] font-semibold">
+            <div className="font-mono text-[10px] text-brand dark:text-brandLight uppercase tracking-[0.16em] font-semibold">
               {"// "}{metric.label[locale]}
             </div>
-            <div className="font-mono text-2xl sm:text-3xl font-bold text-content-primary tracking-tight">
+            <div className="font-mono text-2xl sm:text-3xl font-bold text-foreground dark:text-foreground tracking-tight">
               {renderMetricValue(metric.value)}
             </div>
-            <div className="text-[11px] text-content-secondary leading-relaxed">
+            <div className="text-[11px] text-muted-foreground dark:text-muted-foreground leading-relaxed">
               {metric.description[locale]}
             </div>
           </Card>

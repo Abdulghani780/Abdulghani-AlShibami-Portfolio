@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
 import { tokens } from "@/lib/design-system/tokens";
 
@@ -26,11 +26,39 @@ export interface Hero3DCanvasProps {
 
 export function Hero3DCanvas({
   className = "",
-  particleCount = 42,
+  particleCount = 30,
   ringConfig,
 }: Hero3DCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const prefersReducedMotion = useReducedMotion();
+  const [isMobile, setIsMobile] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+
+  // Detect mobile viewport for performance optimization
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  // IntersectionObserver to pause animation when not visible
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { rootMargin: "100px" }
+    );
+    observer.observe(canvas);
+    return () => observer.disconnect();
+  }, []);
+
+  // Adjust particle count for mobile
+  const effectiveParticleCount = isMobile ? Math.min(particleCount, 15) : particleCount;
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -38,6 +66,9 @@ export function Hero3DCanvas({
 
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
+
+    // Pause animation when not visible (IntersectionObserver)
+    if (!isVisible) return;
 
     let animId: number;
     let width = (canvas.width = canvas.parentElement?.clientWidth || window.innerWidth);
@@ -97,7 +128,7 @@ export function Hero3DCanvas({
     // Generate 3D Particle Cloud
     const particles: Particle[] = [];
 
-    for (let i = 0; i < particleCount; i++) {
+    for (let i = 0; i < effectiveParticleCount; i++) {
       const theta = Math.random() * Math.PI * 2;
       const phi = Math.acos(Math.random() * 2 - 1);
       const radius = 130 + Math.random() * 240;
@@ -217,20 +248,22 @@ export function Hero3DCanvas({
         }
       });
 
-      // Connect nearby particles with subtle laser lines
-      ctx.lineWidth = 0.5;
-      for (let i = 0; i < projectedPoints.length; i++) {
-        for (let j = i + 1; j < projectedPoints.length; j++) {
-          const dx = projectedPoints[i].x - projectedPoints[j].x;
-          const dy = projectedPoints[i].y - projectedPoints[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
+      // Connect nearby particles with subtle laser lines (skip on mobile for performance)
+      if (!isMobile) {
+        ctx.lineWidth = 0.5;
+        for (let i = 0; i < projectedPoints.length; i++) {
+          for (let j = i + 1; j < projectedPoints.length; j++) {
+            const dx = projectedPoints[i].x - projectedPoints[j].x;
+            const dy = projectedPoints[i].y - projectedPoints[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < 60) {
-            ctx.strokeStyle = `rgba(212, 175, 55, ${0.08 * (1 - dist / 60)})`;
-            ctx.beginPath();
-            ctx.moveTo(projectedPoints[i].x, projectedPoints[i].y);
-            ctx.lineTo(projectedPoints[j].x, projectedPoints[j].y);
-            ctx.stroke();
+            if (dist < 60) {
+              ctx.strokeStyle = `rgba(212, 175, 55, ${0.08 * (1 - dist / 60)})`;
+              ctx.beginPath();
+              ctx.moveTo(projectedPoints[i].x, projectedPoints[i].y);
+              ctx.lineTo(projectedPoints[j].x, projectedPoints[j].y);
+              ctx.stroke();
+            }
           }
         }
       }
@@ -253,7 +286,7 @@ export function Hero3DCanvas({
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("mousemove", handleMouseMove);
     };
-  }, [prefersReducedMotion, particleCount, ringConfig]);
+  }, [prefersReducedMotion, particleCount, ringConfig, isMobile, isVisible, effectiveParticleCount]);
 
   return (
     <canvas

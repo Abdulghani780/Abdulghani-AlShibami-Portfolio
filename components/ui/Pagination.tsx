@@ -27,8 +27,8 @@ export function Pagination({
   "aria-label": ariaLabel = "Pagination",
 }: PaginationProps) {
   const sizeStyles = {
-    sm: "h-8 w-8 text-xs",
-    md: "h-10 w-10 text-sm",
+    sm: "h-11 w-11 text-xs",
+    md: "h-11 w-11 text-sm",
     lg: "h-12 w-12 text-base",
   };
 

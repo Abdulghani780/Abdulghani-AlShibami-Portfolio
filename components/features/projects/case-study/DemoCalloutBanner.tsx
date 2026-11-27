@@ -67,31 +67,31 @@ export const DemoCalloutBanner: React.FC<DemoCalloutBannerProps> = ({
   const demoUrl = project.demoUrl ? `/${locale}${project.demoUrl}` : `/${locale}/projects/${project.slug}/demo`;
 
   return (
-    <div className="rounded-2xl border border-black/10 dark:border-gold-primary/30 bg-white dark:bg-[#121214] p-6 sm:p-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 transition-all hover:border-gold-primary/60 shadow-md dark:shadow-2xl">
+    <div className={cn(
+      "rounded-2xl border transition-all hover:border-brand/60 shadow-md dark:shadow-xl",
+      "border-border/15 dark:border-border/20 bg-surface dark:bg-surfaceElevated p-6 sm:p-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6"
+    )}>
       <div className="space-y-3 max-w-2xl font-mono">
         <div className="flex items-center gap-3">
-          <span className="px-2.5 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 motion-safe:animate-ping" />
-            <span>
-              {project.demoType === "real_live"
-                ? isRtl
-                  ? "تطبيق تشغيلي مباشر"
-                  : "LIVE PRODUCTION SYSTEM"
-                : isRtl
-                ? "محاكي تفاعلي حي"
-                : "INTERACTIVE SIMULATION"}
-            </span>
-          </span>
-          <span className="text-xs text-gold-dark dark:text-gold-light hidden sm:inline font-bold">
+          <Badge variant="success" dot className="text-[10px]">
+            {project.demoType === "real_live"
+              ? isRtl
+                ? "تطبيق تشغيلي مباشر"
+                : "LIVE PRODUCTION SYSTEM"
+              : isRtl
+              ? "محاكي تفاعلي حي"
+              : "INTERACTIVE SIMULATION"}
+          </Badge>
+          <span className="text-xs text-brand dark:text-brandLight hidden sm:inline font-bold">
             {"// "}{isRtl ? "بيئة التشغيل جاهزة" : "ACTIVE RUNTIME READY"}
           </span>
         </div>
 
-        <h3 className="font-serif text-2xl sm:text-3xl font-normal text-zinc-900 dark:text-white">
+        <h3 className="font-serif text-2xl sm:text-3xl font-normal text-foreground dark:text-foreground">
           {bannerTitle}
         </h3>
 
-        <p className="text-zinc-600 dark:text-zinc-300 text-xs sm:text-sm leading-relaxed font-sans">
+        <p className="text-muted-foreground dark:text-muted-foreground text-xs sm:text-sm leading-relaxed font-sans">
           {bannerDesc}
         </p>
       </div>
@@ -99,7 +99,7 @@ export const DemoCalloutBanner: React.FC<DemoCalloutBannerProps> = ({
       <div className="shrink-0 w-full lg:w-auto">
         <Link
           href={demoUrl}
-          className="w-full lg:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gold-primary hover:bg-gold-light text-black font-mono font-bold text-sm shadow-md transition-all active:scale-95"
+          className="w-full lg:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-brand hover:bg-brandLight text-background font-mono font-bold text-sm shadow-md transition-all active:scale-95"
         >
           <span>
             {project.demoType === "real_live"
