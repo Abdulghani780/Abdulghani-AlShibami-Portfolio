@@ -9,31 +9,7 @@ interface TechnicalArsenalSectionProps {
 
 export function TechnicalArsenalSection({ locale }: TechnicalArsenalSectionProps) {
   const isRtl = locale === "ar";
-  const [isVisible, setIsVisible] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">("dark");
-
-  useEffect(() => {
-    const root = document.documentElement;
-    const checkTheme = () => setTheme(root.classList.contains("dark") ? "dark" : "light");
-    checkTheme();
-    const observer = new MutationObserver(checkTheme);
-    observer.observe(root, { attributes: true, attributeFilter: ["class"] });
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setIsVisible(true);
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
-    );
-    const el = document.getElementById("arsenal");
-    if (el) observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
 
   const content = {
     en: {
@@ -238,8 +214,8 @@ export function TechnicalArsenalSection({ locale }: TechnicalArsenalSectionProps
         <div
           className="mb-12 lg:mb-16 text-center"
           style={{
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? "translateY(0)" : "translateY(20px)",
+            opacity: 1,
+            transform: "translateY(0)",
             transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
           }}
         >
@@ -266,8 +242,8 @@ export function TechnicalArsenalSection({ locale }: TechnicalArsenalSectionProps
               role="listitem"
               className="card-master relative overflow-hidden flex flex-col"
               style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? "translateY(0)" : "translateY(20px)",
+                opacity: 1,
+                transform: "translateY(0)",
                 transition: `all 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${catIndex * 100}ms`,
                 minHeight: "400px",
               }}
@@ -298,8 +274,8 @@ export function TechnicalArsenalSection({ locale }: TechnicalArsenalSectionProps
                       role="listitem"
                       className="group relative"
                       style={{
-                        opacity: isVisible ? 1 : 0,
-                        transform: isVisible ? "translateY(0)" : "translateY(10px)",
+                        opacity: 1,
+                        transform: "translateY(0)",
                         transition: `all 0.4s cubic-bezier(0.16, 1, 0.3, 1) ${300 + catIndex * 100 + logoIndex * 30}ms`,
                       }}
                     >

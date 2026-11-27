@@ -3,8 +3,6 @@ import { headers } from "next/headers";
 import "./globals.css";
 import { ThemeProvider } from "@/lib/theme/ThemeProvider";
 import { WebVitalsProvider } from "@/components/providers/WebVitalsProvider";
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
   title: "Abdulghani Al-Shibami — Autonomous Systems Architect & AI Engineering Leader",
@@ -68,16 +66,7 @@ export default async function RootLayout({
       <body className="antialiased min-h-screen selection:bg-gold/20 selection:text-gold-primary dark:selection:text-gold-on-dark">
         <ThemeProvider>
           <WebVitalsProvider>
-            <div className="flex flex-col min-h-screen">
-              {/* Navbar - sticky, scroll-spy, AR/EN switcher, LET'S BUILD button */}
-              <Navbar locale={locale as "en" | "ar"} />
-              
-              {/* Main content */}
-              <main className="flex-1 w-full">{children}</main>
-              
-              {/* Footer - AS monogram, social icons, language switcher, credit line */}
-              <Footer locale={locale as "en" | "ar"} />
-            </div>
+            {children}
           </WebVitalsProvider>
         </ThemeProvider>
       </body>

@@ -11,7 +11,6 @@ interface HeroSectionProps {
 
 export function HeroSection({ locale }: HeroSectionProps) {
   const isRtl = locale === "ar";
-  const [isVisible, setIsVisible] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">("dark");
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationFrameRef = useRef<number | undefined>(undefined);
@@ -120,24 +119,6 @@ export function HeroSection({ locale }: HeroSectionProps) {
       if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
     };
   }, [theme]);
-
-  // Intersection Observer for scroll reveal
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
-    );
-
-    const heroElement = document.getElementById("hero");
-    if (heroElement) observer.observe(heroElement);
-    return () => observer.disconnect();
-  }, []);
 
   // Hero content from locale
   const content = {
@@ -273,7 +254,7 @@ export function HeroSection({ locale }: HeroSectionProps) {
               "lg:col-span-7 space-y-8",
               isRtl ? "text-right" : "text-left"
             )}
-            style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s cubic-bezier(0.16, 1, 0.3, 1)" }}
+            style={{ opacity: 1, transform: "translateY(0)", transition: "all 0.8s cubic-bezier(0.16, 1, 0.3, 1)" }}
           >
             {/* Greeting */}
             <div className="flex items-center gap-4" style={{ justifyContent: isRtl ? "flex-end" : "flex-start" }}>
@@ -410,12 +391,12 @@ export function HeroSection({ locale }: HeroSectionProps) {
                   }}
                 >
                   <Image
-                    src="/images/profile/abdulghani-hero-studio-v2.png"
+                    src="/images/profile/abdulghani-hero.png"
                     alt={locale === "ar" ? "عبدالغني الشبامي — مهندس ذكاء اصطناعي ومطور برمجيات" : "Abdulghani Al-Shibami — AI Engineer & Software Developer"}
                     fill
                     priority
                     sizes="(max-width: 768px) 100vw, 500px"
-                    className="object-cover object-top filter brightness-[1.02] contrast-[1.05]"
+                    className="object-cover object-top"
                   />
                   
                   {/* Gold accent corner */}
@@ -507,7 +488,7 @@ export function HeroSection({ locale }: HeroSectionProps) {
       <div
         className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none"
         aria-hidden="true"
-        style={{ opacity: isVisible ? 0.6 : 0, transition: "opacity 0.5s ease-out 1s" }}
+        style={{ opacity: 0.6, transition: "opacity 0.5s ease-out 1s" }}
       >
         <div className="font-mono text-xs tracking-widest uppercase" style={{ color: textMuted }}>SCROLL</div>
         <svg className="w-5 h-5 animate-bounce" viewBox="0 0 24 24" fill="none" stroke={goldColor} strokeWidth="2" style={{ opacity: 0.6 }}>

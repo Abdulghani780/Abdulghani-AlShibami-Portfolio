@@ -24,31 +24,12 @@ export function LazySection({
   threshold = 0.1,
   rootMargin = "100px",
 }: LazySectionProps) {
-  const [isVisible, setIsVisible] = React.useState(false);
+  const [isVisible, setIsVisible] = React.useState(true);
   const ref = React.useRef<HTMLDivElement>(null);
-
-  React.useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold, rootMargin }
-    );
-
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [threshold, rootMargin]);
 
   return (
     <div ref={ref} className={cn("w-full", className)}>
-      {isVisible ? (
-        <Suspense fallback={fallback}>{children}</Suspense>
-      ) : (
-        fallback
-      )}
+      <Suspense fallback={fallback}>{children}</Suspense>
     </div>
   );
 }

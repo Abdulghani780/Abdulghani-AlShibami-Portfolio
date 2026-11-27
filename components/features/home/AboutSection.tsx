@@ -11,31 +11,7 @@ interface AboutSectionProps {
 
 export function AboutSection({ locale }: AboutSectionProps) {
   const isRtl = locale === "ar";
-  const [isVisible, setIsVisible] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">("dark");
-
-  useEffect(() => {
-    const root = document.documentElement;
-    const checkTheme = () => setTheme(root.classList.contains("dark") ? "dark" : "light");
-    checkTheme();
-    const observer = new MutationObserver(checkTheme);
-    observer.observe(root, { attributes: true, attributeFilter: ["class"] });
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setIsVisible(true);
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
-    );
-    const el = document.getElementById("about");
-    if (el) observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
 
   const content = {
     en: {
@@ -229,8 +205,8 @@ export function AboutSection({ locale }: AboutSectionProps) {
         <div
           className="mb-16"
           style={{
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? "translateY(0)" : "translateY(20px)",
+            opacity: 1,
+            transform: "translateY(0)",
             transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
           }}
         >
@@ -251,8 +227,8 @@ export function AboutSection({ locale }: AboutSectionProps) {
           <div
             className="lg:col-span-4 space-y-8"
             style={{
-              opacity: isVisible ? 1 : 0,
-              transform: isVisible ? "translateY(0)" : "translateY(20px)",
+              opacity: 1,
+              transform: "translateY(0)",
               transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1) 100ms",
             }}
           >
@@ -270,8 +246,8 @@ export function AboutSection({ locale }: AboutSectionProps) {
                   key={pillar.title}
                   className="group card-master p-6"
                   style={{
-                    opacity: isVisible ? 1 : 0,
-                    transform: isVisible ? "translateY(0)" : "translateY(20px)",
+                    opacity: 1,
+                    transform: "translateY(0)",
                     transition: `all 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${200 + index * 100}ms`,
                   }}
                 >
@@ -301,8 +277,8 @@ export function AboutSection({ locale }: AboutSectionProps) {
           <div
             className="lg:col-span-4 relative"
             style={{
-              opacity: isVisible ? 1 : 0,
-              transform: isVisible ? "translateY(0)" : "translateY(20px)",
+              opacity: 1,
+              transform: "translateY(0)",
               transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1) 200ms",
             }}
           >
@@ -353,8 +329,8 @@ export function AboutSection({ locale }: AboutSectionProps) {
           <div
             className="lg:col-span-4 space-y-8"
             style={{
-              opacity: isVisible ? 1 : 0,
-              transform: isVisible ? "translateY(0)" : "translateY(20px)",
+              opacity: 1,
+              transform: "translateY(0)",
               transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1) 300ms",
             }}
           >

@@ -9,31 +9,7 @@ interface AbdulghaniMethodSectionProps {
 
 export function AbdulghaniMethodSection({ locale }: AbdulghaniMethodSectionProps) {
   const isRtl = locale === "ar";
-  const [isVisible, setIsVisible] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">("dark");
-
-  useEffect(() => {
-    const root = document.documentElement;
-    const checkTheme = () => setTheme(root.classList.contains("dark") ? "dark" : "light");
-    checkTheme();
-    const observer = new MutationObserver(checkTheme);
-    observer.observe(root, { attributes: true, attributeFilter: ["class"] });
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setIsVisible(true);
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
-    );
-    const el = document.getElementById("method");
-    if (el) observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
 
   const content = {
     en: {
@@ -110,7 +86,7 @@ export function AbdulghaniMethodSection({ locale }: AbdulghaniMethodSectionProps
         {
           number: "٠٦",
           title: "النشر",
-          description: "أزرق-أخضر. كناري. أعلام ميزات. تراجع في <٣٠ ثانية. صفر توقف ليس اختياريًا — هو خط الأساس.",
+          description: "أزرق-أخضر. كناري. أعلام ميزات. تراجع في أقل من ٣٠ ثانية. صفر توقف ليس اختياريًا — هو خط الأساس.",
         },
         {
           number: "٠٧",
@@ -189,8 +165,8 @@ export function AbdulghaniMethodSection({ locale }: AbdulghaniMethodSectionProps
         <div
           className="mb-12 lg:mb-16 text-center"
           style={{
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? "translateY(0)" : "translateY(20px)",
+            opacity: 1,
+            transform: "translateY(0)",
             transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
           }}
         >
@@ -211,8 +187,8 @@ export function AbdulghaniMethodSection({ locale }: AbdulghaniMethodSectionProps
           role="list"
           aria-label={locale === "ar" ? "خطوات المنهجية" : "Method steps"}
           style={{
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? "translateY(0)" : "translateY(20px)",
+            opacity: 1,
+            transform: "translateY(0)",
             transition: "all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 200ms",
           }}
         >
@@ -272,8 +248,8 @@ export function AbdulghaniMethodSection({ locale }: AbdulghaniMethodSectionProps
                 role="listitem"
                 className="flex-shrink-0 w-[calc(100%/3)] lg:w-[calc(100%/7)] px-4 snap-center"
                 style={{
-                  opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? "translateY(0)" : "translateY(30px)",
+                  opacity: 1,
+                  transform: "translateY(0)",
                   transition: `all 0.7s cubic-bezier(0.16, 1, 0.3, 1) ${300 + index * 100}ms`,
                 }}
               >

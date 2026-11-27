@@ -10,31 +10,7 @@ interface FeaturedProjectsSectionProps {
 
 export function FeaturedProjectsSection({ locale }: FeaturedProjectsSectionProps) {
   const isRtl = locale === "ar";
-  const [isVisible, setIsVisible] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">("dark");
-
-  useEffect(() => {
-    const root = document.documentElement;
-    const checkTheme = () => setTheme(root.classList.contains("dark") ? "dark" : "light");
-    checkTheme();
-    const observer = new MutationObserver(checkTheme);
-    observer.observe(root, { attributes: true, attributeFilter: ["class"] });
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setIsVisible(true);
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
-    );
-    const el = document.getElementById("projects");
-    if (el) observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
 
   const projectImages: Record<string, string> = {
     yusra: "/images/optimized/projects/yusra-card-800w.webp",
@@ -194,8 +170,8 @@ export function FeaturedProjectsSection({ locale }: FeaturedProjectsSectionProps
         <div
           className="mb-16 text-center"
           style={{
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? "translateY(0)" : "translateY(20px)",
+            opacity: 1,
+            transform: "translateY(0)",
             transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
           }}
         >
@@ -222,8 +198,8 @@ export function FeaturedProjectsSection({ locale }: FeaturedProjectsSectionProps
               role="listitem"
               className="group card-master relative overflow-hidden flex flex-col"
               style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? "translateY(0)" : "translateY(20px)",
+                opacity: 1,
+                transform: "translateY(0)",
                 transition: `all 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${index * 100}ms`,
                 display: "flex",
                 flexDirection: "column",
@@ -254,7 +230,7 @@ export function FeaturedProjectsSection({ locale }: FeaturedProjectsSectionProps
                   className="object-cover filter contrast-[1.05] group-hover:scale-[1.02] transition-transform duration-300"
                 />
                 {/* Featured badge */}
-                {project.featured && (
+                {project.featured && project.id === "yusra" && (
                   <div className="absolute top-4 right-4" style={{ transform: isRtl ? "none" : "none" }}>
                     <span className="font-mono text-xs tracking-widest uppercase px-2 py-1 rounded" style={{
                       backgroundColor: `rgba(190, 148, 63, 0.15)`,
@@ -295,9 +271,21 @@ export function FeaturedProjectsSection({ locale }: FeaturedProjectsSectionProps
                   <p className="font-mono text-xs text-muted mb-2" style={{ letterSpacing: "0.05em" }}>
                     {locale === "en" ? "TECH STACK" : "التقنيات"}
                   </p>
-                  <p className="text-sm" style={{ color: textMuted, lineHeight: 1.5 }}>
-                    {project.tech}
-                  </p>
+                  <div className="flex flex-wrap gap-1.5" dir="ltr">
+                    {project.tech.split(" · ").map((tech, idx) => (
+                      <span
+                        key={idx}
+                        className="font-mono text-xs px-2 py-0.5 rounded"
+                        style={{
+                          backgroundColor: theme === "dark" ? "rgba(255, 255, 255, 0.05)" : "rgba(0, 0, 0, 0.04)",
+                          color: textMuted,
+                          border: `1px solid ${lineColor}`,
+                        }}
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
                 {/* Metrics */}
@@ -305,9 +293,21 @@ export function FeaturedProjectsSection({ locale }: FeaturedProjectsSectionProps
                   <p className="font-mono text-xs text-muted mb-2" style={{ letterSpacing: "0.05em" }}>
                     {locale === "en" ? "METRICS" : "المقاييس"}
                   </p>
-                  <p className="font-mono text-sm" style={{ color: textPrimary }}>
-                    {project.metrics}
-                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.metrics.split(" · ").map((metric, idx) => (
+                      <span
+                        key={idx}
+                        className="font-mono text-xs px-2.5 py-1 rounded-md"
+                        style={{
+                          backgroundColor: "rgba(190, 148, 63, 0.1)",
+                          color: goldColor,
+                          border: `1px solid ${lineGold}40`,
+                        }}
+                      >
+                        <bdi>{metric}</bdi>
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
                 {/* CTA Link */}

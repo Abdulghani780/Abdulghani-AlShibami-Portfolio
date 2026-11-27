@@ -10,31 +10,7 @@ interface EducationCertificationsSectionProps {
 
 export function EducationCertificationsSection({ locale }: EducationCertificationsSectionProps) {
   const isRtl = locale === "ar";
-  const [isVisible, setIsVisible] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">("dark");
-
-  useEffect(() => {
-    const root = document.documentElement;
-    const checkTheme = () => setTheme(root.classList.contains("dark") ? "dark" : "light");
-    checkTheme();
-    const observer = new MutationObserver(checkTheme);
-    observer.observe(root, { attributes: true, attributeFilter: ["class"] });
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setIsVisible(true);
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
-    );
-    const el = document.getElementById("education");
-    if (el) observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
 
   const certImages: Record<string, string> = {
     "ums-innovation": "/images/certificates/ums-innovation-award.jpg",
@@ -195,8 +171,8 @@ export function EducationCertificationsSection({ locale }: EducationCertificatio
         <div
           className="mb-12 lg:mb-16 text-center"
           style={{
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? "translateY(0)" : "translateY(20px)",
+            opacity: 1,
+            transform: "translateY(0)",
             transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
           }}
         >
@@ -215,8 +191,8 @@ export function EducationCertificationsSection({ locale }: EducationCertificatio
         <div
           className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12"
           style={{
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? "translateY(0)" : "translateY(20px)",
+            opacity: 1,
+            transform: "translateY(0)",
             transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1) 100ms",
           }}
         >
@@ -313,8 +289,8 @@ export function EducationCertificationsSection({ locale }: EducationCertificatio
                 key={cert.id}
                 className="card-master relative overflow-hidden group h-full"
                 style={{
-                  opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? "translateY(0)" : "translateY(20px)",
+                  opacity: 1,
+                  transform: "translateY(0)",
                   transition: `all 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${200 + index * 100}ms`,
                   minHeight: "110px",
                 }}

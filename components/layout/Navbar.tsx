@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AsMonogram } from "@/components/ui/AsLogo";
+import { ThemeToggle } from "@/components/layout/ThemeToggle";
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/config/site";
 
@@ -68,6 +69,14 @@ export function Navbar({ locale, scrollSpyTargets = [] }: NavbarProps) {
   const bgColor = isDark ? "rgba(10, 10, 11, 0.9)" : "rgba(253, 251, 247, 0.9)";
   const borderColor = isDark ? "rgba(217, 181, 103, 0.2)" : "rgba(190, 148, 63, 0.2)";
 
+  const primaryNavSections = [
+    { id: "about", label: { en: "About", ar: "عني" } },
+    { id: "projects", label: { en: "Projects", ar: "المشاريع" } },
+    { id: "ai-lab", label: { en: "AI Lab", ar: "مختبر AI" } },
+    { id: "arsenal", label: { en: "Arsenal", ar: "الترسانة" } },
+    { id: "education", label: { en: "Credentials", ar: "الشهادات" } },
+  ];
+
   const sections = siteConfig.nav.sections;
 
   return (
@@ -104,17 +113,17 @@ export function Navbar({ locale, scrollSpyTargets = [] }: NavbarProps) {
             </span>
           </Link>
 
-          {/* Center: Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1">
-            {sections.map((section) => (
+          {/* Center: Desktop Navigation (Clean 5 items) */}
+          <div className="hidden lg:flex items-center gap-1">
+            {primaryNavSections.map((section) => (
               <button
                 key={section.id}
                 onClick={() => scrollToSection(section.id)}
                 className={cn(
-                  "relative px-4 py-2 text-sm font-medium tracking-wider uppercase transition-colors duration-200",
+                  "relative px-4 py-2 text-sm font-medium tracking-wide transition-colors duration-200",
                   "rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-dark dark:focus-visible:ring-offset-dark",
                   activeSection === section.id
-                    ? "text-gold"
+                    ? "text-gold font-semibold"
                     : "text-text-muted hover:text-text-primary"
                 )}
                 style={{
@@ -136,6 +145,9 @@ export function Navbar({ locale, scrollSpyTargets = [] }: NavbarProps) {
 
           {/* Right: Actions */}
           <div className="flex items-center gap-3">
+            {/* Theme Toggle */}
+            <ThemeToggle />
+
             {/* Language Switcher */}
             <button
               onClick={() => {
@@ -144,17 +156,14 @@ export function Navbar({ locale, scrollSpyTargets = [] }: NavbarProps) {
                 window.location.href = `/${newLocale}${currentPath}`;
               }}
               className={cn(
-                "hidden sm:flex items-center gap-2 px-3 py-2 text-xs font-semibold tracking-widest uppercase",
-                "rounded-md transition-all duration-200 ease-out",
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-dark dark:focus-visible:ring-offset-dark",
-                locale === "en"
-                  ? "text-text-muted hover:text-gold border border-transparent hover:border-gold/50"
-                  : "text-gold bg-gold-subtle border border-gold/30"
+                "flex items-center gap-2 px-3 py-1.5 text-xs font-semibold tracking-wider uppercase",
+                "rounded-lg transition-all duration-200 ease-out border",
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-dark dark:focus-visible:ring-offset-dark"
               )}
               style={{
-                color: locale === "en" ? mutedColor : goldColor,
-                backgroundColor: locale === "en" ? "transparent" : "rgba(190, 148, 63, 0.1)",
-                borderColor: locale === "en" ? "transparent" : "rgba(190, 148, 63, 0.3)",
+                color: goldColor,
+                backgroundColor: "rgba(190, 148, 63, 0.08)",
+                borderColor: borderColor,
               }}
               aria-label={locale === "ar" ? "التبديل للإنجليزية" : "Switch to Arabic"}
             >

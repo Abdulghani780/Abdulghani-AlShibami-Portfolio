@@ -10,31 +10,7 @@ interface CtaSectionProps {
 
 export function CtaSection({ locale }: CtaSectionProps) {
   const isRtl = locale === "ar";
-  const [isVisible, setIsVisible] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">("dark");
-
-  useEffect(() => {
-    const root = document.documentElement;
-    const checkTheme = () => setTheme(root.classList.contains("dark") ? "dark" : "light");
-    checkTheme();
-    const observer = new MutationObserver(checkTheme);
-    observer.observe(root, { attributes: true, attributeFilter: ["class"] });
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setIsVisible(true);
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
-    );
-    const el = document.getElementById("contact");
-    if (el) observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
 
   const content = {
     en: {
@@ -139,8 +115,8 @@ export function CtaSection({ locale }: CtaSectionProps) {
         <div
           className="max-w-3xl mx-auto text-center"
           style={{
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? "translateY(0)" : "translateY(30px)",
+            opacity: 1,
+            transform: "translateY(0)",
             transition: "all 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
           }}
         >
@@ -263,8 +239,8 @@ export function CtaSection({ locale }: CtaSectionProps) {
                 style={{
                   backgroundColor: `rgba(190, 148, 63, 0.05)`,
                   border: `1px solid ${lineGold}30`,
-                  opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? "translateY(0)" : "translateY(20px)",
+                  opacity: 1,
+                  transform: "translateY(0)",
                   transition: `all 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${400 + index * 100}ms`,
                 }}
               >

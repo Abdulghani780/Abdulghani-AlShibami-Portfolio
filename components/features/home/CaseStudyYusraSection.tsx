@@ -10,7 +10,6 @@ interface CaseStudyYusraSectionProps {
 
 export function CaseStudyYusraSection({ locale }: CaseStudyYusraSectionProps) {
   const isRtl = locale === "ar";
-  const [isVisible, setIsVisible] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">("dark");
   const [activeScreen, setActiveScreen] = useState(0);
 
@@ -20,20 +19,6 @@ export function CaseStudyYusraSection({ locale }: CaseStudyYusraSectionProps) {
     checkTheme();
     const observer = new MutationObserver(checkTheme);
     observer.observe(root, { attributes: true, attributeFilter: ["class"] });
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setIsVisible(true);
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
-    );
-    const el = document.getElementById("yusra");
-    if (el) observer.observe(el);
     return () => observer.disconnect();
   }, []);
 
@@ -301,8 +286,8 @@ export function CaseStudyYusraSection({ locale }: CaseStudyYusraSectionProps) {
         <div
           className="mb-12 lg:mb-16 text-center"
           style={{
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? "translateY(0)" : "translateY(20px)",
+            opacity: 1,
+            transform: "translateY(0)",
             transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
           }}
         >
@@ -323,8 +308,8 @@ export function CaseStudyYusraSection({ locale }: CaseStudyYusraSectionProps) {
           role="list"
           aria-label={locale === "ar" ? "مراحل دراسة الحالة" : "Case study phases"}
           style={{
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? "translateY(0)" : "translateY(20px)",
+            opacity: 1,
+            transform: "translateY(0)",
             transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1) 100ms",
           }}
         >
@@ -334,8 +319,8 @@ export function CaseStudyYusraSection({ locale }: CaseStudyYusraSectionProps) {
               role="listitem"
               className="card-master h-full flex flex-col"
               style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? "translateY(0)" : "translateY(20px)",
+                opacity: 1,
+                transform: "translateY(0)",
                 transition: `all 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${200 + colIndex * 80}ms`,
               }}
             >
@@ -367,8 +352,8 @@ export function CaseStudyYusraSection({ locale }: CaseStudyYusraSectionProps) {
                       key={itemIndex}
                       className="flex items-start gap-3 group"
                       style={{
-                        opacity: isVisible ? 1 : 0,
-                        transform: isVisible ? "translateX(0)" : (isRtl ? "translateX(20px)" : "translateX(-20px)"),
+                        opacity: 1,
+                        transform: "translateX(0)",
                         transition: `all 0.5s cubic-bezier(0.16, 1, 0.3, 1) ${300 + colIndex * 80 + itemIndex * 50}ms`,
                       }}
                     >
@@ -394,8 +379,8 @@ export function CaseStudyYusraSection({ locale }: CaseStudyYusraSectionProps) {
           role="list"
           aria-label={locale === "ar" ? "تفاصيل دراسة الحالة" : "Case study details"}
           style={{
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? "translateY(0)" : "translateY(20px)",
+            opacity: 1,
+            transform: "translateY(0)",
             transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1) 300ms",
           }}
         >

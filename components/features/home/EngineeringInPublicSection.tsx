@@ -10,33 +10,9 @@ interface EngineeringInPublicSectionProps {
 
 export function EngineeringInPublicSection({ locale }: EngineeringInPublicSectionProps) {
   const isRtl = locale === "ar";
-  const [isVisible, setIsVisible] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">("dark");
   const [hoveredRepo, setHoveredRepo] = useState<number | null>(null);
   const codeBlockRef = useRef<HTMLPreElement>(null);
-
-  useEffect(() => {
-    const root = document.documentElement;
-    const checkTheme = () => setTheme(root.classList.contains("dark") ? "dark" : "light");
-    checkTheme();
-    const observer = new MutationObserver(checkTheme);
-    observer.observe(root, { attributes: true, attributeFilter: ["class"] });
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setIsVisible(true);
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
-    );
-    const el = document.getElementById("public");
-    if (el) observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
 
   // Typing animation for code block
   useEffect(() => {
@@ -233,8 +209,8 @@ export function EngineeringInPublicSection({ locale }: EngineeringInPublicSectio
         <div
           className="mb-12 lg:mb-16 text-center"
           style={{
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? "translateY(0)" : "translateY(20px)",
+            opacity: 1,
+            transform: "translateY(0)",
             transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
           }}
         >
@@ -253,8 +229,8 @@ export function EngineeringInPublicSection({ locale }: EngineeringInPublicSectio
         <div
           className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8"
           style={{
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? "translateY(0)" : "translateY(20px)",
+            opacity: 1,
+            transform: "translateY(0)",
             transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1) 100ms",
           }}
         >
