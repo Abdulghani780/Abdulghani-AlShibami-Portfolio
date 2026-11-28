@@ -136,6 +136,18 @@ export function MetaAlgorithmLabSimulation({ locale = "en", isRtl = false }: Dem
     { n: 512, quicksortOps: 4608, heapsortOps: 5880, insertionsortOps: 130816, bubblesortOps: 261632 },
   ];
 
+  // Bar color mapping using design tokens
+  const getBarColor = (isSorted: boolean, isComparing: boolean, isSwapping: boolean) => {
+    if (isSorted) return "bg-status-success";
+    if (isComparing) return "bg-gold";
+    if (isSwapping) return "bg-status-error";
+    return "bg-text-muted/40";
+  };
+
+  const getLegendDot = (color: string) => (
+    <span className={`w-2.5 h-2.5 rounded ${color} inline-block`} />
+  );
+
   return (
     <DemoShell
       title={isArabic ? "مختبر الخوارزميات — التحليل البصري المباشر ودراسة التعقيد" : "MetaAlgorithm Lab — In-Browser Algorithm Complexity Workbench"}
@@ -157,7 +169,7 @@ export function MetaAlgorithmLabSimulation({ locale = "en", isRtl = false }: Dem
         <div className="flex items-center gap-1">
           <button
             onClick={() => setReportModal(true)}
-            className="px-2.5 py-1 rounded bg-brand-gold/15 text-brand-gold hover:bg-brand-gold hover:text-surface-dark font-mono text-xs flex items-center gap-1.5 transition-colors"
+            className="px-2.5 py-1 rounded bg-gold/10 text-gold hover:bg-gold hover:text-inverse font-mono text-xs flex items-center gap-1.5 transition-colors"
           >
             <FileText className="w-3.5 h-3.5" />
             <span className="hidden sm:inline">{isArabic ? "تقرير LaTeX" : "Report Preview"}</span>
@@ -173,7 +185,7 @@ export function MetaAlgorithmLabSimulation({ locale = "en", isRtl = false }: Dem
               onClick={() => setActiveTab("visualizer")}
               className={`px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-all ${
                 activeTab === "visualizer"
-                  ? "bg-brand-gold text-surface-dark font-bold shadow"
+                  ? "bg-gold text-inverse font-bold shadow-gold-md"
                   : "bg-surface-secondary border border-border text-text-muted hover:text-text-primary"
               }`}
             >
@@ -184,7 +196,7 @@ export function MetaAlgorithmLabSimulation({ locale = "en", isRtl = false }: Dem
               onClick={() => setActiveTab("complexity")}
               className={`px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-all ${
                 activeTab === "complexity"
-                  ? "bg-brand-gold text-surface-dark font-bold shadow"
+                  ? "bg-gold text-inverse font-bold shadow-gold-md"
                   : "bg-surface-secondary border border-border text-text-muted hover:text-text-primary"
               }`}
             >
@@ -217,7 +229,7 @@ export function MetaAlgorithmLabSimulation({ locale = "en", isRtl = false }: Dem
                     onClick={() => setAlgorithm(algo.id as any)}
                     className={`px-2.5 py-1.5 rounded-lg transition-colors whitespace-nowrap ${
                       algorithm === algo.id
-                        ? "bg-brand-gold text-surface-dark font-bold shadow"
+                        ? "bg-gold text-inverse font-bold shadow-gold-md"
                         : "bg-surface border border-border text-text-muted hover:text-text-primary"
                     }`}
                   >
@@ -237,12 +249,11 @@ export function MetaAlgorithmLabSimulation({ locale = "en", isRtl = false }: Dem
                   <button
                     key={dist.id}
                     onClick={() => handleGenerateArray(dist.id as any)}
-                    className={`px-2 py-1 rounded text-[11px] transition-colors ${
+                    className={`px-3.5 py-2.5 rounded text-[11px] transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center ${
                       inputDistribution === dist.id
-                        ? "bg-brand-gold/20 text-brand-gold border border-brand-gold/40 font-bold"
+                        ? "bg-gold/10 text-gold border border-gold/40 font-bold"
                         : "bg-surface border border-border text-text-muted hover:text-text-primary"
-                    }`}
-                  >
+                    }`}>
                     {isArabic ? dist.ar : dist.en}
                   </button>
                 ))}
@@ -253,13 +264,13 @@ export function MetaAlgorithmLabSimulation({ locale = "en", isRtl = false }: Dem
             <div className="bg-surface-secondary/30 border border-border rounded-xl p-4 sm:p-6 flex flex-col justify-end min-h-[300px] sm:min-h-[340px] relative overflow-hidden">
               <div className="absolute top-3 left-3 text-[10px] font-mono text-text-dim flex items-center gap-3">
                 <span className="flex items-center gap-1">
-                  <span className="w-2.5 h-2.5 rounded bg-brand-gold inline-block"></span> {isArabic ? "قيد المقارنة" : "Comparing"}
+                  {getLegendDot("bg-gold")} {isArabic ? "قيد المقارنة" : "Comparing"}
                 </span>
                 <span className="flex items-center gap-1">
-                  <span className="w-2.5 h-2.5 rounded bg-rose-500 inline-block"></span> {isArabic ? "قيد التبديل" : "Swapping"}
+                  {getLegendDot("bg-status-error")} {isArabic ? "قيد التبديل" : "Swapping"}
                 </span>
                 <span className="flex items-center gap-1">
-                  <span className="w-2.5 h-2.5 rounded bg-emerald-500 inline-block"></span> {isArabic ? "في موقعه النهائي" : "Sorted"}
+                  {getLegendDot("bg-status-success")} {isArabic ? "في موقعه النهائي" : "Sorted"}
                 </span>
               </div>
 
@@ -270,10 +281,7 @@ export function MetaAlgorithmLabSimulation({ locale = "en", isRtl = false }: Dem
                   const isSwapping = currentStep.swappingIndices.includes(idx);
                   const isSorted = currentStep.sortedIndices.includes(idx);
 
-                  let barColor = "bg-text-muted/40";
-                  if (isSorted) barColor = "bg-emerald-500";
-                  if (isComparing) barColor = "bg-brand-gold";
-                  if (isSwapping) barColor = "bg-rose-500";
+                  const barColor = getBarColor(isSorted, isComparing, isSwapping);
 
                   const heightPercent = Math.max((value / 100) * 100, 10);
 
@@ -300,8 +308,8 @@ export function MetaAlgorithmLabSimulation({ locale = "en", isRtl = false }: Dem
                   onClick={() => setIsPlaying(!isPlaying)}
                   className={`px-3 py-1.5 rounded-lg font-bold flex items-center gap-1.5 transition-all shadow ${
                     isPlaying
-                      ? "bg-rose-500 text-white"
-                      : "bg-brand-gold text-surface-dark hover:brightness-110"
+                      ? "bg-status-error text-white"
+                      : "bg-gold text-inverse hover:brightness-110"
                   }`}
                 >
                   {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
@@ -340,9 +348,9 @@ export function MetaAlgorithmLabSimulation({ locale = "en", isRtl = false }: Dem
                   step="30"
                   value={playSpeedMs}
                   onChange={(e) => setPlaySpeedMs(Number(e.target.value))}
-                  className="w-24 accent-brand-gold cursor-pointer"
+                  className="w-24 accent-gold cursor-pointer"
                 />
-                <span className="text-[10px] text-brand-gold font-bold">{playSpeedMs}ms</span>
+                <span className="text-[10px] text-gold font-bold">{playSpeedMs}ms</span>
               </div>
             </div>
           </div>
@@ -355,7 +363,7 @@ export function MetaAlgorithmLabSimulation({ locale = "en", isRtl = false }: Dem
               <span className="font-bold text-text-primary">
                 {isArabic ? "جدول القياسات الحسابية ومنحنيات التعقيد التجريبي" : "EMPIRICAL BIG-O BENCHMARK DATA & MATRIX"}
               </span>
-              <span className="text-[10px] text-emerald-400 font-mono">
+              <span className="text-[10px] text-status-success font-mono">
                 R² REGRESSION CONFIDENCE: 99.4%
               </span>
             </div>
@@ -364,22 +372,22 @@ export function MetaAlgorithmLabSimulation({ locale = "en", isRtl = false }: Dem
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 font-mono text-xs">
               <div className="p-3 bg-surface-secondary/40 border border-border rounded-xl">
                 <div className="text-[10px] text-text-dim">QUICKSORT</div>
-                <div className="text-sm sm:text-base font-bold text-brand-gold mt-1">O(n log n)</div>
+                <div className="text-sm sm:text-base font-bold text-gold mt-1">O(n log n)</div>
                 <div className="text-[10px] text-text-dim mt-0.5">Worst: O(n²)</div>
               </div>
               <div className="p-3 bg-surface-secondary/40 border border-border rounded-xl">
                 <div className="text-[10px] text-text-dim">HEAPSORT</div>
-                <div className="text-sm sm:text-base font-bold text-sky-400 mt-1">O(n log n)</div>
+                <div className="text-sm sm:text-base font-bold text-status-info mt-1">O(n log n)</div>
                 <div className="text-[10px] text-text-dim mt-0.5">Guaranteed O(n log n)</div>
               </div>
               <div className="p-3 bg-surface-secondary/40 border border-border rounded-xl">
                 <div className="text-[10px] text-text-dim">INSERTIONSORT</div>
-                <div className="text-sm sm:text-base font-bold text-amber-400 mt-1">O(n²)</div>
+                <div className="text-sm sm:text-base font-bold text-status-warning mt-1">O(n²)</div>
                 <div className="text-[10px] text-text-dim mt-0.5">Best: O(n)</div>
               </div>
               <div className="p-3 bg-surface-secondary/40 border border-border rounded-xl">
                 <div className="text-[10px] text-text-dim">BUBBLESORT</div>
-                <div className="text-sm sm:text-base font-bold text-rose-400 mt-1">O(n²)</div>
+                <div className="text-sm sm:text-base font-bold text-status-error mt-1">O(n²)</div>
                 <div className="text-[10px] text-text-dim mt-0.5">Worst: O(n²)</div>
               </div>
             </div>
@@ -390,20 +398,20 @@ export function MetaAlgorithmLabSimulation({ locale = "en", isRtl = false }: Dem
                 <thead className="bg-surface-secondary/70 border-b border-border text-[11px] text-text-dim">
                   <tr>
                     <th className="p-3">INPUT SIZE (N)</th>
-                    <th className="p-3 text-brand-gold">QUICKSORT (OPS)</th>
-                    <th className="p-3 text-sky-400">HEAPSORT (OPS)</th>
-                    <th className="p-3 text-amber-400">INSERTION (OPS)</th>
-                    <th className="p-3 text-rose-400">BUBBLE (OPS)</th>
+                    <th className="p-3 text-gold">QUICKSORT (OPS)</th>
+                    <th className="p-3 text-status-info">HEAPSORT (OPS)</th>
+                    <th className="p-3 text-status-warning">INSERTION (OPS)</th>
+                    <th className="p-3 text-status-error">BUBBLE (OPS)</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-border">
                   {BENCHMARK_DATA.map((row) => (
                     <tr key={row.n} className="hover:bg-surface-secondary/30 transition-colors">
                       <td className="p-3 font-bold text-text-primary">N = {row.n}</td>
-                      <td className="p-3 font-bold text-brand-gold">{row.quicksortOps.toLocaleString()}</td>
-                      <td className="p-3 text-sky-400">{row.heapsortOps.toLocaleString()}</td>
-                      <td className="p-3 text-amber-400">{row.insertionsortOps.toLocaleString()}</td>
-                      <td className="p-3 text-rose-400">{row.bubblesortOps.toLocaleString()}</td>
+                      <td className="p-3 font-bold text-gold">{row.quicksortOps.toLocaleString()}</td>
+                      <td className="p-3 text-status-info">{row.heapsortOps.toLocaleString()}</td>
+                      <td className="p-3 text-status-warning">{row.insertionsortOps.toLocaleString()}</td>
+                      <td className="p-3 text-status-error">{row.bubblesortOps.toLocaleString()}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -411,7 +419,7 @@ export function MetaAlgorithmLabSimulation({ locale = "en", isRtl = false }: Dem
             </div>
 
             <div className="p-3 bg-surface-secondary/30 border border-border rounded-xl text-xs text-text-dim leading-relaxed flex items-center gap-2.5">
-              <Sparkles className="w-4 h-4 text-brand-gold shrink-0" />
+              <Sparkles className="w-4 h-4 text-gold shrink-0" />
               <span>
                 {isArabic
                   ? "تظهر النتائج الحسابية مطابقة دقيقة بين السلوك التجريبي والمنحنى النظري: تزداد عمليات QuickSort بمعدل خطي لوغاريتمي O(n log n) بينما تتصاعد خوارزمية BubbleSort بمعدل تربيعي O(n²)."
@@ -424,9 +432,9 @@ export function MetaAlgorithmLabSimulation({ locale = "en", isRtl = false }: Dem
         {/* MODAL: LATEX REPORT PREVIEW */}
         {reportModal && (
           <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4 font-mono">
-            <div className="w-full max-w-lg bg-surface border border-brand-gold/40 rounded-xl p-5 shadow-2xl space-y-4">
+            <div className="w-full max-w-lg bg-surface border border-gold/40 rounded-xl p-5 shadow-2xl space-y-4">
               <div className="flex items-center justify-between border-b border-border pb-3">
-                <div className="flex items-center gap-2 text-brand-gold text-xs font-bold">
+                <div className="flex items-center gap-2 text-gold text-xs font-bold">
                   <FileCode2 className="w-4 h-4" />
                   <span>{isArabic ? "معاينة تقرير التحليل الخوارزمي" : "LATEX RESEARCH REPORT EXCERPT"}</span>
                 </div>
@@ -445,7 +453,7 @@ export function MetaAlgorithmLabSimulation({ locale = "en", isRtl = false }: Dem
                   <span className="text-text-primary font-bold">MetaAlgorithmLab Technical Report // 2026</span>
                 </div>
 
-                <div className="p-3 bg-surface-dark rounded border border-border/80 text-[11px] text-brand-gold/90 space-y-1">
+                <div className="p-3 bg-surface-dark rounded border border-border/80 text-[11px] text-gold/90 space-y-1">
                   <div>\section&#123;Empirical Asymptotic Analysis&#125;</div>
                   <div>T(n) = 2T(n/2) + \Theta(n) \implies T(n) \in \mathcal&#123;O&#125;(n \log n)</div>
                   <div>R^2 = 0.9942 \quad (\text&#123;Confidence Interval&#125; 99.5\%)</div>
@@ -460,7 +468,7 @@ export function MetaAlgorithmLabSimulation({ locale = "en", isRtl = false }: Dem
 
               <button
                 onClick={() => setReportModal(false)}
-                className="w-full py-2 bg-brand-gold text-surface-dark font-bold text-xs rounded-lg hover:brightness-110 transition-all font-mono"
+                className="w-full py-2 bg-gold text-inverse font-bold text-xs rounded-lg hover:brightness-110 transition-all font-mono"
               >
                 {isArabic ? "إغلاق المعاينة" : "Close Report"}
               </button>

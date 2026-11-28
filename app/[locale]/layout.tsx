@@ -8,6 +8,7 @@ import { MainWrapper } from "@/components/layout/MainWrapper";
 import { AbdulghaniAIModal } from "@/components/features/ai/AbdulghaniAIModal";
 import { SmoothScrollProvider } from "@/components/ui/SmoothScrollProvider";
 import { MagneticCursor } from "@/components/ui/MagneticCursor";
+import { Preloader } from "@/components/ui/Preloader";
 
 export async function generateStaticParams() {
   return [{ locale: "en" }, { locale: "ar" }];
@@ -88,6 +89,7 @@ export default async function LocaleLayout({
 
   return (
     <SmoothScrollProvider>
+      <Preloader />
       <div
         dir={isRtl ? "rtl" : "ltr"}
         lang={currentLocale}
@@ -104,9 +106,9 @@ export default async function LocaleLayout({
           }}
         />
         <LocaleHtmlSync locale={currentLocale} />
-        <Navbar locale={currentLocale} dict={dict} />
+        <Navbar locale={currentLocale} />
         <MainWrapper locale={currentLocale}>{children}</MainWrapper>
-        <Footer dict={dict} />
+        <Footer locale={currentLocale} />
         <AbdulghaniAIModal locale={currentLocale} />
       </div>
     </SmoothScrollProvider>

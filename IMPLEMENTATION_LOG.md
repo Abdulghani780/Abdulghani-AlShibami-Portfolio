@@ -914,3 +914,36 @@
   - `pnpm tsc --noEmit`: 0 compiler errors.
   - `pnpm build`: 36/36 static SSG routes compiled with exit code 0.
 - **Status:** COMPLETED & VERIFIED.
+
+---
+
+## [2026-11-24] Entry 031 — Motion & Luxury Consistency Pass (Site-Wide)
+- **Phase:** PHASE 33 — Motion & Luxury Consistency Pass
+- **Task:** TSK-220 (Motion & Luxury Consistency Pass)
+- **Branch:** `main`
+- **Objective:**
+  1. Unify motion and visual rhythm across every page using the existing gold motion primitives (no new dependencies).
+  2. Increase dark-mode surface clarity while preserving the Obsidian & Royal Gold identity.
+  3. Add signature luxury details: session-gated gold preloader, magnetic CTAs, hero gold shimmer + film grain, staggered reveals on all secondary pages, count-up metrics, gold flow lines, route transitions, footer gold hairline.
+- **Files Modified / Created:**
+  - `app/globals.css` (dark token clarity + `.gold-shimmer-text`, `.page-enter`, `.grain-overlay`, `.gold-edge-flow`)
+  - `components/ui/Magnetic.tsx` (new)
+  - `components/ui/Preloader.tsx` (new)
+  - `components/layout/Navbar.tsx`, `components/layout/Footer.tsx`, `components/layout/MainWrapper.tsx`
+  - `components/features/home/HeroSection.tsx`, `components/features/home/ContactCtaSection.tsx`
+  - `components/features/projects/ProjectCatalogView.tsx`
+  - `components/features/projects/case-study/CaseStudyHero.tsx`, `CaseStudyMetrics.tsx`, `ArchitectureTopology.tsx`
+  - `components/features/credentials/CredentialsCatalogView.tsx`
+  - `app/[locale]/layout.tsx`, `app/[locale]/projects/page.tsx`, `app/[locale]/projects/[slug]/page.tsx`, `app/[locale]/showcase/page.tsx`
+  - `tests/design-system.test.mjs` (updated surface-elevated assertion to new token value)
+  - `docs/superpowers/specs/2026-11-24-motion-luxury-pass-design.md`, `docs/superpowers/plans/2026-11-24-motion-luxury-pass.md`
+  - `PROGRESS.md`, `TASKS.md`, `CHANGELOG.md`, `IMPLEMENTATION_LOG.md`
+- **Verification Results:**
+  - `pnpm test`: 74/74 unit, integration, and security tests passed (0 failures).
+  - `pnpm typecheck`: 0 compiler errors.
+  - `pnpm lint`: 0 ESLint warnings or errors.
+  - `pnpm build`: 36/36 static SSG routes compiled with exit code 0.
+- **Notes:**
+  - Environment: dependencies installed via `corepack pnpm@10` (pnpm 12 ignores `package.json` pnpm.overrides → lockfile mismatch; pnpm 10.34.9 used).
+  - Git identity was unset; commits authored with the repo's historical identity via per-commit `-c` flags.
+- **Status:** COMPLETED & VERIFIED.

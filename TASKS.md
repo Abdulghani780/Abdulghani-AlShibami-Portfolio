@@ -617,3 +617,16 @@
 
 
 
+
+---
+
+### PHASE 33 — Motion & Luxury Consistency Pass
+- **ID:** `TSK-220`
+- **TITLE:** Motion & Luxury Consistency Pass (Site-Wide)
+- **PHASE:** 33
+- **PRIORITY:** P0
+- **STATUS:** COMPLETED
+- **DESCRIPTION:** Unified motion and visual rhythm across all pages. Dark-mode surface clarity tokens (`--surface-elevated #16161B`, `--surface-card #17171C`, stronger hairlines). New motion utilities in `globals.css`: `.gold-shimmer-text`, `.page-enter`, `.grain-overlay`, `.gold-edge-flow`. New `components/ui/Magnetic.tsx` wrapper with real cursor pull wired to Navbar CTA, Contact CTA, and Case Study demo button. Session-gated `components/ui/Preloader.tsx` gold monogram intro with curtain exit and 2.5s failsafe. Hero gold shimmer title + film grain. Staggered `ScrollReveal` coverage on projects catalog, all 8 case-study sections, credentials catalog, showcase page, and footer. `CountUp` metrics in `CaseStudyMetrics`, gold flow lines in `ArchitectureTopology`, route-change page transitions via `MainWrapper`.
+- **DEPENDENCIES:** TSK-219
+- **FILES:** `app/globals.css`, `components/ui/Magnetic.tsx`, `components/ui/Preloader.tsx`, `components/layout/Navbar.tsx`, `components/layout/Footer.tsx`, `components/layout/MainWrapper.tsx`, `components/features/home/HeroSection.tsx`, `components/features/home/ContactCtaSection.tsx`, `components/features/projects/ProjectCatalogView.tsx`, `components/features/projects/case-study/*`, `components/features/credentials/CredentialsCatalogView.tsx`, `app/[locale]/projects/page.tsx`, `app/[locale]/projects/[slug]/page.tsx`, `app/[locale]/showcase/page.tsx`, `app/[locale]/layout.tsx`, `tests/design-system.test.mjs`
+- **TESTS:** `pnpm test` (PASS, 74/74), `pnpm typecheck` (PASS, 0 errors), `pnpm lint` (PASS, 0 warnings), `pnpm build` (PASS, 36/36 static pages).

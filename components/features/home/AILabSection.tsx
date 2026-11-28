@@ -1,155 +1,321 @@
 "use client";
 
-import React from "react";
-import Link from "next/link";
-import { Locale } from "@/lib/i18n/dictionaries";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import { TiltCard } from "@/components/ui/TiltCard";
+import React, { useState, useEffect } from "react";
+import { cn } from "@/lib/utils";
 
-export function AILabSection({ locale }: { locale: Locale }) {
+interface AILabSectionProps {
+  locale: "en" | "ar";
+}
+
+export function AILabSection({ locale }: AILabSectionProps) {
   const isRtl = locale === "ar";
+  const [theme, setTheme] = useState<"light" | "dark">("dark");
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
-  const aiModules = [
-    {
-      num: "01",
-      title: isRtl ? "هندسة الأوامر" : "Prompt Engineering",
-      desc: isRtl ? "أوامر أدق. نتائج أفضل." : "Better prompts. Better results.",
-      icon: (
-        <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-          <polyline points="4 17 10 11 4 5" />
-          <line x1="12" y1="19" x2="20" y2="19" />
-        </svg>
-      ),
+  const content = {
+    en: {
+      headline: "AI LAB",
+      subheadline: "Active research and production implementations in machine learning, computer vision, and autonomous agents.",
+      cards: [
+        {
+          title: "MULTI-AGENT ORCHESTRATION",
+          description: "Framework for coordinating 50+ autonomous agents with emergent behavior patterns. Implements consensus protocols, conflict resolution, and dynamic role assignment. Production-deployed in clinical decision support.",
+          icon: "network",
+        },
+        {
+          title: "DISTRIBUTED STATE MACHINES",
+          description: "High-throughput state machine runtime processing 100K+ transitions/second. Optimistic concurrency, event sourcing, and saga-based compensation. Sub-millisecond p99 latency.",
+          icon: "stateMachine",
+        },
+        {
+          title: "COMPUTER VISION PIPELINES",
+          description: "Real-time inference pipelines for medical imaging (DICOM), satellite imagery, and industrial inspection. ONNX Runtime, TensorRT optimization. 99.2% accuracy on validation sets.",
+          icon: "vision",
+        },
+        {
+          title: "REINFORCEMENT LEARNING OPS",
+          description: "End-to-end RL training and deployment infrastructure. PPO, SAC algorithms with distributed experience replay. Automated hyperparameter tuning and safe policy rollout.",
+          icon: "rl",
+        },
+        {
+          title: "KNOWLEDGE GRAPHS & RAG",
+          description: "Enterprise knowledge graphs with 2M+ entities. Hybrid vector-symbolic retrieval, GraphRAG for complex reasoning. Sub-100ms query latency at scale.",
+          icon: "graph",
+        },
+        {
+          title: "EDGE ML OPTIMIZATION",
+          description: "Model quantization (INT4/INT8), distillation, and compilation for edge deployment. ARM NEON, Qualcomm Hexagon, NVIDIA Jetson. 10x compression with <1% accuracy drop.",
+          icon: "edge",
+        },
+      ],
     },
-    {
-      num: "02",
-      title: isRtl ? "تطبيقات مدعومة بالذكاء" : "AI-Powered Applications",
-      desc: isRtl ? "من الفكرة إلى منتجات ذكية." : "From ideas to intelligent products.",
-      icon: (
-        <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-          <circle cx="12" cy="12" r="3" />
-          <path d="M12 2v3m0 14v3M2 12h3m14 0h3M5 5l2 2m10 10l2 2M5 19l2-2m10-10l2-2" />
-        </svg>
-      ),
+    ar: {
+      headline: "مختبر الذكاء الاصطناعي",
+      subheadline: "أبحاث نشطة وتنفيذات إنتاجية في التعلم الآلي، والرؤية الحاسوبية، والوكلاء المستقلين.",
+      cards: [
+        {
+          title: "تنسيق متعدد الوكلاء",
+          description: "إطار لتنسيق ٥٠+ وكيل مستقل مع أنماط سلوك ناشئة. يطبق بروتوكولات الإجماع، حل النزاعات، وتوزيع الأدوار الديناميكي. منتشر إنتاجيًا في دعم القرار السريري.",
+          icon: "network",
+        },
+        {
+          title: "آلات الحالة الموزعة",
+          description: "بيئة تشغيل آلة حالة عالية الإنتاجية تعالج ١٠٠ ألف+ انتقال/ثانية. تزامن تفاؤلي، مصادر أحداث، وتعويض قائم على ساجا. كمون p99 دون الميلي ثانية.",
+          icon: "stateMachine",
+        },
+        {
+          title: "خطوط أنابيب الرؤية الحاسوبية",
+          description: "خطوط استنتاج فورية للتصوير الطبي (DICOM)، والصور الفضائية، والفحص الصناعي. ONNX Runtime، تحسين TensorRT. دقة ٩٩.٢٪ على مجموعات التحقق.",
+          icon: "vision",
+        },
+        {
+          title: "عمليات التعلم المعزز",
+          description: "بنية تحتية شاملة لتدريب ونشر التعلم المعزز. خوارزميات PPO، SAC مع إعادة تجربة خبرة موزعة. ضبط فائق المعاملات آلي ونشر سياسة آمن.",
+          icon: "rl",
+        },
+        {
+          title: "مخططات المعرفة و RAG",
+          description: "مخططات معرفة مؤسسية مع ٢ مليون+ كيان. استرجاع هجين متجه-رمزي، GraphRAG للاستدلال المعقد. كمون استعلام دون ١٠٠ ميلي ثانية عند المقياس.",
+          icon: "graph",
+        },
+        {
+          title: "تحسين التعلم الآلي للحافة",
+          description: "كمية النموذج (INT4/INT8)، التقطير، والتجميع للنشر على الحافة. ARM NEON، Qualcomm Hexagon، NVIDIA Jetson. ضغط ١٠ أضعاف مع انخفاض دقة <١٪.",
+          icon: "edge",
+        },
+      ],
     },
-    {
-      num: "03",
-      title: isRtl ? "الرؤية الحاسوبية" : "Computer Vision",
-      desc: isRtl ? "رؤية. فهم. بناء." : "See. Understand. Build.",
-      icon: (
-        <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-          <circle cx="12" cy="12" r="3" />
-          <path d="M3 3h4M3 3v4M21 3h-4M21 3v4M3 21h4M3 21v-4M21 21h-4M21 21v-4" strokeWidth="1.5" />
-        </svg>
-      ),
-    },
-    {
-      num: "04",
-      title: isRtl ? "التعرف البصري على النصوص" : "OCR",
-      desc: isRtl ? "من الصور إلى بيانات مهيكلة." : "From images to structured data.",
-      icon: (
-        <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-          <polyline points="14 2 14 8 20 8" />
-          <line x1="16" y1="13" x2="8" y2="13" />
-          <line x1="16" y1="17" x2="8" y2="17" />
-          <polyline points="10 9 9 9 8 9" />
-        </svg>
-      ),
-    },
-    {
-      num: "05",
-      title: isRtl ? "الصوت واللغة" : "Speech & Language",
-      desc: isRtl ? "صوت، نص، فهم لغوي." : "Voice, text, understanding.",
-      icon: (
-        <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-          <line x1="4" y1="10" x2="4" y2="14" />
-          <line x1="8" y1="6" x2="8" y2="18" />
-          <line x1="12" y1="3" x2="12" y2="21" />
-          <line x1="16" y1="8" x2="16" y2="16" />
-          <line x1="20" y1="11" x2="20" y2="13" />
-        </svg>
-      ),
-    },
-    {
-      num: "06",
-      title: isRtl ? "أتمتة الذكاء الاصطناعي" : "AI Automation",
-      desc: isRtl ? "أتمتة. تحسين. توسع." : "Automate. Optimize. Scale.",
-      icon: (
-        <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-          <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
-          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-        </svg>
-      ),
-    },
-  ];
+  }[locale];
+
+  const goldColor = theme === "dark" ? "#D9B567" : "#BE943F";
+  const goldHover = theme === "dark" ? "#D9B567" : "#A87F30";
+  const textPrimary = theme === "dark" ? "#FDFBF7" : "#1A1A1C";
+  const textSecondary = theme === "dark" ? "#E4E2DD" : "#2D2D2F";
+  const textMuted = theme === "dark" ? "#9A9893" : "#6B6B6E";
+  const bgColor = theme === "dark" ? "#0A0A0B" : "#FDFBF7";
+  const surfaceColor = theme === "dark" ? "#121213" : "#FFFFFF";
+  const lineColor = theme === "dark" ? "#2A2A2C" : "#E8E4DD";
+  const lineGold = theme === "dark" ? "#D9B567" : "#BE943F";
+
+  // SVG Icons for each card
+  const cardIcons = {
+    network: (
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+        <circle cx="24" cy="12" r="4" />
+        <circle cx="12" cy="28" r="4" />
+        <circle cx="36" cy="28" r="4" />
+        <circle cx="6" cy="42" r="4" />
+        <circle cx="24" cy="42" r="4" />
+        <circle cx="42" cy="42" r="4" />
+        <line x1="24" y1="16" x2="12" y2="24" />
+        <line x1="24" y1="16" x2="36" y2="24" />
+        <line x1="12" y1="32" x2="6" y2="38" />
+        <line x1="12" y1="32" x2="24" y2="38" />
+        <line x1="36" y1="32" x2="24" y2="38" />
+        <line x1="36" y1="32" x2="42" y2="38" />
+        <line x1="24" y1="12" x2="24" y2="28" strokeDasharray="4 4" />
+      </svg>
+    ),
+    stateMachine: (
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+        <circle cx="24" cy="24" r="20" strokeDasharray="8 4" />
+        <circle cx="24" cy="24" r="12" />
+        <path d="M24 8v8M24 32v8M8 24h8M32 24h8" />
+        <circle cx="24" cy="24" r="4" fill="currentColor" />
+      </svg>
+    ),
+    vision: (
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+        <ellipse cx="24" cy="24" rx="20" ry="14" />
+        <ellipse cx="24" cy="24" rx="10" ry="7" />
+        <circle cx="24" cy="24" r="3" fill="currentColor" />
+        <path d="M4 24c0-11 9-14 20-14s20 3 20 14" strokeWidth="1" strokeDasharray="4 4" />
+      </svg>
+    ),
+    rl: (
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+        <path d="M8 40c0-15 12-22 20-22s20 7 20 22" />
+        <path d="M24 8v12M12 24h12M24 24h12" strokeWidth="1" strokeDasharray="4 4" />
+        <circle cx="24" cy="24" r="4" fill="currentColor" />
+        <path d="M34 30l4-4-4-4" />
+      </svg>
+    ),
+    graph: (
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+        <circle cx="14" cy="14" r="4" />
+        <circle cx="34" cy="14" r="4" />
+        <circle cx="14" cy="34" r="4" />
+        <circle cx="34" cy="34" r="4" />
+        <circle cx="24" cy="24" r="5" fill="currentColor" />
+        <line x1="18" y1="14" x2="22" y2="20" />
+        <line x1="30" y1="14" x2="26" y2="20" />
+        <line x1="18" y1="34" x2="22" y2="28" />
+        <line x1="30" y1="34" x2="26" y2="28" />
+        <line x1="14" y1="18" x2="20" y2="22" />
+        <line x1="14" y1="30" x2="20" y2="26" />
+        <line x1="34" y1="18" x2="28" y2="22" />
+        <line x1="34" y1="30" x2="28" y2="26" />
+      </svg>
+    ),
+    edge: (
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+        <rect x="8" y="12" width="32" height="24" rx="4" />
+        <path d="M16 24h16M24 16v16" strokeWidth="1" strokeDasharray="4 4" />
+        <path d="M40 24l6-6 6 6" />
+        <circle cx="24" cy="24" r="3" fill="currentColor" />
+      </svg>
+    ),
+  };
 
   return (
     <section
       id="ai-lab"
-      className="relative w-full bg-[#0B0B0D] dark:bg-[#0B0B0D] text-white py-20 lg:py-28 border-b border-white/10 overflow-hidden"
+      className="section-master relative"
+      style={{
+        minHeight: "780px",
+        backgroundColor: bgColor,
+        paddingTop: "100px",
+        paddingBottom: "100px",
+      }}
+      aria-labelledby="ai-lab-headline"
     >
-      {/* Background Subtle Tech Ambient */}
-      <div className="absolute inset-0 pointer-events-none opacity-20">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#D4AF37]/10 blur-[140px] rounded-full" />
+      {/* Background ornaments - dark theme uses subtle gold radial */}
+      <div className="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] rounded-full"
+          style={{
+            background: theme === "dark"
+              ? "radial-gradient(ellipse at center, rgba(217, 181, 103, 0.04) 0%, transparent 60%)"
+              : "radial-gradient(ellipse at center, rgba(190, 148, 63, 0.03) 0%, transparent 60%)",
+          }}
+        />
+        {/* Top left circuit */}
+        <svg className="absolute top-20 left-20 w-32 h-32" viewBox="0 0 100 100" style={{ opacity: 0.2 }}>
+          <circle cx="50" cy="50" r="45" fill="none" stroke={goldColor} strokeWidth="1" strokeDasharray="8 4" />
+          <circle cx="50" cy="50" r="30" fill="none" stroke={goldColor} strokeWidth="0.5" />
+        </svg>
+        {/* Bottom right neural */}
+        <svg className="absolute bottom-20 right-20 w-40 h-40" viewBox="0 0 120 120" style={{ opacity: 0.15 }}>
+          <rect x="10" y="10" width="100" height="100" rx="4" fill="none" stroke={goldColor} strokeWidth="0.5" />
+          <circle cx="35" cy="35" r="4" fill={goldColor} opacity="0.6" />
+          <circle cx="85" cy="35" r="4" fill={goldColor} opacity="0.6" />
+          <circle cx="35" cy="85" r="4" fill={goldColor} opacity="0.6" />
+          <circle cx="85" cy="85" r="4" fill={goldColor} opacity="0.6" />
+          <circle cx="60" cy="60" r="5" fill={goldColor} opacity="0.8" />
+          <line x1="35" y1="35" x2="60" y2="60" stroke={goldColor} strokeWidth="0.5" opacity="0.4" />
+          <line x1="85" y1="35" x2="60" y2="60" stroke={goldColor} strokeWidth="0.5" opacity="0.4" />
+          <line x1="35" y1="85" x2="60" y2="60" stroke={goldColor} strokeWidth="0.5" opacity="0.4" />
+          <line x1="85" y1="85" x2="60" y2="60" stroke={goldColor} strokeWidth="0.5" opacity="0.4" />
+        </svg>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header with Title and "EXPLORE MORE →" CTA */}
-        <ScrollReveal isRtl={isRtl} direction="up">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 sm:mb-16 gap-4 border-b border-white/10 pb-6">
-            <div>
-              <h2 className="font-serif font-bold text-3xl sm:text-4xl uppercase tracking-tight text-white">
-                {isRtl ? "مختبر الذكاء الاصطناعي" : "AI LAB"}
-              </h2>
-              <p className="mt-2 text-sm sm:text-base text-zinc-400 font-sans">
-                {isRtl
-                  ? "تجارب، أنظمة ذكية، وتطبيقات عملية مدعومة بأحدث النماذج."
-                  : "Experiments, intelligent systems, and practical AI applications."}
-              </p>
-            </div>
+      <div className="container-master relative z-10">
+        {/* Section Header */}
+        <div
+          className="mb-16 text-center"
+          style={{
+            opacity: 1,
+            transform: "translateY(0)",
+            transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
+          }}
+        >
+          <span className="font-sans font-medium tracking-widest uppercase text-sm caption-gold inline-block mb-6" style={{ letterSpacing: "0.12em" }}>
+            {content.headline}
+          </span>
+          <h2 id="ai-lab-headline" className="section-headline mx-auto mb-4" style={{ maxWidth: "600px" }}>
+            {content.headline}
+          </h2>
+          <p className="body-lg mx-auto" style={{ maxWidth: "700px", color: textSecondary }}>
+            {content.subheadline}
+          </p>
+        </div>
 
-            <Link
-              href={`/${locale}/projects`}
-              className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold tracking-wider uppercase text-[#D4AF37] hover:text-[#F3E5AB] transition-colors group"
+        {/* 6-Card Grid: 2 cols on mobile, 3 on tablet, 3 on desktop */}
+        <div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+          role="list"
+          aria-label={locale === "ar" ? "بطاقات مختبر الذكاء الاصطناعي" : "AI Lab research areas"}
+        >
+          {content.cards.map((card, index) => (
+            <article
+              key={card.title}
+              role="listitem"
+              className="group card-master relative overflow-hidden"
+              style={{
+                opacity: 1,
+                transform: hoveredCard === index
+                  ? "translateY(-8px)"
+                  : "translateY(0)",
+                transition: `all 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${index * 80}ms`,
+                boxShadow: hoveredCard === index
+                  ? (theme === "dark"
+                      ? "0 0 0 1px rgba(217, 181, 103, 0.5), 0 20px 40px rgba(0, 0, 0, 0.4)"
+                      : "0 0 0 1px rgba(190, 148, 63, 0.4), 0 20px 40px rgba(26, 26, 28, 0.12)")
+                  : undefined,
+                borderColor: hoveredCard === index ? lineGold : lineColor,
+              }}
+              onMouseEnter={() => setHoveredCard(index)}
+              onMouseLeave={() => setHoveredCard(null)}
             >
-              <span>{isRtl ? "استكشف المزيد" : "EXPLORE MORE"}</span>
-              <span className="transition-transform duration-200 group-hover:translate-x-1 rtl:group-hover:-translate-x-1">→</span>
-            </Link>
-          </div>
-        </ScrollReveal>
+              {/* Gold top accent line */}
+              <div
+                className="absolute top-0 left-0 right-0 h-1"
+                style={{
+                  background: `linear-gradient(90deg, transparent 0%, ${lineGold} 50%, transparent 100%)`,
+                  opacity: hoveredCard === index ? 1 : 0.4,
+                  transform: hoveredCard === index ? "scaleX(1)" : "scaleX(0.6)",
+                  transformOrigin: "center",
+                  transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                }}
+                aria-hidden="true"
+              />
 
-        {/* 6 AI Module Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-5">
-          {aiModules.map((mod, idx) => (
-            <ScrollReveal key={idx} delay={idx * 70} isRtl={isRtl} direction="up" className="h-full">
-              <TiltCard className="h-full flex flex-col justify-between p-6 rounded-2xl border border-white/10 hover:border-[#D4AF37]/60 bg-[#141418] hover:bg-[#18181E] transition-all duration-300 group hover:-translate-y-1 shadow-lg">
-                <div>
-                  {/* Icon in gold outline */}
-                  <div className="w-12 h-12 rounded-xl border border-[#D4AF37]/40 bg-[#D4AF37]/10 flex items-center justify-center text-[#D4AF37] mb-6 group-hover:bg-[#D4AF37] group-hover:text-black transition-colors">
-                    {mod.icon}
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="font-sans font-bold text-sm tracking-wide text-white group-hover:text-[#D4AF37] transition-colors leading-snug mb-2">
-                    {mod.title}
-                  </h3>
-
-                  {/* Subtitle / Micro-tagline */}
-                  <p className="text-xs text-zinc-400 leading-relaxed font-sans mb-4">
-                    {mod.desc}
-                  </p>
+              <div className="p-8 space-y-6">
+                {/* Icon */}
+                <div
+                  className="w-14 h-14 rounded-xl flex items-center justify-center transition-all duration-300"
+                  style={{
+                    backgroundColor: `rgba(190, 148, 63, 0.1)`,
+                    border: `1px solid ${lineGold}`,
+                    color: goldColor,
+                  }}
+                >
+                  {cardIcons[card.icon as keyof typeof cardIcons]}
                 </div>
 
-                {/* Bottom directional arrow */}
-                <div className="text-[#D4AF37] text-xs font-bold transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1 pt-2">
-                  →
+                {/* Title */}
+                <h3 className="font-display font-semibold text-lg lg:text-xl tracking-tight" style={{ color: textPrimary }}>
+                  {card.title}
+                </h3>
+
+                {/* Description */}
+                <p className="body" style={{ color: textSecondary, lineHeight: 1.65 }}>
+                  {card.description}
+                </p>
+
+                {/* Hover indicator */}
+                <div
+                  className="flex items-center gap-2 font-mono text-xs tracking-widest uppercase transition-all duration-300"
+                  style={{
+                    color: goldColor,
+                    opacity: hoveredCard === index ? 1 : 0,
+                    transform: hoveredCard === index ? "translateX(0)" : "translateX(-10px)",
+                  }}
+                >
+                  <span>{locale === "en" ? "ACTIVE RESEARCH" : "بحث نشط"}</span>
+                  <svg className="w-3 h-3 rtl-flip" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
                 </div>
-              </TiltCard>
-            </ScrollReveal>
+              </div>
+            </article>
           ))}
         </div>
+      </div>
+
+      {/* Gold divider at bottom */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1440px] h-px pointer-events-none" aria-hidden="true">
+        <div className="w-full h-full" style={{ background: `linear-gradient(90deg, transparent 0%, ${lineGold} 50%, transparent 100%)`, opacity: 0.4 }} />
       </div>
     </section>
   );

@@ -55,7 +55,7 @@ interface CartItem {
 
 function MenuIcon({
   type,
-  className = "w-5 h-5 text-brand-gold",
+  className = "w-5 h-5 text-gold",
 }: {
   type: CoffeeIconType;
   className?: string;
@@ -293,15 +293,15 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
         <div className="flex items-center gap-2">
           <button
             onClick={() => setIsCartOpen(true)}
-            className="relative px-3 py-1.5 rounded-lg bg-surface-secondary border border-border hover:border-brand-gold/50 text-text-primary text-xs font-mono flex items-center gap-1.5 transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-brand-gold/50 focus-visible:outline-none"
+            className="relative px-3 py-1.5 rounded-lg bg-surface-secondary border border-border hover:border-gold/50 text-text-primary text-xs font-mono flex items-center gap-1.5 transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-gold/50 focus-visible:outline-none"
             aria-label="Open Shopping Cart"
           >
-            <ShoppingBag className="w-3.5 h-3.5 text-brand-gold" />
+            <ShoppingBag className="w-3.5 h-3.5 text-gold" />
             <span className="hidden sm:inline font-bold">
               {isArabic ? "السلة" : "Cart"}
             </span>
             {totalItemsCount > 0 && (
-              <span className="px-1.5 py-0.2 rounded-full bg-brand-gold text-surface-dark text-[10px] font-bold">
+              <span className="px-2 py-1 rounded-full bg-gold text-inverse text-[10px] font-bold min-w-[44px] min-h-[44px] flex items-center justify-center">
                 {totalItemsCount}
               </span>
             )}
@@ -313,13 +313,13 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
         {/* Navigation Tabs Header */}
         <div className="flex items-center justify-between border-b border-border/80 pb-3 mb-5 flex-wrap gap-3">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full bg-brand-gold/15 border border-brand-gold/40 flex items-center justify-center text-brand-gold shadow-sm shrink-0">
-              <Coffee className="w-5 h-5 text-brand-gold" />
+            <div className="w-9 h-9 rounded-full bg-gold/10 border border-gold/40 flex items-center justify-center text-gold shadow-sm shrink-0">
+              <Coffee className="w-5 h-5 text-gold" />
             </div>
             <div>
               <div className="font-bold text-sm sm:text-base tracking-wide flex items-center gap-2">
                 <span>{isArabic ? "مقهى القهوة الذهبية" : "CAFENA ROASTERS"}</span>
-                <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-brand-gold/15 text-brand-gold border border-brand-gold/30">
+                <span className="text-[10px] font-mono px-3 py-1.5 rounded bg-gold/10 text-gold border border-gold/30 min-h-[44px] min-w-[44px] flex items-center justify-center">
                   EST. 2024
                 </span>
               </div>
@@ -333,32 +333,29 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
           <div className="flex items-center gap-1 bg-surface-secondary/70 p-1 rounded-lg border border-border text-xs font-medium">
             <button
               onClick={() => setActiveTab("menu")}
-              className={`px-3 py-1.5 rounded-md transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-brand-gold/50 focus-visible:outline-none ${
+              className={`px-3 py-1.5 rounded-md transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-gold/50 focus-visible:outline-none ${
                 activeTab === "menu"
-                  ? "bg-brand-gold text-surface-dark font-bold shadow"
+                  ? "bg-gold text-inverse font-bold shadow-gold-md"
                   : "text-text-muted hover:text-text-primary"
-              }`}
-            >
+              }`}>
               {isArabic ? "قائمة المشروبات" : "Coffee Menu"}
             </button>
             <button
               onClick={() => setActiveTab("story")}
-              className={`px-3 py-1.5 rounded-md transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-brand-gold/50 focus-visible:outline-none ${
+              className={`px-3 py-1.5 rounded-md transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-gold/50 focus-visible:outline-none ${
                 activeTab === "story"
-                  ? "bg-brand-gold text-surface-dark font-bold shadow"
+                  ? "bg-gold text-inverse font-bold shadow-gold-md"
                   : "text-text-muted hover:text-text-primary"
-              }`}
-            >
+              }`}>
               {isArabic ? "عن كافينا" : "Our Roastery"}
             </button>
             <button
               onClick={() => setActiveTab("contact")}
-              className={`px-3 py-1.5 rounded-md transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-brand-gold/50 focus-visible:outline-none ${
+              className={`px-3 py-1.5 rounded-md transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-gold/50 focus-visible:outline-none ${
                 activeTab === "contact"
-                  ? "bg-brand-gold text-surface-dark font-bold shadow"
+                  ? "bg-gold text-inverse font-bold shadow-gold-md"
                   : "text-text-muted hover:text-text-primary"
-              }`}
-            >
+              }`}>
               {isArabic ? "حجز طاولة وتواصل" : "Reservations"}
             </button>
           </div>
@@ -381,12 +378,11 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
                   <button
                     key={cat.id}
                     onClick={() => setSelectedCategory(cat.id)}
-                    className={`px-2.5 py-1.5 rounded-lg whitespace-nowrap transition-colors text-xs font-mono cursor-pointer focus-visible:ring-2 focus-visible:ring-brand-gold/50 focus-visible:outline-none ${
+                    className={`px-2.5 py-1.5 rounded-lg whitespace-nowrap transition-colors text-xs font-mono cursor-pointer focus-visible:ring-2 focus-visible:ring-gold/50 focus-visible:outline-none ${
                       selectedCategory === cat.id
-                        ? "bg-brand-gold/20 text-brand-gold border border-brand-gold/40 font-bold"
+                        ? "bg-gold/10 text-gold border border-gold/40 font-bold"
                         : "bg-surface border border-border/70 text-text-muted hover:text-text-primary"
-                    }`}
-                  >
+                    }`}>
                     {isArabic ? cat.ar : cat.en}
                   </button>
                 ))}
@@ -400,7 +396,7 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder={isArabic ? "ابحث عن مشروب أو محصول..." : "Search coffee or roast..."}
-                  className="w-full bg-surface border border-border rounded-lg pl-8 pr-3 rtl:pl-3 rtl:pr-8 py-1.5 text-xs text-text-primary placeholder:text-text-dim focus:outline-none focus:border-brand-gold/50 focus:ring-1 focus:ring-brand-gold/30 transition-colors"
+                  className="w-full bg-surface border border-border rounded-lg pl-8 pr-3 rtl:pl-3 rtl:pr-8 py-1.5 text-xs text-text-primary placeholder:text-text-dim focus:outline-none focus:border-gold/50 focus:ring-1 focus:ring-gold/30 transition-colors"
                 />
                 {searchQuery && (
                   <button
@@ -421,22 +417,22 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
                 return (
                   <div
                     key={item.id}
-                    className="bg-surface-secondary/40 border border-border hover:border-brand-gold/40 rounded-xl p-3.5 flex flex-col justify-between transition-all group hover:shadow-md"
+                    className="bg-surface-secondary/40 border border-border hover:border-gold/40 rounded-xl p-3.5 flex flex-col justify-between transition-all group hover:shadow-md"
                   >
                     <div>
                       <div className="flex items-start justify-between gap-2 mb-2">
-                        <div className="w-10 h-10 rounded-xl bg-brand-gold/10 border border-brand-gold/25 flex items-center justify-center shrink-0 group-hover:scale-105 group-hover:bg-brand-gold/15 transition-all">
-                          <MenuIcon type={item.iconType} className="w-5 h-5 text-brand-gold" />
+                        <div className="w-10 h-10 rounded-xl bg-gold/10 border border-gold/25 flex items-center justify-center shrink-0 group-hover:scale-105 group-hover:bg-gold/15 transition-all">
+                          <MenuIcon type={item.iconType} className="w-5 h-5 text-gold" />
                         </div>
                         {item.badgeEn && (
-                          <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full bg-brand-gold/15 text-brand-gold border border-brand-gold/30">
+                          <span className="text-[10px] font-mono font-semibold px-3 py-1.5 rounded-full bg-gold/10 text-gold border border-gold/30 min-h-[44px] min-w-[44px] flex items-center justify-center">
                             {isArabic ? item.badgeAr : item.badgeEn}
                           </span>
                         )}
                       </div>
 
-                      <div className="flex items-center gap-1 text-amber-400 text-xs mb-1">
-                        <Star className="w-3 h-3 fill-amber-400" />
+                      <div className="flex items-center gap-1 text-status-warning text-xs mb-1">
+                        <Star className="w-3 h-3 fill-current" />
                         <span className="font-bold">{item.rating}</span>
                         <span className="text-text-dim text-[10px]">/ 5.0</span>
                       </div>
@@ -450,7 +446,7 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
                     </div>
 
                     <div className="pt-2 border-t border-border/60 flex items-center justify-between">
-                      <div className="text-xs font-mono font-bold text-brand-gold">
+                      <div className="text-xs font-mono font-bold text-gold">
                         {item.price.toFixed(2)} <span className="text-[10px] text-text-muted">SAR</span>
                       </div>
 
@@ -458,24 +454,24 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
                         <div className="flex items-center gap-1.5 bg-surface border border-border rounded-lg p-0.5">
                           <button
                             onClick={() => updateQuantity(item.id, -1)}
-                            className="w-5 h-5 rounded flex items-center justify-center text-text-dim hover:text-text-primary hover:bg-surface-secondary transition-colors cursor-pointer"
+                            className="w-10 h-10 rounded flex items-center justify-center text-text-dim hover:text-text-primary hover:bg-surface-secondary transition-colors cursor-pointer min-w-[44px] min-h-[44px]"
                             aria-label="Decrease Quantity"
                           >
-                            <Minus className="w-3 h-3" />
+                            <Minus className="w-4 h-4" />
                           </button>
-                          <span className="text-xs font-mono font-bold px-1.5">{inCart.quantity}</span>
+                          <span className="text-xs font-mono font-bold px-3 min-w-[44px] text-center">{inCart.quantity}</span>
                           <button
                             onClick={() => updateQuantity(item.id, 1)}
-                            className="w-5 h-5 rounded flex items-center justify-center text-text-dim hover:text-text-primary hover:bg-surface-secondary transition-colors cursor-pointer"
+                            className="w-10 h-10 rounded flex items-center justify-center text-text-dim hover:text-text-primary hover:bg-surface-secondary transition-colors cursor-pointer min-w-[44px] min-h-[44px]"
                             aria-label="Increase Quantity"
                           >
-                            <Plus className="w-3 h-3" />
+                            <Plus className="w-4 h-4" />
                           </button>
                         </div>
                       ) : (
                         <button
                           onClick={() => addToCart(item)}
-                          className="py-1 px-2.5 rounded-lg bg-brand-gold text-surface-dark text-xs font-bold font-mono hover:brightness-110 active:scale-95 transition-all flex items-center gap-1 cursor-pointer shadow-sm"
+                          className="py-2 px-3.5 rounded-lg bg-gold text-inverse text-xs font-bold font-mono hover:brightness-110 active:scale-95 transition-all flex items-center gap-1 cursor-pointer shadow-sm min-h-[44px]"
                         >
                           <Plus className="w-3 h-3" />
                           <span>{isArabic ? "إضافة" : "Add"}</span>
@@ -499,7 +495,7 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
         {activeTab === "story" && (
           <div className="flex-1 flex flex-col gap-6 max-w-2xl mx-auto py-4">
             <div className="bg-surface-secondary/40 border border-border rounded-xl p-5 space-y-4">
-              <div className="flex items-center gap-2 text-brand-gold font-mono text-xs">
+              <div className="flex items-center gap-2 text-gold font-mono text-xs">
                 <Sparkles className="w-4 h-4" />
                 <span>{isArabic ? "فلسفة التحميص الحرفي" : "THE CAFENA ROASTING PHILOSOPHY"}</span>
               </div>
@@ -516,15 +512,15 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
 
               <div className="grid grid-cols-3 gap-3 pt-3 border-t border-border text-center font-mono">
                 <div className="p-2.5 rounded-lg bg-surface border border-border">
-                  <div className="text-base sm:text-lg font-bold text-brand-gold">100%</div>
+                  <div className="text-base sm:text-lg font-bold text-gold">100%</div>
                   <div className="text-[10px] text-text-dim">{isArabic ? "أرابيكا مختصة" : "Specialty Arabica"}</div>
                 </div>
                 <div className="p-2.5 rounded-lg bg-surface border border-border">
-                  <div className="text-base sm:text-lg font-bold text-brand-gold">86+</div>
+                  <div className="text-base sm:text-lg font-bold text-gold">86+</div>
                   <div className="text-[10px] text-text-dim">{isArabic ? "تقييم الجودة SCA" : "SCA Cupping Score"}</div>
                 </div>
                 <div className="p-2.5 rounded-lg bg-surface border border-border">
-                  <div className="text-base sm:text-lg font-bold text-brand-gold">48H</div>
+                  <div className="text-base sm:text-lg font-bold text-gold">48H</div>
                   <div className="text-[10px] text-text-dim">{isArabic ? "أقصى زمن تحميص" : "Fresh Roast Window"}</div>
                 </div>
               </div>
@@ -546,7 +542,7 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
               </p>
 
               {contactFeedback ? (
-                <div className="p-4 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center gap-2.5 text-xs">
+                <div className="p-4 rounded-lg bg-status-success/10 border border-status-success/30 text-status-success flex items-center gap-2.5 text-xs">
                   <CheckCircle2 className="w-4 h-4 shrink-0" />
                   <span>{contactFeedback}</span>
                 </div>
@@ -569,7 +565,7 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
                     <input
                       required
                       defaultValue="Ahmad Al-Mansoor"
-                      className="w-full bg-surface border border-border rounded-lg px-3 py-2 text-text-primary focus:outline-none focus:border-brand-gold/50 focus:ring-1 focus:ring-brand-gold/30"
+                      className="w-full bg-surface border border-border rounded-lg px-3 py-2 text-text-primary focus:outline-none focus:border-gold/50 focus:ring-1 focus:ring-gold/30"
                     />
                   </div>
                   <div>
@@ -579,7 +575,7 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
                     <input
                       required
                       defaultValue="+966 50 123 4567"
-                      className="w-full bg-surface border border-border rounded-lg px-3 py-2 text-text-primary focus:outline-none focus:border-brand-gold/50 focus:ring-1 focus:ring-brand-gold/30 font-mono"
+                      className="w-full bg-surface border border-border rounded-lg px-3 py-2 text-text-primary focus:outline-none focus:border-gold/50 focus:ring-1 focus:ring-gold/30 font-mono"
                     />
                   </div>
                   <div>
@@ -589,12 +585,12 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
                     <textarea
                       rows={2}
                       defaultValue={isArabic ? "حجز طاولة لـ شخصين لتجربة قهوة V60 الحرازية" : "Table for 2 to experience the V60 Harazi pour-over."}
-                      className="w-full bg-surface border border-border rounded-lg px-3 py-2 text-text-primary focus:outline-none focus:border-brand-gold/50 focus:ring-1 focus:ring-brand-gold/30"
+                      className="w-full bg-surface border border-border rounded-lg px-3 py-2 text-text-primary focus:outline-none focus:border-gold/50 focus:ring-1 focus:ring-gold/30"
                     />
                   </div>
                   <button
                     type="submit"
-                    className="w-full py-2.5 rounded-lg bg-brand-gold text-surface-dark font-bold hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2 shadow cursor-pointer"
+                    className="w-full py-2.5 rounded-lg bg-gold text-inverse font-bold hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2 shadow-gold-md cursor-pointer"
                   >
                     <Send className="w-3.5 h-3.5" />
                     <span>{isArabic ? "إرسال طلب الحجز" : "Submit Reservation"}</span>
@@ -611,7 +607,7 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
             <div className="w-full max-w-sm bg-surface border-l rtl:border-l-0 rtl:border-r border-border h-full flex flex-col p-4 sm:p-5 shadow-2xl animate-fade-in font-sans">
               <div className="flex items-center justify-between border-b border-border pb-3 mb-3">
                 <div className="flex items-center gap-2 font-mono">
-                  <ShoppingBag className="w-4 h-4 text-brand-gold" />
+                  <ShoppingBag className="w-4 h-4 text-gold" />
                   <h3 className="font-bold text-sm">
                     {isArabic ? "سلة مشتريات كافينا" : "Cafena Roastery Cart"} ({totalItemsCount})
                   </h3>
@@ -633,14 +629,14 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
                     className="p-2.5 rounded-lg bg-surface-secondary/40 border border-border flex items-center justify-between gap-2 text-xs"
                   >
                     <div className="flex items-center gap-2.5 min-w-0">
-                      <div className="w-8 h-8 rounded-lg bg-brand-gold/10 border border-brand-gold/25 flex items-center justify-center shrink-0">
-                        <MenuIcon type={ci.item.iconType} className="w-4 h-4 text-brand-gold" />
+                      <div className="w-8 h-8 rounded-lg bg-gold/10 border border-gold/25 flex items-center justify-center shrink-0">
+                        <MenuIcon type={ci.item.iconType} className="w-4 h-4 text-gold" />
                       </div>
                       <div className="truncate">
                         <div className="font-bold text-text-primary truncate">
                           {isArabic ? ci.item.nameAr : ci.item.nameEn}
                         </div>
-                        <div className="text-[11px] font-mono text-brand-gold">
+                        <div className="text-[11px] font-mono text-gold">
                           {ci.item.price.toFixed(2)} SAR
                         </div>
                       </div>
@@ -666,7 +662,7 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
                       </div>
                       <button
                         onClick={() => removeItem(ci.item.id)}
-                        className="text-text-dim hover:text-rose-400 p-1 transition-colors cursor-pointer"
+                        className="text-text-dim hover:text-status-error p-1 transition-colors cursor-pointer"
                         aria-label="Remove Item"
                       >
                         <Trash2 className="w-3.5 h-3.5" />
@@ -695,7 +691,7 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
                   </div>
                   <div className="flex justify-between font-bold text-sm text-text-primary border-t border-border/60 pt-1.5">
                     <span>{isArabic ? "الإجمالي النهائي:" : "Final Total:"}</span>
-                    <span className="text-brand-gold">{total.toFixed(2)} SAR</span>
+                    <span className="text-gold">{total.toFixed(2)} SAR</span>
                   </div>
 
                   <div className="pt-2 flex gap-2">
@@ -704,14 +700,14 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
                         setIsCartOpen(false);
                         setReceiptModal(true);
                       }}
-                      className="flex-1 py-2.5 rounded-lg bg-brand-gold text-surface-dark font-bold text-xs hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-1.5 shadow cursor-pointer"
+                      className="flex-1 py-2.5 rounded-lg bg-gold text-inverse font-bold text-xs hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-1.5 shadow-gold-md cursor-pointer"
                     >
                       <Receipt className="w-3.5 h-3.5" />
                       <span>{isArabic ? "تأكيد الطلب والمحاكاة" : "Simulate Checkout"}</span>
                     </button>
                     <button
                       onClick={clearCart}
-                      className="p-2.5 rounded-lg bg-surface border border-border text-text-dim hover:text-rose-400 transition-colors cursor-pointer"
+                      className="p-2.5 rounded-lg bg-surface border border-border text-text-dim hover:text-status-error transition-colors cursor-pointer"
                       title={isArabic ? "إفراغ السلة" : "Empty Cart"}
                     >
                       <Trash2 className="w-4 h-4" />
@@ -726,10 +722,10 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
         {/* ORDER RECEIPT MODAL */}
         {receiptModal && (
           <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4">
-            <div className="w-full max-w-md bg-surface border border-brand-gold/40 rounded-xl p-5 shadow-2xl space-y-4 font-mono">
+            <div className="w-full max-w-md bg-surface border border-gold/40 rounded-xl p-5 shadow-2xl space-y-4 font-mono">
               <div className="flex items-center justify-between border-b border-border pb-2.5">
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+                  <CheckCircle2 className="w-5 h-5 text-status-success" />
                   <h3 className="font-bold text-sm text-text-primary">
                     {isArabic ? "إيصال طلب المحاكاة الإلكتروني" : "Order Receipt Preview"}
                   </h3>
@@ -754,7 +750,7 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
                 </div>
                 <div className="flex justify-between text-text-dim">
                   <span>DISPATCH:</span>
-                  <span className="text-emerald-400">COUNTER PICKUP // READY</span>
+                  <span className="text-status-success">COUNTER PICKUP // READY</span>
                 </div>
 
                 <div className="border-t border-dashed border-border/80 my-2 pt-2 space-y-1">
@@ -768,7 +764,7 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
                   ))}
                 </div>
 
-                <div className="border-t border-border pt-2 flex justify-between font-bold text-brand-gold text-xs">
+                <div className="border-t border-border pt-2 flex justify-between font-bold text-gold text-xs">
                   <span>TOTAL PAID:</span>
                   <span>{total.toFixed(2)} SAR</span>
                 </div>
@@ -785,7 +781,7 @@ export function CafenaSimulation({ locale = "en", isRtl = false }: DemoProps) {
                   setReceiptModal(false);
                   clearCart();
                 }}
-                className="w-full py-2 bg-brand-gold text-surface-dark font-bold text-xs rounded-lg hover:brightness-110 transition-all cursor-pointer"
+                className="w-full py-2 bg-gold text-inverse font-bold text-xs rounded-lg hover:brightness-110 transition-all cursor-pointer"
               >
                 {isArabic ? "إغلاق وبدء طلب جديد" : "Close & Start New Order"}
               </button>

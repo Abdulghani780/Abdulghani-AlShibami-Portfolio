@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="712" viewBox="0 0 400 712">
+  <defs>
+    <linearGradient id="screenBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0D1117"/>
+      <stop offset="100%" style="stop-color:#161B22"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="400" height="712" fill="url(#screenBg)"/>
+  <rect x="8" y="8" width="384" height="696" fill="none" stroke="#BE943F" stroke-width="1" rx="12" opacity="0.3"/>
+  <rect x="16" y="16" width="368" height="680" fill="#0D1117" rx="8" stroke="#2A2A2C" stroke-width="1"/>
+  <text x="200" y="40" font-family="monospace" font-size="10" fill="#8B949E" text-anchor="middle">9:41 AM  📶  🔋 100%</text>
+  <rect x="16" y="48" width="368" height="60" fill="#161B22"/>
+  <text x="200" y="85" font-family="Georgia, serif" font-size="18" font-weight="600" fill="#BE943F" text-anchor="middle">YUSRA</text>
+  <text x="200" y="102" font-family="monospace" font-size="9" fill="#8B949E" text-anchor="middle" letter-spacing="0.08em">Team Collaboration</text>
+  
+  <!-- Team members -->
+  <g fill="#1C2128" stroke="#30363D" stroke-width="1">
+    <rect x="24" y="130" width="352" height="100" rx="8"/>
+    <rect x="24" y="250" width="352" height="100" rx="8"/>
+    <rect x="24" y="370" width="352" height="100" rx="8"/>
+    <rect x="24" y="490" width="352" height="100" rx="8"/>
+  </g>
+  
+  <g fill="#E6EDF3">
+    <!-- Member 1 -->
+    <circle cx="50" cy="180" r="28" fill="#BE943F" opacity="0.3"/>
+    <text x="50" y="185" font-family="Georgia, serif" font-size="20" font-weight="600" fill="#BE943F" text-anchor="middle">AH</text>
+    <text x="90" y="165" font-family="monospace" font-size="12" font-weight="600">Ahmed Hassan</text>
+    <text x="90" y="185" font-family="monospace" font-size="10" fill="#8B949E">Lead Data Scientist</text>
+    <text x="90" y="205" font-family="monospace" font-size="10" fill="#3FB950">● Online • 3 tasks</text>
+    
+    <!-- Member 2 -->
+    <circle cx="50" cy="300" r="28" fill="#58A6FF" opacity="0.3"/>
+    <text x="50" y="305" font-family="Georgia, serif" font-size="20" font-weight="600" fill="#58A6FF" text-anchor="middle">SR</text>
+    <text x="90" y="285" font-family="monospace" font-size="12" font-weight="600">Sara Rahman</text>
+    <text x="90" y="305" font-family="monospace" font-size="10" fill="#8B949E">ML Engineer</text>
+    <text x="90" y="325" font-family="monospace" font-size="10" fill="#3FB950">● Online • 2 tasks</text>
+    
+    <!-- Member 3 -->
+    <circle cx="50" cy="420" r="28" fill="#A371F7" opacity="0.3"/>
+    <text x="50" y="425" font-family="Georgia, serif" font-size="20" font-weight="600" fill="#A371F7" text-anchor="middle">MK</text>
+    <text x="90" y="405" font-family="monospace" font-size="12" font-weight="600">Mohammed Khalid</text>
+    <text x="90" y="425" font-family="monospace" font-size="10" fill="#8B949E">Backend Engineer</text>
+    <text x="90" y="445" font-family="monospace" font-size="10" fill="#F85149">○ Away • 1 task</text>
+    
+    <!-- Member 4 -->
+    <circle cx="50" cy="540" r="28" fill="#F7901A" opacity="0.3"/>
+    <text x="50" y="545" font-family="Georgia, serif" font-size="20" font-weight="600" fill="#F7901A" text-anchor="middle">LA</text>
+    <text x="90" y="525" font-family="monospace" font-size="12" font-weight="600">Layla Ahmed</text>
+    <text x="90" y="545" font-family="monospace" font-size="10" fill="#8B949E">DevOps Engineer</text>
+    <text x="90" y="565" font-family="monospace" font-size="10" fill="#3FB950">● Online • 4 tasks</text>
+  </g>
+  
+  <!-- Activity feed -->
+  <rect x="24" y="610" width="352" height="60" fill="#1C2128" rx="8" stroke="#30363D" stroke-width="1"/>
+  <text x="40" y="645" font-family="monospace" font-size="10" fill="#E6EDF3">💬 Ahmed commented on "Q4 Forecast Model" • 5 min ago</text>
+  
+  <text x="200" y="720" font-family="monospace" font-size="9" fill="#6B6B6E" text-anchor="middle">PLACEHOLDER — 400×712px</text>
+  <text x="200" y="735" font-family="monospace" font-size="9" fill="#6B6B6E" text-anchor="middle">yusra-screen-4.png</text>
+</svg>

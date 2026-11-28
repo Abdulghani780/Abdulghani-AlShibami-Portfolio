@@ -67,7 +67,7 @@ export function DemoToolbar({
             type="button"
             onClick={onToggleTerminal}
             title={locale === "ar" ? "تبديل شاشة الأوامر" : "Toggle Terminal Console"}
-            className={`inline-flex items-center gap-1.5 text-xs font-mono px-2.5 py-1.5 rounded border transition-all active:scale-95 ${
+            className={`inline-flex items-center gap-1.5 text-xs font-mono px-3 py-2.5 rounded border transition-all active:scale-95 min-h-[44px] min-w-[44px] ${
               isTerminalOpen
                 ? "bg-emerald-500/15 border-emerald-500/60 text-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.2)]"
                 : "bg-white/[0.04] border-white/[0.08] text-white/70 hover:text-white hover:border-white/20"
@@ -82,7 +82,7 @@ export function DemoToolbar({
           type="button"
           onClick={onReset}
           title={locale === "ar" ? "إعادة ضبط الحالة" : "Reset Simulation State"}
-          className="inline-flex items-center gap-1.5 text-xs font-mono px-2.5 py-1.5 rounded bg-white/[0.04] border border-white/[0.08] text-white/70 hover:text-white hover:border-indigo-500/40 transition-all active:scale-95"
+          className="inline-flex items-center gap-1.5 text-xs font-mono px-3 py-2.5 rounded bg-white/[0.04] border border-white/[0.08] text-white/70 hover:text-white hover:border-indigo-500/40 transition-all active:scale-95 min-h-[44px] min-w-[44px]"
         >
           <RotateCcw className="w-3.5 h-3.5" />
           <span className="hidden sm:inline">{locale === "ar" ? "إعادة الضبط" : "Reset"}</span>
@@ -92,7 +92,7 @@ export function DemoToolbar({
           type="button"
           onClick={onToggleFullscreen}
           title={isFullscreen ? (locale === "ar" ? "إنهاء ملء الشاشة" : "Exit Fullscreen") : (locale === "ar" ? "ملء الشاشة" : "Fullscreen")}
-          className="inline-flex items-center gap-1.5 text-xs font-mono px-2.5 py-1.5 rounded bg-white/[0.04] border border-white/[0.08] text-white/70 hover:text-white hover:border-indigo-500/40 transition-all active:scale-95"
+          className="inline-flex items-center gap-1.5 text-xs font-mono px-3 py-2.5 rounded bg-white/[0.04] border border-white/[0.08] text-white/70 hover:text-white hover:border-indigo-500/40 transition-all active:scale-95 min-h-[44px] min-w-[44px]"
         >
           {isFullscreen ? <Minimize2 className="w-3.5 h-3.5" /> : <Maximize2 className="w-3.5 h-3.5" />}
           <span className="hidden sm:inline">

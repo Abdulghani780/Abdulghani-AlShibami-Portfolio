@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Locale } from "@/lib/i18n/dictionaries";
+import { cn } from "@/lib/utils";
 
 export function LanguageSwitcher({ currentLocale }: { currentLocale: Locale }) {
   const pathname = usePathname();
@@ -13,11 +14,12 @@ export function LanguageSwitcher({ currentLocale }: { currentLocale: Locale }) {
   const targetPath = pathname
     ? pathname.replace(new RegExp(`^/${currentLocale}`), `/${targetLocale}`)
     : `/${targetLocale}`;
+  const isRtl = currentLocale === "ar";
 
   return (
     <Link
       href={targetPath}
-      className="inline-flex items-center gap-1.5 h-8 px-2.5 rounded-lg border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 hover:border-gold-primary/50 text-zinc-700 dark:text-zinc-300 font-mono text-[11px] font-medium tracking-wider transition-all duration-200"
+      className={cn("inline-flex items-center gap-1.5 h-11 px-3 rounded-lg border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 hover:border-gold-primary/50 text-zinc-700 dark:text-zinc-300 text-[11px] font-medium tracking-wider transition-all duration-200 min-w-[44px]", isRtl ? "font-arabic" : "font-mono")}
       aria-label={`Switch language to ${targetLocale === "en" ? "English" : "Arabic"}`}
       title={currentLocale === "en" ? "التحويل إلى اللغة العربية" : "Switch to English"}
     >
@@ -51,8 +53,8 @@ export function LanguageSwitcher({ currentLocale }: { currentLocale: Locale }) {
         <span
           className={
             currentLocale === "ar"
-              ? "font-bold text-gold-dark dark:text-gold-light font-sans"
-              : "text-zinc-400 dark:text-zinc-500 font-sans"
+              ? "font-bold text-gold-dark dark:text-gold-light"
+              : "text-zinc-400 dark:text-zinc-500"
           }
         >
           عربي

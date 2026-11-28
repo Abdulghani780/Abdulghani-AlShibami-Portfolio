@@ -1,73 +1,150 @@
+"use client";
+
 import React from "react";
-import Link from "next/link";
-import Image from "next/image";
 import { cn } from "@/lib/utils";
 
-interface AsLogoProps {
+export interface AsLogoProps {
   className?: string;
-  showWordmark?: boolean;
-  theme?: "light" | "dark" | "auto";
-  locale?: string;
   size?: number;
+  variant?: "default" | "minimal" | "navbar" | "footer";
+  locale?: "en" | "ar";
 }
 
+/**
+ * AS Monogram — The brand mark
+ * A in dark/ink, S in gold
+ * Used across navbar, hero, footer
+ */
 export function AsMonogram({
   size = 42,
   className,
-}: {
-  size?: number;
-  className?: string;
-  colorScheme?: string;
-}) {
+  variant = "default",
+  locale = "en",
+}: AsLogoProps) {
+  const isRtl = locale === "ar";
+  const isDark = typeof document !== "undefined" ? document.documentElement.classList.contains("dark") : true;
+  
+  // Colors based on theme
+  const aColor = isDark ? "#FDFBF7" : "#1A1A1C"; // ivory on dark, ink on light
+  const sColor = isDark ? "#D9B567" : "#BE943F"; // gold-on-dark on dark, gold on light
+  
+  const borderColor = isDark ? "rgba(217, 181, 103, 0.4)" : "rgba(190, 148, 63, 0.4)";
+  const hoverBorderColor = isDark ? "#D9B567" : "#BE943F";
+  const bgColor = isDark ? "#121213" : "#FFFFFF";
+  const shadow = isDark 
+    ? "0 0 0 1px rgba(217, 181, 103, 0.4), 0 2px 8px rgba(217, 181, 103, 0.15)"
+    : "0 0 0 1px rgba(190, 148, 63, 0.3), 0 2px 8px rgba(190, 148, 63, 0.12)";
+  const hoverShadow = isDark
+    ? "0 0 0 1px rgba(217, 181, 103, 0.6), 0 8px 32px rgba(217, 181, 103, 0.25)"
+    : "0 0 0 1px rgba(190, 148, 63, 0.5), 0 8px 32px rgba(190, 148, 63, 0.2)";
+
+  const variantStyles = {
+    default: "transition-all duration-200 ease-out",
+    minimal: "transition-all duration-200 ease-out",
+    navbar: "transition-all duration-200 ease-out",
+    footer: "transition-all duration-200 ease-out",
+  };
+
+  const sizeStyles = {
+    default: { width: size, height: size, fontSize: size * 0.45 },
+    minimal: { width: size, height: size, fontSize: size * 0.45 },
+    navbar: { width: 36, height: 36, fontSize: 16 },
+    footer: { width: 48, height: 48, fontSize: 21 },
+  };
+
+  const style = sizeStyles[variant];
+  const borderRadius = variant === "navbar" ? "6px" : "8px";
+
   return (
     <div
-      style={{ width: size, height: size }}
       className={cn(
-        "relative rounded-xl overflow-hidden shrink-0 border border-[#D4AF37]/40 bg-[#0B0B0C] shadow-md shadow-black/30 group-hover:border-[#D4AF37]/80 group-hover:shadow-[0_0_15px_rgba(212,175,55,0.25)] transition-all duration-300",
+        "inline-flex items-center justify-center font-display font-bold select-none",
+        variantStyles[variant],
         className
       )}
+      style={{
+        ...style,
+        borderRadius,
+        border: `2px solid ${borderColor}`,
+        backgroundColor: bgColor,
+        boxShadow: shadow,
+        color: aColor,
+      }}
+      onMouseEnter={(e) => {
+        const target = e.currentTarget as HTMLElement;
+        target.style.borderColor = hoverBorderColor;
+        target.style.boxShadow = hoverShadow;
+      }}
+      onMouseLeave={(e) => {
+        const target = e.currentTarget as HTMLElement;
+        target.style.borderColor = borderColor;
+        target.style.boxShadow = shadow;
+      }}
+      aria-hidden="true"
     >
-      <Image
-        src="/images/brand/as-logo-3d.png"
-        alt="AS 3D Monogram - Abdulghani Al-Shibami"
-        width={size * 2}
-        height={size * 2}
-        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-        priority
-      />
+      <span style={{ letterSpacing: "-0.02em" }}>
+        A<span style={{ color: sColor }}>S</span>
+      </span>
     </div>
   );
 }
 
-export function AsLogo({
+/**
+ * AS Logo with wordmark
+ * Used in hero section and footer
+ */
+export function AsLogoWithWordmark({
   className,
-  showWordmark = true,
-  theme = "auto",
   locale = "en",
-  size = 42,
-}: AsLogoProps) {
+  size = "default",
+}: {
+  className?: string;
+  locale?: "en" | "ar";
+  size?: "default" | "large";
+}) {
   const isRtl = locale === "ar";
+  const isDark = typeof document !== "undefined" ? document.documentElement.classList.contains("dark") : true;
+  
+  const aColor = isDark ? "#FDFBF7" : "#1A1A1C";
+  const sColor = isDark ? "#D9B567" : "#BE943F";
+  const textColor = isDark ? "#FDFBF7" : "#1A1A1C";
+  const mutedColor = isDark ? "#9A9893" : "#6B6B6E";
+
+  const monogramSize = size === "large" ? 56 : 42;
+  const fontSize = size === "large" ? 28 : 20;
+  const roleFontSize = size === "large" ? 13 : 11;
 
   return (
-    <Link
-      href={`/${locale}`}
-      className={cn("flex items-center gap-2.5 sm:gap-3.5 group focus:outline-none shrink-0", className)}
-      aria-label="Abdulghani Al-Shibami — Home"
-    >
-      <AsMonogram size={size} className="shrink-0" />
-
-      {showWordmark && (
+    <div className={cn("flex items-center gap-4", className)}>
+      <AsMonogram size={monogramSize} variant="default" locale={locale} />
+      <div className="flex flex-col" dir={isRtl ? "rtl" : "ltr"}>
         <span
-          className={cn(
-            "font-sans font-black text-[13px] sm:text-[14px] xl:text-[15px] tracking-[0.14em] uppercase transition-colors leading-none select-none whitespace-nowrap",
-            theme === "dark"
-              ? "text-white group-hover:text-[#E2C366]"
-              : "text-zinc-950 dark:text-white group-hover:text-[#B88E1F] dark:group-hover:text-[#E2C366]"
-          )}
+          className="font-display font-bold tracking-tight"
+          style={{
+            fontSize: fontSize,
+            lineHeight: 1.1,
+            color: textColor,
+            letterSpacing: "-0.02em",
+          }}
         >
-          {isRtl ? "عبدالغني الشبامي" : "ABDULGHANI AL-SHIBAMI"}
+          {locale === "ar" ? "عَبْدُالْغَنِيُّ" : "ABDULGHANI"}{" "}
+          <span style={{ color: sColor }}>
+            {locale === "ar" ? "الشبامي" : "AL-SHIBAMI"}
+          </span>
         </span>
-      )}
-    </Link>
+        <span
+          className="font-sans tracking-widest uppercase"
+          style={{
+            fontSize: roleFontSize,
+            lineHeight: 1.4,
+            color: mutedColor,
+            letterSpacing: "0.12em",
+            marginTop: 2,
+          }}
+        >
+          {locale === "ar" ? "مُصَمِّمُ الْأَنْظِمَةِ الْمُسْتَقِلَّة" : "AUTONOMOUS SYSTEMS ARCHITECT"}
+        </span>
+      </div>
+    </div>
   );
 }

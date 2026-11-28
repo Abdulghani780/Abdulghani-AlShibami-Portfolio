@@ -6,6 +6,7 @@ import { projectRepository } from "@/lib/services/projectRepository";
 import { dictionaries } from "@/lib/i18n/dictionaries";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { ProjectCatalogView } from "@/components/features/projects/ProjectCatalogView";
 
 interface ProjectsPageProps {
@@ -80,10 +81,11 @@ export default async function ProjectsPage({ params }: ProjectsPageProps) {
     <div className="py-12 sm:py-16 space-y-12">
       <Container>
         {/* Catalog Header Deck */}
+        <ScrollReveal isRtl={typedLocale === "ar"} direction="up">
         <div className="border border-hairline bg-surface p-6 sm:p-10 space-y-6">
           <div className="flex flex-wrap items-center justify-between gap-4 border-b border-hairline/60 pb-4">
             <div className="flex items-center gap-2 font-mono text-xs text-gold">
-              <Badge variant="gold" dot dotColor="emerald">
+              <Badge variant="brand" dot dotColor="emerald">
                 {dict.projectsPage.statusCompleted}
               </Badge>
               <span className="text-content-muted hidden sm:inline">
@@ -105,6 +107,7 @@ export default async function ProjectsPage({ params }: ProjectsPageProps) {
             </p>
           </div>
         </div>
+        </ScrollReveal>
       </Container>
 
       {/* Catalog View (Filters, Featured, Grid, Empty State) */}

@@ -1,194 +1,409 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { Locale } from "@/lib/i18n/dictionaries";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import { TiltCard } from "@/components/ui/TiltCard";
+import { AsLogoWithWordmark } from "@/components/ui/AsLogo";
+import { cn } from "@/lib/utils";
 
-export function AboutSection({ locale }: { locale: Locale }) {
+interface AboutSectionProps {
+  locale: "en" | "ar";
+}
+
+export function AboutSection({ locale }: AboutSectionProps) {
   const isRtl = locale === "ar";
+  const [theme, setTheme] = useState<"light" | "dark">("dark");
 
-  const corePillars = [
-    {
-      title: isRtl ? "تكنولوجيا المعلومات" : "Information Technology",
-      icon: (
-        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-          <rect x="2" y="3" width="20" height="14" rx="2" />
-          <line x1="8" y1="21" x2="16" y2="21" />
-          <line x1="12" y1="17" x2="12" y2="21" />
-        </svg>
-      ),
+  const content = {
+    en: {
+      headline: "WHO IS ABDULGHANI",
+      lead: "I'm an Autonomous Systems Architect and AI Engineering Leader with a decade of experience building systems that think, adapt, and scale. My work sits at the intersection of distributed systems, machine learning, and real-time infrastructure — where theoretical elegance meets production reality.",
+      pillars: [
+        {
+          title: "AUTONOMOUS SYSTEMS",
+          description: "Designing self-governing distributed state machines that process 100K+ transitions/second with sub-millisecond latency and zero-downtime deployments.",
+          icon: "stateMachine",
+        },
+        {
+          title: "AI ENGINEERING",
+          description: "Building production ML pipelines, multi-agent orchestration frameworks, and computer vision systems that operate reliably in constrained environments.",
+          icon: "brain",
+        },
+        {
+          title: "ENTERPRISE ARCHITECTURE",
+          description: "Leading digital transformation for government and enterprise — legacy modernization, ITIL service management, and cloud-native migration strategies.",
+          icon: "building",
+        },
+      ],
+      timeline: [
+        {
+          year: "2024",
+          title: "AI ENGINEERING LEAD",
+          org: "Yusra Health — Sana'a, Yemen",
+          description: "Architected multi-agent clinical decision support system serving 500K+ patients. Reduced diagnosis latency from 45min to 2.3sec.",
+        },
+        {
+          year: "2022",
+          title: "SENIOR SYSTEMS ARCHITECT",
+          org: "Campus IT Tracker — Sana'a, Yemen",
+          description: "Led enterprise ITIL transformation for university infrastructure. 40% cost reduction, 99.9% uptime across 15 campuses.",
+        },
+        {
+          year: "2020",
+          title: "LEAD DEVELOPER",
+          org: "MetaAlgorithm Lab — Remote",
+          description: "Built interactive algorithm visualization platform used by 10K+ CS students globally. Open-source, 2.4K GitHub stars.",
+        },
+        {
+          year: "2018",
+          title: "SOFTWARE ENGINEER",
+          org: "Nexora — Sana'a, Yemen",
+          description: "Developed high-performance e-commerce platform processing 50K orders/day. Microservices, event-driven, cloud-native.",
+        },
+        {
+          year: "2016",
+          title: "JUNIOR DEVELOPER",
+          org: "Early Career — Sana'a, Yemen",
+          description: "Full-stack development across desktop, web, and mobile. C#, Java, PHP. Foundation in clean architecture and systems thinking.",
+        },
+      ],
+      quote: "Code is not the artifact. The system behavior it produces is. Everything else is implementation detail.",
+      quoteAuthor: "— Abdulghani Al-Shibami",
+      yemenImageAlt: "Sana'a, Yemen — Historic Old City Architecture",
     },
-    {
-      title: isRtl ? "تطوير البرمجيات" : "Software Development",
-      icon: (
-        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-          <polyline points="16 18 22 12 16 6" />
-          <polyline points="8 6 2 12 8 18" />
-        </svg>
-      ),
+    ar: {
+      headline: "مَنْ هُوَ عَبْدُالْغَنِي",
+      lead: "أنا مصمم أنظمة مستقل وقائد هندسة ذكاء اصطناعي مع عقد من الخبرة في بناء أنظمة تفكر، وتتكيف، وتتحمل. عملي يقع عند تقاطع الأنظمة الموزعة، والتعلم الآلي، والبنية التحتية في الوقت الفعلي — حيث تلتقي الأناقة النظرية بواقع الإنتاج.",
+      pillars: [
+        {
+          title: "الأنظمة المستقلة",
+          description: "تصميم آلات حالة موزعة ذاتية الحكم تعالج ١٠٠ ألف+ انتقال/ثانية مع كمون دون الميلي ثانية ونشر دون توقف.",
+          icon: "stateMachine",
+        },
+        {
+          title: "هندسة الذكاء الاصطناعي",
+          description: "بناء خطوط أنابيب تعلم آلي إنتاجية، وأطر تنسيق متعددة الوكلاء، وأنظمة رؤية حاسوبية تعمل بشكل موثوق في بيئات مقيدة.",
+          icon: "brain",
+        },
+        {
+          title: "معمارية المؤسسات",
+          description: "قيادة التحول الرقمي للحكومات والمؤسسات — تحديث الأنظمة القديمة، وإدارة خدمات ITIL، واستراتيجيات الهجرة السحابية الأصلية.",
+          icon: "building",
+        },
+      ],
+      timeline: [
+        {
+          year: "٢٠٢٤",
+          title: "قائد هندسة الذكاء الاصطناعي",
+          org: "صحة يسرى — صنعاء، اليمن",
+          description: "صمم نظام دعم قراري سريري متعدد الوكلاء يخدم ٥٠٠ ألف مريض. قلل زمن التشخيص من ٤٥ دقيقة إلى ٢.٣ ثانية.",
+        },
+        {
+          year: "٢٠٢٢",
+          title: "مصمم أنظمة أول",
+          org: "نظام تتبع الحرم الجامعي — صنعاء، اليمن",
+          description: "قاد تحول ITIL المؤسسي لبنية الجامعة التحتية. تقليل التكلفة ٤٠٪، توفر ٩٩.٩٪ عبر ١٥ حرمًا جامعيًا.",
+        },
+        {
+          year: "٢٠٢٠",
+          title: "مطور رئيسي",
+          org: "مختبر ميتاألغوريثم — عن بعد",
+          description: "بنى منصة تفاعلية لتصور الخوارزميات يستخدمها ١٠ آلاف+ طالب علوم حاسوب عالميًا. مفتوح المصدر، ٢.٤ ألف نجمة على GitHub.",
+        },
+        {
+          year: "٢٠١٨",
+          title: "مهندس برمجيات",
+          org: "نكسورا — صنعاء، اليمن",
+          description: "طور منصة تجارة إلكترونية عالية الأداء تعالج ٥٠ ألف طلب/يوم. خدمات صغرى، موجهة بالأحداث، سحابية أصلية.",
+        },
+        {
+          year: "٢٠١٦",
+          title: "مطور مبتدئ",
+          org: "بداية المسار — صنعاء، اليمن",
+          description: "تطوير كامل الطيف عبر سطح المكتب، الويب، والجوال. C#، Java، PHP. أساس في المعمارية النظيفة والتفكير النظمي.",
+        },
+      ],
+      quote: "الكود ليس المُنتج. سلوك النظام الذي ينتجه هو. كل شيء آخر تفصيل تنفيذي.",
+      quoteAuthor: "— عبدالغني الشبامي",
+      yemenImageAlt: "صنعاء، اليمن — عمارة المدينة القديمة التاريخية",
     },
-    {
-      title: isRtl ? "الذكاء الاصطناعي" : "Artificial Intelligence",
-      icon: (
-        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-          <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83" />
-        </svg>
-      ),
-    },
-    {
-      title: isRtl ? "هندسة الأوامر" : "Prompt Engineering",
-      icon: (
-        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-          <polyline points="4 17 10 11 4 5" />
-          <line x1="12" y1="19" x2="20" y2="19" />
-        </svg>
-      ),
-    },
-    {
-      title: isRtl ? "التفكير المنظومي" : "Systems Thinking",
-      icon: (
-        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-          <circle cx="12" cy="12" r="3" />
-          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
-        </svg>
-      ),
-    },
-    {
-      title: isRtl ? "التدريب التقني" : "Technical Training",
-      icon: (
-        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-          <circle cx="9" cy="7" r="4" />
-          <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-          <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-        </svg>
-      ),
-    },
-  ];
+  }[locale];
 
-  const milestones = [
-    {
-      step: "01",
-      role: isRtl ? "طالب تقنية معلومات" : "IT STUDENT",
-      desc: isRtl ? "بناء الأساس الأكاديمي والتقني" : "Learning the foundation",
-    },
-    {
-      step: "02",
-      role: isRtl ? "هندسة البرمجيات" : "SOFTWARE ENGINEERING",
-      desc: isRtl ? "بناء وتطوير تطبيقات واقعية" : "Building real applications",
-    },
-    {
-      step: "03",
-      role: isRtl ? "الذكاء الاصطناعي والأتمتة" : "AI & AUTOMATION",
-      desc: isRtl ? "استكشاف الأنظمة الذكية والنماذج التطبيقية" : "Exploring intelligent systems",
-    },
-    {
-      step: "04",
-      role: isRtl ? "هندسة نظم الذكاء الاصطناعي" : "AI ENGINEERING",
-      desc: isRtl ? "صناعة المستقبل بالحلول المتقدمة" : "Creating the future",
-    },
-  ];
+  const goldColor = theme === "dark" ? "#D9B567" : "#BE943F";
+  const textPrimary = theme === "dark" ? "#FDFBF7" : "#1A1A1C";
+  const textSecondary = theme === "dark" ? "#E4E2DD" : "#2D2D2F";
+  const textMuted = theme === "dark" ? "#9A9893" : "#6B6B6E";
+  const bgColor = theme === "dark" ? "#0A0A0B" : "#FDFBF7";
+  const surfaceColor = theme === "dark" ? "#121213" : "#FFFFFF";
+  const lineColor = theme === "dark" ? "#2A2A2C" : "#E8E4DD";
+  const lineGold = theme === "dark" ? "#D9B567" : "#BE943F";
+
+  // SVG Icons for pillars
+  const pillarIcons = {
+    stateMachine: (
+      <svg viewBox="0 0 48 48" fill="none" stroke={goldColor} strokeWidth="1.5" aria-hidden="true">
+        <circle cx="24" cy="24" r="20" strokeDasharray="8 4" />
+        <circle cx="24" cy="24" r="12" />
+        <path d="M24 8v8M24 32v8M8 24h8M32 24h8" />
+        <circle cx="24" cy="24" r="4" fill={goldColor} />
+      </svg>
+    ),
+    brain: (
+      <svg viewBox="0 0 48 48" fill="none" stroke={goldColor} strokeWidth="1.5" aria-hidden="true">
+        <path d="M12 24c0-6.6 5.4-12 12-12s12 5.4 12 12-5.4 12-12 12" />
+        <path d="M36 24c0 6.6-5.4 12-12 12s-12-5.4-12-12 5.4-12 12-12" />
+        <path d="M24 12v24M12 24h24" strokeWidth="1" strokeDasharray="4 4" />
+      </svg>
+    ),
+    building: (
+      <svg viewBox="0 0 48 48" fill="none" stroke={goldColor} strokeWidth="1.5" aria-hidden="true">
+        <rect x="6" y="14" width="36" height="30" rx="2" />
+        <path d="M6 24h36M6 30h36M6 36h36" strokeWidth="1" />
+        <rect x="20" y="30" width="8" height="14" fill={goldColor} opacity="0.3" />
+        <path d="M24 6v8" />
+        <circle cx="24" cy="6" r="3" fill={goldColor} />
+      </svg>
+    ),
+  };
 
   return (
     <section
       id="about"
-      className="relative w-full bg-white dark:bg-[#0B0B0C] py-20 lg:py-28 border-b border-black/5 dark:border-white/5 transition-colors"
+      className="section-master relative"
+      style={{
+        minHeight: "850px",
+        backgroundColor: bgColor,
+        paddingTop: "100px",
+        paddingBottom: "100px",
+      }}
+      aria-labelledby="about-headline"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Heading */}
-        <ScrollReveal isRtl={isRtl} direction="up">
-          <div className="mb-12 sm:mb-16">
-            <h2 className="font-sans font-black text-3xl sm:text-4xl uppercase tracking-tight text-[#0B0B0C] dark:text-white">
-              {isRtl ? "من هو عبدالغني؟" : "WHO IS ABDULGHANI?"}
-            </h2>
-            <p className="mt-2 text-sm sm:text-base font-semibold tracking-wider text-[#B88E1F] dark:text-[#E2C366] uppercase">
-              {isRtl
-                ? "طالب تقنية معلومات ← صانع برمجيات ← ممارس ذكاء اصطناعي"
-                : "IT Student → Software Builder → AI Practitioner"}
-            </p>
+      {/* Background ornaments */}
+      <div className="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
+        {/* Top left circuit */}
+        <svg className="absolute top-20 left-20 w-32 h-32" viewBox="0 0 100 100" style={{ opacity: 0.3 }}>
+          <circle cx="50" cy="50" r="45" fill="none" stroke={goldColor} strokeWidth="1" strokeDasharray="8 4" />
+          <circle cx="50" cy="50" r="30" fill="none" stroke={goldColor} strokeWidth="0.5" />
+          <circle cx="50" cy="50" r="12" fill={goldColor} opacity="0.2" />
+        </svg>
+        {/* Bottom right neural */}
+        <svg className="absolute bottom-20 right-20 w-40 h-40" viewBox="0 0 120 120" style={{ opacity: 0.25 }}>
+          <rect x="10" y="10" width="100" height="100" rx="4" fill="none" stroke={goldColor} strokeWidth="0.5" />
+          <circle cx="35" cy="35" r="4" fill={goldColor} opacity="0.6" />
+          <circle cx="85" cy="35" r="4" fill={goldColor} opacity="0.6" />
+          <circle cx="35" cy="85" r="4" fill={goldColor} opacity="0.6" />
+          <circle cx="85" cy="85" r="4" fill={goldColor} opacity="0.6" />
+          <circle cx="60" cy="60" r="5" fill={goldColor} opacity="0.8" />
+          <line x1="35" y1="35" x2="60" y2="60" stroke={goldColor} strokeWidth="0.5" opacity="0.4" />
+          <line x1="85" y1="35" x2="60" y2="60" stroke={goldColor} strokeWidth="0.5" opacity="0.4" />
+          <line x1="35" y1="85" x2="60" y2="60" stroke={goldColor} strokeWidth="0.5" opacity="0.4" />
+          <line x1="85" y1="85" x2="60" y2="60" stroke={goldColor} strokeWidth="0.5" opacity="0.4" />
+        </svg>
+      </div>
+
+      <div className="container-master relative z-10">
+        {/* Section Header */}
+        <div
+          className="mb-16"
+          style={{
+            opacity: 1,
+            transform: "translateY(0)",
+            transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
+          }}
+        >
+          <div className="flex items-center gap-4 mb-6" style={{ justifyContent: isRtl ? "flex-end" : "flex-start" }}>
+            <span className="font-sans font-medium tracking-widest uppercase text-sm caption-gold" style={{ letterSpacing: "0.12em" }}>
+              {content.headline}
+            </span>
+            <div className="w-20 h-px gold-divider-short" />
           </div>
-        </ScrollReveal>
+          <h2 id="about-headline" className="section-headline" style={{ maxWidth: "800px" }}>
+            {content.headline}
+          </h2>
+        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start">
-          {/* Left Column: Personal Narrative & 6 Circular Badges */}
-          <div className="lg:col-span-7 space-y-8">
-            <ScrollReveal isRtl={isRtl} direction="up">
-              <p className="text-base sm:text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed font-sans">
-                {isRtl
-                  ? "أنا عبدالغني الشبامي، طالب تقنية معلومات من اليمن، شغوف بالتكنولوجيا والذكاء الاصطناعي وبناء الأنظمة النافعة. أؤمن بالتعلم المستمر، وحل المشكلات الحقيقية، وتحويل الأفكار إلى حلول برمجية عملية قابلة للتطوير."
-                  : "I'm Abdulghani Al-Shibami, an IT student from Yemen, passionate about technology, artificial intelligence, and building useful systems. I believe in continuous learning, solving real problems, and turning ideas into practical solutions."}
-              </p>
-            </ScrollReveal>
+        {/* 3-Column Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+          {/* Column 1: Lead + 3 Pillars (col-span-4) */}
+          <div
+            className="lg:col-span-4 space-y-8"
+            style={{
+              opacity: 1,
+              transform: "translateY(0)",
+              transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1) 100ms",
+            }}
+          >
+            <div className="space-y-6">
+              <p className="body-lg" style={{ color: textSecondary }}>{content.lead}</p>
+              
+              {/* Gold divider */}
+              <div className="gold-divider-short" style={{ backgroundColor: lineGold }} />
+            </div>
 
-            {/* 6 Circular Outline Badges */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4">
-              {corePillars.map((pillar, idx) => (
-                <ScrollReveal key={idx} delay={idx * 60} isRtl={isRtl} direction="up">
-                  <TiltCard className="flex flex-col items-center text-center p-4 rounded-xl border border-black/10 dark:border-white/10 hover:border-gold-primary/60 bg-[#FAF9F6] dark:bg-[#121214] transition-all hover:scale-[1.02] group">
-                    <div className="w-12 h-12 rounded-full border border-gold-primary/40 bg-gold-primary/10 flex items-center justify-center text-gold-dark dark:text-gold-light mb-3 group-hover:bg-gold-primary group-hover:text-white transition-colors">
-                      {pillar.icon}
+            {/* Three Pillars */}
+            <div className="space-y-6">
+              {content.pillars.map((pillar, index) => (
+                <div
+                  key={pillar.title}
+                  className="group card-master p-6"
+                  style={{
+                    opacity: 1,
+                    transform: "translateY(0)",
+                    transition: `all 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${200 + index * 100}ms`,
+                  }}
+                >
+                  <div className="flex items-start gap-4">
+                    <div
+                      className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors duration-200"
+                      style={{
+                        backgroundColor: `rgba(190, 148, 63, 0.1)`,
+                        border: `1px solid ${lineGold}`,
+                      }}
+                    >
+                      {pillarIcons[pillar.icon as keyof typeof pillarIcons]}
                     </div>
-                    <span className="text-xs font-bold text-zinc-800 dark:text-zinc-200 uppercase tracking-wider leading-snug">
-                      {pillar.title}
+                    <div style={{ minWidth: 0 }}>
+                      <h3 className="font-display font-semibold text-lg tracking-tight mb-2" style={{ color: textPrimary }}>
+                        {pillar.title}
+                      </h3>
+                      <p className="body" style={{ color: textSecondary }}>{pillar.description}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Column 2: Timeline (col-span-4) */}
+          <div
+            className="lg:col-span-4 relative"
+            style={{
+              opacity: 1,
+              transform: "translateY(0)",
+              transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1) 200ms",
+            }}
+          >
+            {/* Vertical timeline line */}
+            <div className="absolute top-0 bottom-0 left-1/2 w-px" style={{
+              background: `linear-gradient(to bottom, ${lineGold} 0%, ${lineColor} 50%, ${lineGold} 100%)`,
+              transform: "translateX(-50%)",
+            }} aria-hidden="true" />
+
+            <div className="space-y-10 relative">
+              {content.timeline.map((item, index) => (
+                <div key={item.year} className="relative">
+                  {/* Timeline circle */}
+                  <div
+                    className="absolute left-1/2 top-0 -translate-x-1/2 w-10 h-10 rounded-full flex items-center justify-center z-10 transition-all duration-300"
+                    style={{
+                      backgroundColor: surfaceColor,
+                      border: `2px solid ${lineGold}`,
+                      boxShadow: `0 0 0 4px ${bgColor}`,
+                    }}
+                  >
+                    <div className="w-3 h-3 rounded-full transition-all duration-300 group-hover:scale-150" style={{ backgroundColor: lineGold }} />
+                  </div>
+
+                  {/* Timeline content - alternating sides */}
+                  <div
+                    className={cn(
+                      "w-[calc(50%-24px)] px-4",
+                      index % 2 === 0 ? (isRtl ? "text-right" : "text-left") : (isRtl ? "text-left" : "text-right"),
+                      index % 2 === 0 ? (isRtl ? "mr-auto" : "ml-auto") : (isRtl ? "ml-auto" : "mr-auto")
+                    )}
+                  >
+                    <span className="font-mono font-semibold text-sm caption-gold" style={{ letterSpacing: "0.08em" }}>
+                      {item.year}
                     </span>
-                  </TiltCard>
-                </ScrollReveal>
+                    <h3 className="font-display font-semibold text-lg mt-1" style={{ color: textPrimary }}>
+                      {item.title}
+                    </h3>
+                    <p className="text-sm mt-1" style={{ color: textMuted }}>{item.org}</p>
+                    <p className="body text-sm mt-2" style={{ color: textSecondary }}>{item.description}</p>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
 
-          {/* Right Column: Vertical Progression + Shibam Quote */}
-          <div className="lg:col-span-5 flex flex-col justify-between h-full space-y-8">
-            {/* Timeline Milestones */}
-            <div className="relative ps-6 space-y-6 before:absolute before:start-2 before:top-2 before:bottom-2 before:w-[2px] before:bg-gold-primary/30">
-              {milestones.map((m, idx) => (
-                <ScrollReveal key={idx} delay={idx * 80 + 100} isRtl={isRtl} direction="up">
-                  <div className="relative group">
-                    {/* Node Dot */}
-                    <span className="absolute -start-[27px] top-1.5 w-3.5 h-3.5 rounded-full border-2 border-gold-primary bg-white dark:bg-[#0B0B0C] group-hover:bg-gold-primary transition-colors" />
+          {/* Column 3: Quote + Yemen Image (col-span-4) */}
+          <div
+            className="lg:col-span-4 space-y-8"
+            style={{
+              opacity: 1,
+              transform: "translateY(0)",
+              transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1) 300ms",
+            }}
+          >
+            {/* Quote Card */}
+            <div className="card-master p-8 relative" style={{ borderColor: lineGold }}>
+              {/* Quote mark ornament */}
+              <svg className="absolute top-6 right-6 w-12 h-12" viewBox="0 0 48 48" aria-hidden="true" style={{ opacity: 0.15 }}>
+                <path d="M12 20c0-6.6 5.4-12 12-12s12 5.4 12 12" stroke={goldColor} strokeWidth="3" fill="none" />
+                <path d="M36 20c0-6.6 5.4-12 12-12s12 5.4 12 12" stroke={goldColor} strokeWidth="3" fill="none" />
+              </svg>
 
-                    <div className="bg-[#FAF9F6] dark:bg-[#121214] p-4 rounded-xl border border-black/5 dark:border-white/10 hover:border-gold-primary/50 transition-colors">
-                      <span className="text-[11px] font-mono font-bold text-gold-dark dark:text-gold-light uppercase tracking-wider">
-                        {m.step} • {m.role}
-                      </span>
-                      <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 font-medium mt-0.5">
-                        {m.desc}
-                      </p>
-                    </div>
-                  </div>
-                </ScrollReveal>
-              ))}
+              <blockquote className="relative z-10">
+                <p className="font-display font-medium text-xl lg:text-2xl leading-relaxed" style={{ color: textPrimary, lineHeight: 1.5 }}>
+                  {content.quote}
+                </p>
+                <footer className="mt-6 flex items-center gap-3">
+                  <div className="w-16 h-px" style={{ backgroundColor: lineGold }} />
+                  <cite className="font-sans font-medium text-sm" style={{ color: textMuted }}>
+                    {content.quoteAuthor}
+                  </cite>
+                </footer>
+              </blockquote>
             </div>
 
-            {/* Quote Callout with Shibam Architectural Silhouette */}
-            <ScrollReveal delay={300} isRtl={isRtl} direction="up">
-              <TiltCard className="relative p-6 rounded-2xl border border-gold-primary/30 bg-gradient-to-br from-[#FAF9F6] to-white dark:from-[#121214] dark:to-[#0B0B0C] overflow-hidden shadow-sm">
-                {/* Shibam Ancient City Watermark */}
-                <div className="absolute end-0 bottom-0 opacity-15 dark:opacity-20 pointer-events-none w-36 h-24">
-                  <Image
-                    src="/images/showcase/shibam-skyline.png"
-                    alt="Shibam Skyline"
-                    width={144}
-                    height={96}
-                    className="object-contain"
-                  />
-                </div>
+            {/* Yemen Image with Mask */}
+            <div className="relative" style={{ aspectRatio: "4/3" }}>
+              <div
+                className="absolute inset-0 rounded-xl overflow-hidden"
+                style={{
+                  maskImage: "linear-gradient(to bottom, black 70%, transparent 100%)",
+                  WebkitMaskImage: "linear-gradient(to bottom, black 70%, transparent 100%)",
+                  border: `1px solid ${lineColor}`,
+                }}
+                aria-hidden="true"
+              >
+                <Image
+                  src="/images/optimized/showcase/shibam-skyline-800w.webp"
+                  alt={content.yemenImageAlt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 400px"
+                  className="object-cover filter contrast-[1.05]"
+                />
+                
+                {/* Subtle gold overlay tint */}
+                <div 
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background: `linear-gradient(135deg, ${goldColor}15 0%, transparent 60%)`,
+                  }}
+                />
 
-                <div className="relative z-10">
-                  <span className="font-serif text-3xl sm:text-4xl text-gold-primary leading-none block mb-1">“</span>
-                  <p className="font-serif italic text-base sm:text-lg text-zinc-800 dark:text-zinc-100 font-medium leading-relaxed">
-                    {isRtl ? "أنظمة أفضل من أجل غدٍ أذكى." : "Better systems for a smarter tomorrow."}
-                  </p>
-                  <div className="mt-3 text-xs font-mono tracking-widest uppercase text-gold-dark dark:text-gold-light">
-                    — Abdulghani Al-Shibami
-                  </div>
-                </div>
-              </TiltCard>
-            </ScrollReveal>
+                {/* Gold accent corners */}
+                <div className="absolute -top-1 -left-1 w-20 h-20 pointer-events-none" style={{
+                  borderTop: `2px solid ${goldColor}`,
+                  borderLeft: `2px solid ${goldColor}`,
+                  borderRadius: "16px 0 0 0",
+                  opacity: 0.5,
+                }} />
+                <div className="absolute -bottom-1 -right-1 w-20 h-20 pointer-events-none" style={{
+                  borderBottom: `2px solid ${goldColor}`,
+                  borderRight: `2px solid ${goldColor}`,
+                  borderRadius: "0 0 0 16px",
+                  opacity: 0.4,
+                }} />
+              </div>
+            </div>
           </div>
         </div>
+      </div>
+
+      {/* Gold divider at bottom */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1440px] h-px pointer-events-none" aria-hidden="true">
+        <div className="w-full h-full" style={{ background: `linear-gradient(90deg, transparent 0%, ${lineGold} 50%, transparent 100%)`, opacity: 0.4 }} />
       </div>
     </section>
   );

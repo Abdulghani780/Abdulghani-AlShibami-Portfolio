@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="712" viewBox="0 0 400 712">
+  <defs>
+    <linearGradient id="screenBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0D1117"/>
+      <stop offset="100%" style="stop-color:#161B22"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="400" height="712" fill="url(#screenBg)"/>
+  <rect x="8" y="8" width="384" height="696" fill="none" stroke="#BE943F" stroke-width="1" rx="12" opacity="0.3"/>
+  
+  <rect x="16" y="16" width="368" height="680" fill="#0D1117" rx="8" stroke="#2A2A2C" stroke-width="1"/>
+  
+  <text x="200" y="40" font-family="monospace" font-size="10" fill="#8B949E" text-anchor="middle">9:41 AM  📶  🔋 100%</text>
+  
+  <rect x="16" y="48" width="368" height="60" fill="#161B22"/>
+  <text x="200" y="85" font-family="Georgia, serif" font-size="18" font-weight="600" fill="#BE943F" text-anchor="middle">YUSRA</text>
+  <text x="200" y="102" font-family="monospace" font-size="9" fill="#8B949E" text-anchor="middle" letter-spacing="0.08em">Analytics Deep Dive</text>
+  
+  <!-- Funnel chart -->
+  <rect x="24" y="130" width="352" height="220" fill="#1C2128" rx="8" stroke="#30363D" stroke-width="1"/>
+  <g fill="#BE943F" opacity="0.8">
+    <path d="M60,300 L340,300 L280,180 L120,180 Z"/>
+    <path d="M80,260 L320,260 L260,190 L140,190 Z" fill="#58A6FF"/>
+    <path d="M100,220 L300,220 L240,200 L160,200 Z" fill="#A371F7"/>
+    <path d="M120,180 L280,180 L220,170 L180,170 Z" fill="#F7901A"/>
+  </g>
+  <text x="200" y="155" font-family="monospace" font-size="10" fill="#8B949E" text-anchor="middle">Conversion Funnel</text>
+  
+  <!-- Data table -->
+  <rect x="24" y="370" width="352" height="280" fill="#1C2128" rx="8" stroke="#30363D" stroke-width="1"/>
+  <line x1="24" y1="400" x2="376" y2="400" stroke="#30363D"/>
+  <g fill="#E6EDF3">
+    <text x="40" y="390" font-family="monospace" font-size="10" font-weight="600">METRIC</text>
+    <text x="180" y="390" font-family="monospace" font-size="10" font-weight="600" text-anchor="end">VALUE</text>
+    <text x="320" y="390" font-family="monospace" font-size="10" font-weight="600" text-anchor="end">Δ%</text>
+    
+    <text x="40" y="430" font-family="monospace" font-size="11">Sessions</text>
+    <text x="180" y="430" font-family="monospace" font-size="11" font-weight="500" text-anchor="end">45,231</text>
+    <text x="320" y="430" font-family="monospace" font-size="10" fill="#3FB950" text-anchor="end">+12.3%</text>
+    
+    <text x="40" y="470" font-family="monospace" font-size="11">Bounce Rate</text>
+    <text x="180" y="470" font-family="monospace" font-size="11" font-weight="500" text-anchor="end">32.1%</text>
+    <text x="320" y="470" font-family="monospace" font-size="10" fill="#3FB950" text-anchor="end">-2.1%</text>
+    
+    <text x="40" y="510" font-family="monospace" font-size="11">Avg. Session</text>
+    <text x="180" y="510" font-family="monospace" font-size="11" font-weight="500" text-anchor="end">4m 32s</text>
+    <text x="320" y="510" font-family="monospace" font-size="10" fill="#F85149" text-anchor="end">-0.8%</text>
+    
+    <text x="40" y="550" font-family="monospace" font-size="11">Conversions</text>
+    <text x="180" y="550" font-family="monospace" font-size="11" font-weight="500" text-anchor="end">1,234</text>
+    <text x="320" y="550" font-family="monospace" font-size="10" fill="#3FB950" text-anchor="end">+18.7%</text>
+    
+    <text x="40" y="590" font-family="monospace" font-size="11">Revenue</text>
+    <text x="180" y="590" font-family="monospace" font-size="11" font-weight="500" text-anchor="end">$2.4M</text>
+    <text x="320" y="590" font-family="monospace" font-size="10" fill="#3FB950" text-anchor="end">+22.4%</text>
+  </g>
+  
+  <text x="200" y="720" font-family="monospace" font-size="9" fill="#6B6B6E" text-anchor="middle">PLACEHOLDER — 400×712px</text>
+  <text x="200" y="735" font-family="monospace" font-size="9" fill="#6B6B6E" text-anchor="middle">yusra-screen-2.png</text>
+</svg>

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+  <defs>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0A0A0B"/>
+      <stop offset="100%" style="stop-color:#121213"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="600" height="400" fill="url(#cardBg)"/>
+  <rect x="10" y="10" width="580" height="380" fill="none" stroke="#BE943F" stroke-width="1" rx="8" opacity="0.3"/>
+  
+  <!-- Dashboard mockup -->
+  <g fill="#1A1A1C" stroke="#2A2A2C" stroke-width="1">
+    <rect x="40" y="40" width="520" height="60" rx="4"/>
+    <rect x="40" y="120" width="180" height="100" rx="4"/>
+    <rect x="240" y="120" width="180" height="100" rx="4"/>
+    <rect x="440" y="120" width="120" height="100" rx="4"/>
+    <rect x="40" y="240" width="520" height="120" rx="4"/>
+  </g>
+  
+  <!-- Gold accent bars -->
+  <g fill="#BE943F" opacity="0.8">
+    <rect x="50" y="130" width="120" height="8" rx="2"/>
+    <rect x="50" y="150" width="80" height="4" rx="1"/>
+    <rect x="250" y="130" width="100" height="8" rx="2"/>
+    <rect x="250" y="150" width="60" height="4" rx="1"/>
+    <rect x="450" y="130" width="60" height="8" rx="2"/>
+  </g>
+  
+  <!-- Chart bars -->
+  <g fill="#BE943F" opacity="0.6">
+    <rect x="60" y="310" width="40" height="40" rx="2"/>
+    <rect x="120" y="280" width="40" height="70" rx="2"/>
+    <rect x="180" y="300" width="40" height="50" rx="2"/>
+    <rect x="240" y="260" width="40" height="90" rx="2"/>
+    <rect x="300" y="320" width="40" height="30" rx="2"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="300" y="80" font-family="Georgia, serif" font-size="20" font-weight="600" fill="#BE943F" text-anchor="middle" letter-spacing="0.12em">YUSRA PLATFORM</text>
+  <text x="300" y="105" font-family="monospace" font-size="9" fill="#D9B567" text-anchor="middle" letter-spacing="0.08em">AI-Powered Business Intelligence Dashboard</text>
+  <text x="300" y="370" font-family="monospace" font-size="10" fill="#9A9893" text-anchor="middle">PLACEHOLDER — 600×400px</text>
+  <text x="300" y="390" font-family="monospace" font-size="10" fill="#6B6B6E" text-anchor="middle">yusra-card.webp</text>
+</svg>

@@ -5,6 +5,7 @@ import { Project, ProjectCategory, Locale } from "@/types/project";
 import { ProjectFilters } from "./ProjectFilters";
 import { ProjectCard } from "./ProjectCard";
 import { Button } from "@/components/ui/Button";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 interface ProjectCatalogViewProps {
   initialProjects: Project[];
@@ -28,30 +29,21 @@ export const ProjectCatalogView: React.FC<ProjectCatalogViewProps> = ({
     return map;
   }, [categories, locale]);
 
-  // Filtered projects list
+  // Filter projects
   const filteredProjects = useMemo(() => {
     return initialProjects.filter((project) => {
-      // Category match
-      const categoryMatch =
-        activeCategory === "all" || project.categorySlug === activeCategory;
-
-      // Query match (searches title, description, technologies)
-      const query = searchQuery.trim().toLowerCase();
-      if (!query) return categoryMatch;
-
-      const titleMatch = project.title[locale].toLowerCase().includes(query);
-      const descMatch = project.shortDescription[locale].toLowerCase().includes(query);
-      const techMatch = project.technologies.some((t) =>
-        t.name.toLowerCase().includes(query)
-      );
-
-      return categoryMatch && (titleMatch || descMatch || techMatch);
+      const matchesCategory = activeCategory === "all" || project.categorySlug === activeCategory;
+      const matchesSearch =
+        searchQuery === "" ||
+        project.title[locale].toLowerCase().includes(searchQuery.toLowerCase()) ||
+        project.shortDescription[locale].toLowerCase().includes(searchQuery.toLowerCase()) ||
+        project.technologies.some((t) => t.name.toLowerCase().includes(searchQuery.toLowerCase()));
+      return matchesCategory && matchesSearch;
     });
   }, [initialProjects, activeCategory, searchQuery, locale]);
 
   return (
     <div className="space-y-8">
-      {/* Dynamic Filters Bar */}
       <ProjectFilters
         categories={categories}
         activeCategory={activeCategory}
@@ -59,51 +51,22 @@ export const ProjectCatalogView: React.FC<ProjectCatalogViewProps> = ({
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
         locale={locale}
-        totalCount={initialProjects.length}
+        totalCount={filteredProjects.length}
       />
 
-      {/* Projects Catalog Grid */}
-      {filteredProjects.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProjects.map((project, idx) => (
-            <ProjectCard
-              key={project.id}
-              project={project}
-              locale={locale}
-              categoryName={categoryMap.get(project.categorySlug)}
-              isFeaturedHero={activeCategory === "all" && !searchQuery.trim() && idx === 0}
-              className={
-                activeCategory === "all" && !searchQuery.trim() && idx === 0
-                  ? "md:col-span-2 lg:col-span-3"
-                  : undefined
-              }
-            />
-          ))}
+      {filteredProjects.length === 0 ? (
+        <div className="text-center py-16">
+          <p className="text-muted-foreground dark:text-muted-foreground">
+            {isRtl ? "لا توجد مشاريع مطابقة للبحث" : "No projects match your search"}
+          </p>
         </div>
       ) : (
-        /* Empty State */
-        <div className="rounded-2xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#121214] p-12 text-center space-y-4 shadow-sm dark:shadow-2xl font-mono">
-          <div className="text-xs text-gold-dark dark:text-gold-light uppercase tracking-widest font-bold">
-            {isRtl ? "// لا توجد أنظمة مطابقة" : "// 0 SYSTEMS MATCHED"}
-          </div>
-          <h4 className="font-serif text-2xl font-normal text-zinc-900 dark:text-white">
-            {isRtl ? "لم يتم العثور على أنظمة مطابقة" : "No Matching Systems Found"}
-          </h4>
-          <p className="text-zinc-600 dark:text-zinc-400 text-sm max-w-md mx-auto font-sans">
-            {isRtl
-              ? "جرّب تغيير التصنيف أو مسح عبارة البحث للعثور على الأنظمة المطلوبة."
-              : "Try adjusting your category selection or clearing the search filter."}
-          </p>
-          <Button
-            variant="secondary"
-            size="sm"
-            onClick={() => {
-              setActiveCategory("all");
-              setSearchQuery("");
-            }}
-          >
-            {isRtl ? "إعادة ضبط التصفية" : "Reset Active Filters"}
-          </Button>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredProjects.map((project, idx) => (
+            <ScrollReveal key={project.slug} delay={idx * 50} isRtl={isRtl} direction="up" className="h-full">
+              <ProjectCard project={project} locale={locale} categoryName={categoryMap.get(project.categorySlug)} />
+            </ScrollReveal>
+          ))}
         </div>
       )}
     </div>

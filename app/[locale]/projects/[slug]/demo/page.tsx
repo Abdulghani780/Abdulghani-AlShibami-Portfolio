@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { projectRepository } from "@/lib/services/projectRepository";
-import { DemoViewer } from "@/components/features/demos/DemoViewer";
+// Lazy-loaded heavy component
+import { LazySection, LazyDemoViewer } from "@/components/ui/LazySection";
 import { Locale } from "@/types/project";
 
 interface DemoPageProps {
@@ -45,5 +46,9 @@ export default async function ProjectDemoPage({ params }: DemoPageProps) {
     notFound();
   }
 
-  return <DemoViewer project={project} locale={locale} />;
+  return (
+    <LazySection threshold={0.1} rootMargin="100px">
+      <LazyDemoViewer project={project} locale={locale} />
+    </LazySection>
+  );
 }

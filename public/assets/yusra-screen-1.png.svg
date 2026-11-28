@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="712" viewBox="0 0 400 712">
+  <defs>
+    <linearGradient id="screenBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0D1117"/>
+      <stop offset="100%" style="stop-color:#161B22"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="400" height="712" fill="url(#screenBg)"/>
+  <rect x="8" y="8" width="384" height="696" fill="none" stroke="#BE943F" stroke-width="1" rx="12" opacity="0.3"/>
+  
+  <!-- Mobile frame -->
+  <rect x="16" y="16" width="368" height="680" fill="#0D1117" rx="8" stroke="#2A2A2C" stroke-width="1"/>
+  
+  <!-- Status bar -->
+  <rect x="16" y="16" width="368" height="32" fill="#0D1117" rx="8"/>
+  <text x="200" y="40" font-family="monospace" font-size="10" fill="#8B949E" text-anchor="middle">9:41 AM  📶  🔋 100%</text>
+  
+  <!-- Header -->
+  <rect x="16" y="48" width="368" height="60" fill="#161B22"/>
+  <text x="200" y="85" font-family="Georgia, serif" font-size="18" font-weight="600" fill="#BE943F" text-anchor="middle">YUSRA</text>
+  <text x="200" y="102" font-family="monospace" font-size="9" fill="#8B949E" text-anchor="middle" letter-spacing="0.08em">Executive Dashboard</text>
+  
+  <!-- KPI Cards -->
+  <g fill="#1C2128" stroke="#30363D" stroke-width="1">
+    <rect x="24" y="130" width="156" height="80" rx="8"/>
+    <rect x="220" y="130" width="156" height="80" rx="8"/>
+  </g>
+  
+  <g fill="#BE943F">
+    <text x="40" y="165" font-family="monospace" font-size="24" font-weight="600" fill="#BE943F">$2.4M</text>
+    <text x="40" y="190" font-family="monospace" font-size="10" fill="#8B949E">Revenue</text>
+    <text x="236" y="165" font-family="monospace" font-size="24" font-weight="600" fill="#BE943F">1,234</text>
+    <text x="236" y="190" font-family="monospace" font-size="10" fill="#8B949E">Active Users</text>
+  </g>
+  
+  <!-- Chart area -->
+  <rect x="24" y="230" width="352" height="200" fill="#1C2128" rx="8" stroke="#30363D" stroke-width="1"/>
+  <g stroke="#BE943F" stroke-width="2" fill="none" opacity="0.8">
+    <path d="M40,380 Q100,300 160,350 T280,280 T380,320" stroke-dasharray="4 2"/>
+    <path d="M40,360 Q100,280 160,330 T280,260 T380,300" stroke="#58A6FF" stroke-width="1.5"/>
+  </g>
+  <text x="200" y="255" font-family="monospace" font-size="10" fill="#8B949E" text-anchor="middle">Revenue Trend (30 Days)</text>
+  
+  <!-- Activity list -->
+  <g fill="#1C2128" stroke="#30363D" stroke-width="1">
+    <rect x="24" y="450" width="352" height="60" rx="8"/>
+    <rect x="24" y="530" width="352" height="60" rx="8"/>
+    <rect x="24" y="610" width="352" height="60" rx="8"/>
+  </g>
+  
+  <g fill="#E6EDF3">
+    <text x="40" y="480" font-family="monospace" font-size="12" font-weight="500">New Enterprise Deal</text>
+    <text x="40" y="500" font-family="monospace" font-size="10" fill="#8B949E">Acme Corp • $150K • 2 min ago</text>
+    <text x="40" y="560" font-family="monospace" font-size="12" font-weight="500">AI Model Deployed</text>
+    <text x="40" y="580" font-family="monospace" font-size="10" fill="#8B949E">Sentiment v3.2 • Production • 1 hr ago</text>
+    <text x="40" y="640" font-family="monospace" font-size="12" font-weight="500">Alert: Latency Spike</text>
+    <text x="40" y="660" font-family="monospace" font-size="10" fill="#F85149">API Gateway • p99 > 500ms • 3 hr ago</text>
+  </g>
+  
+  <!-- Bottom nav -->
+  <rect x="16" y="696" width="368" height="16" fill="#0D1117" rx="8"/>
+  
+  <!-- Label -->
+  <text x="200" y="720" font-family="monospace" font-size="9" fill="#6B6B6E" text-anchor="middle">PLACEHOLDER — 400×712px</text>
+  <text x="200" y="735" font-family="monospace" font-size="9" fill="#6B6B6E" text-anchor="middle">yusra-screen-1.png</text>
+</svg>

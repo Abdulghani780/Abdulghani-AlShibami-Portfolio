@@ -32,18 +32,18 @@ export const SubsystemsGrid: React.FC<SubsystemsGridProps> = ({
           <Card
             key={subsystem.id}
             hoverEffect
-            className="border-hairline bg-surface p-6 space-y-3"
+            className="border-border/10 dark:border-border/10 bg-surface dark:bg-surfaceElevated p-6 space-y-3"
           >
             <div className="flex items-center justify-between font-mono text-[10px]">
-              <span className="text-gold font-bold">{subsystem.tag}</span>
-              <span className="text-content-muted">MOD_0{subsystem.id.slice(-1)}</span>
+              <span className="text-brand dark:text-brandLight font-bold">{subsystem.tag}</span>
+              <span className="text-muted-foreground dark:text-muted-foreground">MOD_0{subsystem.id.slice(-1)}</span>
             </div>
 
-            <h4 className="font-serif text-xl font-normal text-content-primary">
+            <h4 className="font-serif text-xl font-normal text-foreground dark:text-foreground">
               {subsystem.title[locale]}
             </h4>
 
-            <p className="text-content-secondary text-xs sm:text-sm leading-relaxed">
+            <p className="text-muted-foreground dark:text-muted-foreground text-xs sm:text-sm leading-relaxed">
               {subsystem.desc[locale]}
             </p>
           </Card>

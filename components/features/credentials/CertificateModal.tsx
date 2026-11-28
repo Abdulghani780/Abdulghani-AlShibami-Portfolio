@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { VerifiedCertificate, CertificationCredential } from "@/lib/data/credentials";
 import {
   X,
@@ -16,6 +17,7 @@ import {
   QrCode,
   Tag,
 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface CertificateModalProps {
   certificate: VerifiedCertificate | CertificationCredential;
@@ -96,7 +98,7 @@ export function CertificateModal({
       aria-modal="true"
       aria-label={title}
       onClick={onClose}
-      className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 bg-black/80 backdrop-blur-md animate-in fade-in duration-200 font-mono"
+      className={cn("fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 bg-black/80 backdrop-blur-md animate-in fade-in duration-200", isAr ? "font-arabic" : "font-mono")}
       dir={isAr ? "rtl" : "ltr"}
     >
       <div
@@ -110,10 +112,10 @@ export function CertificateModal({
               <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
             </span>
             <div className="truncate">
-              <span className="text-xs font-bold text-zinc-900 dark:text-white tracking-wide block truncate font-sans">
+              <span className={cn("text-xs font-bold text-zinc-900 dark:text-white tracking-wide block truncate", isAr ? "font-arabic" : "font-sans")}>
                 {title}
               </span>
-              <span className="text-[10px] text-gold-dark dark:text-gold-light font-sans block truncate">
+              <span className={cn("text-[10px] text-gold-dark dark:text-gold-light block truncate", isAr ? "font-arabic" : "font-sans")}>
                 {issuer} {collaborator && `• ${collaborator}`}
               </span>
             </div>
@@ -191,12 +193,13 @@ export function CertificateModal({
               transformOrigin: "center center",
             }}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src={imagePath}
               alt={title}
-              className="w-full h-auto max-h-[58vh] object-contain select-none"
-              loading="eager"
+              fill
+              className="object-contain select-none"
+              priority
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 90vw, 80vw"
             />
           </div>
 
@@ -235,53 +238,53 @@ export function CertificateModal({
         <div className="bg-black/5 dark:bg-[#121214] border-t border-black/10 dark:border-white/10 p-4 sm:p-5 overflow-y-auto max-h-[30vh] shrink-0 transition-colors">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
             {/* Recipient & Category */}
-            <div className="p-3 rounded-xl bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 space-y-1 shadow-sm">
-              <div className="text-[10px] text-zinc-500 dark:text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
+            <div className={cn("p-3 rounded-xl bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 space-y-1 shadow-sm", isAr ? "font-arabic" : "")}>
+              <div className={cn("text-[10px] text-zinc-500 dark:text-zinc-400 uppercase tracking-wider flex items-center gap-1.5", isAr ? "font-arabic" : "")}>
                 <UserCheck className="w-3.5 h-3.5 text-gold-dark dark:text-gold-light" />
                 <span>{isAr ? "المستلم والصفة" : "Recipient & Category"}</span>
               </div>
-              <div className="text-zinc-900 dark:text-white font-semibold text-[11px] truncate">
+              <div className={cn("text-zinc-900 dark:text-white font-semibold text-[11px] truncate", isAr ? "font-arabic" : "")}>
                 {recipient}
               </div>
-              <div className="inline-block text-[10px] text-gold-dark dark:text-gold-light bg-gold-primary/10 px-2 py-0.5 rounded border border-gold-primary/30">
+              <div className={cn("inline-block text-[10px] text-gold-dark dark:text-gold-light bg-gold-primary/10 px-2 py-0.5 rounded border border-gold-primary/30", isAr ? "font-arabic" : "")}>
                 {categoryLabel}
               </div>
             </div>
 
             {/* Issuing Authority */}
-            <div className="p-3 rounded-xl bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 space-y-1 shadow-sm">
-              <div className="text-[10px] text-zinc-500 dark:text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
+            <div className={cn("p-3 rounded-xl bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 space-y-1 shadow-sm", isAr ? "font-arabic" : "")}>
+              <div className={cn("text-[10px] text-zinc-500 dark:text-zinc-400 uppercase tracking-wider flex items-center gap-1.5", isAr ? "font-arabic" : "")}>
                 <Award className="w-3.5 h-3.5 text-gold-dark dark:text-gold-light" />
                 <span>{isAr ? "الجهة المانحة" : "Issuing Body"}</span>
               </div>
-              <div className="text-zinc-900 dark:text-white font-semibold text-[11px]">
+              <div className={cn("text-zinc-900 dark:text-white font-semibold text-[11px]", isAr ? "font-arabic" : "")}>
                 {issuer}
               </div>
               {collaborator && (
-                <div className="text-[10px] text-gold-dark dark:text-gold-light font-sans truncate">
+                <div className={cn("text-[10px] text-gold-dark dark:text-gold-light truncate", isAr ? "font-arabic" : "font-sans")}>
                   {collaborator}
                 </div>
               )}
             </div>
 
             {/* Date & Verification */}
-            <div className="p-3 rounded-xl bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 space-y-1 shadow-sm">
-              <div className="text-[10px] text-zinc-500 dark:text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
+            <div className={cn("p-3 rounded-xl bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 space-y-1 shadow-sm", isAr ? "font-arabic" : "")}>
+              <div className={cn("text-[10px] text-zinc-500 dark:text-zinc-400 uppercase tracking-wider flex items-center gap-1.5", isAr ? "font-arabic" : "")}>
                 <Calendar className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                 <span>{isAr ? "التاريخ والاعتماد" : "Date & Status"}</span>
               </div>
-              <div className="text-zinc-900 dark:text-white font-semibold text-[11px]">
+              <div className={cn("text-zinc-900 dark:text-white font-semibold text-[11px]", isAr ? "font-arabic" : "")}>
                 {dateDisplay}
               </div>
-              <div className="flex items-center gap-2 text-[10px]">
+              <div className={cn("flex items-center gap-2 text-[10px]", isAr ? "font-arabic" : "")}>
                 {hasSeal && (
-                  <span className="text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
+                  <span className={cn("text-emerald-600 dark:text-emerald-400 flex items-center gap-1", isAr ? "font-arabic" : "")}>
                     <CheckCircle2 className="w-3 h-3" />
                     <span>{isAr ? "ختم رسمي" : "Official Seal"}</span>
                   </span>
                 )}
                 {hasQrCode && (
-                  <span className="text-gold-dark dark:text-gold-light flex items-center gap-1">
+                  <span className={cn("text-gold-dark dark:text-gold-light flex items-center gap-1", isAr ? "font-arabic" : "")}>
                     <QrCode className="w-3 h-3" />
                     <span>{isAr ? "رمز QR" : "QR Verify"}</span>
                   </span>
@@ -290,21 +293,21 @@ export function CertificateModal({
             </div>
 
             {/* Signatories & Raw Asset Link */}
-            <div className="p-3 rounded-xl bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 flex flex-col justify-between shadow-sm">
+            <div className={cn("p-3 rounded-xl bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 flex flex-col justify-between shadow-sm", isAr ? "font-arabic" : "")}>
               <div>
-                <div className="text-[10px] text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-1">
+                <div className={cn("text-[10px] text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-1", isAr ? "font-arabic" : "")}>
                   {isAr ? "الموقعون الرسميون" : "Official Signatories"}
                 </div>
                 {signatories.length > 0 ? (
                   <div className="space-y-0.5">
                     {signatories.map((sig, idx) => (
-                      <div key={idx} className="text-[11px] text-zinc-700 dark:text-zinc-200">
+                      <div key={idx} className={cn("text-[11px] text-zinc-700 dark:text-zinc-200", isAr ? "font-arabic" : "")}>
                         • {sig.name}
                       </div>
                     ))}
                   </div>
                 ) : (
-                  <div className="text-[11px] text-zinc-500 dark:text-zinc-400">
+                  <div className={cn("text-[11px] text-zinc-500 dark:text-zinc-400", isAr ? "font-arabic" : "")}>
                     {isAr ? "أختام واعتماد معهد يالي وسفارة الولايات المتحدة" : "Official Seal & Executive Manager"}
                   </div>
                 )}
@@ -314,7 +317,7 @@ export function CertificateModal({
                 href={imagePath}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-2 text-[11px] text-gold-dark dark:text-gold-light hover:underline inline-flex items-center gap-1"
+                className={cn("mt-2 text-[11px] text-gold-dark dark:text-gold-light hover:underline inline-flex items-center gap-1", isAr ? "font-arabic" : "")}
               >
                 <span>{isAr ? "فتح بصيغة أصلية كاملة" : "Open Original Document"}</span>
                 <ExternalLink className="w-3 h-3" />
@@ -324,15 +327,15 @@ export function CertificateModal({
 
           {/* Topics & Competencies Chips */}
           {skills.length > 0 && (
-            <div className="mt-3 pt-3 border-t border-black/10 dark:border-white/10 flex items-center gap-2 flex-wrap">
-              <span className="text-[10px] text-zinc-500 dark:text-zinc-400 flex items-center gap-1 uppercase tracking-wider">
+            <div className={cn("mt-3 pt-3 border-t border-black/10 dark:border-white/10 flex items-center gap-2 flex-wrap", isAr ? "font-arabic" : "")}>
+              <span className={cn("text-[10px] text-zinc-500 dark:text-zinc-400 flex items-center gap-1 uppercase tracking-wider", isAr ? "font-arabic" : "")}>
                 <Tag className="w-3 h-3 text-gold-dark dark:text-gold-light" />
                 <span>{isAr ? "المحاور والمجالات:" : "Core Competencies:"}</span>
               </span>
               {skills.map((skill, idx) => (
                 <span
                   key={idx}
-                  className="px-2 py-0.5 rounded text-[10px] bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-zinc-700 dark:text-zinc-300 font-sans"
+                  className={cn("px-2 py-0.5 rounded text-[10px] bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-zinc-700 dark:text-zinc-300", isAr ? "font-arabic" : "font-sans")}
                 >
                   {skill}
                 </span>
@@ -342,15 +345,15 @@ export function CertificateModal({
         </div>
 
         {/* ── Footer Bar ── */}
-        <div className="bg-black/5 dark:bg-[#0E0E10] px-4 py-2.5 border-t border-black/10 dark:border-white/10 text-[11px] text-zinc-500 dark:text-zinc-400 flex items-center justify-between transition-colors">
-          <span className="text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
+        <div className={cn("bg-black/5 dark:bg-[#0E0E10] px-4 py-2.5 border-t border-black/10 dark:border-white/10 text-[11px] text-zinc-500 dark:text-zinc-400 flex items-center justify-between transition-colors", isAr ? "font-arabic" : "")}>
+          <span className={cn("text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5", isAr ? "font-arabic" : "")}>
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 motion-safe:animate-pulse" />
             <span>{isAr ? "وثيقة أصلية موثقة ومعتمدة" : "ORIGINAL AUTHENTICATED CREDENTIAL"}</span>
           </span>
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-1 rounded bg-black/5 dark:bg-white/10 hover:bg-gold-primary hover:text-black text-zinc-800 dark:text-white text-xs transition-colors cursor-pointer"
+            className={cn("px-4 py-1 rounded bg-black/5 dark:bg-white/10 hover:bg-gold-primary hover:text-black text-zinc-800 dark:text-white text-xs transition-colors cursor-pointer", isAr ? "font-arabic" : "")}
           >
             {isAr ? "إغلاق" : "Dismiss"}
           </button>
